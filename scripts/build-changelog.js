@@ -1,13 +1,12 @@
-// git 기록에서 data/tools.json이 바뀐 커밋마다 이전 버전과 비교해 data/changelog.json을 다시 만든다.
-// 사용법: node scripts/build-changelog.js        (결과를 data/changelog.json에 쓴다)
-//         node scripts/build-changelog.js --check (파일이 최신이 아니면 실패)
+// git 기록에서 data/tools.json이 바뀐 커밋마다 이전 버전과 비교해 변경 이력을 만든다.
+// 배포할 때 자동으로 실행된다 (.github/workflows/deploy.yml). 레포에는 결과 파일을 커밋하지 않는다.
+// 사용법: node scripts/build-changelog.js [저장할 경로]   (기본: data/changelog.json, 화면을 로컬에서 볼 때)
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { buildChangelog } from '../js/changelog.js';
 
 const TOOLS_PATH = 'data/tools.json';
-const OUT = new URL('../data/changelog.json', import.meta.url);
 const root = fileURLToPath(new URL('..', import.meta.url));
 
 const git = (...args) =>
@@ -39,15 +38,8 @@ export function readHistory() {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const text = `${JSON.stringify(buildChangelog(readHistory()), null, 2)}\n`;
-  if (process.argv.includes('--check')) {
-    if (readFileSync(OUT, 'utf8') !== text) {
-      console.error('data/changelog.json이 최신이 아니에요. node scripts/build-changelog.js 를 실행하세요.');
-      process.exit(1);
-    }
-    console.log('data/changelog.json이 최신이에요.');
-  } else {
-    writeFileSync(OUT, text);
-    console.log(`data/changelog.json을 만들었어요 (${JSON.parse(text).length}건).`);
-  }
+  const out = process.argv[2] ?? fileURLToPath(new URL('../data/changelog.json', import.meta.url));
+  const changelog = buildChangelog(readHistory());
+  writeFileSync(out, `${JSON.stringify(changelog, null, 2)}\n`);
+  console.log(`${out}에 변경 이력을 만들었어요 (${changelog.length}건).`);
 }

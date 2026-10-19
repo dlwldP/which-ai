@@ -1,6 +1,6 @@
 // data/*.json 검사 (기획서 8장, 12장 스키마 / docs/decisions.md).
 // 사용법: node scripts/validate-data.js [YYYY-MM-DD]   (날짜를 생략하면 오늘)
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { isValidDate, daysSince } from '../js/recommend.js';
 
@@ -175,11 +175,13 @@ export function validateData({ tools, purposes, glossary, changelog, today }) {
 
 export function loadData(dir = new URL('../data/', import.meta.url)) {
   const read = (name) => JSON.parse(readFileSync(new URL(name, dir), 'utf8'));
+  // changelog.json은 배포할 때 만들어지므로 레포에는 없을 수 있다
+  const changelogUrl = new URL('changelog.json', dir);
   return {
     tools: read('tools.json'),
     purposes: read('purposes.json'),
     glossary: read('glossary.json'),
-    changelog: read('changelog.json'),
+    changelog: existsSync(changelogUrl) ? read('changelog.json') : [],
   };
 }
 
