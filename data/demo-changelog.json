@@ -1,0 +1,100 @@
+[
+  {
+    "date": "2026-09-20",
+    "commit": "demo003",
+    "changes": [
+      {
+        "type": "changed",
+        "tool_id": "bravo",
+        "name": "테스트툴 브라보",
+        "field": "last_verified",
+        "before": "2026-08-20",
+        "after": "2026-09-01"
+      },
+      {
+        "type": "changed",
+        "tool_id": "bravo",
+        "name": "테스트툴 브라보",
+        "field": "price.paid_from_usd",
+        "before": 18,
+        "after": 20
+      },
+      {
+        "type": "changed",
+        "tool_id": "bravo",
+        "name": "테스트툴 브라보",
+        "field": "privacy.opt_out",
+        "before": "unknown",
+        "after": "yes"
+      },
+      {
+        "type": "added",
+        "tool_id": "hotel",
+        "name": "테스트툴 호텔"
+      }
+    ]
+  },
+  {
+    "date": "2026-08-20",
+    "commit": "demo002",
+    "changes": [
+      {
+        "type": "changed",
+        "tool_id": "bravo",
+        "name": "테스트툴 브라보",
+        "field": "last_verified",
+        "before": "2026-07-01",
+        "after": "2026-08-20"
+      },
+      {
+        "type": "changed",
+        "tool_id": "bravo",
+        "name": "테스트툴 브라보",
+        "field": "price.paid_from_usd",
+        "before": 15,
+        "after": 18
+      }
+    ]
+  },
+  {
+    "date": "2026-07-01",
+    "commit": "demo001",
+    "changes": [
+      {
+        "type": "added",
+        "tool_id": "alpha",
+        "name": "테스트툴 알파"
+      },
+      {
+        "type": "added",
+        "tool_id": "bravo",
+        "name": "테스트툴 브라보"
+      },
+      {
+        "type": "added",
+        "tool_id": "charlie",
+        "name": "테스트툴 찰리"
+      },
+      {
+        "type": "added",
+        "tool_id": "delta",
+        "name": "테스트툴 델타"
+      },
+      {
+        "type": "added",
+        "tool_id": "echo",
+        "name": "테스트툴 에코"
+      },
+      {
+        "type": "added",
+        "tool_id": "foxtrot",
+        "name": "테스트툴 폭스트롯"
+      },
+      {
+        "type": "added",
+        "tool_id": "golf",
+        "name": "테스트툴 골프"
+      }
+    ]
+  }
+]
