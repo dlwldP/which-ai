@@ -5,13 +5,14 @@ J가 출처와 맞춰 확인한 툴만 `data/tools.json`으로 옮겨요.
 
 ## 초안 한 개의 모양
 
-`data/tools.json`과 같고, 아래 세 가지가 더 있어요. 확인 날짜(`last_verified`)는 없어요.
+`data/tools.json`과 같고, 아래 네 가지가 더 있어요. 확인 날짜(`last_verified`)는 없어요.
 
 | 필드 | 뜻 |
 | --- | --- |
 | `official_domains` | 공식 도메인 목록 (예: `["naver.com"]`). `url`과 `sources`는 모두 이 도메인이어야 해요 |
 | `evidence` | 값마다 근거: `{ "field": "price.free", "source": "공식 페이지 주소", "quote": "페이지에 있는 문장 그대로" }` |
 | `review_notes` | Claude가 남기는 메모 (헷갈린 점, 제안값이라 J가 정해야 하는 것) |
+| `todo` | 공식 페이지에서 근거를 못 찾아 **J가 채워야 하는 칸** (예: 가격 페이지가 글자로 안 읽힐 때). 값과 근거를 채우고 목록에서 지워야 promote할 수 있어요 |
 
 ## J가 확인하는 순서
 

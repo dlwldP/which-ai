@@ -76,5 +76,27 @@ test('모르는 값(unknown, null)은 근거 없이도 통과', () => {
 test('확정하면 초안 전용 필드가 빠지고 확인 날짜가 붙음', () => {
   const tool = toTool(makeDraft(), '2026-10-20');
   assert.equal(tool.last_verified, '2026-10-20');
-  for (const k of ['official_domains', 'evidence', 'review_notes']) assert.ok(!(k in tool));
+  for (const k of ['official_domains', 'evidence', 'review_notes', 'todo']) assert.ok(!(k in tool));
+});
+
+test('todo 칸은 근거·형식 검사를 건너뜀', () => {
+  const errors = errorsFor((d) => {
+    d.todo = ['login', 'price.paid_from_usd'];
+    d.login = null; // J가 채울 칸
+    d.evidence = d.evidence.filter((e) => !['login', 'price.paid_from_usd'].includes(e.field));
+  });
+  assert.deepEqual(errors, []);
+});
+
+test('todo에 없는 칸 이름은 실패', () => {
+  const errors = errorsFor((d) => { d.todo = ['one_liner']; });
+  assert.ok(errors.some((e) => e.includes('.todo:')), JSON.stringify(errors));
+});
+
+test('todo가 아닌 칸은 여전히 근거가 필요', () => {
+  const errors = errorsFor((d) => {
+    d.todo = ['login'];
+    d.evidence = d.evidence.filter((e) => e.field !== 'platforms');
+  });
+  assert.ok(errors.some((e) => e.includes('"platforms" 값의 근거')), JSON.stringify(errors));
 });

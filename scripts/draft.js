@@ -4,7 +4,7 @@
 //
 // 사용법:
 //   node scripts/draft.js check                                   초안 검사
-//   node scripts/draft.js promote <툴 id> --verified YYYY-MM-DD    확인한 툴을 tools.json으로 옮기기 (J만 실행)
+//   node scripts/draft.js promote <툴 id> --verified YYYY-MM-DD    확인한 툴을 tools.json으로 옮기기 (J만 실행, todo가 비어야 함)
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { isValidDate } from '../js/recommend.js';
@@ -14,7 +14,14 @@ const DRAFT_URL = new URL('../drafts/tools.draft.json', import.meta.url);
 const TOOLS_URL = new URL('../data/tools.json', import.meta.url);
 
 // 초안에만 있는 필드. 확정할 때 지운다.
-const DRAFT_ONLY = ['official_domains', 'evidence', 'review_notes'];
+const DRAFT_ONLY = ['official_domains', 'evidence', 'review_notes', 'todo'];
+
+// 공식 페이지에서 근거를 못 찾아 J가 채워야 하는 칸. 여기 적힌 칸은 값 형식·근거 검사를 건너뛰고,
+// todo가 비어 있지 않으면 promote가 거부한다.
+export const TODO_FIELDS = [
+  'price.free', 'price.free_limit', 'price.paid_from_usd', 'price.billing',
+  'privacy.trains_on_input_default', 'privacy.opt_out', 'platforms', 'login',
+];
 
 // 사실 확인이 필요한 값: 공식 페이지 근거 문장이 있어야 한다.
 // 값이 "모름"(unknown, 확인 필요, null)이면 근거가 없어도 된다.
@@ -56,9 +63,16 @@ export function validateDraft(drafts, purposes, today) {
 
     if ('last_verified' in d) errors.push(`${at}.last_verified: 초안에는 확인 날짜를 넣지 않습니다 (J가 promote할 때 붙음)`);
 
-    // 확정 후 모양으로 바꿔서 tools.json과 같은 규칙으로 검사한다
+    const todo = d.todo ?? [];
+    if (!Array.isArray(todo) || !todo.every((f) => TODO_FIELDS.includes(f))) {
+      errors.push(`${at}.todo: ${TODO_FIELDS.join(' / ')} 중에서만 씁니다`);
+    }
+    const isTodo = (field) => Array.isArray(todo) && todo.includes(field);
+
+    // 확정 후 모양으로 바꿔서 tools.json과 같은 규칙으로 검사한다 (todo 칸의 형식 오류는 건너뜀)
     const tool = Object.fromEntries(Object.entries(d).filter(([k]) => !DRAFT_ONLY.includes(k)));
-    errors.push(...validateTool({ ...tool, last_verified: today }, at, purposeIds, today));
+    errors.push(...validateTool({ ...tool, last_verified: today }, at, purposeIds, today)
+      .filter((e) => !todo.some?.((f) => e.startsWith(`${at}.${f}:`))));
 
     const domains = d.official_domains;
     if (!Array.isArray(domains) || domains.length === 0 || !domains.every((x) => isText(x) && /^[a-z0-9.-]+\.[a-z]{2,}$/.test(x))) {
@@ -83,7 +97,7 @@ export function validateDraft(drafts, purposes, today) {
     });
     if (d.price && d.privacy && Array.isArray(d.platforms)) {
       for (const [field, needs] of Object.entries(FACT_FIELDS)) {
-        if (needs(d) && !d.evidence.some((e) => e?.field === field)) {
+        if (!isTodo(field) && needs(d) && !d.evidence.some((e) => e?.field === field)) {
           errors.push(`${at}.evidence: "${field}" 값의 근거 문장이 없습니다 (모르면 unknown / 확인 필요 / null)`);
         }
       }
@@ -128,6 +142,11 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const draft = drafts.find((d) => d.id === id);
     if (!draft) {
       console.error(`초안에 "${id}"가 없어요.`);
+      process.exit(1);
+    }
+    if (draft.todo?.length) {
+      console.error(`아직 채우지 않은 칸이 있어요: ${draft.todo.join(', ')}`);
+      console.error('값과 근거(evidence)를 채우고 todo에서 지운 뒤 다시 실행하세요.');
       process.exit(1);
     }
     const draftErrors = validateDraft([draft], purposes, today);
