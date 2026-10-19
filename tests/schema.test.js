@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { validateData, validateTools, loadData } from '../scripts/validate-data.js';
+import { validateData, validateTools, validateGlossary, validateChangelog, loadData } from '../scripts/validate-data.js';
 
 const TODAY = '2026-10-19';
 const fixture = JSON.parse(readFileSync(new URL('../data/demo-tools.json', import.meta.url), 'utf8'));
@@ -48,6 +48,9 @@ const failCases = [
   ['free_limit가 빈 문자열', (t) => { t.price.free_limit = ''; }, 'price.free_limit'],
   ['없는 platforms 값', (t) => { t.platforms = ['mobile']; }, 'platforms'],
   ['platforms가 비어 있음', (t) => { t.platforms = []; }, 'platforms'],
+  ['login이 문자열', (t) => { t.login = 'google | email'; }, 'login'],
+  ['없는 login 값', (t) => { t.login = ['facebook']; }, 'login'],
+  ['login에 none과 다른 값', (t) => { t.login = ['none', 'email']; }, 'login'],
   ['start_steps가 3개가 아님', (t) => { t.start_steps = ['하나', '둘']; }, 'start_steps'],
   ['id 형식 틀림', (t) => { t.id = 'Alpha Tool'; }, 'id'],
   ['id 중복', (t, tools) => { tools[1].id = t.id; }, '중복된 id'],
@@ -78,4 +81,26 @@ test('검사 실패: 전체 툴 40개 초과', () => {
   const tools = Array.from({ length: 41 }, (_, i) => ({ ...base, id: `tool-${i}` }));
   const errors = validateTools(tools, purposes, TODAY);
   assert.ok(errors.includes('tools.json: 툴이 41개입니다 (최대 40개)'), JSON.stringify(errors));
+});
+
+test('검사 실패: 용어집 단어가 겹침', () => {
+  const glossary = [
+    { term: '토큰', aliases: [], description: '설명' },
+    { term: '크레딧', aliases: ['토큰'], description: '설명' },
+  ];
+  assert.ok(validateGlossary(glossary).some((e) => e.includes('"토큰"가 다른 용어와 겹칩니다')));
+});
+
+test('검사 실패: 용어집 설명이 비어 있음', () => {
+  assert.ok(validateGlossary([{ term: '토큰', aliases: [], description: '' }]).some((e) => e.includes('description')));
+});
+
+test('검사 실패: 변경 이력 형식', () => {
+  assert.ok(validateChangelog([{ date: '2026/10/19', commit: 'abc', changes: [] }]).length >= 2);
+  assert.deepEqual(validateChangelog([{ date: '2026-10-19', commit: 'abc1234', changes: [{ type: 'added', tool_id: 'gamma' }] }]), []);
+});
+
+test('예시 변경 이력이 검사를 통과함', () => {
+  const demoChangelog = JSON.parse(readFileSync(new URL('../data/demo-changelog.json', import.meta.url), 'utf8'));
+  assert.deepEqual(validateChangelog(demoChangelog), []);
 });

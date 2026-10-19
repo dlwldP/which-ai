@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  formatDate, freeLimitText, freeText, koreanText, localToday, paidText, platformsText, privacyText,
+  changeText, formatDate, freeLimitText, freeText, koreanText, localToday, loginText, paidText, platformsText, privacyText,
 } from '../js/format.js';
 
 test('가격 문구', () => {
@@ -49,4 +49,24 @@ test('사용 기기 문구', () => {
 test('날짜 문구', () => {
   assert.equal(formatDate('2026-10-09'), '2026년 10월 9일');
   assert.equal(localToday(new Date(2026, 0, 5, 23, 59)), '2026-01-05');
+});
+
+test('가입 방법 문구', () => {
+  assert.equal(loginText(['google', 'email']), '구글 계정, 이메일');
+  assert.equal(loginText(['none']), '가입 없이 바로 사용');
+});
+
+test('변경 이력 문구', () => {
+  const purposes = [{ id: 'P04', label: '발표자료(PPT) 만들기' }];
+  const c = (field, before, after) => ({ type: 'changed', tool_id: 'g', name: 'Gamma', field, before, after });
+  assert.equal(changeText({ type: 'added', tool_id: 'g', name: 'Gamma' }), 'Gamma 추가');
+  assert.equal(changeText({ type: 'removed', tool_id: 'g', name: 'Gamma' }), 'Gamma 빠짐');
+  assert.equal(changeText(c('price.paid_from_usd', 10, 12)), 'Gamma: 유료 가격 10달러 → 12달러');
+  assert.equal(changeText(c('price.paid_from_usd', null, 8)), 'Gamma: 유료 가격 없음 → 8달러');
+  assert.equal(changeText(c('price.free', true, false)), 'Gamma: 무료로 쓰기 돼요 → 안 돼요');
+  assert.equal(changeText(c('privacy.opt_out', 'unknown', 'yes')), 'Gamma: 학습 끄기 가능 확인 필요 → 예');
+  assert.equal(changeText(c('purposes.P04', 2, 3), purposes), "Gamma: '발표자료(PPT) 만들기' 적합도 2점 → 3점");
+  assert.equal(changeText(c('last_verified', '2026-07-01', '2026-10-19')), 'Gamma: 확인 날짜 2026년 7월 1일 → 2026년 10월 19일');
+  assert.equal(changeText(c('cautions', [], ['a'])), 'Gamma: 주의할 점 내용이 바뀌었어요');
+  assert.equal(changeText(c('platforms', ['web'], ['web', 'ios'])), 'Gamma: 사용 기기 웹사이트 → 웹사이트, 아이폰 앱');
 });

@@ -27,13 +27,20 @@
       "ios",
       "android"
     ],
-    "login": "email",
-    "start_steps": [
-      "첫 번째 단계",
-      "두 번째 단계",
-      "세 번째 단계"
+    "login": [
+      "google",
+      "apple",
+      "email"
     ],
-    "cautions": [],
+    "start_steps": [
+      "사이트에서 구글 계정으로 로그인",
+      "입력창에 프롬프트를 한 줄 쓰기",
+      "결과를 복사하거나 파일로 내보내기"
+    ],
+    "cautions": [
+      "무료 크레딧을 다 쓰면 유료로 바꿔야 해요",
+      "그럴듯하지만 틀린 답(환각)이 나올 수 있어요"
+    ],
     "sources": [
       "https://example.com/alpha/pricing"
     ],
@@ -66,7 +73,10 @@
       "windows",
       "mac"
     ],
-    "login": "email",
+    "login": [
+      "microsoft",
+      "email"
+    ],
     "start_steps": [
       "첫 번째 단계",
       "두 번째 단계",
@@ -98,12 +108,14 @@
     "privacy": {
       "trains_on_input_default": "unknown",
       "opt_out": "unknown",
-      "note": ""
+      "note": "학습 정책을 공식 페이지에서 찾지 못했어요"
     },
     "platforms": [
       "web"
     ],
-    "login": "email",
+    "login": [
+      "google"
+    ],
     "start_steps": [
       "첫 번째 단계",
       "두 번째 단계",
@@ -141,7 +153,10 @@
       "web",
       "ios"
     ],
-    "login": "email",
+    "login": [
+      "kakao",
+      "naver"
+    ],
     "start_steps": [
       "첫 번째 단계",
       "두 번째 단계",
@@ -179,7 +194,9 @@
       "windows",
       "mac"
     ],
-    "login": "email",
+    "login": [
+      "email"
+    ],
     "start_steps": [
       "첫 번째 단계",
       "두 번째 단계",
@@ -217,7 +234,10 @@
       "web",
       "android"
     ],
-    "login": "email",
+    "login": [
+      "google",
+      "phone"
+    ],
     "start_steps": [
       "첫 번째 단계",
       "두 번째 단계",
@@ -255,7 +275,9 @@
     "platforms": [
       "web"
     ],
-    "login": "email",
+    "login": [
+      "none"
+    ],
     "start_steps": [
       "첫 번째 단계",
       "두 번째 단계",
@@ -291,7 +313,10 @@
     "platforms": [
       "web"
     ],
-    "login": "email",
+    "login": [
+      "google",
+      "email"
+    ],
     "start_steps": [
       "첫 번째 단계",
       "두 번째 단계",

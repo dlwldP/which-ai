@@ -63,3 +63,75 @@ export function localToday(now = new Date()) {
   const pad = (n) => String(n).padStart(2, '0');
   return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
 }
+
+const LOGIN_LABELS = {
+  google: '구글 계정',
+  apple: '애플 계정',
+  microsoft: '마이크로소프트 계정',
+  kakao: '카카오 계정',
+  naver: '네이버 계정',
+  email: '이메일',
+  phone: '휴대폰 번호',
+  none: '가입 없이 바로 사용',
+};
+
+export function loginText(login) {
+  return login.map((v) => LOGIN_LABELS[v] ?? v).join(', ');
+}
+
+// ---- 변경 이력 문구 ----
+const YES_NO = { yes: '예', no: '아니요', unknown: UNKNOWN };
+const FIELD_LABELS = {
+  name: '이름',
+  url: '공식 사이트 주소',
+  one_liner: '한 줄 설명',
+  'price.free': '무료로 쓰기',
+  'price.free_limit': '무료 한도',
+  'price.paid_from_usd': '유료 가격',
+  'price.billing': '결제 주기',
+  korean: '한국어',
+  'privacy.trains_on_input_default': '입력 내용을 기본으로 학습에 씀',
+  'privacy.opt_out': '학습 끄기 가능',
+  'privacy.note': '학습 정책 메모',
+  platforms: '사용 기기',
+  login: '가입 방법',
+  start_steps: '시작 방법',
+  cautions: '주의할 점',
+  sources: '출처',
+  last_verified: '확인 날짜',
+};
+// 길어서 전/후 값을 다 보여주지 않는 항목
+const LONG_FIELDS = new Set(['url', 'one_liner', 'privacy.note', 'start_steps', 'cautions', 'sources']);
+const VALUE_FORMATS = {
+  'price.free': (v) => freeText({ free: v }),
+  'price.paid_from_usd': (v) => `${v.toLocaleString('ko-KR')}달러`,
+  'price.billing': (v) => ({ monthly: '매달', yearly: '매년', unknown: UNKNOWN })[v] ?? v,
+  korean: koreanText,
+  'privacy.trains_on_input_default': (v) => YES_NO[v] ?? v,
+  'privacy.opt_out': (v) => YES_NO[v] ?? v,
+  platforms: platformsText,
+  login: loginText,
+  last_verified: formatDate,
+};
+
+function changeValue(field, value) {
+  if (value === null || value === undefined) return '없음';
+  if (field.startsWith('purposes.')) return `${value}점`;
+  return String((VALUE_FORMATS[field] ?? ((v) => v))(value));
+}
+
+/** 변경 이력 한 줄. purposes는 data/purposes.json (적합도 항목에 목적 이름을 붙인다) */
+export function changeText(change, purposes = []) {
+  if (change.type === 'added') return `${change.name} 추가`;
+  if (change.type === 'removed') return `${change.name} 빠짐`;
+  const { field } = change;
+  let label = FIELD_LABELS[field] ?? field;
+  if (field.startsWith('purposes.')) {
+    const purpose = purposes.find((p) => p.id === field.slice('purposes.'.length));
+    label = `'${purpose ? purpose.label : field}' 적합도`;
+  }
+  if (LONG_FIELDS.has(field) || !(field in FIELD_LABELS || field.startsWith('purposes.'))) {
+    return `${change.name}: ${label} 내용이 바뀌었어요`;
+  }
+  return `${change.name}: ${label} ${changeValue(field, change.before)} → ${changeValue(field, change.after)}`;
+}

@@ -9,6 +9,7 @@ export const MAX_TOOLS_PER_PURPOSE = 5;
 export const PLATFORMS = ['web', 'ios', 'android', 'windows', 'mac'];
 export const BILLING = ['monthly', 'yearly', 'unknown'];
 export const POLICY = ['yes', 'no', 'unknown'];
+export const LOGINS = ['google', 'apple', 'microsoft', 'kakao', 'naver', 'email', 'phone', 'none'];
 
 const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 const isText = (v) => typeof v === 'string' && v.trim() !== '';
@@ -44,7 +45,7 @@ function validateTool(tool, at, purposeIds, today) {
   if (!isObject(tool)) return [`${at}: 객체여야 합니다`];
 
   if (typeof tool.id !== 'string' || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(tool.id)) err('id', '영문 소문자·숫자·하이픈만 씁니다');
-  for (const field of ['name', 'one_liner', 'login']) if (!isText(tool[field])) err(field, '비어 있습니다');
+  for (const field of ['name', 'one_liner']) if (!isText(tool[field])) err(field, '비어 있습니다');
   if (!isHttpsUrl(tool.url)) err('url', 'https 주소여야 합니다');
 
   if (!isObject(tool.purposes)) err('purposes', '객체여야 합니다');
@@ -84,6 +85,13 @@ function validateTool(tool, at, purposeIds, today) {
     if (new Set(tool.platforms).size !== tool.platforms.length) err('platforms', '중복 값이 있습니다');
   }
 
+  if (!Array.isArray(tool.login) || tool.login.length === 0) err('login', '하나 이상 있어야 합니다');
+  else {
+    if (tool.login.some((v) => !LOGINS.includes(v))) err('login', `${LOGINS.join(' / ')} 중에서만 씁니다`);
+    if (new Set(tool.login).size !== tool.login.length) err('login', '중복 값이 있습니다');
+    if (tool.login.includes('none') && tool.login.length > 1) err('login', '"none"(가입 없이 사용)은 다른 값과 같이 쓰지 않습니다');
+  }
+
   if (!Array.isArray(tool.start_steps) || tool.start_steps.length !== 3 || !tool.start_steps.every(isText)) {
     err('start_steps', '비어 있지 않은 문장 정확히 3개여야 합니다');
   }
@@ -121,11 +129,48 @@ export function validateTools(tools, purposes, today) {
   return errors;
 }
 
-export function validateData({ tools, purposes, glossary, changelog, today }) {
-  const errors = [...validatePurposes(purposes), ...validateTools(tools, purposes, today)];
-  if (!Array.isArray(glossary)) errors.push('glossary.json: 배열이어야 합니다');
-  if (!Array.isArray(changelog)) errors.push('changelog.json: 배열이어야 합니다');
+export function validateGlossary(glossary) {
+  if (!Array.isArray(glossary)) return ['glossary.json: 배열이어야 합니다'];
+  const errors = [];
+  const seen = new Set();
+  glossary.forEach((g, i) => {
+    const at = `glossary[${i}]`;
+    if (!isObject(g)) return errors.push(`${at}: 객체여야 합니다`);
+    if (!isText(g.term)) errors.push(`${at}.term: 비어 있습니다`);
+    if (!isText(g.description)) errors.push(`${at}.description: 비어 있습니다`);
+    if (!Array.isArray(g.aliases) || !g.aliases.every(isText)) errors.push(`${at}.aliases: 문자열 배열이어야 합니다`);
+    for (const word of [g.term, ...(Array.isArray(g.aliases) ? g.aliases : [])]) {
+      if (typeof word !== 'string') continue;
+      if (seen.has(word)) errors.push(`${at}: "${word}"가 다른 용어와 겹칩니다`);
+      seen.add(word);
+    }
+  });
   return errors;
+}
+
+export function validateChangelog(changelog) {
+  if (!Array.isArray(changelog)) return ['changelog.json: 배열이어야 합니다'];
+  const errors = [];
+  changelog.forEach((entry, i) => {
+    const at = `changelog[${i}]`;
+    if (!isObject(entry)) return errors.push(`${at}: 객체여야 합니다`);
+    if (!isValidDate(entry.date)) errors.push(`${at}.date: YYYY-MM-DD 형식이어야 합니다`);
+    if (!isText(entry.commit)) errors.push(`${at}.commit: 비어 있습니다`);
+    if (!Array.isArray(entry.changes) || entry.changes.length === 0) errors.push(`${at}.changes: 하나 이상 있어야 합니다`);
+    else if (!entry.changes.every((c) => isObject(c) && ['added', 'removed', 'changed'].includes(c.type) && isText(c.tool_id))) {
+      errors.push(`${at}.changes: type(added/removed/changed)과 tool_id가 있어야 합니다`);
+    }
+  });
+  return errors;
+}
+
+export function validateData({ tools, purposes, glossary, changelog, today }) {
+  return [
+    ...validatePurposes(purposes),
+    ...validateTools(tools, purposes, today),
+    ...validateGlossary(glossary),
+    ...validateChangelog(changelog),
+  ];
 }
 
 export function loadData(dir = new URL('../data/', import.meta.url)) {

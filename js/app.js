@@ -2,16 +2,23 @@
 //   #/                       홈 (어떤 일을 맡기고 싶어요?)
 //   #/p/<목적>?조건           조건 선택
 //   #/p/<목적>/result?조건    추천 결과
+//   #/t/<툴 id>              툴 상세
+//   #/glossary?term=<용어>   용어집
+//   #/changes                변경 이력
 // 조건: free=1 (무료만), secure=1 (보안 중요), korean=1 (한국어 중요), mobile=1 (휴대폰)
 // 주소에 ?demo가 있으면 (예: index.html?demo#/) 실제 데이터 대신 예시 데이터를 쓴다.
 // 점수 계산은 하지 않는다. 추천은 recommend.js에만 맡긴다.
-import { recommend } from './recommend.js';
+import { recommend, isStale } from './recommend.js';
 import {
-  UNKNOWN, formatDate, freeLimitText, freeText, koreanText, localToday, paidText, platformsText, privacyText,
+  UNKNOWN, changeText, formatDate, freeLimitText, freeText, koreanText, localToday, loginText, paidText, platformsText,
+  privacyText,
 } from './format.js';
+import { glossarize, termMatcher } from './glossary.js';
 
 const app = document.getElementById('app');
-let data; // { tools, purposes, demo }
+let data; // { tools, purposes, glossary, changelog, demo }
+let matcher = null; // 용어집 단어 찾기
+let routedOnce = false; // 사이트 안에서 이동한 적이 있으면 "뒤로"가 브라우저 뒤로 가기로 동작한다
 
 // 시나리오 4: "뭘 해야 할지 모르겠어요" 바로가기 (docs/decisions.md)
 const STARTER_PURPOSES = ['P01', 'P03', 'P07'];
@@ -23,12 +30,16 @@ const CONDITIONS = [
   { key: 'mobile', param: 'mobile', icon: '📱', title: '휴대폰에서 쓸 거예요', desc: '아이폰이나 안드로이드 앱이 있는 툴만 보여줘요' },
 ];
 const CHIP_LABELS = { freeOnly: '무료만', securityImportant: '보안 중요', koreanImportant: '한국어 중요', mobile: '휴대폰' };
+const FIT_LABELS = { 3: '이 일의 대표 툴이에요', 2: '이 일에 잘 맞아요', 1: '이 일에도 쓸 수 있어요' };
 
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
+/** 이스케이프 + 용어집 단어에 밑줄 */
+const g = (text) => glossarize(esc(text), matcher);
+
 /** "확인 필요"가 들어간 값은 눈에 띄게 표시한다. */
-const valueHtml = (text) => (text.includes(UNKNOWN) ? `<span class="unknown">${esc(text)}</span>` : esc(text));
+const valueHtml = (text) => (text.includes(UNKNOWN) ? `<span class="unknown">${esc(text)}</span>` : g(text));
 
 async function loadJson(path) {
   const res = await fetch(path, { cache: 'no-cache' });
@@ -47,12 +58,42 @@ function conditionQuery(conditions) {
   return q ? `?${q}` : '';
 }
 
-const purposeRow = (p, href) => `
+const purposeRow = (p, href, desc = p.examples) => `
   <li><a class="row" href="${href}">
     <span class="ico" aria-hidden="true">${esc(p.icon)}</span>
-    <span class="txt"><span class="ttl">${esc(p.label)}</span><span class="dsc">${esc(p.examples)}</span></span>
+    <span class="txt"><span class="ttl">${esc(p.label)}</span><span class="dsc">${esc(desc)}</span></span>
     <span class="chev" aria-hidden="true">›</span>
   </a></li>`;
+
+const linkRow = (icon, title, desc, href) => `
+  <li><a class="row" href="${href}">
+    <span class="ico" aria-hidden="true">${icon}</span>
+    <span class="txt"><span class="ttl">${esc(title)}</span><span class="dsc">${esc(desc)}</span></span>
+    <span class="chev" aria-hidden="true">›</span>
+  </a></li>`;
+
+/** 사이트 안에서 왔으면 브라우저 뒤로 가기, 바로 들어왔으면 fallback 주소로 */
+const backLink = (fallback, label = '뒤로') => `<a class="back" href="${fallback}" data-back>‹ ${esc(label)}</a>`;
+
+const FACTS = [
+  ['무료로 쓰기', (t) => freeText(t.price)],
+  ['무료 한도', (t) => freeLimitText(t.price)],
+  ['유료 가격', (t) => paidText(t.price)],
+  ['한국어', (t) => koreanText(t.korean)],
+  ['학습 정책', (t) => privacyText(t.privacy)],
+  ['사용 기기', (t) => platformsText(t.platforms)],
+];
+
+const factHtml = ([label, value], t, last = false) =>
+  `<dl class="fact${last ? ' last' : ''}"><dt>${g(label)}</dt><dd>${valueHtml(value(t))}</dd></dl>`;
+
+const cautionsOf = (t) => [...t.cautions, ...(t.privacy.note ? [t.privacy.note] : [])];
+
+const verifiedHtml = (t, stale) => `
+  <details class="verified">
+    <summary>마지막 확인 ${esc(formatDate(t.last_verified))}${stale ? ' (90일 넘게 지나서 다시 확인이 필요해요)' : ''} · <span class="src-toggle">출처 보기</span></summary>
+    <ul>${t.sources.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul>
+  </details>`;
 
 // ---- 홈 ----
 function renderHome() {
@@ -74,6 +115,14 @@ function renderHome() {
       <h2 class="card-title">뭘 해야 할지 모르겠어요</h2>
       <p class="card-sub">처음이라면 많이 쓰는 이 세 가지부터 해보세요</p>
       <ul class="list">${starters.map((p) => purposeRow(p, `#/p/${p.id}/result`)).join('')}</ul>
+    </section>
+
+    <section class="card">
+      <h2 class="card-title">더 알아보기</h2>
+      <ul class="list">
+        ${linkRow('📖', '용어집', '프롬프트, 토큰, 무료 크레딧… 어려운 말 쉽게 풀기', '#/glossary')}
+        ${linkRow('🗓️', '변경 이력', '툴 정보가 언제 어떻게 바뀌었는지', '#/changes')}
+      </ul>
     </section>
 
     <div class="trust">
@@ -118,46 +167,34 @@ function renderConditions(purpose, conditions) {
 
 // ---- 추천 결과 ----
 // 카드끼리 비교되도록 모든 카드에 같은 항목을 같은 순서로 넣는다 (CSS subgrid로 높이를 맞춘다).
-const FACTS = [
-  ['무료로 쓰기', (t) => freeText(t.price)],
-  ['무료 한도', (t) => freeLimitText(t.price)],
-  ['유료 가격', (t) => paidText(t.price)],
-  ['한국어', (t) => koreanText(t.korean)],
-  ['학습 정책', (t) => privacyText(t.privacy)],
-  ['사용 기기', (t) => platformsText(t.platforms)],
-];
-
 function toolCardHtml(r, index, all) {
   const t = r.tool;
-  const cautions = [...t.cautions, ...(t.privacy.note ? [t.privacy.note] : [])];
+  const cautions = cautionsOf(t);
   // 칸 수(머리 1 + 이유 1 + 비교 6 + 시작 1 + 주의 1 + 버튼·확인 1 = 11)는 styles.css의 .cards와 맞춰야 한다.
   return `
-    <article class="tool-card" id="tool-${index}" aria-label="${index + 1}번째 추천 / 전체 ${all.length}개">
+    <article class="tool-card" aria-label="${index + 1}번째 추천 / 전체 ${all.length}개">
       <div class="tool-head">
         <div class="tool-title">
           <span class="tool-rank">${index + 1}</span>
-          <h2 class="tool-name">${esc(t.name)}</h2>
+          <h2 class="tool-name"><a href="#/t/${esc(t.id)}">${esc(t.name)}</a></h2>
           ${r.stale ? '<span class="tag tag-warn">확인 필요</span>' : ''}
         </div>
-        <p class="tool-one-liner">${esc(t.one_liner)}</p>
+        <p class="tool-one-liner">${g(t.one_liner)}</p>
       </div>
-      <ul class="reasons" aria-label="추천 이유">${r.reasons.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
-      ${FACTS.map(([label, value], i) => `
-        <dl class="fact${i === FACTS.length - 1 ? ' last' : ''}"><dt>${label}</dt><dd>${valueHtml(value(t))}</dd></dl>`).join('')}
+      <ul class="reasons" aria-label="추천 이유">${r.reasons.map((s) => `<li>${g(s)}</li>`).join('')}</ul>
+      ${FACTS.map((f, i) => factHtml(f, t, i === FACTS.length - 1)).join('')}
       <div class="tool-steps">
         <h3 class="section-label">이렇게 시작해요</h3>
-        <ol class="steps">${t.start_steps.map((s) => `<li><span>${esc(s)}</span></li>`).join('')}</ol>
+        <ol class="steps">${t.start_steps.map((s) => `<li><span>${g(s)}</span></li>`).join('')}</ol>
       </div>
       <div class="tool-cautions">${cautions.length ? `
         <h3 class="section-label">주의할 점</h3>
-        <ul class="cautions">${cautions.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>` : ''}
+        <ul class="cautions">${cautions.map((s) => `<li>${g(s)}</li>`).join('')}</ul>` : ''}
       </div>
       <div class="tool-actions">
         <a class="btn btn-outline btn-block" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트 열기 ↗</a>
-        <details class="verified">
-          <summary>마지막 확인 ${esc(formatDate(t.last_verified))}${r.stale ? ' (90일 넘게 지나서 다시 확인이 필요해요)' : ''} · <span class="src-toggle">출처 보기</span></summary>
-          <ul>${t.sources.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul>
-        </details>
+        <a class="more-link" href="#/t/${esc(t.id)}">자세히 보기 ›</a>
+        ${verifiedHtml(t, r.stale)}
       </div>
     </article>`;
 }
@@ -225,28 +262,230 @@ function renderResult(purpose, conditions) {
   installCardDots();
 }
 
+// ---- 툴 상세 ----
+function renderTool(t) {
+  document.title = `${t.name} · AI 뭐 써?`;
+  const stale = isStale(t, localToday());
+  const cautions = cautionsOf(t);
+  const fits = data.purposes
+    .map((p) => ({ p, score: t.purposes[p.id] ?? 0 }))
+    .filter((x) => x.score >= 1)
+    .sort((a, b) => b.score - a.score || (a.p.id < b.p.id ? -1 : 1));
+  const history = data.changelog
+    .flatMap((entry) => entry.changes.filter((c) => c.tool_id === t.id).map((c) => ({ date: entry.date, c })));
+
+  app.innerHTML = `
+    <div class="page-head">
+      ${backLink('#/')}
+      <p class="step">툴 상세</p>
+      <div class="tool-title">
+        <h1 class="page-title">${esc(t.name)}</h1>
+        ${stale ? '<span class="tag tag-warn">확인 필요</span>' : ''}
+      </div>
+      <p class="page-sub">${g(t.one_liner)}</p>
+    </div>
+
+    <section class="card">
+      <h2 class="card-title">기본 정보</h2>
+      <div class="facts">
+        ${FACTS.map((f) => factHtml(f, t)).join('')}
+        ${factHtml(['가입 방법', (x) => loginText(x.login)], t, true)}
+      </div>
+      <div class="tool-actions">
+        <a class="btn btn-primary btn-block" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트 열기 ↗</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="card-title">이렇게 시작해요</h2>
+      <ol class="steps">${t.start_steps.map((s) => `<li><span>${g(s)}</span></li>`).join('')}</ol>
+    </section>
+
+    ${cautions.length ? `
+      <section class="card">
+        <h2 class="card-title">주의할 점</h2>
+        <ul class="cautions">${cautions.map((s) => `<li>${g(s)}</li>`).join('')}</ul>
+      </section>` : ''}
+
+    <section class="card">
+      <h2 class="card-title">이 툴로 할 수 있는 일</h2>
+      <p class="card-sub">누르면 그 일에 맞는 다른 툴과 비교해볼 수 있어요</p>
+      <ul class="list">${fits.map(({ p, score }) => purposeRow(p, `#/p/${p.id}/result`, FIT_LABELS[score])).join('')}</ul>
+    </section>
+
+    <section class="card">
+      <h2 class="card-title">정보 확인</h2>
+      <p class="card-sub">마지막 확인 ${esc(formatDate(t.last_verified))}${stale ? ' · 90일 넘게 지나서 다시 확인이 필요해요' : ''}</p>
+      <h3 class="section-label">출처</h3>
+      <ul class="sources">${t.sources.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul>
+      ${history.length ? `
+        <h3 class="section-label">바뀐 내용</h3>
+        <ul class="change-list">${history.map(({ date, c }) => `<li><span class="change-date">${esc(formatDate(date))}</span>${esc(changeText(c, data.purposes))}</li>`).join('')}</ul>` : ''}
+    </section>`;
+}
+
+function renderNotFound() {
+  document.title = '찾을 수 없어요 · AI 뭐 써?';
+  app.innerHTML = `
+    <div class="page-head">${backLink('#/', '처음으로')}</div>
+    <section class="card"><p class="empty"><strong>찾을 수 없어요</strong>주소가 바뀌었거나 빠진 툴일 수 있어요.</p></section>`;
+}
+
+// ---- 용어집 ----
+function renderGlossary(focus) {
+  document.title = '용어집 · AI 뭐 써?';
+  app.innerHTML = `
+    <div class="page-head">
+      ${backLink('#/')}
+      <h1 class="page-title">용어집</h1>
+      <p class="page-sub">AI 툴을 쓰다 보면 나오는 어려운 말을 쉽게 풀었어요. 화면에서 <span class="term-sample">밑줄 친 말</span>을 누르면 바로 볼 수 있어요.</p>
+    </div>
+    <section class="card">
+      ${data.glossary.length ? `<dl class="glossary">${data.glossary.map((item) => `
+        <div class="glossary-item${item.term === focus ? ' focused' : ''}" id="term-${esc(item.term)}">
+          <dt>${esc(item.term)}${item.aliases.length ? ` <span class="alias">(${esc(item.aliases.join(', '))})</span>` : ''}</dt>
+          <dd>${esc(item.description)}</dd>
+        </div>`).join('')}</dl>` : '<p class="empty"><strong>아직 준비 중이에요</strong></p>'}
+    </section>`;
+  if (focus) document.getElementById(`term-${focus}`)?.scrollIntoView({ block: 'center' });
+}
+
+// ---- 변경 이력 ----
+function renderChanges() {
+  document.title = '변경 이력 · AI 뭐 써?';
+  const toolIds = new Set(data.tools.map((t) => t.id));
+  const line = (c) => {
+    const text = esc(changeText(c, data.purposes));
+    return toolIds.has(c.tool_id) ? `<a href="#/t/${esc(c.tool_id)}">${text}</a>` : text;
+  };
+  app.innerHTML = `
+    <div class="page-head">
+      ${backLink('#/')}
+      <h1 class="page-title">변경 이력</h1>
+      <p class="page-sub">툴 정보가 바뀔 때마다 자동으로 기록돼요. 가격이나 정책이 언제 바뀌었는지 확인할 수 있어요.</p>
+    </div>
+    ${data.changelog.length ? data.changelog.map((entry) => `
+      <section class="card">
+        <h2 class="card-title">${esc(formatDate(entry.date))}</h2>
+        <ul class="change-list">${entry.changes.map((c) => `<li class="change-${c.type}">${line(c)}</li>`).join('')}</ul>
+      </section>`).join('') : '<section class="card"><p class="empty"><strong>아직 바뀐 내용이 없어요</strong>툴 정보가 바뀌면 여기에 기록돼요.</p></section>'}`;
+}
+
+// ---- 용어 풀이 (화면 아래에 뜨는 창) ----
+function installTermSheet() {
+  const sheet = document.createElement('div');
+  sheet.className = 'term-sheet';
+  sheet.hidden = true;
+  sheet.innerHTML = `
+    <div class="term-sheet-inner" role="dialog" aria-modal="false" aria-labelledby="term-sheet-title">
+      <div class="term-sheet-head">
+        <strong id="term-sheet-title"></strong>
+        <button type="button" class="term-close" aria-label="닫기">✕</button>
+      </div>
+      <p></p>
+      <a href="#/glossary">용어집 전체 보기 ›</a>
+    </div>`;
+  document.body.appendChild(sheet);
+  let opener = null;
+  const close = () => {
+    if (sheet.hidden) return;
+    sheet.hidden = true;
+    opener?.focus();
+  };
+  document.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('.term');
+    if (btn) {
+      const item = data.glossary.find((x) => x.term === btn.dataset.term);
+      if (!item) return;
+      opener = btn;
+      sheet.querySelector('strong').textContent = item.term;
+      sheet.querySelector('p').textContent = item.description;
+      sheet.querySelector('a').href = `#/glossary?term=${encodeURIComponent(item.term)}`;
+      sheet.hidden = false;
+      sheet.querySelector('.term-close').focus();
+      return;
+    }
+    if (ev.target.closest('.term-close') || !ev.target.closest('.term-sheet')) close();
+    else if (ev.target.closest('.term-sheet a')) sheet.hidden = true;
+  });
+  document.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape') close();
+  });
+  window.addEventListener('hashchange', () => { sheet.hidden = true; });
+}
+
+// ---- 다크 모드 버튼 ----
+function currentTheme() {
+  return document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+}
+
+function installThemeToggle() {
+  const btn = document.getElementById('theme-toggle');
+  const paint = () => {
+    const dark = currentTheme() === 'dark';
+    btn.textContent = dark ? '☀️' : '🌙';
+    btn.setAttribute('aria-label', dark ? '밝은 화면으로 바꾸기' : '어두운 화면으로 바꾸기');
+  };
+  btn.addEventListener('click', () => {
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {
+      // 저장할 수 없는 환경이면 이번 방문 동안만 적용
+    }
+    paint();
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paint);
+  paint();
+}
+
 function route() {
   const [path, query = ''] = location.hash.replace(/^#\/?/, '').split('?');
   const params = new URLSearchParams(query);
-  const [section, purposeId, view] = path.split('/');
-  const purpose = section === 'p' && data.purposes.find((p) => p.id === purposeId);
+  const [section, id, view] = path.split('/');
+  const purpose = section === 'p' && data.purposes.find((p) => p.id === id);
+  const tool = section === 't' && data.tools.find((t) => t.id === id);
   document.body.classList.toggle('wide', Boolean(purpose && view === 'result'));
+  document.querySelectorAll('[data-nav]').forEach((a) => {
+    if (a.dataset.nav === section) a.setAttribute('aria-current', 'page');
+    else a.removeAttribute('aria-current');
+  });
+
   if (purpose && view === 'result') renderResult(purpose, readConditions(params));
   else if (purpose) renderConditions(purpose, readConditions(params));
+  else if (tool) renderTool(tool);
+  else if (section === 't') renderNotFound();
+  else if (section === 'glossary') renderGlossary(params.get('term'));
+  else if (section === 'changes') renderChanges();
   else renderHome();
-  window.scrollTo(0, 0);
+
+  app.querySelectorAll('[data-back]').forEach((a) => a.addEventListener('click', (ev) => {
+    if (!routedOnce) return; // 바로 들어온 경우는 링크 주소로 간다
+    ev.preventDefault();
+    history.back();
+  }));
+  if (!(section === 'glossary' && params.get('term'))) window.scrollTo(0, 0);
 }
 
 async function main() {
+  installThemeToggle();
   try {
     const demo = new URLSearchParams(location.search).has('demo');
-    const [tools, purposes] = await Promise.all([
+    const [tools, purposes, glossary, changelog] = await Promise.all([
       loadJson(demo ? 'data/demo-tools.json' : 'data/tools.json'),
       loadJson('data/purposes.json'),
+      loadJson('data/glossary.json'),
+      loadJson(demo ? 'data/demo-changelog.json' : 'data/changelog.json'),
     ]);
-    data = { tools, purposes, demo };
+    data = { tools, purposes, glossary, changelog, demo };
+    matcher = termMatcher(glossary);
     document.getElementById('demo-banner').hidden = !demo;
-    window.addEventListener('hashchange', route);
+    installTermSheet();
+    window.addEventListener('hashchange', () => {
+      routedOnce = true;
+      route();
+    });
     route();
   } catch (err) {
     app.innerHTML = `<p class="error">데이터를 불러오지 못했어요: ${esc(err.message)}</p>`;
