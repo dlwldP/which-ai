@@ -2,6 +2,8 @@
 
 하고 싶은 일을 고르면 맞는 AI 툴 2~3개를 비교해서 추천해주는 비개발자용 선택 도우미.
 
+**👉 사이트 바로가기: [dlwldp.github.io/which-ai](https://dlwldp.github.io/which-ai/)** · [예시 데이터로 둘러보기](https://dlwldp.github.io/which-ai/?demo#/)
+
 - 기획서: [docs/AI뭐써_기획서.md](docs/AI뭐써_기획서.md)
 - 세부 결정 사항: [docs/decisions.md](docs/decisions.md)
 
@@ -49,7 +51,7 @@ node scripts/check-freshness.js      # 주간 점검을 직접 돌려보기 (결
 
 ## 배포
 
-`main`에 푸시하면 `.github/workflows/deploy.yml`이 테스트·데이터 검사를 돌리고, 통과하면 git 기록으로 변경 이력을 만들어 GitHub Pages에 올린다. 배포 주소: https://dlwldp.github.io/which-ai/ (예시 데이터: https://dlwldp.github.io/which-ai/?demo#/)
+`main`에 푸시하면 `.github/workflows/deploy.yml`이 테스트·데이터 검사를 돌리고, 통과하면 git 기록으로 변경 이력을 만들어 GitHub Pages에 올린다. 배포 주소: [https://dlwldp.github.io/which-ai/](https://dlwldp.github.io/which-ai/) (예시 데이터: [https://dlwldp.github.io/which-ai/?demo#/](https://dlwldp.github.io/which-ai/?demo#/))
 
 ## 주간 점검
 
