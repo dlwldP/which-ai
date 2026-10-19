@@ -27,7 +27,9 @@ js/          recommend.js — 추천 로직 (순수 함수, DOM 접근 없음)
              glossary.js  — 문장 속 용어에 밑줄을 씌우는 순수 함수
              changelog.js — tools.json 두 버전을 비교하는 순수 함수
              app.js       — 화면 그리기와 주소 처리
+drafts/      확인 전 툴 정보 초안 (배포 안 됨, drafts/README.md 참고)
 scripts/     validate-data.js — 데이터 검사
+             draft.js — 초안 검사, 확인한 툴을 tools.json으로 옮기기
              build-changelog.js — git 기록으로 변경 이력 만들기 (배포할 때 자동 실행)
              check-freshness.js — 주간 점검: 90일 지난 툴, 링크 상태 → Issue 본문
 tests/       Node 내장 테스트 러너

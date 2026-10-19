@@ -39,7 +39,7 @@ export function validatePurposes(purposes) {
   return errors;
 }
 
-function validateTool(tool, at, purposeIds, today) {
+export function validateTool(tool, at, purposeIds, today) {
   const errors = [];
   const err = (field, msg) => errors.push(`${at}.${field}: ${msg}`);
   if (!isObject(tool)) return [`${at}: 객체여야 합니다`];
