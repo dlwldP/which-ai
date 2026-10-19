@@ -13,7 +13,8 @@
 | 1. 추천 로직 | `js/recommend.js` + 테스트 완료 |
 | 2. 화면 | 홈, 조건 선택, 추천 결과 완료 (예시 데이터로 확인) |
 | 3. 상세·부가 | 툴 상세, 용어집(초안, 검토 필요), 변경 이력, 다크 모드 버튼 완료 |
-| 4~5 | 아직 |
+| 4. 배포·자동화 | Pages 배포, 주간 신선도·링크 점검 Issue 완료 |
+| 5 | 아직 |
 
 ## 폴더
 
@@ -27,7 +28,8 @@ js/          recommend.js — 추천 로직 (순수 함수, DOM 접근 없음)
              changelog.js — tools.json 두 버전을 비교하는 순수 함수
              app.js       — 화면 그리기와 주소 처리
 scripts/     validate-data.js — 데이터 검사
-             build-changelog.js — git 기록으로 data/changelog.json 만들기
+             build-changelog.js — git 기록으로 변경 이력 만들기 (배포할 때 자동 실행)
+             check-freshness.js — 주간 점검: 90일 지난 툴, 링크 상태 → Issue 본문
 tests/       Node 내장 테스트 러너
 ```
 
@@ -39,15 +41,22 @@ Node 22 이상, 설치할 패키지 없음.
 node --test                          # 테스트
 node scripts/validate-data.js        # 데이터 검사 (기준일: 오늘)
 node scripts/validate-data.js 2026-10-19   # 기준일 지정
-node scripts/build-changelog.js      # 변경 이력 다시 만들기
-node scripts/build-changelog.js --check    # 변경 이력이 최신인지 확인
+node scripts/build-changelog.js      # 변경 이력을 data/changelog.json에 만들기 (로컬에서 화면 볼 때만, 커밋하지 않음)
+node scripts/check-freshness.js      # 주간 점검을 직접 돌려보기 (결과: report.md)
 ```
-
-변경 이력은 커밋된 기록으로 만들기 때문에, `data/tools.json`을 고친 커밋을 먼저 하고 그다음에 `build-changelog.js`를 실행해 `data/changelog.json`을 커밋한다. (Phase 4에서 배포할 때 자동으로 돌릴 예정)
 
 ## 배포
 
-`main`에 푸시하면 `.github/workflows/deploy.yml`이 테스트·데이터 검사·변경 이력 검사를 돌리고, 통과하면 GitHub Pages에 올린다. 배포 주소: https://dlwldp.github.io/which-ai/ (예시 데이터: https://dlwldp.github.io/which-ai/?demo#/)
+`main`에 푸시하면 `.github/workflows/deploy.yml`이 테스트·데이터 검사를 돌리고, 통과하면 git 기록으로 변경 이력을 만들어 GitHub Pages에 올린다. 배포 주소: https://dlwldp.github.io/which-ai/ (예시 데이터: https://dlwldp.github.io/which-ai/?demo#/)
+
+## 주간 점검
+
+`.github/workflows/weekly-check.yml`이 매주 월요일 오전 9시쯤(한국 시간) 실행된다.
+
+- 90일 넘게 확인 안 된 툴, 깨진 공식 주소·출처 링크가 있으면 "주간 점검" 라벨 Issue 하나에 목록을 모은다 (이미 열려 있으면 내용만 갱신).
+- 모두 처리되면 다음 점검 때 Issue가 자동으로 닫힌다.
+- 가격·정책 값은 자동으로 바꾸지 않는다. 확인할 목록만 만든다.
+- Actions 탭에서 수동 실행할 수 있고, "demo"를 고르면 예시 데이터로 동작을 확인한다.
 
 ## 화면 보기
 

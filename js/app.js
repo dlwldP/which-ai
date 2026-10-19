@@ -41,9 +41,12 @@ const g = (text) => glossarize(esc(text), matcher);
 /** "확인 필요"가 들어간 값은 눈에 띄게 표시한다. */
 const valueHtml = (text) => (text.includes(UNKNOWN) ? `<span class="unknown">${esc(text)}</span>` : g(text));
 
-async function loadJson(path) {
+async function loadJson(path, fallback) {
   const res = await fetch(path, { cache: 'no-cache' });
-  if (!res.ok) throw new Error(`${path} 불러오기 실패 (${res.status})`);
+  if (!res.ok) {
+    if (fallback !== undefined) return fallback;
+    throw new Error(`${path} 불러오기 실패 (${res.status})`);
+  }
   return res.json();
 }
 
@@ -476,7 +479,8 @@ async function main() {
       loadJson(demo ? 'data/demo-tools.json' : 'data/tools.json'),
       loadJson('data/purposes.json'),
       loadJson('data/glossary.json'),
-      loadJson(demo ? 'data/demo-changelog.json' : 'data/changelog.json'),
+      // 변경 이력은 배포할 때 만들어진다. 로컬에서 안 만들었으면 빈 목록으로 본다.
+      loadJson(demo ? 'data/demo-changelog.json' : 'data/changelog.json', []),
     ]);
     data = { tools, purposes, glossary, changelog, demo };
     matcher = termMatcher(glossary);

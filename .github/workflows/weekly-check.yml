@@ -1,0 +1,89 @@
+# 매주 월요일 오전 9시쯤(한국 시간) 툴 정보 신선도와 공식 주소 링크를 점검해 Issue 하나에 모아둔다.
+# 확인할 게 있으면 Issue를 열거나(이미 열려 있으면 내용 갱신), 없으면 닫는다.
+# 수동 실행에서 "demo"를 고르면 예시 데이터로 점검한다 (실제 데이터가 비어 있을 때 동작 확인용, 별도 라벨).
+name: Weekly check
+
+on:
+  schedule:
+    - cron: '7 0 * * 1' # 월요일 00:07 UTC = 09:07 한국 시간
+  workflow_dispatch:
+    inputs:
+      data:
+        description: '점검할 데이터 (tools = 실제, demo = 예시)'
+        type: choice
+        options: [tools, demo]
+        default: tools
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: weekly-check-${{ inputs.data || 'tools' }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      DATA: ${{ inputs.data || 'tools' }}
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: 점검
+        id: check
+        run: |
+          TODAY=$(TZ=Asia/Seoul date +%F)
+          echo "today=$TODAY" >> "$GITHUB_OUTPUT"
+          TOOLS_FILE=data/tools.json
+          if [ "$DATA" = "demo" ]; then TOOLS_FILE=data/demo-tools.json; fi
+          node scripts/check-freshness.js \
+            --tools "$TOOLS_FILE" \
+            --today "$TODAY" \
+            --out report.md \
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: Issue 열기·갱신·닫기
+        env:
+          HAS_ISSUES: ${{ steps.check.outputs.has_issues }}
+          TODAY: ${{ steps.check.outputs.today }}
+        run: |
+          if [ "$DATA" = "demo" ]; then
+            LABEL="주간 점검(예시 데이터)"; TITLE="[예시 데이터] 주간 점검: 확인이 필요한 툴 정보"
+          else
+            LABEL="주간 점검"; TITLE="주간 점검: 확인이 필요한 툴 정보"
+          fi
+          gh label create "$LABEL" --color C2532D --description "주간 자동 점검 (weekly-check.yml)" 2>/dev/null || true
+
+          OPEN=$(gh issue list --label "$LABEL" --state open --limit 1 --json number --jq '.[0].number // empty')
+
+          if [ "$HAS_ISSUES" = "true" ]; then
+            if [ -n "$OPEN" ]; then
+              gh issue edit "$OPEN" --title "$TITLE" --body-file report.md
+              echo "Issue #$OPEN 내용을 갱신했어요."
+            else
+              CLOSED=$(gh issue list --label "$LABEL" --state closed --limit 1 --json number --jq '.[0].number // empty')
+              if [ -n "$CLOSED" ]; then
+                gh issue reopen "$CLOSED"
+                gh issue edit "$CLOSED" --title "$TITLE" --body-file report.md
+                echo "Issue #$CLOSED 를 다시 열었어요."
+              else
+                gh issue create --title "$TITLE" --label "$LABEL" --body-file report.md
+              fi
+            fi
+          elif [ -n "$OPEN" ]; then
+            gh issue comment "$OPEN" --body "$TODAY 점검: 확인할 툴 정보가 없어서 닫아요. 🎉"
+            gh issue close "$OPEN"
+            echo "Issue #$OPEN 을 닫았어요."
+          else
+            echo "확인할 게 없어요."
+          fi
+
+      - name: 결과 요약
+        if: always()
+        run: '[ -f report.md ] && cat report.md >> "$GITHUB_STEP_SUMMARY" || true'
