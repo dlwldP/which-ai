@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { validateData, validateTools, loadData } from '../scripts/validate-data.js';
 
 const TODAY = '2026-10-19';
-const fixture = JSON.parse(readFileSync(new URL('./fixtures/tools.json', import.meta.url), 'utf8'));
+const fixture = JSON.parse(readFileSync(new URL('../data/demo-tools.json', import.meta.url), 'utf8'));
 const data = loadData();
 const { purposes } = data;
 

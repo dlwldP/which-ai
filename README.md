@@ -11,15 +11,20 @@
 | --- | --- |
 | 0. 데이터 | 목적 10개만 입력. `data/tools.json`은 비어 있음 (공식 페이지 확인 후 직접 채움) |
 | 1. 추천 로직 | `js/recommend.js` + 테스트 완료 |
-| 2~5 | 아직 |
+| 2. 화면 | 홈, 조건 선택, 추천 결과 완료 (예시 데이터로 확인) |
+| 3~5 | 아직 |
 
 ## 폴더
 
 ```
-data/        목적·툴·용어집·변경 이력 (JSON)
+index.html   화면 (한 페이지, 주소 #/... 로 단계 구분)
+css/         styles.css
+data/        목적·툴·용어집·변경 이력 (JSON). demo-tools.json은 화면 확인·테스트용 가짜 툴
 js/          recommend.js — 추천 로직 (순수 함수, DOM 접근 없음)
+             format.js    — 데이터 값을 화면 문구로 바꾸는 순수 함수
+             app.js       — 화면 그리기와 주소 처리
 scripts/     validate-data.js — 데이터 검사
-tests/       Node 내장 테스트 러너. fixtures/에 테스트용 가짜 툴 데이터
+tests/       Node 내장 테스트 러너
 ```
 
 ## 실행
@@ -30,6 +35,16 @@ Node 22 이상, 설치할 패키지 없음.
 node --test                          # 테스트
 node scripts/validate-data.js        # 데이터 검사 (기준일: 오늘)
 node scripts/validate-data.js 2026-10-19   # 기준일 지정
+```
+
+## 화면 보기
+
+빌드 없이 정적 파일을 그대로 쓴다. `fetch`를 쓰기 때문에 파일을 더블클릭하지 말고 로컬 서버로 연다.
+
+```sh
+python3 -m http.server 8000
+# http://localhost:8000/            실제 데이터 (지금은 "아직 준비 중이에요")
+# http://localhost:8000/?demo#/     예시 데이터로 화면 확인
 ```
 
 ## 추천 함수 사용법

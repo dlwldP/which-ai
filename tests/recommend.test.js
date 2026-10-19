@@ -1,4 +1,4 @@
-// 추천 로직 테스트 (기획서 12장). 실제 데이터가 아직 비어 있어서 tests/fixtures/tools.json의 가짜 툴로 검사한다.
+// 추천 로직 테스트 (기획서 12장). 실제 데이터가 아직 비어 있어서 data/demo-tools.json의 가짜 툴로 검사한다.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -6,7 +6,7 @@ import { recommend, isStale } from '../js/recommend.js';
 import { loadData } from '../scripts/validate-data.js';
 
 const TODAY = '2026-10-19';
-const fixture = JSON.parse(readFileSync(new URL('./fixtures/tools.json', import.meta.url), 'utf8'));
+const fixture = JSON.parse(readFileSync(new URL('../data/demo-tools.json', import.meta.url), 'utf8'));
 const { tools: realTools, purposes } = loadData();
 const purposeIds = purposes.map((p) => p.id);
 

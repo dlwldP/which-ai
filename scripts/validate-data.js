@@ -31,6 +31,7 @@ export function validatePurposes(purposes) {
     if (typeof p.id !== 'string' || !/^P\d{2}$/.test(p.id)) errors.push(`${at}.id: "P01" 형식이어야 합니다`);
     else if (seen.has(p.id)) errors.push(`${at}.id: 중복된 id "${p.id}"`);
     seen.add(p.id);
+    if (!isText(p.icon)) errors.push(`${at}.icon: 비어 있습니다`);
     if (!isText(p.label)) errors.push(`${at}.label: 비어 있습니다`);
     if (!isText(p.examples)) errors.push(`${at}.examples: 비어 있습니다`);
   });
