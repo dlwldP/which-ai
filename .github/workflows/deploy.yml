@@ -1,0 +1,51 @@
+# main에 푸시하면 테스트·데이터 검사 후 GitHub Pages에 배포한다.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # 변경 이력 검사에 git 기록 전체가 필요하다
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - run: npm test
+      - name: 데이터 검사
+        run: node scripts/validate-data.js
+      - name: 변경 이력이 최신인지 확인
+        run: node scripts/build-changelog.js --check
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: 배포할 파일 모으기
+        run: |
+          mkdir _site
+          cp -r index.html css js data _site/
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v5

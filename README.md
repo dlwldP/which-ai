@@ -45,6 +45,10 @@ node scripts/build-changelog.js --check    # 변경 이력이 최신인지 확�
 
 변경 이력은 커밋된 기록으로 만들기 때문에, `data/tools.json`을 고친 커밋을 먼저 하고 그다음에 `build-changelog.js`를 실행해 `data/changelog.json`을 커밋한다. (Phase 4에서 배포할 때 자동으로 돌릴 예정)
 
+## 배포
+
+`main`에 푸시하면 `.github/workflows/deploy.yml`이 테스트·데이터 검사·변경 이력 검사를 돌리고, 통과하면 GitHub Pages에 올린다. 배포 주소: https://dlwldp.github.io/which-ai/ (예시 데이터: https://dlwldp.github.io/which-ai/?demo#/)
+
 ## 화면 보기
 
 빌드 없이 정적 파일을 그대로 쓴다. `fetch`를 쓰기 때문에 파일을 더블클릭하지 말고 로컬 서버로 연다.
