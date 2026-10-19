@@ -8,7 +8,9 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { isValidDate } from '../js/recommend.js';
-import { loadData, validateData, validateTool } from './validate-data.js';
+import { hostOf, isOfficialHost, isText, loadData, validateData, validateTool } from './validate-data.js';
+
+export { isOfficialHost };
 
 const DRAFT_URL = new URL('../drafts/tools.draft.json', import.meta.url);
 const TOOLS_URL = new URL('../data/tools.json', import.meta.url);
@@ -34,21 +36,6 @@ const FACT_FIELDS = {
   platforms: (t) => true,
   login: (t) => true,
 };
-
-const isText = (v) => typeof v === 'string' && v.trim() !== '';
-
-function hostOf(url) {
-  try {
-    return new URL(url).hostname;
-  } catch {
-    return null;
-  }
-}
-
-/** host가 공식 도메인 목록 중 하나이거나 그 하위 도메인인지 (예: policy.naver.com ⊂ naver.com) */
-export function isOfficialHost(host, domains) {
-  return Boolean(host) && domains.some((d) => host === d || host.endsWith(`.${d}`));
-}
 
 export function validateDraft(drafts, purposes, today) {
   if (!Array.isArray(drafts)) return ['tools.draft.json: 배열이어야 합니다'];

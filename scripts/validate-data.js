@@ -11,9 +11,9 @@ export const BILLING = ['monthly', 'yearly', 'unknown'];
 export const POLICY = ['yes', 'no', 'unknown'];
 export const LOGINS = ['google', 'apple', 'microsoft', 'kakao', 'naver', 'email', 'phone', 'none'];
 
-const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
-const isText = (v) => typeof v === 'string' && v.trim() !== '';
-const isHttpsUrl = (v) => {
+export const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
+export const isText = (v) => typeof v === 'string' && v.trim() !== '';
+export const isHttpsUrl = (v) => {
   if (typeof v !== 'string') return false;
   try {
     return new URL(v).protocol === 'https:';
@@ -22,14 +22,28 @@ const isHttpsUrl = (v) => {
   }
 };
 
-export function validatePurposes(purposes) {
+export function hostOf(url) {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return null;
+  }
+}
+
+/** host가 공식 도메인 목록 중 하나이거나 그 하위 도메인인지 (예: policy.naver.com ⊂ naver.com) */
+export function isOfficialHost(host, domains) {
+  return Boolean(host) && domains.some((d) => host === d || host.endsWith(`.${d}`));
+}
+
+/** idPattern: 비개발자용은 "P01", 개발자용은 "app_builders" 같은 카테고리 ID */
+export function validatePurposes(purposes, idPattern = /^P\d{2}$/) {
   const errors = [];
   if (!Array.isArray(purposes)) return ['purposes.json: 배열이어야 합니다'];
   const seen = new Set();
   purposes.forEach((p, i) => {
     const at = `purposes[${i}]`;
     if (!isObject(p)) return errors.push(`${at}: 객체여야 합니다`);
-    if (typeof p.id !== 'string' || !/^P\d{2}$/.test(p.id)) errors.push(`${at}.id: "P01" 형식이어야 합니다`);
+    if (typeof p.id !== 'string' || !idPattern.test(p.id)) errors.push(`${at}.id: 형식이 틀렸습니다 (${idPattern})`);
     else if (seen.has(p.id)) errors.push(`${at}.id: 중복된 id "${p.id}"`);
     seen.add(p.id);
     if (!isText(p.icon)) errors.push(`${at}.icon: 비어 있습니다`);

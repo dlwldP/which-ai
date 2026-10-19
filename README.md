@@ -34,6 +34,7 @@ scripts/     validate-data.js — 데이터 검사
              draft.js — 초안 검사, 확인한 툴을 tools.json으로 옮기기
              build-changelog.js — git 기록으로 변경 이력 만들기 (배포할 때 자동 실행)
              check-freshness.js — 주간 점검: 90일 지난 툴, 링크 상태 → Issue 본문
+             validate-dev-data.js — 개발자용 데이터 검사 (docs/개발자용_기획서.md)
 tests/       Node 내장 테스트 러너
 ```
 

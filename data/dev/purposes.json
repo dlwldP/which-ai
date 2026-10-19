@@ -1,0 +1,11 @@
+[
+  { "id": "planning", "icon": "🗂️", "label": "기획하고 같이 일하기", "examples": "PRD, 이슈 관리, 화이트보드" },
+  { "id": "app_builders", "icon": "🪄", "label": "말로 설명해서 앱 통째로 만들기", "examples": "풀스택 생성, 바이브코딩" },
+  { "id": "coding_agents", "icon": "🤖", "label": "AI와 같이 코드 짜기", "examples": "코딩 에이전트, AI IDE, CLI" },
+  { "id": "backend_database", "icon": "🗄️", "label": "백엔드·데이터베이스 붙이기", "examples": "인증, DB, 스토리지" },
+  { "id": "design_ui", "icon": "🎨", "label": "화면 디자인·시안 만들기", "examples": "UI 디자인, 프로토타입, 컴포넌트" },
+  { "id": "data_ml", "icon": "🧪", "label": "데이터·모델·RAG 다루기", "examples": "모델 허브, 로컬 LLM, RAG 프레임워크" },
+  { "id": "devops", "icon": "🚀", "label": "배포·인프라·CI/CD", "examples": "컨테이너, 호스팅, 자동 빌드" },
+  { "id": "automation", "icon": "🔗", "label": "업무 자동화·에이전트 연결", "examples": "워크플로 자동화, 에이전트 오케스트레이션" },
+  { "id": "code_review", "icon": "🔍", "label": "코드 리뷰·품질 검사 받기", "examples": "PR 리뷰, 정적 분석, 테스트 생성" }
+]
