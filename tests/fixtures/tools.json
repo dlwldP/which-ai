@@ -1,0 +1,306 @@
+[
+  {
+    "id": "alpha",
+    "name": "테스트툴 알파",
+    "url": "https://example.com/alpha",
+    "one_liner": "테스트툴 알파 설명 (테스트용 가짜 데이터)",
+    "purposes": {
+      "P01": 3,
+      "P03": 2,
+      "P07": 1,
+      "P09": 1
+    },
+    "price": {
+      "free": true,
+      "free_limit": "확인 필요",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "korean": 3,
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "yes",
+      "note": ""
+    },
+    "platforms": [
+      "web",
+      "ios",
+      "android"
+    ],
+    "login": "email",
+    "start_steps": [
+      "첫 번째 단계",
+      "두 번째 단계",
+      "세 번째 단계"
+    ],
+    "cautions": [],
+    "sources": [
+      "https://example.com/alpha/pricing"
+    ],
+    "last_verified": "2026-10-01"
+  },
+  {
+    "id": "bravo",
+    "name": "테스트툴 브라보",
+    "url": "https://example.com/bravo",
+    "one_liner": "테스트툴 브라보 설명 (테스트용 가짜 데이터)",
+    "purposes": {
+      "P01": 2,
+      "P02": 3,
+      "P03": 1
+    },
+    "price": {
+      "free": false,
+      "free_limit": "확인 필요",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "korean": 2,
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": ""
+    },
+    "platforms": [
+      "web",
+      "windows",
+      "mac"
+    ],
+    "login": "email",
+    "start_steps": [
+      "첫 번째 단계",
+      "두 번째 단계",
+      "세 번째 단계"
+    ],
+    "cautions": [],
+    "sources": [
+      "https://example.com/bravo/pricing"
+    ],
+    "last_verified": "2026-09-01"
+  },
+  {
+    "id": "charlie",
+    "name": "테스트툴 찰리",
+    "url": "https://example.com/charlie",
+    "one_liner": "테스트툴 찰리 설명 (테스트용 가짜 데이터)",
+    "purposes": {
+      "P02": 2,
+      "P04": 3,
+      "P05": 1
+    },
+    "price": {
+      "free": true,
+      "free_limit": "확인 필요",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "korean": 1,
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": ""
+    },
+    "platforms": [
+      "web"
+    ],
+    "login": "email",
+    "start_steps": [
+      "첫 번째 단계",
+      "두 번째 단계",
+      "세 번째 단계"
+    ],
+    "cautions": [],
+    "sources": [
+      "https://example.com/charlie/pricing"
+    ],
+    "last_verified": "2026-01-01"
+  },
+  {
+    "id": "delta",
+    "name": "테스트툴 델타",
+    "url": "https://example.com/delta",
+    "one_liner": "테스트툴 델타 설명 (테스트용 가짜 데이터)",
+    "purposes": {
+      "P04": 2,
+      "P05": 3,
+      "P06": 1
+    },
+    "price": {
+      "free": true,
+      "free_limit": "확인 필요",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "korean": 2,
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "no",
+      "note": ""
+    },
+    "platforms": [
+      "web",
+      "ios"
+    ],
+    "login": "email",
+    "start_steps": [
+      "첫 번째 단계",
+      "두 번째 단계",
+      "세 번째 단계"
+    ],
+    "cautions": [],
+    "sources": [
+      "https://example.com/delta/pricing"
+    ],
+    "last_verified": "2026-10-10"
+  },
+  {
+    "id": "echo",
+    "name": "테스트툴 에코",
+    "url": "https://example.com/echo",
+    "one_liner": "테스트툴 에코 설명 (테스트용 가짜 데이터)",
+    "purposes": {
+      "P06": 3,
+      "P07": 3,
+      "P10": 1
+    },
+    "price": {
+      "free": false,
+      "free_limit": "확인 필요",
+      "paid_from_usd": 10,
+      "billing": "monthly"
+    },
+    "korean": 3,
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": ""
+    },
+    "platforms": [
+      "windows",
+      "mac"
+    ],
+    "login": "email",
+    "start_steps": [
+      "첫 번째 단계",
+      "두 번째 단계",
+      "세 번째 단계"
+    ],
+    "cautions": [],
+    "sources": [
+      "https://example.com/echo/pricing"
+    ],
+    "last_verified": "2026-10-15"
+  },
+  {
+    "id": "foxtrot",
+    "name": "테스트툴 폭스트롯",
+    "url": "https://example.com/foxtrot",
+    "one_liner": "테스트툴 폭스트롯 설명 (테스트용 가짜 데이터)",
+    "purposes": {
+      "P08": 3,
+      "P09": 2,
+      "P10": 3
+    },
+    "price": {
+      "free": true,
+      "free_limit": "확인 필요",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "korean": 2,
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "yes",
+      "note": ""
+    },
+    "platforms": [
+      "web",
+      "android"
+    ],
+    "login": "email",
+    "start_steps": [
+      "첫 번째 단계",
+      "두 번째 단계",
+      "세 번째 단계"
+    ],
+    "cautions": [],
+    "sources": [
+      "https://example.com/foxtrot/pricing"
+    ],
+    "last_verified": "2026-08-01"
+  },
+  {
+    "id": "golf",
+    "name": "테스트툴 골프",
+    "url": "https://example.com/golf",
+    "one_liner": "테스트툴 골프 설명 (테스트용 가짜 데이터)",
+    "purposes": {
+      "P06": 2,
+      "P08": 2,
+      "P09": 3,
+      "P10": 2
+    },
+    "price": {
+      "free": false,
+      "free_limit": "확인 필요",
+      "paid_from_usd": 15,
+      "billing": "monthly"
+    },
+    "korean": 1,
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "no",
+      "note": ""
+    },
+    "platforms": [
+      "web"
+    ],
+    "login": "email",
+    "start_steps": [
+      "첫 번째 단계",
+      "두 번째 단계",
+      "세 번째 단계"
+    ],
+    "cautions": [],
+    "sources": [
+      "https://example.com/golf/pricing"
+    ],
+    "last_verified": "2026-10-01"
+  },
+  {
+    "id": "hotel",
+    "name": "테스트툴 호텔",
+    "url": "https://example.com/hotel",
+    "one_liner": "테스트툴 호텔 설명 (테스트용 가짜 데이터)",
+    "purposes": {
+      "P01": 1,
+      "P07": 2
+    },
+    "price": {
+      "free": true,
+      "free_limit": "확인 필요",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "korean": 2,
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "unknown",
+      "note": ""
+    },
+    "platforms": [
+      "web"
+    ],
+    "login": "email",
+    "start_steps": [
+      "첫 번째 단계",
+      "두 번째 단계",
+      "세 번째 단계"
+    ],
+    "cautions": [],
+    "sources": [
+      "https://example.com/hotel/pricing"
+    ],
+    "last_verified": "2026-09-20"
+  }
+]
