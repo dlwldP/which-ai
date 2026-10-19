@@ -117,59 +117,78 @@ function renderConditions(purpose, conditions) {
 }
 
 // ---- 추천 결과 ----
-function compareTableHtml(results) {
-  const rows = [
-    ['무료로 쓰기', (t) => freeText(t.price)],
-    ['무료 한도', (t) => freeLimitText(t.price)],
-    ['유료 가격', (t) => paidText(t.price)],
-    ['한국어', (t) => koreanText(t.korean)],
-    ['학습 정책', (t) => privacyText(t.privacy)],
-    ['사용 기기', (t) => platformsText(t.platforms)],
-  ];
-  return `
-    <section class="card">
-      <h2 class="card-title">한눈에 비교</h2>
-      <div class="table-wrap">
-        <table class="compare">
-          <thead><tr><td></td>${results.map((r) => `<th scope="col">${esc(r.tool.name)}</th>`).join('')}</tr></thead>
-          <tbody>
-            ${rows.map(([label, value]) => `
-              <tr><th scope="row">${label}</th>${results.map((r) => `<td>${valueHtml(value(r.tool))}</td>`).join('')}</tr>`).join('')}
-          </tbody>
-        </table>
-      </div>
-    </section>`;
-}
+// 카드끼리 비교되도록 모든 카드에 같은 항목을 같은 순서로 넣는다 (CSS subgrid로 높이를 맞춘다).
+const FACTS = [
+  ['무료로 쓰기', (t) => freeText(t.price)],
+  ['무료 한도', (t) => freeLimitText(t.price)],
+  ['유료 가격', (t) => paidText(t.price)],
+  ['한국어', (t) => koreanText(t.korean)],
+  ['학습 정책', (t) => privacyText(t.privacy)],
+  ['사용 기기', (t) => platformsText(t.platforms)],
+];
 
-function toolCardHtml(r, index) {
+function toolCardHtml(r, index, all) {
   const t = r.tool;
   const cautions = [...t.cautions, ...(t.privacy.note ? [t.privacy.note] : [])];
+  // 칸 수(머리 1 + 이유 1 + 비교 6 + 시작 1 + 주의 1 + 버튼·확인 1 = 11)는 styles.css의 .cards와 맞춰야 한다.
   return `
-    <section class="card">
+    <article class="tool-card" id="tool-${index}" aria-label="${index + 1}번째 추천 / 전체 ${all.length}개">
       <div class="tool-head">
-        <span class="tool-rank">${index + 1}</span>
-        <h2 class="tool-name">${esc(t.name)}</h2>
-        ${r.stale ? '<span class="tag tag-warn">확인 필요</span>' : ''}
+        <div class="tool-title">
+          <span class="tool-rank">${index + 1}</span>
+          <h2 class="tool-name">${esc(t.name)}</h2>
+          ${r.stale ? '<span class="tag tag-warn">확인 필요</span>' : ''}
+        </div>
+        <p class="tool-one-liner">${esc(t.one_liner)}</p>
       </div>
-      <p class="tool-one-liner">${esc(t.one_liner)}</p>
       <ul class="reasons" aria-label="추천 이유">${r.reasons.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
-
-      <h3 class="section-label">이렇게 시작해요</h3>
-      <ol class="steps">${t.start_steps.map((s) => `<li><span>${esc(s)}</span></li>`).join('')}</ol>
-
-      ${cautions.length ? `
+      ${FACTS.map(([label, value], i) => `
+        <dl class="fact${i === FACTS.length - 1 ? ' last' : ''}"><dt>${label}</dt><dd>${valueHtml(value(t))}</dd></dl>`).join('')}
+      <div class="tool-steps">
+        <h3 class="section-label">이렇게 시작해요</h3>
+        <ol class="steps">${t.start_steps.map((s) => `<li><span>${esc(s)}</span></li>`).join('')}</ol>
+      </div>
+      <div class="tool-cautions">${cautions.length ? `
         <h3 class="section-label">주의할 점</h3>
         <ul class="cautions">${cautions.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>` : ''}
-
-      <div class="tool-actions">
-        <a class="btn btn-soft btn-block" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트 열기 ↗</a>
       </div>
+      <div class="tool-actions">
+        <a class="btn btn-outline btn-block" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트 열기 ↗</a>
+        <details class="verified">
+          <summary>마지막 확인 ${esc(formatDate(t.last_verified))}${r.stale ? ' (90일 넘게 지나서 다시 확인이 필요해요)' : ''} · <span class="src-toggle">출처 보기</span></summary>
+          <ul>${t.sources.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul>
+        </details>
+      </div>
+    </article>`;
+}
 
-      <details class="verified">
-        <summary>마지막 확인 ${esc(formatDate(t.last_verified))}${r.stale ? ' (90일 넘게 지나서 다시 확인이 필요해요)' : ''} · <span class="src-toggle">출처 보기</span></summary>
-        <ul>${t.sources.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul>
-      </details>
-    </section>`;
+function cardsHtml(results) {
+  const many = results.length > 1;
+  return `
+    ${many ? '<p class="cards-hint">옆으로 넘기면서 비교해보세요 ›</p>' : ''}
+    <div class="cards" id="cards">${results.map(toolCardHtml).join('')}</div>
+    ${many ? `<div class="dots" role="group" aria-label="카드 위치">${results
+      .map((r, i) => `<button type="button" class="dot" data-card="${i}" aria-label="${i + 1}번째 카드 보기" aria-current="${i === 0}"></button>`)
+      .join('')}</div>` : ''}`;
+}
+
+/** 휴대폰에서 지금 보고 있는 카드를 점으로 표시하고, 점을 누르면 그 카드로 넘긴다. */
+function installCardDots() {
+  const track = app.querySelector('#cards');
+  const dots = [...app.querySelectorAll('.dot')];
+  if (!track || dots.length === 0) return;
+  const cards = [...track.children];
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      const i = cards.indexOf(entry.target);
+      dots.forEach((d, j) => d.setAttribute('aria-current', String(i === j)));
+    }
+  }, { root: track, threshold: 0.6 });
+  cards.forEach((c) => observer.observe(c));
+  dots.forEach((d) => d.addEventListener('click', () => {
+    cards[Number(d.dataset.card)].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+  }));
 }
 
 function renderResult(purpose, conditions) {
@@ -189,8 +208,7 @@ function renderResult(purpose, conditions) {
   } else {
     body = `
       ${notice ? `<p class="notice" role="status">${esc(notice)}</p>` : ''}
-      ${compareTableHtml(results)}
-      ${results.map(toolCardHtml).join('')}`;
+      ${cardsHtml(results)}`;
   }
 
   app.innerHTML = `
@@ -204,6 +222,7 @@ function renderResult(purpose, conditions) {
       ${chips}
     </div>
     ${body}`;
+  installCardDots();
 }
 
 function route() {
@@ -211,6 +230,7 @@ function route() {
   const params = new URLSearchParams(query);
   const [section, purposeId, view] = path.split('/');
   const purpose = section === 'p' && data.purposes.find((p) => p.id === purposeId);
+  document.body.classList.toggle('wide', Boolean(purpose && view === 'result'));
   if (purpose && view === 'result') renderResult(purpose, readConditions(params));
   else if (purpose) renderConditions(purpose, readConditions(params));
   else renderHome();
