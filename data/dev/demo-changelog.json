@@ -1,0 +1,70 @@
+[
+  {
+    "date": "2026-10-12",
+    "commit": "demo002",
+    "changes": [
+      {
+        "type": "changed",
+        "tool_id": "dev-bravo",
+        "name": "테스트도구 브라보",
+        "field": "last_verified",
+        "before": "2026-08-01",
+        "after": "2026-09-15"
+      },
+      {
+        "type": "changed",
+        "tool_id": "dev-bravo",
+        "name": "테스트도구 브라보",
+        "field": "price.paid_from_usd",
+        "before": 15,
+        "after": 20
+      },
+      {
+        "type": "added",
+        "tool_id": "dev-hotel",
+        "name": "테스트도구 호텔"
+      }
+    ]
+  },
+  {
+    "date": "2026-08-01",
+    "commit": "demo001",
+    "changes": [
+      {
+        "type": "added",
+        "tool_id": "dev-alpha",
+        "name": "테스트도구 알파"
+      },
+      {
+        "type": "added",
+        "tool_id": "dev-bravo",
+        "name": "테스트도구 브라보"
+      },
+      {
+        "type": "added",
+        "tool_id": "dev-charlie",
+        "name": "테스트도구 찰리"
+      },
+      {
+        "type": "added",
+        "tool_id": "dev-delta",
+        "name": "테스트도구 델타"
+      },
+      {
+        "type": "added",
+        "tool_id": "dev-echo",
+        "name": "테스트도구 에코"
+      },
+      {
+        "type": "added",
+        "tool_id": "dev-foxtrot",
+        "name": "테스트도구 폭스트롯"
+      },
+      {
+        "type": "added",
+        "tool_id": "dev-golf",
+        "name": "테스트도구 골프"
+      }
+    ]
+  }
+]

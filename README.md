@@ -4,6 +4,8 @@
 
 **👉 사이트 바로가기: [dlwldp.github.io/which-ai](https://dlwldp.github.io/which-ai/)** · [예시 데이터로 둘러보기](https://dlwldp.github.io/which-ai/?demo#/)
 
+**🛠️ 개발자용: [개발할 때 AI 뭐 써?](https://dlwldp.github.io/which-ai/dev/)** · [예시 데이터로 둘러보기](https://dlwldp.github.io/which-ai/dev/?demo#/) ([기획서](docs/개발자용_기획서.md))
+
 - 기획서: [docs/AI뭐써_기획서.md](docs/AI뭐써_기획서.md)
 - 세부 결정 사항: [docs/decisions.md](docs/decisions.md)
 
@@ -22,12 +24,14 @@
 
 ```
 index.html   화면 (한 페이지, 주소 #/... 로 단계 구분)
+dev/         개발자용 화면 (같은 js/app.js를 개발자용 모드로 씀)
 css/         styles.css
 data/        목적·툴·용어집·변경 이력 (JSON). demo-*.json은 화면 확인·테스트용 가짜 데이터
 js/          recommend.js — 추천 로직 (순수 함수, DOM 접근 없음)
              format.js    — 데이터 값을 화면 문구로 바꾸는 순수 함수
              glossary.js  — 문장 속 용어에 밑줄을 씌우는 순수 함수
              changelog.js — tools.json 두 버전을 비교하는 순수 함수
+             modes.js     — 비개발자용·개발자용 화면 문구, 조건, 비교 항목
              app.js       — 화면 그리기와 주소 처리
 drafts/      확인 전 툴 정보 초안 (배포 안 됨, drafts/README.md 참고)
 scripts/     validate-data.js — 데이터 검사

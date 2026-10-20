@@ -11,12 +11,18 @@ const PURPOSE_REASONS = {
   2: '이 일에 잘 맞는 툴이에요',
   1: '이 일에도 쓸 수 있어요',
 };
+const DEV_PURPOSE_REASONS = {
+  3: '이 일에 가장 많이 쓰는 도구예요',
+  2: '이 일에 잘 맞는 도구예요',
+  1: '이 일에도 쓸 수 있어요',
+};
 const REASON_KOREAN = '메뉴와 결과 모두 한국어로 잘 돼요';
 const REASON_SECURITY = '입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요';
 const REASON_FREE = '무료로 시작할 수 있어요';
 const REASON_OPEN_SOURCE = '오픈소스예요';
 const REASON_NOT_AI = 'AI 툴은 아니지만 AI로 만든 앱에 자주 같이 써요';
 const NOTICE_NONE = '조건에 맞는 툴이 아직 없어요';
+const DEV_NOTICE_NONE = '조건에 맞는 도구가 아직 없어요';
 
 // "YYYY-MM-DD" → UTC 기준 밀리초. 형식이 틀리면 NaN.
 function parseDate(value) {
@@ -58,6 +64,8 @@ export const PROFILES = {
     },
     relaxOrder: ['mobile', 'freeOnly'],
     labels: { mobile: '휴대폰 앱', freeOnly: '무료' },
+    purposeReasons: PURPOSE_REASONS,
+    noneNotice: NOTICE_NONE,
     bonus: (t, c) => t.korean * (c.koreanImportant ? 4 : 1) + (t.price.free ? 2 : 0),
     reasons: (t, c) => [
       ...(t.korean === 3 ? [REASON_KOREAN] : []),
@@ -73,6 +81,8 @@ export const PROFILES = {
     },
     relaxOrder: ['openSourceOnly', 'freeOnly'],
     labels: { openSourceOnly: '오픈소스', freeOnly: '무료' },
+    purposeReasons: DEV_PURPOSE_REASONS,
+    noneNotice: DEV_NOTICE_NONE,
     bonus: (t) => (t.ai_native === 'yes' ? 2 : 0) + (t.price.free ? 2 : 0),
     reasons: (t) => [
       ...(t.open_source ? [REASON_OPEN_SOURCE] : []),
@@ -93,7 +103,7 @@ function score(tool, purposeId, conditions, today, profile) {
 }
 
 function reasons(tool, purposeId, conditions, profile) {
-  return [PURPOSE_REASONS[tool.purposes[purposeId]], ...profile.reasons(tool, conditions)];
+  return [profile.purposeReasons[tool.purposes[purposeId]], ...profile.reasons(tool, conditions)];
 }
 
 function compare(a, b) {
@@ -151,7 +161,7 @@ export function recommend({ tools, purposeId, conditions = {}, today, profile: p
     results = rank(candidates, purposeId, active, today, profile);
   }
 
-  if (results.length === 0) return { results, relaxed: [], notice: NOTICE_NONE };
+  if (results.length === 0) return { results, relaxed: [], notice: profile.noneNotice };
 
   let notice = null;
   if (relaxed.length > 0) {

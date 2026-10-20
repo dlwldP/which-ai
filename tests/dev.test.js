@@ -7,7 +7,7 @@ import { loadDevData, validateDevData, validateDevTools } from '../scripts/valid
 
 const TODAY = '2026-10-19';
 const demo = JSON.parse(readFileSync(new URL('../data/dev/demo-tools.json', import.meta.url), 'utf8'));
-const { tools: realTools, purposes } = loadDevData();
+const { tools: realTools, purposes, glossary } = loadDevData();
 const purposeIds = purposes.map((p) => p.id);
 const rec = (purposeId, conditions = {}, tools = demo) => recommend({ tools, purposeId, conditions, today: TODAY, profile: 'dev' });
 
@@ -16,7 +16,13 @@ const allConditions = [{}, { freeOnly: true }, { openSourceOnly: true }, { freeO
 // ---- 데이터 검사 ----
 
 test('실제 data/dev/*.json이 검사를 통과함', () => {
-  assert.deepEqual(validateDevData({ tools: realTools, purposes, today: TODAY }), []);
+  assert.deepEqual(validateDevData({ tools: realTools, purposes, glossary, today: TODAY }), []);
+});
+
+test('개발자용 예시 변경 이력이 검사를 통과함', async () => {
+  const { validateChangelog } = await import('../scripts/validate-data.js');
+  const log = JSON.parse(readFileSync(new URL('../data/dev/demo-changelog.json', import.meta.url), 'utf8'));
+  assert.deepEqual(validateChangelog(log), []);
 });
 
 test('목적 9개, 카테고리 ID', () => {
@@ -107,7 +113,7 @@ test('점수: 적합도×10 + AI 핵심 2 + 무료 2 - 90일 초과 3', () => {
 test('추천 이유: 오픈소스, AI 툴 아님', () => {
   const delta = rec('backend_database').results.find((r) => r.id === 'dev-delta');
   assert.deepEqual(delta.reasons, [
-    '이 목적에 가장 많이 쓰는 툴이에요',
+    '이 일에 가장 많이 쓰는 도구예요',
     '오픈소스예요',
     'AI 툴은 아니지만 AI로 만든 앱에 자주 같이 써요',
     '무료로 시작할 수 있어요',
@@ -136,4 +142,11 @@ test('profile과 목적 ID 형식이 맞아야 함', () => {
 
 test('[실제 데이터] 모든 목적에서 조건 없이 최소 2개 추천됨', { skip: realTools.length === 0 && 'data/dev/tools.json이 아직 비어 있음' }, () => {
   for (const pid of purposeIds) assert.ok(rec(pid, {}, realTools).results.length >= 2, pid);
+});
+
+test('조건에 맞는 도구가 없으면 도구 문구로 안내', () => {
+  const tools = demo.filter((t) => t.id === 'dev-bravo'); // devops 적합도 0 → 후보 없음
+  const out = recommend({ tools, purposeId: 'devops', today: TODAY, profile: 'dev' });
+  assert.deepEqual(out.results, []);
+  assert.equal(out.notice, '조건에 맞는 도구가 아직 없어요');
 });

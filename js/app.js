@@ -5,32 +5,26 @@
 //   #/t/<툴 id>              툴 상세
 //   #/glossary?term=<용어>   용어집
 //   #/changes                변경 이력
-// 조건: free=1 (무료만), secure=1 (보안 중요), korean=1 (한국어 중요), mobile=1 (휴대폰)
+// 조건은 모드마다 다르다 (js/modes.js). 예: 비개발자용 free=1, secure=1 / 개발자용 free=1, oss=1
 // 주소에 ?demo가 있으면 (예: index.html?demo#/) 실제 데이터 대신 예시 데이터를 쓴다.
 // 점수 계산은 하지 않는다. 추천은 recommend.js에만 맡긴다.
 import { recommend, isStale } from './recommend.js';
-import {
-  UNKNOWN, changeText, formatDate, freeLimitText, freeText, koreanText, localToday, loginText, paidText, platformsText,
-  privacyText,
-} from './format.js';
+import { UNKNOWN, changeText, formatDate, localToday } from './format.js';
 import { glossarize, termMatcher } from './glossary.js';
+import { MODES } from './modes.js';
+
+// <body data-mode="dev"> 이면 개발자용
+const mode = MODES[document.body.dataset.mode] ?? MODES.general;
+const W = mode.toolWord; // "툴" 또는 "도구"
 
 const app = document.getElementById('app');
 let data; // { tools, purposes, glossary, changelog, demo }
 let matcher = null; // 용어집 단어 찾기
 let routedOnce = false; // 사이트 안에서 이동한 적이 있으면 "뒤로"가 브라우저 뒤로 가기로 동작한다
 
-// 시나리오 4: "뭘 해야 할지 모르겠어요" 바로가기 (docs/decisions.md)
-const STARTER_PURPOSES = ['P01', 'P03', 'P07'];
-
-const CONDITIONS = [
-  { key: 'freeOnly', param: 'free', icon: '🆓', title: '무료만', desc: '무료로 쓸 수 있는 툴만 보여줘요' },
-  { key: 'securityImportant', param: 'secure', icon: '🔒', title: '회사 자료라 보안 중요', desc: '입력한 내용을 학습에 쓰지 않거나, 끌 수 있는 툴만 보여줘요' },
-  { key: 'koreanImportant', param: 'korean', icon: '🇰🇷', title: '한국어 중요', desc: '한국어가 잘 되는 툴을 앞에 보여줘요' },
-  { key: 'mobile', param: 'mobile', icon: '📱', title: '휴대폰에서 쓸 거예요', desc: '아이폰이나 안드로이드 앱이 있는 툴만 보여줘요' },
-];
-const CHIP_LABELS = { freeOnly: '무료만', securityImportant: '보안 중요', koreanImportant: '한국어 중요', mobile: '휴대폰' };
-const FIT_LABELS = { 3: '이 일의 대표 툴이에요', 2: '이 일에 잘 맞아요', 1: '이 일에도 쓸 수 있어요' };
+const CONDITIONS = mode.conditions;
+const FACTS = mode.facts;
+const FIT_LABELS = { 3: `이 일의 대표 ${W}예요`, 2: '이 일에 잘 맞아요', 1: '이 일에도 쓸 수 있어요' };
 
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -78,17 +72,11 @@ const linkRow = (icon, title, desc, href) => `
 /** 사이트 안에서 왔으면 브라우저 뒤로 가기, 바로 들어왔으면 fallback 주소로 */
 const backLink = (fallback, label = '뒤로') => `<a class="back" href="${fallback}" data-back>‹ ${esc(label)}</a>`;
 
-const FACTS = [
-  ['무료로 쓰기', (t) => freeText(t.price)],
-  ['무료 한도', (t) => freeLimitText(t.price)],
-  ['유료 가격', (t) => paidText(t.price)],
-  ['한국어', (t) => koreanText(t.korean)],
-  ['학습 정책', (t) => privacyText(t.privacy)],
-  ['사용 기기', (t) => platformsText(t.platforms)],
-];
-
 const factHtml = ([label, value], t, last = false) =>
   `<dl class="fact${last ? ' last' : ''}"><dt>${g(label)}</dt><dd>${valueHtml(value(t))}</dd></dl>`;
+
+/** AI 툴이 아닌 도구 표시 (개발자용, ai_native: "no") */
+const notAiTag = (t) => (t.ai_native === 'no' ? '<span class="tag tag-plain">AI와 같이 쓰는 도구</span>' : '');
 
 const cautionsOf = (t) => [...t.cautions, ...(t.privacy.note ? [t.privacy.note] : [])];
 
@@ -100,13 +88,13 @@ const verifiedHtml = (t, stale) => `
 
 // ---- 홈 ----
 function renderHome() {
-  document.title = 'AI 뭐 써? · 하고 싶은 일에 맞는 AI 툴 추천';
-  const starters = STARTER_PURPOSES.map((id) => data.purposes.find((p) => p.id === id)).filter(Boolean);
+  document.title = mode.homeTitle;
+  const starters = mode.starters.map((id) => data.purposes.find((p) => p.id === id)).filter(Boolean);
   app.innerHTML = `
     <section class="hero">
-      <p class="eyebrow">AI 툴 선택 도우미</p>
-      <h1>어떤 일을 AI에게<br>맡기고 싶어요?</h1>
-      <p class="sub">고르면 맞는 툴 2~3개를 이유와 함께 비교해드려요.</p>
+      <p class="eyebrow">${esc(mode.eyebrow)}</p>
+      <h1>${mode.heroHtml}</h1>
+      <p class="sub">${esc(mode.heroSub)}</p>
     </section>
 
     <section class="card">
@@ -114,30 +102,27 @@ function renderHome() {
       <ul class="list">${data.purposes.map((p) => purposeRow(p, `#/p/${p.id}`)).join('')}</ul>
     </section>
 
-    <section class="card">
-      <h2 class="card-title">뭘 해야 할지 모르겠어요</h2>
-      <p class="card-sub">처음이라면 많이 쓰는 이 세 가지부터 해보세요</p>
-      <ul class="list">${starters.map((p) => purposeRow(p, `#/p/${p.id}/result`)).join('')}</ul>
-    </section>
+    ${starters.length ? `
+      <section class="card">
+        <h2 class="card-title">뭘 해야 할지 모르겠어요</h2>
+        <p class="card-sub">처음이라면 많이 쓰는 이 세 가지부터 해보세요</p>
+        <ul class="list">${starters.map((p) => purposeRow(p, `#/p/${p.id}/result`)).join('')}</ul>
+      </section>` : ''}
 
     <section class="card">
       <h2 class="card-title">더 알아보기</h2>
       <ul class="list">
-        ${linkRow('📖', '용어집', '프롬프트, 토큰, 무료 크레딧… 어려운 말 쉽게 풀기', '#/glossary')}
-        ${linkRow('🗓️', '변경 이력', '툴 정보가 언제 어떻게 바뀌었는지', '#/changes')}
+        ${linkRow('📖', '용어집', mode.glossaryHint, '#/glossary')}
+        ${linkRow('🗓️', '변경 이력', `${W} 정보가 언제 어떻게 바뀌었는지`, '#/changes')}
       </ul>
     </section>
 
-    <div class="trust">
-      <span>회원가입 없이 무료</span>
-      <span>광고·제휴 없이 정해진 규칙으로 추천</span>
-      <span>모든 정보에 확인 날짜 표시</span>
-    </div>`;
+    <div class="trust">${mode.trust.map((x) => `<span>${esc(x)}</span>`).join('')}</div>`;
 }
 
 // ---- 조건 선택 ----
 function renderConditions(purpose, conditions) {
-  document.title = `${purpose.label} · AI 뭐 써?`;
+  document.title = `${purpose.label} · ${mode.siteName}`;
   app.innerHTML = `
     <div class="page-head">
       <a class="back" href="#/">‹ 처음으로</a>
@@ -181,6 +166,7 @@ function toolCardHtml(r, index, all) {
           <span class="tool-rank">${index + 1}</span>
           <h2 class="tool-name"><a href="#/t/${esc(t.id)}">${esc(t.name)}</a></h2>
           ${r.stale ? '<span class="tag tag-warn">확인 필요</span>' : ''}
+          ${notAiTag(t)}
         </div>
         <p class="tool-one-liner">${g(t.one_liner)}</p>
       </div>
@@ -232,17 +218,19 @@ function installCardDots() {
 }
 
 function renderResult(purpose, conditions) {
-  document.title = `${purpose.label} 추천 · AI 뭐 써?`;
-  const { results, notice } = recommend({ tools: data.tools, purposeId: purpose.id, conditions, today: localToday() });
+  document.title = `${purpose.label} 추천 · ${mode.siteName}`;
+  const { results, notice } = recommend({
+    tools: data.tools, purposeId: purpose.id, conditions, today: localToday(), profile: mode.profile,
+  });
 
   const chips = CONDITIONS.map((c) => {
     const next = { ...conditions, [c.key]: !conditions[c.key] };
-    return `<a class="chip" role="button" aria-pressed="${conditions[c.key]}" href="#/p/${purpose.id}/result${conditionQuery(next)}">${esc(CHIP_LABELS[c.key])}</a>`;
+    return `<a class="chip" role="button" aria-pressed="${conditions[c.key]}" href="#/p/${purpose.id}/result${conditionQuery(next)}">${esc(c.chip)}</a>`;
   }).join('');
 
   let body;
   if (data.tools.length === 0) {
-    body = `<section class="card"><p class="empty"><strong>아직 준비 중이에요</strong>툴 정보를 공식 페이지에서 하나씩 확인하고 있어요.</p></section>`;
+    body = `<section class="card"><p class="empty"><strong>아직 준비 중이에요</strong>${W} 정보를 공식 페이지에서 하나씩 확인하고 있어요.</p></section>`;
   } else if (results.length === 0) {
     body = `<section class="card"><p class="empty"><strong>${esc(notice)}</strong>조건을 바꿔서 다시 찾아보세요.</p></section>`;
   } else {
@@ -255,7 +243,7 @@ function renderResult(purpose, conditions) {
     <div class="page-head">
       <a class="back" href="#/p/${purpose.id}${conditionQuery(conditions)}">‹ 조건 다시 고르기</a>
       <p class="step">${esc(purpose.icon)} ${esc(purpose.label)}</p>
-      <h1 class="page-title">이 툴들을 추천해요</h1>
+      <h1 class="page-title">이 ${W}들을 추천해요</h1>
     </div>
     <div class="chips" role="group" aria-label="조건">
       <span class="chips-label">조건 (누르면 바로 바뀌어요)</span>
@@ -267,7 +255,7 @@ function renderResult(purpose, conditions) {
 
 // ---- 툴 상세 ----
 function renderTool(t) {
-  document.title = `${t.name} · AI 뭐 써?`;
+  document.title = `${t.name} · ${mode.siteName}`;
   const stale = isStale(t, localToday());
   const cautions = cautionsOf(t);
   const fits = data.purposes
@@ -280,10 +268,11 @@ function renderTool(t) {
   app.innerHTML = `
     <div class="page-head">
       ${backLink('#/')}
-      <p class="step">툴 상세</p>
+      <p class="step">${W} 상세</p>
       <div class="tool-title">
         <h1 class="page-title">${esc(t.name)}</h1>
         ${stale ? '<span class="tag tag-warn">확인 필요</span>' : ''}
+        ${notAiTag(t)}
       </div>
       <p class="page-sub">${g(t.one_liner)}</p>
     </div>
@@ -291,11 +280,11 @@ function renderTool(t) {
     <section class="card">
       <h2 class="card-title">기본 정보</h2>
       <div class="facts">
-        ${FACTS.map((f) => factHtml(f, t)).join('')}
-        ${factHtml(['가입 방법', (x) => loginText(x.login)], t, true)}
+        ${[...FACTS, ...mode.detailFacts].map((f, i, all) => factHtml(f, t, i === all.length - 1)).join('')}
       </div>
       <div class="tool-actions">
         <a class="btn btn-primary btn-block" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트 열기 ↗</a>
+        ${t.repo_url ? `<a class="more-link" href="${esc(t.repo_url)}" target="_blank" rel="noopener">소스 코드 저장소 보기 ↗</a>` : ''}
       </div>
     </section>
 
@@ -310,9 +299,21 @@ function renderTool(t) {
         <ul class="cautions">${cautions.map((s) => `<li>${g(s)}</li>`).join('')}</ul>
       </section>` : ''}
 
+    ${t.learn?.length ? `
+      <section class="card">
+        <h2 class="card-title">배울 거리</h2>
+        <p class="card-sub">공식 문서와 튜토리얼이에요</p>
+        <ul class="list">${t.learn.map((l) => `
+          <li><a class="row" href="${esc(l.url)}" target="_blank" rel="noopener">
+            <span class="ico" aria-hidden="true">📘</span>
+            <span class="txt"><span class="ttl">${esc(l.title)}</span><span class="dsc">${esc(new URL(l.url).hostname)}</span></span>
+            <span class="chev" aria-hidden="true">↗</span>
+          </a></li>`).join('')}</ul>
+      </section>` : ''}
+
     <section class="card">
-      <h2 class="card-title">이 툴로 할 수 있는 일</h2>
-      <p class="card-sub">누르면 그 일에 맞는 다른 툴과 비교해볼 수 있어요</p>
+      <h2 class="card-title">이 ${W}로 할 수 있는 일</h2>
+      <p class="card-sub">누르면 그 일에 맞는 다른 ${W}와 비교해볼 수 있어요</p>
       <ul class="list">${fits.map(({ p, score }) => purposeRow(p, `#/p/${p.id}/result`, FIT_LABELS[score])).join('')}</ul>
     </section>
 
@@ -328,20 +329,20 @@ function renderTool(t) {
 }
 
 function renderNotFound() {
-  document.title = '찾을 수 없어요 · AI 뭐 써?';
+  document.title = `찾을 수 없어요 · ${mode.siteName}`;
   app.innerHTML = `
     <div class="page-head">${backLink('#/', '처음으로')}</div>
-    <section class="card"><p class="empty"><strong>찾을 수 없어요</strong>주소가 바뀌었거나 빠진 툴일 수 있어요.</p></section>`;
+    <section class="card"><p class="empty"><strong>찾을 수 없어요</strong>주소가 바뀌었거나 빠진 ${W}일 수 있어요.</p></section>`;
 }
 
 // ---- 용어집 ----
 function renderGlossary(focus) {
-  document.title = '용어집 · AI 뭐 써?';
+  document.title = `용어집 · ${mode.siteName}`;
   app.innerHTML = `
     <div class="page-head">
       ${backLink('#/')}
       <h1 class="page-title">용어집</h1>
-      <p class="page-sub">AI 툴을 쓰다 보면 나오는 어려운 말을 쉽게 풀었어요. 화면에서 <span class="term-sample">밑줄 친 말</span>을 누르면 바로 볼 수 있어요.</p>
+      <p class="page-sub">${esc(mode.glossaryIntro)} 화면에서 <span class="term-sample">밑줄 친 말</span>을 누르면 바로 볼 수 있어요.</p>
     </div>
     <section class="card">
       ${data.glossary.length ? `<dl class="glossary">${data.glossary.map((item) => `
@@ -355,7 +356,7 @@ function renderGlossary(focus) {
 
 // ---- 변경 이력 ----
 function renderChanges() {
-  document.title = '변경 이력 · AI 뭐 써?';
+  document.title = `변경 이력 · ${mode.siteName}`;
   const toolIds = new Set(data.tools.map((t) => t.id));
   const line = (c) => {
     const text = esc(changeText(c, data.purposes));
@@ -365,13 +366,13 @@ function renderChanges() {
     <div class="page-head">
       ${backLink('#/')}
       <h1 class="page-title">변경 이력</h1>
-      <p class="page-sub">툴 정보가 바뀔 때마다 자동으로 기록돼요. 가격이나 정책이 언제 바뀌었는지 확인할 수 있어요.</p>
+      <p class="page-sub">${W} 정보가 바뀔 때마다 자동으로 기록돼요. 가격이나 정책이 언제 바뀌었는지 확인할 수 있어요.</p>
     </div>
     ${data.changelog.length ? data.changelog.map((entry) => `
       <section class="card">
         <h2 class="card-title">${esc(formatDate(entry.date))}</h2>
         <ul class="change-list">${entry.changes.map((c) => `<li class="change-${c.type}">${line(c)}</li>`).join('')}</ul>
-      </section>`).join('') : '<section class="card"><p class="empty"><strong>아직 바뀐 내용이 없어요</strong>툴 정보가 바뀌면 여기에 기록돼요.</p></section>'}`;
+      </section>`).join('') : `<section class="card"><p class="empty"><strong>아직 바뀐 내용이 없어요</strong>${W} 정보가 바뀌면 여기에 기록돼요.</p></section>`}`;
 }
 
 // ---- 용어 풀이 (화면 아래에 뜨는 창) ----
@@ -475,12 +476,13 @@ async function main() {
   installThemeToggle();
   try {
     const demo = new URLSearchParams(location.search).has('demo');
+    const dir = mode.dataDir;
     const [tools, purposes, glossary, changelog] = await Promise.all([
-      loadJson(demo ? 'data/demo-tools.json' : 'data/tools.json'),
-      loadJson('data/purposes.json'),
-      loadJson('data/glossary.json'),
+      loadJson(`${dir}${demo ? 'demo-tools.json' : 'tools.json'}`),
+      loadJson(`${dir}purposes.json`),
+      loadJson(`${dir}glossary.json`),
       // 변경 이력은 배포할 때 만들어진다. 로컬에서 안 만들었으면 빈 목록으로 본다.
-      loadJson(demo ? 'data/demo-changelog.json' : 'data/changelog.json', []),
+      loadJson(`${dir}${demo ? 'demo-changelog.json' : 'changelog.json'}`, []),
     ]);
     data = { tools, purposes, glossary, changelog, demo };
     matcher = termMatcher(glossary);

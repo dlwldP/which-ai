@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { isValidDate, daysSince } from '../js/recommend.js';
 import {
-  BILLING, POLICY, hostOf, isHttpsUrl, isObject, isOfficialHost, isText, validatePurposes,
+  BILLING, POLICY, hostOf, isHttpsUrl, isObject, isOfficialHost, isText, validateGlossary, validatePurposes,
 } from './validate-data.js';
 
 export const DEV_MAX_TOOLS = 45;
@@ -120,13 +120,17 @@ export function validateDevTools(tools, purposes, today) {
   return errors;
 }
 
-export function validateDevData({ tools, purposes, today }) {
-  return [...validatePurposes(purposes, DEV_PURPOSE_ID), ...validateDevTools(tools, purposes, today)];
+export function validateDevData({ tools, purposes, glossary = [], today }) {
+  return [
+    ...validatePurposes(purposes, DEV_PURPOSE_ID),
+    ...validateDevTools(tools, purposes, today),
+    ...validateGlossary(glossary).map((e) => `dev/${e}`),
+  ];
 }
 
 export function loadDevData(dir = new URL('../data/dev/', import.meta.url)) {
   const read = (name) => JSON.parse(readFileSync(new URL(name, dir), 'utf8'));
-  return { tools: read('tools.json'), purposes: read('purposes.json') };
+  return { tools: read('tools.json'), purposes: read('purposes.json'), glossary: read('glossary.json') };
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
