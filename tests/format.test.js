@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   changeText, formatDate, freeLimitText, freeText, koreanText, localToday, loginText, paidText, platformsText, privacyText,
+  reportUrl,
 } from '../js/format.js';
 
 test('가격 문구', () => {
@@ -69,4 +70,13 @@ test('변경 이력 문구', () => {
   assert.equal(changeText(c('last_verified', '2026-07-01', '2026-10-19')), 'Gamma: 확인 날짜 2026년 7월 1일 → 2026년 10월 19일');
   assert.equal(changeText(c('cautions', [], ['a'])), 'Gamma: 주의할 점 내용이 바뀌었어요');
   assert.equal(changeText(c('platforms', ['web'], ['web', 'ios'])), 'Gamma: 사용 기기 웹사이트 → 웹사이트, 아이폰 앱');
+});
+
+test('정보가 틀려요 제보 주소: 양식과 사이트·툴 이름을 미리 채움', () => {
+  const url = new URL(reportUrl('Gamma & Co', 'AI 뭐 써? (일반용)'));
+  assert.equal(url.origin + url.pathname, 'https://github.com/dlwldP/which-ai/issues/new');
+  assert.equal(url.searchParams.get('template'), 'wrong-info.yml');
+  assert.equal(url.searchParams.get('title'), '[정보 오류] Gamma & Co');
+  assert.equal(url.searchParams.get('tool'), 'Gamma & Co');
+  assert.equal(url.searchParams.get('site'), 'AI 뭐 써? (일반용)');
 });

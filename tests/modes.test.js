@@ -45,3 +45,8 @@ test('개발자용 문구', () => {
   assert.equal(aiNativeText('yes'), 'AI가 핵심');
   assert.equal(openSourceText(true), '예');
 });
+
+test('모드의 제보 사이트 값이 제보 양식의 선택지에 있음', () => {
+  const form = readFileSync(new URL('../.github/ISSUE_TEMPLATE/wrong-info.yml', import.meta.url), 'utf8');
+  for (const m of Object.values(MODES)) assert.ok(form.includes(`        - ${m.reportSite}\n`), m.reportSite);
+});

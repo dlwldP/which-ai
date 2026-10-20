@@ -1,24 +1,71 @@
 # AI 뭐 써?
 
-하고 싶은 일을 고르면 맞는 AI 툴 2~3개를 비교해서 추천해주는 비개발자용 선택 도우미.
+> "회의록 정리하고 싶은데 뭐 써?"에 답하는 사이트.
+> 하고 싶은 일을 고르면 맞는 AI 툴 2~3개를 **이유와 함께** 비교해주는 비개발자용 선택 도우미예요.
 
-**👉 사이트 바로가기: [dlwldp.github.io/which-ai](https://dlwldp.github.io/which-ai/)** · [예시 데이터로 둘러보기](https://dlwldp.github.io/which-ai/?demo#/)
+**👉 사이트: [dlwldp.github.io/which-ai](https://dlwldp.github.io/which-ai/)** · [예시 데이터로 둘러보기](https://dlwldp.github.io/which-ai/?demo#/)  
+**🛠️ 개발자용: [개발할 때 AI 뭐 써?](https://dlwldp.github.io/which-ai/dev/)** · [예시 데이터로 둘러보기](https://dlwldp.github.io/which-ai/dev/?demo#/)
 
-**🛠️ 개발자용: [개발할 때 AI 뭐 써?](https://dlwldp.github.io/which-ai/dev/)** · [예시 데이터로 둘러보기](https://dlwldp.github.io/which-ai/dev/?demo#/) ([기획서](docs/개발자용_기획서.md))
+| 휴대폰: 홈 | 휴대폰: 추천 결과 | 휴대폰: 툴 상세 |
+| --- | --- | --- |
+| ![홈 화면](docs/screenshots/mobile-home.png) | ![추천 결과 화면](docs/screenshots/mobile-result.png) | ![툴 상세 화면](docs/screenshots/mobile-detail.png) |
 
-- 기획서: [docs/AI뭐써_기획서.md](docs/AI뭐써_기획서.md)
+![컴퓨터에서 본 추천 결과: 카드 3개를 나란히 비교](docs/screenshots/desktop-result.png)
+
+<sub>※ 스크린샷은 화면 확인용 예시 데이터(지어낸 툴)로 찍었어요.</sub>
+
+## 왜 만들었나
+
+AI 툴이 너무 많아서 비개발자는 어떤 일에 뭘 써야 하는지, 무료로 되는지, 회사 자료를 넣어도 되는지 판단하기 어려워요. 기존 AI 디렉터리는 수천 개를 나열만 해서 오히려 고르기 힘들어요.
+그래서 **목록을 보여주지 않고**, 목적과 조건을 고르면 2~3개만 골라서 비교해줘요.
+
+## 이렇게 써요
+
+1. **하고 싶은 일 고르기:** 질문하고 글 쓰기, 회의 녹음 정리, PPT 만들기… 10가지
+2. **조건 고르기:** 무료만 / 회사 자료라 보안 중요 / 한국어 중요 / 휴대폰에서 쓸 거예요
+3. **추천 비교:** 카드마다 추천 이유, 무료 한도, 한국어, 입력한 내용 학습 정책, 시작 방법 3단계, 주의할 점, 마지막 확인 날짜와 출처
+
+## 설계 원칙
+
+| 원칙 | 이렇게 지켜요 |
+| --- | --- |
+| **추천은 규칙으로** | 사이트에서 AI(LLM)를 부르지 않아요. 사람이 정한 점수와 조건으로 계산해서, 같은 입력이면 항상 같은 결과가 나와요 ([js/recommend.js](js/recommend.js)) |
+| **이유 없는 추천 금지** | 모든 추천 카드에 "왜 추천했는지" 문장이 붙어요 |
+| **모르면 모른다고** | 확인 안 된 값은 "확인 필요"로 보여주고, 보안 조건에서는 학습 정책을 모르는 툴을 추천하지 않아요 |
+| **출처와 확인 날짜** | 가격·정책에는 공식 페이지 출처와 확인 날짜가 있어요. 90일이 지나면 "확인 필요" 배지가 붙고, 매주 자동 점검이 Issue로 알려줘요 |
+| **AI는 초안만, 확정은 사람이** | 툴 정보는 AI가 공식 페이지를 근거로 초안을 쓰고, 사람이 근거 문장을 대조한 뒤에만 실제 데이터로 옮겨요 ([drafts/README.md](drafts/README.md)) |
+| **운영비 0원** | 서버·회원가입·외부 패키지 없이 정적 파일 + GitHub Pages + GitHub Actions |
+| **광고·제휴 없음** | 추천 순서를 돈으로 바꾸지 않아요 |
+
+## 정보가 틀렸나요?
+
+카드의 "출처 보기"나 툴 상세 화면에서 **"정보가 틀려요 ↗"**를 눌러 알려주세요 ([제보 양식](https://github.com/dlwldP/which-ai/issues/new?template=wrong-info.yml), GitHub 계정 필요). 자세한 건 [CONTRIBUTING.md](CONTRIBUTING.md)를 봐주세요.
+
+## 개발자용: 개발할 때 AI 뭐 써?
+
+같은 엔진으로 만든 개발자용 버전이에요. 기획, 앱 만들기, 코딩 에이전트, 백엔드, 디자인, 데이터·RAG, 배포, 자동화, 코드 리뷰 9가지 단계에서 도구를 비교해요. AI 툴이 아닌 도구(데이터베이스, 컨테이너 등)는 "AI와 같이 쓰는 도구"로 따로 표시해요. ([기획서](docs/개발자용_기획서.md))
+
+![개발자용 추천 결과](docs/screenshots/desktop-dev-result.png)
+
+---
+
+# 개발 문서
+
+- 기획서: [docs/AI뭐써_기획서.md](docs/AI뭐써_기획서.md) · 개발자용: [docs/개발자용_기획서.md](docs/개발자용_기획서.md)
 - 세부 결정 사항: [docs/decisions.md](docs/decisions.md)
+- 사용성 테스트 가이드: [docs/사용성테스트.md](docs/사용성테스트.md)
 
 ## 현재 상태
 
 | Phase | 상태 |
 | --- | --- |
-| 0. 데이터 | 목적 10개만 입력. `data/tools.json`은 비어 있음 (공식 페이지 확인 후 직접 채움) |
-| 1. 추천 로직 | `js/recommend.js` + 테스트 완료 |
-| 2. 화면 | 홈, 조건 선택, 추천 결과 완료 (예시 데이터로 확인) |
-| 3. 상세·부가 | 툴 상세, 용어집(초안, 검토 필요), 변경 이력, 다크 모드 버튼 완료 |
+| 0. 데이터 | 목적 정의 완료. **실제 툴 데이터는 마지막에 입력 예정** (`data/tools.json`, `data/dev/tools.json` 비어 있음) |
+| 1. 추천 로직 | 완료 |
+| 2. 화면 | 완료 (예시 데이터로 확인) |
+| 3. 상세·부가 | 툴 상세, 용어집(초안, 검토 필요), 변경 이력, 다크 모드 완료 |
 | 4. 배포·자동화 | Pages 배포, 주간 신선도·링크 점검 Issue 완료 |
-| 5 | 아직 |
+| 5. 마감 | README, 제보 양식·기여 안내, 스크린샷, 사용성 테스트 가이드 완료. **사용성 테스트(비개발자 3명)는 진행 전** |
+| 개발자용 | D0~D3 완료, D4(실제 도구 데이터)는 마지막에 |
 
 ## 폴더
 
@@ -35,11 +82,13 @@ js/          recommend.js — 추천 로직 (순수 함수, DOM 접근 없음)
              app.js       — 화면 그리기와 주소 처리
 drafts/      확인 전 툴 정보 초안 (배포 안 됨, drafts/README.md 참고)
 scripts/     validate-data.js — 데이터 검사
-             draft.js — 초안 검사, 확인한 툴을 tools.json으로 옮기기
+             draft.js — 초안 검사, 확인한 툴을 실제 데이터로 옮기기 (--dev는 개발자용)
              build-changelog.js — git 기록으로 변경 이력 만들기 (배포할 때 자동 실행)
              check-freshness.js — 주간 점검: 90일 지난 툴, 링크 상태 → Issue 본문
              validate-dev-data.js — 개발자용 데이터 검사 (docs/개발자용_기획서.md)
 tests/       Node 내장 테스트 러너
+docs/        기획서, 결정 사항, 사용성 테스트 가이드, 스크린샷
+.github/     배포·주간 점검 워크플로, "정보가 틀려요" 제보 양식
 ```
 
 ## 실행
@@ -50,13 +99,15 @@ Node 22 이상, 설치할 패키지 없음.
 node --test                          # 테스트
 node scripts/validate-data.js        # 데이터 검사 (기준일: 오늘)
 node scripts/validate-data.js 2026-10-19   # 기준일 지정
+node scripts/validate-dev-data.js    # 개발자용 데이터 검사
+node scripts/draft.js check          # 초안 검사 (비개발자용·개발자용)
 node scripts/build-changelog.js      # 변경 이력을 data/changelog.json에 만들기 (로컬에서 화면 볼 때만, 커밋하지 않음)
-node scripts/check-freshness.js      # 주간 점검을 직접 돌려보기 (결과: report.md)
+node scripts/check-freshness.js      # 주간 점검을 직접 돌려보기 (결과: report.md, --demo는 예시 데이터)
 ```
 
 ## 배포
 
-`main`에 푸시하면 `.github/workflows/deploy.yml`이 테스트·데이터 검사를 돌리고, 통과하면 git 기록으로 변경 이력을 만들어 GitHub Pages에 올린다. 배포 주소: [https://dlwldp.github.io/which-ai/](https://dlwldp.github.io/which-ai/) (예시 데이터: [https://dlwldp.github.io/which-ai/?demo#/](https://dlwldp.github.io/which-ai/?demo#/))
+`main`에 푸시하면 `.github/workflows/deploy.yml`이 테스트·데이터 검사를 돌리고, 통과하면 git 기록으로 변경 이력을 만들어 GitHub Pages에 올린다. 배포 주소는 맨 위 링크를 봐주세요.
 
 ## 주간 점검
 
@@ -76,6 +127,7 @@ node scripts/check-freshness.js      # 주간 점검을 직접 돌려보기 (결
 python3 -m http.server 8000
 # http://localhost:8000/            실제 데이터 (지금은 "아직 준비 중이에요")
 # http://localhost:8000/?demo#/     예시 데이터로 화면 확인
+# http://localhost:8000/dev/?demo#/ 개발자용 예시
 ```
 
 ## 추천 함수 사용법
