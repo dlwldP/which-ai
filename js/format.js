@@ -172,3 +172,17 @@ export function changeText(change, purposes = []) {
   }
   return `${change.name}: ${label} ${changeValue(field, change.before)} → ${changeValue(field, change.after)}`;
 }
+
+// ---- "정보가 틀려요" 제보 (.github/ISSUE_TEMPLATE/wrong-info.yml) ----
+const ISSUE_NEW = 'https://github.com/dlwldP/which-ai/issues/new';
+
+/** 제보 양식 주소. 사이트와 툴 이름을 미리 채운다. */
+export function reportUrl(toolName, site) {
+  const params = new URLSearchParams({
+    template: 'wrong-info.yml',
+    title: `[정보 오류] ${toolName}`,
+    site,
+    tool: toolName,
+  });
+  return `${ISSUE_NEW}?${params}`;
+}

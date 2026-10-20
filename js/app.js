@@ -9,7 +9,7 @@
 // 주소에 ?demo가 있으면 (예: index.html?demo#/) 실제 데이터 대신 예시 데이터를 쓴다.
 // 점수 계산은 하지 않는다. 추천은 recommend.js에만 맡긴다.
 import { recommend, isStale } from './recommend.js';
-import { UNKNOWN, changeText, formatDate, localToday } from './format.js';
+import { UNKNOWN, changeText, formatDate, localToday, reportUrl } from './format.js';
 import { glossarize, termMatcher } from './glossary.js';
 import { MODES } from './modes.js';
 
@@ -80,10 +80,14 @@ const notAiTag = (t) => (t.ai_native === 'no' ? '<span class="tag tag-plain">AI�
 
 const cautionsOf = (t) => [...t.cautions, ...(t.privacy.note ? [t.privacy.note] : [])];
 
+const reportLink = (t) =>
+  `<a class="report-link" href="${esc(reportUrl(t.name, mode.reportSite))}" target="_blank" rel="noopener">정보가 틀려요 ↗</a>`;
+
 const verifiedHtml = (t, stale) => `
   <details class="verified">
     <summary>마지막 확인 ${esc(formatDate(t.last_verified))}${stale ? ' (90일 넘게 지나서 다시 확인이 필요해요)' : ''} · <span class="src-toggle">출처 보기</span></summary>
     <ul>${t.sources.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul>
+    ${reportLink(t)}
   </details>`;
 
 // ---- 홈 ----
@@ -322,6 +326,7 @@ function renderTool(t) {
       <p class="card-sub">마지막 확인 ${esc(formatDate(t.last_verified))}${stale ? ' · 90일 넘게 지나서 다시 확인이 필요해요' : ''}</p>
       <h3 class="section-label">출처</h3>
       <ul class="sources">${t.sources.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul>
+      <p class="report">공식 페이지와 다른 정보를 발견했나요? ${reportLink(t)} <span class="report-note">(GitHub 계정이 필요해요)</span></p>
       ${history.length ? `
         <h3 class="section-label">바뀐 내용</h3>
         <ul class="change-list">${history.map(({ date, c }) => `<li><span class="change-date">${esc(formatDate(date))}</span>${esc(changeText(c, data.purposes))}</li>`).join('')}</ul>` : ''}

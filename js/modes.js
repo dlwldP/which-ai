@@ -14,6 +14,7 @@ export const MODES = {
     heroHtml: '어떤 일을 AI에게<br>맡기고 싶어요?',
     heroSub: '고르면 맞는 툴 2~3개를 이유와 함께 비교해드려요.',
     toolWord: '툴',
+    reportSite: 'AI 뭐 써? (일반용)', // 제보 양식의 사이트 선택값과 같아야 한다
     // 시나리오 4: "뭘 해야 할지 모르겠어요" 바로가기 (docs/decisions.md)
     starters: ['P01', 'P03', 'P07'],
     glossaryHint: '프롬프트, 토큰, 무료 크레딧… 어려운 말 쉽게 풀기',
@@ -45,6 +46,7 @@ export const MODES = {
     heroHtml: '개발할 때<br>어떤 AI를 쓸까요?',
     heroSub: '개발 단계를 고르면 맞는 도구 2~3개를 이유와 함께 비교해드려요.',
     toolWord: '도구',
+    reportSite: '개발할 때 AI 뭐 써? (개발자용)',
     starters: [],
     glossaryHint: 'CLI, RAG, CI/CD, 셀프 호스팅… 용어 풀이',
     glossaryIntro: '개발 도구를 고를 때 나오는 용어를 짧게 풀었어요.',
