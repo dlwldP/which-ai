@@ -85,3 +85,33 @@ test('보고서: 90일 지난 툴과 깨진 링크', () => {
   assert.match(r.body, /https:\/\/b\.test\/ — 429 요청이 너무 많음/);
   assert.match(r.body, /점검 기록: https:\/\/github\.com\/run\/1/);
 });
+
+test('개발자용 저장소·배울 거리 링크도 점검 대상', () => {
+  const tools = [{ id: 'd', name: 'D', url: 'https://d.test/', sources: ['https://d.test/p'], repo_url: 'https://github.com/x/d', learn: [{ title: '문서', url: 'https://d.test/docs' }] }];
+  assert.deepEqual(linkTargets(tools).map((t) => `${t.url}:${t.usedBy[0].kind}`), [
+    'https://d.test/:공식 사이트', 'https://d.test/p:출처', 'https://github.com/x/d:저장소', 'https://d.test/docs:배울 거리',
+  ]);
+});
+
+test('보고서: 데이터 세트 두 개를 나눠서 보여줌', () => {
+  const r = buildReport({
+    today: TODAY,
+    sets: [
+      { label: 'AI 뭐 써? (일반용)', file: 'data/tools.json', stale: [], links: [] },
+      { label: '개발할 때 AI 뭐 써?', file: 'data/dev/tools.json', stale: [], links: [link('https://a.test/', 404, 'broken')] },
+    ],
+  });
+  assert.equal(r.hasIssues, true);
+  assert.deepEqual(r.counts, { stale: 0, broken: 1, blocked: 0 });
+  assert.match(r.body, /## AI 뭐 써\? \(일반용\) \(`data\/tools.json`\)/);
+  assert.match(r.body, /## 개발할 때 AI 뭐 써\? \(`data\/dev\/tools.json`\)\n\n### 90일 넘게 확인 안 된 툴 \(0개\)/);
+  assert.match(r.body, /`data\/tools.json` 또는 `data\/dev\/tools.json`을 고쳐요/);
+});
+
+test('보고서: 두 세트 모두 확인할 게 없으면 Issue를 열지 않음', () => {
+  const r = buildReport({ today: TODAY, sets: [
+    { label: 'a', file: 'a.json', stale: [], links: [link('https://a.test/', 403, 'blocked')] },
+    { label: 'b', file: 'b.json', stale: [], links: [] },
+  ] });
+  assert.equal(r.hasIssues, false);
+});

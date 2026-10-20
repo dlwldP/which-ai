@@ -100,3 +100,61 @@ test('todo가 아닌 칸은 여전히 근거가 필요', () => {
   });
   assert.ok(errors.some((e) => e.includes('"platforms" 값의 근거')), JSON.stringify(errors));
 });
+
+// ---- 개발자용 초안 ----
+const devDemo = JSON.parse(readFileSync(new URL('../data/dev/demo-tools.json', import.meta.url), 'utf8'));
+const { purposes: devPurposes } = await import('../scripts/validate-dev-data.js').then((m) => m.loadDevData());
+
+function makeDevDraft() {
+  const { last_verified: _, ...tool } = structuredClone(devDemo.find((t) => t.id === 'dev-alpha'));
+  const src = tool.sources[0];
+  const ev = (field) => ({ field, source: src, quote: '공식 페이지 문장' });
+  return { ...tool, evidence: ['price.free', 'privacy.trains_on_input_default', 'open_source', 'forms'].map(ev) };
+}
+const devErrorsFor = (mutate) => {
+  const d = makeDevDraft();
+  mutate(d);
+  return validateDraft([d], devPurposes, TODAY, 'dev');
+};
+
+test('개발자용 초안 파일이 검사를 통과함', () => {
+  const drafts = JSON.parse(readFileSync(new URL('../drafts/dev-tools.draft.json', import.meta.url), 'utf8'));
+  assert.deepEqual(validateDraft(drafts, devPurposes, TODAY, 'dev'), []);
+});
+
+test('올바른 개발자용 초안은 통과', () => {
+  assert.deepEqual(validateDraft([makeDevDraft()], devPurposes, TODAY, 'dev'), []);
+});
+
+const devFailCases = [
+  ['배울 거리가 공식 도메인이 아님', (d) => { d.learn.push({ title: '강좌', url: 'https://www.boostcourse.org/x' }); }, '공식 도메인 주소가 아닙니다'],
+  ['출처가 블로그', (d) => { d.sources.push('https://someblog.com/review'); }, '.sources'],
+  ['저장소가 허용 안 된 호스트', (d) => { d.repo_url = 'https://evil.example.net/x'; }, 'repo_url'],
+  ['오픈소스 값에 근거가 없음', (d) => { d.evidence = d.evidence.filter((e) => e.field !== 'open_source'); }, '"open_source" 값의 근거'],
+  ['쓰는 형태 값에 근거가 없음', (d) => { d.evidence = d.evidence.filter((e) => e.field !== 'forms'); }, '"forms" 값의 근거'],
+  ['초안에 확인 날짜가 있음', (d) => { d.last_verified = TODAY; }, 'last_verified'],
+  ['개발자용에 없는 todo 칸', (d) => { d.todo = ['login']; }, '.todo:'],
+];
+for (const [name, mutate, expected] of devFailCases) {
+  test(`개발자용 초안 검사 실패: ${name}`, () => {
+    const errors = devErrorsFor(mutate);
+    assert.ok(errors.some((e) => e.includes(expected)), JSON.stringify(errors));
+  });
+}
+
+test('개발자용 todo: 오픈소스·저장소를 J가 채울 칸으로 두면 통과', () => {
+  const errors = devErrorsFor((d) => {
+    d.todo = ['open_source', 'repo_url'];
+    d.open_source = null;
+    delete d.repo_url;
+    d.evidence = d.evidence.filter((e) => e.field !== 'open_source');
+  });
+  assert.deepEqual(errors, []);
+});
+
+test('개발자용 확정: official_domains는 남기고 초안 전용 필드만 지움', () => {
+  const tool = toTool({ ...makeDevDraft(), review_notes: ['메모'], todo: [] }, '2026-10-20', 'dev');
+  assert.deepEqual(tool.official_domains, ['alpha.example.com']);
+  for (const k of ['evidence', 'review_notes', 'todo']) assert.ok(!(k in tool));
+  assert.equal(tool.last_verified, '2026-10-20');
+});
