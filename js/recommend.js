@@ -6,19 +6,23 @@ export const MAX_RESULTS = 3;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const MOBILE_PLATFORMS = ['ios', 'android'];
 
-// 결과가 0개일 때 빼는 순서. 보안 조건은 절대 빼지 않는다.
-const RELAX_ORDER = ['mobile', 'freeOnly'];
-const CONDITION_LABELS = { mobile: '휴대폰 앱', freeOnly: '무료' };
-
 const PURPOSE_REASONS = {
   3: '이 목적에 가장 많이 쓰는 툴이에요',
   2: '이 일에 잘 맞는 툴이에요',
   1: '이 일에도 쓸 수 있어요',
 };
+const DEV_PURPOSE_REASONS = {
+  3: '이 일에 가장 많이 쓰는 도구예요',
+  2: '이 일에 잘 맞는 도구예요',
+  1: '이 일에도 쓸 수 있어요',
+};
 const REASON_KOREAN = '메뉴와 결과 모두 한국어로 잘 돼요';
 const REASON_SECURITY = '입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요';
 const REASON_FREE = '무료로 시작할 수 있어요';
+const REASON_OPEN_SOURCE = '오픈소스예요';
+const REASON_NOT_AI = 'AI 툴은 아니지만 AI로 만든 앱에 자주 같이 써요';
 const NOTICE_NONE = '조건에 맞는 툴이 아직 없어요';
+const DEV_NOTICE_NONE = '조건에 맞는 도구가 아직 없어요';
 
 // "YYYY-MM-DD" → UTC 기준 밀리초. 형식이 틀리면 NaN.
 function parseDate(value) {
@@ -44,26 +48,62 @@ export function isSecure(tool) {
   return tool.privacy.trains_on_input_default === 'no' || tool.privacy.opt_out === 'yes';
 }
 
-function passes(tool, conditions) {
-  if (conditions.freeOnly && tool.price.free !== true) return false;
-  if (conditions.securityImportant && !isSecure(tool)) return false;
-  if (conditions.mobile && !tool.platforms.some((p) => MOBILE_PLATFORMS.includes(p))) return false;
-  return true;
+/**
+ * 데이터 세트마다 다른 규칙. 점수 = purposes[P] × 10 + bonus - (90일 초과 ? 3 : 0)
+ *   general: 비개발자용 (기획서 9장, docs/decisions.md)
+ *   dev:     개발자용 (docs/개발자용_기획서.md)
+ * relaxOrder: 결과가 0개일 때 빼는 조건 순서. 여기 없는 조건(보안 등)은 절대 빼지 않는다.
+ */
+export const PROFILES = {
+  general: {
+    purposeId: /^P\d{2}$/,
+    filters: {
+      freeOnly: (t) => t.price.free === true,
+      securityImportant: isSecure,
+      mobile: (t) => t.platforms.some((p) => MOBILE_PLATFORMS.includes(p)),
+    },
+    relaxOrder: ['mobile', 'freeOnly'],
+    labels: { mobile: '휴대폰 앱', freeOnly: '무료' },
+    purposeReasons: PURPOSE_REASONS,
+    noneNotice: NOTICE_NONE,
+    bonus: (t, c) => t.korean * (c.koreanImportant ? 4 : 1) + (t.price.free ? 2 : 0),
+    reasons: (t, c) => [
+      ...(t.korean === 3 ? [REASON_KOREAN] : []),
+      ...(c.securityImportant && isSecure(t) ? [REASON_SECURITY] : []),
+      ...(t.price.free ? [REASON_FREE] : []),
+    ],
+  },
+  dev: {
+    purposeId: /^[a-z][a-z_]*$/,
+    filters: {
+      freeOnly: (t) => t.price.free === true,
+      openSourceOnly: (t) => t.open_source === true,
+    },
+    relaxOrder: ['openSourceOnly', 'freeOnly'],
+    labels: { openSourceOnly: '오픈소스', freeOnly: '무료' },
+    purposeReasons: DEV_PURPOSE_REASONS,
+    noneNotice: DEV_NOTICE_NONE,
+    bonus: (t) => (t.ai_native === 'yes' ? 2 : 0) + (t.price.free ? 2 : 0),
+    reasons: (t) => [
+      ...(t.open_source ? [REASON_OPEN_SOURCE] : []),
+      ...(t.ai_native === 'no' ? [REASON_NOT_AI] : []),
+      ...(t.price.free ? [REASON_FREE] : []),
+    ],
+  },
+};
+
+function passes(tool, conditions, profile) {
+  return Object.entries(profile.filters).every(([key, test]) => !conditions[key] || test(tool));
 }
 
-function score(tool, purposeId, conditions, today) {
+function score(tool, purposeId, conditions, today, profile) {
   return tool.purposes[purposeId] * 10
-    + tool.korean * (conditions.koreanImportant ? 4 : 1)
-    + (tool.price.free ? 2 : 0)
+    + profile.bonus(tool, conditions)
     - (isStale(tool, today) ? 3 : 0);
 }
 
-function reasons(tool, purposeId, conditions) {
-  const list = [PURPOSE_REASONS[tool.purposes[purposeId]]];
-  if (tool.korean === 3) list.push(REASON_KOREAN);
-  if (conditions.securityImportant && isSecure(tool)) list.push(REASON_SECURITY);
-  if (tool.price.free) list.push(REASON_FREE);
-  return list;
+function reasons(tool, purposeId, conditions, profile) {
+  return [profile.purposeReasons[tool.purposes[purposeId]], ...profile.reasons(tool, conditions)];
 }
 
 function compare(a, b) {
@@ -72,34 +112,38 @@ function compare(a, b) {
     || (a.tool.id < b.tool.id ? -1 : a.tool.id > b.tool.id ? 1 : 0);
 }
 
-function rank(candidates, purposeId, conditions, today) {
+function rank(candidates, purposeId, conditions, today, profile) {
   return candidates
-    .filter((tool) => passes(tool, conditions))
-    .map((tool) => ({ tool, score: score(tool, purposeId, conditions, today) }))
+    .filter((tool) => passes(tool, conditions, profile))
+    .map((tool) => ({ tool, score: score(tool, purposeId, conditions, today, profile) }))
     .sort(compare)
     .slice(0, MAX_RESULTS)
     .map(({ tool, score: s }) => ({
       id: tool.id,
       tool,
       score: s,
-      reasons: reasons(tool, purposeId, conditions),
+      reasons: reasons(tool, purposeId, conditions, profile),
       stale: isStale(tool, today),
     }));
 }
 
 /**
  * @param {object} input
- * @param {object[]} input.tools       data/tools.json 내용
- * @param {string}   input.purposeId   "P01" ~ "P10"
- * @param {object}   [input.conditions] { freeOnly, securityImportant, koreanImportant, mobile } (모두 boolean)
+ * @param {object[]} input.tools       data/tools.json (또는 data/dev/tools.json) 내용
+ * @param {string}   input.purposeId   general: "P01" ~ "P10", dev: "planning" 같은 카테고리 ID
+ * @param {object}   [input.conditions] general: { freeOnly, securityImportant, koreanImportant, mobile }
+ *                                      dev: { freeOnly, openSourceOnly } (모두 boolean)
  * @param {string}   input.today       "YYYY-MM-DD". 결정성을 위해 호출하는 쪽에서 넘긴다.
+ * @param {string}   [input.profile]   "general"(기본) 또는 "dev"
  * @returns {{ results: object[], relaxed: string[], notice: string|null }}
- *   relaxed: 결과를 찾으려고 뺀 조건 이름들 (RELAX_ORDER 순서). 결과가 없으면 빈 배열
+ *   relaxed: 결과를 찾으려고 뺀 조건 이름들 (relaxOrder 순서). 결과가 없으면 빈 배열
  *   notice:  조건을 뺐거나 결과가 없을 때 화면에 보여줄 안내 문구
  */
-export function recommend({ tools, purposeId, conditions = {}, today }) {
+export function recommend({ tools, purposeId, conditions = {}, today, profile: profileName = 'general' }) {
+  const profile = PROFILES[profileName];
+  if (!profile) throw new TypeError(`profile이 틀렸습니다: ${profileName}`);
   if (!Array.isArray(tools)) throw new TypeError('tools는 배열이어야 합니다');
-  if (typeof purposeId !== 'string' || !/^P\d{2}$/.test(purposeId)) {
+  if (typeof purposeId !== 'string' || !profile.purposeId.test(purposeId)) {
     throw new TypeError(`purposeId 형식이 틀렸습니다: ${purposeId}`);
   }
   if (!isValidDate(today)) throw new TypeError(`today 형식이 틀렸습니다: ${today}`);
@@ -108,20 +152,20 @@ export function recommend({ tools, purposeId, conditions = {}, today }) {
   const active = { ...conditions };
   const relaxed = [];
 
-  let results = rank(candidates, purposeId, active, today);
-  for (const key of RELAX_ORDER) {
+  let results = rank(candidates, purposeId, active, today, profile);
+  for (const key of profile.relaxOrder) {
     if (results.length > 0) break;
     if (!active[key]) continue;
     active[key] = false;
     relaxed.push(key);
-    results = rank(candidates, purposeId, active, today);
+    results = rank(candidates, purposeId, active, today, profile);
   }
 
-  if (results.length === 0) return { results, relaxed: [], notice: NOTICE_NONE };
+  if (results.length === 0) return { results, relaxed: [], notice: profile.noneNotice };
 
   let notice = null;
   if (relaxed.length > 0) {
-    notice = `${relaxed.map((key) => CONDITION_LABELS[key]).join(', ')} 조건을 빼면 이런 선택지가 있어요`;
+    notice = `${relaxed.map((key) => profile.labels[key]).join(', ')} 조건을 빼면 이런 선택지가 있어요`;
   }
 
   return { results, relaxed, notice };

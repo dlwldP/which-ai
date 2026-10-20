@@ -64,6 +64,30 @@ export function localToday(now = new Date()) {
   return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
 }
 
+// ---- 개발자용 (docs/개발자용_기획서.md) ----
+const FORM_LABELS = {
+  web: '웹',
+  desktop: '데스크톱 앱',
+  ide_extension: 'IDE 확장',
+  cli: 'CLI',
+  library: '라이브러리',
+  cloud_service: '클라우드 서비스',
+  self_host: '셀프 호스팅',
+};
+const AI_NATIVE_LABELS = { yes: 'AI가 핵심', partial: 'AI 기능 일부', no: 'AI 툴 아님 (AI와 같이 쓰는 도구)' };
+
+export function formsText(forms) {
+  return forms.map((f) => FORM_LABELS[f] ?? f).join(', ');
+}
+
+export function aiNativeText(aiNative) {
+  return AI_NATIVE_LABELS[aiNative] ?? UNKNOWN;
+}
+
+export function openSourceText(openSource) {
+  return openSource ? '예' : '아니요';
+}
+
 const LOGIN_LABELS = {
   google: '구글 계정',
   apple: '애플 계정',
@@ -99,9 +123,19 @@ const FIELD_LABELS = {
   cautions: '주의할 점',
   sources: '출처',
   last_verified: '확인 날짜',
+  // 개발자용
+  primary: '대표 목적',
+  ai_native: 'AI 여부',
+  open_source: '오픈소스',
+  repo_url: '저장소 주소',
+  forms: '쓰는 형태',
+  learn: '배울 거리',
+  official_domains: '공식 도메인',
 };
 // 길어서 전/후 값을 다 보여주지 않는 항목
-const LONG_FIELDS = new Set(['url', 'one_liner', 'privacy.note', 'start_steps', 'cautions', 'sources']);
+const LONG_FIELDS = new Set([
+  'url', 'one_liner', 'privacy.note', 'start_steps', 'cautions', 'sources', 'repo_url', 'learn', 'official_domains',
+]);
 const VALUE_FORMATS = {
   'price.free': (v) => freeText({ free: v }),
   'price.paid_from_usd': (v) => `${v.toLocaleString('ko-KR')}달러`,
@@ -112,6 +146,9 @@ const VALUE_FORMATS = {
   platforms: platformsText,
   login: loginText,
   last_verified: formatDate,
+  ai_native: aiNativeText,
+  open_source: openSourceText,
+  forms: formsText,
 };
 
 function changeValue(field, value) {

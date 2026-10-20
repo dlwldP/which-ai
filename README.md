@@ -4,6 +4,8 @@
 
 **👉 사이트 바로가기: [dlwldp.github.io/which-ai](https://dlwldp.github.io/which-ai/)** · [예시 데이터로 둘러보기](https://dlwldp.github.io/which-ai/?demo#/)
 
+**🛠️ 개발자용: [개발할 때 AI 뭐 써?](https://dlwldp.github.io/which-ai/dev/)** · [예시 데이터로 둘러보기](https://dlwldp.github.io/which-ai/dev/?demo#/) ([기획서](docs/개발자용_기획서.md))
+
 - 기획서: [docs/AI뭐써_기획서.md](docs/AI뭐써_기획서.md)
 - 세부 결정 사항: [docs/decisions.md](docs/decisions.md)
 
@@ -22,18 +24,21 @@
 
 ```
 index.html   화면 (한 페이지, 주소 #/... 로 단계 구분)
+dev/         개발자용 화면 (같은 js/app.js를 개발자용 모드로 씀)
 css/         styles.css
 data/        목적·툴·용어집·변경 이력 (JSON). demo-*.json은 화면 확인·테스트용 가짜 데이터
 js/          recommend.js — 추천 로직 (순수 함수, DOM 접근 없음)
              format.js    — 데이터 값을 화면 문구로 바꾸는 순수 함수
              glossary.js  — 문장 속 용어에 밑줄을 씌우는 순수 함수
              changelog.js — tools.json 두 버전을 비교하는 순수 함수
+             modes.js     — 비개발자용·개발자용 화면 문구, 조건, 비교 항목
              app.js       — 화면 그리기와 주소 처리
 drafts/      확인 전 툴 정보 초안 (배포 안 됨, drafts/README.md 참고)
 scripts/     validate-data.js — 데이터 검사
              draft.js — 초안 검사, 확인한 툴을 tools.json으로 옮기기
              build-changelog.js — git 기록으로 변경 이력 만들기 (배포할 때 자동 실행)
              check-freshness.js — 주간 점검: 90일 지난 툴, 링크 상태 → Issue 본문
+             validate-dev-data.js — 개발자용 데이터 검사 (docs/개발자용_기획서.md)
 tests/       Node 내장 테스트 러너
 ```
 
@@ -57,7 +62,8 @@ node scripts/check-freshness.js      # 주간 점검을 직접 돌려보기 (결
 
 `.github/workflows/weekly-check.yml`이 매주 월요일 오전 9시쯤(한국 시간) 실행된다.
 
-- 90일 넘게 확인 안 된 툴, 깨진 공식 주소·출처 링크가 있으면 "주간 점검" 라벨 Issue 하나에 목록을 모은다 (이미 열려 있으면 내용만 갱신).
+- 비개발자용(`data/tools.json`)과 개발자용(`data/dev/tools.json`)을 함께 점검한다.
+- 90일 넘게 확인 안 된 툴, 깨진 공식 주소·출처·저장소·배울 거리 링크가 있으면 "주간 점검" 라벨 Issue 하나에 목록을 모은다 (이미 열려 있으면 내용만 갱신).
 - 모두 처리되면 다음 점검 때 Issue가 자동으로 닫힌다.
 - 가격·정책 값은 자동으로 바꾸지 않는다. 확인할 목록만 만든다.
 - Actions 탭에서 수동 실행할 수 있고, "demo"를 고르면 예시 데이터로 동작을 확인한다.

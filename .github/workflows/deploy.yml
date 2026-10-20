@@ -26,7 +26,9 @@ jobs:
           node-version: 22
       - run: npm test
       - name: 데이터 검사
-        run: node scripts/validate-data.js
+        run: |
+          node scripts/validate-data.js
+          node scripts/validate-dev-data.js
 
   deploy:
     needs: test
@@ -44,8 +46,9 @@ jobs:
       - name: 배포할 파일 모으기 + 변경 이력 만들기
         run: |
           mkdir _site
-          cp -r index.html css js data _site/
+          cp -r index.html dev css js data _site/
           node scripts/build-changelog.js _site/data/changelog.json
+          node scripts/build-changelog.js _site/data/dev/changelog.json --tools data/dev/tools.json
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:

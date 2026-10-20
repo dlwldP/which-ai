@@ -1,17 +1,23 @@
 # 툴 정보 초안
 
 Claude가 공식 페이지를 읽고 만든 **확인 전** 툴 정보예요. 이 폴더는 사이트에 배포되지 않아요.
-J가 출처와 맞춰 확인한 툴만 `data/tools.json`으로 옮겨요.
+J가 출처와 맞춰 확인한 툴만 실제 데이터로 옮겨요.
+
+| 초안 파일 | 옮겨 가는 곳 | 확정 명령 |
+| --- | --- | --- |
+| `tools.draft.json` (비개발자용) | `data/tools.json` | `node scripts/draft.js promote <id> --verified 날짜` |
+| `dev-tools.draft.json` (개발자용) | `data/dev/tools.json` | `node scripts/draft.js promote <id> --verified 날짜 --dev` |
 
 ## 초안 한 개의 모양
 
-`data/tools.json`과 같고, 아래 세 가지가 더 있어요. 확인 날짜(`last_verified`)는 없어요.
+`data/tools.json`과 같고, 아래 네 가지가 더 있어요. 확인 날짜(`last_verified`)는 없어요.
 
 | 필드 | 뜻 |
 | --- | --- |
 | `official_domains` | 공식 도메인 목록 (예: `["naver.com"]`). `url`과 `sources`는 모두 이 도메인이어야 해요 |
 | `evidence` | 값마다 근거: `{ "field": "price.free", "source": "공식 페이지 주소", "quote": "페이지에 있는 문장 그대로" }` |
 | `review_notes` | Claude가 남기는 메모 (헷갈린 점, 제안값이라 J가 정해야 하는 것) |
+| `todo` | 공식 페이지에서 근거를 못 찾아 **J가 채워야 하는 칸** (예: 가격 페이지가 글자로 안 읽힐 때). 값과 근거를 채우고 목록에서 지워야 promote할 수 있어요 |
 
 ## J가 확인하는 순서
 
@@ -35,3 +41,11 @@ J가 출처와 맞춰 확인한 툴만 `data/tools.json`으로 옮겨요.
 - 근거 출처가 `sources`에 없는 경우
 - 초안에 확인 날짜가 들어간 경우
 - 그 밖에 `data/tools.json` 규칙 위반
+
+## 개발자용 초안이 다른 점
+
+- 모양은 `data/dev/tools.json`과 같아요 (`docs/개발자용_기획서.md` 5장). `official_domains`는 확정 후에도 남아요.
+- 근거 문장이 필요한 값: 무료 여부, 무료 한도, 유료 가격, 학습 정책, **오픈소스 여부**, **쓰는 형태**
+- `todo`로 둘 수 있는 칸: 가격·학습 정책 칸, `open_source`, `repo_url`, `forms`
+- `learn`(배울 거리), `sources`, `url`은 모두 공식 도메인이어야 해요. 저장소 주소(`repo_url`)만 `github.com`, `gitlab.com`도 돼요.
+- **AI 여부(`ai_native`), 적합도, 대표 목적(`primary`)**은 Claude의 제안이에요. J가 정해요.
