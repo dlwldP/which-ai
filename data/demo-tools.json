@@ -4,11 +4,23 @@
     "name": "테스트툴 알파",
     "url": "https://example.com/alpha",
     "one_liner": "테스트툴 알파 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "P01": 3,
-      "P03": 2,
-      "P07": 1,
-      "P09": 1
+    "features": {
+      "P01": [
+        "chat",
+        "draft",
+        "polish",
+        "attach"
+      ],
+      "P03": [
+        "upload",
+        "summary"
+      ],
+      "P07": [
+        "doc_format"
+      ],
+      "P09": [
+        "sources"
+      ]
     },
     "price": {
       "free": true,
@@ -51,10 +63,23 @@
     "name": "테스트툴 브라보",
     "url": "https://example.com/bravo",
     "one_liner": "테스트툴 브라보 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "P01": 2,
-      "P02": 3,
-      "P03": 1
+    "features": {
+      "P01": [
+        "chat",
+        "draft"
+      ],
+      "P02": [
+        "upload",
+        "transcribe",
+        "summary",
+        "speakers"
+      ],
+      "P03": [
+        "upload"
+      ],
+      "P09": [
+        "web_search"
+      ]
     },
     "price": {
       "free": false,
@@ -93,10 +118,23 @@
     "name": "테스트툴 찰리",
     "url": "https://example.com/charlie",
     "one_liner": "테스트툴 찰리 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "P02": 2,
-      "P04": 3,
-      "P05": 1
+    "features": {
+      "P02": [
+        "upload",
+        "transcribe"
+      ],
+      "P04": [
+        "from_topic",
+        "from_doc",
+        "auto_design",
+        "export_ppt"
+      ],
+      "P05": [
+        "text_to_image"
+      ],
+      "P09": [
+        "web_search"
+      ]
     },
     "price": {
       "free": true,
@@ -132,10 +170,20 @@
     "name": "테스트툴 델타",
     "url": "https://example.com/delta",
     "one_liner": "테스트툴 델타 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "P04": 2,
-      "P05": 3,
-      "P06": 1
+    "features": {
+      "P04": [
+        "from_topic",
+        "from_doc"
+      ],
+      "P05": [
+        "text_to_image",
+        "edit_part",
+        "text_in_image",
+        "size"
+      ],
+      "P06": [
+        "auto_subtitle"
+      ]
     },
     "price": {
       "free": true,
@@ -173,10 +221,22 @@
     "name": "테스트툴 에코",
     "url": "https://example.com/echo",
     "one_liner": "테스트툴 에코 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "P06": 3,
-      "P07": 3,
-      "P10": 1
+    "features": {
+      "P06": [
+        "auto_subtitle",
+        "edit_by_text",
+        "clips",
+        "translate_subtitle"
+      ],
+      "P07": [
+        "doc_format",
+        "tone",
+        "glossary",
+        "translate"
+      ],
+      "P10": [
+        "tts"
+      ]
     },
     "price": {
       "free": false,
@@ -213,10 +273,23 @@
     "name": "테스트툴 폭스트롯",
     "url": "https://example.com/foxtrot",
     "one_liner": "테스트툴 폭스트롯 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "P08": 3,
-      "P09": 2,
-      "P10": 3
+    "features": {
+      "P08": [
+        "upload",
+        "formula",
+        "clean",
+        "chart"
+      ],
+      "P09": [
+        "sources",
+        "web_search"
+      ],
+      "P10": [
+        "tts",
+        "voices",
+        "emotion_speed",
+        "download"
+      ]
     },
     "price": {
       "free": true,
@@ -254,11 +327,25 @@
     "name": "테스트툴 골프",
     "url": "https://example.com/golf",
     "one_liner": "테스트툴 골프 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "P06": 2,
-      "P08": 2,
-      "P09": 3,
-      "P10": 2
+    "features": {
+      "P06": [
+        "auto_subtitle",
+        "edit_by_text"
+      ],
+      "P08": [
+        "upload",
+        "formula"
+      ],
+      "P09": [
+        "sources",
+        "web_search",
+        "compare",
+        "report"
+      ],
+      "P10": [
+        "tts",
+        "voices"
+      ]
     },
     "price": {
       "free": false,
@@ -294,9 +381,14 @@
     "name": "테스트툴 호텔",
     "url": "https://example.com/hotel",
     "one_liner": "테스트툴 호텔 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "P01": 1,
-      "P07": 2
+    "features": {
+      "P01": [
+        "chat"
+      ],
+      "P07": [
+        "doc_format",
+        "tone"
+      ]
     },
     "price": {
       "free": true,

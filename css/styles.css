@@ -393,19 +393,6 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 }
 .tool-head { padding-bottom: 12px; }
 .tool-title { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-.tool-rank {
-  flex: none;
-  display: inline-grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--on-accent);
-  font-weight: 800;
-  font-size: 0.875rem;
-  align-self: center;
-}
 .tool-name { font-size: 1.3rem; font-weight: 800; margin: 0; }
 .tool-name a { color: inherit; }
 .tool-name a:hover { color: var(--accent); }
@@ -474,6 +461,18 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .cautions { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .cautions li { background: var(--warn-bg); border-radius: 8px; padding: 7px 10px; font-size: 0.9rem; }
 .cautions li::before { content: "⚠ "; color: var(--warn); font-weight: 700; }
+
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.checklist li { font-size: 0.92rem; }
+.check-yes > span[aria-hidden] { color: var(--good); font-weight: 800; }
+.check-no { color: var(--muted); }
+.more-candidates { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 0 20px; }
+.more-candidates > summary { cursor: pointer; list-style: none; padding: 14px 0; color: var(--accent); font-weight: 700; text-align: center; min-height: 48px; }
+.more-candidates > summary::-webkit-details-marker { display: none; }
+.more-candidates > summary::after { content: " ▾"; }
+.more-candidates[open] > summary::after { content: " ▴"; }
+.more-candidates .list { border-top: 1px solid var(--line); }
+.order-note { color: var(--muted); font-size: 0.875rem; margin: -8px 0 16px; }
 
 .verified-line { margin: 14px 0 0; color: var(--muted); font-size: 0.875rem; }
 

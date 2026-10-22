@@ -9,6 +9,7 @@ const TODAY = '2026-10-19';
 const fixture = JSON.parse(readFileSync(new URL('../data/demo-tools.json', import.meta.url), 'utf8'));
 const { tools: realTools, purposes } = loadData();
 const purposeIds = purposes.map((p) => p.id);
+const featuresOf = (pid) => purposes.find((p) => p.id === pid).features;
 
 // 조건 4개의 모든 조합 (16가지)
 const allConditions = [];
@@ -90,27 +91,28 @@ test('입력 데이터를 바꾸지 않음', () => {
   assert.deepEqual(conditions, { freeOnly: true, mobile: true });
 });
 
-test('최대 3개, 점수 높은 순', () => {
+test('최대 3개, 점수 높은 순 (점수 = 지원 기능 수 × 10 + 한국어 + 무료)', () => {
   const { results } = recommend({ tools: fixture, purposeId: 'P01', today: TODAY });
   assert.deepEqual(results.map((r) => r.id), ['alpha', 'bravo', 'hotel']);
-  // alpha: 3×10 + 3 + 2 = 35, bravo: 2×10 + 2 = 22, hotel: 1×10 + 2 + 2 = 14
-  assert.deepEqual(results.map((r) => r.score), [35, 22, 14]);
+  // alpha: 기능 4개 40 + 3 + 2 = 45, bravo: 기능 2개 20 + 2 = 22, hotel: 기능 1개 10 + 2 + 2 = 14
+  assert.deepEqual(results.map((r) => r.score), [45, 22, 14]);
+  assert.deepEqual(results.map((r) => r.features.length), [4, 2, 1]);
 });
 
-test('적합도 0인 툴은 후보가 아님', () => {
+test('그 목적의 기능을 하나도 지원하지 않는 툴은 후보가 아님', () => {
   const tools = structuredClone(fixture);
-  tools.find((t) => t.id === 'hotel').purposes.P01 = 0;
+  delete tools.find((t) => t.id === 'hotel').features.P01;
   const { results } = recommend({ tools, purposeId: 'P01', today: TODAY });
   assert.ok(!results.some((r) => r.id === 'hotel'));
 });
 
 test('한국어 중요 조건이면 한국어 점수가 4배', () => {
-  // P06: echo 3×10+3 = 33, golf 2×10+1 = 21, delta 1×10+2+2 = 14
+  // P06: echo 40+3 = 43, golf 20+1 = 21, delta 10+2+2 = 14
   const normal = recommend({ tools: fixture, purposeId: 'P06', today: TODAY });
-  assert.deepEqual(normal.results.map((r) => r.score), [33, 21, 14]);
-  // 한국어 중요: echo 30+12 = 42, golf 20+4 = 24, delta 10+8+2 = 20
+  assert.deepEqual(normal.results.map((r) => r.score), [43, 21, 14]);
+  // 한국어 중요: echo 40+12 = 52, golf 20+4 = 24, delta 10+8+2 = 20
   const korean = recommend({ tools: fixture, purposeId: 'P06', conditions: { koreanImportant: true }, today: TODAY });
-  assert.deepEqual(korean.results.map((r) => r.score), [42, 24, 20]);
+  assert.deepEqual(korean.results.map((r) => r.score), [52, 24, 20]);
 });
 
 test('90일 넘게 확인 안 된 툴은 3점 감점하고 stale 표시', () => {
@@ -118,7 +120,7 @@ test('90일 넘게 확인 안 된 툴은 3점 감점하고 stale 표시', () => 
   assert.equal(isStale(charlie, TODAY), true);
   const { results } = recommend({ tools: fixture, purposeId: 'P04', today: TODAY });
   const r = results.find((x) => x.id === 'charlie');
-  assert.equal(r.score, 3 * 10 + 1 + 2 - 3);
+  assert.equal(r.score, 4 * 10 + 1 + 2 - 3);
   assert.equal(r.stale, true);
   assert.equal(results.find((x) => x.id === 'delta').stale, false);
 });
@@ -147,26 +149,32 @@ test('휴대폰 조건은 ios 또는 android 앱이 있는 툴만 남김', () =>
 
 test('추천 이유 템플릿', () => {
   const { results } = recommend({
-    tools: fixture, purposeId: 'P01', conditions: { securityImportant: true }, today: TODAY,
+    tools: fixture, purposeId: 'P01', conditions: { securityImportant: true }, today: TODAY, purposeFeatures: featuresOf('P01'),
   });
   const byId = Object.fromEntries(results.map((r) => [r.id, r.reasons]));
-  // 켠 조건(보안)과 관련된 이유가 맨 앞 (대표 이유)
+  // 켠 조건(보안)과 관련된 이유가 맨 앞 (대표 이유), 그다음 기능 문장
   assert.deepEqual(byId.alpha, [
     '입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요',
-    '이 목적에 가장 많이 쓰는 툴이에요',
+    '질문·답변, 초안 쓰기, 글 다듬기, 파일 올려 묻기 지원 (4개 중 4개)',
     '메뉴와 결과 모두 한국어로 잘 돼요',
     '무료로 시작할 수 있어요',
   ]);
-  assert.deepEqual(byId.bravo, ['입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요', '이 일에 잘 맞는 툴이에요']);
+  assert.deepEqual(byId.bravo, ['입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요', '질문·답변, 초안 쓰기 지원 (4개 중 2개)']);
 
-  const p03 = recommend({ tools: fixture, purposeId: 'P03', today: TODAY }).results;
-  assert.deepEqual(p03.find((r) => r.id === 'bravo').reasons, ['이 일에도 쓸 수 있어요']);
+  const p03 = recommend({ tools: fixture, purposeId: 'P03', today: TODAY, purposeFeatures: featuresOf('P03') }).results;
+  assert.deepEqual(p03.find((r) => r.id === 'bravo').reasons, ['파일 올리기 지원 (4개 중 1개)']);
 });
 
-test('조건을 켜지 않으면 적합도 문장이 대표 이유', () => {
+test('체크리스트를 안 넘기면 기능 개수만 말함', () => {
   const alpha = recommend({ tools: fixture, purposeId: 'P01', today: TODAY }).results.find((r) => r.id === 'alpha');
+  assert.equal(alpha.reasons[0], '이 일에 필요한 기능 4개를 지원해요');
+});
+
+test('조건을 켜지 않으면 기능 문장이 대표 이유', () => {
+  const alpha = recommend({ tools: fixture, purposeId: 'P01', today: TODAY, purposeFeatures: featuresOf('P01') })
+    .results.find((r) => r.id === 'alpha');
   assert.deepEqual(alpha.reasons, [
-    '이 목적에 가장 많이 쓰는 툴이에요',
+    '질문·답변, 초안 쓰기, 글 다듬기, 파일 올려 묻기 지원 (4개 중 4개)',
     '메뉴와 결과 모두 한국어로 잘 돼요',
     '무료로 시작할 수 있어요',
   ]);
@@ -174,14 +182,14 @@ test('조건을 켜지 않으면 적합도 문장이 대표 이유', () => {
 
 test('켠 조건이 여럿이면 보안 → 무료 → 한국어 → 휴대폰 순으로 대표 이유를 고름', () => {
   const all = { securityImportant: true, freeOnly: true, koreanImportant: true, mobile: true };
-  const alpha = recommend({ tools: fixture, purposeId: 'P01', conditions: all, today: TODAY })
+  const alpha = recommend({ tools: fixture, purposeId: 'P01', conditions: all, today: TODAY, purposeFeatures: featuresOf('P01') })
     .results.find((r) => r.id === 'alpha');
   assert.deepEqual(alpha.reasons, [
     '입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요',
     '무료로 시작할 수 있어요',
     '메뉴와 결과 모두 한국어로 잘 돼요',
     '휴대폰 앱으로도 쓸 수 있어요',
-    '이 목적에 가장 많이 쓰는 툴이에요',
+    '질문·답변, 초안 쓰기, 글 다듬기, 파일 올려 묻기 지원 (4개 중 4개)',
   ]);
   const freeFirst = recommend({ tools: fixture, purposeId: 'P01', conditions: { freeOnly: true }, today: TODAY })
     .results.find((r) => r.id === 'alpha');
@@ -252,4 +260,31 @@ test('잘못된 입력은 에러', () => {
   assert.throws(() => recommend({ tools: fixture, purposeId: 'P01', today: '2026-02-30' }), TypeError);
   assert.throws(() => recommend({ tools: fixture, purposeId: 'P01' }), TypeError);
   assert.throws(() => recommend({ tools: null, purposeId: 'P01', today: TODAY }), TypeError);
+});
+
+// ---- 다른 후보 더 보기 (툴 수 상한 없음) ----
+
+test('추천 3개 밖의 후보는 others로 같은 순서 기준을 따라 나옴', () => {
+  const tools = structuredClone(fixture);
+  // P05에 모든 툴을 넣으면 후보가 8개 → 추천 3개 + 다른 후보 5개
+  for (const t of tools) t.features.P05 ??= ['size'];
+  const out = recommend({ tools, purposeId: 'P05', today: TODAY, purposeFeatures: featuresOf('P05') });
+  assert.equal(out.results.length, 3);
+  assert.equal(out.others.length, tools.length - 3);
+  const all = [...out.results, ...out.others];
+  for (let i = 1; i < all.length; i++) assert.ok(all[i - 1].score >= all[i].score, `${all[i - 1].id} ${all[i].id}`);
+  for (const r of out.others) assert.ok(r.reasons.length >= 1);
+});
+
+test('others도 조건 필터를 지킴 (무료만이면 유료 툴 없음)', () => {
+  const tools = structuredClone(fixture);
+  for (const t of tools) t.features.P05 ??= ['size'];
+  const out = recommend({ tools, purposeId: 'P05', conditions: { freeOnly: true }, today: TODAY });
+  for (const r of [...out.results, ...out.others]) assert.equal(r.tool.price.free, true, r.id);
+});
+
+test('후보가 3개 이하면 others는 빈 배열', () => {
+  const out = recommend({ tools: fixture, purposeId: 'P01', today: TODAY });
+  assert.ok(out.results.length <= 3);
+  assert.deepEqual(out.others, []);
 });

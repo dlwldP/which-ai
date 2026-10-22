@@ -34,7 +34,7 @@
 | 단계 | 하는 일 | 자세히 |
 | --- | --- | --- |
 | 1. 초안 | 공식 페이지를 근거로 초안 작성 (Claude가 도울 수 있음) | [drafts/README.md](drafts/README.md) |
-| 2. 확인 | 공식 도메인, 근거 문장, 사람이 정하는 값(적합도 등) 확인 | [drafts/README.md](drafts/README.md) |
+| 2. 확인 | 공식 도메인, 근거 문장, 지원 기능 근거, 사람이 정하는 값(한국어 점수 등) 확인 | [drafts/README.md](drafts/README.md) |
 | 3. 확정 | `node scripts/draft.js promote <id> --verified 날짜` (개발자용은 `--dev`) | |
 | 4. 검사 | `node --test`, `node scripts/validate-data.js`, `node scripts/validate-dev-data.js` | |
 | 5. 배포 | 커밋 → `main`에 올리면 자동 배포, 변경 이력 자동 생성 | [README.md](README.md) |

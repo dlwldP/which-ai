@@ -6,16 +6,6 @@ export const MAX_RESULTS = 3;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const MOBILE_PLATFORMS = ['ios', 'android'];
 
-const PURPOSE_REASONS = {
-  3: '이 목적에 가장 많이 쓰는 툴이에요',
-  2: '이 일에 잘 맞는 툴이에요',
-  1: '이 일에도 쓸 수 있어요',
-};
-const DEV_PURPOSE_REASONS = {
-  3: '이 일에 가장 많이 쓰는 도구예요',
-  2: '이 일에 잘 맞는 도구예요',
-  1: '이 일에도 쓸 수 있어요',
-};
 const REASON_KOREAN = '메뉴와 결과 모두 한국어로 잘 돼요';
 const REASON_SECURITY = '입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요';
 const REASON_FREE = '무료로 시작할 수 있어요';
@@ -51,8 +41,11 @@ export function isSecure(tool) {
 
 const hasMobileApp = (t) => t.platforms.some((p) => MOBILE_PLATFORMS.includes(p));
 
+/** 툴이 그 목적에서 지원하는 기능 ID 목록 (기능 체크리스트, data/purposes.json의 features) */
+export const supportedFeatures = (tool, purposeId) => tool.features?.[purposeId] ?? [];
+
 /**
- * 데이터 세트마다 다른 규칙. 점수 = purposes[P] × 10 + bonus - (90일 초과 ? 3 : 0)
+ * 데이터 세트마다 다른 규칙. 점수 = 지원 기능 수 × 10 + bonus - (90일 초과 ? 3 : 0)
  *   general: 비개발자용 (기획서 9장, docs/decisions.md)
  *   dev:     개발자용 (docs/개발자용_기획서.md)
  * relaxOrder: 결과가 0개일 때 빼는 조건 순서. 여기 없는 조건(보안 등)은 절대 빼지 않는다.
@@ -67,7 +60,6 @@ export const PROFILES = {
     },
     relaxOrder: ['mobile', 'freeOnly'],
     labels: { mobile: '휴대폰 앱', freeOnly: '무료' },
-    purposeReasons: PURPOSE_REASONS,
     noneNotice: NOTICE_NONE,
     bonus: (t, c) => t.korean * (c.koreanImportant ? 4 : 1) + (t.price.free ? 2 : 0),
     // 추가 이유 문장. key는 그 이유와 관련된 조건 (켜져 있으면 맨 앞으로 간다)
@@ -88,7 +80,6 @@ export const PROFILES = {
     },
     relaxOrder: ['openSourceOnly', 'freeOnly'],
     labels: { openSourceOnly: '오픈소스', freeOnly: '무료' },
-    purposeReasons: DEV_PURPOSE_REASONS,
     noneNotice: DEV_NOTICE_NONE,
     bonus: (t) => (t.ai_native === 'yes' ? 2 : 0) + (t.price.free ? 2 : 0),
     reasons: (t) => [
@@ -107,21 +98,31 @@ function passes(tool, conditions, profile) {
 }
 
 function score(tool, purposeId, conditions, today, profile) {
-  return tool.purposes[purposeId] * 10
+  return supportedFeatures(tool, purposeId).length * 10
     + profile.bonus(tool, conditions)
     - (isStale(tool, today) ? 3 : 0);
 }
 
+/**
+ * 기능 문장. 예: "받아쓰기, 요약 지원 (4개 중 2개)".
+ * purposeFeatures(목적의 체크리스트 [{ id, short }])가 없으면 개수만 말한다.
+ */
+export function featureReason(ids, purposeFeatures) {
+  if (!purposeFeatures?.length) return `이 일에 필요한 기능 ${ids.length}개를 지원해요`;
+  const shorts = purposeFeatures.filter((f) => ids.includes(f.id)).map((f) => f.short);
+  return `${shorts.join(', ')} 지원 (${purposeFeatures.length}개 중 ${shorts.length}개)`;
+}
+
 // 첫 문장이 카드에 크게 보이는 대표 이유다. 켠 조건과 관련된 이유가 있으면 그게 대표 이유가 되고,
-// 없으면 적합도 문장이 대표 이유다. 나머지 순서는 그대로.
-function reasons(tool, purposeId, conditions, profile) {
+// 없으면 기능 문장이 대표 이유다. 나머지 순서는 그대로.
+function reasons(tool, purposeId, conditions, profile, purposeFeatures) {
   const extra = profile.reasons(tool, conditions);
   const matched = profile.conditionPriority
     .filter((key) => conditions[key])
     .flatMap((key) => extra.filter((r) => r.key === key));
   return [
     ...matched.map((r) => r.text),
-    profile.purposeReasons[tool.purposes[purposeId]],
+    featureReason(supportedFeatures(tool, purposeId), purposeFeatures),
     ...extra.filter((r) => !matched.includes(r)).map((r) => r.text),
   ];
 }
@@ -132,17 +133,18 @@ function compare(a, b) {
     || (a.tool.id < b.tool.id ? -1 : a.tool.id > b.tool.id ? 1 : 0);
 }
 
-function rank(candidates, purposeId, conditions, today, profile) {
+// 조건을 통과한 후보 전체를 순서대로. 화면에는 앞의 MAX_RESULTS개(results)와 나머지(others, "다른 후보 더 보기")로 나눈다.
+function rank(candidates, purposeId, conditions, today, profile, purposeFeatures) {
   return candidates
     .filter((tool) => passes(tool, conditions, profile))
     .map((tool) => ({ tool, score: score(tool, purposeId, conditions, today, profile) }))
     .sort(compare)
-    .slice(0, MAX_RESULTS)
     .map(({ tool, score: s }) => ({
       id: tool.id,
       tool,
       score: s,
-      reasons: reasons(tool, purposeId, conditions, profile),
+      reasons: reasons(tool, purposeId, conditions, profile, purposeFeatures),
+      features: supportedFeatures(tool, purposeId),
       stale: isStale(tool, today),
     }));
 }
@@ -154,12 +156,15 @@ function rank(candidates, purposeId, conditions, today, profile) {
  * @param {object}   [input.conditions] general: { freeOnly, securityImportant, koreanImportant, mobile }
  *                                      dev: { freeOnly, openSourceOnly } (모두 boolean)
  * @param {string}   input.today       "YYYY-MM-DD". 결정성을 위해 호출하는 쪽에서 넘긴다.
+ * @param {object[]} [input.purposeFeatures] 그 목적의 기능 체크리스트 [{ id, short }] (이유 문장에 기능 이름을 쓴다)
  * @param {string}   [input.profile]   "general"(기본) 또는 "dev"
- * @returns {{ results: object[], relaxed: string[], notice: string|null }}
+ * @returns {{ results: object[], others: object[], relaxed: string[], notice: string|null }}
+ *   results: 추천 최대 MAX_RESULTS개
+ *   others:  조건을 통과했지만 MAX_RESULTS개 밖인 후보 (같은 모양, 같은 순서 기준). 툴 수 상한이 없어서 화면에서 빠지지 않게 한다
  *   relaxed: 결과를 찾으려고 뺀 조건 이름들 (relaxOrder 순서). 결과가 없으면 빈 배열
  *   notice:  조건을 뺐거나 결과가 없을 때 화면에 보여줄 안내 문구
  */
-export function recommend({ tools, purposeId, conditions = {}, today, profile: profileName = 'general' }) {
+export function recommend({ tools, purposeId, conditions = {}, today, profile: profileName = 'general', purposeFeatures }) {
   const profile = PROFILES[profileName];
   if (!profile) throw new TypeError(`profile이 틀렸습니다: ${profileName}`);
   if (!Array.isArray(tools)) throw new TypeError('tools는 배열이어야 합니다');
@@ -168,33 +173,35 @@ export function recommend({ tools, purposeId, conditions = {}, today, profile: p
   }
   if (!isValidDate(today)) throw new TypeError(`today 형식이 틀렸습니다: ${today}`);
 
-  const candidates = tools.filter((tool) => (tool.purposes[purposeId] ?? 0) >= 1);
+  const candidates = tools.filter((tool) => supportedFeatures(tool, purposeId).length >= 1);
   const active = { ...conditions };
   const relaxed = [];
 
-  let results = rank(candidates, purposeId, active, today, profile);
+  let ranked = rank(candidates, purposeId, active, today, profile, purposeFeatures);
   for (const key of profile.relaxOrder) {
-    if (results.length > 0) break;
+    if (ranked.length > 0) break;
     if (!active[key]) continue;
     active[key] = false;
     relaxed.push(key);
-    results = rank(candidates, purposeId, active, today, profile);
+    ranked = rank(candidates, purposeId, active, today, profile, purposeFeatures);
   }
 
-  if (results.length === 0) return { results, relaxed: [], notice: profile.noneNotice };
+  if (ranked.length === 0) return { results: [], others: [], relaxed: [], notice: profile.noneNotice };
+  const results = ranked.slice(0, MAX_RESULTS);
+  const others = ranked.slice(MAX_RESULTS);
 
   let notice = null;
   if (relaxed.length > 0) {
     notice = `${relaxed.map((key) => profile.labels[key]).join(', ')} 조건을 빼면 이런 선택지가 있어요`;
   }
 
-  return { results, relaxed, notice };
+  return { results, others, relaxed, notice };
 }
 
 /**
  * 섹션이 있는 profile(dev)은 섹션마다 따로 추천한다 (조건 완화·안내도 섹션마다).
  * 섹션이 없는 profile(general)은 섹션 하나({ key: null })로 돌려준다.
- * @returns {{ key: string|null, results: object[], relaxed: string[], notice: string|null }[]}
+ * @returns {{ key: string|null, results: object[], others: object[], relaxed: string[], notice: string|null }[]}
  */
 export function recommendSections(input) {
   const profile = PROFILES[input.profile ?? 'general'];

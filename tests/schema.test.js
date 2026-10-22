@@ -37,9 +37,14 @@ const failCases = [
   ['last_verified가 없는 날짜', (t) => { t.last_verified = '2026-02-30'; }, 'last_verified'],
   ['last_verified 누락', (t) => { delete t.last_verified; }, 'last_verified'],
   ['last_verified가 미래', (t) => { t.last_verified = '2026-10-20'; }, 'last_verified'],
-  ['적합도 범위 밖', (t) => { t.purposes.P01 = 4; }, 'purposes.P01'],
-  ['없는 목적', (t) => { t.purposes.P99 = 1; }, 'purposes.P99'],
-  ['적합도 1 이상인 목적이 없음', (t) => { t.purposes = { P01: 0 }; }, 'purposes'],
+  ['체크리스트에 없는 기능', (t) => { t.features.P01 = ['chat', 'fly']; }, '"fly"는 이 목적의 체크리스트에 없는 기능'],
+  ['다른 목적의 기능', (t) => { t.features.P01 = ['transcribe']; }, 'features.P01'],
+  ['없는 목적', (t) => { t.features.P99 = ['chat']; }, 'features.P99'],
+  ['기능 배열이 비어 있음', (t) => { t.features.P01 = []; }, 'features.P01'],
+  ['기능 중복', (t) => { t.features.P01 = ['chat', 'chat']; }, '중복된 기능'],
+  ['기능이 숫자 (옛 적합도 형식)', (t) => { t.features.P01 = 3; }, 'features.P01'],
+  ['지원 기능이 있는 목적이 없음', (t) => { t.features = {}; }, 'features'],
+  ['features 누락', (t) => { delete t.features; }, 'features'],
   ['korean 범위 밖', (t) => { t.korean = 0; }, 'korean'],
   ['privacy 값 틀림', (t) => { t.privacy.opt_out = 'maybe'; }, 'privacy.opt_out'],
   ['price.free가 unknown', (t) => { t.price.free = 'unknown'; }, 'price.free'],
@@ -63,24 +68,29 @@ for (const [name, mutate, expected] of failCases) {
   });
 }
 
-test('검사 실패: 한 목적에 적합도 1 이상인 툴이 5개 초과', () => {
+test('목적당 툴 수 상한 없음 (6개 이상도 통과)', () => {
   const tools = structuredClone(fixture);
-  for (const t of tools.slice(0, 6)) t.purposes.P05 = 1;
-  const errors = validateTools(tools, purposes, TODAY);
-  assert.ok(errors.some((e) => e.includes('P05에 적합도 1 이상인 툴이 6개')), JSON.stringify(errors));
-});
-
-test('적합도 0은 목적당 개수에 세지 않음', () => {
-  const tools = structuredClone(fixture);
-  for (const t of tools) t.purposes.P05 ??= 0;
+  for (const t of tools) t.features.P05 = ['size'];
   assert.deepEqual(validateTools(tools, purposes, TODAY), []);
 });
 
-test('검사 실패: 전체 툴 40개 초과', () => {
+test('검사 실패: 목적의 기능 체크리스트가 4개가 아님', async () => {
+  const { validatePurposes } = await import('../scripts/validate-data.js');
+  const bad = structuredClone(purposes);
+  bad[0].features.pop();
+  assert.ok(validatePurposes(bad).some((e) => e.includes('purposes[0].features')));
+  const dup = structuredClone(purposes);
+  dup[1].features[1].id = dup[1].features[0].id;
+  assert.ok(validatePurposes(dup).some((e) => e.includes('중복된 id')));
+  const noShort = structuredClone(purposes);
+  delete noShort[2].features[0].short;
+  assert.ok(validatePurposes(noShort).some((e) => e.includes('label과 short')));
+});
+
+test('전체 툴 수 상한 없음 (41개도 통과)', () => {
   const base = fixture.find((t) => t.id === 'alpha');
-  const tools = Array.from({ length: 41 }, (_, i) => ({ ...base, id: `tool-${i}` }));
-  const errors = validateTools(tools, purposes, TODAY);
-  assert.ok(errors.includes('tools.json: 툴이 41개입니다 (최대 40개)'), JSON.stringify(errors));
+  const tools = Array.from({ length: 41 }, (_, i) => ({ ...structuredClone(base), id: `tool-${i}` }));
+  assert.deepEqual(validateTools(tools, purposes, TODAY), []);
 });
 
 test('검사 실패: 용어집 단어가 겹침', () => {

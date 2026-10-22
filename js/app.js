@@ -7,7 +7,7 @@
 // 조건은 모드마다 다르다 (js/modes.js). 예: 비개발자용 free=1, secure=1 / 개발자용 free=1, oss=1
 // 주소에 ?demo가 있으면 (예: index.html?demo#/) 실제 데이터 대신 예시 데이터를 쓴다.
 // 점수 계산은 하지 않는다. 추천은 recommend.js에만 맡긴다.
-import { recommendSections, isStale } from './recommend.js';
+import { featureReason, recommendSections, isStale, supportedFeatures } from './recommend.js';
 import { UNKNOWN, changeText, formatDate, localToday, reportUrl } from './format.js';
 import { glossarize, termIn, termMatcher } from './glossary.js';
 import { MODES } from './modes.js';
@@ -23,7 +23,6 @@ let routedOnce = false; // 사이트 안에서 이동한 적이 있으면 "뒤�
 
 const CONDITIONS = mode.conditions;
 const FACTS = mode.facts;
-const FIT_LABELS = { 3: `이 일의 대표 ${W}예요`, 2: '이 일에 잘 맞아요', 1: '이 일에도 쓸 수 있어요' };
 
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -173,15 +172,20 @@ function renderHome() {
 // ---- 추천 결과 ----
 // 카드는 요약(머리, 대표 이유, 배지, 버튼)만 보이고 나머지는 "자세히 보기"에 접는다.
 // 휴대폰은 세로로 쌓고, 넓은 화면은 3개를 나란히 놓아 칸을 CSS subgrid로 맞춘다 (칸 수 5 = styles.css .cards).
-function toolCardHtml(r, index, all) {
+/** 그 목적의 기능 체크리스트. 지원하는 기능은 ✓, 공식 페이지에서 확인 안 된 기능은 흐리게 */
+const checklistHtml = (purpose, ids) => `
+  <ul class="checklist" aria-label="이 일에 필요한 기능">${purpose.features.map((f) => (ids.includes(f.id)
+    ? `<li class="check-yes"><span aria-hidden="true">✓</span> ${esc(f.label)}</li>`
+    : `<li class="check-no"><span aria-hidden="true">–</span> ${esc(f.label)} <span class="sr-only">(확인 안 됨)</span></li>`)).join('')}</ul>`;
+
+function toolCardHtml(r, index, all, purpose) {
   const t = r.tool;
   const cautions = cautionsOf(t);
   const [topReason, ...moreReasons] = r.reasons;
   return `
-    <article class="tool-card" aria-label="${index + 1}번째 추천 / 전체 ${all.length}개">
+    <article class="tool-card" aria-label="추천 후보 ${index + 1} / 전체 ${all.length}개">
       <div class="tool-head">
         <div class="tool-title">
-          <span class="tool-rank">${index + 1}</span>
           <h2 class="tool-name"><a href="#/t/${esc(t.id)}">${esc(t.name)}</a></h2>
           ${staleTag(r.stale)}${notAiTag(t)}
         </div>
@@ -192,6 +196,8 @@ function toolCardHtml(r, index, all) {
       <div class="tool-actions">${officialButton(t, 'btn-outline')}</div>
       <details class="card-more">
         <summary>자세히 보기</summary>
+        <h3 class="section-label">이 일에 필요한 기능</h3>
+        ${checklistHtml(purpose, r.features)}
         ${moreReasons.length ? `<ul class="reasons" aria-label="다른 추천 이유">${moreReasons.map((s) => `<li>${g(s)}</li>`).join('')}</ul>` : ''}
         <div class="facts">${FACTS.map((f) => factHtml(f, t)).join('')}</div>
         <h3 class="section-label">이렇게 시작해요</h3>
@@ -207,7 +213,20 @@ function toolCardHtml(r, index, all) {
     </article>`;
 }
 
-const cardsHtml = (results) => `<div class="cards">${results.map(toolCardHtml).join('')}</div>`;
+const cardsHtml = (results, purpose) =>
+  `<div class="cards">${results.map((r, i, all) => toolCardHtml(r, i, all, purpose)).join('')}</div>`;
+
+/** 추천 3개 밖의 후보. 접어 두고, 열면 이름과 대표 이유만 짧게 (누르면 상세 화면) */
+const othersHtml = (others) => (others.length === 0 ? '' : `
+  <details class="more-candidates">
+    <summary>다른 후보 ${others.length}개 더 보기</summary>
+    <ul class="list">${others.map((r) => `
+      <li><a class="row" href="#/t/${esc(r.tool.id)}">
+        <span class="txt"><span class="ttl">${esc(r.tool.name)}${r.stale ? ' <span class="tag tag-warn">확인 필요</span>' : ''}</span>
+        <span class="dsc">${esc(r.reasons[0])}</span></span>
+        <span class="chev" aria-hidden="true">›</span>
+      </a></li>`).join('')}</ul>
+  </details>`);
 
 /** 넓은 화면에서는 카드 하나의 "자세히 보기"를 열면 나란히 놓인 카드도 같이 열어 같은 항목끼리 비교한다. */
 function installDetailsSync() {
@@ -225,6 +244,7 @@ function renderResult(purpose, conditions) {
   // 개발자용은 섹션(공식 AI 툴 / 오픈소스)마다 따로 추천한다. 비개발자용은 섹션 하나.
   const sections = recommendSections({
     tools: data.tools, purposeId: purpose.id, conditions, today: localToday(), profile: mode.profile,
+    purposeFeatures: purpose.features,
   });
 
   const chips = CONDITIONS.map((c) => {
@@ -234,9 +254,9 @@ function renderResult(purpose, conditions) {
   }).join('');
   const activeDescs = CONDITIONS.filter((c) => conditions[c.key]).map((c) => c.desc);
 
-  const sectionBody = ({ results, notice }) => (results.length === 0
+  const sectionBody = ({ results, others, notice }) => (results.length === 0
     ? `<section class="card"><p class="empty"><strong>${esc(notice)}</strong>조건을 바꿔서 다시 찾아보세요.</p></section>`
-    : `${notice ? `<p class="notice" role="status">${esc(notice)}</p>` : ''}${cardsHtml(results)}`);
+    : `${notice ? `<p class="notice" role="status">${esc(notice)}</p>` : ''}${cardsHtml(results, purpose)}${othersHtml(others)}`);
 
   let body;
   if (data.tools.length === 0) {
@@ -266,7 +286,8 @@ function renderResult(purpose, conditions) {
         <span class="chips-label">중요한 조건을 누르면 바로 다시 골라드려요</span>
         ${chips}
         ${activeDescs.length ? `<p class="chips-desc">${activeDescs.map(esc).join(' · ')}</p>` : ''}
-      </div>` : ''}
+      </div>
+      <p class="order-note">순서는 이 일에 필요한 기능을 몇 개 지원하는지(공식 페이지 기준)로 정해요. 좋고 나쁨의 순위가 아니에요.</p>` : ''}
     ${body}`;
   installDetailsSync();
 }
@@ -278,9 +299,9 @@ function renderTool(t) {
   const stale = isStale(t, localToday());
   const cautions = cautionsOf(t);
   const fits = data.purposes
-    .map((p) => ({ p, score: t.purposes[p.id] ?? 0 }))
-    .filter((x) => x.score >= 1)
-    .sort((a, b) => b.score - a.score || (a.p.id < b.p.id ? -1 : 1));
+    .map((p) => ({ p, ids: supportedFeatures(t, p.id) }))
+    .filter((x) => x.ids.length >= 1)
+    .sort((a, b) => b.ids.length - a.ids.length || (a.p.id < b.p.id ? -1 : 1));
   const history = data.changelog
     .flatMap((entry) => entry.changes.filter((c) => c.tool_id === t.id).map((c) => ({ date: entry.date, c })));
 
@@ -333,7 +354,7 @@ function renderTool(t) {
         <section class="card">
           <h2 class="card-title">이 ${W}로 할 수 있는 일</h2>
           <p class="card-sub">누르면 그 일에 맞는 다른 ${W}와 비교해볼 수 있어요</p>
-          <ul class="list">${fits.map(({ p, score }) => purposeRow(p, `#/p/${p.id}/result`, FIT_LABELS[score])).join('')}</ul>
+          <ul class="list">${fits.map(({ p, ids }) => purposeRow(p, `#/p/${p.id}/result`, featureReason(ids, p.features))).join('')}</ul>
         </section>
 
         <section class="card">

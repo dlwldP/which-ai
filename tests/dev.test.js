@@ -9,7 +9,10 @@ const TODAY = '2026-10-19';
 const demo = JSON.parse(readFileSync(new URL('../data/dev/demo-tools.json', import.meta.url), 'utf8'));
 const { tools: realTools, purposes, glossary } = loadDevData();
 const purposeIds = purposes.map((p) => p.id);
-const rec = (purposeId, conditions = {}, tools = demo) => recommend({ tools, purposeId, conditions, today: TODAY, profile: 'dev' });
+const featuresOf = (pid) => purposes.find((p) => p.id === pid).features;
+const rec = (purposeId, conditions = {}, tools = demo) => recommend({
+  tools, purposeId, conditions, today: TODAY, profile: 'dev', purposeFeatures: featuresOf(purposeId),
+});
 
 const allConditions = [{}, { freeOnly: true }, { openSourceOnly: true }, { freeOnly: true, openSourceOnly: true }];
 
@@ -41,10 +44,11 @@ const failCases = [
   ['배울 거리가 http', (t) => { t.learn[0].url = 'http://alpha.example.com/docs'; }, 'learn[0]'],
   ['오픈소스인데 저장소 주소 없음', (t) => { delete t.repo_url; }, 'repo_url'],
   ['저장소가 허용 안 된 호스트', (t) => { t.repo_url = 'https://codeberg.example.net/x'; }, 'repo_url'],
-  ['대표 목적이 적합도 0', (t) => { t.primary = 'devops'; }, 'primary'],
+  ['대표 목적의 기능을 지원하지 않음', (t) => { t.primary = 'devops'; }, 'primary'],
   ['ai_native 값 틀림', (t) => { t.ai_native = 'maybe'; }, 'ai_native'],
   ['forms 값 틀림', (t) => { t.forms = ['mobile']; }, 'forms'],
-  ['없는 목적', (t) => { t.purposes.P01 = 1; }, 'purposes.P01'],
+  ['없는 목적', (t) => { t.features.P01 = ['chat']; }, 'features.P01'],
+  ['체크리스트에 없는 기능', (t) => { t.features.coding_agents = ['teleport']; }, '체크리스트에 없는 기능'],
   ['start_steps 2개', (t) => { t.start_steps = ['하나', '둘']; }, 'start_steps'],
   ['확인 날짜가 미래', (t) => { t.last_verified = '2026-10-20'; }, 'last_verified'],
   ['섹션 없음', (t) => { delete t.section; }, '.section'],
@@ -67,20 +71,19 @@ test('공식 도메인의 하위 주소는 허용', () => {
   assert.deepEqual(validateDevTools(tools, purposes, TODAY), []);
 });
 
-test('한 목적·한 섹션에 적합도 1 이상인 도구가 5개 초과면 실패', () => {
+test('한 목적·한 섹션의 도구 수 상한 없음', () => {
   const tools = structuredClone(demo);
-  // planning은 golf·hotel 2개(official) → official 4개를 더하면 6개
-  for (const t of tools.slice(0, 4)) {
-    t.purposes.planning = 1;
-    t.section = 'official';
+  for (const t of tools) {
+    t.features.planning = ['issues'];
+    t.section = t.open_source ? t.section : 'official';
   }
-  assert.ok(validateDevTools(tools, purposes, TODAY).some((e) => e.includes('planning의 official 섹션에 적합도 1 이상인 도구가 6개')));
+  assert.deepEqual(validateDevTools(tools, purposes, TODAY), []);
 });
 
 test('섹션이 다르면 따로 셈 (official 5개 + open_source 3개는 통과)', () => {
   const tools = structuredClone(demo);
   // official 5개(bravo·charlie·echo·golf·hotel), open_source 3개(alpha·delta·foxtrot)를 모두 planning에
-  for (const t of tools) t.purposes.planning = 1;
+  for (const t of tools) t.features.planning = ['issues'];
   assert.deepEqual(validateDevTools(tools, purposes, TODAY), []);
 });
 
@@ -114,19 +117,19 @@ test('모든 목적에서 조건 없이 최소 2개 추천, 이유 1개 이상',
   }
 });
 
-test('점수: 적합도×10 + AI 핵심 2 + 무료 2 - 90일 초과 3', () => {
+test('점수: 지원 기능 수×10 + AI 핵심 2 + 무료 2 - 90일 초과 3', () => {
   const { results } = rec('backend_database');
-  // delta: 30 + 0(AI 아님) + 2(무료) = 32, echo: 20 + 0(일부) + 0 - 3(오래됨) = 17
-  assert.deepEqual(results.map((r) => [r.id, r.score]), [['dev-delta', 32], ['dev-echo', 17]]);
+  // delta: 기능 4개 40 + 0(AI 아님) + 2(무료) = 42, echo: 기능 2개 20 + 0(일부) + 0 - 3(오래됨) = 17
+  assert.deepEqual(results.map((r) => [r.id, r.score]), [['dev-delta', 42], ['dev-echo', 17]]);
   const coding = rec('coding_agents').results;
-  // alpha: 30 + 2 + 2 = 34, bravo: 20 + 2 + 0 = 22
-  assert.deepEqual(coding.map((r) => [r.id, r.score]), [['dev-alpha', 34], ['dev-bravo', 22]]);
+  // alpha: 40 + 2 + 2 = 44, bravo: 20 + 2 + 0 = 22
+  assert.deepEqual(coding.map((r) => [r.id, r.score]), [['dev-alpha', 44], ['dev-bravo', 22]]);
 });
 
 test('추천 이유: 오픈소스, AI 툴 아님', () => {
   const delta = rec('backend_database').results.find((r) => r.id === 'dev-delta');
   assert.deepEqual(delta.reasons, [
-    '이 일에 가장 많이 쓰는 도구예요',
+    'DB, 인증, 스토리지, 자연어 쿼리 지원 (4개 중 4개)',
     '오픈소스예요',
     'AI 툴은 아니지만 AI로 만든 앱에 자주 같이 써요',
     '무료로 시작할 수 있어요',
@@ -137,7 +140,7 @@ test('오픈소스 조건을 켜면 오픈소스 이유가 대표 이유', () =>
   const delta = rec('backend_database', { openSourceOnly: true }).results.find((r) => r.id === 'dev-delta');
   assert.deepEqual(delta.reasons, [
     '오픈소스예요',
-    '이 일에 가장 많이 쓰는 도구예요',
+    'DB, 인증, 스토리지, 자연어 쿼리 지원 (4개 중 4개)',
     'AI 툴은 아니지만 AI로 만든 앱에 자주 같이 써요',
     '무료로 시작할 수 있어요',
   ]);

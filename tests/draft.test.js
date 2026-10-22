@@ -9,6 +9,9 @@ const TODAY = '2026-10-19';
 const { purposes } = loadData();
 const demo = JSON.parse(readFileSync(new URL('../data/demo-tools.json', import.meta.url), 'utf8'));
 
+/** 지원한다고 적은 기능마다 근거 field: "features.P02.transcribe" */
+const featureFields = (tool) => Object.entries(tool.features).flatMap(([pid, ids]) => ids.map((id) => `features.${pid}.${id}`));
+
 /** 예시 툴 하나를 "검사를 통과하는 초안"으로 만든다 */
 function makeDraft() {
   const { last_verified: _, ...tool } = structuredClone(demo.find((t) => t.id === 'bravo'));
@@ -17,8 +20,9 @@ function makeDraft() {
   return {
     ...tool,
     official_domains: ['example.com'],
-    evidence: ['price.free', 'price.paid_from_usd', 'privacy.trains_on_input_default', 'privacy.opt_out', 'platforms', 'login'].map(ev),
-    review_notes: ['적합도와 한국어 점수는 제안값이에요'],
+    evidence: ['price.free', 'price.paid_from_usd', 'privacy.trains_on_input_default', 'privacy.opt_out', 'platforms', 'login',
+      ...featureFields(tool)].map(ev),
+    review_notes: ['한국어 점수는 제안값이에요'],
   };
 }
 
@@ -35,6 +39,19 @@ test('실제 초안 파일이 검사를 통과함', () => {
 
 test('올바른 초안은 통과', () => {
   assert.deepEqual(validateDraft([makeDraft()], purposes, TODAY), []);
+});
+
+test('지원한다고 적은 기능에 근거가 없으면 실패', () => {
+  const errors = errorsFor((d) => { d.evidence = d.evidence.filter((e) => e.field !== 'features.P02.transcribe'); });
+  assert.ok(errors.some((e) => e.includes('"features.P02.transcribe" 기능의 근거')), JSON.stringify(errors));
+});
+
+test('근거를 못 찾은 기능은 빼면 통과', () => {
+  const errors = errorsFor((d) => {
+    d.features.P02 = d.features.P02.filter((id) => id !== 'transcribe');
+    d.evidence = d.evidence.filter((e) => e.field !== 'features.P02.transcribe');
+  });
+  assert.deepEqual(errors, []);
 });
 
 test('공식 도메인 판정', () => {
@@ -109,7 +126,7 @@ function makeDevDraft() {
   const { last_verified: _, ...tool } = structuredClone(devDemo.find((t) => t.id === 'dev-alpha'));
   const src = tool.sources[0];
   const ev = (field) => ({ field, source: src, quote: '공식 페이지 문장' });
-  return { ...tool, evidence: ['price.free', 'privacy.trains_on_input_default', 'open_source', 'forms'].map(ev) };
+  return { ...tool, evidence: ['price.free', 'privacy.trains_on_input_default', 'open_source', 'forms', ...featureFields(tool)].map(ev) };
 }
 const devErrorsFor = (mutate) => {
   const d = makeDevDraft();

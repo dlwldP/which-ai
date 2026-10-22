@@ -7,10 +7,19 @@
       "alpha.example.com"
     ],
     "one_liner": "테스트도구 알파 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "coding_agents": 3,
-      "code_review": 1,
-      "app_builders": 1
+    "features": {
+      "coding_agents": [
+        "repo_context",
+        "multi_file",
+        "run_commands",
+        "open_pr"
+      ],
+      "code_review": [
+        "pr_review"
+      ],
+      "app_builders": [
+        "generate_app"
+      ]
     },
     "primary": "coding_agents",
     "price": {
@@ -57,9 +66,17 @@
       "bravo.example.com"
     ],
     "one_liner": "테스트도구 브라보 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "coding_agents": 2,
-      "code_review": 3
+    "features": {
+      "coding_agents": [
+        "repo_context",
+        "multi_file"
+      ],
+      "code_review": [
+        "pr_review",
+        "security",
+        "tests",
+        "apply_fix"
+      ]
     },
     "primary": "code_review",
     "price": {
@@ -104,9 +121,16 @@
       "charlie.example.com"
     ],
     "one_liner": "테스트도구 찰리 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "app_builders": 3,
-      "design_ui": 1
+    "features": {
+      "app_builders": [
+        "generate_app",
+        "backend",
+        "deploy",
+        "export_code"
+      ],
+      "design_ui": [
+        "generate_ui"
+      ]
     },
     "primary": "app_builders",
     "price": {
@@ -151,9 +175,16 @@
       "delta.example.com"
     ],
     "one_liner": "테스트도구 델타 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "backend_database": 3,
-      "devops": 1
+    "features": {
+      "backend_database": [
+        "database",
+        "auth",
+        "storage",
+        "nl_query"
+      ],
+      "devops": [
+        "auto_deploy"
+      ]
     },
     "primary": "backend_database",
     "price": {
@@ -200,10 +231,17 @@
       "echo.example.com"
     ],
     "one_liner": "테스트도구 에코 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "backend_database": 2,
-      "data_ml": 1,
-      "automation": 1
+    "features": {
+      "backend_database": [
+        "database",
+        "auth"
+      ],
+      "data_ml": [
+        "run_models"
+      ],
+      "automation": [
+        "workflow"
+      ]
     },
     "primary": "backend_database",
     "price": {
@@ -248,9 +286,17 @@
       "foxtrot.example.com"
     ],
     "one_liner": "테스트도구 폭스트롯 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "data_ml": 3,
-      "automation": 2
+    "features": {
+      "data_ml": [
+        "run_models",
+        "rag",
+        "vector_db",
+        "eval"
+      ],
+      "automation": [
+        "workflow",
+        "ai_step"
+      ]
     },
     "primary": "data_ml",
     "price": {
@@ -296,9 +342,16 @@
       "golf.example.com"
     ],
     "one_liner": "테스트도구 골프 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "devops": 3,
-      "planning": 1
+    "features": {
+      "devops": [
+        "auto_deploy",
+        "preview",
+        "logs",
+        "ai_debug"
+      ],
+      "planning": [
+        "doc_draft"
+      ]
     },
     "primary": "devops",
     "price": {
@@ -343,9 +396,19 @@
       "hotel.example.com"
     ],
     "one_liner": "테스트도구 호텔 설명 (테스트용 가짜 데이터)",
-    "purposes": {
-      "planning": 3,
-      "design_ui": 3
+    "features": {
+      "planning": [
+        "doc_draft",
+        "issues",
+        "whiteboard",
+        "realtime"
+      ],
+      "design_ui": [
+        "generate_ui",
+        "components",
+        "prototype",
+        "export_code"
+      ]
     },
     "primary": "planning",
     "price": {

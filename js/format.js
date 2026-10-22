@@ -153,21 +153,29 @@ const VALUE_FORMATS = {
 
 function changeValue(field, value) {
   if (value === null || value === undefined) return '없음';
-  if (field.startsWith('purposes.')) return `${value}점`;
   return String((VALUE_FORMATS[field] ?? ((v) => v))(value));
 }
 
-/** 변경 이력 한 줄. purposes는 data/purposes.json (적합도 항목에 목적 이름을 붙인다) */
+/** 기능 목록 값 → "받아쓰기, 요약" (체크리스트 순서) */
+function featuresValue(value, purpose) {
+  if (!Array.isArray(value) || value.length === 0) return '없음';
+  const list = purpose?.features ?? [];
+  const shorts = list.filter((f) => value.includes(f.id)).map((f) => f.short);
+  return shorts.length === value.length ? shorts.join(', ') : value.join(', ');
+}
+
+/** 변경 이력 한 줄. purposes는 data/purposes.json (기능 항목에 목적 이름과 기능 이름을 붙인다) */
 export function changeText(change, purposes = []) {
   if (change.type === 'added') return `${change.name} 추가`;
   if (change.type === 'removed') return `${change.name} 빠짐`;
   const { field } = change;
-  let label = FIELD_LABELS[field] ?? field;
-  if (field.startsWith('purposes.')) {
-    const purpose = purposes.find((p) => p.id === field.slice('purposes.'.length));
-    label = `'${purpose ? purpose.label : field}' 적합도`;
+  if (field.startsWith('features.')) {
+    const purpose = purposes.find((p) => p.id === field.slice('features.'.length));
+    const label = `'${purpose ? purpose.label : field}' 지원 기능`;
+    return `${change.name}: ${label} ${featuresValue(change.before, purpose)} → ${featuresValue(change.after, purpose)}`;
   }
-  if (LONG_FIELDS.has(field) || !(field in FIELD_LABELS || field.startsWith('purposes.'))) {
+  const label = FIELD_LABELS[field] ?? field;
+  if (LONG_FIELDS.has(field) || !(field in FIELD_LABELS)) {
     return `${change.name}: ${label} 내용이 바뀌었어요`;
   }
   return `${change.name}: ${label} ${changeValue(field, change.before)} → ${changeValue(field, change.after)}`;
