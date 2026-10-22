@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { recommend } from '../js/recommend.js';
+import { recommend, recommendSections } from '../js/recommend.js';
 import { loadDevData, validateDevData, validateDevTools } from '../scripts/validate-dev-data.js';
 
 const TODAY = '2026-10-19';
@@ -47,6 +47,9 @@ const failCases = [
   ['없는 목적', (t) => { t.purposes.P01 = 1; }, 'purposes.P01'],
   ['start_steps 2개', (t) => { t.start_steps = ['하나', '둘']; }, 'start_steps'],
   ['확인 날짜가 미래', (t) => { t.last_verified = '2026-10-20'; }, 'last_verified'],
+  ['섹션 없음', (t) => { delete t.section; }, '.section'],
+  ['섹션 값 틀림', (t) => { t.section = 'repo'; }, '.section'],
+  ['오픈소스가 아닌데 open_source 섹션', (t) => { t.open_source = false; delete t.repo_url; }, 'open_source 섹션은 오픈소스'],
 ];
 
 for (const [name, mutate, expected] of failCases) {
@@ -64,11 +67,21 @@ test('공식 도메인의 하위 주소는 허용', () => {
   assert.deepEqual(validateDevTools(tools, purposes, TODAY), []);
 });
 
-test('한 목적에 적합도 1 이상인 도구가 5개 초과면 실패', () => {
+test('한 목적·한 섹션에 적합도 1 이상인 도구가 5개 초과면 실패', () => {
   const tools = structuredClone(demo);
-  // planning은 golf·hotel 2개 → 4개를 더하면 6개
-  for (const t of tools.slice(0, 4)) t.purposes.planning = 1;
-  assert.ok(validateDevTools(tools, purposes, TODAY).some((e) => e.includes('planning에 적합도 1 이상인 도구가 6개')));
+  // planning은 golf·hotel 2개(official) → official 4개를 더하면 6개
+  for (const t of tools.slice(0, 4)) {
+    t.purposes.planning = 1;
+    t.section = 'official';
+  }
+  assert.ok(validateDevTools(tools, purposes, TODAY).some((e) => e.includes('planning의 official 섹션에 적합도 1 이상인 도구가 6개')));
+});
+
+test('섹션이 다르면 따로 셈 (official 5개 + open_source 3개는 통과)', () => {
+  const tools = structuredClone(demo);
+  // official 5개(bravo·charlie·echo·golf·hotel), open_source 3개(alpha·delta·foxtrot)를 모두 planning에
+  for (const t of tools) t.purposes.planning = 1;
+  assert.deepEqual(validateDevTools(tools, purposes, TODAY), []);
 });
 
 // ---- 추천 규칙 ----
@@ -159,4 +172,46 @@ test('조건에 맞는 도구가 없으면 도구 문구로 안내', () => {
   const out = recommend({ tools, purposeId: 'devops', today: TODAY, profile: 'dev' });
   assert.deepEqual(out.results, []);
   assert.equal(out.notice, '조건에 맞는 도구가 아직 없어요');
+});
+
+// ---- 섹션 (공식 AI 툴 / 오픈소스) ----
+
+test('개발자용은 공식 AI 툴과 오픈소스 섹션을 따로 추천하고, 섹션마다 최대 3개', () => {
+  for (const pid of purposeIds) {
+    for (const c of allConditions) {
+      const sections = recommendSections({ tools: demo, purposeId: pid, conditions: c, today: TODAY, profile: 'dev' });
+      assert.deepEqual(sections.map((x) => x.key), ['official', 'open_source']);
+      for (const { key, results } of sections) {
+        assert.ok(results.length <= 3);
+        for (const r of results) assert.equal(r.tool.section, key, `${pid} ${r.id}`);
+      }
+    }
+  }
+});
+
+test('섹션마다 따로 조건을 빼고 안내함', () => {
+  // backend_database + 오픈소스만: 공식 섹션(echo)은 오픈소스가 없어서 조건을 빼고, 오픈소스 섹션(delta)은 그대로
+  const [official, openSource] = recommendSections({
+    tools: demo, purposeId: 'backend_database', conditions: { openSourceOnly: true }, today: TODAY, profile: 'dev',
+  });
+  assert.deepEqual(official.results.map((r) => r.id), ['dev-echo']);
+  assert.deepEqual(official.relaxed, ['openSourceOnly']);
+  assert.deepEqual(openSource.results.map((r) => r.id), ['dev-delta']);
+  assert.equal(openSource.notice, null);
+});
+
+test('섹션에 후보가 없으면 그 섹션만 "아직 없어요"', () => {
+  const [official, openSource] = recommendSections({ tools: demo, purposeId: 'planning', today: TODAY, profile: 'dev' });
+  assert.ok(official.results.length > 0);
+  assert.deepEqual(openSource.results, []);
+  assert.equal(openSource.notice, '조건에 맞는 도구가 아직 없어요');
+});
+
+test('비개발자용은 섹션 없이 하나로 추천 (recommend와 같은 결과)', () => {
+  const tools = JSON.parse(readFileSync(new URL('../data/demo-tools.json', import.meta.url), 'utf8'));
+  const input = { tools, purposeId: 'P01', conditions: { freeOnly: true }, today: TODAY };
+  const sections = recommendSections(input);
+  assert.equal(sections.length, 1);
+  assert.equal(sections[0].key, null);
+  assert.deepEqual(sections[0].results.map((r) => r.id), recommend(input).results.map((r) => r.id));
 });

@@ -66,6 +66,11 @@ export const MODES = {
       { key: 'openSourceOnly', param: 'oss', icon: '📖', title: '오픈소스만', chip: '오픈소스만', desc: '소스 코드가 공개된 도구만 보여줘요' },
     ],
     badges: (t) => [freeBadge(t.price), openSourceBadge(t.open_source), privacyBadge(t.privacy, '코드 ')],
+    // 추천 결과 섹션 (recommend.js PROFILES.dev.sections와 같은 키, 같은 순서)
+    sections: {
+      official: { icon: '🏢', title: '공식 AI 툴', desc: '회사가 만들고 운영하는 AI 도구예요. 소스가 공개된 제품도 여기에 넣어요.' },
+      open_source: { icon: '📦', title: '오픈소스 프로젝트', desc: '회사 제품이 아닌 오픈소스예요. 저장소에서 받아 직접 설치해서 써요.' },
+    },
     facts: [
       ['무료 사용', (t) => freeText(t.price)],
       ['유료 가격', (t) => paidText(t.price)],

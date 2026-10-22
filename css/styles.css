@@ -70,22 +70,50 @@
 }
 
 /* 개발자용 포인트 색 (청록) */
+/* 개발자용: 배경을 푸른 회색 계열로 바꿔 비개발자용(아이보리)과 한눈에 구분. 포인트 색은 청록 */
 body[data-mode="dev"] {
+  --bg: #eef4f3;
+  --surface: #fbfdfd;
+  --text: #1f2a29;
+  --sub: #4b5957;
+  --muted: #5d6c69;
+  --line: #d6e2e0;
+  --line-strong: #bfd0cd;
   --accent: #1f6f6b;
   --accent-dark: #17524f;
-  --accent-bg: #e1efed;
+  --accent-bg: #dcecea;
+  --ink: #1f2a29;
+  --on-ink: #eef4f3;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) body[data-mode="dev"] {
+    --bg: #111816;
+    --surface: #18211f;
+    --text: #e3ece9;
+    --sub: #b5c4c0;
+    --muted: #93a39f;
+    --line: #2a3633;
+    --line-strong: #384744;
     --accent: #5fb8b0;
     --accent-dark: #86cdc6;
     --accent-bg: #17302d;
+    --ink: #e3ece9;
+    --on-ink: #111816;
   }
 }
 :root[data-theme="dark"] body[data-mode="dev"] {
+  --bg: #111816;
+  --surface: #18211f;
+  --text: #e3ece9;
+  --sub: #b5c4c0;
+  --muted: #93a39f;
+  --line: #2a3633;
+  --line-strong: #384744;
   --accent: #5fb8b0;
   --accent-dark: #86cdc6;
   --accent-bg: #17302d;
+  --ink: #e3ece9;
+  --on-ink: #111816;
 }
 
 * { box-sizing: border-box; }
@@ -115,12 +143,28 @@ body.wide .container { max-width: 1072px; }
 .narrow { max-width: 720px; margin: 0 auto; }
 
 /* ---- 예시 데이터 띠 ---- */
+/* 예시 데이터 화면: 배경은 그대로 두고, 노란 줄무늬 띠 + 상단 바 아래 노란 선 + 로고 옆 "예시" 표시로 구분 */
 .demo-banner {
-  background: var(--ink);
-  color: var(--on-ink);
+  background: repeating-linear-gradient(-45deg, #f5c84c 0 12px, #efbb2f 12px 24px);
+  color: #2b2622;
   text-align: center;
   font-size: 0.875rem;
   padding: 6px 16px;
+}
+body.is-demo .topbar { border-bottom: 3px solid #e0a91a; }
+body.is-demo .logo::after {
+  content: "예시";
+  background: #f5c84c;
+  color: #2b2622;
+  border-radius: 6px;
+  padding: 1px 7px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+/* 개발자용은 로고가 길어서 좁은 화면에서는 "예시" 표시를 빼고 띠·노란 선으로만 구분 */
+@media (max-width: 420px) {
+  body.is-demo[data-mode="dev"] .logo::after { display: none; }
 }
 
 /* ---- 상단 바 ---- */
@@ -148,14 +192,18 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 }
 .intro-what .sub, .page-sub { color: var(--sub); font-size: 1.05rem; margin: 12px 0 0; }
 
-/* ---- 홈 소개: 카드 묶음 (한 화면에 들어가게) ---- */
-.intro {
+/* ---- 홈 소개: 카드 하나, 안을 칸으로 나눈다 (한 화면에 들어가게).
+   칸 사이 1px 틈으로 카드 배경(선 색)이 보여서 구분선이 된다. ---- */
+.card.intro {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  padding: 20px 0 24px;
+  gap: 1px;
+  padding: 0;
+  margin: 20px 0 28px;
+  overflow: hidden;
+  background: var(--line);
 }
-.intro .card { margin: 0; padding: 16px; }
+.intro-part { background: var(--surface); padding: 16px; }
 .intro-what { grid-column: 1 / -1; }
 .intro-go { margin-top: 14px; padding: 10px 18px; min-height: 44px; }
 .intro-how, .intro-stats { grid-column: 1 / -1; }
@@ -184,8 +232,8 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .stat-num { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; color: var(--accent); line-height: 1.3; }
 .stat-label { font-size: 0.875rem; color: var(--muted); }
 @media (min-width: 900px) {
-  .intro { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding-top: 28px; }
-  .intro .card { padding: 20px; }
+  .card.intro { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 28px; }
+  .intro-part { padding: 22px; }
   .intro-what { grid-column: span 2; }
   .intro-how { grid-column: auto; }
   .intro-stats { grid-column: auto; }
@@ -430,6 +478,11 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .verified-line { margin: 14px 0 0; color: var(--muted); font-size: 0.875rem; }
 
 
+/* ---- 개발자용 추천 섹션 (공식 AI 툴 / 오픈소스) ---- */
+.result-section + .result-section { margin-top: 32px; padding-top: 24px; border-top: 1px dashed var(--line-strong); }
+.result-section-title { font-size: 1.2rem; font-weight: 800; margin: 0; }
+.result-section-desc { color: var(--muted); font-size: 0.92rem; margin: 2px 0 14px; }
+
 /* ---- 툴 상세: 넓은 화면은 왼쪽 요약(고정) + 오른쪽 내용 ---- */
 .detail { display: grid; gap: 0; }
 .detail-summary .tool-title { gap: 10px; }
@@ -543,13 +596,29 @@ body.has-sticky-cta { padding-bottom: 76px; }
 .term-sheet p { margin: 8px 0 12px; color: var(--sub); }
 .term-sheet a { font-weight: 700; font-size: 0.92rem; }
 
+/* 용어집: 용어마다 눌러서 펼치는 형식 */
 .glossary { margin: 0; }
-.glossary-item { padding: 14px 0; border-top: 1px solid var(--line); scroll-margin-top: 120px; }
-.glossary-item:first-child { border-top: 0; padding-top: 0; }
-.glossary-item.focused { background: var(--accent-bg); margin: 0 -12px; padding: 14px 12px; border-radius: 8px; }
-.glossary dt { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; }
+.glossary-item { border-top: 1px solid var(--line); scroll-margin-top: 120px; }
+.glossary-item:first-child { border-top: 0; }
+.glossary-item > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 6px;
+  min-height: 48px;
+  padding: 12px 28px 12px 0;
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+}
+.glossary-item > summary::-webkit-details-marker { display: none; }
+.glossary-item > summary::after { content: "▾"; position: absolute; right: 4px; top: 12px; color: var(--muted); }
+.glossary-item[open] > summary::after { content: "▴"; color: var(--accent); }
+.glossary-item > summary:hover .glossary-term { color: var(--accent); }
+.glossary-term { white-space: nowrap; font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; }
 .glossary .alias { color: var(--muted); font-weight: 500; font-size: 0.875rem; letter-spacing: 0; }
-.glossary dd { margin: 4px 0 0; color: var(--sub); }
+.glossary-desc { margin: 0 0 14px; color: var(--sub); }
+.glossary-item.focused { background: var(--accent-bg); margin: 0 -12px; padding: 0 12px; border-radius: 8px; }
 
 /* "정보가 틀려요" 제보 링크 */
 .report-link { font-weight: 700; }
@@ -560,14 +629,14 @@ body.has-sticky-cta { padding-bottom: 76px; }
   .topnav a { padding: 6px 7px; font-size: 0.88rem; }
   .page-title { font-size: 1.65rem; }
   .card { padding: 20px 16px; }
-  .intro { padding-top: 14px; gap: 8px; }
-  .intro .card { padding: 12px 14px; }
+  .card.intro { margin-top: 14px; }
+  .intro .intro-part { padding: 12px 14px; }
   .intro-what h1 { font-size: 1.4rem; }
   .intro-what .sub { font-size: 0.95rem; margin-top: 6px; }
   .intro-go { margin-top: 10px; }
   .intro-title { margin-bottom: 6px; }
   /* 작은 휴대폰에서도 소개 카드가 한 화면에 들어가게 */
-  .intro { padding-top: 10px; }
+  .card.intro { margin-top: 10px; }
   .intro-what .eyebrow { display: none; }
   .intro-what .sub { line-height: 1.5; }
   .intro-steps li { display: flex; align-items: center; gap: 6px; }
