@@ -2851,5 +2851,652 @@
       "쓰는 형태: cloud_service(관리형 클라우드), self_host(Enterprise), library(SDK). 웹 화면(smith.langchain.com)은 클라우드 서비스 화면이라 web은 따로 넣지 않았어요.",
       "AI 여부(yes: LLM·에이전트 전용 도구), 섹션(official), 대표 목적(data_ml)은 제안값이에요. LangChain 회사 제품이에요."
     ]
+  },
+  {
+    "id": "ollama",
+    "name": "Ollama",
+    "url": "https://ollama.com",
+    "official_domains": [
+      "ollama.com"
+    ],
+    "one_liner": "공개된 오픈 모델을 내 컴퓨터에서 바로 돌리거나, 무거운 모델은 Ollama 클라우드에서 돌려 쓰는 도구예요",
+    "features": {
+      "data_ml": [
+        "run_models"
+      ]
+    },
+    "primary": "data_ml",
+    "price": {
+      "free": true,
+      "free_limit": "내 컴퓨터에서 돌리는 건 무제한, 클라우드는 시작용 크레딧과 일부 모델만",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "cli",
+      "cloud_service"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": "로컬 실행은 내용이 회사로 가지 않고, 클라우드 모델에 보낸 프롬프트·응답도 저장하거나 학습에 쓰지 않는다고 해요"
+    },
+    "start_steps": [
+      "공식 다운로드 페이지에서 내 운영체제용 Ollama 설치하기",
+      "모델 목록에서 내 컴퓨터 메모리에 맞는 모델 고르기",
+      "터미널에서 모델을 실행해 대화하거나, 내 코드에서 Ollama API 부르기"
+    ],
+    "cautions": [
+      "큰 모델은 GPU가 약한 컴퓨터에서 느려요. 이럴 땐 클라우드 모델을 고려하세요",
+      "클라우드 모델은 대부분 유료 요금제나 크레딧이 필요해요"
+    ],
+    "sources": [
+      "https://ollama.com/",
+      "https://ollama.com/pricing",
+      "https://ollama.com/privacy",
+      "https://ollama.com/download"
+    ],
+    "learn": [
+      {
+        "title": "Ollama 공식 문서",
+        "url": "https://docs.ollama.com"
+      },
+      {
+        "title": "Ollama 모델 목록",
+        "url": "https://ollama.com/search"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://ollama.com/pricing",
+        "quote": "Free $0 Use any cloud model with pay-as-you-go usage credits. Includes: Run models locally Starter usage credits included"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://ollama.com/pricing",
+        "quote": "Free accounts include a starter amount of usage for a smaller set of starter models. Buying usage credits unlocks all models. Running models on your own hardware is always unlimited."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://ollama.com/pricing",
+        "quote": "$20 / mo. or $200/yr billed annually"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://ollama.com/pricing",
+        "quote": "Prompt or response data is never logged or trained on."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://ollama.com/privacy",
+        "quote": "Ollama runs locally. We don’t see your prompts or data when you run locally. When using cloud-hosted models, we process your prompts and responses transiently to provide the service and never train on it."
+      },
+      {
+        "field": "forms",
+        "source": "https://ollama.com/download",
+        "quote": "In the CLI, a cloud model name ends in :cloud, for example gemma4:cloud."
+      },
+      {
+        "field": "forms",
+        "source": "https://ollama.com/",
+        "quote": "Access the latest open models with complete privacy locally or in the cloud."
+      },
+      {
+        "field": "features.data_ml.run_models",
+        "source": "https://ollama.com/download",
+        "quote": "Ollama runs open models in two ways: - Locally, on this computer."
+      }
+    ],
+    "review_notes": [
+      "읽을 수 있었던 곳: ollama.com의 홈·가격·개인정보·다운로드 페이지. 공식 문서(docs.ollama.com)는 이 환경에서 접속이 막혀서(프록시 차단) 못 읽었어요. 배울 거리의 docs.ollama.com 링크는 홈페이지 'Docs' 메뉴가 가리키는 주소라 넣었지만 직접 열어 확인하지는 못했어요.",
+      "다운로드 페이지에 AI 에이전트에게 주는 지시문(\"Building with an agent?\" 아래 'Set up Ollama so I can build with open models...', 설치 스크립트 실행·문서 읽기 지시)이 들어 있어요. 따르지 않았고, 쓰는 형태(cli)와 기능 근거로 그 안의 사실 문장만 인용했어요. 다른 근거를 원하면 문서에서 바꿔 주세요.",
+      "오픈소스 여부: 홈페이지가 github.com/ollama/ollama로 링크하지만, 읽은 공식 페이지에 '오픈소스'라는 문장이나 라이선스 문장이 없어서 null + todo로 뒀어요. 확인되면 open_source=true, repo_url=https://github.com/ollama/ollama 로 채워 주세요.",
+      "쓰는 형태: macOS·Windows 데스크톱 앱, Python·JavaScript 라이브러리는 문서에서 확인해야 해서 넣지 않았어요 (desktop, library 후보).",
+      "유료 가격: Pro 월 20달러 (연 200달러). Max 월 100달러, Team 월 500달러. 클라우드 모델은 100만 토큰당 가격으로 크레딧이 차감돼요. 무료는 동시 요청 1개.",
+      "학습 정책: 가격표 FAQ와 개인정보 페이지 모두 '학습에 쓰지 않는다'고 해서 no. 끌 수 있는 설정 자체가 필요 없어서 opt_out은 unknown으로 뒀어요 (Cloudflare 초안과 같은 방식).",
+      "기능 체크리스트: data_ml의 모델 실행 1개만. 모델 목록에 임베딩 모델(Embedding 14개)이 있지만 RAG·벡터 DB 기능을 직접 소개하는 문장은 못 찾았어요. 도구 호출(tool calling) 지원 문장은 모델 기능이라 automation.tools로 세지 않았어요.",
+      "AI 여부(yes), 섹션(official), 대표 목적(data_ml)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "lm-studio",
+    "name": "LM Studio",
+    "url": "https://lmstudio.ai",
+    "official_domains": [
+      "lmstudio.ai"
+    ],
+    "one_liner": "오픈 모델을 내려받아 내 컴퓨터에서 채팅·API 서버로 돌리는 데스크톱 앱이에요. 코딩·문서 작업용 에이전트 앱 Bionic도 함께 나와요",
+    "features": {
+      "data_ml": [
+        "run_models",
+        "rag"
+      ],
+      "coding_agents": [
+        "repo_context",
+        "multi_file",
+        "run_commands"
+      ],
+      "automation": [
+        "tools"
+      ]
+    },
+    "primary": "data_ml",
+    "price": {
+      "free": true,
+      "free_limit": "로컬 모델 실행과 Bionic 에이전트는 무료, 웹 검색은 제한적",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "desktop",
+      "cli",
+      "library",
+      "self_host"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": "로컬로 돌리면 대화·문서가 기기 밖으로 나가지 않고, 클라우드 기능에 보낸 요청도 저장하거나 학습에 쓰지 않는다고 해요"
+    },
+    "start_steps": [
+      "공식 다운로드 페이지에서 LM Studio(또는 에이전트 앱 Bionic) 설치하기",
+      "앱 안에서 내 컴퓨터 사양에 맞는 모델 내려받기",
+      "채팅으로 써 보거나, 로컬 서버를 켜고 OpenAI 호환 API로 내 코드에서 부르기"
+    ],
+    "cautions": [
+      "모델 성능과 속도는 내 컴퓨터의 메모리·GPU에 따라 크게 달라요",
+      "코딩 프로젝트에서는 에이전트가 파일을 고치고 명령을 실행하니 바뀐 내용을 확인하세요",
+      "LM Studio와 Bionic은 따로 설치하는 별개 앱이에요"
+    ],
+    "sources": [
+      "https://lmstudio.ai/",
+      "https://lmstudio.ai/pricing",
+      "https://lmstudio.ai/privacy",
+      "https://lmstudio.ai/terms",
+      "https://lmstudio.ai/docs",
+      "https://lmstudio.ai/docs/cli",
+      "https://lmstudio.ai/docs/developer",
+      "https://lmstudio.ai/docs/bionic",
+      "https://lmstudio.ai/docs/bionic/agent/code-project",
+      "https://lmstudio.ai/download"
+    ],
+    "learn": [
+      {
+        "title": "LM Studio 시작하기 (공식 문서)",
+        "url": "https://lmstudio.ai/docs/app"
+      },
+      {
+        "title": "LM Studio 개발자 문서 (API·SDK)",
+        "url": "https://lmstudio.ai/docs/developer"
+      },
+      {
+        "title": "Bionic 시작하기 (공식 문서)",
+        "url": "https://lmstudio.ai/docs/bionic"
+      }
+    ],
+    "todo": [],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://lmstudio.ai/pricing",
+        "quote": "Can I use Bionic for free? Yes. The Free plan includes Bionic Agent and local model support."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://lmstudio.ai/pricing",
+        "quote": "Free $ 0 Run local LLMs on your machine Includes: Bionic Agent Run local LLMs using llama.cpp and MLX State-of-the-art offline voice transcription LM Link for up to 5 devices Limited web search"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://lmstudio.ai/pricing",
+        "quote": "Bionic+ $ 20 USD / month Private, US-hosted OSS models."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://lmstudio.ai/privacy",
+        "quote": "If you download and run models locally, none of your messages, chat histories, and documents are ever transmitted from your system - everything is saved locally on your device."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://lmstudio.ai/privacy",
+        "quote": "Your request and the generated response is not retained after the request completes, and your data is not used for training or any other purpose."
+      },
+      {
+        "field": "open_source",
+        "source": "https://lmstudio.ai/terms",
+        "quote": "You acknowledge that the Software and its structure, organization, and source code constitute valuable trade secrets and Confidential information of Company and its suppliers."
+      },
+      {
+        "field": "forms",
+        "source": "https://lmstudio.ai/docs",
+        "quote": "LM Studio is available for macOS, Windows, and Linux."
+      },
+      {
+        "field": "forms",
+        "source": "https://lmstudio.ai/docs",
+        "quote": "Use lms for chat, model downloads, daemon management, server control, and publishing."
+      },
+      {
+        "field": "forms",
+        "source": "https://lmstudio.ai/docs",
+        "quote": "Use lmstudio-python to load models, generate text, embed content, and build agents."
+      },
+      {
+        "field": "forms",
+        "source": "https://lmstudio.ai/download",
+        "quote": "llmster is LM Studio's headless daemon for servers, cloud instances, and CI."
+      },
+      {
+        "field": "features.data_ml.run_models",
+        "source": "https://lmstudio.ai/docs",
+        "quote": "Download and run local LLMs like gpt-oss or Llama, Qwen"
+      },
+      {
+        "field": "features.data_ml.rag",
+        "source": "https://lmstudio.ai/docs",
+        "quote": "You can attach documents to your chat messages and interact with them entirely offline, also known as \"RAG\"."
+      },
+      {
+        "field": "features.coding_agents.repo_context",
+        "source": "https://lmstudio.ai/docs/bionic/agent/code-project",
+        "quote": "Bionic can inspect local codebases, explain unfamiliar code, and help you make changes."
+      },
+      {
+        "field": "features.coding_agents.multi_file",
+        "source": "https://lmstudio.ai/docs/bionic/agent/code-project",
+        "quote": "Refactoring code across several files."
+      },
+      {
+        "field": "features.coding_agents.run_commands",
+        "source": "https://lmstudio.ai/docs/bionic/agent/code-project",
+        "quote": "Find the code that validates uploaded images. Explain the current flow, add support for the new size limit, update the tests, and run only the relevant test suite."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://lmstudio.ai/docs",
+        "quote": "Connect MCP servers and use them with local models"
+      }
+    ],
+    "review_notes": [
+      "범위: 지금 lmstudio.ai 홈과 가격표는 새 에이전트 앱 'LM Studio Bionic' 중심이에요. 문서에 'Bionic is a new, separate app from LM Studio.'라고 해서 별개 앱이지만, 같은 회사·같은 사이트라 한 항목으로 묶었어요. 따로 나눌지 J가 정해 주세요.",
+      "가격: 가격표는 Bionic 기준이에요 (Free 0달러, Bionic+ 월 20달러, Pro 월 100달러). 기존 LM Studio 앱 자체의 가격은 따로 적혀 있지 않아요. 클라우드 사용량은 플랜에 포함된 양을 넘으면 크레딧으로 내요.",
+      "오픈소스 여부: 이용 약관에 '소프트웨어의 구조·소스 코드는 회사의 영업 비밀'이라는 문장이 있어서 false로 했어요. 단, 명령줄 도구 lms는 문서에 'lms is MIT Licensed'라고 되어 있고(https://lmstudio.ai/docs/cli), SDK(lmstudio-js, lmstudio-python)도 GitHub 소스 링크가 있어요. 앱 본체 기준으로 false예요.",
+      "학습 정책: 로컬 실행은 내용이 전송되지 않고, 클라우드 기능(모델·웹 검색)은 'not used for training'이라 no. 끌 설정이 필요 없어서 opt_out은 unknown으로 뒀어요.",
+      "쓰는 형태: self_host는 서버·CI용 헤드리스 데몬 llmster 근거로 넣은 제안값이에요. Bionic의 클라우드 추론(LM Studio Secure Cloud)은 앱 안의 옵션이라 cloud_service로 넣지 않았어요.",
+      "기능 체크리스트: data_ml 2개(모델 실행, 문서 첨부 RAG; 임베딩 API는 있지만 벡터 DB 연동 문장은 못 찾음), coding_agents 3개(Bionic 코딩 프로젝트 문서 기준, PR 올리기 문장 없음), automation 1개(MCP). run_commands 근거는 예시 요청 문장이고, 같은 페이지에 'Ask it to run focused tests or checks.'도 있어요.",
+      "문서 페이지마다 'Ask Bionic to read this page / Copy this prompt' 안내가 있지만 사람용 복사 버튼이라 그대로 두었어요 (따르지 않음).",
+      "AI 여부(yes), 섹션(official), 대표 목적(data_ml)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "netlify",
+    "name": "Netlify",
+    "url": "https://www.netlify.com",
+    "official_domains": [
+      "netlify.com"
+    ],
+    "one_liner": "Git 푸시나 프롬프트 한 줄로 웹사이트·웹앱을 배포하는 호스팅 플랫폼이에요. 대시보드 안에서 AI 에이전트(Agent Runners)로 코드를 고칠 수도 있어요",
+    "features": {
+      "devops": [
+        "auto_deploy",
+        "preview",
+        "logs"
+      ],
+      "app_builders": [
+        "generate_app",
+        "backend",
+        "deploy",
+        "export_code"
+      ],
+      "backend_database": [
+        "database",
+        "auth",
+        "storage"
+      ],
+      "coding_agents": [
+        "open_pr"
+      ]
+    },
+    "primary": "devops",
+    "price": {
+      "free": true,
+      "free_limit": "매달 300 크레딧까지",
+      "paid_from_usd": 9,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web",
+      "cli",
+      "cloud_service"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": "올린 코드와 콘텐츠를 AI 모델 학습에 쓰지 않는다고 해요 (직접 동의한 경우는 예외라는 문장도 있어요)"
+    },
+    "start_steps": [
+      "Netlify에 가입하고 GitHub 같은 Git 저장소 연결하기",
+      "저장소를 고르면 빌드 설정을 확인하고 첫 배포 하기 (또는 netlify-cli로 터미널에서 배포)",
+      "PR마다 생기는 미리보기 주소로 확인한 뒤 공개하기"
+    ],
+    "cautions": [
+      "무료·유료 모두 크레딧 방식이라 배포·트래픽·AI 사용량만큼 크레딧이 줄어요",
+      "AI 에이전트가 만든 변경은 미리보기에서 확인하고 반영하세요"
+    ],
+    "sources": [
+      "https://www.netlify.com/",
+      "https://www.netlify.com/pricing/",
+      "https://www.netlify.com/privacy/",
+      "https://www.netlify.com/platform/",
+      "https://www.netlify.com/platform/agent-runners/",
+      "https://www.netlify.com/platform/core/deploy-previews/",
+      "https://www.netlify.com/platform/observability/",
+      "https://www.netlify.com/platform/database/",
+      "https://www.netlify.com/solutions/prototypes/"
+    ],
+    "learn": [
+      {
+        "title": "Netlify CLI 시작하기 (공식 문서)",
+        "url": "https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/"
+      },
+      {
+        "title": "AI로 만들기 안내 (공식 문서)",
+        "url": "https://docs.netlify.com/welcome/build-with-ai/overview/"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://www.netlify.com/pricing/",
+        "quote": "$0 forever Build and deploy free forever"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.netlify.com/pricing/",
+        "quote": "300 credit limit / month Start for free"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://www.netlify.com/pricing/",
+        "quote": "Personal $9 /month Ready for real traffic"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://www.netlify.com/privacy/",
+        "quote": "We do not use your code or content to train AI models unless you explicitly opt in."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://www.netlify.com/privacy/",
+        "quote": "To be clear: Netlify does not use Customer Content for artificial intelligence or machine learning model training, and does not allow others to do so."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.netlify.com/pricing/",
+        "quote": "Ask AI agents to fix, update, and ship code right in your dashboard."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.netlify.com/",
+        "quote": "Deploy from Git, CLI, or drag and drop"
+      },
+      {
+        "field": "forms",
+        "source": "https://www.netlify.com/platform/",
+        "quote": "Every Netlify project runs on a global edge network with 100+ locations."
+      },
+      {
+        "field": "features.devops.auto_deploy",
+        "source": "https://www.netlify.com/",
+        "quote": "Auto-deploy on every push. Every PR gets a preview URL."
+      },
+      {
+        "field": "features.devops.preview",
+        "source": "https://www.netlify.com/platform/core/deploy-previews/",
+        "quote": "Each pull or merge request gets its own persistent preview URL so teams can see changes before they ship."
+      },
+      {
+        "field": "features.devops.logs",
+        "source": "https://www.netlify.com/platform/observability/",
+        "quote": "Track performance and diagnose issues in one view designed for your project."
+      },
+      {
+        "field": "features.app_builders.generate_app",
+        "source": "https://www.netlify.com/platform/",
+        "quote": "Spin up a new project from a prompt or iterate directly on your live app."
+      },
+      {
+        "field": "features.app_builders.backend",
+        "source": "https://www.netlify.com/platform/",
+        "quote": "Serverless functions, databases, auth, storage, AI model access, and more. All integrated and ready the moment your project starts."
+      },
+      {
+        "field": "features.app_builders.deploy",
+        "source": "https://www.netlify.com/platform/agent-runners/",
+        "quote": "Start new projects or improve existing ones with agents running on production infrastructure from the first prompt."
+      },
+      {
+        "field": "features.app_builders.export_code",
+        "source": "https://www.netlify.com/solutions/prototypes/",
+        "quote": "Describe what you need in a prompt. Agent Runners writes the code in your repository, deploys a preview, and opens a pull request."
+      },
+      {
+        "field": "features.backend_database.database",
+        "source": "https://www.netlify.com/platform/database/",
+        "quote": "Netlify Database is a fully managed Postgres database built into the platform."
+      },
+      {
+        "field": "features.backend_database.auth",
+        "source": "https://www.netlify.com/",
+        "quote": "Handle auth with built-in identity"
+      },
+      {
+        "field": "features.backend_database.storage",
+        "source": "https://www.netlify.com/pricing/",
+        "quote": "Store files & images with Blob storage"
+      },
+      {
+        "field": "features.coding_agents.open_pr",
+        "source": "https://www.netlify.com/solutions/prototypes/",
+        "quote": "Describe what you need in a prompt. Agent Runners writes the code in your repository, deploys a preview, and opens a pull request."
+      }
+    ],
+    "review_notes": [
+      "읽을 수 있었던 곳: www.netlify.com의 홈·가격·개인정보·플랫폼·Agent Runners·Deploy Previews·Observability·Database·Prototypes 페이지. docs.netlify.com은 이 환경에서 접속이 막혀서(프록시 403) 못 읽었어요. 배울 거리 두 링크는 홈페이지가 가리키는 문서 주소라 넣었고, 직접 열어 확인하지는 못했어요.",
+      "홈페이지에 'Add Netlify to your coding agent / fetch https://netlify.ai' 같은 에이전트용 안내가 있어요. 따르지 않았어요.",
+      "유료 가격: 가장 싼 유료는 Personal 월 9달러(1명). Pro는 월 20달러(인원 무제한). 모두 크레딧 방식이고 추가 크레딧은 500개 5달러부터. 무료는 월 300 크레딧 한도(배포 1번 15 크레딧, 대역폭 GB당 20 크레딧 등).",
+      "학습 정책: 개인정보 페이지에 '명시적으로 동의(opt in)하지 않으면 학습에 쓰지 않는다'와 '고객 콘텐츠를 AI 학습에 쓰지 않는다'가 함께 있어서 기본값은 no. 동의 여부를 바꾸는 설정은 확인 못 해서 opt_out은 unknown이에요.",
+      "오픈소스 여부: 플랫폼 자체의 라이선스 문장을 못 찾아 null + todo로 뒀어요. /open-source/ 페이지는 오픈소스 프로젝트용 무료 플랜 안내예요.",
+      "기능 체크리스트: devops 3개(AI 오류 분석은 문서에 있을 수 있지만 읽은 페이지에서 직접 문장을 못 찾아 뺐어요. Agent Runners 페이지의 고객 인용 '사이트가 깨졌는데 조사해서 고쳐줘'는 근거로 안 썼어요), app_builders 4개(Agent Runners), backend_database 3개(자연어 쿼리는 'AI 도구가 DB가 필요한지 판단해 만들어 준다'는 문장만 있어서 뺐어요), coding_agents 1개(PR 올리기). app_builders.export_code와 coding_agents.open_pr은 같은 문장을 근거로 썼어요.",
+      "AI 여부(partial: 배포 플랫폼에 AI 에이전트·AI Gateway가 붙은 형태), 섹션(official), 대표 목적(devops)은 제안값이에요. app_builders를 대표 목적으로 볼 수도 있어요."
+    ]
+  },
+  {
+    "id": "railway",
+    "name": "Railway",
+    "url": "https://railway.com",
+    "official_domains": [
+      "railway.com"
+    ],
+    "one_liner": "저장소를 연결하면 앱·데이터베이스·크론 작업을 알아서 설정해 띄워 주는 클라우드 플랫폼이에요. 대시보드의 Railway Agent에게 말로 작업을 맡길 수도 있어요",
+    "features": {
+      "devops": [
+        "auto_deploy",
+        "preview",
+        "logs"
+      ],
+      "coding_agents": [
+        "run_commands",
+        "open_pr"
+      ],
+      "backend_database": [
+        "database",
+        "storage"
+      ],
+      "automation": [
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "devops",
+    "price": {
+      "free": true,
+      "free_limit": "30일 체험 크레딧 5달러, 이후 Free 요금제는 서비스당 1 vCPU·0.5GB RAM",
+      "paid_from_usd": 5,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web",
+      "cli",
+      "cloud_service"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": ""
+    },
+    "start_steps": [
+      "Railway에 가입하고 새 프로젝트에서 GitHub 저장소 연결하기",
+      "필요하면 같은 프로젝트에 Postgres 같은 데이터베이스 추가하기",
+      "배포가 끝나면 로그·지표를 확인하고, PR마다 생기는 미리보기 환경으로 변경 검토하기"
+    ],
+    "cautions": [
+      "쓴 만큼(초 단위 CPU·메모리 등) 요금이 나와요. 사용 한도를 정해 두세요",
+      "Railway Agent의 코드 작업(샌드박스)은 아직 시험 기능이에요"
+    ],
+    "sources": [
+      "https://railway.com/",
+      "https://railway.com/pricing",
+      "https://railway.com/features",
+      "https://railway.com/agents",
+      "https://railway.com/changelog/2026-05-22-chat-agent-sandbox",
+      "https://railway.com/changelog/2026-08-14-access-groups",
+      "https://railway.com/legal/privacy"
+    ],
+    "learn": [
+      {
+        "title": "Railway 공식 문서",
+        "url": "https://docs.railway.com"
+      },
+      {
+        "title": "코딩 에이전트로 Railway에 배포하기 (공식)",
+        "url": "https://railway.com/agents"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://railway.com/pricing",
+        "quote": "Free $ 0 per month Perfect for getting started and deploying small apps on Railway"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://railway.com/pricing",
+        "quote": "Start with a 30-day free trial with $5 credits, then $1 per month Up to 1 vCPU / 0.5 GB RAM per service"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://railway.com/pricing",
+        "quote": "Hobby $ 5 minimum usage For hobbyist developers building side projects Includes $5 of monthly usage credits"
+      },
+      {
+        "field": "forms",
+        "source": "https://railway.com/changelog/2026-05-22-chat-agent-sandbox",
+        "quote": "Sandbox VMs for the Railway Agent in the dashboard"
+      },
+      {
+        "field": "forms",
+        "source": "https://railway.com/features",
+        "quote": "Orchestrate applications from the command line."
+      },
+      {
+        "field": "forms",
+        "source": "https://railway.com/",
+        "quote": "With the all-in-one intelligent cloud provider"
+      },
+      {
+        "field": "features.devops.auto_deploy",
+        "source": "https://railway.com/",
+        "quote": "Connect your repo, Railway handles the rest. Auto-config, instant previews, no new tools to learn."
+      },
+      {
+        "field": "features.devops.auto_deploy",
+        "source": "https://railway.com/features",
+        "quote": "GitHub branch deploys"
+      },
+      {
+        "field": "features.devops.preview",
+        "source": "https://railway.com/",
+        "quote": "Every pull request gets its own preview. No surprises after merge."
+      },
+      {
+        "field": "features.devops.logs",
+        "source": "https://railway.com/",
+        "quote": "Trace requests, monitor resource usage, set custom alerts, and track logs."
+      },
+      {
+        "field": "features.coding_agents.run_commands",
+        "source": "https://railway.com/changelog/2026-05-22-chat-agent-sandbox",
+        "quote": "plus a set of tools to clone a repository, read and write files, run commands in the foreground or background, and open a pull request back to the source repo when the work is done."
+      },
+      {
+        "field": "features.coding_agents.open_pr",
+        "source": "https://railway.com/changelog/2026-05-22-chat-agent-sandbox",
+        "quote": "plus a set of tools to clone a repository, read and write files, run commands in the foreground or background, and open a pull request back to the source repo when the work is done."
+      },
+      {
+        "field": "features.backend_database.database",
+        "source": "https://railway.com/features",
+        "quote": "Spin-up any database, with built-in backups."
+      },
+      {
+        "field": "features.backend_database.storage",
+        "source": "https://railway.com/pricing",
+        "quote": "Object Storage $ 0.015 per GB-month free egress"
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://railway.com/features",
+        "quote": "Configure a job to run on a fixed schedule."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://railway.com/changelog/2026-08-14-access-groups",
+        "quote": "Connect Notion, Linear, or Sentry through OAuth, or register a custom remote MCP server."
+      }
+    ],
+    "review_notes": [
+      "읽을 수 있었던 곳: railway.com의 홈·가격·기능·에이전트·개인정보·이용 약관·변경 기록(changelog) 페이지. docs.railway.com은 이 환경에서 접속이 막혀서(프록시 403) 못 읽었어요. 배울 거리의 docs.railway.com은 홈페이지가 가리키는 주소라 넣었지만 직접 열어 보지 못했어요.",
+      "에이전트 페이지에 'curl -fsSL agents.railway.com |' 같은 설치 명령이 있어요. 실행하지 않았어요.",
+      "AI 기능 근거는 대부분 변경 기록(changelog) 글이에요. Railway Agent 샌드박스(코드 수정·명령 실행·PR)는 'Priority Boarding'에서 플래그를 켜야 쓰는 시험 기능이고, Agent Connectors(MCP)도 베타예요. 정식 기능 페이지에는 아직 설명이 없어요. 그래도 셀지 J가 정해 주세요.",
+      "무료 여부: 가격표에 Free $0 요금제가 있어요. 다만 'then $1 per month' 문구가 '월 1달러 크레딧'인지 '월 1달러 요금'인지 페이지만으로는 확실하지 않아서 free_limit에는 체험 크레딧과 자원 한도만 적었어요. 문서로 확인해 주세요.",
+      "유료 가격: Hobby는 '최소 사용량 월 5달러'(5달러 크레딧 포함, 넘으면 쓴 만큼). Pro는 최소 월 20달러. 실제 요금은 초 단위 사용량 기준이에요.",
+      "학습 정책: 개인정보 페이지·약관에 AI 학습 관련 문장이 없어서 unknown이에요.",
+      "오픈소스 여부: 약관에 '서비스의 소스 코드를 얻으려는 시도(디컴파일 등) 금지' 문장은 있지만 라이선스를 밝히는 문장은 아니라서 null + todo로 뒀어요. 약관에 페이지 자동 수집(crawl/scrape) 금지 조항도 있어요 — 이번에는 필요한 몇 페이지만 열었어요.",
+      "기능 체크리스트: devops 3개(AI 오류 분석은 '배포·로그 확인' 문장만 있고 원인 분석을 직접 소개하는 문장이 없어 뺐어요. auto_deploy는 '저장소 연결·GitHub 브랜치 배포' 문장이라 '푸시하면 자동 배포'를 직접 말하지는 않아요 — J 확인), coding_agents 2개(시험 기능), backend_database 2개(인증 'Railway Authentication'은 배포 주소에 로그인을 거는 Enterprise 기능이라 앱 인증으로 세지 않음), automation 2개(크론 작업, 에이전트 MCP 연결).",
+      "AI 여부(partial), 섹션(official), 대표 목적(devops)은 제안값이에요."
+    ]
   }
 ]
