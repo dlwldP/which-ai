@@ -98,11 +98,10 @@ const sourcesHtml = (t) =>
 const officialButton = (t, cls = 'btn-primary') =>
   `<a class="btn ${cls} btn-block" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트 열기 ↗</a>`;
 
-/** 실제 데이터가 아직 없을 때: 같은 화면을 예시 데이터로 볼 수 있게 안내 */
-const demoInvite = () => (data.demo || data.tools.length > 0 ? '' : `
+/** 실제 데이터가 아직 없을 때 안내. 예시 데이터(?demo)는 개발 확인용이라 사이트에서 링크하지 않는다 */
+const emptyNotice = () => (data.demo || data.tools.length > 0 ? '' : `
   <section class="card invite" role="status">
     <p class="invite-text"><strong>아직 준비 중이에요.</strong> ${esc(mode.emptyText)}</p>
-    <a class="btn btn-outline" href="?demo${esc(location.hash || '#/')}">예시로 둘러보기 ›</a>
   </section>`);
 
 // ---- 홈 ----
@@ -147,7 +146,7 @@ function renderHome() {
   app.innerHTML = `
     ${introHtml()}
 
-    ${demoInvite()}
+    ${emptyNotice()}
 
     <section class="purposes" aria-labelledby="purposes-title">
       <h2 class="section-title" id="purposes-title">하고 싶은 일</h2>
@@ -260,7 +259,7 @@ function renderResult(purpose, conditions) {
 
   let body;
   if (data.tools.length === 0) {
-    body = demoInvite();
+    body = emptyNotice();
   } else if (sections.length === 1) {
     body = sectionBody(sections[0]);
   } else {
@@ -377,7 +376,7 @@ function renderNotFound() {
   app.innerHTML = `
     <div class="page-head">${backLink('#/', '처음으로')}</div>
     <section class="card"><p class="empty"><strong>찾을 수 없어요</strong>주소가 바뀌었거나 빠진 ${W}일 수 있어요.</p></section>
-    ${demoInvite()}`;
+    ${emptyNotice()}`;
 }
 
 // ---- 용어집 ----
