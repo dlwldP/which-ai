@@ -107,31 +107,31 @@ const demoInvite = () => (data.demo || data.tools.length > 0 ? '' : `
   </section>`);
 
 // ---- 홈 ----
-// 맨 위는 서비스 소개 카드 묶음(한 화면에 들어가게), 그 아래 목적 타일.
+// 맨 위는 서비스 소개 카드 하나(안을 칸으로 나눔, 한 화면에 들어가게), 그 아래 목적 타일.
 function introHtml() {
   const dates = data.tools.map((t) => t.last_verified).sort();
   const stat = (num, label) => `<div class="stat"><span class="stat-num">${num}</span><span class="stat-label">${esc(label)}</span></div>`;
   return `
-    <section class="intro" aria-label="${esc(mode.siteName)} 소개">
-      <div class="card intro-what">
+    <section class="card intro" aria-label="${esc(mode.siteName)} 소개">
+      <div class="intro-part intro-what">
         <p class="eyebrow">${esc(mode.eyebrow)}</p>
         <h1>${mode.heroHtml}</h1>
         <p class="sub">${esc(mode.heroSub)}</p>
         <button type="button" class="btn btn-primary intro-go" data-scroll="purposes-title">하고 싶은 일 고르기 ↓</button>
       </div>
-      <div class="card intro-card intro-how">
+      <div class="intro-part intro-how">
         <h2 class="intro-title">이렇게 써요</h2>
         <ol class="intro-steps">${mode.introSteps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>
       </div>
-      <div class="card intro-card">
+      <div class="intro-part">
         <h2 class="intro-title">이걸 비교해요</h2>
         <ul class="intro-list">${mode.introChecks.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
       </div>
-      <div class="card intro-card">
+      <div class="intro-part">
         <h2 class="intro-title">믿을 수 있게</h2>
         <ul class="intro-list intro-trust">${mode.trust.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
       </div>
-      <div class="card intro-card intro-stats">
+      <div class="intro-part intro-stats">
         <h2 class="intro-title">한눈에</h2>
         <div class="stats">
           ${stat(data.purposes.length, '할 수 있는 일')}
