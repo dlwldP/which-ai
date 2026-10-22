@@ -12,7 +12,6 @@
 | [Claude](#general-claude) | 비개발자용 | 32개 | 없음 |
 | [Manus](#general-manus) | 비개발자용 | 39개 | 없음 |
 | [Grok](#general-grok) | 비개발자용 | 22개 | `price.paid_from_usd` `price.billing` |
-| [FigureLabs](#general-figure-labs) | 비개발자용 | 1개 | `price.free` `price.free_limit` `price.paid_from_usd` `price.billing` `privacy.trains_on_input_default` `privacy.opt_out` `platforms` `login` `features` |
 | [Claude Code](#dev-claude-code) | 개발자용 | 17개 | `open_source` |
 | [Lovable](#dev-lovable) | 개발자용 | 14개 | `open_source` |
 | [Vercel](#dev-vercel) | 개발자용 | 16개 | `open_source` |
@@ -21,8 +20,8 @@
 | [Cloudflare Workers](#dev-cloudflare) | 개발자용 | 15개 | `open_source` |
 | [Google AI Studio](#dev-google-ai-studio) | 개발자용 | 13개 | `price.paid_from_usd` `open_source` |
 | [Google Antigravity](#dev-antigravity) | 개발자용 | 18개 | `price.paid_from_usd` `open_source` |
-| [Linear](#dev-linear) | 개발자용 | 16개 | `privacy.trains_on_input_default` `privacy.opt_out` `open_source` |
-| [Bolt](#dev-bolt) | 개발자용 | 16개 | `open_source` |
+| [Linear](#dev-linear) | 개발자용 | 14개 | `privacy.trains_on_input_default` `privacy.opt_out` `open_source` `price.paid_from_usd` `price.billing` |
+| [Bolt](#dev-bolt) | 개발자용 | 15개 | `open_source` `price.paid_from_usd` `price.billing` |
 | [Replit](#dev-replit) | 개발자용 | 24개 | `open_source` |
 | [Firebase](#dev-firebase) | 개발자용 | 16개 | `open_source` |
 | [Supabase](#dev-supabase) | 개발자용 | 22개 | `privacy.trains_on_input_default` `privacy.opt_out` |
@@ -34,11 +33,11 @@
 | [LM Studio](#dev-lm-studio) | 개발자용 | 16개 | 없음 |
 | [Netlify](#dev-netlify) | 개발자용 | 19개 | `open_source` |
 | [Railway](#dev-railway) | 개발자용 | 16개 | `open_source` |
-| [Notion AI](#dev-notion) | 개발자용 | 15개 | `open_source` |
-| [Miro AI](#dev-miro) | 개발자용 | 17개 | `open_source` |
-| [Figma (Figma AI·FigJam·Figma Make)](#dev-figma) | 개발자용 | 22개 | `open_source` |
+| [Notion AI](#dev-notion) | 개발자용 | 13개 | `open_source` `price.paid_from_usd` `price.billing` |
+| [Miro AI](#dev-miro) | 개발자용 | 15개 | `open_source` `price.paid_from_usd` `price.billing` |
+| [Figma (Figma AI·FigJam·Figma Make)](#dev-figma) | 개발자용 | 20개 | `open_source` `price.paid_from_usd` `price.billing` |
 | [Atlassian Rovo](#dev-atlassian-rovo) | 개발자용 | 14개 | `price.paid_from_usd` `privacy.trains_on_input_default` `privacy.opt_out` `open_source` |
-| [Uizard](#dev-uizard) | 개발자용 | 17개 | `open_source` |
+| [Uizard](#dev-uizard) | 개발자용 | 15개 | `open_source` `price.paid_from_usd` `price.billing` |
 | [Cursor](#dev-cursor) | 개발자용 | 21개 | `open_source` |
 | [GitHub Copilot](#dev-github-copilot) | 개발자용 | 21개 | `open_source` |
 | [Kiro](#dev-kiro) | 개발자용 | 20개 | `open_source` |
@@ -49,9 +48,9 @@
 | [n8n](#dev-n8n) | 개발자용 | 15개 | `price.paid_from_usd` `price.billing` |
 | [Gumloop](#dev-gumloop) | 개발자용 | 12개 | `open_source` |
 | [Snyk](#dev-snyk) | 개발자용 | 10개 | `open_source` |
-| [SonarQube](#dev-sonarqube) | 개발자용 | 13개 | `open_source` `privacy.trains_on_input_default` `privacy.opt_out` |
+| [SonarQube](#dev-sonarqube) | 개발자용 | 11개 | `open_source` `privacy.trains_on_input_default` `privacy.opt_out` |
 
-## 비개발자용 (6개)
+## 비개발자용 (5개)
 
 <a id="general-tldv"></a>
 ### tl;dv (`tldv`) · 비개발자용
@@ -463,56 +462,6 @@ node scripts/draft.js promote manus --verified YYYY-MM-DD
 
 ```sh
 node scripts/draft.js promote grok --verified YYYY-MM-DD
-```
-
-<a id="general-figure-labs"></a>
-### FigureLabs (`figure-labs`) · 비개발자용
-
-공식 주소: https://chat.figurelabs.ai/ko  
-공식 도메인: `figurelabs.ai`
-
-**1. 공식 도메인 확인**
-
-- [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
-
-**2. 근거 대조** (1개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
-
-- [ ] 한국어: 결과는 한국어 가능  
-  “워크스페이스를 불러오는 중...” · [페이지에서 보기](https://chat.figurelabs.ai/ko#:~:text=%EC%9B%8C%ED%81%AC%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%A5%BC%20%EB%B6%88%EB%9F%AC%EC%98%A4%EB%8A%94%20%EC%A4%91...)
-
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `price.free`
-- [ ] `price.free_limit`
-- [ ] `price.paid_from_usd`
-- [ ] `price.billing`
-- [ ] `privacy.trains_on_input_default`
-- [ ] `privacy.opt_out`
-- [ ] `platforms`
-- [ ] `login`
-- [ ] `features`
-
-**4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
-
-- [ ] 한국어 점수: 결과는 한국어 가능 (2점)
-- [ ] 한 줄 설명: 연구 논문이나 발표에 넣을 과학 그림을 AI로 만들어주는 작업 공간이에요
-- [ ] 시작 3단계: 1) chat.figurelabs.ai에 들어가 가입하기 2) 만들고 싶은 그림을 문장으로 설명하기 3) 만들어진 그림을 보고 고칠 점을 말해 다시 부탁하기
-- [ ] 주의할 점: 없음
-
-**5. Claude 메모**
-
-- chat.figurelabs.ai 화면은 스크립트가 그려서 '워크스페이스를 불러오는 중...' 한 줄 말고는 글자로 읽을 수 없었어요. 가격·무료 여부·학습 정책·사용 기기·가입 방법·기능 모두 직접 확인이 필요해요.
-- /pricing, /privacy, /terms 주소는 모두 '없는 페이지(404)'였고, 회사 첫 화면(figurelabs.ai)은 접속이 막혀 읽지 못했어요. 가격·개인정보 처리방침이 있는 공식 페이지 주소를 알려 주시면 다시 읽을게요.
-- 한 줄 설명은 페이지 정보(설명 문구) 'AI-powered scientific figure generation workspace'만 보고 새로 썼어요(pages/figure-labs/meta-ko.txt). 실제로 무엇을 하는 도구인지 확인해 주세요. 과학 논문용 그림이라 비개발자 목적 중 이미지 만들기(P05)나 발표 자료(P04)에 맞는지도 정해 주세요.
-- 시작 3단계는 화면을 못 보고 일반적인 순서로 쓴 제안이에요. 실제 화면과 맞게 고쳐 주세요.
-- 이름: 페이지 제목이 'FigureLabs Workspace'라서 이름을 'FigureLabs'로 적었어요. 'Figure Labs'로 띄어 쓸지 정해 주세요.
-- 한국어 2점은 제안값이에요. /ko 주소에서 불러오는 중 문구가 한국어로 나오는 것만 확인했어요. 메뉴와 결과가 한국어로 되는지는 확인하지 못했어요.
-- 공식 도메인을 figurelabs.ai로 넣었어요. chat.figurelabs.ai가 이 회사의 공식 주소가 맞는지 확인해 주세요.
-
-**6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
-
-```sh
-node scripts/draft.js promote figure-labs --verified YYYY-MM-DD
 ```
 
 ## 개발자용 (37개)
@@ -1119,7 +1068,7 @@ node scripts/draft.js promote antigravity --verified YYYY-MM-DD --dev
 
 - [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
 
-**2. 근거 대조** (16개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
+**2. 근거 대조** (14개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
 
 - [ ] 무료 사용: 돼요  
   “Free $0 Free for everyone” · [페이지에서 보기](https://linear.app/pricing#:~:text=Free%20%240%20Free%20for%20everyone)
@@ -1127,10 +1076,6 @@ node scripts/draft.js promote antigravity --verified YYYY-MM-DD --dev
   “Unlimited members 2 teams 250 issues” · [페이지에서 보기](https://linear.app/pricing#:~:text=Unlimited%20members%202%20teams%20250%20issues)
 - [ ] 무료 한도: 팀 2개, 이슈 250개까지 (코드 작업은 유료)  
   “Coding sessions are supported on paid plans. Usage draws from your workspace’s AI credits.” · [페이지에서 보기](https://linear.app/docs/coding-sessions#:~:text=Coding%20sessions%20are%20supported%20on,from%20your%20workspace%E2%80%99s%20AI%20credits.)
-- [ ] 유료 가격: 연 10달러부터  
-  “Basic $10 per user/month” · [페이지에서 보기](https://linear.app/pricing#:~:text=Basic%20%2410%20per%20user%2Fmonth)
-- [ ] 결제 주기: yearly  
-  “$10 per user/month Billed yearly” · [페이지에서 보기](https://linear.app/pricing#:~:text=%2410%20per%20user%2Fmonth%20Billed%20yearly)
 - [ ] 학습 메모: AI 기능의 학습 정책은 공식 페이지에서 찾지 못했어요. 코드 작업(Coding sessions)은 기본으로 데이터를 보관하지 않는 모델을 쓴다고 해요  
   “By default, coding sessions use the latest zero-data-retention models.” · [페이지에서 보기](https://linear.app/docs/ai-credits#:~:text=By%20default%2C%20coding%20sessions%20use%20the%20latest%20zero%2Ddata%2Dretention%20models.)
 - [ ] 쓰는 형태: 웹, 데스크톱 앱  
@@ -1159,6 +1104,8 @@ node scripts/draft.js promote antigravity --verified YYYY-MM-DD --dev
 - [ ] `privacy.trains_on_input_default`
 - [ ] `privacy.opt_out`
 - [ ] `open_source`
+- [ ] `price.paid_from_usd`
+- [ ] `price.billing`
 
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
@@ -1178,6 +1125,7 @@ node scripts/draft.js promote antigravity --verified YYYY-MM-DD --dev
 - 쓰는 형태: 웹과 데스크톱(macOS·Windows) 앱. 모바일(iOS·Android) 앱도 있지만 forms 목록에 모바일이 없어 뺐어요.
 - 기능 체크리스트: planning 2개(이슈 관리, 문서 초안: 문서의 예시 프롬프트 'Draft a new document...'를 근거로 함. PRD라는 말은 없음). coding_agents 3개(여러 파일 수정 문장은 못 찾음). run_commands와 open_pr는 같은 문장('writes and tests the change ... returns a draft pull request')을 근거로 했어요. 코드는 Linear가 직접 짜는 게 아니라 Claude Code나 Codex를 써서 Linear Agent가 돌려요. code_review 2개(테스트 추가, 리뷰 의견 반영). PR 자동 리뷰 코멘트 문장은 없어요('Guided reviews'는 사람이 diff를 보기 쉽게 정리해 주는 기능). automation 2개(Loops 일정·이벤트 실행, MCP 서버 연결).
 - AI 여부(partial: AI는 이슈 관리 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요.
+- 유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 월 10달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요.
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -1195,7 +1143,7 @@ node scripts/draft.js promote linear --verified YYYY-MM-DD --dev
 
 - [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
 
-**2. 근거 대조** (16개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
+**2. 근거 대조** (15개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
 
 - [ ] 무료 사용: 돼요  
   “Free $0 /month Free forever, no card required” · [페이지에서 보기](https://bolt.new/pricing#:~:text=Free%20%240%20%2Fmonth%20Free%20forever%2C%20no%20card%20required)
@@ -1203,8 +1151,6 @@ node scripts/draft.js promote linear --verified YYYY-MM-DD --dev
   “1M tokens/month to try Bolt” · [페이지에서 보기](https://bolt.new/pricing#:~:text=1M%20tokens%2Fmonth%20to%20try%20Bolt)
 - [ ] 무료 한도: 한 달 토큰 100만 개 (하루 30만 개까지)  
   “Daily Token Limit 300K No Limit No Limit No Limit” · [페이지에서 보기](https://bolt.new/pricing#:~:text=Daily%20Token%20Limit%20300K%20No%20Limit%20No%20Limit%20No%20Limit)
-- [ ] 유료 가격: 연 18달러부터  
-  “Pro $18 \* /month Total of $216 $300 / year Billed annually” · [페이지에서 보기](https://bolt.new/pricing#:~:text=Pro%20%2418%20%2A%20%2Fmonth%20Total,%24300%20%2F%20year%20Billed%20annually)
 - [ ] 학습 메모: MSA·DPA 계약을 맺은 Teams·Enterprise 고객은 학습과 데이터 공유에서 빠진다고 해요. 개인 요금제 정책은 개인정보처리방침(stackblitz.com)에서 확인해야 해요  
   “Enterprise and Team customers under an MSA or DPA are excluded from model training and data sharing.” · [페이지에서 보기](https://bolt.new/platform/security#:~:text=Enterprise%20and%20Team%20customers%20under,model%20training%20and%20data%20sharing.)
 - [ ] 쓰는 형태: 웹  
@@ -1233,6 +1179,8 @@ node scripts/draft.js promote linear --verified YYYY-MM-DD --dev
 **3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
 
 - [ ] `open_source`
+- [ ] `price.paid_from_usd`
+- [ ] `price.billing`
 
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
@@ -1253,6 +1201,7 @@ node scripts/draft.js promote linear --verified YYYY-MM-DD --dev
 - code_review.security·apply_fix는 보안 페이지의 '보안 에이전트가 프로젝트를 읽고 고치고 적용' 문장이에요. PR 리뷰 기능은 아니에요. 넣는 게 과하다고 보면 빼 주세요.
 - 오픈소스 여부: 공식 페이지에 오픈소스라는 문장이 없어요. null + todo로 뒀어요.
 - AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요.
+- 유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Pro 월 18달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요.
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -1286,9 +1235,9 @@ node scripts/draft.js promote bolt --verified YYYY-MM-DD --dev
   “Core $20 $18 / month, billed annually” · [페이지에서 보기](https://replit.com/pricing#:~:text=Core%20%2420%20%2418%20%2F%20month%2C%20billed%20annually)
 - [ ] 기본으로 학습에 씀: 예  
   “We use content you provide, including your prompts, instructions, context, and responses generated for you, to help develop and improve our models and AI features.” · [페이지에서 보기](https://docs.replit.com/legal-and-security-info/model-improvement#:~:text=We%20use%20content%20you%20provide%2C,our%20models%20and%20AI%20features.)
-- [ ] 학습 끄기 가능: 예  
+- [ ] 학습 끄기 가능: 아니요  
   “Pro users can opt out from their content being used to develop and improve our models.” · [페이지에서 보기](https://docs.replit.com/legal-and-security-info/model-improvement#:~:text=Pro%20users%20can%20opt%20out,develop%20and%20improve%20our%20models.)
-- [ ] 학습 끄기 가능: 예  
+- [ ] 학습 끄기 가능: 아니요  
   “This control is available to Pro users. For Enterprise users, Replit does not use customer content to train its models.” · [페이지에서 보기](https://docs.replit.com/legal-and-security-info/model-improvement#:~:text=This%20control%20is%20available%20to,content%20to%20train%20its%20models.)
 - [ ] 쓰는 형태: 웹, 데스크톱 앱  
   “Choose where you want to use Replit, then sign in or create an account. Start on the web, in the Desktop App, or in the Mobile App.” · [페이지에서 보기](https://docs.replit.com#:~:text=Choose%20where%20you%20want%20to,or%20in%20the%20Mobile%20App.)
@@ -1346,6 +1295,7 @@ node scripts/draft.js promote bolt --verified YYYY-MM-DD --dev
 - docs.replit.com 모든 페이지 맨 위에 "Fetch the complete documentation index at: /llms.txt"라는 AI 에이전트용 안내 문구가 있어요. 지시로 따르지 않았고, 문서 목록을 찾는 데만 참고했어요 (근거로는 쓰지 않음).
 - 오픈소스 여부: 오픈소스라는 문장이 없어요. null + todo로 뒀어요.
 - AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요.
+- 학습 끄기는 Pro 요금제만 돼서 opt_out을 "no"로 정했어요 (J 결정). 무료·Core 사용자 기준이에요. 그래서 "보안 중요" 조건에서는 추천되지 않아요.
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -1923,6 +1873,7 @@ node scripts/draft.js promote ollama --verified YYYY-MM-DD --dev
 - 기능 체크리스트: data_ml 2개(모델 실행, 문서 첨부 RAG; 임베딩 API는 있지만 벡터 DB 연동 문장은 못 찾음), coding_agents 3개(Bionic 코딩 프로젝트 문서 기준, PR 올리기 문장 없음), automation 1개(MCP). run_commands 근거는 예시 요청 문장이고, 같은 페이지에 'Ask it to run focused tests or checks.'도 있어요.
 - 문서 페이지마다 'Ask Bionic to read this page / Copy this prompt' 안내가 있지만 사람용 복사 버튼이라 그대로 두었어요 (따르지 않음).
 - AI 여부(yes), 섹션(official), 대표 목적(data_ml)은 제안값이에요.
+- Bionic은 따로 나누지 않고 LM Studio 한 항목으로 두기로 했어요 (J 결정).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2096,7 +2047,7 @@ node scripts/draft.js promote railway --verified YYYY-MM-DD --dev
 
 - [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
 
-**2. 근거 대조** (15개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
+**2. 근거 대조** (13개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
 
 - [ ] 무료 사용: 돼요  
   “Free $0 per member / month For individuals to organize personal projects and life.” · [페이지에서 보기](https://www.notion.com/pricing#:~:text=Free%20%240%20per%20member%20%2F,organize%20personal%20projects%20and%20life.)
@@ -2104,10 +2055,6 @@ node scripts/draft.js promote railway --verified YYYY-MM-DD --dev
   “Users on the Free and Plus Plans get a limited number of complimentary AI responses so they can try Notion AI features out.” · [페이지에서 보기](https://www.notion.com/help/notion-ai-faqs#:~:text=Users%20on%20the%20Free%20and,try%20Notion%20AI%20features%20out.)
 - [ ] 무료 한도: AI는 체험용 사용량만 (Free·Plus 요금제)  
   “Trial AI capabilities like generating docs, or autofilling databases” · [페이지에서 보기](https://www.notion.com/pricing#:~:text=Trial%20AI%20capabilities%20like%20generating%20docs%2C%20or%20autofilling%20databases)
-- [ ] 유료 가격: 연 20달러부터  
-  “Business Recommended $20 per member / month” · [페이지에서 보기](https://www.notion.com/pricing#:~:text=Business%20Recommended%20%2420%20per%20member%20%2F%20month)
-- [ ] 유료 가격: 연 20달러부터  
-  “Notion AI is included with Notion’s Business and Enterprise plans, with core features like Notion Agent, AI Meeting Notes, and Enterprise Search.” · [페이지에서 보기](https://www.notion.com/product/ai#:~:text=Notion%20AI%20is%20included%20with,Meeting%20Notes%2C%20and%20Enterprise%20Search.)
 - [ ] 기본으로 학습에 씀: 아니요  
   “By default, your customer data is not used to train models.” · [페이지에서 보기](https://www.notion.com/help/notion-ai-security-practices#:~:text=By%20default%2C%20your%20customer%20data,not%20used%20to%20train%20models.)
 - [ ] 기본으로 학습에 씀: 아니요  
@@ -2132,6 +2079,8 @@ node scripts/draft.js promote railway --verified YYYY-MM-DD --dev
 **3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
 
 - [ ] `open_source`
+- [ ] `price.paid_from_usd`
+- [ ] `price.billing`
 
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
@@ -2152,6 +2101,7 @@ node scripts/draft.js promote railway --verified YYYY-MM-DD --dev
 - 쓰는 형태: 웹·데스크톱(macOS·Windows). 웹 근거는 도움말 메뉴 제목('Notion on desktop, web, & mobile')이에요. 모바일 앱도 있지만 forms 목록에 없어 뺐어요. 개발자 플랫폼 CLI(Workers 배포용)는 Notion AI 사용 형태가 아니라 넣지 않았어요.
 - 기능 체크리스트: planning 2개(문서 초안, 이슈·작업 관리 - 근거는 '프로젝트나 할 일을 한곳에 정리' 데이터베이스 문장). 화이트보드·실시간 공동 편집은 AI 페이지에서 직접 소개하는 문장을 못 찾아 뺐어요(이미지 생성으로 다이어그램을 만든다는 문장은 있음). automation 3개(Custom Agents 워크플로·Slack/메일/캘린더 연결, 일정 트리거, MCP 연결). '워크플로 안에 AI 단계'는 Custom Agent 자체가 AI라 애매해서 뺐어요.
 - AI 여부(partial: 문서·협업 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요.
+- 유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Plus 월 10달러 / Business 월 20달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요.
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2169,16 +2119,12 @@ node scripts/draft.js promote notion --verified YYYY-MM-DD --dev
 
 - [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
 
-**2. 근거 대조** (17개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
+**2. 근거 대조** (15개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
 
 - [ ] 무료 사용: 돼요  
   “Yes, Miro has a free plan with unlimited team members.” · [페이지에서 보기](https://miro.com/pricing/#:~:text=Yes%2C%20Miro%20has%20a%20free%20plan%20with%20unlimited%20team%20members.)
 - [ ] 무료 한도: 편집 가능한 보드 3개, AI 크레딧 월 10개  
   “You get up to 3 editable boards and with 10 credits per month you have the ability to try AI for generating diagrams, tables, and summaries.” · [페이지에서 보기](https://miro.com/pricing/#:~:text=You%20get%20up%20to%203,generating%20diagrams%2C%20tables%2C%20and%20summaries.)
-- [ ] 유료 가격: 연 8달러부터  
-  “For small teams collaborating regularly with unlimited boards $ 8 /month per member, billed yearly” · [페이지에서 보기](https://miro.com/pricing/#:~:text=For%20small%20teams%20collaborating%20regularly,%2Fmonth%20per%20member%2C%20billed%20yearly)
-- [ ] 결제 주기: yearly  
-  “Annual billing saves 20% over monthly.” · [페이지에서 보기](https://miro.com/pricing/#:~:text=Annual%20billing%20saves%2020%25%20over%20monthly.)
 - [ ] 기본으로 학습에 씀: 아니요  
   “Does Miro use my data to train AI? No, your data is not used to train Miro AI models.” · [페이지에서 보기](https://miro.com/pricing/#:~:text=Does%20Miro%20use%20my%20data,to%20train%20Miro%20AI%20models.)
 - [ ] 쓰는 형태: 웹, 데스크톱 앱  
@@ -2209,6 +2155,8 @@ node scripts/draft.js promote notion --verified YYYY-MM-DD --dev
 **3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
 
 - [ ] `open_source`
+- [ ] `price.paid_from_usd`
+- [ ] `price.billing`
 
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
@@ -2228,6 +2176,7 @@ node scripts/draft.js promote notion --verified YYYY-MM-DD --dev
 - 기능 체크리스트: planning 4개(PRD 초안은 Flows 페이지의 '브레인스토밍을 PRD로 바꾸는 Flow' 문장, 이슈 관리는 Business의 데이터 테이블·Jira 등 양방향 연동 문장이라 약할 수 있어요), design_ui 2개(문장·스크린샷으로 프로토타입 화면 생성, 클릭되는 프로토타입. 컴포넌트·코드 내보내기 문장은 없음), automation 2개(AI 워크플로 Flows, Slack·Jira 등 외부 도구 연결). 일정·이벤트 자동 실행 문장은 없어요. Miro MCP 서버는 '다른 AI 도구가 Miro를 쓰는' 방향이라 tools 근거로는 쓰지 않았어요.
 - 보안 메모: miro.com/ai/mcp/ 페이지에 'AI 도구에 붙여 넣으라'는 에이전트용 프롬프트('Help me connect Miro if it isn't connected yet...')가 있었어요. 따르지 않았고 근거로도 쓰지 않았어요.
 - AI 여부(partial: 화이트보드 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요.
+- 유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Starter 월 8달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요.
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2245,7 +2194,7 @@ node scripts/draft.js promote miro --verified YYYY-MM-DD --dev
 
 - [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
 
-**2. 근거 대조** (22개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
+**2. 근거 대조** (20개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
 
 - [ ] 무료 사용: 돼요  
   “Starter Free Free limited access to Figma products” · [페이지에서 보기](https://www.figma.com/pricing/#:~:text=Starter%20Free%20Free%20limited%20access%20to%20Figma%20products)
@@ -2253,10 +2202,6 @@ node scripts/draft.js promote miro --verified YYYY-MM-DD --dev
   “150 AI credits/day, up to 500 AI credits/mo” · [페이지에서 보기](https://www.figma.com/pricing/#:~:text=150%20AI%20credits%2Fday%2C%20up%20to%20500%20AI%20credits%2Fmo)
 - [ ] 무료 한도: Starter 요금제: AI 크레딧 하루 150개, 월 500개까지  
   “All other seats (Collab, Dev, and View) and users on the Starter plan receive 500 credits/month.” · [페이지에서 보기](https://www.figma.com/ai/#:~:text=All%20other%20seats%20%28Collab%2C%20Dev%2C,Starter%20plan%20receive%20500%20credits%2Fmonth.)
-- [ ] 유료 가격: 연 16달러부터  
-  “Full seat $16 /mo” · [페이지에서 보기](https://www.figma.com/pricing/#:~:text=Full%20seat%20%2416%20%2Fmo)
-- [ ] 유료 가격: 연 16달러부터  
-  “3,000 credits/month on the Professional plan” · [페이지에서 보기](https://www.figma.com/ai/#:~:text=3%2C000%20credits%2Fmonth%20on%20the%20Professional%20plan)
 - [ ] 기본으로 학습에 씀: 예  
   “For Starter and Professional, content training is set to ‘on’ by default — admins can opt out” · [페이지에서 보기](https://www.figma.com/ai/our-approach/#:~:text=For%20Starter%20and%20Professional%2C%20content,%E2%80%94%20admins%20can%20opt%20out)
 - [ ] 학습 끄기 가능: 예  
@@ -2295,6 +2240,8 @@ node scripts/draft.js promote miro --verified YYYY-MM-DD --dev
 **3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
 
 - [ ] `open_source`
+- [ ] `price.paid_from_usd`
+- [ ] `price.billing`
 
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
@@ -2314,6 +2261,7 @@ node scripts/draft.js promote miro --verified YYYY-MM-DD --dev
 - 기능 체크리스트: design_ui 4개(코드 내보내기는 Dev Mode·MCP 서버로 실제 코드로 옮긴다는 문장), app_builders 4개(Figma Make: 문장으로 앱 생성, Supabase 백엔드·인증, URL로 게시, PR 올리기). app_builders.export_code 근거('Create a pull request from Figma Make')는 로컬 코드베이스용 Make가 베타·'Coming soon'으로 표시된 기능이에요. planning 2개는 FigJam(화이트보드, 실시간 협업). automation.tools(Make의 MCP 커넥터)는 업무 자동화 목적과는 거리가 있어 J가 뺄지 정해 주세요.
 - 오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.
 - AI 여부(partial: 디자인 도구의 일부. Figma Make만 보면 yes에 가까움), 섹션(official), 대표 목적(design_ui, 대안 app_builders)은 제안값이에요.
+- 유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Professional 월 16달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요.
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2387,6 +2335,7 @@ node scripts/draft.js promote figma --verified YYYY-MM-DD --dev
 - 기능 체크리스트: planning 2개(문서 초안 근거는 '제안하고 초안을 쓴다'는 일반 문장이라 약해요. PRD라는 말은 없음. 이슈 관리는 채팅으로 Jira 티켓 만들기). 화이트보드·공동 편집은 Confluence 기능이라 Rovo 기능으로 넣지 않았어요. automation 4개는 Rovo Studio의 'Automations: Workflows that trigger agents and actions automatically across your tools' 한 문장에 기대고 있어요(트리거가 일정인지 이벤트인지는 안 나옴). 외부 도구 연결 근거는 Rovo 커넥터(서드파티 SaaS 연결) 문장이에요. Atlassian MCP 서버는 '다른 AI 도구가 Atlassian을 쓰는' 방향이라 근거로 쓰지 않았어요.
 - 오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.
 - AI 여부(yes), 섹션(official), 대표 목적(automation, 대안 planning)은 제안값이에요.
+- 코딩 에이전트 Rovo Dev는 이번에는 따로 넣지 않기로 했어요 (J 결정).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2404,7 +2353,7 @@ node scripts/draft.js promote atlassian-rovo --verified YYYY-MM-DD --dev
 
 - [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
 
-**2. 근거 대조** (17개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
+**2. 근거 대조** (15개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
 
 - [ ] 무료 사용: 돼요  
   “Free for everyone $0 For students and hobbyists” · [페이지에서 보기](https://uizard.io/pricing/#:~:text=Free%20for%20everyone%20%240%20For%20students%20and%20hobbyists)
@@ -2412,10 +2361,6 @@ node scripts/draft.js promote atlassian-rovo --verified YYYY-MM-DD --dev
   “3 AI generations per month” · [페이지에서 보기](https://uizard.io/pricing/#:~:text=3%20AI%20generations%20per%20month)
 - [ ] 무료 한도: AI 생성 월 3번, 프로젝트 2개  
   “2 projects” · [페이지에서 보기](https://uizard.io/pricing/#:~:text=2%20projects)
-- [ ] 유료 가격: 연 12달러부터  
-  “$12 per month (if billed annually)” · [페이지에서 보기](https://uizard.io/pricing/#:~:text=%2412%20per%20month%20%28if%20billed%20annually%29)
-- [ ] 결제 주기: yearly  
-  “Billed annually Save 40% $12 per month For startups and organizations” · [페이지에서 보기](https://uizard.io/pricing/#:~:text=Billed%20annually%20Save%2040%25%20%2412,month%20For%20startups%20and%20organizations)
 - [ ] 기본으로 학습에 씀: 예  
   “Design of graphical user interfaces, prototypes, design systems, design files, wireframes, screenshots created and uploaded by users of the Free and Pro plans may be used for the purpose of fine-tuning and training machine learning AI models to improve the overall quality of the Services.” · [페이지에서 보기](https://uizard.io/terms-of-service/#:~:text=Design%20of%20graphical%20user%20interfaces%2C,overall%20quality%20of%20the%20Services.)
 - [ ] 학습 메모: Free·Pro 요금제에서 만든·올린 디자인은 AI 모델 학습에 쓰일 수 있어요. Business·Enterprise는 쓰지 않는다고 해요  
@@ -2444,6 +2389,8 @@ node scripts/draft.js promote atlassian-rovo --verified YYYY-MM-DD --dev
 **3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
 
 - [ ] `open_source`
+- [ ] `price.paid_from_usd`
+- [ ] `price.billing`
 
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
@@ -2464,6 +2411,7 @@ node scripts/draft.js promote atlassian-rovo --verified YYYY-MM-DD --dev
 - 기능 체크리스트: design_ui 4개(컴포넌트 근거는 브랜드 키트로 디자인 시스템에 맞춰 생성 + 가격표의 'Team asset libraries' 행, 코드 내보내기는 유료 요금제의 React·CSS 개발자 전달). planning.realtime은 가격표의 'Multiplayer real-time collaboration'. 가격표의 기능별 요금제 표시(✓)는 글자로 안 읽혀서 어느 요금제에 있는지는 확인 못 했어요.
 - 오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.
 - AI 여부(yes: 'AI-first'로 시작한 디자인 도구), 섹션(official), 대표 목적(design_ui)은 제안값이에요.
+- 유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Pro 월 12달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요.
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -3212,7 +3160,7 @@ node scripts/draft.js promote snyk --verified YYYY-MM-DD --dev
 
 - [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
 
-**2. 근거 대조** (13개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
+**2. 근거 대조** (11개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
 
 - [ ] 무료 사용: 돼요  
   “Developers Free forever SonarQube Team Plan, free for your private projects up to 50k LOC. No card, no expiry.” · [페이지에서 보기](https://www.sonarsource.com/plans-and-pricing/#:~:text=Developers%20Free%20forever%20SonarQube%20Team,LOC.%20No%20card%2C%20no%20expiry.)
@@ -3231,13 +3179,9 @@ node scripts/draft.js promote snyk --verified YYYY-MM-DD --dev
 - [ ] 쓰는 형태: 클라우드 서비스, 셀프 호스팅, IDE 확장, CLI  
   “SonarQube CLI Run analysis from any terminal, CI pipeline, or coding agent.” · [페이지에서 보기](https://www.sonarsource.com/plans-and-pricing/#:~:text=SonarQube%20CLI%20Run%20analysis%20from,CI%20pipeline%2C%20or%20coding%20agent.)
 - [ ] ✓ 코드 리뷰·품질 검사 받기 — PR 자동 리뷰 코멘트  
-  “Gitar reviews pull requests directly on GitHub (along with GitLab , Bitbucket , and Azure DevOps ), appearing as status checks and inline comments on the PR you already have open.” · [페이지에서 보기](https://www.sonarsource.com/solutions/code-review/ai/#:~:text=Gitar%20reviews%20pull%20requests%20directly,PR%20you%20already%20have%20open.)
-- [ ] ✓ 코드 리뷰·품질 검사 받기 — PR 자동 리뷰 코멘트  
   “Finds bugs, vulnerabilities, and security hotspots across 30+ languages on every pull request.” · [페이지에서 보기](https://www.sonarsource.com/plans-and-pricing/#:~:text=Finds%20bugs%2C%20vulnerabilities%2C%20and%20security,languages%20on%20every%20pull%20request.)
 - [ ] ✓ 코드 리뷰·품질 검사 받기 — 보안 취약점 검사  
   “Identifies injection vulnerabilities by simulating the flow of data through every code path to find deeply hidden vulnerabilities” · [페이지에서 보기](https://www.sonarsource.com/solutions/automated-code-review/#:~:text=Identifies%20injection%20vulnerabilities%20by%20simulating,to%20find%20deeply%20hidden%20vulnerabilities)
-- [ ] ✓ 코드 리뷰·품질 검사 받기 — 수정 제안 바로 적용  
-  “It identifies issues, explains them, and generates a fix it can commit to the branch.” · [페이지에서 보기](https://www.sonarsource.com/solutions/code-review/ai/#:~:text=It%20identifies%20issues%2C%20explains%20them%2C,can%20commit%20to%20the%20branch.)
 - [ ] 오픈소스: 확인 필요  
   “Every Sonar project released under the GPL and LGPL: the SonarQube Server core, scanners, IDE clients, CI/CD integrations, the plugin API, and the tooling we build in the open.” · [페이지에서 보기](https://www.sonarsource.com/open-source/#:~:text=Every%20Sonar%20project%20released%20under,we%20build%20in%20the%20open.)
 
@@ -3264,6 +3208,7 @@ node scripts/draft.js promote snyk --verified YYYY-MM-DD --dev
 - 오픈소스 여부(todo): 오픈소스 페이지에 'SonarQube Server core, scanners, IDE clients 등은 GPL·LGPL'이라는 문장이 있지만, 같은 페이지에 '언어 분석기, MCP 서버, AI 도구는 Sonar Source-Available License(SSAL)'라고 나와요. 유료 Cloud·Server 에디션도 있어 '오픈 코어' 구조예요. 그래서 true/false를 정하지 않고 null + todo로 뒀어요. 저장소는 github.com/SonarSource(오픈소스 페이지의 'View on GitHub' 링크)예요.
 - 학습 정책(todo): 신뢰 센터·가격·AI 리뷰 페이지에서 고객 코드를 AI 학습에 쓰는지에 대한 문장을 못 찾았어요. Enterprise 설명에 'zero data retention and BYOK with LLMs', Gitar 설명에 'zero data retention'이 있어요. 개인정보 처리방침(/company/privacy/)은 읽지 않았어요.
 - AI 여부는 partial(정적 분석 도구 + AI 리뷰·수정), 대표 목적은 code_review를 제안해요. 테스트 생성(tests)은 근거가 없어 넣지 않았어요.
+- AI 리뷰 제품 Gitar는 별도 제품이라 넣지 않기로 했어요 (J 결정). Gitar 근거만 있던 "수정 제안 바로 적용"을 빼고, PR 리뷰는 요금 페이지의 "모든 PR에서 버그·취약점을 찾는다" 문장만 근거로 남겼어요. 가격은 요금 페이지의 "starts at $34 monthly" 기준이에요 (FAQ의 $32는 예전 표기로 보여요).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 

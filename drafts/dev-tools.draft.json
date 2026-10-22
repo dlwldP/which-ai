@@ -1356,8 +1356,8 @@
     "price": {
       "free": true,
       "free_limit": "팀 2개, 이슈 250개까지 (코드 작업은 유료)",
-      "paid_from_usd": 10,
-      "billing": "yearly"
+      "paid_from_usd": null,
+      "billing": "unknown"
     },
     "ai_native": "partial",
     "open_source": null,
@@ -1403,7 +1403,9 @@
     "todo": [
       "privacy.trains_on_input_default",
       "privacy.opt_out",
-      "open_source"
+      "open_source",
+      "price.paid_from_usd",
+      "price.billing"
     ],
     "evidence": [
       {
@@ -1420,16 +1422,6 @@
         "field": "price.free_limit",
         "source": "https://linear.app/docs/coding-sessions",
         "quote": "Coding sessions are supported on paid plans. Usage draws from your workspace’s AI credits."
-      },
-      {
-        "field": "price.paid_from_usd",
-        "source": "https://linear.app/pricing",
-        "quote": "Basic $10 per user/month"
-      },
-      {
-        "field": "price.billing",
-        "source": "https://linear.app/pricing",
-        "quote": "$10 per user/month Billed yearly"
       },
       {
         "field": "privacy.note",
@@ -1494,7 +1486,8 @@
       "오픈소스 여부: 공식 페이지에 오픈소스라는 문장이 없어요. 회사 서비스라 아마 false인데 근거가 없어 null + todo예요.",
       "쓰는 형태: 웹과 데스크톱(macOS·Windows) 앱. 모바일(iOS·Android) 앱도 있지만 forms 목록에 모바일이 없어 뺐어요.",
       "기능 체크리스트: planning 2개(이슈 관리, 문서 초안: 문서의 예시 프롬프트 'Draft a new document...'를 근거로 함. PRD라는 말은 없음). coding_agents 3개(여러 파일 수정 문장은 못 찾음). run_commands와 open_pr는 같은 문장('writes and tests the change ... returns a draft pull request')을 근거로 했어요. 코드는 Linear가 직접 짜는 게 아니라 Claude Code나 Codex를 써서 Linear Agent가 돌려요. code_review 2개(테스트 추가, 리뷰 의견 반영). PR 자동 리뷰 코멘트 문장은 없어요('Guided reviews'는 사람이 diff를 보기 쉽게 정리해 주는 기능). automation 2개(Loops 일정·이벤트 실행, MCP 서버 연결).",
-      "AI 여부(partial: AI는 이슈 관리 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요."
+      "AI 여부(partial: AI는 이슈 관리 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요.",
+      "유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 월 10달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요."
     ]
   },
   {
@@ -1525,8 +1518,8 @@
     "price": {
       "free": true,
       "free_limit": "한 달 토큰 100만 개 (하루 30만 개까지)",
-      "paid_from_usd": 18,
-      "billing": "yearly"
+      "paid_from_usd": null,
+      "billing": "unknown"
     },
     "ai_native": "yes",
     "open_source": null,
@@ -1559,7 +1552,9 @@
     ],
     "learn": [],
     "todo": [
-      "open_source"
+      "open_source",
+      "price.paid_from_usd",
+      "price.billing"
     ],
     "evidence": [
       {
@@ -1576,11 +1571,6 @@
         "field": "price.free_limit",
         "source": "https://bolt.new/pricing",
         "quote": "Daily Token Limit 300K No Limit No Limit No Limit"
-      },
-      {
-        "field": "price.paid_from_usd",
-        "source": "https://bolt.new/pricing",
-        "quote": "Pro $18 * /month Total of $216 $300 / year Billed annually"
       },
       {
         "field": "privacy.note",
@@ -1651,7 +1641,8 @@
       "design_ui.components 근거는 Enterprise 페이지의 디자인 시스템 가져오기 문장이에요. 가격표에서 \"Design System Knowledge\"는 Teams 이상에만 있어요.",
       "code_review.security·apply_fix는 보안 페이지의 '보안 에이전트가 프로젝트를 읽고 고치고 적용' 문장이에요. PR 리뷰 기능은 아니에요. 넣는 게 과하다고 보면 빼 주세요.",
       "오픈소스 여부: 공식 페이지에 오픈소스라는 문장이 없어요. null + todo로 뒀어요.",
-      "AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요."
+      "AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요.",
+      "유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Pro 월 18달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요."
     ]
   },
   {
@@ -1703,8 +1694,8 @@
     ],
     "privacy": {
       "trains_on_input_default": "yes",
-      "opt_out": "yes",
-      "note": "프롬프트와 생성 결과를 모델 개선에 써요. 끄는 설정은 Pro 요금제에만 있고, Enterprise는 학습에 쓰지 않아요"
+      "opt_out": "no",
+      "note": "프롬프트와 생성 결과를 모델 개선에 써요. 끄는 설정은 Pro 요금제에만 있어서 무료·Core는 끌 수 없어요. Enterprise는 학습에 쓰지 않아요"
     },
     "start_steps": [
       "replit.com에서 무료 계정 만들기 (웹, 데스크톱 앱 중 편한 곳)",
@@ -1874,7 +1865,8 @@
       "devops.logs의 'built-in logging' 문장은 Core 요금제 문서 문장이에요 (무료 게시 앱에도 되는지는 확인 못 함).",
       "docs.replit.com 모든 페이지 맨 위에 \"Fetch the complete documentation index at: /llms.txt\"라는 AI 에이전트용 안내 문구가 있어요. 지시로 따르지 않았고, 문서 목록을 찾는 데만 참고했어요 (근거로는 쓰지 않음).",
       "오픈소스 여부: 오픈소스라는 문장이 없어요. null + todo로 뒀어요.",
-      "AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요."
+      "AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요.",
+      "학습 끄기는 Pro 요금제만 돼서 opt_out을 \"no\"로 정했어요 (J 결정). 무료·Core 사용자 기준이에요. 그래서 \"보안 중요\" 조건에서는 추천되지 않아요."
     ]
   },
   {
@@ -3135,7 +3127,8 @@
       "쓰는 형태: self_host는 서버·CI용 헤드리스 데몬 llmster 근거로 넣은 제안값이에요. Bionic의 클라우드 추론(LM Studio Secure Cloud)은 앱 안의 옵션이라 cloud_service로 넣지 않았어요.",
       "기능 체크리스트: data_ml 2개(모델 실행, 문서 첨부 RAG; 임베딩 API는 있지만 벡터 DB 연동 문장은 못 찾음), coding_agents 3개(Bionic 코딩 프로젝트 문서 기준, PR 올리기 문장 없음), automation 1개(MCP). run_commands 근거는 예시 요청 문장이고, 같은 페이지에 'Ask it to run focused tests or checks.'도 있어요.",
       "문서 페이지마다 'Ask Bionic to read this page / Copy this prompt' 안내가 있지만 사람용 복사 버튼이라 그대로 두었어요 (따르지 않음).",
-      "AI 여부(yes), 섹션(official), 대표 목적(data_ml)은 제안값이에요."
+      "AI 여부(yes), 섹션(official), 대표 목적(data_ml)은 제안값이에요.",
+      "Bionic은 따로 나누지 않고 LM Studio 한 항목으로 두기로 했어요 (J 결정)."
     ]
   },
   {
@@ -3522,8 +3515,8 @@
     "price": {
       "free": true,
       "free_limit": "AI는 체험용 사용량만 (Free·Plus 요금제)",
-      "paid_from_usd": 20,
-      "billing": "yearly"
+      "paid_from_usd": null,
+      "billing": "unknown"
     },
     "ai_native": "partial",
     "open_source": null,
@@ -3567,7 +3560,9 @@
       }
     ],
     "todo": [
-      "open_source"
+      "open_source",
+      "price.paid_from_usd",
+      "price.billing"
     ],
     "evidence": [
       {
@@ -3584,16 +3579,6 @@
         "field": "price.free_limit",
         "source": "https://www.notion.com/pricing",
         "quote": "Trial AI capabilities like generating docs, or autofilling databases"
-      },
-      {
-        "field": "price.paid_from_usd",
-        "source": "https://www.notion.com/pricing",
-        "quote": "Business Recommended $20 per member / month"
-      },
-      {
-        "field": "price.paid_from_usd",
-        "source": "https://www.notion.com/product/ai",
-        "quote": "Notion AI is included with Notion’s Business and Enterprise plans, with core features like Notion Agent, AI Meeting Notes, and Enterprise Search."
       },
       {
         "field": "privacy.trains_on_input_default",
@@ -3654,7 +3639,8 @@
       "오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.",
       "쓰는 형태: 웹·데스크톱(macOS·Windows). 웹 근거는 도움말 메뉴 제목('Notion on desktop, web, & mobile')이에요. 모바일 앱도 있지만 forms 목록에 없어 뺐어요. 개발자 플랫폼 CLI(Workers 배포용)는 Notion AI 사용 형태가 아니라 넣지 않았어요.",
       "기능 체크리스트: planning 2개(문서 초안, 이슈·작업 관리 - 근거는 '프로젝트나 할 일을 한곳에 정리' 데이터베이스 문장). 화이트보드·실시간 공동 편집은 AI 페이지에서 직접 소개하는 문장을 못 찾아 뺐어요(이미지 생성으로 다이어그램을 만든다는 문장은 있음). automation 3개(Custom Agents 워크플로·Slack/메일/캘린더 연결, 일정 트리거, MCP 연결). '워크플로 안에 AI 단계'는 Custom Agent 자체가 AI라 애매해서 뺐어요.",
-      "AI 여부(partial: 문서·협업 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요."
+      "AI 여부(partial: 문서·협업 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요.",
+      "유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Plus 월 10달러 / Business 월 20달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요."
     ]
   },
   {
@@ -3685,8 +3671,8 @@
     "price": {
       "free": true,
       "free_limit": "편집 가능한 보드 3개, AI 크레딧 월 10개",
-      "paid_from_usd": 8,
-      "billing": "yearly"
+      "paid_from_usd": null,
+      "billing": "unknown"
     },
     "ai_native": "partial",
     "open_source": null,
@@ -3725,7 +3711,9 @@
       }
     ],
     "todo": [
-      "open_source"
+      "open_source",
+      "price.paid_from_usd",
+      "price.billing"
     ],
     "evidence": [
       {
@@ -3737,16 +3725,6 @@
         "field": "price.free_limit",
         "source": "https://miro.com/pricing/",
         "quote": "You get up to 3 editable boards and with 10 credits per month you have the ability to try AI for generating diagrams, tables, and summaries."
-      },
-      {
-        "field": "price.paid_from_usd",
-        "source": "https://miro.com/pricing/",
-        "quote": "For small teams collaborating regularly with unlimited boards $ 8 /month per member, billed yearly"
-      },
-      {
-        "field": "price.billing",
-        "source": "https://miro.com/pricing/",
-        "quote": "Annual billing saves 20% over monthly."
       },
       {
         "field": "privacy.trains_on_input_default",
@@ -3821,7 +3799,8 @@
       "쓰는 형태: 데스크톱(macOS·Windows)은 앱 페이지 근거. 웹은 'Miro Lite(가입 없이 쓰는 웹 화이트보드)가 Miro와 같은 기본 기능'이라는 문장밖에 못 찾았어요. Miro 본 서비스가 웹에서 된다는 직접 문장은 없으니 J가 확인해 주세요. 모바일 앱도 있지만 forms 목록에 없어 뺐어요.",
       "기능 체크리스트: planning 4개(PRD 초안은 Flows 페이지의 '브레인스토밍을 PRD로 바꾸는 Flow' 문장, 이슈 관리는 Business의 데이터 테이블·Jira 등 양방향 연동 문장이라 약할 수 있어요), design_ui 2개(문장·스크린샷으로 프로토타입 화면 생성, 클릭되는 프로토타입. 컴포넌트·코드 내보내기 문장은 없음), automation 2개(AI 워크플로 Flows, Slack·Jira 등 외부 도구 연결). 일정·이벤트 자동 실행 문장은 없어요. Miro MCP 서버는 '다른 AI 도구가 Miro를 쓰는' 방향이라 tools 근거로는 쓰지 않았어요.",
       "보안 메모: miro.com/ai/mcp/ 페이지에 'AI 도구에 붙여 넣으라'는 에이전트용 프롬프트('Help me connect Miro if it isn't connected yet...')가 있었어요. 따르지 않았고 근거로도 쓰지 않았어요.",
-      "AI 여부(partial: 화이트보드 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요."
+      "AI 여부(partial: 화이트보드 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요.",
+      "유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Starter 월 8달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요."
     ]
   },
   {
@@ -3857,8 +3836,8 @@
     "price": {
       "free": true,
       "free_limit": "Starter 요금제: AI 크레딧 하루 150개, 월 500개까지",
-      "paid_from_usd": 16,
-      "billing": "yearly"
+      "paid_from_usd": null,
+      "billing": "unknown"
     },
     "ai_native": "partial",
     "open_source": null,
@@ -3901,7 +3880,9 @@
       }
     ],
     "todo": [
-      "open_source"
+      "open_source",
+      "price.paid_from_usd",
+      "price.billing"
     ],
     "evidence": [
       {
@@ -3918,16 +3899,6 @@
         "field": "price.free_limit",
         "source": "https://www.figma.com/ai/",
         "quote": "All other seats (Collab, Dev, and View) and users on the Starter plan receive 500 credits/month."
-      },
-      {
-        "field": "price.paid_from_usd",
-        "source": "https://www.figma.com/pricing/",
-        "quote": "Full seat $16 /mo"
-      },
-      {
-        "field": "price.paid_from_usd",
-        "source": "https://www.figma.com/ai/",
-        "quote": "3,000 credits/month on the Professional plan"
       },
       {
         "field": "privacy.trains_on_input_default",
@@ -4022,7 +3993,8 @@
       "쓰는 형태: 웹·데스크톱(macOS·Windows). 모바일 앱도 있지만 forms 목록에 없어 뺐어요. MCP 서버는 다른 도구와 연결하는 통로라 형태로 넣지 않았어요.",
       "기능 체크리스트: design_ui 4개(코드 내보내기는 Dev Mode·MCP 서버로 실제 코드로 옮긴다는 문장), app_builders 4개(Figma Make: 문장으로 앱 생성, Supabase 백엔드·인증, URL로 게시, PR 올리기). app_builders.export_code 근거('Create a pull request from Figma Make')는 로컬 코드베이스용 Make가 베타·'Coming soon'으로 표시된 기능이에요. planning 2개는 FigJam(화이트보드, 실시간 협업). automation.tools(Make의 MCP 커넥터)는 업무 자동화 목적과는 거리가 있어 J가 뺄지 정해 주세요.",
       "오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.",
-      "AI 여부(partial: 디자인 도구의 일부. Figma Make만 보면 yes에 가까움), 섹션(official), 대표 목적(design_ui, 대안 app_builders)은 제안값이에요."
+      "AI 여부(partial: 디자인 도구의 일부. Figma Make만 보면 yes에 가까움), 섹션(official), 대표 목적(design_ui, 대안 app_builders)은 제안값이에요.",
+      "유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Professional 월 16달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요."
     ]
   },
   {
@@ -4176,7 +4148,8 @@
       "쓰는 형태: 웹(Atlassian 앱 안, chat.rovo.com, 브라우저 확장)·데스크톱(macOS·Windows). 모바일도 있지만 forms 목록에 없어 뺐어요. 홈 페이지의 'In the command line → Rovo Dev'와 가격 페이지의 'Rovo CLI'는 Rovo Dev(코딩 에이전트, 요금 따로) 쪽이라 cli는 넣지 않았어요. Rovo Dev는 coding_agents·code_review용으로 따로 초안을 만들지 J가 정해 주세요.",
       "기능 체크리스트: planning 2개(문서 초안 근거는 '제안하고 초안을 쓴다'는 일반 문장이라 약해요. PRD라는 말은 없음. 이슈 관리는 채팅으로 Jira 티켓 만들기). 화이트보드·공동 편집은 Confluence 기능이라 Rovo 기능으로 넣지 않았어요. automation 4개는 Rovo Studio의 'Automations: Workflows that trigger agents and actions automatically across your tools' 한 문장에 기대고 있어요(트리거가 일정인지 이벤트인지는 안 나옴). 외부 도구 연결 근거는 Rovo 커넥터(서드파티 SaaS 연결) 문장이에요. Atlassian MCP 서버는 '다른 AI 도구가 Atlassian을 쓰는' 방향이라 근거로 쓰지 않았어요.",
       "오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.",
-      "AI 여부(yes), 섹션(official), 대표 목적(automation, 대안 planning)은 제안값이에요."
+      "AI 여부(yes), 섹션(official), 대표 목적(automation, 대안 planning)은 제안값이에요.",
+      "코딩 에이전트 Rovo Dev는 이번에는 따로 넣지 않기로 했어요 (J 결정)."
     ]
   },
   {
@@ -4202,8 +4175,8 @@
     "price": {
       "free": true,
       "free_limit": "AI 생성 월 3번, 프로젝트 2개",
-      "paid_from_usd": 12,
-      "billing": "yearly"
+      "paid_from_usd": null,
+      "billing": "unknown"
     },
     "ai_native": "yes",
     "open_source": null,
@@ -4240,7 +4213,9 @@
       }
     ],
     "todo": [
-      "open_source"
+      "open_source",
+      "price.paid_from_usd",
+      "price.billing"
     ],
     "evidence": [
       {
@@ -4257,16 +4232,6 @@
         "field": "price.free_limit",
         "source": "https://uizard.io/pricing/",
         "quote": "2 projects"
-      },
-      {
-        "field": "price.paid_from_usd",
-        "source": "https://uizard.io/pricing/",
-        "quote": "$12 per month (if billed annually)"
-      },
-      {
-        "field": "price.billing",
-        "source": "https://uizard.io/pricing/",
-        "quote": "Billed annually Save 40% $12 per month For startups and organizations"
       },
       {
         "field": "privacy.trains_on_input_default",
@@ -4337,7 +4302,8 @@
       "쓰는 형태: 웹 서비스라는 직접 문장은 없고, '온라인 서비스(uizard.io)'와 약관의 '호환 웹 브라우저' 문장으로 web만 넣었어요. 데스크톱 앱 페이지는 못 찾았어요.",
       "기능 체크리스트: design_ui 4개(컴포넌트 근거는 브랜드 키트로 디자인 시스템에 맞춰 생성 + 가격표의 'Team asset libraries' 행, 코드 내보내기는 유료 요금제의 React·CSS 개발자 전달). planning.realtime은 가격표의 'Multiplayer real-time collaboration'. 가격표의 기능별 요금제 표시(✓)는 글자로 안 읽혀서 어느 요금제에 있는지는 확인 못 했어요.",
       "오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.",
-      "AI 여부(yes: 'AI-first'로 시작한 디자인 도구), 섹션(official), 대표 목적(design_ui)은 제안값이에요."
+      "AI 여부(yes: 'AI-first'로 시작한 디자인 도구), 섹션(official), 대표 목적(design_ui)은 제안값이에요.",
+      "유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Pro 월 12달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요."
     ]
   },
   {
@@ -5935,8 +5901,7 @@
     "features": {
       "code_review": [
         "pr_review",
-        "security",
-        "apply_fix"
+        "security"
       ]
     },
     "primary": "code_review",
@@ -6033,11 +5998,6 @@
       },
       {
         "field": "features.code_review.pr_review",
-        "source": "https://www.sonarsource.com/solutions/code-review/ai/",
-        "quote": "Gitar reviews pull requests directly on GitHub (along with GitLab , Bitbucket , and Azure DevOps ), appearing as status checks and inline comments on the PR you already have open."
-      },
-      {
-        "field": "features.code_review.pr_review",
         "source": "https://www.sonarsource.com/plans-and-pricing/",
         "quote": "Finds bugs, vulnerabilities, and security hotspots across 30+ languages on every pull request."
       },
@@ -6045,11 +6005,6 @@
         "field": "features.code_review.security",
         "source": "https://www.sonarsource.com/solutions/automated-code-review/",
         "quote": "Identifies injection vulnerabilities by simulating the flow of data through every code path to find deeply hidden vulnerabilities"
-      },
-      {
-        "field": "features.code_review.apply_fix",
-        "source": "https://www.sonarsource.com/solutions/code-review/ai/",
-        "quote": "It identifies issues, explains them, and generates a fix it can commit to the branch."
       },
       {
         "field": "open_source",
@@ -6063,7 +6018,8 @@
       "무료: 비공개 프로젝트 5만 줄까지 영구 무료, 공개 OSI 라이선스 저장소는 무료(SonarQube for OSS), IDE 확장 무료, Community Build 무료 다운로드.",
       "오픈소스 여부(todo): 오픈소스 페이지에 'SonarQube Server core, scanners, IDE clients 등은 GPL·LGPL'이라는 문장이 있지만, 같은 페이지에 '언어 분석기, MCP 서버, AI 도구는 Sonar Source-Available License(SSAL)'라고 나와요. 유료 Cloud·Server 에디션도 있어 '오픈 코어' 구조예요. 그래서 true/false를 정하지 않고 null + todo로 뒀어요. 저장소는 github.com/SonarSource(오픈소스 페이지의 'View on GitHub' 링크)예요.",
       "학습 정책(todo): 신뢰 센터·가격·AI 리뷰 페이지에서 고객 코드를 AI 학습에 쓰는지에 대한 문장을 못 찾았어요. Enterprise 설명에 'zero data retention and BYOK with LLMs', Gitar 설명에 'zero data retention'이 있어요. 개인정보 처리방침(/company/privacy/)은 읽지 않았어요.",
-      "AI 여부는 partial(정적 분석 도구 + AI 리뷰·수정), 대표 목적은 code_review를 제안해요. 테스트 생성(tests)은 근거가 없어 넣지 않았어요."
+      "AI 여부는 partial(정적 분석 도구 + AI 리뷰·수정), 대표 목적은 code_review를 제안해요. 테스트 생성(tests)은 근거가 없어 넣지 않았어요.",
+      "AI 리뷰 제품 Gitar는 별도 제품이라 넣지 않기로 했어요 (J 결정). Gitar 근거만 있던 \"수정 제안 바로 적용\"을 빼고, PR 리뷰는 요금 페이지의 \"모든 PR에서 버그·취약점을 찾는다\" 문장만 근거로 남겼어요. 가격은 요금 페이지의 \"starts at $34 monthly\" 기준이에요 (FAQ의 $32는 예전 표기로 보여요)."
     ]
   }
 ]
