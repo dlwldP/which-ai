@@ -3498,5 +3498,846 @@
       "기능 체크리스트: devops 3개(AI 오류 분석은 '배포·로그 확인' 문장만 있고 원인 분석을 직접 소개하는 문장이 없어 뺐어요. auto_deploy는 '저장소 연결·GitHub 브랜치 배포' 문장이라 '푸시하면 자동 배포'를 직접 말하지는 않아요 — J 확인), coding_agents 2개(시험 기능), backend_database 2개(인증 'Railway Authentication'은 배포 주소에 로그인을 거는 Enterprise 기능이라 앱 인증으로 세지 않음), automation 2개(크론 작업, 에이전트 MCP 연결).",
       "AI 여부(partial), 섹션(official), 대표 목적(devops)은 제안값이에요."
     ]
+  },
+  {
+    "id": "notion",
+    "name": "Notion AI",
+    "url": "https://www.notion.com/product/ai",
+    "official_domains": [
+      "notion.com"
+    ],
+    "one_liner": "문서·할 일 데이터베이스를 쓰는 협업 공간에 AI가 들어 있어요. 문서 초안을 쓰고, 정해 둔 일정에 맞춰 반복 업무를 돌리는 에이전트를 만들 수 있어요",
+    "features": {
+      "planning": [
+        "doc_draft",
+        "issues"
+      ],
+      "automation": [
+        "workflow",
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "planning",
+    "price": {
+      "free": true,
+      "free_limit": "AI는 체험용 사용량만 (Free·Plus 요금제)",
+      "paid_from_usd": 20,
+      "billing": "yearly"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web",
+      "desktop"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": "기본으로 고객 데이터를 학습에 쓰지 않고, 사용자가 데이터 공유 요청에 동의할 때만 쓴다고 해요. AI 제공 회사도 계약상 학습에 못 써요"
+    },
+    "start_steps": [
+      "Notion에 가입해서 워크스페이스 만들기",
+      "페이지에서 스페이스 키나 Notion Agent 채팅으로 문서 초안·요약 부탁하기",
+      "반복 업무는 Business 요금제에서 Custom Agent를 만들어 일정이나 이벤트 트리거를 걸기"
+    ],
+    "cautions": [
+      "Free·Plus 요금제는 AI를 체험할 만큼만 쓸 수 있어요. AI를 제대로 쓰려면 Business 이상이에요",
+      "Custom Agents는 요금제와 별도로 Notion 크레딧을 써요",
+      "Notion 자체는 문서·협업 도구이고 AI는 그 안의 기능이에요"
+    ],
+    "sources": [
+      "https://www.notion.com/product/ai",
+      "https://www.notion.com/pricing",
+      "https://www.notion.com/help/notion-ai-faqs",
+      "https://www.notion.com/help/notion-ai-security-practices",
+      "https://www.notion.com/download",
+      "https://www.notion.com/help/custom-agent",
+      "https://www.notion.com/product/agents"
+    ],
+    "learn": [
+      {
+        "title": "Notion AI 자주 묻는 질문 (공식 도움말)",
+        "url": "https://www.notion.com/help/notion-ai-faqs"
+      },
+      {
+        "title": "Custom Agents 만들기 (공식 도움말)",
+        "url": "https://www.notion.com/help/custom-agent"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://www.notion.com/pricing",
+        "quote": "Free $0 per member / month For individuals to organize personal projects and life."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.notion.com/help/notion-ai-faqs",
+        "quote": "Users on the Free and Plus Plans get a limited number of complimentary AI responses so they can try Notion AI features out."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.notion.com/pricing",
+        "quote": "Trial AI capabilities like generating docs, or autofilling databases"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://www.notion.com/pricing",
+        "quote": "Business Recommended $20 per member / month"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://www.notion.com/product/ai",
+        "quote": "Notion AI is included with Notion’s Business and Enterprise plans, with core features like Notion Agent, AI Meeting Notes, and Enterprise Search."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://www.notion.com/help/notion-ai-security-practices",
+        "quote": "By default, your customer data is not used to train models."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://www.notion.com/product/ai",
+        "quote": "Notion AI will not use your data to train our models unless you opt in to a request to share your data."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.notion.com/help/notion-ai-faqs",
+        "quote": "Notion on desktop, web, & mobile"
+      },
+      {
+        "field": "forms",
+        "source": "https://www.notion.com/download",
+        "quote": "A faster experience on Notion Desktop."
+      },
+      {
+        "field": "features.planning.doc_draft",
+        "source": "https://www.notion.com/product/ai",
+        "quote": "Improve writing or generate drafts with AI blocks directly in your pages."
+      },
+      {
+        "field": "features.planning.issues",
+        "source": "https://www.notion.com/pricing",
+        "quote": "Organize hundreds or thousands of items in one place, like projects or tasks"
+      },
+      {
+        "field": "features.automation.workflow",
+        "source": "https://www.notion.com/help/custom-agent",
+        "quote": "With Custom Agents, you build shared workflows that automate recurring work for your team"
+      },
+      {
+        "field": "features.automation.workflow",
+        "source": "https://www.notion.com/product/agents",
+        "quote": "They run inside Notion and connect across Slack, Mail, Calendar, and more!"
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://www.notion.com/help/custom-agent",
+        "quote": "Run on a schedule (daily, weekly, monthly, weekends only, and more)."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://www.notion.com/product/agents",
+        "quote": "Connect to external apps via the Model Context Protocol."
+      }
+    ],
+    "review_notes": [
+      "유료 가격: 가격 페이지는 기본으로 '연 결제'가 선택된 상태로 읽혀서(Plus $10, Business $20) billing=yearly로 두었어요. 페이지 안 가격 데이터(화면 글자가 아님)에는 월 결제 Plus $12, Business $24로 보여요. 월 결제 기준이 필요하면 J가 확인해서 바꿔 주세요.",
+      "유료 가격 기준 요금제: Notion AI(Notion Agent·회의록·검색)는 Business부터 포함이라 Business $20을 넣었어요. Notion 자체의 가장 싼 유료 요금제는 Plus $10이지만 AI는 체험용만이에요. 어느 쪽으로 할지 J가 정해 주세요.",
+      "Custom Agents는 Notion 크레딧(1,000크레딧당 10달러)을 따로 써요. 무료 요금제(Free)에도 AI 체험 사용량이 있어서 free=true로 했어요.",
+      "학습 정책: '기본으로 고객 데이터를 학습에 쓰지 않는다', '데이터 공유 요청에 동의(opt in)할 때만 쓴다'는 문장이 있어 trains=no로 했어요. 끄는 설정 얘기가 아니라서 opt_out은 unknown이에요.",
+      "오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.",
+      "쓰는 형태: 웹·데스크톱(macOS·Windows). 웹 근거는 도움말 메뉴 제목('Notion on desktop, web, & mobile')이에요. 모바일 앱도 있지만 forms 목록에 없어 뺐어요. 개발자 플랫폼 CLI(Workers 배포용)는 Notion AI 사용 형태가 아니라 넣지 않았어요.",
+      "기능 체크리스트: planning 2개(문서 초안, 이슈·작업 관리 - 근거는 '프로젝트나 할 일을 한곳에 정리' 데이터베이스 문장). 화이트보드·실시간 공동 편집은 AI 페이지에서 직접 소개하는 문장을 못 찾아 뺐어요(이미지 생성으로 다이어그램을 만든다는 문장은 있음). automation 3개(Custom Agents 워크플로·Slack/메일/캘린더 연결, 일정 트리거, MCP 연결). '워크플로 안에 AI 단계'는 Custom Agent 자체가 AI라 애매해서 뺐어요.",
+      "AI 여부(partial: 문서·협업 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "miro",
+    "name": "Miro AI",
+    "url": "https://miro.com/ai/",
+    "official_domains": [
+      "miro.com"
+    ],
+    "one_liner": "팀이 같이 쓰는 화이트보드에 AI가 붙어 있어요. 보드 내용으로 다이어그램·기획 문서·클릭되는 프로토타입을 만들고, 여러 단계 AI 워크플로를 짤 수 있어요",
+    "features": {
+      "planning": [
+        "doc_draft",
+        "issues",
+        "whiteboard",
+        "realtime"
+      ],
+      "design_ui": [
+        "generate_ui",
+        "prototype"
+      ],
+      "automation": [
+        "ai_step",
+        "tools"
+      ]
+    },
+    "primary": "planning",
+    "price": {
+      "free": true,
+      "free_limit": "편집 가능한 보드 3개, AI 크레딧 월 10개",
+      "paid_from_usd": 8,
+      "billing": "yearly"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web",
+      "desktop"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": "가격 페이지 질문 답변에 '데이터를 Miro AI 모델 학습에 쓰지 않는다'고 적혀 있어요"
+    },
+    "start_steps": [
+      "Miro에 무료로 가입해서 보드 만들기",
+      "보드에 메모·자료를 올리고 AI로 다이어그램이나 요약, 기획 문서 만들어 보기",
+      "화면 아이디어는 문장이나 스크린샷으로 프로토타입을 생성해 팀과 같이 다듬기"
+    ],
+    "cautions": [
+      "무료 요금제는 편집 가능한 보드가 3개뿐이고 AI 크레딧도 월 10개라 맛보기 수준이에요",
+      "프로토타입 생성·AI 워크플로·데이터 테이블은 Business 요금제 기능으로 소개돼 있어요",
+      "Miro 자체는 화이트보드 협업 도구이고 AI는 그 안의 기능이에요"
+    ],
+    "sources": [
+      "https://miro.com/ai/",
+      "https://miro.com/pricing/",
+      "https://miro.com/ai/flows/",
+      "https://miro.com/ai/prototype-ai/",
+      "https://miro.com/apps/",
+      "https://miro.com/online-whiteboard/"
+    ],
+    "learn": [
+      {
+        "title": "AI 플레이북: 빠른 프로토타이핑 (공식)",
+        "url": "https://miro.com/ai-playbooks/rapid-prototyping/"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://miro.com/pricing/",
+        "quote": "Yes, Miro has a free plan with unlimited team members."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://miro.com/pricing/",
+        "quote": "You get up to 3 editable boards and with 10 credits per month you have the ability to try AI for generating diagrams, tables, and summaries."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://miro.com/pricing/",
+        "quote": "For small teams collaborating regularly with unlimited boards $ 8 /month per member, billed yearly"
+      },
+      {
+        "field": "price.billing",
+        "source": "https://miro.com/pricing/",
+        "quote": "Annual billing saves 20% over monthly."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://miro.com/pricing/",
+        "quote": "Does Miro use my data to train AI? No, your data is not used to train Miro AI models."
+      },
+      {
+        "field": "forms",
+        "source": "https://miro.com/apps/",
+        "quote": "Collaborate anywhere with Miro on all of your devices"
+      },
+      {
+        "field": "forms",
+        "source": "https://miro.com/apps/",
+        "quote": "Download for Windows 64-bit"
+      },
+      {
+        "field": "forms",
+        "source": "https://miro.com/online-whiteboard/",
+        "quote": "Miro Lite is a whiteboard online, great for creating quick sketches, brainstorming ideas, and drawing basic flowcharts and diagrams. It has the same basic features as Miro"
+      },
+      {
+        "field": "features.planning.doc_draft",
+        "source": "https://miro.com/ai/flows/",
+        "quote": "You've created a Flow that turns brainstorms into PRDs in minutes not hours?"
+      },
+      {
+        "field": "features.planning.issues",
+        "source": "https://miro.com/pricing/",
+        "quote": "Data tables with nesting and tree views to organize and track more complex work across teams and initiatives"
+      },
+      {
+        "field": "features.planning.issues",
+        "source": "https://miro.com/pricing/",
+        "quote": "Plan sprints and roadmaps on your canvas with Jira, Asana, Linear, ClickUp, Azure, and more with two-way sync included"
+      },
+      {
+        "field": "features.planning.whiteboard",
+        "source": "https://miro.com/pricing/",
+        "quote": "4,700+ shapes to map technical systems, cloud infrastructure, and business processes with Mermaid, UML, AWS, BPMN, and more"
+      },
+      {
+        "field": "features.planning.realtime",
+        "source": "https://miro.com/ai/flows/",
+        "quote": "Work with AI as a team – multiple cursors, simultaneous edits, full visibility."
+      },
+      {
+        "field": "features.design_ui.generate_ui",
+        "source": "https://miro.com/ai/prototype-ai/",
+        "quote": "Kickstart your design process by generating initial prototype flows and screen variations from simple text prompts, screenshots, or existing low-fidelity designs."
+      },
+      {
+        "field": "features.design_ui.prototype",
+        "source": "https://miro.com/ai/prototype-ai/",
+        "quote": "With minimal manual effort, turn static screens into clickable prototypes, allowing you to visualize user journeys and test navigation early."
+      },
+      {
+        "field": "features.automation.ai_step",
+        "source": "https://miro.com/ai/",
+        "quote": "Visual, multi-step AI workflows your whole team can build and run – together."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://miro.com/ai/flows/",
+        "quote": "Connect Miro to tools like Slack, Jira and Microsoft Copilot – or set up custom connections with your own tools. And when work needs to happen outside Miro, Flows can take action there too."
+      }
+    ],
+    "review_notes": [
+      "유료 가격: 가격 페이지 글자로는 Starter '$8 /month per member, billed yearly'만 보여요. 월 결제 가격은 화면 전환 버튼(스크립트) 뒤에 있어 못 읽었어요. 그래서 paid_from_usd=8, billing=yearly예요. 사용자 한 명당 가격이에요.",
+      "학습 정책: 가격 페이지 FAQ의 'your data is not used to train Miro AI models' 문장으로 trains=no. 끄는 설정 얘기는 없어 opt_out=unknown이에요. 꼭 원문 대조해 주세요.",
+      "읽지 못한 페이지: help.miro.com(도움말)은 이 환경의 프록시가 접속을 막아서(403) 읽지 못했어요. 그래서 배울 거리는 miro.com의 AI 플레이북 페이지 하나만 넣었어요.",
+      "쓰는 형태: 데스크톱(macOS·Windows)은 앱 페이지 근거. 웹은 'Miro Lite(가입 없이 쓰는 웹 화이트보드)가 Miro와 같은 기본 기능'이라는 문장밖에 못 찾았어요. Miro 본 서비스가 웹에서 된다는 직접 문장은 없으니 J가 확인해 주세요. 모바일 앱도 있지만 forms 목록에 없어 뺐어요.",
+      "기능 체크리스트: planning 4개(PRD 초안은 Flows 페이지의 '브레인스토밍을 PRD로 바꾸는 Flow' 문장, 이슈 관리는 Business의 데이터 테이블·Jira 등 양방향 연동 문장이라 약할 수 있어요), design_ui 2개(문장·스크린샷으로 프로토타입 화면 생성, 클릭되는 프로토타입. 컴포넌트·코드 내보내기 문장은 없음), automation 2개(AI 워크플로 Flows, Slack·Jira 등 외부 도구 연결). 일정·이벤트 자동 실행 문장은 없어요. Miro MCP 서버는 '다른 AI 도구가 Miro를 쓰는' 방향이라 tools 근거로는 쓰지 않았어요.",
+      "보안 메모: miro.com/ai/mcp/ 페이지에 'AI 도구에 붙여 넣으라'는 에이전트용 프롬프트('Help me connect Miro if it isn't connected yet...')가 있었어요. 따르지 않았고 근거로도 쓰지 않았어요.",
+      "AI 여부(partial: 화이트보드 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "figma",
+    "name": "Figma (Figma AI·FigJam·Figma Make)",
+    "url": "https://www.figma.com/ai/",
+    "official_domains": [
+      "figma.com"
+    ],
+    "one_liner": "UI 디자인 도구에 AI가 들어 있어요. 에이전트로 시안을 만들고, Figma Make에서는 문장으로 프로토타입·웹앱을 만들어 바로 게시할 수 있어요. FigJam 화이트보드도 함께 써요",
+    "features": {
+      "design_ui": [
+        "generate_ui",
+        "components",
+        "prototype",
+        "export_code"
+      ],
+      "app_builders": [
+        "generate_app",
+        "backend",
+        "deploy",
+        "export_code"
+      ],
+      "planning": [
+        "whiteboard",
+        "realtime"
+      ],
+      "automation": [
+        "tools"
+      ]
+    },
+    "primary": "design_ui",
+    "price": {
+      "free": true,
+      "free_limit": "Starter 요금제: AI 크레딧 하루 150개, 월 500개까지",
+      "paid_from_usd": 16,
+      "billing": "yearly"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web",
+      "desktop"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "Starter·Professional은 콘텐츠 학습이 처음부터 켜져 있고 관리자가 끌 수 있어요. Organization·Enterprise는 처음부터 꺼져 있어요"
+    },
+    "start_steps": [
+      "Figma에 무료(Starter)로 가입하기",
+      "관리자 설정에서 콘텐츠 학습(Content training)을 끌지 먼저 정하기",
+      "디자인 파일에서 Figma 에이전트로 시안을 만들거나, Figma Make에 만들 앱을 문장으로 설명하기"
+    ],
+    "cautions": [
+      "무료·Professional 팀은 내 디자인이 AI 학습에 쓰이는 설정이 기본으로 켜져 있어요",
+      "AI 기능은 크레딧을 쓰고, 무료는 월 500크레딧까지예요",
+      "Figma Make에서 기존 코드베이스로 PR을 올리는 기능은 베타·준비 중으로 소개돼 있어요"
+    ],
+    "sources": [
+      "https://www.figma.com/ai/",
+      "https://www.figma.com/pricing/",
+      "https://www.figma.com/make/",
+      "https://www.figma.com/ai/our-approach/",
+      "https://www.figma.com/figjam/",
+      "https://www.figma.com/downloads/"
+    ],
+    "learn": [
+      {
+        "title": "Figma AI 알아보기 (공식 도움말)",
+        "url": "https://help.figma.com/hc/en-us/articles/24039793359767-About-Figma-AI"
+      },
+      {
+        "title": "Figma Make 도움말 (공식)",
+        "url": "https://help.figma.com/hc/en-us/categories/31304285531543-Figma-Make"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://www.figma.com/pricing/",
+        "quote": "Starter Free Free limited access to Figma products"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.figma.com/pricing/",
+        "quote": "150 AI credits/day, up to 500 AI credits/mo"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.figma.com/ai/",
+        "quote": "All other seats (Collab, Dev, and View) and users on the Starter plan receive 500 credits/month."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://www.figma.com/pricing/",
+        "quote": "Full seat $16 /mo"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://www.figma.com/ai/",
+        "quote": "3,000 credits/month on the Professional plan"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://www.figma.com/ai/our-approach/",
+        "quote": "For Starter and Professional, content training is set to ‘on’ by default — admins can opt out"
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://www.figma.com/ai/our-approach/",
+        "quote": "Admins have control over AI content training, which they can adjust with a setting. Admins can turn this setting on or off at any time."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://www.figma.com/ai/our-approach/",
+        "quote": "For Organization and Enterprise, content training is set to ‘off’ by default"
+      },
+      {
+        "field": "forms",
+        "source": "https://www.figma.com/downloads/",
+        "quote": "The Figma interface is available in the following languages across web, desktop, and mobile apps:"
+      },
+      {
+        "field": "forms",
+        "source": "https://www.figma.com/downloads/",
+        "quote": "Desktop app for macOS"
+      },
+      {
+        "field": "features.design_ui.generate_ui",
+        "source": "https://www.figma.com/ai/",
+        "quote": "Use the Figma agent to generate new design directions, create diagrams, edit images, search your files, and more."
+      },
+      {
+        "field": "features.design_ui.components",
+        "source": "https://www.figma.com/pricing/",
+        "quote": "Create a reusable design component out of any collection of objects or layers."
+      },
+      {
+        "field": "features.design_ui.components",
+        "source": "https://www.figma.com/pricing/",
+        "quote": "Create design systems with shared assets for your team to use."
+      },
+      {
+        "field": "features.design_ui.prototype",
+        "source": "https://www.figma.com/pricing/",
+        "quote": "Create prototypes with interactive overlays that simulate how a user may interact with your design."
+      },
+      {
+        "field": "features.design_ui.export_code",
+        "source": "https://www.figma.com/ai/",
+        "quote": "Turn your design into a code-backed prototype, or build it into production with Figma’s MCP server."
+      },
+      {
+        "field": "features.app_builders.generate_app",
+        "source": "https://www.figma.com/pricing/",
+        "quote": "Generate a functional prototype or web app via prompt."
+      },
+      {
+        "field": "features.app_builders.backend",
+        "source": "https://www.figma.com/pricing/",
+        "quote": "Connect to Supabase to add user authentication, store user data, connect private APIs, and more."
+      },
+      {
+        "field": "features.app_builders.deploy",
+        "source": "https://www.figma.com/pricing/",
+        "quote": "Publish your functional prototype or web app as a website with a dedicated URL."
+      },
+      {
+        "field": "features.app_builders.export_code",
+        "source": "https://www.figma.com/ai/",
+        "quote": "Create a pull request from Figma Make to ship to production."
+      },
+      {
+        "field": "features.planning.whiteboard",
+        "source": "https://www.figma.com/figjam/",
+        "quote": "Work through complex user flows, processes, and systems with shapes and connectors that snap to the grid."
+      },
+      {
+        "field": "features.planning.realtime",
+        "source": "https://www.figma.com/figjam/",
+        "quote": "From brainstorm to build and everything in between, FigJam makes it easy for teams to collaborate in real time."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://www.figma.com/make/",
+        "quote": "Connect to external tools via the MCP, allowing you to work with documents, tasks, and data from other apps as context for your app or prototype."
+      }
+    ],
+    "review_notes": [
+      "한 초안으로 묶음: 지시대로 Figma Design의 AI, FigJam, Figma Make를 'figma' 하나로 넣었어요.",
+      "유료 가격: 가격 페이지는 'Annual(연 결제)'이 선택된 상태로 읽혀서 Professional Full seat $16/월을 넣고 billing=yearly로 했어요(버튼 설명에 'Annual selected'). 월 결제 가격은 글자로 못 읽었어요. Dev seat $12, Collab seat는 숫자를 못 읽었는데, AI를 제대로 쓰는 좌석은 Full seat이라 그 값을 썼어요. J가 확인해 주세요.",
+      "학습 정책: Starter·Professional은 '콘텐츠 학습이 기본으로 켜짐, 관리자가 끌 수 있음' → trains=yes, opt_out=yes. Organization·Enterprise는 기본 꺼짐. 같은 페이지의 'We do not use paid files to train AI models'는 커뮤니티의 유료 파일 얘기라 요금제와는 관계없어요. 꼭 원문 대조해 주세요.",
+      "쓰는 형태: 웹·데스크톱(macOS·Windows). 모바일 앱도 있지만 forms 목록에 없어 뺐어요. MCP 서버는 다른 도구와 연결하는 통로라 형태로 넣지 않았어요.",
+      "기능 체크리스트: design_ui 4개(코드 내보내기는 Dev Mode·MCP 서버로 실제 코드로 옮긴다는 문장), app_builders 4개(Figma Make: 문장으로 앱 생성, Supabase 백엔드·인증, URL로 게시, PR 올리기). app_builders.export_code 근거('Create a pull request from Figma Make')는 로컬 코드베이스용 Make가 베타·'Coming soon'으로 표시된 기능이에요. planning 2개는 FigJam(화이트보드, 실시간 협업). automation.tools(Make의 MCP 커넥터)는 업무 자동화 목적과는 거리가 있어 J가 뺄지 정해 주세요.",
+      "오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.",
+      "AI 여부(partial: 디자인 도구의 일부. Figma Make만 보면 yes에 가까움), 섹션(official), 대표 목적(design_ui, 대안 app_builders)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "atlassian-rovo",
+    "name": "Atlassian Rovo",
+    "url": "https://www.atlassian.com/software/rovo",
+    "official_domains": [
+      "atlassian.com"
+    ],
+    "one_liner": "Jira·Confluence에 들어 있는 AI예요. 회사 문서와 연결된 앱을 검색해 답하고, 채팅으로 Jira 티켓을 만들고, 트리거로 도는 에이전트·자동화를 만들 수 있어요",
+    "features": {
+      "planning": [
+        "doc_draft",
+        "issues"
+      ],
+      "automation": [
+        "workflow",
+        "ai_step",
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "automation",
+    "price": {
+      "free": false,
+      "free_limit": "무료 요금제에는 없음 (유료 요금제 체험판으로 써 볼 수 있음)",
+      "paid_from_usd": null,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web",
+      "desktop"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": "외부 AI 회사(OpenAI·Anthropic·Google 등)는 입력·출력을 보관하거나 학습에 쓰지 않는다고 해요. Atlassian은 데이터 기여 설정에 따라 메타데이터로 자체 오픈 모델을 미세 조정할 수 있다고 해요"
+    },
+    "start_steps": [
+      "Jira나 Confluence Cloud를 Standard 이상 요금제(또는 체험판)로 준비하기",
+      "앱 안의 Rovo Search·Chat이나 chat.rovo.com에서 질문하고 Jira 티켓 만들기를 부탁하기",
+      "Rovo Studio에서 문장으로 에이전트·자동화를 만들고 트리거 걸기"
+    ],
+    "cautions": [
+      "Jira·Confluence 무료 요금제에서는 Rovo 검색·채팅·에이전트를 쓸 수 없어요",
+      "AI 사용량은 Rovo 크레딧으로 계산되고, 기본 설정에서는 한도를 넘으면 추가 요금이 붙어요",
+      "코딩 에이전트 Rovo Dev는 요금과 크레딧이 따로예요"
+    ],
+    "sources": [
+      "https://www.atlassian.com/software/rovo",
+      "https://www.atlassian.com/software/rovo/pricing",
+      "https://www.atlassian.com/software/rovo/features",
+      "https://www.atlassian.com/trust/ai",
+      "https://www.atlassian.com/software/rovo/downloads"
+    ],
+    "learn": [
+      {
+        "title": "Rovo 시작 가이드 (공식)",
+        "url": "https://www.atlassian.com/software/rovo/guides/end-user-guide/introduction"
+      },
+      {
+        "title": "Rovo 지원 문서 (공식)",
+        "url": "https://support.atlassian.com/rovo/"
+      }
+    ],
+    "todo": [
+      "price.paid_from_usd",
+      "privacy.trains_on_input_default",
+      "privacy.opt_out",
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://www.atlassian.com/software/rovo",
+        "quote": "Rovo is available to all customers with a Standard, Premium, or Enterprise Cloud plan of Jira, Confluence, Service Collection, or Teamwork Collection."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.atlassian.com/software/rovo/pricing",
+        "quote": "Customers can trial Rovo through a trial of our Standard, Premium, or Enterprise plan of Jira, Confluence, and Jira Service Management."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://www.atlassian.com/trust/ai",
+        "quote": "Our third-party hosted LLM partners, including OpenAI, Anthropic, and Google, operate under strict zero data retention (ZDR) agreements."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://www.atlassian.com/trust/ai",
+        "quote": "This use of contributed data is subject to data contribution settings, and we apply robust safeguards, including de-identifying and aggregating all contributed metadata before use."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.atlassian.com/software/rovo",
+        "quote": "Access Rovo across your Atlassian apps, the browser extension, and everywhere else you work."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.atlassian.com/software/rovo/pricing",
+        "quote": "going directly to chat.rovo.com"
+      },
+      {
+        "field": "forms",
+        "source": "https://www.atlassian.com/software/rovo/downloads",
+        "quote": "Download Rovo for mobile and desktop to chat, run agents, and access your team’s knowledge, wherever you work."
+      },
+      {
+        "field": "features.planning.doc_draft",
+        "source": "https://www.atlassian.com/software/rovo",
+        "quote": "Rovo works alongside your team wherever they work—suggesting, drafting, and surfacing help before you have to ask."
+      },
+      {
+        "field": "features.planning.issues",
+        "source": "https://www.atlassian.com/software/rovo/features",
+        "quote": "Dig deeper, speed up onboarding, and take action faster - create Jira tickets, send Slack messages, or set up Google Calendar meetings—just ask!"
+      },
+      {
+        "field": "features.automation.workflow",
+        "source": "https://www.atlassian.com/software/rovo/features",
+        "quote": "Workflows that trigger agents and actions automatically across your tools."
+      },
+      {
+        "field": "features.automation.ai_step",
+        "source": "https://www.atlassian.com/software/rovo/features",
+        "quote": "Build agents, automations, and apps from a simple prompt in a no-code workspace."
+      },
+      {
+        "field": "features.automation.ai_step",
+        "source": "https://www.atlassian.com/software/rovo/features",
+        "quote": "Workflows that trigger agents and actions automatically across your tools."
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://www.atlassian.com/software/rovo/features",
+        "quote": "Workflows that trigger agents and actions automatically across your tools."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://www.atlassian.com/software/rovo",
+        "quote": "Connect your third party SaaS apps to Rovo"
+      }
+    ],
+    "review_notes": [
+      "무료 여부: Rovo(검색·채팅·에이전트)는 Jira·Confluence 등의 Standard 이상 Cloud 요금제에 들어 있어서 free=false로 했어요. 다만 Teamwork Collection 무료 요금제에 'AI-driven reporting (Create interactive charts with Rovo...)'이 있고, 크레딧이 떨어져도 'Rovo Search in Atlassian apps, summaries' 같은 무료 AI 기능은 계속된다는 문장이 있어요. J가 판단해 주세요.",
+      "유료 가격(todo): 가장 싼 길은 Jira Standard일 텐데 Jira 가격 페이지가 스크립트로만 그려져 숫자를 못 읽었어요. 읽힌 값은 Teamwork Collection Standard '$14.02 per user / month'(월 결제 화면)뿐이에요(https://www.atlassian.com/collections/teamwork/pricing). 그래서 null + todo로 두었어요. billing=monthly는 자리값이에요.",
+      "학습 정책(todo): '외부 LLM 회사는 학습에 쓰지 않는다'는 문장과 'Atlassian이 데이터 기여 설정(data contribution settings)에 따라 메타데이터로 자체 오픈 모델을 미세 조정할 수 있다'는 문장만 있어요. 그 설정의 기본값과 끄는 방법이 안 나와서 둘 다 unknown이에요.",
+      "쓰는 형태: 웹(Atlassian 앱 안, chat.rovo.com, 브라우저 확장)·데스크톱(macOS·Windows). 모바일도 있지만 forms 목록에 없어 뺐어요. 홈 페이지의 'In the command line → Rovo Dev'와 가격 페이지의 'Rovo CLI'는 Rovo Dev(코딩 에이전트, 요금 따로) 쪽이라 cli는 넣지 않았어요. Rovo Dev는 coding_agents·code_review용으로 따로 초안을 만들지 J가 정해 주세요.",
+      "기능 체크리스트: planning 2개(문서 초안 근거는 '제안하고 초안을 쓴다'는 일반 문장이라 약해요. PRD라는 말은 없음. 이슈 관리는 채팅으로 Jira 티켓 만들기). 화이트보드·공동 편집은 Confluence 기능이라 Rovo 기능으로 넣지 않았어요. automation 4개는 Rovo Studio의 'Automations: Workflows that trigger agents and actions automatically across your tools' 한 문장에 기대고 있어요(트리거가 일정인지 이벤트인지는 안 나옴). 외부 도구 연결 근거는 Rovo 커넥터(서드파티 SaaS 연결) 문장이에요. Atlassian MCP 서버는 '다른 AI 도구가 Atlassian을 쓰는' 방향이라 근거로 쓰지 않았어요.",
+      "오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.",
+      "AI 여부(yes), 섹션(official), 대표 목적(automation, 대안 planning)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "uizard",
+    "name": "Uizard",
+    "url": "https://uizard.io/",
+    "official_domains": [
+      "uizard.io"
+    ],
+    "one_liner": "만들 앱을 문장으로 설명하거나 스크린샷·손그림을 올리면 여러 화면짜리 UI 시안과 클릭되는 프로토타입을 만들어 주는 AI 디자인 도구예요",
+    "features": {
+      "design_ui": [
+        "generate_ui",
+        "components",
+        "prototype",
+        "export_code"
+      ],
+      "planning": [
+        "realtime"
+      ]
+    },
+    "primary": "design_ui",
+    "price": {
+      "free": true,
+      "free_limit": "AI 생성 월 3번, 프로젝트 2개",
+      "paid_from_usd": 12,
+      "billing": "yearly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "unknown",
+      "note": "Free·Pro 요금제에서 만든·올린 디자인은 AI 모델 학습에 쓰일 수 있어요. Business·Enterprise는 쓰지 않는다고 해요"
+    },
+    "start_steps": [
+      "Uizard에 무료로 가입하기",
+      "기기 종류를 고르고 만들 앱을 문장으로 설명해 화면 시안 만들기",
+      "화면을 고치고 연결해 프로토타입으로 공유하기 (유료는 React·CSS로 개발자에게 넘기기)"
+    ],
+    "cautions": [
+      "무료·Pro 요금제에서 만든 디자인은 AI 학습에 쓰일 수 있다고 약관에 적혀 있어요",
+      "무료는 AI 생성이 월 3번뿐이고, 최신 AI 엔진(Autodesigner 2.0)은 Pro부터예요",
+      "코드는 개발자 전달용(React·CSS)이라 완성된 앱이 만들어지는 건 아니에요"
+    ],
+    "sources": [
+      "https://uizard.io/",
+      "https://uizard.io/pricing/",
+      "https://uizard.io/autodesigner/",
+      "https://uizard.io/terms-of-service/",
+      "https://uizard.io/privacy/"
+    ],
+    "learn": [
+      {
+        "title": "Uizard에서 프롬프트 쓰는 법 (공식 가이드)",
+        "url": "https://uizard.io/blog/guide-to-using-prompts-in-uizard/"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://uizard.io/pricing/",
+        "quote": "Free for everyone $0 For students and hobbyists"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://uizard.io/pricing/",
+        "quote": "3 AI generations per month"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://uizard.io/pricing/",
+        "quote": "2 projects"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://uizard.io/pricing/",
+        "quote": "$12 per month (if billed annually)"
+      },
+      {
+        "field": "price.billing",
+        "source": "https://uizard.io/pricing/",
+        "quote": "Billed annually Save 40% $12 per month For startups and organizations"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://uizard.io/terms-of-service/",
+        "quote": "Design of graphical user interfaces, prototypes, design systems, design files, wireframes, screenshots created and uploaded by users of the Free and Pro plans may be used for the purpose of fine-tuning and training machine learning AI models to improve the overall quality of the Services."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://uizard.io/terms-of-service/",
+        "quote": "Design of graphical user interfaces, prototypes, design systems, design files, wireframes, screenshots created and uploaded by customers of the Business and Enterprise plans are not utilized for fine-tuning and training machine learning AI models."
+      },
+      {
+        "field": "forms",
+        "source": "https://uizard.io/privacy/",
+        "quote": "in connection the provision of our online services found at uizard.io"
+      },
+      {
+        "field": "forms",
+        "source": "https://uizard.io/terms-of-service/",
+        "quote": "personal computer with appropriate software, including updated operating systems, compatible web browsers and the like"
+      },
+      {
+        "field": "features.design_ui.generate_ui",
+        "source": "https://uizard.io/",
+        "quote": "No ideas left behind... generate multi-screen, editable prototypes in seconds using simple text."
+      },
+      {
+        "field": "features.design_ui.generate_ui",
+        "source": "https://uizard.io/pricing/",
+        "quote": "Generate screen design from text"
+      },
+      {
+        "field": "features.design_ui.components",
+        "source": "https://uizard.io/autodesigner/",
+        "quote": "Generate UIs that match your design system and brand guidelines with brand kit."
+      },
+      {
+        "field": "features.design_ui.components",
+        "source": "https://uizard.io/pricing/",
+        "quote": "Team asset libraries"
+      },
+      {
+        "field": "features.design_ui.prototype",
+        "source": "https://uizard.io/autodesigner/",
+        "quote": "Essentially, Autodesigner 2.0 empowers you to go from idea to sharable, interactive prototype with plain english."
+      },
+      {
+        "field": "features.design_ui.export_code",
+        "source": "https://uizard.io/pricing/",
+        "quote": "Developer handoff in CSS and React components"
+      },
+      {
+        "field": "features.planning.realtime",
+        "source": "https://uizard.io/",
+        "quote": "Collaborate in real-time with AI and your entire product team."
+      },
+      {
+        "field": "features.planning.realtime",
+        "source": "https://uizard.io/pricing/",
+        "quote": "Multiplayer real-time collaboration"
+      }
+    ],
+    "review_notes": [
+      "유료 가격: 가격 페이지에는 Pro '$12 per month (if billed annually)'만 있고 월 결제 가격은 안 보여요. 그래서 paid_from_usd=12, billing=yearly예요.",
+      "학습 정책: 이용 약관 8.14.1에 'Free·Pro 요금제 사용자가 만들거나 올린 디자인은 AI 모델 학습에 쓰일 수 있다'고 있어 trains=yes로 했어요(Business·Enterprise는 안 씀). 개인정보 처리방침에는 AI 학습 얘기가 없어요. 끄는 설정 얘기는 없어 opt_out=unknown이에요. 꼭 원문 대조해 주세요.",
+      "회사: 개인정보 처리방침·약관의 회사 주소가 'Uizard c/o Miro'로 되어 있어요(Miro 소속으로 보임). Miro 초안과 함께 볼 때 참고하세요.",
+      "읽지 못한 페이지: 도움말 사이트(support.uizard.io)는 이 환경의 프록시가 접속을 막아서 읽지 못했어요. 배울 거리는 uizard.io 블로그의 공식 사용 가이드 하나만 넣었어요.",
+      "쓰는 형태: 웹 서비스라는 직접 문장은 없고, '온라인 서비스(uizard.io)'와 약관의 '호환 웹 브라우저' 문장으로 web만 넣었어요. 데스크톱 앱 페이지는 못 찾았어요.",
+      "기능 체크리스트: design_ui 4개(컴포넌트 근거는 브랜드 키트로 디자인 시스템에 맞춰 생성 + 가격표의 'Team asset libraries' 행, 코드 내보내기는 유료 요금제의 React·CSS 개발자 전달). planning.realtime은 가격표의 'Multiplayer real-time collaboration'. 가격표의 기능별 요금제 표시(✓)는 글자로 안 읽혀서 어느 요금제에 있는지는 확인 못 했어요.",
+      "오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.",
+      "AI 여부(yes: 'AI-first'로 시작한 디자인 도구), 섹션(official), 대표 목적(design_ui)은 제안값이에요."
+    ]
   }
 ]
