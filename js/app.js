@@ -1,7 +1,6 @@
 // 화면 렌더링과 라우팅. 주소(#/...)로 화면을 나눠서 뒤로 가기와 링크 공유가 그대로 동작한다.
 //   #/                       홈 (어떤 일을 맡기고 싶어요?)
-//   #/p/<목적>?조건           조건 선택
-//   #/p/<목적>/result?조건    추천 결과
+//   #/p/<목적>/result?조건    추천 결과 (조건은 결과 위 칩으로 바꾼다. #/p/<목적> 도 결과로 간다)
 //   #/t/<툴 id>              툴 상세
 //   #/glossary?term=<용어>   용어집
 //   #/changes                변경 이력
@@ -10,7 +9,7 @@
 // 점수 계산은 하지 않는다. 추천은 recommend.js에만 맡긴다.
 import { recommend, isStale } from './recommend.js';
 import { UNKNOWN, changeText, formatDate, localToday, reportUrl } from './format.js';
-import { glossarize, termMatcher } from './glossary.js';
+import { glossarize, termIn, termMatcher } from './glossary.js';
 import { MODES } from './modes.js';
 
 // <body data-mode="dev"> 이면 개발자용
@@ -29,11 +28,11 @@ const FIT_LABELS = { 3: `이 일의 대표 ${W}예요`, 2: '이 일에 잘 맞�
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
-/** 이스케이프 + 용어집 단어에 밑줄 */
+/** 이스케이프 + 용어집 단어에 밑줄 (설명 문장에만 쓴다) */
 const g = (text) => glossarize(esc(text), matcher);
 
-/** "확인 필요"가 들어간 값은 눈에 띄게 표시한다. */
-const valueHtml = (text) => (text.includes(UNKNOWN) ? `<span class="unknown">${esc(text)}</span>` : g(text));
+/** "확인 필요"가 들어간 값은 눈에 띄게 표시한다. 값에는 밑줄을 치지 않는다. */
+const valueHtml = (text) => (text.includes(UNKNOWN) ? `<span class="unknown">${esc(text)}</span>` : esc(text));
 
 async function loadJson(path, fallback) {
   const res = await fetch(path, { cache: 'no-cache' });
@@ -72,23 +71,40 @@ const linkRow = (icon, title, desc, href) => `
 /** 사이트 안에서 왔으면 브라우저 뒤로 가기, 바로 들어왔으면 fallback 주소로 */
 const backLink = (fallback, label = '뒤로') => `<a class="back" href="${fallback}" data-back>‹ ${esc(label)}</a>`;
 
-const factHtml = ([label, value], t, last = false) =>
-  `<dl class="fact${last ? ' last' : ''}"><dt>${g(label)}</dt><dd>${valueHtml(value(t))}</dd></dl>`;
+/** 비교 항목 이름. 용어집에 있는 말이면 밑줄 대신 작은 ⓘ 버튼을 붙인다. */
+function labelHtml(label) {
+  const term = termIn(label, matcher);
+  if (!term) return esc(label);
+  return `${esc(label)} <button type="button" class="term term-icon" data-term="${esc(term)}" aria-label="${esc(term)} 풀이 보기">ⓘ</button>`;
+}
+
+const factHtml = ([label, value], t) => `<dl class="fact"><dt>${labelHtml(label)}</dt><dd>${valueHtml(value(t))}</dd></dl>`;
+
+const badgesHtml = (t) => `
+  <ul class="badges" aria-label="한눈에 보기">${mode.badges(t)
+    .map((b) => `<li class="badge badge-${b.tone}">${esc(b.text)}</li>`).join('')}</ul>`;
+
+const cautionsOf = (t) => [...t.cautions, ...(t.privacy.note ? [t.privacy.note] : [])];
 
 /** AI 툴이 아닌 도구 표시 (개발자용, ai_native: "no") */
 const notAiTag = (t) => (t.ai_native === 'no' ? '<span class="tag tag-plain">AI와 같이 쓰는 도구</span>' : '');
-
-const cautionsOf = (t) => [...t.cautions, ...(t.privacy.note ? [t.privacy.note] : [])];
+const staleTag = (stale) => (stale ? '<span class="tag tag-warn">확인 필요</span>' : '');
 
 const reportLink = (t) =>
   `<a class="report-link" href="${esc(reportUrl(t.name, mode.reportSite))}" target="_blank" rel="noopener">정보가 틀려요 ↗</a>`;
 
-const verifiedHtml = (t, stale) => `
-  <details class="verified">
-    <summary>마지막 확인 ${esc(formatDate(t.last_verified))}${stale ? ' (90일 넘게 지나서 다시 확인이 필요해요)' : ''} · <span class="src-toggle">출처 보기</span></summary>
-    <ul>${t.sources.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul>
-    ${reportLink(t)}
-  </details>`;
+const sourcesHtml = (t) =>
+  `<ul class="sources">${t.sources.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul>`;
+
+const officialButton = (t, cls = 'btn-primary') =>
+  `<a class="btn ${cls} btn-block" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트 열기 ↗</a>`;
+
+/** 실제 데이터가 아직 없을 때: 같은 화면을 예시 데이터로 볼 수 있게 안내 */
+const demoInvite = () => (data.demo || data.tools.length > 0 ? '' : `
+  <section class="card invite" role="status">
+    <p class="invite-text"><strong>아직 준비 중이에요.</strong> ${esc(mode.emptyText)}</p>
+    <a class="btn btn-outline" href="?demo${esc(location.hash || '#/')}">예시로 둘러보기 ›</a>
+  </section>`);
 
 // ---- 홈 ----
 function renderHome() {
@@ -101,19 +117,25 @@ function renderHome() {
       <p class="sub">${esc(mode.heroSub)}</p>
     </section>
 
-    <section class="card">
-      <h2 class="card-title">하고 싶은 일</h2>
-      <ul class="list">${data.purposes.map((p) => purposeRow(p, `#/p/${p.id}`)).join('')}</ul>
-    </section>
+    ${demoInvite()}
 
     ${starters.length ? `
-      <section class="card">
-        <h2 class="card-title">뭘 해야 할지 모르겠어요</h2>
-        <p class="card-sub">처음이라면 많이 쓰는 이 세 가지부터 해보세요</p>
-        <ul class="list">${starters.map((p) => purposeRow(p, `#/p/${p.id}/result`)).join('')}</ul>
-      </section>` : ''}
+      <nav class="starters" aria-label="처음이라면">
+        <span class="starters-label">뭘 해야 할지 모르겠다면</span>
+        ${starters.map((p) => `<a class="starter" href="#/p/${p.id}/result">${esc(p.icon)} ${esc(p.label)}</a>`).join('')}
+      </nav>` : ''}
 
-    <section class="card">
+    <section class="purposes" aria-labelledby="purposes-title">
+      <h2 class="section-title" id="purposes-title">하고 싶은 일</h2>
+      <ul class="tiles">${data.purposes.map((p) => `
+        <li><a class="tile" href="#/p/${p.id}/result">
+          <span class="tile-ico" aria-hidden="true">${esc(p.icon)}</span>
+          <span class="tile-ttl">${esc(p.label)}</span>
+          <span class="tile-dsc">${esc(p.examples)}</span>
+        </a></li>`).join('')}</ul>
+    </section>
+
+    <section class="card more-card">
       <h2 class="card-title">더 알아보기</h2>
       <ul class="list">
         ${linkRow('📖', '용어집', mode.glossaryHint, '#/glossary')}
@@ -124,71 +146,40 @@ function renderHome() {
     <div class="trust">${mode.trust.map((x) => `<span>${esc(x)}</span>`).join('')}</div>`;
 }
 
-// ---- 조건 선택 ----
-function renderConditions(purpose, conditions) {
-  document.title = `${purpose.label} · ${mode.siteName}`;
-  app.innerHTML = `
-    <div class="page-head">
-      <a class="back" href="#/">‹ 처음으로</a>
-      <p class="step">${esc(purpose.icon)} ${esc(purpose.label)}</p>
-      <h1 class="page-title">중요한 게 있나요?</h1>
-      <p class="page-sub">없으면 고르지 않고 넘어가도 돼요.</p>
-    </div>
-    <form id="conditions">
-      <section class="card">
-        <fieldset class="choice-list">
-          <legend class="sr-only">조건</legend>
-          ${CONDITIONS.map((c) => `
-            <label class="choice">
-              <input type="checkbox" name="${c.param}" value="1" ${conditions[c.key] ? 'checked' : ''}>
-              <span class="ico" aria-hidden="true">${c.icon}</span>
-              <span class="txt"><span class="ttl">${esc(c.title)}</span><span class="dsc">${esc(c.desc)}</span></span>
-              <span class="check" aria-hidden="true">✓</span>
-            </label>`).join('')}
-        </fieldset>
-      </section>
-      <div class="bottom-cta"><button class="btn btn-primary btn-block" type="submit">추천 받기</button></div>
-    </form>`;
-  app.querySelector('#conditions').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const form = new FormData(e.target);
-    const chosen = Object.fromEntries(CONDITIONS.map((c) => [c.key, form.has(c.param)]));
-    location.hash = `#/p/${purpose.id}/result${conditionQuery(chosen)}`;
-  });
-}
-
 // ---- 추천 결과 ----
-// 카드끼리 비교되도록 모든 카드에 같은 항목을 같은 순서로 넣는다 (CSS subgrid로 높이를 맞춘다).
+// 카드는 요약(머리, 대표 이유, 배지, 버튼)만 보이고 나머지는 "자세히 보기"에 접는다.
+// 요약 칸들은 CSS subgrid로 카드끼리 같은 높이에 맞춘다 (칸 수 5 = styles.css .cards).
 function toolCardHtml(r, index, all) {
   const t = r.tool;
   const cautions = cautionsOf(t);
-  // 칸 수(머리 1 + 이유 1 + 비교 6 + 시작 1 + 주의 1 + 버튼·확인 1 = 11)는 styles.css의 .cards와 맞춰야 한다.
+  const [topReason, ...moreReasons] = r.reasons;
   return `
     <article class="tool-card" aria-label="${index + 1}번째 추천 / 전체 ${all.length}개">
       <div class="tool-head">
         <div class="tool-title">
           <span class="tool-rank">${index + 1}</span>
           <h2 class="tool-name"><a href="#/t/${esc(t.id)}">${esc(t.name)}</a></h2>
-          ${r.stale ? '<span class="tag tag-warn">확인 필요</span>' : ''}
-          ${notAiTag(t)}
+          ${staleTag(r.stale)}${notAiTag(t)}
         </div>
         <p class="tool-one-liner">${g(t.one_liner)}</p>
       </div>
-      <ul class="reasons" aria-label="추천 이유">${r.reasons.map((s) => `<li>${g(s)}</li>`).join('')}</ul>
-      ${FACTS.map((f, i) => factHtml(f, t, i === FACTS.length - 1)).join('')}
-      <div class="tool-steps">
+      <p class="top-reason">${g(topReason)}</p>
+      ${badgesHtml(t)}
+      <div class="tool-actions">${officialButton(t, 'btn-outline')}</div>
+      <details class="card-more">
+        <summary>자세히 보기</summary>
+        ${moreReasons.length ? `<ul class="reasons" aria-label="다른 추천 이유">${moreReasons.map((s) => `<li>${g(s)}</li>`).join('')}</ul>` : ''}
+        <div class="facts">${FACTS.map((f) => factHtml(f, t)).join('')}</div>
         <h3 class="section-label">이렇게 시작해요</h3>
         <ol class="steps">${t.start_steps.map((s) => `<li><span>${g(s)}</span></li>`).join('')}</ol>
-      </div>
-      <div class="tool-cautions">${cautions.length ? `
-        <h3 class="section-label">주의할 점</h3>
-        <ul class="cautions">${cautions.map((s) => `<li>${g(s)}</li>`).join('')}</ul>` : ''}
-      </div>
-      <div class="tool-actions">
-        <a class="btn btn-outline btn-block" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트 열기 ↗</a>
-        <a class="more-link" href="#/t/${esc(t.id)}">자세히 보기 ›</a>
-        ${verifiedHtml(t, r.stale)}
-      </div>
+        ${cautions.length ? `
+          <h3 class="section-label">주의할 점</h3>
+          <ul class="cautions">${cautions.map((s) => `<li>${g(s)}</li>`).join('')}</ul>` : ''}
+        <p class="verified-line">마지막 확인 ${esc(formatDate(t.last_verified))}${r.stale ? ' · 90일 넘게 지나서 다시 확인이 필요해요' : ''}</p>
+        <h3 class="section-label">출처</h3>
+        ${sourcesHtml(t)}
+        <p class="card-more-links"><a href="#/t/${esc(t.id)}">${W} 상세 보기 ›</a> ${reportLink(t)}</p>
+      </details>
     </article>`;
 }
 
@@ -229,12 +220,14 @@ function renderResult(purpose, conditions) {
 
   const chips = CONDITIONS.map((c) => {
     const next = { ...conditions, [c.key]: !conditions[c.key] };
-    return `<a class="chip" role="button" aria-pressed="${conditions[c.key]}" href="#/p/${purpose.id}/result${conditionQuery(next)}">${esc(c.chip)}</a>`;
+    return `<a class="chip" role="button" aria-pressed="${conditions[c.key]}" title="${esc(c.desc)}"
+      href="#/p/${purpose.id}/result${conditionQuery(next)}"><span aria-hidden="true">${c.icon}</span> ${esc(c.title)}</a>`;
   }).join('');
+  const activeDescs = CONDITIONS.filter((c) => conditions[c.key]).map((c) => c.desc);
 
   let body;
   if (data.tools.length === 0) {
-    body = `<section class="card"><p class="empty"><strong>아직 준비 중이에요</strong>${W} 정보를 공식 페이지에서 하나씩 확인하고 있어요.</p></section>`;
+    body = demoInvite();
   } else if (results.length === 0) {
     body = `<section class="card"><p class="empty"><strong>${esc(notice)}</strong>조건을 바꿔서 다시 찾아보세요.</p></section>`;
   } else {
@@ -245,19 +238,21 @@ function renderResult(purpose, conditions) {
 
   app.innerHTML = `
     <div class="page-head">
-      <a class="back" href="#/p/${purpose.id}${conditionQuery(conditions)}">‹ 조건 다시 고르기</a>
+      <a class="back" href="#/">‹ 처음으로</a>
       <p class="step">${esc(purpose.icon)} ${esc(purpose.label)}</p>
       <h1 class="page-title">이 ${W}들을 추천해요</h1>
     </div>
     <div class="chips" role="group" aria-label="조건">
-      <span class="chips-label">조건 (누르면 바로 바뀌어요)</span>
+      <span class="chips-label">중요한 조건을 누르면 바로 다시 골라드려요</span>
       ${chips}
+      ${activeDescs.length ? `<p class="chips-desc">${activeDescs.map(esc).join(' · ')}</p>` : ''}
     </div>
     ${body}`;
   installCardDots();
 }
 
 // ---- 툴 상세 ----
+// 넓은 화면: 왼쪽 요약(고정) + 오른쪽 내용. 휴대폰: 요약이 위, "공식 사이트 열기"는 화면 아래 고정.
 function renderTool(t) {
   document.title = `${t.name} · ${mode.siteName}`;
   const stale = isStale(t, localToday());
@@ -270,92 +265,99 @@ function renderTool(t) {
     .flatMap((entry) => entry.changes.filter((c) => c.tool_id === t.id).map((c) => ({ date: entry.date, c })));
 
   app.innerHTML = `
-    <div class="page-head">
-      ${backLink('#/')}
-      <p class="step">${W} 상세</p>
-      <div class="tool-title">
-        <h1 class="page-title">${esc(t.name)}</h1>
-        ${stale ? '<span class="tag tag-warn">확인 필요</span>' : ''}
-        ${notAiTag(t)}
+    <div class="page-head">${backLink('#/')}</div>
+    <div class="detail">
+      <aside class="card detail-summary">
+        <p class="step">${W} 상세</p>
+        <div class="tool-title">
+          <h1 class="page-title">${esc(t.name)}</h1>
+          ${staleTag(stale)}${notAiTag(t)}
+        </div>
+        <p class="tool-one-liner">${g(t.one_liner)}</p>
+        ${badgesHtml(t)}
+        <div class="tool-actions">
+          ${officialButton(t)}
+          ${t.repo_url ? `<a class="more-link" href="${esc(t.repo_url)}" target="_blank" rel="noopener">소스 코드 저장소 보기 ↗</a>` : ''}
+        </div>
+        <p class="verified-line">마지막 확인 ${esc(formatDate(t.last_verified))}${stale ? ' · 다시 확인이 필요해요' : ''}</p>
+      </aside>
+
+      <div class="detail-main">
+        <section class="card">
+          <h2 class="card-title">기본 정보</h2>
+          <div class="facts">${[...FACTS, ...mode.detailFacts].map((f) => factHtml(f, t)).join('')}</div>
+        </section>
+
+        <section class="card">
+          <h2 class="card-title">이렇게 시작해요</h2>
+          <ol class="steps">${t.start_steps.map((s) => `<li><span>${g(s)}</span></li>`).join('')}</ol>
+        </section>
+
+        ${cautions.length ? `
+          <section class="card">
+            <h2 class="card-title">주의할 점</h2>
+            <ul class="cautions">${cautions.map((s) => `<li>${g(s)}</li>`).join('')}</ul>
+          </section>` : ''}
+
+        ${t.learn?.length ? `
+          <section class="card">
+            <h2 class="card-title">배울 거리</h2>
+            <p class="card-sub">공식 문서와 튜토리얼이에요</p>
+            <ul class="list">${t.learn.map((l) => `
+              <li><a class="row" href="${esc(l.url)}" target="_blank" rel="noopener">
+                <span class="ico" aria-hidden="true">📘</span>
+                <span class="txt"><span class="ttl">${esc(l.title)}</span><span class="dsc">${esc(new URL(l.url).hostname)}</span></span>
+                <span class="chev" aria-hidden="true">↗</span>
+              </a></li>`).join('')}</ul>
+          </section>` : ''}
+
+        <section class="card">
+          <h2 class="card-title">이 ${W}로 할 수 있는 일</h2>
+          <p class="card-sub">누르면 그 일에 맞는 다른 ${W}와 비교해볼 수 있어요</p>
+          <ul class="list">${fits.map(({ p, score }) => purposeRow(p, `#/p/${p.id}/result`, FIT_LABELS[score])).join('')}</ul>
+        </section>
+
+        <section class="card">
+          <h2 class="card-title">정보 확인</h2>
+          <p class="card-sub">마지막 확인 ${esc(formatDate(t.last_verified))}${stale ? ' · 90일 넘게 지나서 다시 확인이 필요해요' : ''}</p>
+          <h3 class="section-label">출처</h3>
+          ${sourcesHtml(t)}
+          <p class="report">공식 페이지와 다른 정보를 발견했나요? ${reportLink(t)} <span class="report-note">(GitHub 계정이 필요해요)</span></p>
+          ${history.length ? `
+            <h3 class="section-label">바뀐 내용</h3>
+            <ul class="change-list">${history.map(({ date, c }) => `<li><span class="change-date">${esc(formatDate(date))}</span>${esc(changeText(c, data.purposes))}</li>`).join('')}</ul>` : ''}
+        </section>
       </div>
-      <p class="page-sub">${g(t.one_liner)}</p>
     </div>
-
-    <section class="card">
-      <h2 class="card-title">기본 정보</h2>
-      <div class="facts">
-        ${[...FACTS, ...mode.detailFacts].map((f, i, all) => factHtml(f, t, i === all.length - 1)).join('')}
-      </div>
-      <div class="tool-actions">
-        <a class="btn btn-primary btn-block" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트 열기 ↗</a>
-        ${t.repo_url ? `<a class="more-link" href="${esc(t.repo_url)}" target="_blank" rel="noopener">소스 코드 저장소 보기 ↗</a>` : ''}
-      </div>
-    </section>
-
-    <section class="card">
-      <h2 class="card-title">이렇게 시작해요</h2>
-      <ol class="steps">${t.start_steps.map((s) => `<li><span>${g(s)}</span></li>`).join('')}</ol>
-    </section>
-
-    ${cautions.length ? `
-      <section class="card">
-        <h2 class="card-title">주의할 점</h2>
-        <ul class="cautions">${cautions.map((s) => `<li>${g(s)}</li>`).join('')}</ul>
-      </section>` : ''}
-
-    ${t.learn?.length ? `
-      <section class="card">
-        <h2 class="card-title">배울 거리</h2>
-        <p class="card-sub">공식 문서와 튜토리얼이에요</p>
-        <ul class="list">${t.learn.map((l) => `
-          <li><a class="row" href="${esc(l.url)}" target="_blank" rel="noopener">
-            <span class="ico" aria-hidden="true">📘</span>
-            <span class="txt"><span class="ttl">${esc(l.title)}</span><span class="dsc">${esc(new URL(l.url).hostname)}</span></span>
-            <span class="chev" aria-hidden="true">↗</span>
-          </a></li>`).join('')}</ul>
-      </section>` : ''}
-
-    <section class="card">
-      <h2 class="card-title">이 ${W}로 할 수 있는 일</h2>
-      <p class="card-sub">누르면 그 일에 맞는 다른 ${W}와 비교해볼 수 있어요</p>
-      <ul class="list">${fits.map(({ p, score }) => purposeRow(p, `#/p/${p.id}/result`, FIT_LABELS[score])).join('')}</ul>
-    </section>
-
-    <section class="card">
-      <h2 class="card-title">정보 확인</h2>
-      <p class="card-sub">마지막 확인 ${esc(formatDate(t.last_verified))}${stale ? ' · 90일 넘게 지나서 다시 확인이 필요해요' : ''}</p>
-      <h3 class="section-label">출처</h3>
-      <ul class="sources">${t.sources.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul>
-      <p class="report">공식 페이지와 다른 정보를 발견했나요? ${reportLink(t)} <span class="report-note">(GitHub 계정이 필요해요)</span></p>
-      ${history.length ? `
-        <h3 class="section-label">바뀐 내용</h3>
-        <ul class="change-list">${history.map(({ date, c }) => `<li><span class="change-date">${esc(formatDate(date))}</span>${esc(changeText(c, data.purposes))}</li>`).join('')}</ul>` : ''}
-    </section>`;
+    <div class="sticky-cta">${officialButton(t)}</div>`;
 }
 
 function renderNotFound() {
   document.title = `찾을 수 없어요 · ${mode.siteName}`;
   app.innerHTML = `
     <div class="page-head">${backLink('#/', '처음으로')}</div>
-    <section class="card"><p class="empty"><strong>찾을 수 없어요</strong>주소가 바뀌었거나 빠진 ${W}일 수 있어요.</p></section>`;
+    <section class="card"><p class="empty"><strong>찾을 수 없어요</strong>주소가 바뀌었거나 빠진 ${W}일 수 있어요.</p></section>
+    ${demoInvite()}`;
 }
 
 // ---- 용어집 ----
 function renderGlossary(focus) {
   document.title = `용어집 · ${mode.siteName}`;
   app.innerHTML = `
-    <div class="page-head">
-      ${backLink('#/')}
-      <h1 class="page-title">용어집</h1>
-      <p class="page-sub">${esc(mode.glossaryIntro)} 화면에서 <span class="term-sample">밑줄 친 말</span>을 누르면 바로 볼 수 있어요.</p>
-    </div>
-    <section class="card">
-      ${data.glossary.length ? `<dl class="glossary">${data.glossary.map((item) => `
-        <div class="glossary-item${item.term === focus ? ' focused' : ''}" id="term-${esc(item.term)}">
-          <dt>${esc(item.term)}${item.aliases.length ? ` <span class="alias">(${esc(item.aliases.join(', '))})</span>` : ''}</dt>
-          <dd>${esc(item.description)}</dd>
-        </div>`).join('')}</dl>` : '<p class="empty"><strong>아직 준비 중이에요</strong></p>'}
-    </section>`;
+    <div class="narrow">
+      <div class="page-head">
+        ${backLink('#/')}
+        <h1 class="page-title">용어집</h1>
+        <p class="page-sub">${esc(mode.glossaryIntro)} 화면에서 <span class="term-sample">밑줄 친 말</span>이나 ⓘ를 누르면 바로 볼 수 있어요.</p>
+      </div>
+      <section class="card">
+        ${data.glossary.length ? `<dl class="glossary">${data.glossary.map((item) => `
+          <div class="glossary-item${item.term === focus ? ' focused' : ''}" id="term-${esc(item.term)}">
+            <dt>${esc(item.term)}${item.aliases.length ? ` <span class="alias">(${esc(item.aliases.join(', '))})</span>` : ''}</dt>
+            <dd>${esc(item.description)}</dd>
+          </div>`).join('')}</dl>` : '<p class="empty"><strong>아직 준비 중이에요</strong></p>'}
+      </section>
+    </div>`;
   if (focus) document.getElementById(`term-${focus}`)?.scrollIntoView({ block: 'center' });
 }
 
@@ -368,16 +370,18 @@ function renderChanges() {
     return toolIds.has(c.tool_id) ? `<a href="#/t/${esc(c.tool_id)}">${text}</a>` : text;
   };
   app.innerHTML = `
-    <div class="page-head">
-      ${backLink('#/')}
-      <h1 class="page-title">변경 이력</h1>
-      <p class="page-sub">${W} 정보가 바뀔 때마다 자동으로 기록돼요. 가격이나 정책이 언제 바뀌었는지 확인할 수 있어요.</p>
-    </div>
-    ${data.changelog.length ? data.changelog.map((entry) => `
-      <section class="card">
-        <h2 class="card-title">${esc(formatDate(entry.date))}</h2>
-        <ul class="change-list">${entry.changes.map((c) => `<li class="change-${c.type}">${line(c)}</li>`).join('')}</ul>
-      </section>`).join('') : `<section class="card"><p class="empty"><strong>아직 바뀐 내용이 없어요</strong>${W} 정보가 바뀌면 여기에 기록돼요.</p></section>`}`;
+    <div class="narrow">
+      <div class="page-head">
+        ${backLink('#/')}
+        <h1 class="page-title">변경 이력</h1>
+        <p class="page-sub">${W} 정보가 바뀔 때마다 자동으로 기록돼요. 가격이나 정책이 언제 바뀌었는지 확인할 수 있어요.</p>
+      </div>
+      ${data.changelog.length ? data.changelog.map((entry) => `
+        <section class="card">
+          <h2 class="card-title">${esc(formatDate(entry.date))}</h2>
+          <ul class="change-list">${entry.changes.map((c) => `<li class="change-${c.type}">${line(c)}</li>`).join('')}</ul>
+        </section>`).join('') : `<section class="card"><p class="empty"><strong>아직 바뀐 내용이 없어요</strong>${W} 정보가 바뀌면 여기에 기록돼요.</p></section>`}
+    </div>`;
 }
 
 // ---- 용어 풀이 (화면 아래에 뜨는 창) ----
@@ -452,17 +456,18 @@ function installThemeToggle() {
 function route() {
   const [path, query = ''] = location.hash.replace(/^#\/?/, '').split('?');
   const params = new URLSearchParams(query);
-  const [section, id, view] = path.split('/');
+  const [section, id] = path.split('/');
   const purpose = section === 'p' && data.purposes.find((p) => p.id === id);
   const tool = section === 't' && data.tools.find((t) => t.id === id);
-  document.body.classList.toggle('wide', Boolean(purpose && view === 'result'));
+  // 홈 타일, 결과 카드, 상세 2단은 넓은 화면을 쓴다. 용어집·변경 이력은 읽기 좋은 폭(.narrow)으로.
+  document.body.classList.toggle('wide', !['glossary', 'changes'].includes(section));
+  document.body.classList.toggle('has-sticky-cta', Boolean(tool));
   document.querySelectorAll('[data-nav]').forEach((a) => {
     if (a.dataset.nav === section) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
   });
 
-  if (purpose && view === 'result') renderResult(purpose, readConditions(params));
-  else if (purpose) renderConditions(purpose, readConditions(params));
+  if (purpose) renderResult(purpose, readConditions(params));
   else if (tool) renderTool(tool);
   else if (section === 't') renderNotFound();
   else if (section === 'glossary') renderGlossary(params.get('term'));

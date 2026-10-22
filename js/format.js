@@ -186,3 +186,28 @@ export function reportUrl(toolName, site) {
   });
   return `${ISSUE_NEW}?${params}`;
 }
+
+// ---- 카드 요약 배지 (tone: good / warn / plain) ----
+export function freeBadge(price) {
+  return price.free ? { text: '무료로 시작', tone: 'good' } : { text: '유료만', tone: 'plain' };
+}
+
+/** 학습 정책 한눈에 보기. good은 recommend.js의 isSecure와 같은 기준(기본으로 안 씀, 또는 끌 수 있음) */
+export function privacyBadge(privacy, subject = '') {
+  const { trains_on_input_default: trains, opt_out: optOut } = privacy;
+  if (trains === 'no') return { text: `${subject}학습에 안 씀`, tone: 'good' };
+  if (optOut === 'yes') return { text: `${subject}학습 끌 수 있음`, tone: 'good' };
+  if (trains === 'yes') return { text: `${subject}학습에 씀`, tone: 'warn' };
+  return { text: `${subject}학습 정책 ${UNKNOWN}`, tone: 'warn' };
+}
+
+export function koreanBadge(korean) {
+  if (korean === 3) return { text: '한국어 좋음', tone: 'good' };
+  if (korean === 2) return { text: '한국어 결과 가능', tone: 'plain' };
+  if (korean === 1) return { text: '영어 위주', tone: 'plain' };
+  return { text: `한국어 ${UNKNOWN}`, tone: 'warn' };
+}
+
+export function openSourceBadge(openSource) {
+  return openSource ? { text: '오픈소스', tone: 'good' } : { text: '오픈소스 아님', tone: 'plain' };
+}

@@ -3,8 +3,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   changeText, formatDate, freeLimitText, freeText, koreanText, localToday, loginText, paidText, platformsText, privacyText,
-  reportUrl,
+  reportUrl, freeBadge, privacyBadge, koreanBadge, openSourceBadge,
 } from '../js/format.js';
+import { isSecure } from '../js/recommend.js';
 
 test('가격 문구', () => {
   assert.equal(freeText({ free: true }), '돼요');
@@ -79,4 +80,24 @@ test('정보가 틀려요 제보 주소: 양식과 사이트·툴 이름을 미�
   assert.equal(url.searchParams.get('title'), '[정보 오류] Gamma & Co');
   assert.equal(url.searchParams.get('tool'), 'Gamma & Co');
   assert.equal(url.searchParams.get('site'), 'AI 뭐 써? (일반용)');
+});
+
+test('요약 배지: 무료·한국어·오픈소스', () => {
+  assert.deepEqual(freeBadge({ free: true }), { text: '무료로 시작', tone: 'good' });
+  assert.deepEqual(freeBadge({ free: false }), { text: '유료만', tone: 'plain' });
+  assert.equal(koreanBadge(3).text, '한국어 좋음');
+  assert.equal(koreanBadge(1).text, '영어 위주');
+  assert.equal(openSourceBadge(true).tone, 'good');
+});
+
+test('요약 배지: 학습 정책은 추천 엔진의 보안 기준과 같게 good을 붙임', () => {
+  for (const trains of ['yes', 'no', 'unknown']) {
+    for (const optOut of ['yes', 'no', 'unknown']) {
+      const privacy = { trains_on_input_default: trains, opt_out: optOut };
+      const badge = privacyBadge(privacy);
+      assert.equal(badge.tone === 'good', isSecure({ privacy }), `${trains}/${optOut}: ${badge.text}`);
+    }
+  }
+  assert.equal(privacyBadge({ trains_on_input_default: 'unknown', opt_out: 'unknown' }).text, '학습 정책 확인 필요');
+  assert.equal(privacyBadge({ trains_on_input_default: 'no', opt_out: 'unknown' }, '코드 ').text, '코드 학습에 안 씀');
 });
