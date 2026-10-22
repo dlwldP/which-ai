@@ -1496,5 +1496,558 @@
       "기능 체크리스트: planning 2개(이슈 관리, 문서 초안: 문서의 예시 프롬프트 'Draft a new document...'를 근거로 함. PRD라는 말은 없음). coding_agents 3개(여러 파일 수정 문장은 못 찾음). run_commands와 open_pr는 같은 문장('writes and tests the change ... returns a draft pull request')을 근거로 했어요. 코드는 Linear가 직접 짜는 게 아니라 Claude Code나 Codex를 써서 Linear Agent가 돌려요. code_review 2개(테스트 추가, 리뷰 의견 반영). PR 자동 리뷰 코멘트 문장은 없어요('Guided reviews'는 사람이 diff를 보기 쉽게 정리해 주는 기능). automation 2개(Loops 일정·이벤트 실행, MCP 서버 연결).",
       "AI 여부(partial: AI는 이슈 관리 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요."
     ]
+  },
+  {
+    "id": "bolt",
+    "name": "Bolt",
+    "url": "https://bolt.new",
+    "official_domains": [
+      "bolt.new"
+    ],
+    "one_liner": "만들 앱을 채팅으로 설명하면 브라우저 안에서 코드를 짜고 DB·로그인·호스팅까지 붙여 바로 올려주는 앱 빌더예요",
+    "features": {
+      "app_builders": [
+        "generate_app",
+        "backend",
+        "deploy"
+      ],
+      "design_ui": [
+        "generate_ui",
+        "components",
+        "prototype"
+      ],
+      "code_review": [
+        "security",
+        "apply_fix"
+      ]
+    },
+    "primary": "app_builders",
+    "price": {
+      "free": true,
+      "free_limit": "한 달 토큰 100만 개 (하루 30만 개까지)",
+      "paid_from_usd": 18,
+      "billing": "yearly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": "MSA·DPA 계약을 맺은 Teams·Enterprise 고객은 학습과 데이터 공유에서 빠진다고 해요. 개인 요금제 정책은 개인정보처리방침(stackblitz.com)에서 확인해야 해요"
+    },
+    "start_steps": [
+      "bolt.new에 들어가 무료로 가입하기 (카드 등록 없음)",
+      "입력창에 만들 앱의 화면·기능을 문장으로 적고 Build now 누르기",
+      "미리보기를 보며 추가 요청이나 코드 직접 수정으로 다듬은 뒤 배포 버튼으로 공개 주소 만들기"
+    ],
+    "cautions": [
+      "토큰은 프로젝트 파일을 AI와 맞추는 데 주로 쓰여서 프로젝트가 커질수록 메시지당 소모가 커져요",
+      "무료로 배포한 사이트에는 Bolt 표시가 붙고 내 도메인을 연결할 수 없어요",
+      "학습 정책이 공식 사이트 안에서 확인되지 않아요. 민감한 코드는 개인정보처리방침을 먼저 보세요"
+    ],
+    "sources": [
+      "https://bolt.new",
+      "https://bolt.new/pricing",
+      "https://bolt.new/use-cases/ai-app-builder",
+      "https://bolt.new/use-cases/ai-prototyping-tools",
+      "https://bolt.new/platform/security",
+      "https://bolt.new/enterprise"
+    ],
+    "learn": [],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://bolt.new/pricing",
+        "quote": "Free $0 /month Free forever, no card required"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://bolt.new/pricing",
+        "quote": "1M tokens/month to try Bolt"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://bolt.new/pricing",
+        "quote": "Daily Token Limit 300K No Limit No Limit No Limit"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://bolt.new/pricing",
+        "quote": "Pro $18 * /month Total of $216 $300 / year Billed annually"
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://bolt.new/platform/security",
+        "quote": "Enterprise and Team customers under an MSA or DPA are excluded from model training and data sharing."
+      },
+      {
+        "field": "forms",
+        "source": "https://bolt.new/use-cases/ai-app-builder",
+        "quote": "No setup. No installs. Just open Bolt.new and start."
+      },
+      {
+        "field": "forms",
+        "source": "https://bolt.new/use-cases/ai-app-builder",
+        "quote": "All generated code lives in a full browser-based IDE."
+      },
+      {
+        "field": "features.app_builders.generate_app",
+        "source": "https://bolt.new/use-cases/ai-app-builder",
+        "quote": "Describe your app in plain language and let Bolt do the rest. Create a ready-to-publish app in under two minutes."
+      },
+      {
+        "field": "features.app_builders.backend",
+        "source": "https://bolt.new/use-cases/ai-app-builder",
+        "quote": "Need user auth, a database, or a third-party API? Bolt can generate the full back-end alongside your app in the same project."
+      },
+      {
+        "field": "features.app_builders.deploy",
+        "source": "https://bolt.new/use-cases/ai-app-builder",
+        "quote": "Bolt publishes to a live URL automatically. Connect a custom domain in minutes, no server management, no DevOps required."
+      },
+      {
+        "field": "features.design_ui.generate_ui",
+        "source": "https://bolt.new/use-cases/ai-app-builder",
+        "quote": "Describe the interface, logic, and layout you want and the AI applies it or iterate from the code editor."
+      },
+      {
+        "field": "features.design_ui.components",
+        "source": "https://bolt.new/enterprise",
+        "quote": "Import design systems from GitHub, private NPM registries, or Storybook"
+      },
+      {
+        "field": "features.design_ui.prototype",
+        "source": "https://bolt.new/use-cases/ai-prototyping-tools",
+        "quote": "Describe your prototype in plain language and let Bolt do the rest."
+      },
+      {
+        "field": "features.design_ui.prototype",
+        "source": "https://bolt.new/use-cases/ai-prototyping-tools",
+        "quote": "Build a clickable prototype for a mobile banking app with onboarding flow, dashboard, transaction history, and send money screen."
+      },
+      {
+        "field": "features.code_review.security",
+        "source": "https://bolt.new/platform/security",
+        "quote": "The Bolt.new security agent reads your project, writes the fixes, and applies them"
+      },
+      {
+        "field": "features.code_review.apply_fix",
+        "source": "https://bolt.new/platform/security",
+        "quote": "When an issue is found, one button analyzes it, applies the fix, and publishes the secured version, at no extra cost."
+      }
+    ],
+    "review_notes": [
+      "유료 가격: 가격 페이지 글자에는 연 결제 가격만 보여요 (Pro 월 18달러, 연 216달러, 원래 가격으로 연 300달러가 함께 표시). 월 결제 토글 가격은 스크립트로 바뀌어서 확인 못 했어요. 그래서 18달러 + billing \"yearly\"로 했어요. 연 300달러를 12로 나누면 월 25달러라 월 결제는 25달러일 가능성이 있지만 문장이 없어서 넣지 않았어요. 가격 옆 \"*\"는 \"Plus applicable taxes\"예요.",
+      "무료 한도: 비교 표에 무료는 월 토큰 1M, 하루 토큰 한도 300K로 나와요.",
+      "학습 정책: 보안 페이지의 '학습에 쓰나요?' 답은 \"Privacy Policy에 설명돼 있다\" + \"MSA·DPA가 있는 Enterprise·Team 고객은 학습·데이터 공유에서 제외\"뿐이에요. 개인정보처리방침이 stackblitz.com(운영사 StackBlitz 도메인)에 있어서 허용된 호스트가 아니라 읽지 않았어요. 그래서 trains_on_input_default·opt_out 모두 unknown이에요. stackblitz.com을 official_domains에 넣을지 J가 정해 주세요.",
+      "도움말 센터(support.bolt.new)는 이 환경의 프록시가 연결을 막아서(403) 못 읽었어요. 그래서 배울 거리(learn)를 비워 뒀고, 코드 내보내기·GitHub 연동(export_code)도 근거 문장을 못 찾아 넣지 않았어요. 홈 화면에 \"or start from Figma GitHub\" 버튼 글자만 있어요 (GitHub에서 시작하기 = 가져오기라서 내보내기 근거로는 쓰지 않음).",
+      "design_ui.components 근거는 Enterprise 페이지의 디자인 시스템 가져오기 문장이에요. 가격표에서 \"Design System Knowledge\"는 Teams 이상에만 있어요.",
+      "code_review.security·apply_fix는 보안 페이지의 '보안 에이전트가 프로젝트를 읽고 고치고 적용' 문장이에요. PR 리뷰 기능은 아니에요. 넣는 게 과하다고 보면 빼 주세요.",
+      "오픈소스 여부: 공식 페이지에 오픈소스라는 문장이 없어요. null + todo로 뒀어요.",
+      "AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "replit",
+    "name": "Replit",
+    "url": "https://replit.com",
+    "official_domains": [
+      "replit.com"
+    ],
+    "one_liner": "채팅으로 원하는 앱을 말하면 에이전트가 코드를 짜고 DB·로그인·게시까지 클라우드 안에서 처리해주는 개발 플랫폼이에요",
+    "features": {
+      "app_builders": [
+        "generate_app",
+        "backend",
+        "deploy",
+        "export_code"
+      ],
+      "backend_database": [
+        "database",
+        "auth",
+        "storage"
+      ],
+      "design_ui": [
+        "generate_ui",
+        "components",
+        "prototype"
+      ],
+      "coding_agents": [
+        "repo_context",
+        "open_pr"
+      ],
+      "devops": [
+        "logs"
+      ]
+    },
+    "primary": "app_builders",
+    "price": {
+      "free": true,
+      "free_limit": "에이전트 하루 무료 크레딧(월 상한 있음), 게시 앱 1개 (30일 뒤 내려감)",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web",
+      "desktop"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "프롬프트와 생성 결과를 모델 개선에 써요. 끄는 설정은 Pro 요금제에만 있고, Enterprise는 학습에 쓰지 않아요"
+    },
+    "start_steps": [
+      "replit.com에서 무료 계정 만들기 (웹, 데스크톱 앱 중 편한 곳)",
+      "입력창에 만들 앱을 문장으로 설명하고 에이전트가 만든 결과를 미리보기로 확인하기",
+      "Publishing으로 공개 주소를 만들거나 GitHub 저장소를 연결해 PR로 올리기"
+    ],
+    "cautions": [
+      "무료 요금제는 입력이 모델 개선에 쓰이고 끌 수 없어요 (끄기는 Pro만)",
+      "무료로 게시한 앱은 1개뿐이고 30일 뒤 내려가요",
+      "외부 서비스 연결·Plan Mode·전체 빌드는 Core 이상에서만 돼요"
+    ],
+    "sources": [
+      "https://replit.com",
+      "https://replit.com/pricing",
+      "https://docs.replit.com",
+      "https://docs.replit.com/billing/plans/starter-plan",
+      "https://docs.replit.com/billing/plans/replit-core",
+      "https://docs.replit.com/legal-and-security-info/model-improvement",
+      "https://docs.replit.com/learn/projects-and-artifacts/storage-and-databases",
+      "https://docs.replit.com/learn/projects-and-artifacts/auth",
+      "https://docs.replit.com/learn/projects-and-artifacts/replit-deployments",
+      "https://docs.replit.com/use-cases/ship-github-change",
+      "https://docs.replit.com/design/what-is-replit-design"
+    ],
+    "learn": [
+      {
+        "title": "첫 앱 만들기 (공식 문서)",
+        "url": "https://docs.replit.com/build/your-first-app"
+      },
+      {
+        "title": "아이디어에서 게시까지 따라 하기 (공식 문서)",
+        "url": "https://docs.replit.com/home/get-started"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://replit.com",
+        "quote": "Starter $0 For exploring what's possible with our new generative tools. Explore what's possible: Free daily usage"
+      },
+      {
+        "field": "price.free",
+        "source": "https://docs.replit.com/billing/plans/starter-plan",
+        "quote": "The Starter plan gives you everything you need to start building on Replit. Create apps and publish your first project — all at no cost."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://docs.replit.com/billing/plans/starter-plan",
+        "quote": "Starter plan users receive daily credits for Agent usage, up to a monthly cap. These credits reset daily, giving you a fresh allowance to work with Agent each day."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://docs.replit.com/billing/plans/starter-plan",
+        "quote": "This published link will automatically go down after 30 days."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://replit.com",
+        "quote": "Publish 1 live project"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://replit.com/pricing",
+        "quote": "Core $20 $18 / month, billed annually"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://docs.replit.com/legal-and-security-info/model-improvement",
+        "quote": "We use content you provide, including your prompts, instructions, context, and responses generated for you, to help develop and improve our models and AI features."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://docs.replit.com/legal-and-security-info/model-improvement",
+        "quote": "Pro users can opt out from their content being used to develop and improve our models."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://docs.replit.com/legal-and-security-info/model-improvement",
+        "quote": "This control is available to Pro users. For Enterprise users, Replit does not use customer content to train its models."
+      },
+      {
+        "field": "forms",
+        "source": "https://docs.replit.com",
+        "quote": "Choose where you want to use Replit, then sign in or create an account. Start on the web, in the Desktop App, or in the Mobile App."
+      },
+      {
+        "field": "features.app_builders.generate_app",
+        "source": "https://replit.com",
+        "quote": "Describe and publish your project. Replit writes production-ready code, evolves it, and stays out of your way."
+      },
+      {
+        "field": "features.app_builders.backend",
+        "source": "https://replit.com",
+        "quote": "Built-in services with zero setup- Authentication, Database, Hosting, and Monitoring, enabling you to build fully scalable apps easily and securely from day one."
+      },
+      {
+        "field": "features.app_builders.deploy",
+        "source": "https://docs.replit.com/learn/projects-and-artifacts/replit-deployments",
+        "quote": "Publishing is a feature that saves a snapshot of your Replit App to the cloud, where everyone can interact with it."
+      },
+      {
+        "field": "features.app_builders.export_code",
+        "source": "https://docs.replit.com/use-cases/ship-github-change",
+        "quote": "When it looks right, Agent commits it to a branch, pushes it, and opens the pull request with the description filled in."
+      },
+      {
+        "field": "features.backend_database.database",
+        "source": "https://docs.replit.com/learn/projects-and-artifacts/storage-and-databases",
+        "quote": "Backed by a fully-managed PostgresSQL database that scales with your app."
+      },
+      {
+        "field": "features.backend_database.auth",
+        "source": "https://docs.replit.com/learn/projects-and-artifacts/auth",
+        "quote": "Replit ships two built-in auth options. Both are provisioned by Agent — no separate dashboard signup, no copy-pasting of OAuth keys."
+      },
+      {
+        "field": "features.backend_database.storage",
+        "source": "https://docs.replit.com/learn/projects-and-artifacts/storage-and-databases",
+        "quote": "Ideal for unstructured data and large files, such as images, videos, and documents."
+      },
+      {
+        "field": "features.design_ui.generate_ui",
+        "source": "https://docs.replit.com/design/what-is-replit-design",
+        "quote": "Replit Design is a design suite to generate design frames from prompts, explore the AI’s suggestions, and keep everything on brand with design systems."
+      },
+      {
+        "field": "features.design_ui.components",
+        "source": "https://docs.replit.com/design/what-is-replit-design",
+        "quote": "Design system : start from a saved system so your first frame is already on brand."
+      },
+      {
+        "field": "features.design_ui.prototype",
+        "source": "https://docs.replit.com/design/what-is-replit-design",
+        "quote": "You describe what you want, and Replit Design generates interactive mockups you can explore and refine."
+      },
+      {
+        "field": "features.coding_agents.repo_context",
+        "source": "https://docs.replit.com/use-cases/ship-github-change",
+        "quote": "It reads the repository, installs dependencies, and asks for anything it can’t infer, like a missing environment variable."
+      },
+      {
+        "field": "features.coding_agents.open_pr",
+        "source": "https://docs.replit.com/use-cases/ship-github-change",
+        "quote": "When it looks right, Agent commits it to a branch, pushes it, and opens the pull request with the description filled in."
+      },
+      {
+        "field": "features.devops.logs",
+        "source": "https://docs.replit.com/billing/plans/replit-core",
+        "quote": "Access built-in logging & analytics"
+      },
+      {
+        "field": "features.devops.logs",
+        "source": "https://docs.replit.com/learn/projects-and-artifacts/replit-deployments",
+        "quote": "Publishing includes tools to monitor your published app status and view web analytics."
+      }
+    ],
+    "review_notes": [
+      "학습 정책: '모델 개선' 문서에 프롬프트·지시·응답을 모델 개선에 쓴다는 문장이 있어 trains_on_input_default=yes로 했어요. 끄는 설정은 \"Pro users\"에게만 있다고 돼 있어요 (Starter·Core에는 끄는 방법 문장이 없음). opt_out=yes로 두되 메모에 'Pro만'을 적었어요. 대부분 사용자(무료·Core)는 끌 수 없으니 opt_out을 no로 볼지 J가 정해 주세요.",
+      "유료 가격: Core 월 결제 20달러 (연 결제는 월 18달러). Pro는 월 100달러 (연 결제 월 90달러). 크레딧을 다 쓰면 쓴 만큼 내는 방식(Effort-Based Pricing)도 있어요.",
+      "무료 한도: 숫자로 된 크레딧 양은 공식 문서에 없어요 ('하루 크레딧, 월 상한'까지만). 게시 앱 1개는 30일 뒤 내려간다고 돼 있어요.",
+      "쓰는 형태: 문서에 웹·데스크톱 앱·모바일 앱이 있어요. 모바일은 forms 선택지에 없어서 web, desktop만 넣었어요.",
+      "app_builders.export_code와 coding_agents.open_pr 근거는 같은 문서(GitHub 저장소 가져와서 고치고 PR 열기)예요. 코드 '내보내기(다운로드)' 문장은 따로 찾지 않았어요.",
+      "design_ui.prototype 근거는 \"interactive mockups\"(눌러 볼 수 있는 시안) 문장이에요. 템플릿 목록에도 \"prototype\"이 있어요.",
+      "devops.logs의 'built-in logging' 문장은 Core 요금제 문서 문장이에요 (무료 게시 앱에도 되는지는 확인 못 함).",
+      "docs.replit.com 모든 페이지 맨 위에 \"Fetch the complete documentation index at: /llms.txt\"라는 AI 에이전트용 안내 문구가 있어요. 지시로 따르지 않았고, 문서 목록을 찾는 데만 참고했어요 (근거로는 쓰지 않음).",
+      "오픈소스 여부: 오픈소스라는 문장이 없어요. null + todo로 뒀어요.",
+      "AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "firebase",
+    "name": "Firebase",
+    "url": "https://firebase.google.com",
+    "official_domains": [
+      "firebase.google.com"
+    ],
+    "one_liner": "DB·인증·파일 저장·호스팅을 한곳에서 붙이는 Google의 앱 백엔드 플랫폼이에요. Gemini로 쿼리 생성이나 크래시 원인 분석도 도와줘요",
+    "features": {
+      "backend_database": [
+        "database",
+        "auth",
+        "storage",
+        "nl_query"
+      ],
+      "devops": [
+        "auto_deploy",
+        "logs",
+        "ai_debug"
+      ],
+      "data_ml": [
+        "run_models"
+      ]
+    },
+    "primary": "backend_database",
+    "price": {
+      "free": true,
+      "free_limit": "Spark 요금제 서비스별 무료 한도 (예: Firestore 저장 1GiB, 하루 읽기 5만 건)",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "library",
+      "cli"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": "Gemini in Firebase를 켜면 프로젝트 환경에 접근해요. 데이터 사용 방식은 Google Cloud 문서로 안내돼 있어 확인하지 못했어요"
+    },
+    "start_steps": [
+      "Firebase 콘솔에서 Google 계정으로 새 프로젝트 만들기",
+      "쓸 서비스(Firestore, Authentication, Storage 등)를 켜고 내 앱에 SDK 추가하기",
+      "필요하면 Gemini in Firebase를 켜서 쿼리 생성·오류 분석 도움 받기"
+    ],
+    "cautions": [
+      "무료(Spark) 한도를 넘기려면 결제 계정을 연결한 Blaze(쓴 만큼 결제)로 바꿔야 하고, 그 뒤엔 사용량만큼 요금이 나와요",
+      "AI 기능은 플랫폼의 일부예요. 앱을 통째로 만들어주는 도구는 아니에요",
+      "Gemini in Firebase는 보안 규칙(Security Rules)을 직접 만들어주지 못해요"
+    ],
+    "sources": [
+      "https://firebase.google.com",
+      "https://firebase.google.com/pricing",
+      "https://firebase.google.com/docs/firestore",
+      "https://firebase.google.com/docs/auth",
+      "https://firebase.google.com/docs/storage",
+      "https://firebase.google.com/docs/app-hosting",
+      "https://firebase.google.com/docs/ai-logic",
+      "https://firebase.google.com/docs/ai-assistance/gemini-in-firebase",
+      "https://firebase.google.com/docs/data-connect/ai-assistance"
+    ],
+    "learn": [
+      {
+        "title": "Gemini in Firebase 소개 (공식 문서)",
+        "url": "https://firebase.google.com/docs/ai-assistance/gemini-in-firebase"
+      },
+      {
+        "title": "Cloud Firestore 시작하기 (공식 문서)",
+        "url": "https://firebase.google.com/docs/firestore"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://firebase.google.com/pricing",
+        "quote": "No-cost (Spark plan) check Generous no-cost usage limits check No payment method needed"
+      },
+      {
+        "field": "price.free",
+        "source": "https://firebase.google.com/docs/ai-assistance/gemini-in-firebase",
+        "quote": "is available at no cost to all users."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://firebase.google.com/pricing",
+        "quote": "No-cost up to 1 GiB total"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://firebase.google.com/pricing",
+        "quote": "No-cost up to 50K reads/day"
+      },
+      {
+        "field": "forms",
+        "source": "https://firebase.google.com",
+        "quote": "Firebase is a platform of services to help you and AI agents build and run intelligent apps with more speed, security, and scalability."
+      },
+      {
+        "field": "forms",
+        "source": "https://firebase.google.com",
+        "quote": "Firebase provides cross-platform app development SDKs, to help you build and run apps for Apple platforms, Android, the Web, Flutter, Unity, and C++."
+      },
+      {
+        "field": "forms",
+        "source": "https://firebase.google.com/docs/data-connect/ai-assistance",
+        "quote": "In your local environment, you can use the Firebase CLI and SQL Connect VS Code extension to generate, test, and develop on your app with the emulator."
+      },
+      {
+        "field": "features.backend_database.database",
+        "source": "https://firebase.google.com/docs/firestore",
+        "quote": "is a flexible, scalable database for mobile, web, and server development from"
+      },
+      {
+        "field": "features.backend_database.auth",
+        "source": "https://firebase.google.com/docs/auth",
+        "quote": "provides backend services, easy-to-use SDKs, and ready-made UI libraries to authenticate users to your app."
+      },
+      {
+        "field": "features.backend_database.storage",
+        "source": "https://firebase.google.com/docs/storage",
+        "quote": "is a powerful, simple, and cost-effective object storage service built for Google scale."
+      },
+      {
+        "field": "features.backend_database.nl_query",
+        "source": "https://firebase.google.com/docs/data-connect/ai-assistance",
+        "quote": "Describe your app, data model, or a desired query or mutation in natural language, and Gemini in Firebase generates the SQL Connect equivalent."
+      },
+      {
+        "field": "features.devops.auto_deploy",
+        "source": "https://firebase.google.com/docs/app-hosting",
+        "quote": "can automatically deploy every time you push to a specific branch."
+      },
+      {
+        "field": "features.devops.logs",
+        "source": "https://firebase.google.com/docs/app-hosting",
+        "quote": "Access logs and metrics, add a custom domain, and manually trigger rollouts from the"
+      },
+      {
+        "field": "features.devops.ai_debug",
+        "source": "https://firebase.google.com/docs/ai-assistance/gemini-in-firebase",
+        "quote": "AI assistance provides actionable insights into your app's crashes, including a full description of the issue, information about possible root causes, and suggestions on how you can fix the issue."
+      },
+      {
+        "field": "features.devops.ai_debug",
+        "source": "https://firebase.google.com/docs/ai-assistance/gemini-in-firebase",
+        "quote": "can decipher error messages and provide clear explanations and mitigations. It can also analyze logs, suggesting steps to resolve problems quickly."
+      },
+      {
+        "field": "features.data_ml.run_models",
+        "source": "https://firebase.google.com/docs/ai-logic",
+        "quote": "gives you access to the latest generative AI models from Google: the Gemini models."
+      }
+    ],
+    "review_notes": [
+      "AI 여부: Firebase는 백엔드 플랫폼이고 AI(Gemini in Firebase, Firebase AI Logic)는 그 일부라서 ai_native=partial로 제안해요.",
+      "유료 가격: 유료는 Blaze(쓴 만큼 결제) 하나라 고정 월 가격이 없어요. paid_from_usd=null, billing=unknown으로 뒀어요. 가격 페이지에 '자격이 되면 300달러 무료 크레딧' 문구가 있어요. Gemini in Firebase 자체는 모든 사용자에게 무료라고 돼 있어요.",
+      "무료 한도: 서비스마다 달라요. 예시로 Firestore 저장 1GiB, 읽기 하루 5만 건(가격표)을 적었어요. Authentication은 월 활성 사용자 5만 명까지 무료예요.",
+      "학습 정책: Gemini in Firebase 문서는 데이터 사용을 cloud.google.com 문서(How Gemini products in Google Cloud use your data)로 넘겨요. 허용된 호스트가 아니라 읽지 않아서 unknown이에요. cloud.google.com을 official_domains에 넣을지 J가 정해 주세요.",
+      "근거 문장 일부는 페이지에서 제품 이름(Cloud Firestore, Firebase Authentication 등)이 따로 줄로 나뉘어 있어서 이름 뒤 부분만 인용했어요 (예: database 근거는 'Cloud Firestore' 다음 문장).",
+      "devops.logs 근거 문장은 \"...from the Firebase console.\"로 이어져요 (App Hosting). devops.preview(미리보기 배포)는 문서 메뉴 이름만 보여서 넣지 않았어요. data_ml의 벡터 검색도 메뉴 이름만 있어서 뺐어요.",
+      "쓰는 형태: 클라우드 서비스 + SDK(library) + Firebase CLI. SQL Connect용 VS Code 확장도 있지만 Firebase 전체의 형태는 아니라서 ide_extension은 넣지 않았어요.",
+      "오픈소스 여부: 서비스가 오픈소스라는 문장이 없어요 (SDK는 GitHub에 있다는 링크만 있음). null + todo로 뒀어요. 서비스 자체는 아니라고 보면 false로 채워 주세요.",
+      "Firebase Studio(별도 도구)는 2026-06-22부터 신규 가입이 막혔고 2027-03-22 종료 예정이에요. 이 초안은 Firebase 백엔드 플랫폼만 다뤄요.",
+      "섹션(official), 대표 목적(backend_database)은 제안값이에요."
+    ]
   }
 ]
