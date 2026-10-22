@@ -314,5 +314,1187 @@
       "기능 체크리스트: app_builders 4개. 화면 디자인(design_ui)은 공식 페이지가 시안 만들기 용도로 소개하는 문장을 못 찾아서 넣지 않았어요 (예전 제안의 design_ui 1점 삭제).",
       "AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요."
     ]
+  },
+  {
+    "id": "vercel",
+    "name": "Vercel",
+    "url": "https://vercel.com",
+    "official_domains": [
+      "vercel.com"
+    ],
+    "one_liner": "Git 저장소를 연결하면 푸시할 때마다 웹앱을 빌드하고 배포해주는 호스팅 플랫폼이에요. 배포 실패 원인을 찾아주는 AI 에이전트도 있어요",
+    "features": {
+      "devops": [
+        "auto_deploy",
+        "preview",
+        "logs",
+        "ai_debug"
+      ],
+      "code_review": [
+        "pr_review",
+        "security"
+      ]
+    },
+    "primary": "devops",
+    "price": {
+      "free": true,
+      "free_limit": "Hobby 요금제 (개인·비상업용, 사용량 한도 있음)",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "cli"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "Hobby·Pro 체험판은 기본으로 학습에 쓰일 수 있고 팀 설정에서 끌 수 있어요. 유료 Pro는 기본 꺼짐, Enterprise는 쓰지 않아요"
+    },
+    "start_steps": [
+      "Vercel 계정을 만들고 GitHub 같은 Git 저장소를 연결하기",
+      "프로젝트를 가져오면(Import) 첫 배포가 자동으로 끝나요 (또는 터미널에서 Vercel CLI로 배포)",
+      "브랜치에 푸시해서 미리보기 주소로 확인하고, 기본 브랜치에 합치면 실서비스에 반영돼요"
+    ],
+    "cautions": [
+      "무료 Hobby 요금제는 개인·비상업용으로만 쓸 수 있어요",
+      "사용량에 따라 요금이 늘어나니 지출 한도를 걸어 두세요",
+      "Vercel Agent의 코드 리뷰·원인 분석은 베타이고 Pro 이상에서만 써요"
+    ],
+    "sources": [
+      "https://vercel.com/pricing",
+      "https://vercel.com/legal/terms",
+      "https://vercel.com/legal/privacy-policy",
+      "https://vercel.com/docs/git",
+      "https://vercel.com/docs/deployments/environments",
+      "https://vercel.com/docs/observability",
+      "https://vercel.com/docs/agent",
+      "https://vercel.com/docs/cli"
+    ],
+    "learn": [
+      {
+        "title": "Vercel 시작하기 (공식 문서)",
+        "url": "https://vercel.com/docs/getting-started-with-vercel"
+      },
+      {
+        "title": "Git으로 배포하기 (공식 문서)",
+        "url": "https://vercel.com/docs/git"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://vercel.com/pricing",
+        "quote": "Hobby $0 /mo."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://vercel.com/legal/terms",
+        "quote": "You shall only use the Services under a Hobby plan for your personal or non-commercial use."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://vercel.com/pricing",
+        "quote": "The perfect starting place for your web app or personal project."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://vercel.com/pricing",
+        "quote": "Pro Popular $20 /mo."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://vercel.com/pricing",
+        "quote": "Developer seat 1 $20 / month"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://vercel.com/legal/terms",
+        "quote": "In addition, if you are on a Hobby plan or trial Pro plan, you agree that we may use Your Content to train our artificial intelligence (“AI”) and machine learning models"
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://vercel.com/legal/terms",
+        "quote": "If you are on a paid Pro plan, Model Training is not enabled by default and you may opt in to Model Training. You may opt-out of Model Training at any time by adjusting your Team account settings or by upgrading to an Enterprise plan."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://vercel.com/legal/privacy-policy",
+        "quote": "Opt-out of Model Training as described in Section 3 of the Terms of Service."
+      },
+      {
+        "field": "forms",
+        "source": "https://vercel.com/pricing",
+        "quote": "Import your repo, deploy in seconds"
+      },
+      {
+        "field": "forms",
+        "source": "https://vercel.com/docs/cli",
+        "quote": "With the command-line interface (CLI) you can interact with the Vercel platform using a terminal, or through an automated system"
+      },
+      {
+        "field": "features.devops.auto_deploy",
+        "source": "https://vercel.com/docs/git",
+        "quote": "Vercel allows for automatic deployments on every branch push"
+      },
+      {
+        "field": "features.devops.preview",
+        "source": "https://vercel.com/docs/deployments/environments",
+        "quote": "By default, Vercel creates a preview deployment when you:"
+      },
+      {
+        "field": "features.devops.logs",
+        "source": "https://vercel.com/docs/observability",
+        "quote": "Use logs to find failing requests, traces to inspect one request path, and metrics to compare behavior over time."
+      },
+      {
+        "field": "features.devops.ai_debug",
+        "source": "https://vercel.com/docs/agent",
+        "quote": "Use Vercel Agent Investigations to analyze anomaly alerts, failed deployments, runtime errors, and cost or performance issues. Vercel Agent queries relevant logs and metrics, identifies possible causes, and summarizes its findings."
+      },
+      {
+        "field": "features.code_review.pr_review",
+        "source": "https://vercel.com/docs/agent",
+        "quote": "Get Sandbox-validated suggestions on your pull requests."
+      },
+      {
+        "field": "features.code_review.security",
+        "source": "https://vercel.com/docs/agent",
+        "quote": "Code Review can identify security vulnerabilities, logic errors, and performance issues, then validate proposed fixes with your builds, tests, and linters."
+      }
+    ],
+    "review_notes": [
+      "유료 가격: Pro 카드가 '$20 /mo.'이고 기능 표에 'Developer seat 1 $20 / month'가 있어요. 개발자 좌석당 월 20달러(사용 크레딧 20달러 포함)로 읽었어요. 그 위로는 사용량 과금이에요. 연 결제 가격은 페이지에서 못 찾았어요.",
+      "무료 한도: 가격표에 항목별 한도(예: 'CDN Requests 1M / month included', 'Fast Data Transfer 100 GB / month included')가 있지만 표 칸이라 요약만 했어요. 약관에 'Hobby는 개인·비상업용'이라는 문장이 있어요.",
+      "학습 정책: 이용 약관(legal/terms) 3장 기준이에요. Hobby·Pro 체험판은 '고객 콘텐츠를 AI 학습에 쓸 수 있음'(trains=yes), 팀 설정에서 끌 수 있음(opt_out=yes). 유료 Pro는 기본 꺼짐, Enterprise는 사용 안 함. 꼭 원문 대조해 주세요.",
+      "AI 기능 범위: 가격표 'AI' 줄에 'Vercel Agent Beta'가 있고, 문서에는 'Chat in Slack, dashboard chat, Investigations, and Code Review are in public beta for Pro and Enterprise teams.'라고 돼 있어요. 그래서 ai_debug·pr_review·security는 Pro 이상 베타 기능이에요.",
+      "기능 체크리스트: devops 4개, code_review 2개(테스트 생성·수정 적용 문장은 없음 — 'validate proposed fixes'는 수정안을 검증한다는 뜻이라 apply_fix로 넣지 않았어요). AI Gateway(여러 회사 모델을 한 주소로 호출)와 Vercel Blob 같은 스토리지도 있지만 이번 초안에서는 넣지 않았어요. 넣을지 정해 주세요.",
+      "쓰는 형태: 클라우드 서비스 + CLI. 대시보드(웹)도 있지만 web은 넣지 않았어요.",
+      "오픈소스 여부: 플랫폼 자체가 오픈소스라는 문장은 못 찾았어요. 오픈소스가 아니면 open_source=false로 채우고 todo에서 지워 주세요.",
+      "시작하기 문서(getting-started-with-vercel) 안에 'Agent Prompt'라는 AI 에이전트용 지시문 블록이 있어요. 따르지 않았고 근거로도 쓰지 않았어요.",
+      "AI 여부(partial — 호스팅이 핵심이고 AI는 일부), 섹션(official), 대표 목적(devops)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "v0",
+    "name": "v0",
+    "url": "https://v0.app",
+    "official_domains": [
+      "v0.app"
+    ],
+    "one_liner": "만들고 싶은 화면이나 앱을 문장으로 설명하면 Next.js 코드로 만들어주고 Vercel에 바로 올려주는 Vercel의 AI 도구예요",
+    "features": {
+      "app_builders": [
+        "generate_app",
+        "backend",
+        "deploy",
+        "export_code"
+      ],
+      "design_ui": [
+        "generate_ui",
+        "components",
+        "prototype"
+      ]
+    },
+    "primary": "app_builders",
+    "price": {
+      "free": true,
+      "free_limit": "하루 메시지 7개",
+      "paid_from_usd": 30,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "Vercel 팀 설정에서 학습을 끌 수 있어요. Business 요금제는 기본으로 꺼져 있고 Enterprise는 학습에 쓰지 않아요"
+    },
+    "start_steps": [
+      "v0.app에 Vercel 계정으로 로그인하기",
+      "만들고 싶은 화면이나 기능을 문장으로 적고, 결과를 보며 계속 고쳐 달라고 하기",
+      "Publish로 Vercel에 배포하거나 GitHub에 연결해 코드를 저장소로 가져가기"
+    ],
+    "cautions": [
+      "무료는 하루 메시지 7개라 금방 막혀요",
+      "유료는 크레딧(토큰) 기준이라 큰 작업일수록 빨리 줄어요",
+      "기본 설정에서는 입력과 결과가 학습에 쓰일 수 있으니 팀 설정을 확인하세요"
+    ],
+    "sources": [
+      "https://v0.app/pricing",
+      "https://v0.app/docs/pricing",
+      "https://v0.app/docs",
+      "https://v0.app/docs/faqs",
+      "https://v0.app/policy",
+      "https://v0.app/docs/deployments",
+      "https://v0.app/docs/github",
+      "https://v0.app/docs/databases",
+      "https://v0.app/docs/full-stack-apps",
+      "https://v0.app/docs/design-systems-2",
+      "https://v0.app/docs/prototyping"
+    ],
+    "learn": [
+      {
+        "title": "v0 빠른 시작 (공식 문서)",
+        "url": "https://v0.app/docs/quickstart"
+      },
+      {
+        "title": "프롬프트 잘 쓰는 법 (공식 문서)",
+        "url": "https://v0.app/docs/text-prompting"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://v0.app/pricing",
+        "quote": "Free $0 /month"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://v0.app/pricing",
+        "quote": "7 message/day limit"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://v0.app/docs/pricing",
+        "quote": "Plus : $30/user/month. For fast moving teams and collaboration."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://v0.app/docs/pricing",
+        "quote": "The Premium plan is in the process of being sunsetted and is no longer available to new users."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://v0.app/docs/faqs",
+        "quote": "v0 may use user-generated prompts and/or content as inputs to models and learning systems from third-party providers to improve our products."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://v0.app/pricing",
+        "quote": "Training opt-out by default"
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://v0.app/docs/faqs",
+        "quote": "Content of v0 Enterprise customers, or any customer that has opted out of model training in their Vercel settings, is not used for training."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://v0.app/policy",
+        "quote": "Users can change their opt out of such use and sharing at any time through their Team Settings or by purchasing the appropriate subscription."
+      },
+      {
+        "field": "forms",
+        "source": "https://v0.app/docs/github",
+        "quote": "Actions in the v0 web app use your v0 role"
+      },
+      {
+        "field": "features.app_builders.generate_app",
+        "source": "https://v0.app/docs",
+        "quote": "v0 is an AI agent that helps anyone create real code and full-stack apps and agents."
+      },
+      {
+        "field": "features.app_builders.backend",
+        "source": "https://v0.app/docs/full-stack-apps",
+        "quote": "v0 can transform prototypes into full-stack applications. In a new chat or existing generation, ask v0 to implement features that require data persistence, API calls, or backend logic."
+      },
+      {
+        "field": "features.app_builders.backend",
+        "source": "https://v0.app/docs/databases",
+        "quote": "v0 enables simple, one-click database integrations with popular providers, including"
+      },
+      {
+        "field": "features.app_builders.deploy",
+        "source": "https://v0.app/docs/deployments",
+        "quote": "v0 deploys projects to Vercel."
+      },
+      {
+        "field": "features.app_builders.export_code",
+        "source": "https://v0.app/docs/github",
+        "quote": "Connect a v0 project to GitHub to keep its code in a repository, work on isolated branches, preview changes, run CI, and publish through pull requests."
+      },
+      {
+        "field": "features.design_ui.generate_ui",
+        "source": "https://v0.app/docs",
+        "quote": "Create high-fidelity UIs from your wireframes or mockups."
+      },
+      {
+        "field": "features.design_ui.components",
+        "source": "https://v0.app/docs/design-systems-2",
+        "quote": "Design Systems 2.0 lets you teach v0 your design system once, so chats can build with your real components, tokens, and conventions."
+      },
+      {
+        "field": "features.design_ui.prototype",
+        "source": "https://v0.app/docs/prototyping",
+        "quote": "v0 changes this by enabling early, continuous validation with interactive prototypes."
+      }
+    ],
+    "review_notes": [
+      "유료 가격: 문서 요금제 페이지 기준 Plus 사용자당 월 30달러(월 30달러 크레딧 포함)예요. Premium(월 20달러)은 '신규 가입 불가'라 제외했어요. 가격 페이지(v0.app/pricing)의 Plus 카드에는 '$30 $ 90 /user/month'처럼 숫자 두 개가 붙어 읽혀요(스크립트로 바뀌는 값으로 보여요). 실제 화면을 열어 확인해 주세요. 연 결제 가격은 못 찾았어요.",
+      "무료 한도: 가격 페이지 'Free' 카드의 '7 message/day limit'. 가격 페이지 끝에 '$5 in one-time credits for new users' 문구도 있어요.",
+      "학습 정책: FAQ에 '프롬프트·콘텐츠를 제품 개선에 쓸 수 있다', Enterprise 또는 Vercel 설정에서 끈 고객은 제외라고 돼 있어요. 가격표에서 Business에만 'Training opt-out by default'가 있어서 Free·Plus는 기본 켜짐으로 보고 trains=yes, opt_out=yes로 했어요. AI 정책(v0.app/policy)에는 'Hobby·Pro 체험판은 끄지 않으면 사용, 유료 Pro는 켜지 않으면 사용 안 함'이라는 Vercel 요금제 기준 문장이 있어요. v0 Plus와 Vercel Pro 관계는 원문 대조가 필요해요.",
+      "쓰는 형태: 웹(web). 사이트 메뉴에 'iOS'가 있지만 개발자용 forms에 모바일 값이 없어서 넣지 않았어요.",
+      "기능 체크리스트: app_builders 4개, design_ui 3개(코드 내보내기는 design_ui에도 해당되지만 GitHub 근거를 app_builders 쪽에만 걸었어요. design_ui.export_code도 같은 근거로 넣을지 정해 주세요). 문서에 Figma 연동, Design mode도 있어요.",
+      "공식 도메인: v0 페이지는 모두 v0.app에 있어서 official_domains에 v0.app만 넣었어요. 결제는 vercel.com에서 해요('Centralized billing on vercel.com').",
+      "오픈소스 여부: 관련 문장을 못 찾았어요. 오픈소스가 아니면 open_source=false로 채우고 todo에서 지워 주세요.",
+      "AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요. Vercel과 별개 툴로 나눴어요."
+    ]
+  },
+  {
+    "id": "pulumi",
+    "name": "Pulumi",
+    "url": "https://www.pulumi.com",
+    "official_domains": [
+      "pulumi.com"
+    ],
+    "one_liner": "클라우드 인프라를 TypeScript·Python 같은 프로그래밍 언어 코드로 정의하고 배포하는 도구예요. 인프라 전용 AI 에이전트 Neo도 붙어 있어요",
+    "features": {
+      "devops": [
+        "auto_deploy",
+        "preview",
+        "ai_debug"
+      ],
+      "code_review": [
+        "pr_review"
+      ],
+      "automation": [
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "devops",
+    "price": {
+      "free": true,
+      "free_limit": "개인 1명, 워크플로 500분까지",
+      "paid_from_usd": 40,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": true,
+    "repo_url": "https://github.com/pulumi/pulumi",
+    "section": "official",
+    "forms": [
+      "cli",
+      "library",
+      "cloud_service"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": ""
+    },
+    "start_steps": [
+      "공식 설치 안내대로 Pulumi CLI 설치하기 (예: macOS는 Homebrew)",
+      "새 폴더에서 프로젝트를 만들고 익숙한 언어로 만들 클라우드 자원을 코드로 적기",
+      "변경 내용을 미리 본 뒤 배포 명령으로 실제 클라우드에 반영하기"
+    ],
+    "cautions": [
+      "실제 클라우드(AWS 등)에 자원을 만들기 때문에 그쪽 요금이 따로 나와요",
+      "Neo는 토큰 사용량만큼 요금이 붙어요",
+      "AI가 제안한 인프라 변경은 미리보기 결과를 확인하고 승인하세요"
+    ],
+    "sources": [
+      "https://www.pulumi.com/",
+      "https://www.pulumi.com/pricing/",
+      "https://www.pulumi.com/docs/iac/",
+      "https://www.pulumi.com/docs/install/",
+      "https://www.pulumi.com/docs/deployments/deployments/",
+      "https://www.pulumi.com/docs/deployments/deployments/review-stacks/",
+      "https://www.pulumi.com/product/neo/",
+      "https://www.pulumi.com/docs/ai/neo/code-reviews/",
+      "https://www.pulumi.com/docs/ai/neo/automations/",
+      "https://www.pulumi.com/docs/ai/neo/integrations/mcp/",
+      "https://www.pulumi.com/privacy/"
+    ],
+    "learn": [
+      {
+        "title": "Pulumi 시작하기 (공식 문서)",
+        "url": "https://www.pulumi.com/docs/get-started/"
+      },
+      {
+        "title": "Neo 시작하기 (공식 문서)",
+        "url": "https://www.pulumi.com/docs/ai/neo/get-started/"
+      }
+    ],
+    "todo": [],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://www.pulumi.com/pricing/",
+        "quote": "Start for free. Stay free forever for open source and individuals, or scale with advanced editions for your team."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.pulumi.com/pricing/",
+        "quote": "1 user"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.pulumi.com/pricing/",
+        "quote": "Up to 500 workflow minutes"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://www.pulumi.com/pricing/",
+        "quote": "Essentials Managed infrastructure fundamentals for your whole team. $40 /month Includes 40 Credits"
+      },
+      {
+        "field": "open_source",
+        "source": "https://www.pulumi.com/docs/iac/",
+        "quote": "Pulumi's open source infrastructure as code SDK supports TypeScript, Python, Go, .NET, Java, YAML, and HCL."
+      },
+      {
+        "field": "open_source",
+        "source": "https://www.pulumi.com/",
+        "quote": "Open source and free for individuals."
+      },
+      {
+        "field": "repo_url",
+        "source": "https://www.pulumi.com/",
+        "quote": "pulumi/pulumi"
+      },
+      {
+        "field": "forms",
+        "source": "https://www.pulumi.com/docs/install/",
+        "quote": "You don’t need a Pulumi Cloud account to install the CLI."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.pulumi.com/docs/iac/",
+        "quote": "Pulumi's open source infrastructure as code SDK supports TypeScript, Python, Go, .NET, Java, YAML, and HCL."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.pulumi.com/docs/deployments/deployments/",
+        "quote": "Pulumi Deployments is a managed service that runs Pulumi operations"
+      },
+      {
+        "field": "features.devops.auto_deploy",
+        "source": "https://www.pulumi.com/docs/deployments/deployments/",
+        "quote": "deployments can run automatically from your version control system"
+      },
+      {
+        "field": "features.devops.preview",
+        "source": "https://www.pulumi.com/docs/deployments/deployments/review-stacks/",
+        "quote": "Review stacks are ephemeral cloud environments powered by Pulumi Deployments. They are created automatically when a pull request is opened, updated on each new commit, and destroyed when the pull request is merged or closed."
+      },
+      {
+        "field": "features.devops.ai_debug",
+        "source": "https://www.pulumi.com/product/neo/",
+        "quote": "Ask why a deployment failed or what’s misconfigured. Neo investigates and explains what went wrong."
+      },
+      {
+        "field": "features.code_review.pr_review",
+        "source": "https://www.pulumi.com/docs/ai/neo/code-reviews/",
+        "quote": "Neo code reviews analyze pull requests against what Pulumi Cloud knows about your running infrastructure and leave feedback in the pull request."
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://www.pulumi.com/docs/ai/neo/automations/",
+        "quote": "The form asks for a name, the prompt (which includes the same integration selector as an ad-hoc task), and the frequency (hourly, daily, weekdays, or weekly). Save the automation and it begins running at the next scheduled tick."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://www.pulumi.com/docs/ai/neo/integrations/mcp/",
+        "quote": "MCP integrations connect Neo to external services that expose a Model Context Protocol server"
+      }
+    ],
+    "review_notes": [
+      "유료 가격: Essentials '$40 /month', 'Includes 40 Credits', 'Up to 500 managed resources.'예요. 크레딧 기반이라 자원 수·사용량에 따라 더 나올 수 있어요. 연 결제 가격은 못 찾았어요. Neo는 모든 요금제에서 '$3/M tokens'로 따로 과금돼요(가격표 표 칸).",
+      "무료 한도: Free 카드의 '1 user', 'Up to 500 workflow minutes'를 요약했어요. 설치 문서에 'Pulumi Cloud is free for individuals'라는 문장도 있어요.",
+      "학습 정책: 개인정보 처리방침(pulumi.com/privacy)과 Neo 문서(설정, 모델 제공자)에서 AI 학습 관련 문장을 못 찾았어요. 그래서 unknown이에요. Neo 문서에는 'Pulumi Neo is Pulumi’s own infrastructure agent, powered by Anthropic’s Claude'라는 문장이 있어요.",
+      "오픈소스: 공식 문서에 'Pulumi's open source infrastructure as code SDK', 홈에 'Open source and free for individuals.'가 있어요. 저장소 주소는 홈페이지의 'pulumi/pulumi' 링크(github.com/pulumi/pulumi)에서 가져왔어요. GitHub 페이지 자체는 열지 않았어요. 오픈소스는 엔진·SDK이고 Pulumi Cloud와 Neo는 회사 서비스예요. 그래서 section은 official로 뒀어요.",
+      "쓰는 형태: CLI, 라이브러리(SDK), 클라우드 서비스(Pulumi Cloud·Deployments). 관리 문서에 'deploy self-hosted infrastructure'라는 말이 있지만 범위(기업용 자체 설치)가 불분명해서 self_host는 넣지 않았어요.",
+      "기능 체크리스트: devops 3개(로그·모니터링은 이번에 근거 문장을 못 골라서 뺐어요). 미리보기 배포(preview)는 PR마다 임시 환경을 만드는 Review Stacks 근거예요. code_review는 PR 리뷰 1개. automation 2개는 Neo 예약 작업(Automations)과 외부 MCP 서버 연결이에요. Neo가 IaC 코드를 고쳐 PR을 연다는 문서(Pull Requests)도 있어 coding_agents로 볼 여지도 있어요.",
+      "페이지 주소: /product/pulumi-ai/, /legal/privacy-policy/, /opensource/는 404라서 쓰지 않았어요.",
+      "AI 여부(partial — 인프라 코드 도구가 핵심이고 AI는 Neo), 섹션(official), 대표 목적(devops)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "cloudflare",
+    "name": "Cloudflare Workers",
+    "url": "https://developers.cloudflare.com/workers/",
+    "official_domains": [
+      "cloudflare.com"
+    ],
+    "one_liner": "Cloudflare 전 세계 네트워크 위에서 서버 없이 앱을 돌리는 개발자 플랫폼이에요. DB·파일 저장소와 AI 모델 실행, 벡터 DB까지 한곳에서 붙여요",
+    "features": {
+      "devops": [
+        "auto_deploy",
+        "preview",
+        "logs"
+      ],
+      "backend_database": [
+        "database",
+        "storage"
+      ],
+      "data_ml": [
+        "run_models",
+        "rag",
+        "vector_db"
+      ]
+    },
+    "primary": "devops",
+    "price": {
+      "free": true,
+      "free_limit": "Workers 요청 하루 10만 건, Workers AI 하루 1만 뉴런",
+      "paid_from_usd": 5,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "cli"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": "Workers AI에 보낸 입력·출력은 AI 학습에 쓰지 않는다고 해요. AI Gateway로 다른 회사 모델을 쓰면 그 회사 정책을 따라요"
+    },
+    "start_steps": [
+      "Cloudflare 계정 만들기 (무료 플랜으로 시작)",
+      "터미널에서 Wrangler(공식 CLI)로 새 Worker 프로젝트 만들고 배포하기",
+      "필요하면 D1(DB), R2(파일 저장소), Workers AI를 바인딩으로 연결하기"
+    ],
+    "cautions": [
+      "무료 플랜은 하루 사용 한도를 넘으면 요청이 실패해요",
+      "유료 플랜은 계정당 월 최소 5달러에 사용량만큼 더 붙어요",
+      "제품마다 요금과 한도가 따로라 쓰는 제품의 요금 문서를 각각 확인하세요"
+    ],
+    "sources": [
+      "https://developers.cloudflare.com/workers/platform/pricing/",
+      "https://developers.cloudflare.com/workers/",
+      "https://developers.cloudflare.com/workers/wrangler/",
+      "https://developers.cloudflare.com/workers/ci-cd/builds/",
+      "https://developers.cloudflare.com/workers/observability/logs/",
+      "https://developers.cloudflare.com/d1/",
+      "https://developers.cloudflare.com/r2/",
+      "https://developers.cloudflare.com/workers-ai/",
+      "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+      "https://developers.cloudflare.com/workers-ai/platform/data-usage/",
+      "https://developers.cloudflare.com/vectorize/",
+      "https://developers.cloudflare.com/ai-search/"
+    ],
+    "learn": [
+      {
+        "title": "Workers 시작하기 (공식 문서)",
+        "url": "https://developers.cloudflare.com/workers/get-started/guide/"
+      },
+      {
+        "title": "Workers AI 시작하기 (공식 문서)",
+        "url": "https://developers.cloudflare.com/workers-ai/get-started/"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://developers.cloudflare.com/workers/platform/pricing/",
+        "quote": "By default, users have access to the Workers Free plan. The Workers Free plan includes limited usage of Workers, Pages Functions, Workers KV and Hyperdrive."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://developers.cloudflare.com/workers/platform/pricing/",
+        "quote": "Free 100,000 per day"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+        "quote": "Our free allocation allows anyone to use a total of 10,000 Neurons per day at no charge"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://developers.cloudflare.com/workers/platform/pricing/",
+        "quote": "The Workers Paid plan includes Workers, Pages Functions, Workers KV, Hyperdrive, and Durable Objects usage for a minimum charge of $5 USD per month for an account."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://developers.cloudflare.com/workers-ai/platform/data-usage/",
+        "quote": "Cloudflare does not use Customer Content processed by Workers AI to train AI models."
+      },
+      {
+        "field": "forms",
+        "source": "https://developers.cloudflare.com/workers/",
+        "quote": "A serverless platform for building, deploying, and scaling apps across Cloudflare's global network"
+      },
+      {
+        "field": "forms",
+        "source": "https://developers.cloudflare.com/workers/wrangler/",
+        "quote": "Wrangler, the Cloudflare Developer Platform command-line interface (CLI), allows you to manage Worker projects."
+      },
+      {
+        "field": "features.devops.auto_deploy",
+        "source": "https://developers.cloudflare.com/workers/ci-cd/builds/",
+        "quote": "enabling automated builds and deployments for your Worker on push."
+      },
+      {
+        "field": "features.devops.preview",
+        "source": "https://developers.cloudflare.com/workers/ci-cd/builds/",
+        "quote": "A preview deployment is generated so you can test before merging"
+      },
+      {
+        "field": "features.devops.logs",
+        "source": "https://developers.cloudflare.com/workers/observability/logs/",
+        "quote": "Access log events in near real-time. Real-time logs provide immediate feedback and visibility into the health of your Cloudflare Worker."
+      },
+      {
+        "field": "features.backend_database.database",
+        "source": "https://developers.cloudflare.com/d1/",
+        "quote": "D1 is Cloudflare's managed, serverless database with SQLite's SQL semantics, built-in disaster recovery, and Worker and HTTP API access."
+      },
+      {
+        "field": "features.backend_database.storage",
+        "source": "https://developers.cloudflare.com/r2/",
+        "quote": "Cloudflare R2 Storage allows developers to store large amounts of unstructured data without the costly egress bandwidth fees associated with typical cloud storage services."
+      },
+      {
+        "field": "features.data_ml.run_models",
+        "source": "https://developers.cloudflare.com/workers-ai/",
+        "quote": "Run machine learning models, powered by serverless GPUs, on Cloudflare's global network."
+      },
+      {
+        "field": "features.data_ml.rag",
+        "source": "https://developers.cloudflare.com/ai-search/",
+        "quote": "AI Search lets you add search to any application or agent without having to build an entire retrieval infrastructure. Create an instance, give it your data, and search it with natural language."
+      },
+      {
+        "field": "features.data_ml.vector_db",
+        "source": "https://developers.cloudflare.com/vectorize/",
+        "quote": "Vectorize is a globally distributed vector database that enables you to build full-stack, AI-powered applications with Cloudflare Workers"
+      }
+    ],
+    "review_notes": [
+      "이름·범위: Cloudflare 전체가 아니라 개발자 플랫폼(Workers와 함께 쓰는 D1·R2·Workers AI·Vectorize·AI Search)으로 잡고 이름을 'Cloudflare Workers'로 했어요. 이름과 url(Workers 문서)을 정해 주세요. official_domains는 cloudflare.com 하나(www, developers 하위 도메인 포함)예요.",
+      "가격 페이지: www.cloudflare.com/plans/developer-platform/ 은 글자로 읽으면 메뉴만 나오고 요금 카드가 없어요(스크립트로 그려지는 듯). 그래서 근거는 공식 문서(developers.cloudflare.com)의 Workers·Workers AI 요금 페이지예요.",
+      "유료 가격: Workers Paid는 '계정당 월 최소 5달러' + 사용량 과금이에요. 연 결제는 못 찾았어요.",
+      "무료 한도: Workers 요금 표의 Free 줄 'Requests 100,000 per day'(표 칸을 이어 읽은 것)와 Workers AI '10,000 Neurons per day'예요. D1·R2 등 다른 제품 무료 한도는 따로 있어요.",
+      "학습 정책: Workers AI 데이터 사용 문서에 'Customer Content를 AI 모델 학습에 쓰지 않는다'는 문장이 있어 trains=no로 했어요. 범위는 Workers AI에 한정돼요. 끌 수 있는 설정 얘기는 없어서 opt_out은 unknown이에요. 꼭 원문 대조해 주세요.",
+      "기능 체크리스트: devops 3개(AI 오류 분석 문장 없음), backend_database 2개(인증·자연어 쿼리 문장 없음), data_ml 3개(평가·실험 기록 없음). Agents SDK, Workflows, Cron Triggers 같은 자동화 기능도 문서에 있지만 이번에는 넣지 않았어요.",
+      "오픈소스 여부: 플랫폼 전체가 오픈소스라는 문장은 못 찾았어요(런타임 workerd 저장소는 공식 도메인이 아니라 확인 안 함). 오픈소스가 아니면 open_source=false로 채우고 todo에서 지워 주세요.",
+      "AI 여부(partial), 섹션(official), 대표 목적(devops — data_ml도 후보)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "google-ai-studio",
+    "name": "Google AI Studio",
+    "url": "https://aistudio.google.com/",
+    "official_domains": [
+      "aistudio.google.com",
+      "ai.google.dev"
+    ],
+    "one_liner": "Gemini 모델을 브라우저에서 바로 시험해 보고, 문장으로 설명해서 풀스택 웹앱·안드로이드 앱까지 만들어 볼 수 있는 구글의 개발자용 작업 공간이에요",
+    "features": {
+      "app_builders": [
+        "generate_app",
+        "backend",
+        "deploy",
+        "export_code"
+      ],
+      "data_ml": [
+        "run_models"
+      ]
+    },
+    "primary": "app_builders",
+    "price": {
+      "free": true,
+      "free_limit": "무료 등급 한도 안에서 일부 모델만 (모델마다 한도가 달라요)",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "unknown",
+      "note": "무료로 쓰면 입력과 답변이 구글 제품·모델 개선에 쓰이고 사람이 검토할 수도 있어요. 결제 계정이 연결된 클라우드 프로젝트로 쓰면 개선에 쓰지 않아요 (유럽·스위스·영국은 무료여도 쓰지 않음)"
+    },
+    "start_steps": [
+      "구글 계정으로 AI Studio에 로그인하기",
+      "Playground에서 모델을 골라 프롬프트를 시험하거나, Build 모드에서 만들고 싶은 앱을 문장으로 적기",
+      "마음에 들면 'Get code'로 API 코드를 받거나, 만든 앱을 GitHub에 연결하거나 Cloud Run에 배포하기"
+    ],
+    "cautions": [
+      "무료로 쓸 때는 입력 내용이 학습과 사람 검토에 쓰일 수 있으니 회사 기밀이나 개인정보를 넣지 마세요",
+      "배포(Cloud Run)나 유료 모델·API를 쓰면 구글 클라우드 요금이 따로 나올 수 있어요"
+    ],
+    "sources": [
+      "https://ai.google.dev/gemini-api/docs/pricing",
+      "https://ai.google.dev/gemini-api/docs/billing",
+      "https://ai.google.dev/gemini-api/docs/google-ai-plans",
+      "https://ai.google.dev/gemini-api/terms",
+      "https://ai.google.dev/gemini-api/docs/ai-studio-quickstart",
+      "https://ai.google.dev/gemini-api/docs/aistudio-build-mode",
+      "https://ai.google.dev/gemini-api/docs/aistudio-fullstack",
+      "https://ai.google.dev/gemini-api/docs/aistudio-deploying"
+    ],
+    "learn": [
+      {
+        "title": "Google AI Studio 빠른 시작 (공식 문서)",
+        "url": "https://ai.google.dev/gemini-api/docs/ai-studio-quickstart"
+      },
+      {
+        "title": "Build 모드로 앱 만들기 (공식 문서)",
+        "url": "https://ai.google.dev/gemini-api/docs/aistudio-build-mode"
+      }
+    ],
+    "todo": [
+      "price.paid_from_usd",
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "quote": "Google AI Studio usage is free of charge in all available regions"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://ai.google.dev/gemini-api/docs/billing",
+        "quote": "New accounts begin on the Free Tier, which allows access to certain models in the Gemini API and AI Studio, up to the models' free tier rate limits"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://ai.google.dev/gemini-api/docs/google-ai-plans",
+        "quote": "Gemini 4 Argon is not available on the Free plan."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://ai.google.dev/gemini-api/terms",
+        "quote": "When you use Unpaid Services, including, for example, Google AI Studio and the unpaid quota on Gemini API, Google uses the content you submit to the Services and any generated responses to provide, improve, and develop Google products and services and machine learning technologies"
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://ai.google.dev/gemini-api/terms",
+        "quote": "To help with quality and improve our products, human reviewers may read, annotate, and process your API input and output."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://ai.google.dev/gemini-api/terms",
+        "quote": "Your access to Google AI Studio is a \"Paid Service\" even when it is offered free of charge, as long as the account you are using to access Google AI Studio has access to a Cloud Project with an associated and active"
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://ai.google.dev/gemini-api/terms",
+        "quote": "When you use Paid Services, including, for example, the paid quota of the Gemini API, Google doesn't use your prompts (including associated system instructions, cached content, and files such as images, videos, or documents) or responses to improve our products"
+      },
+      {
+        "field": "forms",
+        "source": "https://ai.google.dev/gemini-api/docs/google-ai-plans",
+        "quote": "Google AI plan benefits for developer usage apply only within the Google AI Studio web interface."
+      },
+      {
+        "field": "features.app_builders.generate_app",
+        "source": "https://ai.google.dev/gemini-api/docs/aistudio-build-mode",
+        "quote": "Google AI Studio supports building web apps with full-stack runtimes and native Android apps with Kotlin and Jetpack Compose — all through natural language prompting."
+      },
+      {
+        "field": "features.app_builders.backend",
+        "source": "https://ai.google.dev/gemini-api/docs/aistudio-fullstack",
+        "quote": "Google AI Studio now makes it easy to add a database or authentication to your app through a Firebase integration"
+      },
+      {
+        "field": "features.app_builders.deploy",
+        "source": "https://ai.google.dev/gemini-api/docs/aistudio-deploying",
+        "quote": "Google AI Studio lets you to deploy your full-stack applications directly from Build mode."
+      },
+      {
+        "field": "features.app_builders.export_code",
+        "source": "https://ai.google.dev/gemini-api/docs/aistudio-build-mode",
+        "quote": "Connect your app to a GitHub repository to enable two-way sync."
+      },
+      {
+        "field": "features.data_ml.run_models",
+        "source": "https://ai.google.dev/gemini-api/docs/ai-studio-quickstart",
+        "quote": "Google AI Studio lets you quickly try out models and experiment with different prompts."
+      }
+    ],
+    "review_notes": [
+      "aistudio.google.com 첫 화면은 스크립트로 그려져서 글자가 거의 안 읽혔어요(17바이트). 그래서 근거는 모두 ai.google.dev 문서에서 가져왔어요. url은 실제 서비스 주소(aistudio.google.com)로 두었어요.",
+      "무료 여부: 가격 페이지에 'Google AI Studio usage is free of charge in all available regions' 문장이 있어 free=true예요. 무료 한도는 '무료 등급의 모델별 한도'라서 숫자 하나로 적을 수 없어요. Gemini 4 Argon은 무료로 못 써요.",
+      "유료 가격: AI Studio 안에서 더 많이 쓰려면 Google AI Pro·Ultra 구독을 쓰는데, 이 구독 가격은 허용된 공식 페이지(ai.google.dev 등)에 숫자로 안 나와요. 그래서 paid_from_usd=null, todo에 넣었어요. 별도로 Gemini API는 쓴 만큼 내는 방식(최소 5달러 선결제, 모델마다 100만 토큰당 가격)이에요. AI Studio 자체 사용료가 아니라서 paid_from_usd에 넣지 않았어요. J가 'Pro 구독 가격'과 'API 종량제' 중 어떤 것을 기준으로 할지 정해 주세요. billing도 그에 맞춰 바꿔 주세요(지금 unknown).",
+      "학습 정책: 약관에 무료(Unpaid Services) 사용은 입력·답변을 제품과 머신러닝 기술 개선에 쓴다고 명확히 적혀 있어 trains_on_input_default=yes예요. 끄는 설정 문장은 없고, 결제 계정이 연결된 클라우드 프로젝트에 접근하는 계정이면 무료여도 'Paid Service'로 보고 개선에 안 써요. 이게 '거부 가능(opt_out)'인지는 해석이라 unknown으로 두었어요. J가 정해 주세요. 유럽·스위스·영국은 무료여도 Paid Service 규칙이 적용돼요.",
+      "오픈소스 여부: 공식 문서에서 오픈소스라는 문장을 못 찾았어요. 회사 웹 서비스라 아마 false일 텐데 근거가 없어 null + todo예요.",
+      "기능 체크리스트: app_builders 4개(Build 모드), data_ml은 run_models 1개(Playground). Build 모드 문서에 'Multi-file management', Firebase Firestore·Authentication 자동 설정도 있지만, coding_agents·backend_database 목적까지 넣으면 이 툴이 과하게 여러 목적에 나올 것 같아 넣지 않았어요. 넣을지 J가 정해 주세요.",
+      "AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요. 모델 시험이 핵심 용도라고 보면 data_ml도 후보예요."
+    ]
+  },
+  {
+    "id": "antigravity",
+    "name": "Google Antigravity",
+    "url": "https://antigravity.google/",
+    "official_domains": [
+      "antigravity.google"
+    ],
+    "one_liner": "구글이 만든 에이전트 중심 개발 도구예요. 데스크톱 앱·전용 IDE·터미널·에디터 확장에서 여러 AI 에이전트에게 코드 작업을 맡기고 결과를 검토해요",
+    "features": {
+      "coding_agents": [
+        "repo_context",
+        "multi_file",
+        "run_commands"
+      ],
+      "code_review": [
+        "tests",
+        "apply_fix"
+      ],
+      "automation": [
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "coding_agents",
+    "price": {
+      "free": true,
+      "free_limit": "매주 다시 채워지는 기본 사용량 (주간 한도 있음)",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "desktop",
+      "cli",
+      "ide_extension",
+      "library"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "개인 계정은 사용 기록(Interactions)이 구글 제품·머신러닝 개선에 쓰이고 직원이 볼 수 있어요. 설정에서 바꿀 수 있어요. 팀(Gemini Enterprise)은 Google Cloud 약관을 따라요"
+    },
+    "start_steps": [
+      "공식 사이트에서 내 운영체제용 앱을 받거나, 터미널용 CLI를 설치하기 (VS Code 등은 확장 설치)",
+      "구글 계정으로 로그인하고 작업할 프로젝트 폴더를 열기",
+      "에이전트에게 할 일을 문장으로 맡기고, 계획·변경 내용(diff)을 확인한 뒤 승인하기"
+    ],
+    "cautions": [
+      "기본 설정에서는 사용 기록이 구글 서비스 개선에 쓰일 수 있으니 회사 코드라면 설정을 먼저 확인하세요",
+      "에이전트가 터미널 명령을 실행하고 파일을 고칠 수 있으니 권한 설정과 바뀐 내용을 확인하세요",
+      "무료는 주간 한도가 있고, 더 쓰려면 Google AI Pro·Ultra 구독이 필요해요"
+    ],
+    "sources": [
+      "https://antigravity.google/",
+      "https://antigravity.google/pricing",
+      "https://antigravity.google/docs/plans",
+      "https://antigravity.google/terms",
+      "https://antigravity.google/docs/overview",
+      "https://antigravity.google/download",
+      "https://antigravity.google/product",
+      "https://antigravity.google/use-cases/daily-operations",
+      "https://antigravity.google/use-cases/automated-testing",
+      "https://antigravity.google/docs/commands/schedule",
+      "https://antigravity.google/docs/mcp"
+    ],
+    "learn": [
+      {
+        "title": "Antigravity 시작하기 (공식 문서)",
+        "url": "https://antigravity.google/docs/getting-started"
+      },
+      {
+        "title": "Antigravity 제품별 안내 (공식 문서)",
+        "url": "https://antigravity.google/docs/overview"
+      }
+    ],
+    "todo": [
+      "price.paid_from_usd",
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://antigravity.google/pricing",
+        "quote": "$0/month Experience Antigravity without a subscription plan"
+      },
+      {
+        "field": "price.free",
+        "source": "https://antigravity.google/",
+        "quote": "Available at no charge"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://antigravity.google/docs/plans",
+        "quote": "Users not on Google AI Pro or Ultra plans receive the following benefits: A meaningful quota, refreshed weekly A weekly rate limit"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://antigravity.google/terms",
+        "quote": "We use Interactions to evaluate, develop, and improve Google and Alphabet research, products, services and machine learning technologies."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://antigravity.google/terms",
+        "quote": "If you don’t want your Interactions used in this way, navigate to settings to change your preference on how such data is used."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://antigravity.google/terms",
+        "quote": "Google employees and contractors may access, view, review and use Interactions."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://antigravity.google/docs/plans",
+        "quote": "Google Antigravity is available to individual accounts under terms derived from Google’s Terms of Service, and to teams under Google Cloud terms in Gemini Enterprise."
+      },
+      {
+        "field": "forms",
+        "source": "https://antigravity.google/",
+        "quote": "Available on macOS, Windows, Linux, and Googlebook"
+      },
+      {
+        "field": "forms",
+        "source": "https://antigravity.google/",
+        "quote": "The lightweight, fast, terminal-first surface to work with Antigravity agents."
+      },
+      {
+        "field": "forms",
+        "source": "https://antigravity.google/docs/overview",
+        "quote": "Editor extensions that embed agentic capabilities, inline completions, and side-panel interactions directly in your IDE."
+      },
+      {
+        "field": "forms",
+        "source": "https://antigravity.google/docs/overview",
+        "quote": "A programmatic Python SDK for building, customizing, and deploying autonomous AI agents and harnesses in your own applications and CI/CD pipelines."
+      },
+      {
+        "field": "features.coding_agents.repo_context",
+        "source": "https://antigravity.google/product",
+        "quote": "The fully-featured, agentic IDE. Complete with the agent manager, artifacts, and a deep understanding of your codebase."
+      },
+      {
+        "field": "features.coding_agents.multi_file",
+        "source": "https://antigravity.google/download",
+        "quote": "Agentic workflows, tool executions, and multi-file code editing for Visual Studio 2026."
+      },
+      {
+        "field": "features.coding_agents.run_commands",
+        "source": "https://antigravity.google/product",
+        "quote": "Run autonomous coding agents, execute shell commands directly, and manage background subagents all from your keyboard."
+      },
+      {
+        "field": "features.code_review.tests",
+        "source": "https://antigravity.google/use-cases/automated-testing",
+        "quote": "Build deterministic mocks, record-and-replay harnesses, and unit tests verified against your local test runner."
+      },
+      {
+        "field": "features.code_review.apply_fix",
+        "source": "https://antigravity.google/use-cases/daily-operations",
+        "quote": "Ingest reviewer feedback across a PR, apply targeted fixes, run unit tests, and push updated commits in a single turn."
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://antigravity.google/docs/commands/schedule",
+        "quote": "Set a one-time timer or a recurring cron schedule that wakes the agent with an instruction, without blocking the conversation while it waits."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://antigravity.google/docs/mcp",
+        "quote": "In this guide, you’ll learn how to connect and configure MCP servers across Antigravity products."
+      }
+    ],
+    "review_notes": [
+      "페이지는 gzip 압축으로 와서 curl에 --compressed를 붙여 받았어요. 글자는 정상으로 읽혔어요.",
+      "무료 여부: 가격 페이지의 개인 요금 '$0/month'와 첫 화면 'Available at no charge'로 free=true예요. 무료 한도는 숫자가 없고 '매주 채워지는 기본 사용량 + 주간 한도'라고만 나와요.",
+      "유료 가격: 다음 단계는 Google AI Pro·Ultra 구독인데 가격 페이지에 가격 숫자가 없어요('Get Pro' 버튼만 있음). 그래서 paid_from_usd=null, todo예요. 팀용 Gemini Enterprise Standard/Plus는 '좌석당 월 30달러부터'라고 적혀 있지만 개인 최저 유료 플랜이 아니라 넣지 않았어요. 그 밖에 API 종량제(쓴 만큼)와 AI 크레딧 추가 구매도 있어요.",
+      "학습 정책: 개인 약관에 '사용 기록(Interactions)을 구글·알파벳 연구, 제품, 머신러닝 기술 개선에 쓴다'와 '원하지 않으면 설정에서 바꾸라'는 문장이 있어 trains_on_input_default=yes, opt_out=yes로 했어요. Interactions에 코드·프롬프트가 들어가는지는 'user data, interaction data'라고만 적혀 있어요. 꼭 원문을 확인해 주세요. Gemini Enterprise·Google Cloud로 쓰는 팀은 이 약관이 적용되지 않아요.",
+      "오픈소스 여부: 약관은 내려받아 쓰는 서비스 약관(Google Antigravity Additional Terms)만 있고 오픈소스라는 문장은 없어요. 아마 false일 텐데 근거가 약해서 null + todo예요.",
+      "쓰는 형태: 데스크톱 앱(macOS·Windows·Linux), 전용 IDE(데스크톱으로 묶음), CLI, IDE 확장(VS Code·Visual Studio·JetBrains·Zed·Xcode), Python SDK(library). 브라우저 원격 조종(Remote Control)은 내 컴퓨터 세션을 조종하는 기능이라 web으로 넣지 않았어요.",
+      "기능 체크리스트: coding_agents 3개(PR 올리기는 공식 문장을 못 찾음, '커밋 푸시'까지만 나옴). code_review는 tests와 apply_fix(리뷰 의견 받아 수정 적용, 활용 사례 페이지 문장). 같은 페이지에 '팀 규칙으로 리뷰 전 검사(pre-review checks)'가 있지만 PR에 자동 리뷰 코멘트를 다는 기능이라는 문장은 아니라서 pr_review는 넣지 않았어요. automation은 일정 실행(/schedule)과 MCP 연결 2개.",
+      "블로그 글(antigravity.google/blog)은 공식 도메인이지만 블로그라 근거로 쓰지 않았어요. 다운로드 페이지에 설치 스크립트 명령이 있지만 받거나 실행하지 않았어요.",
+      "AI 여부(yes), 섹션(official), 대표 목적(coding_agents)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "linear",
+    "name": "Linear",
+    "url": "https://linear.app/ai",
+    "official_domains": [
+      "linear.app"
+    ],
+    "one_liner": "이슈·프로젝트를 관리하는 협업 도구예요. 안에 든 AI 에이전트가 진행 상황을 정리하고, 이슈를 맡기면 코드를 고쳐 PR 초안까지 만들어 줘요",
+    "features": {
+      "planning": [
+        "doc_draft",
+        "issues"
+      ],
+      "coding_agents": [
+        "repo_context",
+        "run_commands",
+        "open_pr"
+      ],
+      "code_review": [
+        "tests",
+        "apply_fix"
+      ],
+      "automation": [
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "planning",
+    "price": {
+      "free": true,
+      "free_limit": "팀 2개, 이슈 250개까지 (코드 작업은 유료)",
+      "paid_from_usd": 10,
+      "billing": "yearly"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web",
+      "desktop"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": "AI 기능의 학습 정책은 공식 페이지에서 찾지 못했어요. 코드 작업(Coding sessions)은 기본으로 데이터를 보관하지 않는 모델을 쓴다고 해요"
+    },
+    "start_steps": [
+      "Linear에 가입해서 워크스페이스와 팀 만들기",
+      "이슈를 만들고 ⌘/Ctrl + J로 Linear Agent 채팅을 열어 요약·문서 초안을 부탁하기",
+      "코드까지 맡기려면 유료 요금제에서 GitHub를 연결하고 AI 크레딧을 충전한 뒤 이슈를 Linear에 맡기기"
+    ],
+    "cautions": [
+      "AI가 코드를 고쳐 주는 기능(Coding sessions)은 유료 요금제에서만 되고, 쓴 만큼 AI 크레딧이 따로 빠져나가요",
+      "무료는 이슈 250개까지라 팀이 커지면 금방 차요",
+      "Linear 자체는 이슈 관리 도구이고 AI는 그 안의 기능이에요"
+    ],
+    "sources": [
+      "https://linear.app/pricing",
+      "https://linear.app/ai",
+      "https://linear.app/download",
+      "https://linear.app/docs/linear-agent",
+      "https://linear.app/docs/coding-sessions",
+      "https://linear.app/docs/ai-credits",
+      "https://linear.app/privacy"
+    ],
+    "learn": [
+      {
+        "title": "Linear Agent 사용법 (공식 문서)",
+        "url": "https://linear.app/docs/linear-agent"
+      },
+      {
+        "title": "Coding sessions로 코드 맡기기 (공식 문서)",
+        "url": "https://linear.app/docs/coding-sessions"
+      }
+    ],
+    "todo": [
+      "privacy.trains_on_input_default",
+      "privacy.opt_out",
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://linear.app/pricing",
+        "quote": "Free $0 Free for everyone"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://linear.app/pricing",
+        "quote": "Unlimited members 2 teams 250 issues"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://linear.app/docs/coding-sessions",
+        "quote": "Coding sessions are supported on paid plans. Usage draws from your workspace’s AI credits."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://linear.app/pricing",
+        "quote": "Basic $10 per user/month"
+      },
+      {
+        "field": "price.billing",
+        "source": "https://linear.app/pricing",
+        "quote": "$10 per user/month Billed yearly"
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://linear.app/docs/ai-credits",
+        "quote": "By default, coding sessions use the latest zero-data-retention models."
+      },
+      {
+        "field": "forms",
+        "source": "https://linear.app/download",
+        "quote": "Available for web, macOS, Windows, iOS, and Android."
+      },
+      {
+        "field": "features.planning.issues",
+        "source": "https://linear.app/pricing",
+        "quote": "Issues, projects, cycles, initiatives"
+      },
+      {
+        "field": "features.planning.doc_draft",
+        "source": "https://linear.app/docs/linear-agent",
+        "quote": "Draft a new document on this project that comprehensively outlines the feature."
+      },
+      {
+        "field": "features.coding_agents.repo_context",
+        "source": "https://linear.app/ai",
+        "quote": "Linear Agent reads your codebase, writes code with frontier models, and streams its work back as reviewable diffs, all visible across the org."
+      },
+      {
+        "field": "features.coding_agents.run_commands",
+        "source": "https://linear.app/docs/coding-sessions",
+        "quote": "Delegate a well-scoped issue to Linear, and the agent writes and tests the change in a secure cloud environment, then returns a draft pull request for review."
+      },
+      {
+        "field": "features.coding_agents.open_pr",
+        "source": "https://linear.app/docs/coding-sessions",
+        "quote": "Delegate a well-scoped issue to Linear, and the agent writes and tests the change in a secure cloud environment, then returns a draft pull request for review."
+      },
+      {
+        "field": "features.code_review.tests",
+        "source": "https://linear.app/docs/coding-sessions",
+        "quote": "Address review comments, rebase branches, fix lint issues, or add tests"
+      },
+      {
+        "field": "features.code_review.apply_fix",
+        "source": "https://linear.app/docs/coding-sessions",
+        "quote": "You can also delegate code review actions to the Linear Agent directly to address any left review comments from other teammates"
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://linear.app/docs/linear-agent",
+        "quote": "Loops run Linear Agent workflows in the background on a schedule or in response to supported Linear, Slack, and GitHub events."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://linear.app/docs/linear-agent",
+        "quote": "Linear Agent can connect to MCP servers to access tools and data outside of Linear."
+      }
+    ],
+    "review_notes": [
+      "유료 가격: 가격 페이지에는 Basic '$10 per user/month, Billed yearly'만 보여요. 월 결제 가격 전환 버튼은 스크립트라 월 결제 숫자를 못 읽었어요. 그래서 paid_from_usd=10, billing=yearly로 두었어요. 월 결제 기준이 필요하면 J가 확인해서 바꿔 주세요. 이 값은 사용자 한 명당 가격이에요.",
+      "AI 크레딧: Coding sessions와 Loops는 요금제와 별도로 AI 크레딧(선불, 최소 충전 10달러)에서 빠져나가요. 다른 AI 기능은 요금제에 포함돼요. 가격표의 Free 칸에도 'Linear Agent', 'Agent platform'이 있어요.",
+      "학습 정책: 개인정보 처리방침, 데이터 처리 부록(DPA), 보안 페이지, AI 문서에서 '고객 데이터로 AI를 학습한다/안 한다'는 문장을 못 찾았어요. 그래서 둘 다 unknown + todo예요. docs/ai-security 같은 주소는 Not found였어요. 코드 작업은 기본으로 'zero-data-retention' 모델을 쓴다는 문장만 있어요.",
+      "오픈소스 여부: 공식 페이지에 오픈소스라는 문장이 없어요. 회사 서비스라 아마 false인데 근거가 없어 null + todo예요.",
+      "쓰는 형태: 웹과 데스크톱(macOS·Windows) 앱. 모바일(iOS·Android) 앱도 있지만 forms 목록에 모바일이 없어 뺐어요.",
+      "기능 체크리스트: planning 2개(이슈 관리, 문서 초안: 문서의 예시 프롬프트 'Draft a new document...'를 근거로 함. PRD라는 말은 없음). coding_agents 3개(여러 파일 수정 문장은 못 찾음). run_commands와 open_pr는 같은 문장('writes and tests the change ... returns a draft pull request')을 근거로 했어요. 코드는 Linear가 직접 짜는 게 아니라 Claude Code나 Codex를 써서 Linear Agent가 돌려요. code_review 2개(테스트 추가, 리뷰 의견 반영). PR 자동 리뷰 코멘트 문장은 없어요('Guided reviews'는 사람이 diff를 보기 쉽게 정리해 주는 기능). automation 2개(Loops 일정·이벤트 실행, MCP 서버 연결).",
+      "AI 여부(partial: AI는 이슈 관리 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요."
+    ]
   }
 ]

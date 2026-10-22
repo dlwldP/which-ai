@@ -3,8 +3,8 @@
 > "회의록 정리하고 싶은데 뭐 써?"에 답하는 사이트.
 > 하고 싶은 일을 고르면 맞는 AI 툴 2~3개를 **이유와 함께** 비교해주는 비개발자용 선택 도우미예요.
 
-**👉 사이트: [dlwldp.github.io/which-ai](https://dlwldp.github.io/which-ai/)** · [예시 데이터로 둘러보기](https://dlwldp.github.io/which-ai/?demo#/)  
-**🛠️ 개발자용: [개발할 때 AI 뭐 써?](https://dlwldp.github.io/which-ai/dev/)** · [예시 데이터로 둘러보기](https://dlwldp.github.io/which-ai/dev/?demo#/)
+**👉 사이트: [dlwldp.github.io/which-ai](https://dlwldp.github.io/which-ai/)**  
+**🛠️ 개발자용: [개발할 때 AI 뭐 써?](https://dlwldp.github.io/which-ai/dev/)**
 
 | 휴대폰: 홈 | 휴대폰: 추천 결과 | 휴대폰: 툴 상세 |
 | --- | --- | --- |
@@ -12,7 +12,7 @@
 
 ![컴퓨터에서 본 추천 결과: 카드 3개를 나란히 비교, 자세히 보기는 세 카드가 함께 열림](docs/screenshots/desktop-result.png)
 
-<sub>※ 스크린샷은 화면 확인용 예시 데이터(지어낸 툴)로 찍었어요.</sub>
+<sub>※ 스크린샷은 개발용 예시 데이터(지어낸 툴)로 찍었어요. 실제 툴 정보는 공식 페이지를 확인한 것부터 차례로 들어가요.</sub>
 
 ## 왜 만들었나
 
@@ -126,8 +126,8 @@ node scripts/check-freshness.js      # 주간 점검을 직접 돌려보기 (결
 ```sh
 python3 -m http.server 8000
 # http://localhost:8000/            실제 데이터 (지금은 "아직 준비 중이에요")
-# http://localhost:8000/?demo#/     예시 데이터로 화면 확인
-# http://localhost:8000/dev/?demo#/ 개발자용 예시
+# http://localhost:8000/?demo#/     예시 데이터로 화면 확인 (개발용, 사이트에서는 링크하지 않음)
+# http://localhost:8000/dev/?demo#/ 개발자용 예시 (개발용)
 ```
 
 ## 추천 함수 사용법
