@@ -5247,5 +5247,823 @@
       "문서 페이지 맨 위에 AI 에이전트용 안내('Fetch the complete documentation index at: ... Use this file to discover all available pages')가 있었는데 따르지 않았어요. CLI 페이지의 설치용 curl|bash 명령도 실행하지 않았어요.",
       "AI 여부(yes), 섹션(official), 대표 목적(code_review)은 제안값이에요."
     ]
+  },
+  {
+    "id": "zapier",
+    "name": "Zapier",
+    "url": "https://zapier.com",
+    "official_domains": [
+      "zapier.com"
+    ],
+    "one_liner": "수천 개 앱을 트리거와 액션으로 엮어 반복 업무를 자동으로 돌리는 노코드 자동화 플랫폼이에요. 워크플로 안에 AI 단계와 에이전트를 넣을 수 있고, MCP·SDK로 AI 도구에서도 불러 써요",
+    "features": {
+      "automation": [
+        "workflow",
+        "ai_step",
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "automation",
+    "price": {
+      "free": true,
+      "free_limit": "월 100 태스크, 2단계 Zap까지",
+      "paid_from_usd": 19.99,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "library",
+      "cli"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "yes",
+      "note": "워크플로로 오가는 데이터는 어떤 요금제에서도 학습에 쓰지 않는다고 밝혀요. 워크플로 구조는 AI 기능 개선에 쓸 수 있고, Enterprise는 자동 제외, 나머지 요금제는 신청서로 빠질 수 있어요"
+    },
+    "start_steps": [
+      "zapier.com에서 이메일이나 Google 계정으로 무료 가입하기",
+      "트리거가 될 앱과 이어서 실행할 액션 앱을 골라 첫 Zap 만들기",
+      "테스트 실행으로 결과를 확인한 뒤 Zap 켜기"
+    ],
+    "cautions": [
+      "무료 요금제는 월 100 태스크, 2단계 Zap까지라 여러 단계 워크플로는 유료 요금제가 필요해요",
+      "AI 단계·코드 실행·SDK 사용도 태스크로 계산돼요. 쓰는 양에 따라 요금 구간이 올라가요"
+    ],
+    "sources": [
+      "https://zapier.com/",
+      "https://zapier.com/pricing",
+      "https://zapier.com/security-compliance",
+      "https://zapier.com/sdk"
+    ],
+    "learn": [
+      {
+        "title": "Zapier 빠른 시작 안내 (공식)",
+        "url": "https://zapier.com/blog/get-started-with-zapier/"
+      },
+      {
+        "title": "Zapier SDK 문서 (공식)",
+        "url": "https://docs.zapier.com/sdk"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://zapier.com/pricing",
+        "quote": "Free Free forever $0 /month Start automating with AI. Zaps, Tables, and Forms included (100 tasks per month)."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://zapier.com/pricing",
+        "quote": "Start automating with AI. Zaps, Tables, and Forms included (100 tasks per month)."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://zapier.com/pricing",
+        "quote": "Unlimited Zaps, Tables, and Forms Two-step Zaps"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://zapier.com/pricing",
+        "quote": "Professional Starting from $19.99 /month"
+      },
+      {
+        "field": "price.billing",
+        "source": "https://zapier.com/pricing",
+        "quote": "Pay monthly Pay yearly (Save 33%)"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://zapier.com/security-compliance",
+        "quote": "We don’t train on the data that runs through your workflows, on any plan."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://zapier.com/security-compliance",
+        "quote": "To improve AI features, Zapier may learn from how workflows are built: the structure, not the contents. Enterprise accounts are opted out of even that automatically; other plans can opt out with one form ."
+      },
+      {
+        "field": "forms",
+        "source": "https://zapier.com/",
+        "quote": "Build anywhere. Run on Zapier. Govern in one place."
+      },
+      {
+        "field": "forms",
+        "source": "https://zapier.com/sdk",
+        "quote": "Zapier SDK runs in code files. Zapier CLI runs in your terminal."
+      },
+      {
+        "field": "features.automation.workflow",
+        "source": "https://zapier.com/",
+        "quote": "A Zap is an automated workflow that completes work across your apps without someone prompting it each time."
+      },
+      {
+        "field": "features.automation.ai_step",
+        "source": "https://zapier.com/",
+        "quote": "AI handles a single task in a workflow, like writing or summarizing. Deterministic steps handle the rest."
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://zapier.com/",
+        "quote": "Set a trigger once and your workflow runs on its own, every time, without you prompting it in chat."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://zapier.com/",
+        "quote": "Use Zapier MCP to connect your AI to the apps your business runs on, then test and refine your workflow without leaving the conversation."
+      }
+    ],
+    "review_notes": [
+      "유료 가격: 가격표 첫 화면(월 결제 선택 상태)의 Professional 'Starting from $19.99 /month' 기준이에요. 같은 페이지 HTML에서 연 결제 표시는 'billed annually'가 따로 붙고 33% 할인이라, 19.99달러를 월 결제 가격으로 봤어요. 태스크 수(100~2M)를 고르면 가격이 올라가요. Team은 69달러부터예요.",
+      "무료 한도: 월 100 태스크, 2단계 Zap(여러 단계는 Professional부터). 가격표에는 'AI steps, code, and SDK now all follow the same task-based pricing model'이라는 안내도 있어요. SDK는 '오픈 베타 동안 무료'라고 별도로 써 있어요.",
+      "학습 정책: 보안 페이지 FAQ에 '워크플로로 오가는 데이터는 어떤 요금제에서도 학습하지 않는다'는 문장이 있어 trains_on_input_default=no로 했어요. 다만 '워크플로를 만드는 방식(구조)은 AI 기능 개선에 쓸 수 있고, Enterprise는 자동 제외, 다른 요금제는 신청서(one form)로 제외'라서 opt_out=yes로 했어요. 구조 학습이 기본으로 켜져 있다는 점을 J가 어떻게 표시할지 정해 주세요.",
+      "쓰는 형태: 웹 편집기(가격표 'Visual editor', 'Visual no-code editor')로 쓰지만 '브라우저에서 쓴다'는 문장은 못 찾아 web은 넣지 않았어요. 넣는다면 J가 정해 주세요. cloud_service는 'Run on Zapier', library·cli는 SDK 페이지의 'Zapier SDK runs in code files. Zapier CLI runs in your terminal.' 근거예요.",
+      "오픈소스 여부: 공식 페이지에서 관련 문장을 못 찾았어요. 홈 메뉴에 github.com/zapier 링크는 있지만 제품 자체가 오픈소스라는 말은 없어요 → null + todo.",
+      "features.automation.tools 근거는 Zapier MCP(내 AI 도구를 Zapier에 연결된 앱과 잇는 기능)예요. 'Zapier가 외부 MCP 서버를 불러 쓰는 것'과는 방향이 반대라 J가 맞는지 확인해 주세요.",
+      "help.zapier.com은 접속이 안 돼서(응답 없음) 읽지 못했어요. 배울 거리의 docs.zapier.com/sdk 링크는 SDK 페이지의 'Read the docs' 링크에서 가져왔고 직접 열어 보지는 않았어요.",
+      "AI 여부는 partial(자동화 플랫폼 + AI 단계·에이전트), 대표 목적은 automation을 제안해요."
+    ]
+  },
+  {
+    "id": "make",
+    "name": "Make",
+    "url": "https://www.make.com/",
+    "official_domains": [
+      "make.com"
+    ],
+    "one_liner": "앱과 데이터를 캔버스 위에서 끌어다 이어 시나리오(자동화 흐름)를 만드는 비주얼 자동화 플랫폼이에요. LLM 단계와 AI 에이전트를 같은 화면에서 붙일 수 있어요",
+    "features": {
+      "automation": [
+        "workflow",
+        "ai_step",
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "automation",
+    "price": {
+      "free": true,
+      "free_limit": "월 1,000 크레딧, 실행 간격 최소 15분",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "cloud_service"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": "공식 페이지에서 사용자 데이터를 AI 학습에 쓰는지 밝힌 문장을 찾지 못했어요"
+    },
+    "start_steps": [
+      "make.com에서 무료로 가입하기 (카드 등록 없음)",
+      "새 시나리오를 열고 트리거 앱과 이어질 모듈을 캔버스에 놓기",
+      "한 번 실행해 결과를 확인한 뒤 일정(스케줄)을 켜기"
+    ],
+    "cautions": [
+      "모듈이 동작할 때마다 크레딧이 빠지고, AI 기능은 크레딧을 더 쓸 수 있어요. 크레딧이 떨어지면 시나리오가 멈춰요",
+      "학습 정책이 공식 페이지에 분명히 나와 있지 않아요. 민감한 데이터를 흘려보내기 전에 약관을 확인하세요"
+    ],
+    "sources": [
+      "https://www.make.com/",
+      "https://www.make.com/pricing",
+      "https://www.make.com/ai-automation",
+      "https://www.make.com/security"
+    ],
+    "learn": [
+      {
+        "title": "Make Academy (공식 강의)",
+        "url": "https://academy.make.com/"
+      },
+      {
+        "title": "Make 도움말 센터 (공식)",
+        "url": "https://help.make.com/"
+      }
+    ],
+    "todo": [
+      "price.paid_from_usd",
+      "price.billing",
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://www.make.com/pricing",
+        "quote": "Free $0 /mo Exploring visual-first automation"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.make.com/pricing",
+        "quote": "Free includes: 1,000 credits/month No-code visual workflow builder 3,500+ apps Routers & filters Customer support 15-minute minimum interval between runs"
+      },
+      {
+        "field": "forms",
+        "source": "https://www.make.com/security",
+        "quote": "Our infrastructure resides within Amazon AWS EC2 private instances (Amazon VPC) with Amazon Enterprise support in place."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.make.com/",
+        "quote": "Build, test, debug and run in one visual environment."
+      },
+      {
+        "field": "features.automation.workflow",
+        "source": "https://www.make.com/",
+        "quote": "Make is an AI automation platform. You build automated workflows and AI agents visually, connect them to the apps and data you already use, and see everything running in one place."
+      },
+      {
+        "field": "features.automation.ai_step",
+        "source": "https://www.make.com/ai-automation",
+        "quote": "With Make, you can plug GenAI apps and LLMs directly into your processes. Generate content, classify data, enrich records, or summarize customer feedback – all inside the same visual workflow."
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://www.make.com/pricing",
+        "quote": "More control with scheduled scenarios, down to the minute"
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://www.make.com/pricing",
+        "quote": "Incoming webhooks will be queued up to the amount of webhook queue storage you have available and will then be processed once your scenarios resume with added credits."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://www.make.com/ai-automation",
+        "quote": "Establish Make as your centralized orchestration hub by seamlessly connecting internal and external services using the Model Context Protocol Server and Client."
+      }
+    ],
+    "review_notes": [
+      "www.make.com/en 과 /en/pricing 는 Cloudflare 확인 화면('Just a moment...', 403)이라 못 읽었고, www.make.com/ 과 /pricing 은 읽혔어요. help.make.com은 접속이 안 됐어요(응답 없음).",
+      "유료 가격(todo): 가격표 글자에는 'Core Save 15 % $9 /mo', '$0.90 /1,000 credits'(10,000 크레딧 기준)만 있어요. 'Monthly billing / Annual billing' 전환 버튼이 있고 가격 옆에 'Save 15%'가 붙어 있어서 9달러는 연 결제 기준일 가능성이 커 보여요. 월 결제 가격은 화면 스크립트로 바뀌어 글자로 못 읽었어요. J가 브라우저에서 월 결제 가격을 확인해 paid_from_usd·billing을 채워 주세요. 크레딧 수를 고르면 가격이 달라져요.",
+      "학습 정책: 개인정보 처리방침에는 'Google Workspace API 데이터는 일반 AI/ML 모델 학습에 쓰지 않는다'는 문장만 있어요. 일반 사용자 데이터에 대한 문장은 없어 unknown으로 뒀어요.",
+      "쓰는 형태: 웹 캔버스에서 쓰는 서비스지만 '브라우저에서 쓴다'는 문장은 못 찾아 web은 넣지 않았어요. cloud_service 근거는 보안 페이지의 AWS 인프라 문장이에요. 가격표에 'MCP server', 'Access to the Make API'도 있어요.",
+      "오픈소스 여부: 관련 문장을 못 찾았어요 → null + todo.",
+      "features.automation.triggers는 '분 단위 일정 실행'(Core부터)과 웹훅 수신 문장이 근거예요. 무료 요금제는 실행 간격이 최소 15분이에요.",
+      "AI 여부는 partial(자동화 플랫폼 + AI 단계·에이전트·Maia 어시스턴트), 대표 목적은 automation을 제안해요."
+    ]
+  },
+  {
+    "id": "n8n",
+    "name": "n8n",
+    "url": "https://n8n.io/",
+    "official_domains": [
+      "n8n.io"
+    ],
+    "one_liner": "노드를 이어 워크플로와 AI 에이전트를 만드는 자동화 도구예요. n8n 클라우드로 쓰거나 Docker로 내 서버에 직접 올릴 수 있고, 필요하면 코드 단계도 넣어요",
+    "features": {
+      "automation": [
+        "workflow",
+        "ai_step",
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "automation",
+    "price": {
+      "free": true,
+      "free_limit": "셀프 호스팅 Community Edition은 무료 (n8n Cloud는 체험판만)",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "ai_native": "partial",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "self_host"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": "Assistant(AI 도우미)를 쓸 때 AI 서비스로 보내는 데이터는 그 모델 학습에 쓰이지 않는다고 밝혀요. Cloud에서는 Assistant가 기본으로 켜져 있어요"
+    },
+    "start_steps": [
+      "n8n Cloud 무료 체험에 가입하거나, 공식 문서대로 Docker로 내 서버에 설치하기",
+      "편집기에서 트리거 노드(일정·웹훅 등)와 이어서 실행할 노드를 연결하기",
+      "테스트 실행으로 각 단계 결과를 확인한 뒤 워크플로를 켜기"
+    ],
+    "cautions": [
+      "소스는 공개돼 있지만 Sustainable Use License라서 OSI 기준 오픈소스가 아니에요. 회사 내부용·개인용 사용만 허용되니 서비스로 되팔려면 라이선스를 확인하세요",
+      "셀프 호스팅은 설치·업데이트·보안을 직접 챙겨야 해요"
+    ],
+    "sources": [
+      "https://n8n.io/",
+      "https://n8n.io/pricing/",
+      "https://docs.n8n.io/",
+      "https://docs.n8n.io/choose-how-to-use-n8n",
+      "https://docs.n8n.io/n8n-community-license",
+      "https://docs.n8n.io/privacy-and-security"
+    ],
+    "learn": [
+      {
+        "title": "첫 워크플로 만들기 (공식 문서)",
+        "url": "https://docs.n8n.io/build-your-first-workflow"
+      },
+      {
+        "title": "클라우드와 셀프 호스팅 고르기 (공식 문서)",
+        "url": "https://docs.n8n.io/choose-how-to-use-n8n"
+      }
+    ],
+    "todo": [
+      "price.paid_from_usd",
+      "price.billing"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://docs.n8n.io/choose-how-to-use-n8n",
+        "quote": "Want to run n8n for free Self-hosted (Community edition) Free with almost the complete feature set"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://docs.n8n.io/choose-how-to-use-n8n",
+        "quote": "Free option ⚠️ Free trial available ✅ Free Community edition with most features"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://n8n.io/pricing/",
+        "quote": "A standard, self-hosted version of n8n is available on GitHub."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://docs.n8n.io/privacy-and-security",
+        "quote": "Data is only sent to AI services if your workspace has opted in to use the Assistant, which is on by default for n8n Cloud. Node-specific data is transmitted only during a direct interaction with the Assistant. This data is not used to train the AI services' models."
+      },
+      {
+        "field": "open_source",
+        "source": "https://docs.n8n.io/n8n-community-license",
+        "quote": "Although n8n's source code is available under the Sustainable Use License, according to the Open Source Initiative (OSI), open source licenses can't include limitations on use, so we do not call ourselves open source."
+      },
+      {
+        "field": "open_source",
+        "source": "https://docs.n8n.io/",
+        "quote": "n8n is a fair-code licensed workflow automation tool that combines AI features with business process automation."
+      },
+      {
+        "field": "forms",
+        "source": "https://docs.n8n.io/choose-how-to-use-n8n",
+        "quote": "n8n offers two primary deployment options: n8n Cloud (fully-managed) and Self-hosted (deploy on your own infrastructure)."
+      },
+      {
+        "field": "forms",
+        "source": "https://n8n.io/",
+        "quote": "Deploy on-prem or with Docker to keep your data in your own environment. Access the source code on GitHub, or use the hosted version."
+      },
+      {
+        "field": "features.automation.workflow",
+        "source": "https://n8n.io/",
+        "quote": "Connect n8n to just about any tool you can think of. 500+ native integrations."
+      },
+      {
+        "field": "features.automation.ai_step",
+        "source": "https://n8n.io/pricing/",
+        "quote": "AI Agent node and AI steps"
+      },
+      {
+        "field": "features.automation.ai_step",
+        "source": "https://docs.n8n.io/",
+        "quote": "n8n is a fair-code licensed workflow automation tool that combines AI features with business process automation."
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://n8n.io/pricing/",
+        "quote": "Trigger from webhooks, queues"
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://n8n.io/pricing/",
+        "quote": "Scheduled workflows: For workflows triggered on a regular schedule, count how many times the schedule runs in a month."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://n8n.io/",
+        "quote": "Any API via HTTP. Any agent or coding assistant via MCP."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://n8n.io/pricing/",
+        "quote": "MCP Client"
+      }
+    ],
+    "review_notes": [
+      "오픈소스 여부: 공식 문서 라이선스 FAQ에 '소스는 Sustainable Use License로 공개하지만 OSI 기준으로 사용 제한이 있어 오픈소스라고 부르지 않는다'는 문장이 분명히 있어 open_source=false로 했어요 (fair-code, 소스 공개형). 그래서 repo_url도 넣지 않았어요. 사이트에서 '소스 공개'를 따로 보여 줄지는 J가 정해 주세요.",
+      "가격(todo): 가격표 글자에는 유로 가격만 있고 연 결제 기준이에요 (Starter '20€ /mo, billed annually', Pro 50€, Business 667€). 'Monthly / Annually (Save 17%)' 전환이 있지만 월 결제 가격과 달러 가격은 글자로 못 읽었어요. 가격 FAQ에 '$ payment' 양식 링크는 있어요. J가 paid_from_usd·billing을 확인해 주세요. 요금은 워크플로 실행 횟수 기준이에요.",
+      "무료: 셀프 호스팅 Community Edition이 무료이고, n8n Cloud는 무료 체험만 있어요 (체험 한도: 실행 1,000회 등).",
+      "학습 정책: 개인정보 문서의 'Assistant와 대화할 때 AI 서비스로 보내는 데이터는 그 AI 서비스 모델 학습에 쓰이지 않는다' 문장으로 trains_on_input_default=no로 했어요. 범위가 Assistant 데이터에 한정된 문장이라 J가 그대로 no로 둘지 확인해 주세요. 학습 제외 설정은 해당 없음으로 보고 opt_out=unknown이에요. Cloud는 Assistant가 기본으로 켜져 있어요.",
+      "쓰는 형태: 웹 편집기(가격표 'Leading editor UI')로 쓰지만 '브라우저' 문장은 못 찾아 web은 넣지 않았어요. 셀프 호스팅은 npm·Docker로 설치해요.",
+      "가격표에 'Light evaluations', 'Metric-based evaluations', LangSmith 추적도 있지만 data_ml 기본 기능(모델 실행) 근거가 아니어서 data_ml은 넣지 않았어요.",
+      "홈 페이지 위쪽에 'See llms.txt for all machine-readable content.'라는 안내가 있었어요 (AI 에이전트용 안내). 따르지 않았어요.",
+      "섹션: 회사(n8n GmbH 제품)가 만들고 운영하는 제품이라 official로 했어요. AI 여부는 partial, 대표 목적은 automation을 제안해요."
+    ]
+  },
+  {
+    "id": "gumloop",
+    "name": "Gumloop",
+    "url": "https://www.gumloop.com/",
+    "official_domains": [
+      "gumloop.com"
+    ],
+    "one_liner": "업무 앱과 연결된 AI 에이전트를 만들어 팀이 함께 쓰게 하는 플랫폼이에요. 앱 이벤트나 일정으로 자동 실행하고, CLI로 터미널에서도 에이전트와 MCP 도구를 불러요",
+    "features": {
+      "automation": [
+        "workflow",
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "automation",
+    "price": {
+      "free": false,
+      "free_limit": "무료 요금제 없음 (Pro 14일 무료 체험)",
+      "paid_from_usd": 37,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "cli"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "unknown",
+      "note": "셀프서브(Pro) 요금제의 콘텐츠는 Gumloop 자체 AI 모델 학습에 쓸 수 있다고 밝혀요. Enterprise는 서면 요청이 없으면 학습에 쓰지 않아요"
+    },
+    "start_steps": [
+      "gumloop.com에서 가입하고 Pro 14일 무료 체험 시작하기",
+      "에이전트를 만들고 Slack·Gmail 같은 커넥터와 지시문 넣기",
+      "앱 트리거나 반복 일정을 붙여 자동으로 돌려 보기"
+    ],
+    "cautions": [
+      "무료 요금제가 없고, 체험이 끝나면 유료(월 37달러부터) 요금제가 필요해요",
+      "Pro 같은 셀프서브 요금제에 넣은 콘텐츠는 Gumloop AI 모델 학습에 쓰일 수 있어요. 민감한 데이터는 조심하세요"
+    ],
+    "sources": [
+      "https://www.gumloop.com/",
+      "https://www.gumloop.com/pricing",
+      "https://www.gumloop.com/privacy-policy",
+      "https://www.gumloop.com/products/cli"
+    ],
+    "learn": [
+      {
+        "title": "Gumloop 시작하기 (공식 문서)",
+        "url": "https://docs.gumloop.com/getting-started/introduction"
+      },
+      {
+        "title": "Gumloop University (공식 강의)",
+        "url": "https://university.gumloop.com"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://www.gumloop.com/pricing",
+        "quote": "Pro Starts at $37 / month Start trial Start 14 -day free trial Enterprise Custom Pricing"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.gumloop.com/pricing",
+        "quote": "Start 14 -day free trial"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://www.gumloop.com/pricing",
+        "quote": "Pro Starts at $37 / month"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://www.gumloop.com/privacy-policy",
+        "quote": "We may use Self-Serve Tier Content to develop, train, and improve our AI models."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://www.gumloop.com/privacy-policy",
+        "quote": "We do not use Content from the Enterprise Tier to train AI models unless you ask us to in writing."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.gumloop.com/products/cli",
+        "quote": "Sign in once, then run agents, call MCP tools, search Company Brain, and manage skills and artifacts from your terminal."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.gumloop.com/",
+        "quote": "The agent infrastructure powering the world's most AI-native companies"
+      },
+      {
+        "field": "features.automation.workflow",
+        "source": "https://www.gumloop.com/pricing",
+        "quote": "Create AI agents that understand your business, work across your tools, and take work from idea to outcome."
+      },
+      {
+        "field": "features.automation.workflow",
+        "source": "https://www.gumloop.com/",
+        "quote": "App triggers Recurring tasks 400+ Connectors"
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://www.gumloop.com/",
+        "quote": "App triggers Recurring tasks"
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://www.gumloop.com/products/cli",
+        "quote": "List your connected servers , browse the tools each one exposes, and call any of them with inline JSON args"
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://www.gumloop.com/",
+        "quote": "Gumball can now set up custom MCPs for apps Gumloop doesn't have yet."
+      }
+    ],
+    "review_notes": [
+      "무료 여부: 가격표에 Pro('Starts at $37 / month', 14일 무료 체험)와 Enterprise만 있어 free=false로 했어요. 월 결제인지 연 결제인지 따로 적혀 있지 않아 '/ month' 표기대로 monthly로 뒀어요. 크레딧(월 20k) + 오케스트레이션 수수료 8%가 붙는 구조예요.",
+      "학습 정책: 개인정보 처리방침 21조에 '셀프서브 요금제 콘텐츠는 우리 AI 모델 학습에 쓸 수 있다'는 문장이 있어 trains_on_input_default=yes로 했어요. 셀프서브 사용자가 끌 수 있다는 문장은 없고 Enterprise만 서면 요청 시 예외라 opt_out=unknown이에요. 이용 약관에도 같은 취지 문장이 있어요. 'OpenAI·Anthropic과 학습하지 않기로 계약했다'는 문장도 있어요.",
+      "기능: workflow 근거가 '에이전트가 여러 도구에 걸쳐 일한다' + '400+ Connectors'예요. 워크플로 빌더 자체는 가격표에 'Workflows (Legacy)'로만 나와서 J가 workflow를 셀지 확인해 주세요. ai_step(워크플로 안 AI 단계)은 직접 소개 문장을 못 찾아 넣지 않았어요.",
+      "쓰는 형태: 웹 앱으로 쓰지만 '브라우저에서 쓴다'는 문장이 없어 web은 넣지 않았어요. cloud_service 근거 문장이 약해서('The agent infrastructure ...') J가 확인해 주세요.",
+      "docs.gumloop.com은 화면 스크립트로 그려져 글자가 비어 읽지 못했어요 (배울 거리 링크는 가격표 하단 'Docs' 링크에서 가져옴).",
+      "오픈소스 여부: 관련 문장 없음 → null + todo. 운영사는 AgentHub Inc.예요.",
+      "AI 여부는 yes(AI 에이전트 플랫폼), 대표 목적은 automation을 제안해요."
+    ]
+  },
+  {
+    "id": "snyk",
+    "name": "Snyk",
+    "url": "https://snyk.io/",
+    "official_domains": [
+      "snyk.io"
+    ],
+    "one_liner": "코드·오픈소스 의존성·컨테이너·IaC의 보안 취약점을 찾아 알려 주는 보안 검사 플랫폼이에요. IDE와 PR에서 바로 검사하고 AI 자동 수정(Agent Fix)도 제안해요",
+    "features": {
+      "code_review": [
+        "pr_review",
+        "security",
+        "apply_fix"
+      ]
+    },
+    "primary": "code_review",
+    "price": {
+      "free": true,
+      "free_limit": "Snyk Code(SAST) 월 100회 테스트, 프로젝트 5개",
+      "paid_from_usd": 25,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "ide_extension",
+      "cli",
+      "cloud_service"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": "DeepCode AI 전용 모델은 허용 라이선스 오픈소스 프로젝트로 학습하고 고객 데이터는 쓰지 않는다고 밝혀요"
+    },
+    "start_steps": [
+      "snyk.io에서 GitHub이나 Google 계정으로 무료 가입하기",
+      "저장소를 연결하거나 IDE 플러그인·CLI를 설치해 첫 검사 돌리기",
+      "찾은 취약점의 설명과 수정 제안을 보고 PR 검사를 켜기"
+    ],
+    "cautions": [
+      "무료 요금제는 제품마다 월 테스트 횟수 한도가 있어요 (Snyk Code는 월 100회)",
+      "Evo(AI 펜테스트·코딩 에이전트 보안 등) 기능은 무료·Team 요금제에 없고 Enterprise 계약이 필요해요"
+    ],
+    "sources": [
+      "https://snyk.io/",
+      "https://snyk.io/plans/",
+      "https://snyk.io/product/snyk-code/",
+      "https://snyk.io/platform/deepcode-ai/"
+    ],
+    "learn": [
+      {
+        "title": "Snyk 사용자 문서 (공식)",
+        "url": "https://docs.snyk.io/"
+      },
+      {
+        "title": "Snyk Learn 보안 교육 (공식)",
+        "url": "https://learn.snyk.io"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://snyk.io/plans/",
+        "quote": "Free For individual developers and small teams looking to stay secure as they build. Join for free $0 / month billed monthly"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://snyk.io/plans/",
+        "quote": "Projects ? 5 100 Snyk Code (SAST) ? 100 tests / month 1,000 tests / month"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://snyk.io/plans/",
+        "quote": "Starting at $25 / month billed monthly"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://snyk.io/platform/deepcode-ai/",
+        "quote": "Our specialized model is built and refined by top-tier researchers who use training data from millions of permissively licensed open source projects with verified code fixes — never customer data."
+      },
+      {
+        "field": "forms",
+        "source": "https://snyk.io/plans/",
+        "quote": "Integrations with IDE, CLI, and source code managers"
+      },
+      {
+        "field": "forms",
+        "source": "https://snyk.io/plans/",
+        "quote": "The region where your data is hosted follows local agreements, and it may not align with your own location."
+      },
+      {
+        "field": "features.code_review.pr_review",
+        "source": "https://snyk.io/product/snyk-code/",
+        "quote": "Get real-time, in-line results with complete, automatic scans and 80%-accurate fixes, in your IDE and pull requests."
+      },
+      {
+        "field": "features.code_review.pr_review",
+        "source": "https://snyk.io/product/snyk-code/",
+        "quote": "Automatically scan every PR and repo for a status report to assess, prioritize, and fix existing issues."
+      },
+      {
+        "field": "features.code_review.security",
+        "source": "https://snyk.io/product/snyk-code/",
+        "quote": "Find and auto-fix the most critical unsafe code up to 50x faster, with pre-validated fixes from a static application security testing tool built by and for developers."
+      },
+      {
+        "field": "features.code_review.apply_fix",
+        "source": "https://snyk.io/product/snyk-code/",
+        "quote": "Find code vulnerabilities, understand more with dev-friendly context-specific explanations, and instantly apply auto-fixes with one click."
+      }
+    ],
+    "review_notes": [
+      "가격: Free 0달러, Team 'Starting at $25 / month billed monthly'(개발자 10명까지). Enterprise는 크레딧제(1크레딧=1달러)로 영업 문의예요.",
+      "무료 한도: 비교표에서 Projects Free 5 / Team 100, Snyk Code(SAST) Free 월 100회 / Team 월 1,000회예요 (줄마다 '?' 도움말 아이콘 글자가 끼어 있어요). 오픈소스·IaC·컨테이너 줄의 숫자는 글자로 안 보여서 넣지 않았어요. Agent Fix 자동 수정은 Free에 '(limited time only)'로 붙어 있어요.",
+      "학습 정책: DeepCode AI 페이지의 '학습 데이터는 허용 라이선스 오픈소스 프로젝트 — 고객 데이터는 절대 쓰지 않음' 문장으로 trains_on_input_default=no로 했어요. Snyk Code 페이지는 프런티어 모델에 few-shot 프롬프트로 지침을 넣는다고 해요(외부 모델 사용). 외부 모델의 학습 여부 문장은 없어요. opt_out은 해당 문장이 없어 unknown이에요.",
+      "PR 리뷰(pr_review): 'PR마다 자동 검사·상태 보고', 'PR 안 인라인 결과' 문장이 근거예요. 일반적인 코드 리뷰 코멘트가 아니라 보안 검사 결과라서 J가 셀지 확인해 주세요. 테스트 생성(tests)은 근거가 없어 넣지 않았어요.",
+      "쓰는 형태: cloud_service 근거는 가격 페이지의 지역 호스팅 문장(app.snyk.io 등)이에요. 웹 대시보드가 있지만 '브라우저' 문장은 없어 web은 넣지 않았어요.",
+      "오픈소스 여부: 관련 문장 없음 → null + todo. docs.snyk.io는 화면 스크립트로 그려져 글자가 비어 읽지 못했어요(배울 거리 링크만 넣음).",
+      "가격·제품 페이지 하단에 'llms.txt' 링크가 있었어요(따르지 않음). AI 여부는 partial(보안 검사 도구 + AI 수정·분석), 대표 목적은 code_review를 제안해요."
+    ]
+  },
+  {
+    "id": "sonarqube",
+    "name": "SonarQube",
+    "url": "https://www.sonarsource.com/",
+    "official_domains": [
+      "sonarsource.com"
+    ],
+    "one_liner": "코드의 버그·취약점·품질 문제를 정적 분석으로 잡아내는 코드 품질·보안 검사 도구예요. PR마다 검사하고, Sonar의 Gitar가 AI로 PR을 리뷰하고 수정까지 올려요",
+    "features": {
+      "code_review": [
+        "pr_review",
+        "security",
+        "apply_fix"
+      ]
+    },
+    "primary": "code_review",
+    "price": {
+      "free": true,
+      "free_limit": "비공개 프로젝트 5만 줄(50k LOC)까지 무료",
+      "paid_from_usd": 34,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "self_host",
+      "ide_extension",
+      "cli"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": "공식 페이지에서 코드를 AI 학습에 쓰는지 밝힌 문장을 찾지 못했어요. Gitar는 데이터 보관 없음(zero data retention)을 내세워요"
+    },
+    "start_steps": [
+      "SonarQube Cloud에 가입해 GitHub 같은 저장소를 연결하기 (또는 IDE 확장 설치)",
+      "프로젝트 첫 분석을 돌려 버그·취약점·코드 냄새 결과 보기",
+      "품질 게이트를 정해 기준에 못 미치는 PR을 막도록 설정하기"
+    ],
+    "cautions": [
+      "무료는 비공개 코드 5만 줄까지예요. 그 이상은 줄 수(LOC)에 따라 요금이 올라가요",
+      "AI PR 리뷰·자동 수정은 별도 제품(Gitar)이고 요금도 따로예요"
+    ],
+    "sources": [
+      "https://www.sonarsource.com/plans-and-pricing/",
+      "https://www.sonarsource.com/solutions/code-review/ai/",
+      "https://www.sonarsource.com/solutions/automated-code-review/",
+      "https://www.sonarsource.com/open-source/"
+    ],
+    "learn": [
+      {
+        "title": "SonarQube Cloud 문서 (공식)",
+        "url": "https://docs.sonarsource.com/sonarqube-cloud/"
+      },
+      {
+        "title": "SonarQube for IDE 문서 (공식)",
+        "url": "https://docs.sonarsource.com/sonarqube-for-ide/"
+      }
+    ],
+    "todo": [
+      "open_source",
+      "privacy.trains_on_input_default",
+      "privacy.opt_out"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://www.sonarsource.com/plans-and-pricing/",
+        "quote": "Developers Free forever SonarQube Team Plan, free for your private projects up to 50k LOC. No card, no expiry."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.sonarsource.com/plans-and-pricing/",
+        "quote": "We also offer a free tier that allows you to explore SonarQube using your private projects up to a maximum of 50k LoC."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://www.sonarsource.com/plans-and-pricing/",
+        "quote": "SonarQube plan pricing starts at $34 monthly for analysis of up to 100k LOC."
+      },
+      {
+        "field": "price.billing",
+        "source": "https://www.sonarsource.com/plans-and-pricing/",
+        "quote": "For the Team plan, payment is completed online via credit card and will happen automatically every month."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.sonarsource.com/plans-and-pricing/",
+        "quote": "SonarQube Server is our self-managed static analysis solution."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.sonarsource.com/plans-and-pricing/",
+        "quote": "try the full capabilities of either managed SaaS or self-hosted solutions before making any commitment."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.sonarsource.com/plans-and-pricing/",
+        "quote": "SonarQube for IDE Free extension. On-the-fly analysis and guidance as you type."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.sonarsource.com/plans-and-pricing/",
+        "quote": "SonarQube CLI Run analysis from any terminal, CI pipeline, or coding agent."
+      },
+      {
+        "field": "features.code_review.pr_review",
+        "source": "https://www.sonarsource.com/solutions/code-review/ai/",
+        "quote": "Gitar reviews pull requests directly on GitHub (along with GitLab , Bitbucket , and Azure DevOps ), appearing as status checks and inline comments on the PR you already have open."
+      },
+      {
+        "field": "features.code_review.pr_review",
+        "source": "https://www.sonarsource.com/plans-and-pricing/",
+        "quote": "Finds bugs, vulnerabilities, and security hotspots across 30+ languages on every pull request."
+      },
+      {
+        "field": "features.code_review.security",
+        "source": "https://www.sonarsource.com/solutions/automated-code-review/",
+        "quote": "Identifies injection vulnerabilities by simulating the flow of data through every code path to find deeply hidden vulnerabilities"
+      },
+      {
+        "field": "features.code_review.apply_fix",
+        "source": "https://www.sonarsource.com/solutions/code-review/ai/",
+        "quote": "It identifies issues, explains them, and generates a fix it can commit to the branch."
+      },
+      {
+        "field": "open_source",
+        "source": "https://www.sonarsource.com/open-source/",
+        "quote": "Every Sonar project released under the GPL and LGPL: the SonarQube Server core, scanners, IDE clients, CI/CD integrations, the plugin API, and the tooling we build in the open."
+      }
+    ],
+    "review_notes": [
+      "id·이름: 회사는 Sonar(sonarsource.com)이고 제품은 SonarQube(Cloud·Server·for IDE·CLI)예요. AI PR 리뷰·자동 수정(pr_review의 인라인 코멘트, apply_fix)은 Sonar의 별도 제품 Gitar 근거예요. Gitar를 SonarQube 항목에 포함해 셀지, 따로 둘지 J가 정해 주세요. SonarQube 자체도 'every pull request'마다 검사하고 PR을 막는 품질 게이트가 있어요.",
+      "가격: SonarQube Team '$34 monthly'(10만 줄까지), 결제는 매달 자동이에요. 같은 페이지 FAQ 아래쪽에는 'prices start at $32 per month (previously listed at $65)'라는 다른 숫자도 있어 J가 확인해 주세요. Gitar는 '$20 /user/mo, billed annually'(연 결제)라 기준에서 뺐어요. 셀프 호스팅 Server는 인스턴스별 연 단위 가격이에요.",
+      "무료: 비공개 프로젝트 5만 줄까지 영구 무료, 공개 OSI 라이선스 저장소는 무료(SonarQube for OSS), IDE 확장 무료, Community Build 무료 다운로드.",
+      "오픈소스 여부(todo): 오픈소스 페이지에 'SonarQube Server core, scanners, IDE clients 등은 GPL·LGPL'이라는 문장이 있지만, 같은 페이지에 '언어 분석기, MCP 서버, AI 도구는 Sonar Source-Available License(SSAL)'라고 나와요. 유료 Cloud·Server 에디션도 있어 '오픈 코어' 구조예요. 그래서 true/false를 정하지 않고 null + todo로 뒀어요. 저장소는 github.com/SonarSource(오픈소스 페이지의 'View on GitHub' 링크)예요.",
+      "학습 정책(todo): 신뢰 센터·가격·AI 리뷰 페이지에서 고객 코드를 AI 학습에 쓰는지에 대한 문장을 못 찾았어요. Enterprise 설명에 'zero data retention and BYOK with LLMs', Gitar 설명에 'zero data retention'이 있어요. 개인정보 처리방침(/company/privacy/)은 읽지 않았어요.",
+      "AI 여부는 partial(정적 분석 도구 + AI 리뷰·수정), 대표 목적은 code_review를 제안해요. 테스트 생성(tests)은 근거가 없어 넣지 않았어요."
+    ]
   }
 ]
