@@ -49,11 +49,48 @@ export function validatePurposes(purposes, idPattern = /^P\d{2}$/) {
     if (!isText(p.icon)) errors.push(`${at}.icon: 비어 있습니다`);
     if (!isText(p.label)) errors.push(`${at}.label: 비어 있습니다`);
     if (!isText(p.examples)) errors.push(`${at}.examples: 비어 있습니다`);
+    // 기능 체크리스트: 목적마다 4개. 툴은 이 중 지원하는 기능을 근거와 함께 적는다 (docs/decisions.md)
+    if (!Array.isArray(p.features) || p.features.length !== FEATURES_PER_PURPOSE) {
+      errors.push(`${at}.features: 기능 체크리스트가 정확히 ${FEATURES_PER_PURPOSE}개여야 합니다`);
+    } else {
+      const ids = new Set();
+      p.features.forEach((f, j) => {
+        if (!isObject(f) || typeof f.id !== 'string' || !/^[a-z][a-z0-9_]*$/.test(f.id)) errors.push(`${at}.features[${j}].id: 영문 소문자·숫자·밑줄만 씁니다`);
+        else if (ids.has(f.id)) errors.push(`${at}.features[${j}].id: 중복된 id "${f.id}"`);
+        else ids.add(f.id);
+        if (!isText(f?.label) || !isText(f?.short)) errors.push(`${at}.features[${j}]: label과 short가 있어야 합니다`);
+      });
+    }
   });
   return errors;
 }
 
-export function validateTool(tool, at, purposeIds, today) {
+export const FEATURES_PER_PURPOSE = 4;
+
+/** 목적 ID → 그 목적의 기능 ID 집합. validateTool·validateDevTool에 넘긴다 (Map이라 .has(목적 ID)도 된다). */
+export function featureMap(purposes) {
+  return new Map((Array.isArray(purposes) ? purposes : [])
+    .filter(isObject)
+    .map((p) => [p.id, new Set(Array.isArray(p.features) ? p.features.map((f) => f?.id) : [])]));
+}
+
+/** 툴이 그 목적의 기능을 하나 이상 지원하는지 (= 그 목적의 추천 후보인지) */
+export const supportsPurpose = (tool, pid) => Array.isArray(tool?.features?.[pid]) && tool.features[pid].length > 0;
+
+/** tool.features 검사: { "P02": ["upload", "transcribe"] }. 지원하는 기능이 없는 목적은 적지 않는다. */
+export function validateFeatures(tool, err, features, file) {
+  if (!isObject(tool.features)) return err('features', '객체여야 합니다 (예: { "P02": ["transcribe"] })');
+  const entries = Object.entries(tool.features);
+  if (entries.length === 0) err('features', '지원하는 기능이 있는 목적이 하나는 있어야 합니다');
+  for (const [pid, ids] of entries) {
+    if (!features.has(pid)) { err(`features.${pid}`, `${file}에 없는 목적입니다`); continue; }
+    if (!Array.isArray(ids) || ids.length === 0) { err(`features.${pid}`, '기능 ID 배열이어야 합니다 (지원 기능이 없으면 목적을 빼요)'); continue; }
+    if (new Set(ids).size !== ids.length) err(`features.${pid}`, '중복된 기능이 있습니다');
+    for (const id of ids) if (!features.get(pid).has(id)) err(`features.${pid}`, `"${id}"는 이 목적의 체크리스트에 없는 기능입니다`);
+  }
+}
+
+export function validateTool(tool, at, features, today) {
   const errors = [];
   const err = (field, msg) => errors.push(`${at}.${field}: ${msg}`);
   if (!isObject(tool)) return [`${at}: 객체여야 합니다`];
@@ -62,15 +99,7 @@ export function validateTool(tool, at, purposeIds, today) {
   for (const field of ['name', 'one_liner']) if (!isText(tool[field])) err(field, '비어 있습니다');
   if (!isHttpsUrl(tool.url)) err('url', 'https 주소여야 합니다');
 
-  if (!isObject(tool.purposes)) err('purposes', '객체여야 합니다');
-  else {
-    const entries = Object.entries(tool.purposes);
-    for (const [pid, value] of entries) {
-      if (!purposeIds.has(pid)) err(`purposes.${pid}`, 'purposes.json에 없는 목적입니다');
-      if (![0, 1, 2, 3].includes(value)) err(`purposes.${pid}`, '0~3 정수여야 합니다');
-    }
-    if (!entries.some(([, value]) => value >= 1)) err('purposes', '적합도 1 이상인 목적이 하나는 있어야 합니다');
-  }
+  validateFeatures(tool, err, features, 'purposes.json');
 
   if (!isObject(tool.price)) err('price', '객체여야 합니다');
   else {
@@ -122,22 +151,22 @@ export function validateTool(tool, at, purposeIds, today) {
 
 export function validateTools(tools, purposes, today) {
   if (!Array.isArray(tools)) return ['tools.json: 배열이어야 합니다'];
-  const purposeIds = new Set(Array.isArray(purposes) ? purposes.map((p) => p.id) : []);
+  const features = featureMap(purposes);
   const errors = [];
 
   const seen = new Set();
   tools.forEach((tool, i) => {
     const at = `tools[${i}]${tool && typeof tool.id === 'string' ? `(${tool.id})` : ''}`;
-    errors.push(...validateTool(tool, at, purposeIds, today));
+    errors.push(...validateTool(tool, at, features, today));
     if (tool && seen.has(tool.id)) errors.push(`${at}.id: 중복된 id "${tool.id}"`);
     if (tool) seen.add(tool.id);
   });
 
   if (tools.length > MAX_TOOLS) errors.push(`tools.json: 툴이 ${tools.length}개입니다 (최대 ${MAX_TOOLS}개)`);
-  for (const pid of purposeIds) {
-    const count = tools.filter((t) => isObject(t?.purposes) && t.purposes[pid] >= 1).length;
+  for (const pid of features.keys()) {
+    const count = tools.filter((t) => supportsPurpose(t, pid)).length;
     if (count > MAX_TOOLS_PER_PURPOSE) {
-      errors.push(`tools.json: ${pid}에 적합도 1 이상인 툴이 ${count}개입니다 (최대 ${MAX_TOOLS_PER_PURPOSE}개)`);
+      errors.push(`tools.json: ${pid}의 기능을 지원하는 툴이 ${count}개입니다 (최대 ${MAX_TOOLS_PER_PURPOSE}개)`);
     }
   }
   return errors;

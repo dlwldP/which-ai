@@ -1,11 +1,11 @@
 [
-  { "id": "planning", "icon": "🗂️", "label": "기획하고 같이 일하기", "examples": "PRD, 이슈 관리, 화이트보드" },
-  { "id": "app_builders", "icon": "🪄", "label": "말로 설명해서 앱 통째로 만들기", "examples": "풀스택 생성, 바이브코딩" },
-  { "id": "coding_agents", "icon": "🤖", "label": "AI와 같이 코드 짜기", "examples": "코딩 에이전트, AI IDE, CLI" },
-  { "id": "backend_database", "icon": "🗄️", "label": "백엔드·데이터베이스 붙이기", "examples": "인증, DB, 스토리지" },
-  { "id": "design_ui", "icon": "🎨", "label": "화면 디자인·시안 만들기", "examples": "UI 디자인, 프로토타입, 컴포넌트" },
-  { "id": "data_ml", "icon": "🧪", "label": "데이터·모델·RAG 다루기", "examples": "모델 허브, 로컬 LLM, RAG 프레임워크" },
-  { "id": "devops", "icon": "🚀", "label": "배포·인프라·CI/CD", "examples": "컨테이너, 호스팅, 자동 빌드" },
-  { "id": "automation", "icon": "🔗", "label": "업무 자동화·에이전트 연결", "examples": "워크플로 자동화, 에이전트 오케스트레이션" },
-  { "id": "code_review", "icon": "🔍", "label": "코드 리뷰·품질 검사 받기", "examples": "PR 리뷰, 정적 분석, 테스트 생성" }
+  {"id": "planning", "icon": "🗂️", "label": "기획하고 같이 일하기", "examples": "PRD, 이슈 관리, 화이트보드", "features": [{"id": "doc_draft", "label": "PRD 등 문서 초안 생성", "short": "문서 초안"}, {"id": "issues", "label": "이슈·작업 관리", "short": "이슈 관리"}, {"id": "whiteboard", "label": "화이트보드·다이어그램", "short": "화이트보드"}, {"id": "realtime", "label": "실시간 공동 편집", "short": "공동 편집"}]},
+  {"id": "app_builders", "icon": "🪄", "label": "말로 설명해서 앱 통째로 만들기", "examples": "풀스택 생성, 바이브코딩", "features": [{"id": "generate_app", "label": "문장으로 앱 생성", "short": "앱 생성"}, {"id": "backend", "label": "백엔드·DB·인증 포함", "short": "백엔드 포함"}, {"id": "deploy", "label": "바로 배포", "short": "바로 배포"}, {"id": "export_code", "label": "코드 내보내기·GitHub 연동", "short": "코드 내보내기"}]},
+  {"id": "coding_agents", "icon": "🤖", "label": "AI와 같이 코드 짜기", "examples": "코딩 에이전트, AI IDE, CLI", "features": [{"id": "repo_context", "label": "저장소 전체 읽고 이해", "short": "저장소 이해"}, {"id": "multi_file", "label": "여러 파일 한 번에 수정", "short": "여러 파일 수정"}, {"id": "run_commands", "label": "명령·테스트 실행", "short": "명령 실행"}, {"id": "open_pr", "label": "결과를 PR로 올리기", "short": "PR 올리기"}]},
+  {"id": "backend_database", "icon": "🗄️", "label": "백엔드·데이터베이스 붙이기", "examples": "인증, DB, 스토리지", "features": [{"id": "database", "label": "데이터베이스", "short": "DB"}, {"id": "auth", "label": "인증", "short": "인증"}, {"id": "storage", "label": "파일 스토리지", "short": "스토리지"}, {"id": "nl_query", "label": "자연어로 쿼리·스키마 생성", "short": "자연어 쿼리"}]},
+  {"id": "design_ui", "icon": "🎨", "label": "화면 디자인·시안 만들기", "examples": "UI 디자인, 프로토타입, 컴포넌트", "features": [{"id": "generate_ui", "label": "문장으로 화면 시안 생성", "short": "시안 생성"}, {"id": "components", "label": "컴포넌트·디자인 시스템", "short": "컴포넌트"}, {"id": "prototype", "label": "클릭되는 프로토타입", "short": "프로토타입"}, {"id": "export_code", "label": "코드로 내보내기", "short": "코드 내보내기"}]},
+  {"id": "data_ml", "icon": "🧪", "label": "데이터·모델·RAG 다루기", "examples": "모델 허브, 로컬 LLM, RAG 프레임워크", "features": [{"id": "run_models", "label": "모델 실행 (클라우드 또는 로컬)", "short": "모델 실행"}, {"id": "rag", "label": "문서 연결 검색 (RAG)", "short": "RAG"}, {"id": "vector_db", "label": "벡터 DB 연동", "short": "벡터 DB"}, {"id": "eval", "label": "평가·실험 기록", "short": "평가 기록"}]},
+  {"id": "devops", "icon": "🚀", "label": "배포·인프라·CI/CD", "examples": "컨테이너, 호스팅, 자동 빌드", "features": [{"id": "auto_deploy", "label": "Git 푸시하면 자동 배포", "short": "자동 배포"}, {"id": "preview", "label": "미리보기 배포", "short": "미리보기 배포"}, {"id": "logs", "label": "로그·모니터링", "short": "로그"}, {"id": "ai_debug", "label": "AI로 오류 원인 분석", "short": "AI 오류 분석"}]},
+  {"id": "automation", "icon": "🔗", "label": "업무 자동화·에이전트 연결", "examples": "워크플로 자동화, 에이전트 오케스트레이션", "features": [{"id": "workflow", "label": "앱끼리 연결하는 워크플로", "short": "워크플로"}, {"id": "ai_step", "label": "워크플로 안에 AI 단계 넣기", "short": "AI 단계"}, {"id": "triggers", "label": "일정·이벤트로 자동 실행", "short": "자동 실행"}, {"id": "tools", "label": "외부 도구 연결 (MCP 등)", "short": "외부 도구 연결"}]},
+  {"id": "code_review", "icon": "🔍", "label": "코드 리뷰·품질 검사 받기", "examples": "PR 리뷰, 정적 분석, 테스트 생성", "features": [{"id": "pr_review", "label": "PR 자동 리뷰 코멘트", "short": "PR 리뷰"}, {"id": "security", "label": "보안 취약점 검사", "short": "보안 검사"}, {"id": "tests", "label": "테스트 코드 생성", "short": "테스트 생성"}, {"id": "apply_fix", "label": "수정 제안 바로 적용", "short": "수정 적용"}]}
 ]

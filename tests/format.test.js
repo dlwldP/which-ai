@@ -59,7 +59,10 @@ test('가입 방법 문구', () => {
 });
 
 test('변경 이력 문구', () => {
-  const purposes = [{ id: 'P04', label: '발표자료(PPT) 만들기' }];
+  const purposes = [{ id: 'P04', label: '발표자료(PPT) 만들기', features: [
+    { id: 'from_topic', short: '주제로 만들기' }, { id: 'from_doc', short: '문서로 만들기' },
+    { id: 'auto_design', short: '디자인 정리' }, { id: 'export_ppt', short: 'PPT 내보내기' },
+  ] }];
   const c = (field, before, after) => ({ type: 'changed', tool_id: 'g', name: 'Gamma', field, before, after });
   assert.equal(changeText({ type: 'added', tool_id: 'g', name: 'Gamma' }), 'Gamma 추가');
   assert.equal(changeText({ type: 'removed', tool_id: 'g', name: 'Gamma' }), 'Gamma 빠짐');
@@ -67,7 +70,9 @@ test('변경 이력 문구', () => {
   assert.equal(changeText(c('price.paid_from_usd', null, 8)), 'Gamma: 유료 가격 없음 → 8달러');
   assert.equal(changeText(c('price.free', true, false)), 'Gamma: 무료로 쓰기 돼요 → 안 돼요');
   assert.equal(changeText(c('privacy.opt_out', 'unknown', 'yes')), 'Gamma: 학습 끄기 가능 확인 필요 → 예');
-  assert.equal(changeText(c('purposes.P04', 2, 3), purposes), "Gamma: '발표자료(PPT) 만들기' 적합도 2점 → 3점");
+  assert.equal(changeText(c('features.P04', ['export_ppt', 'from_topic'], ['from_topic', 'from_doc', 'export_ppt']), purposes),
+    "Gamma: '발표자료(PPT) 만들기' 지원 기능 주제로 만들기, PPT 내보내기 → 주제로 만들기, 문서로 만들기, PPT 내보내기");
+  assert.equal(changeText(c('features.P04', null, ['from_doc']), purposes), "Gamma: '발표자료(PPT) 만들기' 지원 기능 없음 → 문서로 만들기");
   assert.equal(changeText(c('last_verified', '2026-07-01', '2026-10-19')), 'Gamma: 확인 날짜 2026년 7월 1일 → 2026년 10월 19일');
   assert.equal(changeText(c('cautions', [], ['a'])), 'Gamma: 주의할 점 내용이 바뀌었어요');
   assert.equal(changeText(c('platforms', ['web'], ['web', 'ios'])), 'Gamma: 사용 기기 웹사이트 → 웹사이트, 아이폰 앱');

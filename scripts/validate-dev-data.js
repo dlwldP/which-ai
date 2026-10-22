@@ -6,7 +6,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { isValidDate, daysSince } from '../js/recommend.js';
 import {
-  BILLING, POLICY, hostOf, isHttpsUrl, isObject, isOfficialHost, isText, validateGlossary, validatePurposes,
+  BILLING, POLICY, featureMap, hostOf, isHttpsUrl, isObject, isOfficialHost, isText, supportsPurpose, validateFeatures,
+  validateGlossary, validatePurposes,
 } from './validate-data.js';
 
 export const DEV_MAX_TOOLS = 45;
@@ -21,7 +22,7 @@ export const SECTIONS = ['official', 'open_source'];
 
 const DOMAIN = /^[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/;
 
-export function validateDevTool(tool, at, purposeIds, today) {
+export function validateDevTool(tool, at, features, today) {
   const errors = [];
   const err = (field, msg) => errors.push(`${at}.${field}: ${msg}`);
   if (!isObject(tool)) return [`${at}: 객체여야 합니다`];
@@ -37,14 +38,8 @@ export function validateDevTool(tool, at, purposeIds, today) {
 
   if (!official(tool.url)) err('url', 'https 공식 도메인 주소여야 합니다');
 
-  if (!isObject(tool.purposes)) err('purposes', '객체여야 합니다');
-  else {
-    for (const [pid, value] of Object.entries(tool.purposes)) {
-      if (!purposeIds.has(pid)) err(`purposes.${pid}`, 'data/dev/purposes.json에 없는 목적입니다');
-      if (![0, 1, 2, 3].includes(value)) err(`purposes.${pid}`, '0~3 정수여야 합니다');
-    }
-    if (!(tool.purposes[tool.primary] >= 1)) err('primary', '적합도 1 이상인 목적 중 하나여야 합니다 (대표 목적)');
-  }
+  validateFeatures(tool, err, features, 'data/dev/purposes.json');
+  if (isObject(tool.features) && !supportsPurpose(tool, tool.primary)) err('primary', '지원하는 기능이 있는 목적 중 하나여야 합니다 (대표 목적)');
 
   if (!isObject(tool.price)) err('price', '객체여야 합니다');
   else {
@@ -107,22 +102,22 @@ export function validateDevTool(tool, at, purposeIds, today) {
 
 export function validateDevTools(tools, purposes, today) {
   if (!Array.isArray(tools)) return ['dev/tools.json: 배열이어야 합니다'];
-  const purposeIds = new Set(Array.isArray(purposes) ? purposes.map((p) => p.id) : []);
+  const features = featureMap(purposes);
   const errors = [];
   const seen = new Set();
   tools.forEach((tool, i) => {
     const at = `dev/tools[${i}]${tool && typeof tool.id === 'string' ? `(${tool.id})` : ''}`;
-    errors.push(...validateDevTool(tool, at, purposeIds, today));
+    errors.push(...validateDevTool(tool, at, features, today));
     if (tool && seen.has(tool.id)) errors.push(`${at}.id: 중복된 id "${tool.id}"`);
     if (tool) seen.add(tool.id);
   });
   if (tools.length > DEV_MAX_TOOLS) errors.push(`dev/tools.json: 도구가 ${tools.length}개입니다 (최대 ${DEV_MAX_TOOLS}개)`);
   // 섹션마다 따로 센다 (섹션별로 최대 3개씩 추천하므로)
-  for (const pid of purposeIds) {
+  for (const pid of features.keys()) {
     for (const section of SECTIONS) {
-      const count = tools.filter((t) => t?.section === section && isObject(t?.purposes) && t.purposes[pid] >= 1).length;
+      const count = tools.filter((t) => t?.section === section && supportsPurpose(t, pid)).length;
       if (count > DEV_MAX_TOOLS_PER_PURPOSE) {
-        errors.push(`dev/tools.json: ${pid}의 ${section} 섹션에 적합도 1 이상인 도구가 ${count}개입니다 (최대 ${DEV_MAX_TOOLS_PER_PURPOSE}개)`);
+        errors.push(`dev/tools.json: ${pid}의 ${section} 섹션에 기능을 지원하는 도구가 ${count}개입니다 (최대 ${DEV_MAX_TOOLS_PER_PURPOSE}개)`);
       }
     }
   }

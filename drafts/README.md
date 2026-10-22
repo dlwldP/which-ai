@@ -23,7 +23,8 @@ J가 출처와 맞춰 확인한 툴만 실제 데이터로 옮겨요.
 
 1. **공식 도메인이 맞는지:** `official_domains`, `url`, `sources`가 진짜 회사 도메인인지 봐요. 철자가 살짝 다른 가짜 주소를 조심하세요.
 2. **근거 문장 대조:** `evidence`의 `source`를 열어 `quote` 문장이 실제로 있는지, 값과 맞는지 확인해요. 특히 학습 정책(`privacy.*`)은 꼭 봐요.
-3. **사람이 정하는 값:** 적합도(`purposes`), 한국어 점수(`korean`), 한 줄 설명, 시작 3단계, 주의할 점은 Claude의 제안이에요. 직접 고쳐도 돼요.
+3. **사람이 정하는 값:** 한국어 점수(`korean`), 한 줄 설명, 시작 3단계, 주의할 점은 Claude의 제안이에요. 직접 고쳐도 돼요.
+   **지원 기능(`features`)**은 판단이 아니라 사실이라 근거 문장을 대조해요 (`evidence`의 `features.P02.transcribe` 같은 항목). 근거가 없는 기능은 넣지 않아요.
 4. **확정:**
 
    ```sh
@@ -48,4 +49,4 @@ J가 출처와 맞춰 확인한 툴만 실제 데이터로 옮겨요.
 - 근거 문장이 필요한 값: 무료 여부, 무료 한도, 유료 가격, 학습 정책, **오픈소스 여부**, **쓰는 형태**
 - `todo`로 둘 수 있는 칸: 가격·학습 정책 칸, `open_source`, `repo_url`, `forms`
 - `learn`(배울 거리), `sources`, `url`은 모두 공식 도메인이어야 해요. 저장소 주소(`repo_url`)만 `github.com`, `gitlab.com`도 돼요.
-- **AI 여부(`ai_native`), 섹션(`section`: `official` 공식 AI 툴 / `open_source` 오픈소스 프로젝트), 적합도, 대표 목적(`primary`)**은 Claude의 제안이에요. J가 정해요.
+- **AI 여부(`ai_native`), 섹션(`section`: `official` 공식 AI 툴 / `open_source` 오픈소스 프로젝트), 대표 목적(`primary`)**은 Claude의 제안이에요. J가 정해요. 지원 기능(`features`)은 근거 대조 대상이에요.

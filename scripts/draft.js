@@ -10,7 +10,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { isValidDate } from '../js/recommend.js';
-import { hostOf, isOfficialHost, isText, loadData, validateData, validateTool } from './validate-data.js';
+import { featureMap, hostOf, isObject, isOfficialHost, isText, loadData, validateData, validateTool } from './validate-data.js';
 import { loadDevData, validateDevData, validateDevTool } from './validate-dev-data.js';
 
 export { isOfficialHost };
@@ -39,7 +39,7 @@ export const KINDS = {
     draftOnly: ['official_domains', 'evidence', 'review_notes', 'todo'],
     // 공식 페이지에서 근거를 못 찾아 J가 채워야 하는 칸. 여기 적힌 칸은 값 형식·근거 검사를 건너뛰고,
     // todo가 비어 있지 않으면 promote가 거부한다.
-    todoFields: [...PRICE_PRIVACY, 'platforms', 'login'],
+    todoFields: [...PRICE_PRIVACY, 'platforms', 'login', 'features'],
     facts: { ...COMMON_FACTS, platforms: (t) => true, login: (t) => true },
     validateOne: validateTool,
     checkUrls: true, // validateTool은 공식 도메인을 모르므로 초안 단계에서 url·sources를 대조한다
@@ -53,7 +53,7 @@ export const KINDS = {
     toolsPath: 'data/dev/tools.json',
     // 개발자용은 official_domains를 실제 데이터에도 남긴다
     draftOnly: ['evidence', 'review_notes', 'todo'],
-    todoFields: [...PRICE_PRIVACY, 'open_source', 'repo_url', 'forms'],
+    todoFields: [...PRICE_PRIVACY, 'open_source', 'repo_url', 'forms', 'features'],
     facts: { ...COMMON_FACTS, open_source: (t) => true, forms: (t) => true },
     validateOne: validateDevTool, // url·sources·learn·repo_url의 공식 도메인 검사를 포함
     checkUrls: false,
@@ -69,7 +69,7 @@ export function validateDraft(drafts, purposes, today, kindName = 'general') {
   const kind = KINDS[kindName];
   const { todoFields: TODO_FIELDS, draftOnly: DRAFT_ONLY, facts: FACT_FIELDS } = kind;
   if (!Array.isArray(drafts)) return [`${kind.file}: 배열이어야 합니다`];
-  const purposeIds = new Set(purposes.map((p) => p.id));
+  const features = featureMap(purposes);
   const errors = [];
   const seen = new Set();
   drafts.forEach((d, i) => {
@@ -88,8 +88,8 @@ export function validateDraft(drafts, purposes, today, kindName = 'general') {
 
     // 확정 후 모양으로 바꿔서 tools.json과 같은 규칙으로 검사한다 (todo 칸의 형식 오류는 건너뜀)
     const tool = Object.fromEntries(Object.entries(d).filter(([k]) => !DRAFT_ONLY.includes(k)));
-    errors.push(...kind.validateOne({ ...tool, last_verified: today }, at, purposeIds, today)
-      .filter((e) => !todo.some?.((f) => e.startsWith(`${at}.${f}:`))));
+    errors.push(...kind.validateOne({ ...tool, last_verified: today }, at, features, today)
+      .filter((e) => !todo.some?.((f) => e.startsWith(`${at}.${f}:`) || e.startsWith(`${at}.${f}.`))));
 
     const domains = d.official_domains;
     if (!Array.isArray(domains) || domains.length === 0 || !domains.every((x) => isText(x) && /^[a-z0-9.-]+\.[a-z]{2,}$/.test(x))) {
@@ -116,6 +116,17 @@ export function validateDraft(drafts, purposes, today, kindName = 'general') {
       for (const [field, needs] of Object.entries(FACT_FIELDS)) {
         if (!isTodo(field) && needs(d) && !d.evidence.some((e) => e?.field === field)) {
           errors.push(`${at}.evidence: "${field}" 값의 근거 문장이 없습니다 (모르면 unknown / 확인 필요 / null)`);
+        }
+      }
+    }
+    // 기능 체크리스트: 지원한다고 적은 기능마다 공식 페이지 근거가 있어야 한다 (field: "features.P02.transcribe")
+    if (isObject(d.features) && !isTodo('features')) {
+      for (const [pid, ids] of Object.entries(d.features)) {
+        if (!Array.isArray(ids)) continue;
+        for (const id of ids) {
+          if (!d.evidence.some((e) => e?.field === `features.${pid}.${id}`)) {
+            errors.push(`${at}.evidence: "features.${pid}.${id}" 기능의 근거 문장이 없습니다 (근거가 없으면 그 기능을 빼요)`);
+          }
         }
       }
     }

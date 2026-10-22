@@ -15,14 +15,14 @@ test('추가·삭제', () => {
 test('바뀐 필드만 경로로 나옴', () => {
   const next = structuredClone(alpha);
   next.price.paid_from_usd = 12;
-  next.purposes.P04 = 1;
+  next.features.P04 = ['from_topic'];
   next.platforms = ['web'];
   next.last_verified = '2026-10-19';
   assert.deepEqual(diffTools([alpha], [next]), [
+    { type: 'changed', tool_id: 'alpha', name: alpha.name, field: 'features.P04', before: null, after: ['from_topic'] },
     { type: 'changed', tool_id: 'alpha', name: alpha.name, field: 'last_verified', before: '2026-10-01', after: '2026-10-19' },
     { type: 'changed', tool_id: 'alpha', name: alpha.name, field: 'platforms', before: ['web', 'ios', 'android'], after: ['web'] },
     { type: 'changed', tool_id: 'alpha', name: alpha.name, field: 'price.paid_from_usd', before: null, after: 12 },
-    { type: 'changed', tool_id: 'alpha', name: alpha.name, field: 'purposes.P04', before: null, after: 1 },
   ]);
 });
 

@@ -4,8 +4,12 @@
     "name": "tl;dv",
     "url": "https://tldv.io/",
     "one_liner": "줌·구글 미트·팀즈 회의를 녹화하고 받아쓰기와 요약을 만들어줘요",
-    "purposes": {
-      "P02": 2
+    "features": {
+      "P02": [
+        "transcribe",
+        "summary",
+        "speakers"
+      ]
     },
     "price": {
       "free": true,
@@ -79,6 +83,21 @@
         "field": "platforms",
         "source": "https://tldv.io/desktop-app/",
         "quote": "Download for MacOS - M series"
+      },
+      {
+        "field": "features.P02.transcribe",
+        "source": "https://tldv.io/",
+        "quote": "• Speech Recognition & Transcription - Converts spoken language into text with high accuracy, ensuring detailed and reliable records."
+      },
+      {
+        "field": "features.P02.summary",
+        "source": "https://tldv.io/",
+        "quote": "• Summarization - AI automatically extracts key points, action items, and topics to create concise, actionable summaries."
+      },
+      {
+        "field": "features.P02.speakers",
+        "source": "https://tldv.io/",
+        "quote": "• Contextual Language Understanding - Recognizes different speakers, understands meeting context, and even answers questions about past discussions."
       }
     ],
     "review_notes": [
@@ -87,8 +106,8 @@
       "사용 기기: 윈도우·맥 데스크톱 앱은 확인했어요. 웹사이트(브라우저) 사용은 근거 문장을 못 찾았어요(제안값). 아이폰 앱은 공식 사이트 안에서 엇갈려요. 첫 화면 질문 답변에는 'tl;dv doesn't have a native mobile app yet'라고 되어 있는데, 보안 페이지 아래쪽 'iOS Mobile App' 링크는 애플 앱스토어의 tl;dv 앱으로 가요. 앱스토어에서 확인한 뒤 ios를 넣을지 정해 주세요.",
       "가입 방법: 가입 화면도 스크립트로 그려져서 확인하지 못했어요. 직접 가입 화면을 보고 채워 주세요.",
       "학습 끄기(opt_out): 학습 자체를 하지 않는다고 적혀 있어서 끄는 설정에 대한 문장은 없어요. unknown으로 두었고, 보안 조건은 '기본으로 학습에 쓰지 않음'으로 통과해요.",
-      "적합도: 온라인 회의 녹화용이라 대면 회의·강의 녹음 파일 정리에는 덜 맞을 수 있어서 P02에 2점을 제안했어요.",
-      "한국어 점수: 메뉴가 한국어로 나온다는 문장은 있지만 받아쓰기 품질은 확인하지 못해서 2점을 제안했어요."
+      "한국어 점수: 메뉴가 한국어로 나온다는 문장은 있지만 받아쓰기 품질은 확인하지 못해서 2점을 제안했어요.",
+      "기능 체크리스트(P02): 받아쓰기·요약·말한 사람 구분은 첫 화면 문장으로 확인했어요. 녹음 파일 올리기는 공식 페이지에서 문장을 못 찾아서 넣지 않았어요 (온라인 회의를 녹화하는 방식)."
     ]
   },
   {
@@ -96,9 +115,7 @@
     "name": "클로바노트",
     "url": "https://clovanote.naver.com/",
     "one_liner": "회의·강의 녹음을 글로 받아 적고 요약해주는 네이버 서비스예요",
-    "purposes": {
-      "P02": 3
-    },
+    "features": {},
     "price": {
       "free": null,
       "free_limit": "확인 필요",
@@ -134,14 +151,15 @@
       "privacy.trains_on_input_default",
       "privacy.opt_out",
       "platforms",
-      "login"
+      "login",
+      "features"
     ],
     "evidence": [],
     "review_notes": [
       "클로바노트 사이트는 화면을 스크립트가 그려서 글자로 읽을 수 없었어요. 가격·무료 사용량·사용 기기·가입 방법·학습 정책 모두 직접 확인이 필요해요.",
       "참고(확인 안 됨): 블로그 글들에는 '무료 월 300분, 데이터 활용 동의 시 600분'이라는 말이 있어요. 공식 페이지에서 확인되면 그때 적어 주세요. '데이터 활용 동의'가 녹음을 AI 학습에 쓰는 데 동의하는 것이라면, 학습 정책은 '기본으로는 안 씀(no), 동의하면 씀'일 수 있어요.",
       "참고: 네이버 전체 이용약관(https://policy.naver.com/policy/service.html)에는 '여러분이 제공한 소중한 콘텐츠는 네이버 서비스를 개선하고 새로운 네이버 서비스를 제공하기 위해 인공지능 분야 기술 등의 연구 개발 목적으로 네이버에서 사용되거나' 라는 문장이 있어요. 다만 게시물에 관한 조항이라 클로바노트 녹음에 그대로 적용되는지는 알 수 없어서 근거로 쓰지 않았어요. 클로바노트 자체 약관이나 도움말을 확인해 주세요.",
-      "적합도 P02 3점, 한국어 3점은 제안값이에요 (한국어 서비스라서). 직접 써보고 정해 주세요."
+      "기능 체크리스트: 사이트가 스크립트로 그려져서 기능 문장을 읽지 못했어요. 회의·강의 녹음 정리(P02)의 녹음 파일 올리기·받아쓰기·요약·말한 사람 구분을 공식 페이지에서 확인하고, 확인된 기능만 features와 근거를 채운 뒤 todo에서 features를 지워 주세요."
     ]
   },
   {
@@ -149,12 +167,33 @@
     "name": "Claude",
     "url": "https://claude.com/",
     "one_liner": "질문에 답하고, 글을 쓰고 다듬고, 긴 문서를 읽고 정리해주는 대화형 AI예요",
-    "purposes": {
-      "P01": 3,
-      "P03": 3,
-      "P07": 2,
-      "P09": 2,
-      "P08": 1
+    "features": {
+      "P01": [
+        "chat",
+        "draft",
+        "polish",
+        "attach"
+      ],
+      "P03": [
+        "upload",
+        "summary"
+      ],
+      "P04": [
+        "from_topic",
+        "from_doc",
+        "export_ppt"
+      ],
+      "P08": [
+        "upload",
+        "formula",
+        "chart"
+      ],
+      "P09": [
+        "sources",
+        "web_search",
+        "compare",
+        "report"
+      ]
     },
     "price": {
       "free": true,
@@ -193,7 +232,14 @@
       "https://support.claude.com/en/articles/13189465-log-in-to-your-claude-account",
       "https://support.claude.com/en/articles/8114491-get-started-with-claude",
       "https://support.claude.com/en/articles/10769299-how-to-use-claude-in-your-preferred-language",
-      "https://code.claude.com/docs/en/data-usage"
+      "https://code.claude.com/docs/en/data-usage",
+      "https://claude.com/product/overview",
+      "https://support.claude.com/en/articles/7996845-what-are-some-things-i-can-use-claude-for",
+      "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content",
+      "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+      "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+      "https://support.claude.com/en/articles/10684626-enable-and-use-web-search",
+      "https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research"
     ],
     "official_domains": [
       "claude.com",
@@ -275,6 +321,86 @@
         "field": "korean",
         "source": "https://support.claude.com/en/articles/8114491-get-started-with-claude",
         "quote": "Claude has extensive training in English and performs well in many other common languages."
+      },
+      {
+        "field": "features.P01.chat",
+        "source": "https://claude.com/product/overview",
+        "quote": "— Ask something quick, or hand off a long, complex task that keeps working after you close your laptop."
+      },
+      {
+        "field": "features.P01.draft",
+        "source": "https://support.claude.com/en/articles/7996845-what-are-some-things-i-can-use-claude-for",
+        "quote": "Claude can help you draft everything from a text message or an email to a screenplay or a novel."
+      },
+      {
+        "field": "features.P01.polish",
+        "source": "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content",
+        "quote": "People often use Claude to proofread, translate, summarize, or convert files."
+      },
+      {
+        "field": "features.P01.attach",
+        "source": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+        "quote": "This article explains how to upload documents and images to Claude, including supported file types, size limits, and how to get started."
+      },
+      {
+        "field": "features.P03.upload",
+        "source": "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+        "quote": "Claude analyzes both text and visual elements (like images, charts, and graphics) in PDFs of 100 pages or fewer."
+      },
+      {
+        "field": "features.P03.summary",
+        "source": "https://support.claude.com/en/articles/7996845-what-are-some-things-i-can-use-claude-for",
+        "quote": "Claude is great at generating concise summaries of long articles, news stories, documents, conversations, or even books!"
+      },
+      {
+        "field": "features.P04.from_topic",
+        "source": "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+        "quote": "Prompt Claude using natural language to generate Excel spreadsheets, PowerPoint presentations, Word documents, and PDF files that you can download and use immediately."
+      },
+      {
+        "field": "features.P04.from_doc",
+        "source": "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+        "quote": "You can create financial models in Excel with working formulas, perform advanced analyses on uploaded data, produce reports with charts and visualizations, and generate presentations from your documents—all without specialized software skills."
+      },
+      {
+        "field": "features.P04.export_ppt",
+        "source": "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+        "quote": "Claude can create Excel spreadsheets (.xlsx), PowerPoint presentations (.pptx), Word documents (.docx), and PDF files."
+      },
+      {
+        "field": "features.P08.upload",
+        "source": "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+        "quote": "You can also upload CSV, TSV, and other files for data analysis and visualization."
+      },
+      {
+        "field": "features.P08.formula",
+        "source": "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+        "quote": "You can create financial models in Excel with working formulas, perform advanced analyses on uploaded data, produce reports with charts and visualizations, and generate presentations from your documents—all without specialized software skills."
+      },
+      {
+        "field": "features.P08.chart",
+        "source": "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+        "quote": "Claude can create data visualizations in image files like PNG."
+      },
+      {
+        "field": "features.P09.sources",
+        "source": "https://support.claude.com/en/articles/10684626-enable-and-use-web-search",
+        "quote": "Every response includes citations, so you can easily verify sources yourself."
+      },
+      {
+        "field": "features.P09.web_search",
+        "source": "https://support.claude.com/en/articles/10684626-enable-and-use-web-search",
+        "quote": "You can have Claude search the internet to provide you with up-to-date information and insights when using the following models:"
+      },
+      {
+        "field": "features.P09.compare",
+        "source": "https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research",
+        "quote": "It can do things like compare business competitors, update outdated internal documents with info from the web, help you prioritize or action items from your calendar and email, and more."
+      },
+      {
+        "field": "features.P09.report",
+        "source": "https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research",
+        "quote": "Research is optimal for comprehensive information gathering requiring five or more tool calls over 1-3 minutes, creating in-depth reports by synthesizing information from multiple sources across the web and your integrations."
       }
     ],
     "review_notes": [
@@ -283,7 +409,8 @@
       "가격표의 'Model training' 줄은 Free·Pro·Max 모두 'Opt-out'으로 표시돼 있어요 (표 칸이라 문장 대신 줄 이름을 근거로 남겼어요).",
       "근거 중 학습 정책 문장은 Claude Code 문서(code.claude.com)에 있지만 Free·Pro·Max 계정 전체에 대한 설명이에요.",
       "한국어 3점(메뉴까지 한국어, 품질 좋음)은 제안값이에요. 메뉴 한국어 지원은 확인했고, 품질은 '많이 쓰는 언어에서 잘 한다'는 문장만 있어요.",
-      "적합도(P01 3, P03 3, P07 2, P09 2, P08 1)는 제안값이에요. 공식 도메인에 claude.ai(채팅 화면)도 넣었어요."
+      "기능 체크리스트: P01 4개, P03 2개(문서에 질문하기·원문 위치 표시는 문장을 못 찾음), P04 3개(디자인 자동 정리는 못 찾음), P08 3개(데이터 정리 문장은 못 찾음), P09 4개. 번역(P07)은 \"여러 언어를 번역할 수 있다\"는 문장은 있지만 체크리스트 기능(서식 유지 번역·말투·단어 고정·웹페이지 번역) 문장이 없어서 넣지 않았어요. 연구(Research) 기능은 유료 요금제 전용이에요.",
+      "공식 도메인에 claude.ai(채팅 화면)도 넣었어요."
     ]
   }
 ]
