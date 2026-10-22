@@ -21,6 +21,7 @@ const REASON_SECURITY = '입력한 내용을 학습에 쓰지 않도록 설정�
 const REASON_FREE = '무료로 시작할 수 있어요';
 const REASON_OPEN_SOURCE = '오픈소스예요';
 const REASON_NOT_AI = 'AI 툴은 아니지만 AI로 만든 앱에 자주 같이 써요';
+const REASON_MOBILE = '휴대폰 앱으로도 쓸 수 있어요';
 const NOTICE_NONE = '조건에 맞는 툴이 아직 없어요';
 const DEV_NOTICE_NONE = '조건에 맞는 도구가 아직 없어요';
 
@@ -48,6 +49,8 @@ export function isSecure(tool) {
   return tool.privacy.trains_on_input_default === 'no' || tool.privacy.opt_out === 'yes';
 }
 
+const hasMobileApp = (t) => t.platforms.some((p) => MOBILE_PLATFORMS.includes(p));
+
 /**
  * 데이터 세트마다 다른 규칙. 점수 = purposes[P] × 10 + bonus - (90일 초과 ? 3 : 0)
  *   general: 비개발자용 (기획서 9장, docs/decisions.md)
@@ -60,18 +63,22 @@ export const PROFILES = {
     filters: {
       freeOnly: (t) => t.price.free === true,
       securityImportant: isSecure,
-      mobile: (t) => t.platforms.some((p) => MOBILE_PLATFORMS.includes(p)),
+      mobile: hasMobileApp,
     },
     relaxOrder: ['mobile', 'freeOnly'],
     labels: { mobile: '휴대폰 앱', freeOnly: '무료' },
     purposeReasons: PURPOSE_REASONS,
     noneNotice: NOTICE_NONE,
     bonus: (t, c) => t.korean * (c.koreanImportant ? 4 : 1) + (t.price.free ? 2 : 0),
+    // 추가 이유 문장. key는 그 이유와 관련된 조건 (켜져 있으면 맨 앞으로 간다)
     reasons: (t, c) => [
-      ...(t.korean === 3 ? [REASON_KOREAN] : []),
-      ...(c.securityImportant && isSecure(t) ? [REASON_SECURITY] : []),
-      ...(t.price.free ? [REASON_FREE] : []),
+      ...(t.korean === 3 ? [{ key: 'koreanImportant', text: REASON_KOREAN }] : []),
+      ...(c.securityImportant && isSecure(t) ? [{ key: 'securityImportant', text: REASON_SECURITY }] : []),
+      ...(t.price.free ? [{ key: 'freeOnly', text: REASON_FREE }] : []),
+      ...(c.mobile && hasMobileApp(t) ? [{ key: 'mobile', text: REASON_MOBILE }] : []),
     ],
+    // 켠 조건이 여럿이면 이 순서로 맨 앞 이유를 고른다
+    conditionPriority: ['securityImportant', 'freeOnly', 'koreanImportant', 'mobile'],
   },
   dev: {
     purposeId: /^[a-z][a-z_]*$/,
@@ -85,10 +92,11 @@ export const PROFILES = {
     noneNotice: DEV_NOTICE_NONE,
     bonus: (t) => (t.ai_native === 'yes' ? 2 : 0) + (t.price.free ? 2 : 0),
     reasons: (t) => [
-      ...(t.open_source ? [REASON_OPEN_SOURCE] : []),
-      ...(t.ai_native === 'no' ? [REASON_NOT_AI] : []),
-      ...(t.price.free ? [REASON_FREE] : []),
+      ...(t.open_source ? [{ key: 'openSourceOnly', text: REASON_OPEN_SOURCE }] : []),
+      ...(t.ai_native === 'no' ? [{ key: null, text: REASON_NOT_AI }] : []),
+      ...(t.price.free ? [{ key: 'freeOnly', text: REASON_FREE }] : []),
     ],
+    conditionPriority: ['openSourceOnly', 'freeOnly'],
   },
 };
 
@@ -102,8 +110,18 @@ function score(tool, purposeId, conditions, today, profile) {
     - (isStale(tool, today) ? 3 : 0);
 }
 
+// 첫 문장이 카드에 크게 보이는 대표 이유다. 켠 조건과 관련된 이유가 있으면 그게 대표 이유가 되고,
+// 없으면 적합도 문장이 대표 이유다. 나머지 순서는 그대로.
 function reasons(tool, purposeId, conditions, profile) {
-  return [profile.purposeReasons[tool.purposes[purposeId]], ...profile.reasons(tool, conditions)];
+  const extra = profile.reasons(tool, conditions);
+  const matched = profile.conditionPriority
+    .filter((key) => conditions[key])
+    .flatMap((key) => extra.filter((r) => r.key === key));
+  return [
+    ...matched.map((r) => r.text),
+    profile.purposeReasons[tool.purposes[purposeId]],
+    ...extra.filter((r) => !matched.includes(r)).map((r) => r.text),
+  ];
 }
 
 function compare(a, b) {
