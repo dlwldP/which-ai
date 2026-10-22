@@ -76,6 +76,9 @@
       ],
       "P03": [
         "upload"
+      ],
+      "P09": [
+        "web_search"
       ]
     },
     "price": {
@@ -128,6 +131,9 @@
       ],
       "P05": [
         "text_to_image"
+      ],
+      "P09": [
+        "web_search"
       ]
     },
     "price": {
@@ -226,7 +232,7 @@
         "doc_format",
         "tone",
         "glossary",
-        "webpage"
+        "translate"
       ],
       "P10": [
         "tts"

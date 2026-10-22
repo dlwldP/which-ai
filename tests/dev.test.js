@@ -71,14 +71,13 @@ test('공식 도메인의 하위 주소는 허용', () => {
   assert.deepEqual(validateDevTools(tools, purposes, TODAY), []);
 });
 
-test('한 목적·한 섹션에 기능을 지원하는 도구가 5개 초과면 실패', () => {
+test('한 목적·한 섹션의 도구 수 상한 없음', () => {
   const tools = structuredClone(demo);
-  // planning은 golf·hotel 2개(official) → official 4개를 더하면 6개
-  for (const t of tools.slice(0, 4)) {
+  for (const t of tools) {
     t.features.planning = ['issues'];
-    t.section = 'official';
+    t.section = t.open_source ? t.section : 'official';
   }
-  assert.ok(validateDevTools(tools, purposes, TODAY).some((e) => e.includes('planning의 official 섹션에 기능을 지원하는 도구가 6개')));
+  assert.deepEqual(validateDevTools(tools, purposes, TODAY), []);
 });
 
 test('섹션이 다르면 따로 셈 (official 5개 + open_source 3개는 통과)', () => {

@@ -183,6 +183,9 @@
         "from_doc",
         "export_ppt"
       ],
+      "P07": [
+        "translate"
+      ],
       "P08": [
         "upload",
         "formula",
@@ -401,6 +404,11 @@
         "field": "features.P09.report",
         "source": "https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research",
         "quote": "Research is optimal for comprehensive information gathering requiring five or more tool calls over 1-3 minutes, creating in-depth reports by synthesizing information from multiple sources across the web and your integrations."
+      },
+      {
+        "field": "features.P07.translate",
+        "source": "https://support.claude.com/en/articles/7996845-what-are-some-things-i-can-use-claude-for",
+        "quote": "While Claude is best at English due to its training data, Claude knows more than a dozen languages and can translate between them to varying degrees of success."
       }
     ],
     "review_notes": [
@@ -409,7 +417,7 @@
       "가격표의 'Model training' 줄은 Free·Pro·Max 모두 'Opt-out'으로 표시돼 있어요 (표 칸이라 문장 대신 줄 이름을 근거로 남겼어요).",
       "근거 중 학습 정책 문장은 Claude Code 문서(code.claude.com)에 있지만 Free·Pro·Max 계정 전체에 대한 설명이에요.",
       "한국어 3점(메뉴까지 한국어, 품질 좋음)은 제안값이에요. 메뉴 한국어 지원은 확인했고, 품질은 '많이 쓰는 언어에서 잘 한다'는 문장만 있어요.",
-      "기능 체크리스트: P01 4개, P03 2개(문서에 질문하기·원문 위치 표시는 문장을 못 찾음), P04 3개(디자인 자동 정리는 못 찾음), P08 3개(데이터 정리 문장은 못 찾음), P09 4개. 번역(P07)은 \"여러 언어를 번역할 수 있다\"는 문장은 있지만 체크리스트 기능(서식 유지 번역·말투·단어 고정·웹페이지 번역) 문장이 없어서 넣지 않았어요. 연구(Research) 기능은 유료 요금제 전용이에요.",
+      "기능 체크리스트: P01 4개, P03 2개(문서에 질문하기·원문 위치 표시는 문장을 못 찾음), P04 3개(디자인 자동 정리는 못 찾음), P08 3개(데이터 정리 문장은 못 찾음), P09 4개. 번역(P07)은 기본 기능(문장·글 번역) 1개만 근거가 있어요. 공식 문서에 \"영어를 가장 잘하고, 그 밖에 포르투갈어·프랑스어·독일어를 특히 잘한다\"고 적혀 있고 한국어는 따로 언급이 없어요. 연구(Research) 기능은 유료 요금제 전용이에요.",
       "공식 도메인에 claude.ai(채팅 화면)도 넣었어요."
     ]
   }

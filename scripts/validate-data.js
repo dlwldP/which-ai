@@ -4,8 +4,6 @@ import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { isValidDate, daysSince } from '../js/recommend.js';
 
-export const MAX_TOOLS = 40;
-export const MAX_TOOLS_PER_PURPOSE = 5;
 export const PLATFORMS = ['web', 'ios', 'android', 'windows', 'mac'];
 export const BILLING = ['monthly', 'yearly', 'unknown'];
 export const POLICY = ['yes', 'no', 'unknown'];
@@ -162,13 +160,7 @@ export function validateTools(tools, purposes, today) {
     if (tool) seen.add(tool.id);
   });
 
-  if (tools.length > MAX_TOOLS) errors.push(`tools.json: 툴이 ${tools.length}개입니다 (최대 ${MAX_TOOLS}개)`);
-  for (const pid of features.keys()) {
-    const count = tools.filter((t) => supportsPurpose(t, pid)).length;
-    if (count > MAX_TOOLS_PER_PURPOSE) {
-      errors.push(`tools.json: ${pid}의 기능을 지원하는 툴이 ${count}개입니다 (최대 ${MAX_TOOLS_PER_PURPOSE}개)`);
-    }
-  }
+  // 툴 수 상한은 두지 않는다 (2026-10-22, 화면은 상위 3개 + "다른 후보 더 보기")
   return errors;
 }
 

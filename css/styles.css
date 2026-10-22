@@ -466,6 +466,12 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .checklist li { font-size: 0.92rem; }
 .check-yes > span[aria-hidden] { color: var(--good); font-weight: 800; }
 .check-no { color: var(--muted); }
+.more-candidates { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 0 20px; }
+.more-candidates > summary { cursor: pointer; list-style: none; padding: 14px 0; color: var(--accent); font-weight: 700; text-align: center; min-height: 48px; }
+.more-candidates > summary::-webkit-details-marker { display: none; }
+.more-candidates > summary::after { content: " ▾"; }
+.more-candidates[open] > summary::after { content: " ▴"; }
+.more-candidates .list { border-top: 1px solid var(--line); }
 .order-note { color: var(--muted); font-size: 0.875rem; margin: -8px 0 16px; }
 
 .verified-line { margin: 14px 0 0; color: var(--muted); font-size: 0.875rem; }

@@ -68,11 +68,10 @@ for (const [name, mutate, expected] of failCases) {
   });
 }
 
-test('검사 실패: 한 목적의 기능을 지원하는 툴이 5개 초과', () => {
+test('목적당 툴 수 상한 없음 (6개 이상도 통과)', () => {
   const tools = structuredClone(fixture);
-  for (const t of tools.slice(0, 6)) t.features.P05 = ['size'];
-  const errors = validateTools(tools, purposes, TODAY);
-  assert.ok(errors.some((e) => e.includes('P05의 기능을 지원하는 툴이 6개')), JSON.stringify(errors));
+  for (const t of tools) t.features.P05 = ['size'];
+  assert.deepEqual(validateTools(tools, purposes, TODAY), []);
 });
 
 test('검사 실패: 목적의 기능 체크리스트가 4개가 아님', async () => {
@@ -88,11 +87,10 @@ test('검사 실패: 목적의 기능 체크리스트가 4개가 아님', async 
   assert.ok(validatePurposes(noShort).some((e) => e.includes('label과 short')));
 });
 
-test('검사 실패: 전체 툴 40개 초과', () => {
+test('전체 툴 수 상한 없음 (41개도 통과)', () => {
   const base = fixture.find((t) => t.id === 'alpha');
-  const tools = Array.from({ length: 41 }, (_, i) => ({ ...base, id: `tool-${i}` }));
-  const errors = validateTools(tools, purposes, TODAY);
-  assert.ok(errors.includes('tools.json: 툴이 41개입니다 (최대 40개)'), JSON.stringify(errors));
+  const tools = Array.from({ length: 41 }, (_, i) => ({ ...structuredClone(base), id: `tool-${i}` }));
+  assert.deepEqual(validateTools(tools, purposes, TODAY), []);
 });
 
 test('검사 실패: 용어집 단어가 겹침', () => {

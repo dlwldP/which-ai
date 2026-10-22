@@ -216,6 +216,18 @@ function toolCardHtml(r, index, all, purpose) {
 const cardsHtml = (results, purpose) =>
   `<div class="cards">${results.map((r, i, all) => toolCardHtml(r, i, all, purpose)).join('')}</div>`;
 
+/** 추천 3개 밖의 후보. 접어 두고, 열면 이름과 대표 이유만 짧게 (누르면 상세 화면) */
+const othersHtml = (others) => (others.length === 0 ? '' : `
+  <details class="more-candidates">
+    <summary>다른 후보 ${others.length}개 더 보기</summary>
+    <ul class="list">${others.map((r) => `
+      <li><a class="row" href="#/t/${esc(r.tool.id)}">
+        <span class="txt"><span class="ttl">${esc(r.tool.name)}${r.stale ? ' <span class="tag tag-warn">확인 필요</span>' : ''}</span>
+        <span class="dsc">${esc(r.reasons[0])}</span></span>
+        <span class="chev" aria-hidden="true">›</span>
+      </a></li>`).join('')}</ul>
+  </details>`);
+
 /** 넓은 화면에서는 카드 하나의 "자세히 보기"를 열면 나란히 놓인 카드도 같이 열어 같은 항목끼리 비교한다. */
 function installDetailsSync() {
   for (const group of app.querySelectorAll('.cards')) {
@@ -242,9 +254,9 @@ function renderResult(purpose, conditions) {
   }).join('');
   const activeDescs = CONDITIONS.filter((c) => conditions[c.key]).map((c) => c.desc);
 
-  const sectionBody = ({ results, notice }) => (results.length === 0
+  const sectionBody = ({ results, others, notice }) => (results.length === 0
     ? `<section class="card"><p class="empty"><strong>${esc(notice)}</strong>조건을 바꿔서 다시 찾아보세요.</p></section>`
-    : `${notice ? `<p class="notice" role="status">${esc(notice)}</p>` : ''}${cardsHtml(results, purpose)}`);
+    : `${notice ? `<p class="notice" role="status">${esc(notice)}</p>` : ''}${cardsHtml(results, purpose)}${othersHtml(others)}`);
 
   let body;
   if (data.tools.length === 0) {

@@ -10,8 +10,6 @@ import {
   validateGlossary, validatePurposes,
 } from './validate-data.js';
 
-export const DEV_MAX_TOOLS = 45;
-export const DEV_MAX_TOOLS_PER_PURPOSE = 5;
 export const DEV_PURPOSE_ID = /^[a-z][a-z_]*$/;
 export const AI_NATIVE = ['yes', 'partial', 'no'];
 export const FORMS = ['web', 'desktop', 'ide_extension', 'cli', 'library', 'cloud_service', 'self_host'];
@@ -111,16 +109,7 @@ export function validateDevTools(tools, purposes, today) {
     if (tool && seen.has(tool.id)) errors.push(`${at}.id: 중복된 id "${tool.id}"`);
     if (tool) seen.add(tool.id);
   });
-  if (tools.length > DEV_MAX_TOOLS) errors.push(`dev/tools.json: 도구가 ${tools.length}개입니다 (최대 ${DEV_MAX_TOOLS}개)`);
-  // 섹션마다 따로 센다 (섹션별로 최대 3개씩 추천하므로)
-  for (const pid of features.keys()) {
-    for (const section of SECTIONS) {
-      const count = tools.filter((t) => t?.section === section && supportsPurpose(t, pid)).length;
-      if (count > DEV_MAX_TOOLS_PER_PURPOSE) {
-        errors.push(`dev/tools.json: ${pid}의 ${section} 섹션에 기능을 지원하는 도구가 ${count}개입니다 (최대 ${DEV_MAX_TOOLS_PER_PURPOSE}개)`);
-      }
-    }
-  }
+  // 도구 수 상한은 두지 않는다 (2026-10-22)
   return errors;
 }
 

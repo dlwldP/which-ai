@@ -261,3 +261,30 @@ test('잘못된 입력은 에러', () => {
   assert.throws(() => recommend({ tools: fixture, purposeId: 'P01' }), TypeError);
   assert.throws(() => recommend({ tools: null, purposeId: 'P01', today: TODAY }), TypeError);
 });
+
+// ---- 다른 후보 더 보기 (툴 수 상한 없음) ----
+
+test('추천 3개 밖의 후보는 others로 같은 순서 기준을 따라 나옴', () => {
+  const tools = structuredClone(fixture);
+  // P05에 모든 툴을 넣으면 후보가 8개 → 추천 3개 + 다른 후보 5개
+  for (const t of tools) t.features.P05 ??= ['size'];
+  const out = recommend({ tools, purposeId: 'P05', today: TODAY, purposeFeatures: featuresOf('P05') });
+  assert.equal(out.results.length, 3);
+  assert.equal(out.others.length, tools.length - 3);
+  const all = [...out.results, ...out.others];
+  for (let i = 1; i < all.length; i++) assert.ok(all[i - 1].score >= all[i].score, `${all[i - 1].id} ${all[i].id}`);
+  for (const r of out.others) assert.ok(r.reasons.length >= 1);
+});
+
+test('others도 조건 필터를 지킴 (무료만이면 유료 툴 없음)', () => {
+  const tools = structuredClone(fixture);
+  for (const t of tools) t.features.P05 ??= ['size'];
+  const out = recommend({ tools, purposeId: 'P05', conditions: { freeOnly: true }, today: TODAY });
+  for (const r of [...out.results, ...out.others]) assert.equal(r.tool.price.free, true, r.id);
+});
+
+test('후보가 3개 이하면 others는 빈 배열', () => {
+  const out = recommend({ tools: fixture, purposeId: 'P01', today: TODAY });
+  assert.ok(out.results.length <= 3);
+  assert.deepEqual(out.others, []);
+});
