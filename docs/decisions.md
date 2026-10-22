@@ -51,3 +51,4 @@
 | 2026-10-22 | 예시 데이터 사이트 | `?demo` 주소는 개발할 때 화면 확인용으로만 쓴다. README와 사이트에서 예시 링크·"예시로 둘러보기" 버튼을 뺀다. 예시 데이터 파일(`data/demo-*.json`)은 테스트와 화면 확인에 계속 쓴다. |
 | 2026-10-22 | 실제 데이터 넣을 툴 | 앞서 정한 후보 목록 + J 추가 요청(Linear, Genspark, Figure Labs, Vercel, Pulumi, Cloudflare, Lovable, Manus, Antigravity, Grok, Google AI Studio, NotebookLM)을 넣는다. Sourcetree는 AI 툴이 아니라서 뺀다. ChatGPT·Codex·ChatGPT Atlas는 OpenAI 사이트가 자동 읽기를 막아서(403) 보류. GitHub 오픈소스 프로젝트는 계속 보류. |
 | 2026-10-22 | 읽을 수 없는 툴 | 허용 목록에 넣어도 접속이 막히거나 사이트가 자동 읽기를 거부해서 공식 근거를 하나도 얻지 못하는 툴은 넣지 않는다 (예: Genspark, NotebookLM, Gemini, Microsoft Copilot, 뤼튼, Perplexity, Windsurf와 2차 비개발자용 후보 대부분). 일반 지식으로 초안을 쓰지 않는다. 나중에 접속되면 다시 시도한다. |
+| 2026-10-22 | 3차(개발자용)에서 뺀 툴 | Render: 제품 자체에 AI 기능이 거의 없음 (외부 에이전트용 MCP·문서 챗봇뿐). Firebase Studio: 공식 문서에 신규 가입 중단(2026-06-22), 종료 예정(2027-03-22). Google Stitch: 페이지가 스크립트로 그려져 근거를 못 읽음. Windsurf: 접속 막힘. |
