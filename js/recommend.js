@@ -97,6 +97,8 @@ export const PROFILES = {
       ...(t.price.free ? [{ key: 'freeOnly', text: REASON_FREE }] : []),
     ],
     conditionPriority: ['openSourceOnly', 'freeOnly'],
+    // 추천을 섹션별로 따로 한다 (각 섹션 최대 MAX_RESULTS개). 도구의 section 값과 같다.
+    sections: ['official', 'open_source'],
   },
 };
 
@@ -187,4 +189,20 @@ export function recommend({ tools, purposeId, conditions = {}, today, profile: p
   }
 
   return { results, relaxed, notice };
+}
+
+/**
+ * 섹션이 있는 profile(dev)은 섹션마다 따로 추천한다 (조건 완화·안내도 섹션마다).
+ * 섹션이 없는 profile(general)은 섹션 하나({ key: null })로 돌려준다.
+ * @returns {{ key: string|null, results: object[], relaxed: string[], notice: string|null }[]}
+ */
+export function recommendSections(input) {
+  const profile = PROFILES[input.profile ?? 'general'];
+  if (!profile) throw new TypeError(`profile이 틀렸습니다: ${input.profile}`);
+  if (!profile.sections) return [{ key: null, ...recommend(input) }];
+  if (!Array.isArray(input.tools)) throw new TypeError('tools는 배열이어야 합니다');
+  return profile.sections.map((key) => ({
+    key,
+    ...recommend({ ...input, tools: input.tools.filter((t) => t.section === key) }),
+  }));
 }

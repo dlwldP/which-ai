@@ -7,7 +7,7 @@
 // 조건은 모드마다 다르다 (js/modes.js). 예: 비개발자용 free=1, secure=1 / 개발자용 free=1, oss=1
 // 주소에 ?demo가 있으면 (예: index.html?demo#/) 실제 데이터 대신 예시 데이터를 쓴다.
 // 점수 계산은 하지 않는다. 추천은 recommend.js에만 맡긴다.
-import { recommend, isStale } from './recommend.js';
+import { recommendSections, isStale } from './recommend.js';
 import { UNKNOWN, changeText, formatDate, localToday, reportUrl } from './format.js';
 import { glossarize, termIn, termMatcher } from './glossary.js';
 import { MODES } from './modes.js';
@@ -211,16 +211,19 @@ const cardsHtml = (results) => `<div class="cards">${results.map(toolCardHtml).j
 
 /** 넓은 화면에서는 카드 하나의 "자세히 보기"를 열면 나란히 놓인 카드도 같이 열어 같은 항목끼리 비교한다. */
 function installDetailsSync() {
-  const all = [...app.querySelectorAll('.card-more')];
-  all.forEach((d) => d.addEventListener('toggle', () => {
-    if (!matchMedia('(min-width: 900px)').matches) return;
-    all.forEach((other) => { if (other.open !== d.open) other.open = d.open; });
-  }));
+  for (const group of app.querySelectorAll('.cards')) {
+    const all = [...group.querySelectorAll('.card-more')];
+    all.forEach((d) => d.addEventListener('toggle', () => {
+      if (!matchMedia('(min-width: 900px)').matches) return;
+      all.forEach((other) => { if (other.open !== d.open) other.open = d.open; });
+    }));
+  }
 }
 
 function renderResult(purpose, conditions) {
   document.title = `${purpose.label} 추천 · ${mode.siteName}`;
-  const { results, notice } = recommend({
+  // 개발자용은 섹션(공식 AI 툴 / 오픈소스)마다 따로 추천한다. 비개발자용은 섹션 하나.
+  const sections = recommendSections({
     tools: data.tools, purposeId: purpose.id, conditions, today: localToday(), profile: mode.profile,
   });
 
@@ -231,15 +234,25 @@ function renderResult(purpose, conditions) {
   }).join('');
   const activeDescs = CONDITIONS.filter((c) => conditions[c.key]).map((c) => c.desc);
 
+  const sectionBody = ({ results, notice }) => (results.length === 0
+    ? `<section class="card"><p class="empty"><strong>${esc(notice)}</strong>조건을 바꿔서 다시 찾아보세요.</p></section>`
+    : `${notice ? `<p class="notice" role="status">${esc(notice)}</p>` : ''}${cardsHtml(results)}`);
+
   let body;
   if (data.tools.length === 0) {
     body = demoInvite();
-  } else if (results.length === 0) {
-    body = `<section class="card"><p class="empty"><strong>${esc(notice)}</strong>조건을 바꿔서 다시 찾아보세요.</p></section>`;
+  } else if (sections.length === 1) {
+    body = sectionBody(sections[0]);
   } else {
-    body = `
-      ${notice ? `<p class="notice" role="status">${esc(notice)}</p>` : ''}
-      ${cardsHtml(results)}`;
+    body = sections.map((sec) => {
+      const info = mode.sections[sec.key];
+      return `
+        <section class="result-section result-section-${sec.key}" aria-labelledby="sec-${sec.key}">
+          <h2 class="result-section-title" id="sec-${sec.key}"><span aria-hidden="true">${info.icon}</span> ${esc(info.title)}</h2>
+          <p class="result-section-desc">${esc(info.desc)}</p>
+          ${sectionBody(sec)}
+        </section>`;
+    }).join('');
   }
 
   app.innerHTML = `
@@ -354,14 +367,14 @@ function renderGlossary(focus) {
       <div class="page-head">
         ${backLink('#/')}
         <h1 class="page-title">용어집</h1>
-        <p class="page-sub">${esc(mode.glossaryIntro)} 화면에서 <span class="term-sample">밑줄 친 말</span>이나 ⓘ를 누르면 바로 볼 수 있어요.</p>
+        <p class="page-sub">${esc(mode.glossaryIntro)} 용어를 누르면 풀이가 펼쳐져요. 화면에서 <span class="term-sample">밑줄 친 말</span>이나 ⓘ를 누르면 바로 볼 수 있어요.</p>
       </div>
       <section class="card">
-        ${data.glossary.length ? `<dl class="glossary">${data.glossary.map((item) => `
-          <div class="glossary-item${item.term === focus ? ' focused' : ''}" id="term-${esc(item.term)}">
-            <dt>${esc(item.term)}${item.aliases.length ? ` <span class="alias">(${esc(item.aliases.join(', '))})</span>` : ''}</dt>
-            <dd>${esc(item.description)}</dd>
-          </div>`).join('')}</dl>` : '<p class="empty"><strong>아직 준비 중이에요</strong></p>'}
+        ${data.glossary.length ? `<div class="glossary">${data.glossary.map((item) => `
+          <details class="glossary-item${item.term === focus ? ' focused' : ''}" id="term-${esc(item.term)}"${item.term === focus ? ' open' : ''}>
+            <summary><span class="glossary-term">${esc(item.term)}</span>${item.aliases.length ? ` <span class="alias">(${esc(item.aliases.join(', '))})</span>` : ''}</summary>
+            <p class="glossary-desc">${esc(item.description)}</p>
+          </details>`).join('')}</div>` : '<p class="empty"><strong>아직 준비 중이에요</strong></p>'}
       </section>
     </div>`;
   if (focus) document.getElementById(`term-${focus}`)?.scrollIntoView({ block: 'center' });
@@ -507,6 +520,7 @@ async function main() {
     data = { tools, purposes, glossary, changelog, demo };
     matcher = termMatcher(glossary);
     document.getElementById('demo-banner').hidden = !demo;
+    document.body.classList.toggle('is-demo', demo); // 예시 데이터 화면은 띠·테두리 색으로 구분 (styles.css)
     installTermSheet();
     window.addEventListener('hashchange', () => {
       routedOnce = true;

@@ -21,6 +21,7 @@
     },
     "ai_native": "yes",
     "open_source": true,
+    "section": "open_source",
     "forms": [
       "cli",
       "ide_extension"
@@ -69,6 +70,7 @@
     },
     "ai_native": "yes",
     "open_source": false,
+    "section": "official",
     "forms": [
       "web"
     ],
@@ -115,6 +117,7 @@
     },
     "ai_native": "yes",
     "open_source": false,
+    "section": "official",
     "forms": [
       "web"
     ],
@@ -161,6 +164,7 @@
     },
     "ai_native": "no",
     "open_source": true,
+    "section": "open_source",
     "forms": [
       "cloud_service",
       "self_host"
@@ -210,6 +214,7 @@
     },
     "ai_native": "partial",
     "open_source": false,
+    "section": "official",
     "forms": [
       "cloud_service"
     ],
@@ -256,6 +261,7 @@
     },
     "ai_native": "yes",
     "open_source": true,
+    "section": "open_source",
     "forms": [
       "library"
     ],
@@ -303,6 +309,7 @@
     },
     "ai_native": "no",
     "open_source": false,
+    "section": "official",
     "forms": [
       "cloud_service"
     ],
@@ -349,6 +356,7 @@
     },
     "ai_native": "partial",
     "open_source": false,
+    "section": "official",
     "forms": [
       "web",
       "desktop"

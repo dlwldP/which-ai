@@ -15,6 +15,9 @@ export const DEV_PURPOSE_ID = /^[a-z][a-z_]*$/;
 export const AI_NATIVE = ['yes', 'partial', 'no'];
 export const FORMS = ['web', 'desktop', 'ide_extension', 'cli', 'library', 'cloud_service', 'self_host'];
 export const REPO_HOSTS = ['github.com', 'gitlab.com'];
+// 추천 화면의 섹션. official: 회사가 만들고 운영하는 공식 AI 툴 (소스가 공개돼 있어도 여기),
+// open_source: 회사 제품이 아닌 오픈소스 프로젝트 (GitHub 저장소 등). J가 정하는 값 (docs/decisions.md)
+export const SECTIONS = ['official', 'open_source'];
 
 const DOMAIN = /^[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/;
 
@@ -61,6 +64,9 @@ export function validateDevTool(tool, at, purposeIds, today) {
     const ok = isHttpsUrl(tool.repo_url) && (official(tool.repo_url) || REPO_HOSTS.includes(hostOf(tool.repo_url)));
     if (!ok) err('repo_url', `오픈소스면 저장소 주소가 필요합니다 (공식 도메인 또는 ${REPO_HOSTS.join(', ')})`);
   } else if (tool.repo_url !== undefined && tool.repo_url !== null) err('repo_url', '오픈소스가 아니면 비워 둡니다');
+
+  if (!SECTIONS.includes(tool.section)) err('section', `${SECTIONS.join(' / ')} 중 하나여야 합니다`);
+  else if (tool.section === 'open_source' && tool.open_source === false) err('section', 'open_source 섹션은 오픈소스(open_source: true)만 넣습니다');
 
   if (!Array.isArray(tool.forms) || tool.forms.length === 0) err('forms', '하나 이상 있어야 합니다');
   else {
@@ -111,10 +117,13 @@ export function validateDevTools(tools, purposes, today) {
     if (tool) seen.add(tool.id);
   });
   if (tools.length > DEV_MAX_TOOLS) errors.push(`dev/tools.json: 도구가 ${tools.length}개입니다 (최대 ${DEV_MAX_TOOLS}개)`);
+  // 섹션마다 따로 센다 (섹션별로 최대 3개씩 추천하므로)
   for (const pid of purposeIds) {
-    const count = tools.filter((t) => isObject(t?.purposes) && t.purposes[pid] >= 1).length;
-    if (count > DEV_MAX_TOOLS_PER_PURPOSE) {
-      errors.push(`dev/tools.json: ${pid}에 적합도 1 이상인 도구가 ${count}개입니다 (최대 ${DEV_MAX_TOOLS_PER_PURPOSE}개)`);
+    for (const section of SECTIONS) {
+      const count = tools.filter((t) => t?.section === section && isObject(t?.purposes) && t.purposes[pid] >= 1).length;
+      if (count > DEV_MAX_TOOLS_PER_PURPOSE) {
+        errors.push(`dev/tools.json: ${pid}의 ${section} 섹션에 적합도 1 이상인 도구가 ${count}개입니다 (최대 ${DEV_MAX_TOOLS_PER_PURPOSE}개)`);
+      }
     }
   }
   return errors;
