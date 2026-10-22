@@ -4339,5 +4339,913 @@
       "오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.",
       "AI 여부(yes: 'AI-first'로 시작한 디자인 도구), 섹션(official), 대표 목적(design_ui)은 제안값이에요."
     ]
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "url": "https://cursor.com",
+    "official_domains": [
+      "cursor.com"
+    ],
+    "one_liner": "에디터 안에서 AI 에이전트에게 코드 작업을 맡기는 AI IDE예요. 터미널 CLI, 클라우드 에이전트, PR 자동 리뷰(Bugbot)도 있어요",
+    "features": {
+      "coding_agents": [
+        "repo_context",
+        "multi_file",
+        "run_commands",
+        "open_pr"
+      ],
+      "code_review": [
+        "pr_review",
+        "security",
+        "apply_fix"
+      ],
+      "automation": [
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "coding_agents",
+    "price": {
+      "free": true,
+      "free_limit": "에이전트·채팅 요청 수가 제한된 무료 요금제",
+      "paid_from_usd": 8,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "desktop",
+      "cli",
+      "web",
+      "ide_extension"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "yes",
+      "note": "설정에서 Privacy Mode를 켜면 코드 데이터를 학습에 쓰지 않아요. 끄면 코드·프롬프트를 학습에 쓸 수 있어요"
+    },
+    "start_steps": [
+      "공식 사이트에서 Cursor 앱을 내려받아 설치하고 로그인하기",
+      "작업할 프로젝트 폴더를 열고 설정에서 Privacy Mode 확인하기",
+      "에이전트 창에 할 일을 문장으로 적고, 바뀐 diff를 검토하기"
+    ],
+    "cautions": [
+      "Plus(월 8달러) 요금제는 Grok 모델만 쓸 수 있고, 다른 회사 모델은 쓴 만큼 따로 내야 해요",
+      "Privacy Mode를 끄면 코드와 프롬프트가 학습에 쓰일 수 있어요",
+      "에이전트가 파일을 고치고 명령을 실행하니 바뀐 내용을 꼭 확인하세요"
+    ],
+    "sources": [
+      "https://cursor.com",
+      "https://cursor.com/pricing",
+      "https://cursor.com/security",
+      "https://cursor.com/en-US/data-use",
+      "https://cursor.com/docs/get-started/quickstart",
+      "https://cursor.com/docs/agent/overview",
+      "https://cursor.com/docs/cli/overview",
+      "https://cursor.com/docs/cloud-agent",
+      "https://cursor.com/docs/bugbot",
+      "https://cursor.com/docs/cloud-agent/automations",
+      "https://cursor.com/docs/mcp",
+      "https://cursor.com/docs/integrations/jetbrains"
+    ],
+    "learn": [
+      {
+        "title": "Cursor 빠른 시작 (공식 문서)",
+        "url": "https://cursor.com/docs/get-started/quickstart"
+      },
+      {
+        "title": "Cursor CLI 개요 (공식 문서)",
+        "url": "https://cursor.com/docs/cli/overview"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://cursor.com/pricing",
+        "quote": "Free $0 /month Get started Get started with: Limited AI usage AI Features Limited agent requests Limited Chat requests"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://cursor.com/pricing",
+        "quote": "Free $0 /month Get started Get started with: Limited AI usage AI Features Limited agent requests Limited Chat requests"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://cursor.com/pricing",
+        "quote": "Plus $8 /month Get Plus Our introductory plan: Shared AI usage pool AI Features Cursor"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://cursor.com/pricing",
+        "quote": "*Only Grok models are available on this plan"
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://cursor.com/security",
+        "quote": "Privacy Mode is available to anyone (free or Pro). New team members inherit the team's Privacy Mode settings. When enabled, we will not train on your data."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://cursor.com/en-US/data-use",
+        "quote": "If you choose to turn off “Privacy Mode”: we may use and store codebase data, prompts, editor actions, code snippets, and other code data and actions to improve our AI features and train our models."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://cursor.com/pricing",
+        "quote": "Privacy mode can be enabled in settings or by a team admin. When it is enabled, we guarantee that code data is not used for training by us or our model providers."
+      },
+      {
+        "field": "forms",
+        "source": "https://cursor.com/docs/get-started/quickstart",
+        "quote": "Download Cursor. Open the app and sign in. Then pick a folder and start with a small task."
+      },
+      {
+        "field": "forms",
+        "source": "https://cursor.com/docs/cli/overview",
+        "quote": "Cursor CLI lets you interact with AI agents directly from your terminal to write, review, and modify code."
+      },
+      {
+        "field": "forms",
+        "source": "https://cursor.com/docs/cli/overview",
+        "quote": "Pick up your Cloud Agent tasks on web or mobile at"
+      },
+      {
+        "field": "forms",
+        "source": "https://cursor.com/docs/integrations/jetbrains",
+        "quote": "Use Cursor's AI agent in IntelliJ IDEA, PyCharm, WebStorm, and other JetBrains IDEs through the"
+      },
+      {
+        "field": "features.coding_agents.repo_context",
+        "source": "https://cursor.com/docs/get-started/quickstart",
+        "quote": "Cursor will search your repo, read relevant files, and summarize how the project fits together."
+      },
+      {
+        "field": "features.coding_agents.multi_file",
+        "source": "https://cursor.com/docs/get-started/quickstart",
+        "quote": "Now that you know the basics, use Plan Mode for bigger changes. It works well when the task spans multiple files, needs research, or needs approval before coding."
+      },
+      {
+        "field": "features.coding_agents.multi_file",
+        "source": "https://cursor.com/docs/cloud-agent",
+        "quote": "The agent can inspect the full workspace, make coordinated changes, and open pull requests in the repos it changes."
+      },
+      {
+        "field": "features.coding_agents.run_commands",
+        "source": "https://cursor.com/docs/agent/overview",
+        "quote": "Agent is Cursor's assistant that can complete complex coding tasks independently, run terminal commands, and edit code."
+      },
+      {
+        "field": "features.coding_agents.open_pr",
+        "source": "https://cursor.com/docs/cloud-agent",
+        "quote": "Cloud agents produce merge-ready PRs with artifacts to demo their changes."
+      },
+      {
+        "field": "features.code_review.pr_review",
+        "source": "https://cursor.com/docs/bugbot",
+        "quote": "Bugbot analyzes PR diffs and leaves comments with explanations and fix suggestions. It runs automatically on each PR update or manually when triggered."
+      },
+      {
+        "field": "features.code_review.security",
+        "source": "https://cursor.com/docs/bugbot",
+        "quote": "Bugbot reviews pull requests and identifies bugs, security issues, and code quality problems."
+      },
+      {
+        "field": "features.code_review.apply_fix",
+        "source": "https://cursor.com/docs/bugbot",
+        "quote": "Bugbot Autofix automatically spawns a Cloud Agent to fix bugs found during PR reviews."
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://cursor.com/docs/cloud-agent/automations",
+        "quote": "Scheduled triggers run on a recurring schedule. Choose from preset options or enter a cron expression for precise control."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://cursor.com/docs/mcp",
+        "quote": "MCP connects Cursor to external systems and data. Instead of explaining your project structure repeatedly, integrate directly with your tools."
+      }
+    ],
+    "review_notes": [
+      "가격 페이지가 크게 바뀌었어요: 'Cursor is now a part of SpaceX' 이후 요금제가 X(트위터) 구독과 묶여 Free $0 / Plus $8 / Premium $30 / Super $100 / Ultra $200 (모두 /month)이고, 결제는 'X Subscription Corp'이 한다고 적혀 있어요. 꼭 직접 열어 확인해 주세요.",
+      "유료 가격: 가장 싼 유료는 Plus 월 8달러(구매 링크가 yearly=false)인데, '*Only Grok models are available on this plan', 'Plus is recommended for social creators with limited AI usage'라고 돼 있어요. 클라우드 에이전트·Bugbot 코드 리뷰는 Premium(월 30달러)부터예요(비교 표에서 Free·Plus는 —). 개발자 기준 대표 가격을 30달러로 할지 J가 정해 주세요. 다른 회사 모델은 API 가격으로 따로 청구돼요.",
+      "무료: 비교 표에서 Cursor Agent 줄은 Free도 ✓, 사용량은 'Limited'예요.",
+      "학습 정책: Privacy Mode를 켜면 학습 안 함, 끄면 학습에 쓸 수 있음 → opt_out=yes. 처음 기본값(켜짐/꺼짐)을 밝힌 문장은 못 찾아서 trains_on_input_default=unknown이에요.",
+      "오픈소스 여부: 공식 페이지에 오픈소스라는 말이 없어요. 근거 문장이 없어 null + todo로 뒀어요.",
+      "forms: ide_extension은 JetBrains IDE에서 ACP로 Cursor 에이전트를 쓰는 연동 문서를 근거로 했어요(별도 플러그인 설치 후 사용). 넣을지 J가 판단해 주세요. web은 클라우드 에이전트를 웹·모바일에서 이어 본다는 문장이 근거예요.",
+      "기능: code_review의 tests(테스트 생성)는 예시 명령('add comprehensive tests')뿐이라 넣지 않았어요. automation의 workflow·ai_step은 해당 문장이 분명하지 않아 뺐어요. 문서에 Design Mode도 있지만 design_ui는 넣지 않았어요.",
+      "docs.cursor.com은 cursor.com/docs로 바뀐 것으로 보여서 cursor.com/docs 문서를 읽었어요. 홈 페이지와 /features는 같은 내용이었어요. 문서에 설치용 curl|bash 명령이 있지만 실행하지 않았어요.",
+      "AI 여부(yes), 섹션(official), 대표 목적(coding_agents)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "github-copilot",
+    "name": "GitHub Copilot",
+    "url": "https://github.com/features/copilot",
+    "official_domains": [
+      "github.com"
+    ],
+    "one_liner": "GitHub에 붙어 있는 AI 코딩 도우미예요. 에디터 자동완성·채팅부터 이슈를 맡기면 PR로 돌려주는 에이전트, PR 리뷰까지 해요",
+    "features": {
+      "coding_agents": [
+        "repo_context",
+        "multi_file",
+        "run_commands",
+        "open_pr"
+      ],
+      "code_review": [
+        "pr_review",
+        "security",
+        "apply_fix"
+      ],
+      "automation": [
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "coding_agents",
+    "price": {
+      "free": true,
+      "free_limit": "Copilot Free: 자동완성 월 2,000회, 정해진 AI 크레딧, 모델은 자동 선택만",
+      "paid_from_usd": 10,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "ide_extension",
+      "cli",
+      "desktop",
+      "web"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "2026년 4월 24일부터 Free·Pro·Pro+·Max는 입력·출력·코드 조각을 학습에 쓸 수 있고 설정에서 끌 수 있어요. Business·Enterprise는 학습에 쓰지 않아요"
+    },
+    "start_steps": [
+      "GitHub 계정으로 로그인하고 Copilot 설정에서 Copilot Free 켜기 (또는 Pro 구독)",
+      "Copilot 설정에서 'AI 모델 학습에 내 데이터 사용' 항목을 원하는 대로 바꾸기",
+      "VS Code 등 에디터에 Copilot 확장을 설치하거나 Copilot CLI로 시작하기"
+    ],
+    "cautions": [
+      "개인 요금제(Free·Pro·Pro+·Max)는 기본으로 대화·코드가 학습에 쓰일 수 있으니 설정에서 꺼 두세요",
+      "클라우드 에이전트는 유료 요금제에서만 쓸 수 있어요",
+      "에이전트가 만든 PR은 직접 검토하고 합치세요"
+    ],
+    "sources": [
+      "https://docs.github.com/en/copilot/get-started/plans",
+      "https://docs.github.com/en/copilot/get-started/what-is-github-copilot",
+      "https://docs.github.com/en/copilot/how-tos/manage-your-account/manage-policies",
+      "https://docs.github.com/en/copilot/concepts/agent-capabilities/about-agents/about-github-copilot-agents",
+      "https://docs.github.com/en/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review",
+      "https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-cli"
+    ],
+    "learn": [
+      {
+        "title": "GitHub Copilot이란? (공식 문서)",
+        "url": "https://docs.github.com/en/copilot/get-started/what-is-github-copilot"
+      },
+      {
+        "title": "Copilot CLI 빠른 시작 (공식 문서)",
+        "url": "https://docs.github.com/en/copilot/get-started/cli-quickstart"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://docs.github.com/en/copilot/get-started/plans",
+        "quote": "This plan includes limited access to a selection of Copilot features allowing you to try AI-powered coding assistance at no cost."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://docs.github.com/en/copilot/get-started/plans",
+        "quote": "Limited to 2000 completions per month on Copilot Free."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://docs.github.com/en/copilot/get-started/plans",
+        "quote": "Copilot Free Free An allowance of GitHub AI Credits Limited Auto model selection only"
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://docs.github.com/en/copilot/get-started/plans",
+        "quote": "Copilot Pro $10 USD per month (free for some users) Base: 1,000 A selection of models"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://docs.github.com/en/copilot/how-tos/manage-your-account/manage-policies",
+        "quote": "plan, GitHub may use your interactions with GitHub features and services—including inputs, outputs, code snippets, and associated context—to train and improve AI models."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://docs.github.com/en/copilot/how-tos/manage-your-account/manage-policies",
+        "quote": "You can opt-out from allowing your data to be used for training in your personal settings for GitHub Copilot."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://docs.github.com/en/copilot/how-tos/manage-your-account/manage-policies",
+        "quote": "GitHub does not use Copilot Business or Copilot Enterprise customer data to train AI models."
+      },
+      {
+        "field": "forms",
+        "source": "https://docs.github.com/en/copilot/how-tos/manage-your-account/manage-policies",
+        "quote": "In addition to the configuration for the GitHub Copilot plugin in your supported IDE, you can configure settings for GitHub Copilot on GitHub."
+      },
+      {
+        "field": "forms",
+        "source": "https://docs.github.com/en/copilot/get-started/plans",
+        "quote": "All plans include Copilot CLI and the Copilot app."
+      },
+      {
+        "field": "forms",
+        "source": "https://docs.github.com/en/copilot/concepts/agent-capabilities/about-agents/about-github-copilot-agents",
+        "quote": "The GitHub Copilot app is a desktop application for directing agent-driven development."
+      },
+      {
+        "field": "forms",
+        "source": "https://docs.github.com/en/copilot/get-started/plans",
+        "quote": "Copilot Chat in IDEs Inline chat Slash commands Copilot Chat in GitHub Mobile Copilot Chat in GitHub"
+      },
+      {
+        "field": "forms",
+        "source": "https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-cli",
+        "quote": "The command-line interface (CLI) for GitHub Copilot allows you to use Copilot directly from your terminal."
+      },
+      {
+        "field": "features.coding_agents.repo_context",
+        "source": "https://docs.github.com/en/copilot/concepts/agent-capabilities/about-agents/about-github-copilot-agents",
+        "quote": "For example, when you ask an agent to fix a bug, it can search a repository, identify the relevant files, edit the code, run tests, and revise its changes in response to test failures."
+      },
+      {
+        "field": "features.coding_agents.multi_file",
+        "source": "https://docs.github.com/en/copilot/concepts/agent-capabilities/about-agents/about-github-copilot-agents",
+        "quote": "Agent mode in supported IDEs provides a collaborative experience in your local development environment. The agent can identify files to change, propose edits, run commands, and respond to your feedback while you work."
+      },
+      {
+        "field": "features.coding_agents.run_commands",
+        "source": "https://docs.github.com/en/copilot/concepts/agent-capabilities/about-agents/about-github-copilot-agents",
+        "quote": "GitHub Copilot CLI lets you work with an agent from your terminal. The agent can answer questions, modify files, run commands, and complete multi-step tasks in local or sandboxed environments."
+      },
+      {
+        "field": "features.coding_agents.open_pr",
+        "source": "https://docs.github.com/en/copilot/how-tos/manage-your-account/manage-policies",
+        "quote": "Copilot cloud agent allows you to assign Copilot to GitHub issues, or prompt Copilot to undertake a task autonomously, such as deep research of a repository, planning, or code changes, with the option to create a pull request when you're ready."
+      },
+      {
+        "field": "features.code_review.pr_review",
+        "source": "https://docs.github.com/en/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review",
+        "quote": "Copilot reviews your pull requests, identifies issues, and suggests fixes you can apply in a couple of clicks."
+      },
+      {
+        "field": "features.code_review.security",
+        "source": "https://docs.github.com/en/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review",
+        "quote": "Provides fast, targeted feedback on common issues such as bugs, security vulnerabilities, and style inconsistencies."
+      },
+      {
+        "field": "features.code_review.apply_fix",
+        "source": "https://docs.github.com/en/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review",
+        "quote": "It reviews your code from multiple angles to identify issues and suggest fixes. You can apply suggested changes with a couple of clicks."
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://docs.github.com/en/copilot/concepts/agent-capabilities/about-agents/about-github-copilot-agents",
+        "quote": "You can configure agents to perform recurring or event-driven work. For example, an agent can triage new issues, investigate continuous integration failures, or prepare a scheduled report."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-cli",
+        "quote": "MCP servers allow you to give Copilot access to different data sources and tools."
+      }
+    ],
+    "review_notes": [
+      "github.com 페이지(features/copilot, features/copilot/plans, pricing)는 이 작업 환경의 프록시가 막아서(세션 저장소 제한 안내 문구가 돌아옴) 읽지 못했어요. 그래서 근거는 모두 docs.github.com 문서예요. url은 github.com/features/copilot로 뒀지만 sources에는 넣지 않았어요. 직접 열어 확인해 주세요.",
+      "유료 가격: Copilot Pro 월 10달러('(free for some users)' — 학생·교사·인기 오픈소스 메인테이너). Pro+ 39달러, Max 100달러, Business 19달러/좌석, Enterprise 39달러/좌석. AI 크레딧 기반 사용량 과금이고 초과분은 크레딧당 0.01달러(조직 기준), 자동완성은 유료 요금제에서 무제한이에요. 연 결제 가격은 확인 못 했어요.",
+      "무료: Copilot Free는 조직·기업으로 Copilot을 받지 않은 개인 개발자만 쓸 수 있어요. 클라우드 에이전트는 'available for all paid Copilot plans'라서 무료로는 안 돼요(open_pr 기능은 유료).",
+      "학습 정책: 2026-04-24부터 개인 요금제는 'may use ... to train' + 설정에서 끌 수 있음 → 기본값 yes, opt_out yes로 했어요. 'may'라는 표현이라 J가 한 번 더 확인해 주세요. Business·Enterprise는 학습 안 함.",
+      "기능: multi_file 근거는 IDE 에이전트 모드의 'identify files to change, propose edits' 문장이에요(‘여러 파일’이라는 말이 직접 있진 않아요). tests(테스트 생성)는 문서 메뉴에 'Generate unit tests' 튜토리얼 제목만 보여서 넣지 않았어요. 넣으려면 해당 튜토리얼 문서를 확인해 주세요.",
+      "오픈소스 여부: 문서에 Copilot 자체가 오픈소스라는 문장이 없어요('All Docs are open source'는 문서 얘기). null + todo.",
+      "AI 여부(yes), 섹션(official), 대표 목적(coding_agents)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "kiro",
+    "name": "Kiro",
+    "url": "https://kiro.dev",
+    "official_domains": [
+      "kiro.dev"
+    ],
+    "one_liner": "AWS가 만든 AI 코딩 에이전트예요. 요구사항·설계·작업 목록(스펙)을 먼저 만들고 그대로 구현해요. IDE·CLI·웹에서 써요",
+    "features": {
+      "coding_agents": [
+        "repo_context",
+        "multi_file",
+        "run_commands",
+        "open_pr"
+      ],
+      "code_review": [
+        "pr_review",
+        "tests"
+      ],
+      "automation": [
+        "triggers",
+        "tools"
+      ],
+      "planning": [
+        "doc_draft"
+      ]
+    },
+    "primary": "coding_agents",
+    "price": {
+      "free": true,
+      "free_limit": "월 50크레딧, 오픈 웨이트 모델과 Claude Sonnet 4.5만 (사용량 제한 있음)",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "desktop",
+      "cli",
+      "web",
+      "ide_extension"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "Free와 소셜 로그인·Builder ID로 쓰는 개인 구독은 기본으로 질문·코드를 서비스 개선(모델 학습 포함)에 쓸 수 있고 설정에서 끌 수 있어요. IAM Identity Center로 쓰는 유료 사용자는 쓰지 않아요"
+    },
+    "start_steps": [
+      "공식 사이트에서 Kiro IDE를 내려받아 설치하기 (또는 Kiro CLI 설치)",
+      "GitHub·Google·AWS Builder ID로 로그인하고 설정에서 데이터 공유(콘텐츠 수집) 여부 정하기",
+      "프로젝트 폴더를 열고 만들 기능을 스펙 모드로 설명해 요구사항·설계·작업 목록부터 받기"
+    ],
+    "cautions": [
+      "무료·개인 구독은 기본으로 대화와 코드가 서비스 개선에 쓰일 수 있으니 설정에서 꺼 두세요",
+      "웹 버전(Kiro Web)과 예약 자동화는 유료 요금제에서만 돼요",
+      "크레딧은 작업 복잡도와 모델에 따라 다르게 줄어들고, 남은 크레딧은 다음 달로 넘어가지 않아요"
+    ],
+    "sources": [
+      "https://kiro.dev",
+      "https://kiro.dev/pricing",
+      "https://kiro.dev/faq",
+      "https://kiro.dev/docs/privacy-and-security/data-protection/",
+      "https://kiro.dev/docs/getting-started/installation/",
+      "https://kiro.dev/docs/how-kiro-works/",
+      "https://kiro.dev/docs/cli/",
+      "https://kiro.dev/docs/ide/",
+      "https://kiro.dev/docs/web/",
+      "https://kiro.dev/docs/web/automations/",
+      "https://kiro.dev/docs/hooks/",
+      "https://kiro.dev/docs/mcp/"
+    ],
+    "learn": [
+      {
+        "title": "Kiro 설치하기 (공식 문서)",
+        "url": "https://kiro.dev/docs/getting-started/installation/"
+      },
+      {
+        "title": "첫 프로젝트 따라 하기 (공식 문서)",
+        "url": "https://kiro.dev/docs/getting-started/first-project/"
+      },
+      {
+        "title": "스펙 사용법 (공식 문서)",
+        "url": "https://kiro.dev/docs/specs/"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://kiro.dev/pricing",
+        "quote": "KIRO FREE $0 per month 50 credits Access to open weight models* and Claude Sonnet 4.5"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://kiro.dev/pricing",
+        "quote": "New users can start with the perpetual Kiro Free tier, which includes 50 credits. The Free Tier includes access to open weight models and Claude Sonnet 4.5, with limits."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://kiro.dev/pricing",
+        "quote": "You can upgrade to paid tiers ranging from Pro ($20/month), Pro+ ($40/month), Pro Max ($100/month), to Power ($200/month) for increased capacity."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://kiro.dev/docs/privacy-and-security/data-protection/",
+        "quote": "By default, Kiro collects usage data, errors, crash reports, and other metrics as well as content for service improvement from Kiro Free Tier users and Kiro individual subscribers."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://kiro.dev/docs/privacy-and-security/data-protection/",
+        "quote": "Kiro may use this content, for example, to provide better responses to common questions, fix Kiro operational issues, for de-bugging, or for model training."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://kiro.dev/faq",
+        "quote": "You can opt out of content collection at any time using the opt-out mechanism described in our [documentation](/docs/privacy-and-security/data-protection/#opt-out-of-data-sharing)."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://kiro.dev/faq",
+        "quote": "We do not use content from Kiro Pro, Pro+, Pro Max, or Power users that access Kiro through AWS IAM Identity Center or external identity provider."
+      },
+      {
+        "field": "forms",
+        "source": "https://kiro.dev/docs/getting-started/installation/",
+        "quote": "Kiro is available as a desktop IDE, a command-line interface, a web app, a mobile app, and a personal AI agent (Crew)."
+      },
+      {
+        "field": "forms",
+        "source": "https://kiro.dev/docs/how-kiro-works/",
+        "quote": "Because the boundary is standard ACP, compatible editors like JetBrains IDEs and Zed can use Kiro as their agent too."
+      },
+      {
+        "field": "features.coding_agents.repo_context",
+        "source": "https://kiro.dev/faq",
+        "quote": "It understands your codebase and speeds up development through adaptive, natural dialogue."
+      },
+      {
+        "field": "features.coding_agents.repo_context",
+        "source": "https://kiro.dev/docs/ide/",
+        "quote": "Interact with your code through natural language conversations with full project context."
+      },
+      {
+        "field": "features.coding_agents.multi_file",
+        "source": "https://kiro.dev/faq",
+        "quote": "Connect your GitHub or GitLab repositories or both, describe what you need, and Kiro writes code, coordinates changes across repos, and opens pull requests."
+      },
+      {
+        "field": "features.coding_agents.run_commands",
+        "source": "https://kiro.dev/docs/how-kiro-works/",
+        "quote": "Built-in tools read and edit files, run shell commands, and search the web."
+      },
+      {
+        "field": "features.coding_agents.open_pr",
+        "source": "https://kiro.dev/docs/web/",
+        "quote": "Let the agent own the outcome — it plans, codes, and opens PRs"
+      },
+      {
+        "field": "features.code_review.pr_review",
+        "source": "https://kiro.dev",
+        "quote": "Run the headless CLI in CI/CD to review PRs and fix bugs without opening an editor."
+      },
+      {
+        "field": "features.code_review.tests",
+        "source": "https://kiro.dev/docs/hooks/",
+        "quote": "- auto-create tests, docs, or translations when new source files appear"
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://kiro.dev/docs/web/automations/",
+        "quote": "Automations let Kiro Web run a prompt against your GitHub or GitLab repositories on a schedule, without you starting a session."
+      },
+      {
+        "field": "features.automation.triggers",
+        "source": "https://kiro.dev/docs/hooks/",
+        "quote": "Hooks run shell commands or agent prompts automatically when specific events happen in your session - the agent modifies a file, invokes a tool, or completes a task."
+      },
+      {
+        "field": "features.automation.tools",
+        "source": "https://kiro.dev/docs/mcp/",
+        "quote": "Model Context Protocol (MCP) extends Kiro's capabilities by connecting to specialized servers that provide additional tools and context."
+      },
+      {
+        "field": "features.planning.doc_draft",
+        "source": "https://kiro.dev/faq",
+        "quote": "By using specs, Kiro works alongside you to define requirements, system design, and tasks to be implemented before writing any code."
+      }
+    ],
+    "review_notes": [
+      "유료 가격: Pro 월 20달러(가격 페이지 표기는 'per user / month'). Pro+ 40, Pro Max 100, Power 200달러. 추가 크레딧은 개당 0.04달러. 처음 유료로 올릴 때 20달러 크레딧을 줘요. 연 결제 가격은 못 봤어요.",
+      "무료: Kiro Free는 기간 제한 없는 무료 등급(50크레딧). 다만 Kiro Web(브라우저 에이전트, PR 열기)과 예약 자동화는 'available on Pro, Pro+, Pro Max, and Power plans'라서 무료로는 안 돼요. open_pr·automation.triggers(예약) 근거가 Web 기능이에요(hooks 이벤트 실행은 IDE·CLI에서도 됨).",
+      "학습 정책: Free·개인 구독(소셜 로그인·Builder ID)은 '기본으로' 콘텐츠를 서비스 개선에 수집하고, 그 용도에 'model training'이 포함돼요 → 기본값 yes, opt_out yes. IAM Identity Center·외부 IdP로 쓰는 유료 사용자는 사용 안 함. Free 사용자는 opt-out해도 남용 탐지용으로 입력을 최대 60일 저장할 수 있다고 돼 있어요.",
+      "오픈소스 여부: 'Kiro Crew'(개인 에이전트 워크스페이스)는 오픈소스라고 적혀 있지만 Kiro IDE·CLI 자체가 오픈소스라는 문장은 없어요. null + todo.",
+      "기능: pr_review 근거는 홈의 'headless CLI in CI/CD to review PRs' 문장이라 '자동 리뷰 코멘트'까지 명시되진 않았어요. tests 근거는 hooks 문서의 예시 목록('auto-create tests ... when new source files appear')이에요. planning.doc_draft는 스펙(요구사항·설계·작업 문서 생성) 기능이라 넣었어요 — PRD와 같은 기능으로 볼지 J가 정해 주세요. apply_fix는 근거가 약해서 뺐어요.",
+      "forms: ide_extension은 ACP로 JetBrains·Zed에서 Kiro를 에이전트로 쓸 수 있다는 문장이 근거예요. 모바일 앱(iOS TestFlight 초기 접근)도 있지만 forms 항목에 없어 뺐어요.",
+      "AI 여부(yes), 섹션(official), 대표 목적(coding_agents)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "coderabbit",
+    "name": "CodeRabbit",
+    "url": "https://www.coderabbit.ai",
+    "official_domains": [
+      "coderabbit.ai"
+    ],
+    "one_liner": "PR이 올라오면 AI가 줄 단위로 리뷰 코멘트를 달아주는 코드 리뷰 도구예요. VS Code 확장과 CLI로 커밋 전에도 리뷰받을 수 있어요",
+    "features": {
+      "code_review": [
+        "pr_review",
+        "security",
+        "tests",
+        "apply_fix"
+      ]
+    },
+    "primary": "code_review",
+    "price": {
+      "free": true,
+      "free_limit": "공개 저장소 PR 리뷰는 계속 무료, VS Code 확장의 가벼운 리뷰는 구독 없이 가능 (사용량 제한 있음)",
+      "paid_from_usd": 30,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "ide_extension",
+      "cli",
+      "self_host"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": "개인정보 처리방침: 코드 리뷰 중 모은 개인정보는 학습에 쓰지 않지만, 오픈소스 프로젝트는 학습에 쓴다고 해요"
+    },
+    "start_steps": [
+      "GitHub 또는 GitLab 계정으로 CodeRabbit에 가입하기",
+      "리뷰받을 저장소에 CodeRabbit 앱을 설치하기 (공개 저장소는 무료)",
+      "PR을 올리고 CodeRabbit이 단 코멘트를 읽고, 필요하면 한 번에 고치기 적용하기"
+    ],
+    "cautions": [
+      "오픈소스(공개) 저장소의 코드는 학습에 쓰인다고 밝히고 있어요",
+      "비공개 저장소 PR 리뷰는 유료(14일 체험)이고, 테스트 생성은 Team, 보안 리뷰는 Advanced 요금제부터예요",
+      "AI 리뷰는 사람 리뷰를 대신하지 않으니 중요한 변경은 직접 확인하세요"
+    ],
+    "sources": [
+      "https://www.coderabbit.ai",
+      "https://www.coderabbit.ai/pricing",
+      "https://www.coderabbit.ai/privacy-policy",
+      "https://www.coderabbit.ai/security",
+      "https://www.coderabbit.ai/cli",
+      "https://www.coderabbit.ai/ide"
+    ],
+    "learn": [
+      {
+        "title": "CodeRabbit 문서 (공식)",
+        "url": "https://docs.coderabbit.ai/"
+      },
+      {
+        "title": "CodeRabbit CLI 소개 (공식)",
+        "url": "https://www.coderabbit.ai/cli"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://www.coderabbit.ai/pricing",
+        "quote": "Sign up for CodeRabbit using GitHub or GitLab, install CodeRabbit on a public repository, and receive free reviews forever for public repositories."
+      },
+      {
+        "field": "price.free",
+        "source": "https://www.coderabbit.ai/ide",
+        "quote": "Developers can install the VS Code plugin for quick reviews on every committed and uncommitted change, no subscription needed."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.coderabbit.ai/pricing",
+        "quote": "Sign up for CodeRabbit using GitHub or GitLab, install CodeRabbit on a public repository, and receive free reviews forever for public repositories."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.coderabbit.ai/ide",
+        "quote": "Rate limits vary by plan and product surface."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://www.coderabbit.ai/pricing",
+        "quote": "No. Essentials retains the current Pro price of $30 per developer per month, or $24 per developer per month when billed annually."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://www.coderabbit.ai/privacy-policy",
+        "quote": "Neither CodeRabbit nor OpenAI or Anthropic uses personal information collected as part of the code review to train, refine, or otherwise influence our models or any third-party models."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://www.coderabbit.ai/privacy-policy",
+        "quote": "The above representation does not apply to open-source projects (OSS). We use OSS to train our systems."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.coderabbit.ai/pricing",
+        "quote": "Agentic code reviews in PR, CLI, IDE, and in agent loops"
+      },
+      {
+        "field": "forms",
+        "source": "https://www.coderabbit.ai/cli",
+        "quote": "CodeRabbit CLI is an AI code review tool that runs directly in your terminal."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.coderabbit.ai/ide",
+        "quote": "Developers can install the VS Code plugin for quick reviews on every committed and uncommitted change, no subscription needed."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.coderabbit.ai/pricing",
+        "quote": "Custom deployment options, including self-hosting and company-selected SaaS regions"
+      },
+      {
+        "field": "features.code_review.pr_review",
+        "source": "https://www.coderabbit.ai/pricing",
+        "quote": "AI Code Review at the PR Plain language summary & walkthrough with described changes, diagrams, and related/linked issues"
+      },
+      {
+        "field": "features.code_review.security",
+        "source": "https://www.coderabbit.ai/pricing",
+        "quote": "Security Code Review Static analysis, secrets, dependency, and infrastructure checks"
+      },
+      {
+        "field": "features.code_review.security",
+        "source": "https://www.coderabbit.ai/security",
+        "quote": "Identifies and acts on security vulnerabilities in near-real time. On every repo and every PR."
+      },
+      {
+        "field": "features.code_review.tests",
+        "source": "https://www.coderabbit.ai/pricing",
+        "quote": "Unit Tests Generate comprehensive tests automatically for PRs, including edge cases and error conditions"
+      },
+      {
+        "field": "features.code_review.apply_fix",
+        "source": "https://www.coderabbit.ai/pricing",
+        "quote": "Autofix One-click code changes for unresolved findings"
+      },
+      {
+        "field": "features.code_review.apply_fix",
+        "source": "https://www.coderabbit.ai/cli",
+        "quote": "Use one-click fixes in CLI to easily incorporate review comments back into your codebase with just one click."
+      }
+    ],
+    "review_notes": [
+      "docs.coderabbit.ai는 403(자동 읽기 차단)이라 읽지 못했어요. 근거는 www.coderabbit.ai 페이지만 썼어요. learn의 문서 링크는 열어서 확인해 주세요.",
+      "유료 가격: 가장 싼 유료는 Essentials(옛 Pro) 월 결제 30달러/개발자(연 결제는 월 24달러). 가격 페이지는 기본이 연 결제 표시라 화면에 $24가 먼저 보여요. Team 60(연 48), Advanced 연 72달러. PR을 만드는 개발자만 과금. 한도 넘으면 파일당 0.25달러, 에이전트는 분당 0.40달러.",
+      "무료: 공개 저장소 리뷰는 '영원히 무료', VS Code 확장은 '구독 없이' 가벼운 리뷰. 비공개 저장소 PR 리뷰는 14일 체험 후 유료예요. 무료 사용량 한도 숫자는 문서(차단됨)에 있다고 해서 확인 못 했어요.",
+      "학습 정책: 개인정보 처리방침에 '리뷰 중 모은 개인정보(personal information)는 학습 안 함, 단 오픈소스 프로젝트는 학습에 사용' 문장만 있어요. 비공개 코드 자체에 대한 학습 여부·끄는 방법 문장은 못 찾아서 둘 다 unknown이에요. 공개 저장소로 무료로 쓰면 학습에 쓰이는 것으로 보여요 — J가 확인해 주세요.",
+      "기능: code_review 4개 모두 가격 페이지 비교 표 항목이 근거라 요금제별로 달라요(테스트 생성=Team 이상, 보안 리뷰=Advanced 이상, Autofix=Essentials 이상). 'CodeRabbit AI Engineer'(PR에서 클라우드 코딩 에이전트 실행)와 MCP 연결도 있지만 리뷰 보조 기능이라 coding_agents·automation에는 넣지 않았어요.",
+      "forms: self_host는 Enterprise의 'Custom deployment options, including self-hosting' 문장이 근거예요(엔터프라이즈 한정). cloud_service는 GitHub/GitLab 앱으로 PR을 리뷰하는 형태예요.",
+      "오픈소스 여부: 공식 페이지에 CodeRabbit 자체가 오픈소스라는 문장이 없어요. null + todo. CLI 페이지에 설치용 curl|sh 명령이 있지만 실행하지 않았어요.",
+      "AI 여부(yes), 섹션(official), 대표 목적(code_review)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "greptile",
+    "name": "Greptile",
+    "url": "https://www.greptile.com",
+    "official_domains": [
+      "greptile.com"
+    ],
+    "one_liner": "저장소 전체를 그래프로 이해한 뒤 PR마다 버그·보안 문제를 찾아 코멘트로 알려주는 AI 코드 리뷰 도구예요",
+    "features": {
+      "code_review": [
+        "pr_review",
+        "security",
+        "tests",
+        "apply_fix"
+      ]
+    },
+    "primary": "code_review",
+    "price": {
+      "free": true,
+      "free_limit": "Starter: 개발자 1명, 월 50크레딧 (기본 리뷰 1회 = 1크레딧)",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "cli",
+      "self_host"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "고객 데이터를 익명화해 AI 학습에 쓸 수 있고, 조직 관리자가 설정의 'Help us improve Greptile'을 끄면 빠질 수 있어요"
+    },
+    "start_steps": [
+      "GitHub 또는 GitLab 계정을 연결해 Greptile에 가입하기",
+      "리뷰받을 저장소를 켜고, 조직 설정의 Data & Privacy에서 학습 사용 여부 정하기",
+      "PR을 올리면 몇 분 안에 달리는 리뷰 코멘트를 확인하기"
+    ],
+    "cautions": [
+      "기본 설정에서는 익명화한 고객 데이터가 AI 학습에 쓰일 수 있으니 필요하면 꺼 두세요",
+      "유료(Pro)는 좌석 요금 없이 크레딧당 1달러라서 리뷰 종류(Base·Plus·Apex)에 따라 비용이 달라져요",
+      "AI 리뷰는 사람 리뷰를 대신하지 않으니 중요한 변경은 직접 확인하세요"
+    ],
+    "sources": [
+      "https://www.greptile.com",
+      "https://www.greptile.com/pricing",
+      "https://www.greptile.com/docs/introduction",
+      "https://www.greptile.com/security",
+      "https://www.greptile.com/security-check",
+      "https://www.greptile.com/cli"
+    ],
+    "learn": [
+      {
+        "title": "Greptile 개요 (공식 문서)",
+        "url": "https://www.greptile.com/docs/introduction"
+      },
+      {
+        "title": "Greptile CLI 시작하기 (공식 문서)",
+        "url": "https://www.greptile.com/docs/code-review/cli-onboarding"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://www.greptile.com/pricing",
+        "quote": "Starter Best for individual developers Free Get started for free How it works 1 active developer 50 free credits per month"
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.greptile.com/pricing",
+        "quote": "Starter is free for one developer and includes 50 credits per month."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://www.greptile.com/pricing",
+        "quote": "Base review: 1 credit"
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://www.greptile.com/security",
+        "quote": "Greptile may aggregate and anonymize Customer Data (\"De-Identified Data\") for analytical purposes and to monitor, improve, or expand our services, and may use such data to train and improve artificial intelligence algorithms and models (\"AI Training and Learnings\")."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://www.greptile.com/security",
+        "quote": "To opt your organization out of AI training, an organization admin can open Organization Settings , go to Data & Privacy , and turn off Help us improve Greptile"
+      },
+      {
+        "field": "forms",
+        "source": "https://www.greptile.com/docs/introduction",
+        "quote": "Greptile is an AI code review agent that automatically reviews every pull request with complete understanding of your codebase."
+      },
+      {
+        "field": "forms",
+        "source": "https://www.greptile.com/cli",
+        "quote": "Review code without leaving your terminal"
+      },
+      {
+        "field": "forms",
+        "source": "https://www.greptile.com/pricing",
+        "quote": "Self-host in your own infrastructure"
+      },
+      {
+        "field": "forms",
+        "source": "https://www.greptile.com/docs/introduction",
+        "quote": "Deploy in your infrastructure with Docker/Kubernetes, air-gapped environments, and custom LLMs"
+      },
+      {
+        "field": "features.code_review.pr_review",
+        "source": "https://www.greptile.com/docs/introduction",
+        "quote": "On every pull request, Greptile analyzes changes with full context. Posts findings in ~3 minutes as PR comments with suggested fixes."
+      },
+      {
+        "field": "features.code_review.security",
+        "source": "https://www.greptile.com/security-check",
+        "quote": "Greptile pairs static scanning with an AI security agent to catch vulnerabilities in every pull request."
+      },
+      {
+        "field": "features.code_review.tests",
+        "source": "https://www.greptile.com/cli",
+        "quote": "Automatically generate unit tests for new and changed code in every PR"
+      },
+      {
+        "field": "features.code_review.apply_fix",
+        "source": "https://www.greptile.com/cli",
+        "quote": "Address any comment with a one click fix directly to your preferred coding agent"
+      }
+    ],
+    "review_notes": [
+      "유료 가격: Pro는 월 요금제가 아니라 '$1 /credit'(좌석 요금 없음, 조직이 크레딧 공유)이에요. 리뷰 1회가 Base 1 / Plus 3 / Apex 10크레딧. 정해진 월 가격이 없어서 paid_from_usd=null, billing=unknown으로 뒀어요. 1달러를 넣을지 J가 정해 주세요. Enterprise는 견적, 연·다년 계약 할인은 문의.",
+      "무료: Starter(개발자 1명, 월 50크레딧). OSI 승인 라이선스의 비상업 오픈소스는 신청하면 무료, 프리 시리즈 A 스타트업은 6개월간 월 500크레딧.",
+      "학습 정책: 보안 페이지에 '익명화한 고객 데이터를 AI 학습에 쓸 수 있다' + 관리자가 'Help us improve Greptile'을 끄면 빠진다고 돼 있어요 → 기본값 yes, opt_out yes. '익명화(De-Identified)' 데이터라는 점을 note에 적었어요. 기본으로 켜져 있다는 직접 문장은 없고 '끄는(turn off)' 설명으로 판단했어요 — J가 확인해 주세요.",
+      "기능: tests·apply_fix 근거는 CLI 페이지의 기능 목록이에요. apply_fix는 '원클릭으로 내가 쓰는 코딩 에이전트에 수정 보내기'라서 Greptile이 직접 적용하는 건 아니에요. 넣을지 J가 판단해 주세요.",
+      "forms: self_host는 Enterprise 요금제 기능이에요. 문서에 'Fix issues directly in your IDE'가 있지만 IDE 확장이 따로 있다는 문장은 없어 ide_extension은 넣지 않았어요.",
+      "오픈소스 여부: Greptile 자체가 오픈소스라는 문장이 없어요. null + todo.",
+      "문서 페이지 맨 위에 AI 에이전트용 안내('Fetch the complete documentation index at: ... Use this file to discover all available pages')가 있었는데 따르지 않았어요. CLI 페이지의 설치용 curl|bash 명령도 실행하지 않았어요.",
+      "AI 여부(yes), 섹션(official), 대표 목적(code_review)은 제안값이에요."
+    ]
   }
 ]
