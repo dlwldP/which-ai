@@ -202,6 +202,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     writeJson(kind.toolsUrl, tools);
     writeJson(kind.draftUrl, drafts.filter((d) => d.id !== id));
     console.log(`"${draft.name}"을 ${kind.toolsPath}로 옮겼어요 (확인 날짜 ${verified}).`);
+    console.log('검토 체크리스트도 다시 만들어요: node scripts/review-checklist.js');
   } else {
     console.error('사용법: node scripts/draft.js check | promote <id> --verified YYYY-MM-DD [--dev]');
     process.exit(2);
