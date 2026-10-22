@@ -83,6 +83,7 @@ js/          recommend.js — 추천 로직 (순수 함수, DOM 접근 없음)
 drafts/      확인 전 툴 정보 초안 (배포 안 됨, drafts/README.md 참고)
 scripts/     validate-data.js — 데이터 검사
              draft.js — 초안 검사, 확인한 툴을 실제 데이터로 옮기기 (--dev는 개발자용)
+             review-checklist.js — 초안 검토 체크리스트(drafts/REVIEW.md) 만들기
              build-changelog.js — git 기록으로 변경 이력 만들기 (배포할 때 자동 실행)
              check-freshness.js — 주간 점검: 90일 지난 툴, 링크 상태 → Issue 본문
              validate-dev-data.js — 개발자용 데이터 검사 (docs/개발자용_기획서.md)
@@ -101,6 +102,7 @@ node scripts/validate-data.js        # 데이터 검사 (기준일: 오늘)
 node scripts/validate-data.js 2026-10-19   # 기준일 지정
 node scripts/validate-dev-data.js    # 개발자용 데이터 검사
 node scripts/draft.js check          # 초안 검사 (비개발자용·개발자용)
+node scripts/review-checklist.js     # 초안 검토 체크리스트 drafts/REVIEW.md 만들기
 node scripts/build-changelog.js      # 변경 이력을 data/changelog.json에 만들기 (로컬에서 화면 볼 때만, 커밋하지 않음)
 node scripts/check-freshness.js      # 주간 점검을 직접 돌려보기 (결과: report.md, --demo는 예시 데이터)
 ```
