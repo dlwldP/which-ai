@@ -1,1 +1,235 @@
-[]
+[
+  {
+    "id": "claude-code",
+    "name": "Claude Code",
+    "url": "https://code.claude.com/docs/en/overview",
+    "official_domains": [
+      "claude.com"
+    ],
+    "one_liner": "내 프로젝트 코드를 읽고 고치고 명령까지 실행해주는 코딩 에이전트예요. 터미널, 에디터, 데스크톱 앱, 웹에서 써요",
+    "purposes": {
+      "coding_agents": 3,
+      "code_review": 2,
+      "automation": 1
+    },
+    "primary": "coding_agents",
+    "price": {
+      "free": false,
+      "free_limit": "무료 요금제에는 없음",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "cli",
+      "ide_extension",
+      "desktop",
+      "web"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "yes",
+      "note": "Team·Enterprise·API(상업 약관)는 코드와 프롬프트를 학습에 쓰지 않아요"
+    },
+    "start_steps": [
+      "Claude Pro 이상 요금제나 Anthropic Console 계정 준비하기",
+      "공식 문서의 설치 명령으로 터미널에 설치하기 (또는 VS Code 확장 설치)",
+      "프로젝트 폴더에서 실행하고 할 일을 문장으로 부탁하기"
+    ],
+    "cautions": [
+      "무료 요금제로는 쓸 수 없어요",
+      "파일을 고치고 명령을 실행할 수 있으니 바뀌는 내용을 확인하고 허락하세요"
+    ],
+    "sources": [
+      "https://code.claude.com/docs/en/overview",
+      "https://claude.com/pricing",
+      "https://code.claude.com/docs/en/data-usage",
+      "https://code.claude.com/docs/en/legal-and-compliance"
+    ],
+    "learn": [
+      {
+        "title": "Claude Code 빠른 시작 (공식 문서)",
+        "url": "https://code.claude.com/docs/en/quickstart"
+      },
+      {
+        "title": "VS Code에서 쓰기 (공식 문서)",
+        "url": "https://code.claude.com/docs/en/vs-code"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://claude.com/pricing",
+        "quote": "Is Claude Code included in my plan?"
+      },
+      {
+        "field": "price.free",
+        "source": "https://claude.com/pricing",
+        "quote": "Claude Code is included in all paid plans. It shares the same usage limits as the rest of your plan, so your work in the terminal and your chats draw from one pool."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://claude.com/pricing",
+        "quote": "$20 if billed monthly."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://claude.com/pricing",
+        "quote": "The Pro plan gives you everything in a Free plan with more usage and more of Claude's capabilities. That includes Claude Code, along with projects to organize your chats and documents, access to more Claude models, and Claude for Microsoft 365."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://code.claude.com/docs/en/data-usage",
+        "quote": "We give you the choice to allow your data to be used to improve future Claude models. We will train new models using data from Free, Pro, and Max accounts when this setting is on (including when you use Claude Code from these accounts)."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://code.claude.com/docs/en/data-usage",
+        "quote": "Anthropic does not train generative models using code or prompts sent to Claude Code under commercial terms, unless the customer has chosen to provide their data to us for model improvement"
+      },
+      {
+        "field": "forms",
+        "source": "https://code.claude.com/docs/en/overview",
+        "quote": "Claude Code is an agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools. Available in your terminal, IDE, desktop app, and browser."
+      },
+      {
+        "field": "forms",
+        "source": "https://code.claude.com/docs/en/overview",
+        "quote": "Claude Code runs on several surfaces: the terminal, IDE extensions, a desktop app, and the web."
+      }
+    ],
+    "review_notes": [
+      "무료 여부: 가격표 비교 표에서 'Claude Code' 줄이 Free 칸은 No, Pro·Max는 Yes예요. 그래서 free=false로 했어요. 별도로 Console(API) 계정으로 쓴 만큼 내는 방법도 있어요.",
+      "유료 가격: Pro 월 결제 20달러 기준이에요 (연 결제는 월 17달러).",
+      "오픈소스 여부: 공식 문서에는 '사용은 이용 약관(Consumer/Commercial Terms)을 따른다', '배포된 바이너리를 바꾸면 안 된다'는 문장만 있고 오픈소스라는 말은 없어요. GitHub 저장소(github.com/anthropics/claude-code)는 공식 도메인이 아니라 근거로 쓰지 않았어요. 오픈소스가 아니면 open_source=false로 채우고 todo에서 지워 주세요.",
+      "학습 정책: 개인 요금제(Free·Pro·Max)는 '설정을 켜면 학습' + 고를 수 있음 → opt_out=yes. 처음 설정값은 확인 못 해서 unknown이에요.",
+      "AI 여부(yes), 섹션(official), 적합도(coding_agents 3, code_review 2, automation 1), 대표 목적(coding_agents)은 제안값이에요."
+    ]
+  },
+  {
+    "id": "lovable",
+    "name": "Lovable",
+    "url": "https://lovable.dev/",
+    "official_domains": [
+      "lovable.dev"
+    ],
+    "one_liner": "만들고 싶은 웹 앱을 말로 설명하면 화면·서버·데이터베이스까지 갖춘 앱을 만들어줘요",
+    "purposes": {
+      "app_builders": 3,
+      "design_ui": 1
+    },
+    "primary": "app_builders",
+    "price": {
+      "free": true,
+      "free_limit": "하루 5 크레딧 (한 달 최대 30)",
+      "paid_from_usd": 25,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": null,
+    "section": "official",
+    "forms": [
+      "web",
+      "desktop"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "Business·Enterprise 요금제는 기본으로 학습에서 빠져요"
+    },
+    "start_steps": [
+      "lovable.dev에서 이메일·구글·GitHub·애플 계정으로 무료 가입하기",
+      "만들고 싶은 앱을 문장으로 설명하기",
+      "미리보기를 보면서 고칠 점을 대화로 부탁하기"
+    ],
+    "cautions": [
+      "무료·Pro는 내 프로젝트 내용이 기본으로 학습에 쓰여요. 계정 설정에서 끌 수 있어요",
+      "무료는 하루 5 크레딧이라 큰 작업은 금방 다 써요"
+    ],
+    "sources": [
+      "https://lovable.dev/pricing",
+      "https://docs.lovable.dev/introduction/subscription-plans",
+      "https://docs.lovable.dev/features/business/data-opt-out",
+      "https://docs.lovable.dev/introduction/welcome",
+      "https://docs.lovable.dev/introduction/create-an-account"
+    ],
+    "learn": [
+      {
+        "title": "Lovable 소개 (공식 문서)",
+        "url": "https://docs.lovable.dev/introduction/welcome"
+      },
+      {
+        "title": "계정 만들기 (공식 문서)",
+        "url": "https://docs.lovable.dev/introduction/create-an-account"
+      }
+    ],
+    "todo": [
+      "open_source"
+    ],
+    "evidence": [
+      {
+        "field": "price.free",
+        "source": "https://lovable.dev/pricing",
+        "quote": "Starting to build on Lovable is free."
+      },
+      {
+        "field": "price.free_limit",
+        "source": "https://lovable.dev/pricing",
+        "quote": "The free plan includes a daily grant of 5 build credits (up to 30 a month), plus monthly grants of 20 Cloud credits."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://docs.lovable.dev/introduction/subscription-plans",
+        "quote": "Prices in USD. The annual column shows the yearly charge and the equivalent monthly rate."
+      },
+      {
+        "field": "price.paid_from_usd",
+        "source": "https://docs.lovable.dev/introduction/subscription-plans",
+        "quote": "$25"
+      },
+      {
+        "field": "price.billing",
+        "source": "https://docs.lovable.dev/introduction/subscription-plans",
+        "quote": "Each tier is billed monthly or annually. Annual billing gives you two months free compared with paying monthly."
+      },
+      {
+        "field": "privacy.trains_on_input_default",
+        "source": "https://docs.lovable.dev/features/business/data-opt-out",
+        "quote": "As of September 9, 2026, customer data from Free and Pro plans may be used to train, develop, and improve Lovable’s AI models and AI-powered features, as described in Section 5 of the updated Privacy Policy."
+      },
+      {
+        "field": "privacy.opt_out",
+        "source": "https://docs.lovable.dev/features/business/data-opt-out",
+        "quote": "Free and Pro: individual users can opt their own data out of AI model training at any time with an account-level setting."
+      },
+      {
+        "field": "privacy.note",
+        "source": "https://docs.lovable.dev/features/business/data-opt-out",
+        "quote": "Business and Enterprise: workspace data is governed by your organization’s agreement with Lovable, including your Data Processing Agreement, and is excluded from model training by default."
+      },
+      {
+        "field": "forms",
+        "source": "https://docs.lovable.dev/introduction/welcome",
+        "quote": "Lovable is a full-stack AI development platform for building, iterating on, and deploying web applications using natural language, with real code, security, and enterprise governance."
+      },
+      {
+        "field": "forms",
+        "source": "https://docs.lovable.dev/introduction/welcome",
+        "quote": "Lovable also works beyond the browser: build from the desktop app or the mobile app"
+      }
+    ],
+    "review_notes": [
+      "유료 가격: 'Pro tiers' 표의 첫 줄(100 credits)이 Monthly billing $25, Annual billing $250 ($21/month)예요. 표 칸이라 '$25'만 근거로 남겼어요. 월 결제 25달러로 넣었어요.",
+      "가격 페이지(lovable.dev/pricing)의 요금 카드는 스크립트로 그려져서 글자로 안 읽혔어요. 가격은 공식 문서(docs.lovable.dev)의 요금제 페이지 기준이에요.",
+      "학습 정책: 2026년 9월 9일부터 Free·Pro 데이터가 학습에 쓰일 수 있고(trains=yes), 계정 설정에서 끌 수 있어요(opt_out=yes). 보안 조건은 통과해요.",
+      "쓰는 형태: 웹(브라우저)과 데스크톱 앱 문장이 있어요. 모바일 앱도 언급되지만 개발자용 forms 값에는 모바일 항목이 없어서 넣지 않았어요.",
+      "오픈소스 여부: 공식 페이지에서 관련 문장을 못 찾았어요. 오픈소스가 아니면 open_source=false로 채우고 todo에서 지워 주세요.",
+      "AI 여부(yes), 섹션(official), 적합도(app_builders 3, design_ui 1), 대표 목적(app_builders)은 제안값이에요."
+    ]
+  }
+]
