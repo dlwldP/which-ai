@@ -150,16 +150,50 @@ test('추천 이유 템플릿', () => {
     tools: fixture, purposeId: 'P01', conditions: { securityImportant: true }, today: TODAY,
   });
   const byId = Object.fromEntries(results.map((r) => [r.id, r.reasons]));
+  // 켠 조건(보안)과 관련된 이유가 맨 앞 (대표 이유)
   assert.deepEqual(byId.alpha, [
+    '입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요',
     '이 목적에 가장 많이 쓰는 툴이에요',
     '메뉴와 결과 모두 한국어로 잘 돼요',
-    '입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요',
     '무료로 시작할 수 있어요',
   ]);
-  assert.deepEqual(byId.bravo, ['이 일에 잘 맞는 툴이에요', '입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요']);
+  assert.deepEqual(byId.bravo, ['입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요', '이 일에 잘 맞는 툴이에요']);
 
   const p03 = recommend({ tools: fixture, purposeId: 'P03', today: TODAY }).results;
   assert.deepEqual(p03.find((r) => r.id === 'bravo').reasons, ['이 일에도 쓸 수 있어요']);
+});
+
+test('조건을 켜지 않으면 적합도 문장이 대표 이유', () => {
+  const alpha = recommend({ tools: fixture, purposeId: 'P01', today: TODAY }).results.find((r) => r.id === 'alpha');
+  assert.deepEqual(alpha.reasons, [
+    '이 목적에 가장 많이 쓰는 툴이에요',
+    '메뉴와 결과 모두 한국어로 잘 돼요',
+    '무료로 시작할 수 있어요',
+  ]);
+});
+
+test('켠 조건이 여럿이면 보안 → 무료 → 한국어 → 휴대폰 순으로 대표 이유를 고름', () => {
+  const all = { securityImportant: true, freeOnly: true, koreanImportant: true, mobile: true };
+  const alpha = recommend({ tools: fixture, purposeId: 'P01', conditions: all, today: TODAY })
+    .results.find((r) => r.id === 'alpha');
+  assert.deepEqual(alpha.reasons, [
+    '입력한 내용을 학습에 쓰지 않도록 설정할 수 있어요',
+    '무료로 시작할 수 있어요',
+    '메뉴와 결과 모두 한국어로 잘 돼요',
+    '휴대폰 앱으로도 쓸 수 있어요',
+    '이 목적에 가장 많이 쓰는 툴이에요',
+  ]);
+  const freeFirst = recommend({ tools: fixture, purposeId: 'P01', conditions: { freeOnly: true }, today: TODAY })
+    .results.find((r) => r.id === 'alpha');
+  assert.equal(freeFirst.reasons[0], '무료로 시작할 수 있어요');
+});
+
+test('휴대폰 조건을 빼서 찾은 결과에는 휴대폰 이유를 붙이지 않음', () => {
+  const out = recommend({
+    tools: fixture, purposeId: 'P02', conditions: { securityImportant: true, mobile: true }, today: TODAY,
+  });
+  assert.deepEqual(out.relaxed, ['mobile']);
+  for (const r of out.results) assert.ok(!r.reasons.includes('휴대폰 앱으로도 쓸 수 있어요'));
 });
 
 test('보안 조건이 꺼져 있으면 보안 이유 문장을 붙이지 않음', () => {

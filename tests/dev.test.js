@@ -120,6 +120,16 @@ test('추천 이유: 오픈소스, AI 툴 아님', () => {
   ]);
 });
 
+test('오픈소스 조건을 켜면 오픈소스 이유가 대표 이유', () => {
+  const delta = rec('backend_database', { openSourceOnly: true }).results.find((r) => r.id === 'dev-delta');
+  assert.deepEqual(delta.reasons, [
+    '오픈소스예요',
+    '이 일에 가장 많이 쓰는 도구예요',
+    'AI 툴은 아니지만 AI로 만든 앱에 자주 같이 써요',
+    '무료로 시작할 수 있어요',
+  ]);
+});
+
 test('결과가 0개면 오픈소스 조건부터 뺌', () => {
   // planning: 오픈소스 도구가 없음 → 오픈소스 조건을 빼면 golf·hotel
   const out = rec('planning', { openSourceOnly: true });

@@ -107,48 +107,72 @@ const demoInvite = () => (data.demo || data.tools.length > 0 ? '' : `
   </section>`);
 
 // ---- 홈 ----
+// 맨 위는 서비스 소개 카드 묶음(한 화면에 들어가게), 그 아래 목적 타일.
+function introHtml() {
+  const dates = data.tools.map((t) => t.last_verified).sort();
+  const stat = (num, label) => `<div class="stat"><span class="stat-num">${num}</span><span class="stat-label">${esc(label)}</span></div>`;
+  return `
+    <section class="intro" aria-label="${esc(mode.siteName)} 소개">
+      <div class="card intro-what">
+        <p class="eyebrow">${esc(mode.eyebrow)}</p>
+        <h1>${mode.heroHtml}</h1>
+        <p class="sub">${esc(mode.heroSub)}</p>
+        <button type="button" class="btn btn-primary intro-go" data-scroll="purposes-title">하고 싶은 일 고르기 ↓</button>
+      </div>
+      <div class="card intro-card intro-how">
+        <h2 class="intro-title">이렇게 써요</h2>
+        <ol class="intro-steps">${mode.introSteps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>
+      </div>
+      <div class="card intro-card">
+        <h2 class="intro-title">이걸 비교해요</h2>
+        <ul class="intro-list">${mode.introChecks.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
+      </div>
+      <div class="card intro-card">
+        <h2 class="intro-title">믿을 수 있게</h2>
+        <ul class="intro-list intro-trust">${mode.trust.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
+      </div>
+      <div class="card intro-card intro-stats">
+        <h2 class="intro-title">한눈에</h2>
+        <div class="stats">
+          ${stat(data.purposes.length, '할 수 있는 일')}
+          ${stat(data.tools.length, `확인한 ${W}`)}
+          ${stat(dates.length ? esc(formatDate(dates.at(-1)).replace(/^\d{4}년 /, '')) : '준비 중', '최근 확인')}
+        </div>
+      </div>
+    </section>`;
+}
+
 function renderHome() {
   document.title = mode.homeTitle;
-  const starters = mode.starters.map((id) => data.purposes.find((p) => p.id === id)).filter(Boolean);
+  const starters = new Set(mode.starters);
   app.innerHTML = `
-    <section class="hero">
-      <p class="eyebrow">${esc(mode.eyebrow)}</p>
-      <h1>${mode.heroHtml}</h1>
-      <p class="sub">${esc(mode.heroSub)}</p>
-    </section>
+    ${introHtml()}
 
     ${demoInvite()}
-
-    ${starters.length ? `
-      <nav class="starters" aria-label="처음이라면">
-        <span class="starters-label">뭘 해야 할지 모르겠다면</span>
-        ${starters.map((p) => `<a class="starter" href="#/p/${p.id}/result">${esc(p.icon)} ${esc(p.label)}</a>`).join('')}
-      </nav>` : ''}
 
     <section class="purposes" aria-labelledby="purposes-title">
       <h2 class="section-title" id="purposes-title">하고 싶은 일</h2>
       <ul class="tiles">${data.purposes.map((p) => `
         <li><a class="tile" href="#/p/${p.id}/result">
+          ${starters.has(p.id) ? '<span class="tile-flag">처음이라면</span>' : ''}
           <span class="tile-ico" aria-hidden="true">${esc(p.icon)}</span>
           <span class="tile-ttl">${esc(p.label)}</span>
           <span class="tile-dsc">${esc(p.examples)}</span>
         </a></li>`).join('')}</ul>
     </section>
 
-    <section class="card more-card">
-      <h2 class="card-title">더 알아보기</h2>
-      <ul class="list">
+    <section class="more" aria-labelledby="more-title">
+      <h2 class="section-title" id="more-title">더 알아보기</h2>
+      <ul class="more-links">
         ${linkRow('📖', '용어집', mode.glossaryHint, '#/glossary')}
         ${linkRow('🗓️', '변경 이력', `${W} 정보가 언제 어떻게 바뀌었는지`, '#/changes')}
       </ul>
-    </section>
-
-    <div class="trust">${mode.trust.map((x) => `<span>${esc(x)}</span>`).join('')}</div>`;
+    </section>`;
 }
 
 // ---- 추천 결과 ----
 // 카드는 요약(머리, 대표 이유, 배지, 버튼)만 보이고 나머지는 "자세히 보기"에 접는다.
-// 요약 칸들은 CSS subgrid로 카드끼리 같은 높이에 맞춘다 (칸 수 5 = styles.css .cards).
+// 휴대폰은 세로로 쌓고, 넓은 화면은 3개를 나란히 놓아 칸을 CSS subgrid로 맞춘다 (칸 수 5 = styles.css .cards).
 function toolCardHtml(r, index, all) {
   const t = r.tool;
   const cautions = cautionsOf(t);
@@ -183,32 +207,14 @@ function toolCardHtml(r, index, all) {
     </article>`;
 }
 
-function cardsHtml(results) {
-  const many = results.length > 1;
-  return `
-    ${many ? '<p class="cards-hint">옆으로 넘기면서 비교해보세요 ›</p>' : ''}
-    <div class="cards" id="cards">${results.map(toolCardHtml).join('')}</div>
-    ${many ? `<div class="dots" role="group" aria-label="카드 위치">${results
-      .map((r, i) => `<button type="button" class="dot" data-card="${i}" aria-label="${i + 1}번째 카드 보기" aria-current="${i === 0}"></button>`)
-      .join('')}</div>` : ''}`;
-}
+const cardsHtml = (results) => `<div class="cards">${results.map(toolCardHtml).join('')}</div>`;
 
-/** 휴대폰에서 지금 보고 있는 카드를 점으로 표시하고, 점을 누르면 그 카드로 넘긴다. */
-function installCardDots() {
-  const track = app.querySelector('#cards');
-  const dots = [...app.querySelectorAll('.dot')];
-  if (!track || dots.length === 0) return;
-  const cards = [...track.children];
-  const observer = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      const i = cards.indexOf(entry.target);
-      dots.forEach((d, j) => d.setAttribute('aria-current', String(i === j)));
-    }
-  }, { root: track, threshold: 0.6 });
-  cards.forEach((c) => observer.observe(c));
-  dots.forEach((d) => d.addEventListener('click', () => {
-    cards[Number(d.dataset.card)].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+/** 넓은 화면에서는 카드 하나의 "자세히 보기"를 열면 나란히 놓인 카드도 같이 열어 같은 항목끼리 비교한다. */
+function installDetailsSync() {
+  const all = [...app.querySelectorAll('.card-more')];
+  all.forEach((d) => d.addEventListener('toggle', () => {
+    if (!matchMedia('(min-width: 900px)').matches) return;
+    all.forEach((other) => { if (other.open !== d.open) other.open = d.open; });
   }));
 }
 
@@ -220,8 +226,8 @@ function renderResult(purpose, conditions) {
 
   const chips = CONDITIONS.map((c) => {
     const next = { ...conditions, [c.key]: !conditions[c.key] };
-    return `<a class="chip" role="button" aria-pressed="${conditions[c.key]}" title="${esc(c.desc)}"
-      href="#/p/${purpose.id}/result${conditionQuery(next)}"><span aria-hidden="true">${c.icon}</span> ${esc(c.title)}</a>`;
+    return `<a class="chip" role="button" aria-pressed="${conditions[c.key]}" title="${esc(c.title)}: ${esc(c.desc)}"
+      href="#/p/${purpose.id}/result${conditionQuery(next)}"><span aria-hidden="true">${c.icon}</span> ${esc(c.chip)}</a>`;
   }).join('');
   const activeDescs = CONDITIONS.filter((c) => conditions[c.key]).map((c) => c.desc);
 
@@ -242,13 +248,14 @@ function renderResult(purpose, conditions) {
       <p class="step">${esc(purpose.icon)} ${esc(purpose.label)}</p>
       <h1 class="page-title">이 ${W}들을 추천해요</h1>
     </div>
-    <div class="chips" role="group" aria-label="조건">
-      <span class="chips-label">중요한 조건을 누르면 바로 다시 골라드려요</span>
-      ${chips}
-      ${activeDescs.length ? `<p class="chips-desc">${activeDescs.map(esc).join(' · ')}</p>` : ''}
-    </div>
+    ${data.tools.length ? `
+      <div class="chips" role="group" aria-label="조건">
+        <span class="chips-label">중요한 조건을 누르면 바로 다시 골라드려요</span>
+        ${chips}
+        ${activeDescs.length ? `<p class="chips-desc">${activeDescs.map(esc).join(' · ')}</p>` : ''}
+      </div>` : ''}
     ${body}`;
-  installCardDots();
+  installDetailsSync();
 }
 
 // ---- 툴 상세 ----
@@ -279,7 +286,6 @@ function renderTool(t) {
           ${officialButton(t)}
           ${t.repo_url ? `<a class="more-link" href="${esc(t.repo_url)}" target="_blank" rel="noopener">소스 코드 저장소 보기 ↗</a>` : ''}
         </div>
-        <p class="verified-line">마지막 확인 ${esc(formatDate(t.last_verified))}${stale ? ' · 다시 확인이 필요해요' : ''}</p>
       </aside>
 
       <div class="detail-main">
@@ -478,6 +484,10 @@ function route() {
     if (!routedOnce) return; // 바로 들어온 경우는 링크 주소로 간다
     ev.preventDefault();
     history.back();
+  }));
+  app.querySelectorAll('[data-scroll]').forEach((b) => b.addEventListener('click', () => {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.getElementById(b.dataset.scroll)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
   }));
   if (!(section === 'glossary' && params.get('term'))) window.scrollTo(0, 0);
 }
