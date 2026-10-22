@@ -15,8 +15,15 @@ const errorsFor = (mutate) => {
   return validateTools(tools, purposes, TODAY);
 };
 
+// 실제 데이터는 실제 오늘 날짜로 검사한다 (확인 날짜가 고정된 TODAY보다 뒤일 수 있어서)
+const REAL_TODAY = new Date().toISOString().slice(0, 10);
+
 test('실제 data/*.json이 검사를 통과함', () => {
-  assert.deepEqual(validateData({ ...data, today: TODAY }), []);
+  assert.deepEqual(validateData({ ...data, today: REAL_TODAY }), []);
+});
+
+test('확인 날짜가 하루 앞선 건 시간대 차이로 허용', () => {
+  assert.deepEqual(errorsFor((t) => { t.last_verified = '2026-10-20'; }), []);
 });
 
 test('목적은 10개 (P01~P10)', () => {
@@ -36,7 +43,7 @@ const failCases = [
   ['last_verified 형식 틀림', (t) => { t.last_verified = '2026/10/19'; }, 'last_verified'],
   ['last_verified가 없는 날짜', (t) => { t.last_verified = '2026-02-30'; }, 'last_verified'],
   ['last_verified 누락', (t) => { delete t.last_verified; }, 'last_verified'],
-  ['last_verified가 미래', (t) => { t.last_verified = '2026-10-20'; }, 'last_verified'],
+  ['last_verified가 이틀 이상 미래', (t) => { t.last_verified = '2026-10-21'; }, 'last_verified'],
   ['체크리스트에 없는 기능', (t) => { t.features.P01 = ['chat', 'fly']; }, '"fly"는 이 목적의 체크리스트에 없는 기능'],
   ['다른 목적의 기능', (t) => { t.features.P01 = ['transcribe']; }, 'features.P01'],
   ['없는 목적', (t) => { t.features.P99 = ['chat']; }, 'features.P99'],

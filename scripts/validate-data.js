@@ -9,6 +9,9 @@ export const BILLING = ['monthly', 'yearly', 'unknown'];
 export const POLICY = ['yes', 'no', 'unknown'];
 export const LOGINS = ['google', 'apple', 'microsoft', 'kakao', 'naver', 'email', 'phone', 'none'];
 
+/** 확인 날짜가 오늘보다 하루까지 앞서는 건 허용 (한국 시간 ↔ UTC) */
+export const FUTURE_GRACE_DAYS = 1;
+
 export const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 export const isText = (v) => typeof v === 'string' && v.trim() !== '';
 export const isHttpsUrl = (v) => {
@@ -142,7 +145,8 @@ export function validateTool(tool, at, features, today) {
   else if (!tool.sources.every(isHttpsUrl)) err('sources', '모두 https 주소여야 합니다');
 
   if (!isValidDate(tool.last_verified)) err('last_verified', 'YYYY-MM-DD 형식의 실제 날짜여야 합니다');
-  else if (daysSince(tool.last_verified, today) < 0) err('last_verified', `오늘(${today})보다 미래입니다`);
+  // 한국 시간과 UTC(GitHub·서버) 차이로 하루 앞선 날짜는 허용한다
+  else if (daysSince(tool.last_verified, today) < -FUTURE_GRACE_DAYS) err('last_verified', `오늘(${today})보다 미래입니다 (시간대 차이로 하루까지는 허용)`);
 
   return errors;
 }
