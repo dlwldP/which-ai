@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { termMatcher, glossarize } from '../js/glossary.js';
+import { termMatcher, glossarize, termIn } from '../js/glossary.js';
 
 const glossary = JSON.parse(readFileSync(new URL('../data/glossary.json', import.meta.url), 'utf8'));
 const matcher = termMatcher(glossary);
@@ -25,4 +25,11 @@ test('용어가 없으면 그대로', () => {
   assert.equal(glossarize('안녕하세요', matcher), '안녕하세요');
   assert.equal(glossarize('토큰', null), '토큰');
   assert.equal(termMatcher([]), null);
+});
+
+test('비교 항목 이름에서 용어 찾기 (ⓘ 표시용)', () => {
+  assert.equal(termIn('무료 한도', matcher), '무료 한도');
+  assert.equal(termIn('유료 가격', matcher), '유료 가격');
+  assert.equal(termIn('사용 기기', matcher), null);
+  assert.equal(termIn('무료 한도', null), null);
 });

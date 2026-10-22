@@ -13,18 +13,15 @@
     // 화면이 깜빡이지 않도록 그리기 전에 저장된 테마를 적용한다.
     try { var t = localStorage.getItem("theme"); if (t === "dark" || t === "light") document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&display=swap">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body data-mode="dev">
   <header class="topbar">
     <div id="demo-banner" class="demo-banner" role="note" hidden>
-      <strong>예시 데이터예요.</strong> 화면 확인용으로 지어낸 도구라 실제 정보가 아니에요.
+      <strong>예시 데이터</strong> · 실제 정보 아님
     </div>
     <div class="container">
-      <a href="#/" class="logo">🛠️ 개발할 때 AI 뭐 써?</a>
+      <a href="#/" class="logo" aria-label="개발할 때 AI 뭐 써? 처음으로">🛠️ AI 뭐 써? <span class="logo-tag">개발자용</span></a>
       <nav class="topnav">
         <a href="#/glossary" data-nav="glossary">용어집</a>
         <a href="#/changes" data-nav="changes">변경 이력</a>

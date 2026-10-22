@@ -9,7 +9,7 @@ import { aiNativeText, formsText, openSourceText } from '../js/format.js';
 const demo = JSON.parse(readFileSync(new URL('../data/demo-tools.json', import.meta.url), 'utf8'));
 const devDemo = JSON.parse(readFileSync(new URL('../data/dev/demo-tools.json', import.meta.url), 'utf8'));
 
-test('카드 비교 항목은 6개 (styles.css .cards 칸 수 11과 맞물림)', () => {
+test('자세히 보기 비교 항목은 6개', () => {
   for (const [name, m] of Object.entries(MODES)) assert.equal(m.facts.length, 6, name);
 });
 
@@ -49,4 +49,20 @@ test('개발자용 문구', () => {
 test('모드의 제보 사이트 값이 제보 양식의 선택지에 있음', () => {
   const form = readFileSync(new URL('../.github/ISSUE_TEMPLATE/wrong-info.yml', import.meta.url), 'utf8');
   for (const m of Object.values(MODES)) assert.ok(form.includes(`        - ${m.reportSite}\n`), m.reportSite);
+});
+
+test('요약 배지는 모드마다 3개, 예시 데이터에서 모두 문구를 만듦', () => {
+  for (const [m, tools] of [[MODES.general, demo], [MODES.dev, devDemo]]) {
+    for (const t of tools) {
+      const badges = m.badges(t);
+      assert.equal(badges.length, 3);
+      for (const b of badges) assert.ok(b.text && ['good', 'warn', 'plain'].includes(b.tone), `${t.id} ${JSON.stringify(b)}`);
+    }
+  }
+});
+
+test('비교 항목 이름은 5글자 이하 (이름 칸에서 줄이 꺾이지 않게)', () => {
+  for (const m of Object.values(MODES)) {
+    for (const [label] of [...m.facts, ...m.detailFacts]) assert.ok(label.replace(/ /g, '').length <= 5, label);
+  }
 });

@@ -23,3 +23,10 @@ export function glossarize(escapedText, matcher) {
     return `<button type="button" class="term" data-term="${term.replace(/"/g, '&quot;')}">${word}</button>`;
   });
 }
+
+/** 문장에 들어 있는 첫 용어(원래 용어 이름). 비교 항목 이름 옆 ⓘ 표시에 쓴다. 없으면 null */
+export function termIn(text, matcher) {
+  if (!matcher) return null;
+  const found = text.match(matcher.regex);
+  return found ? matcher.termOf.get(found[0]) : null;
+}
