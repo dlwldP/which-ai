@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { isValidDate, daysSince } from '../js/recommend.js';
 import {
-  BILLING, POLICY, featureMap, hostOf, isHttpsUrl, isObject, isOfficialHost, isText, supportsPurpose, validateFeatures,
+  BILLING, FUTURE_GRACE_DAYS, POLICY, featureMap, hostOf, isHttpsUrl, isObject, isOfficialHost, isText, supportsPurpose, validateFeatures,
   validateGlossary, validatePurposes,
 } from './validate-data.js';
 
@@ -93,7 +93,7 @@ export function validateDevTool(tool, at, features, today) {
   }
 
   if (!isValidDate(tool.last_verified)) err('last_verified', 'YYYY-MM-DD 형식의 실제 날짜여야 합니다');
-  else if (daysSince(tool.last_verified, today) < 0) err('last_verified', `오늘(${today})보다 미래입니다`);
+  else if (daysSince(tool.last_verified, today) < -FUTURE_GRACE_DAYS) err('last_verified', `오늘(${today})보다 미래입니다 (시간대 차이로 하루까지는 허용)`);
 
   return errors;
 }
