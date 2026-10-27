@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 검색엔진용 사이트맵. Google Search Console에 https://dlwldp.github.io/which-ai/sitemap.xml 로 등록한다.
+     화면은 #/... 주소로 나뉘어서 검색엔진에는 두 사이트의 첫 화면만 실린다. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://dlwldp.github.io/which-ai/</loc></url>
+  <url><loc>https://dlwldp.github.io/which-ai/dev/</loc></url>
+</urlset>
