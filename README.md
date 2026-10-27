@@ -111,6 +111,10 @@ node scripts/check-freshness.js      # 주간 점검을 직접 돌려보기 (결
 
 `main`에 푸시하면 `.github/workflows/deploy.yml`이 테스트·데이터 검사를 돌리고, 통과하면 git 기록으로 변경 이력을 만들어 GitHub Pages에 올린다. 배포 주소는 맨 위 링크를 봐주세요.
 
+## 검색 등록 (Google Search Console)
+
+두 사이트의 `<head>`에 소유 확인 태그가 있고, 배포할 때 `sitemap.xml`이 함께 올라가요. Search Console에서 소유를 확인한 뒤 `https://dlwldp.github.io/which-ai/sitemap.xml`을 제출해요. 화면이 `#/…` 주소로 나뉘어서 검색에는 두 사이트의 첫 화면만 잡혀요.
+
 ## 주간 점검
 
 `.github/workflows/weekly-check.yml`이 매주 월요일 오전 9시쯤(한국 시간) 실행된다.
