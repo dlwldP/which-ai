@@ -403,30 +403,27 @@ function renderNotFound() {
 }
 
 // ---- 용어집 ----
-// 풀이가 한두 문장이라 접지 않고 모두 펼쳐 둔다. 위 용어 목록을 누르면 그 용어로 내려간다.
+// 풀이가 한두 문장이라 접지 않고 카드로 펼쳐 둔다 (휴대폰 1칸, 넓으면 2~3칸, 줄마다 높이를 맞춤).
+// 위 용어 목록을 누르면 그 용어로 내려간다.
 // 화면 속 용어·ⓘ에서 "용어집 전체 보기"로 오면(?term=) 그 용어를 강조하고 화면 가운데로 옮긴다.
 function renderGlossary(focus) {
   document.title = `용어집 · ${mode.siteName}`;
   app.innerHTML = `
-    <div class="narrow">
-      <div class="page-head">
+    <div class="page-head">
         ${backLink('#/')}
         <h1 class="page-title">용어집</h1>
         <p class="page-sub">${esc(mode.glossaryIntro)} 화면에서 <span class="term-sample">밑줄 친 말</span>이나 ⓘ를 누르면 그 자리에서 바로 볼 수 있어요.</p>
-      </div>
+    </div>
       ${data.glossary.length ? `
         <nav class="glossary-index" aria-label="용어 바로 가기">${data.glossary.map((item) => `
           <button type="button" class="glossary-jump" data-scroll="term-${esc(item.term)}">${esc(item.term)}</button>`).join('')}
         </nav>
-        <section class="card">
-          <dl class="glossary">${data.glossary.map((item) => `
+        <dl class="glossary">${data.glossary.map((item) => `
             <div class="glossary-item${item.term === focus ? ' focused' : ''}" id="term-${esc(item.term)}">
               <dt><span class="glossary-term">${esc(item.term)}</span>${item.aliases.length ? ` <span class="alias">${esc(item.aliases.join(', '))}</span>` : ''}</dt>
               <dd class="glossary-desc">${esc(item.description)}</dd>
             </div>`).join('')}
-          </dl>
-        </section>` : '<section class="card"><p class="empty"><strong>아직 준비 중이에요</strong></p></section>'}
-    </div>`;
+        </dl>` : '<section class="card"><p class="empty"><strong>아직 준비 중이에요</strong></p></section>'}`;
   if (focus) document.getElementById(`term-${focus}`)?.scrollIntoView({ block: 'center' });
 }
 
@@ -528,8 +525,8 @@ function route() {
   const [section, id] = path.split('/');
   const purpose = section === 'p' && data.purposes.find((p) => p.id === id);
   const tool = section === 't' && data.tools.find((t) => t.id === id);
-  // 홈 타일, 결과 카드, 상세 2단은 넓은 화면을 쓴다. 용어집·변경 이력은 읽기 좋은 폭(.narrow)으로.
-  document.body.classList.toggle('wide', !['glossary', 'changes'].includes(section));
+  // 홈 타일, 결과 카드, 상세 2단, 용어집 카드는 넓은 화면을 쓴다. 변경 이력은 읽기 좋은 폭(.narrow)으로.
+  document.body.classList.toggle('wide', section !== 'changes');
   document.body.classList.toggle('has-sticky-cta', Boolean(tool));
   document.querySelectorAll('[data-nav]').forEach((a) => {
     if (a.dataset.nav === section) a.setAttribute('aria-current', 'page');
