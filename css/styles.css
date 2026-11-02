@@ -138,7 +138,7 @@ button { cursor: pointer; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 .container { max-width: 720px; margin: 0 auto; padding: 0 16px; }
-/* 홈 타일, 결과 카드, 상세 2단은 넓게 쓴다. 용어집·변경 이력은 .narrow로 읽기 좋은 폭 */
+/* 홈 타일, 결과 카드, 상세 2단, 용어집 카드는 넓게 쓴다. 변경 이력은 .narrow로 읽기 좋은 폭 */
 body.wide .container { max-width: 1072px; }
 .narrow { max-width: 720px; margin: 0 auto; }
 
@@ -624,7 +624,9 @@ body.has-sticky-cta { padding-bottom: 76px; }
 .term-sheet p { margin: 8px 0 12px; color: var(--sub); }
 .term-sheet a { font-weight: 700; font-size: 0.92rem; }
 
-/* 용어집: 풀이를 모두 펼친 목록. 위에 용어 바로 가기 */
+/* 용어집: 용어마다 카드. 휴대폰 1칸, 560px 이상 2칸, 900px 이상 3칸.
+   grid라서 같은 줄 카드는 높이가 같고, 칸 너비도 모두 같다. 위에 용어 바로 가기 */
+.page-sub { max-width: 720px; }
 .glossary-index { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
 .glossary-jump {
   min-height: 36px;
@@ -639,18 +641,24 @@ body.has-sticky-cta { padding-bottom: 76px; }
   cursor: pointer;
 }
 .glossary-jump:hover { border-color: var(--accent); color: var(--accent); }
-.glossary { margin: 0; }
-.glossary-item { padding: 14px 0; border-top: 1px solid var(--line); scroll-margin-top: 120px; }
-.glossary-item:first-child { border-top: 0; padding-top: 0; }
-.glossary-item:last-child { padding-bottom: 0; }
-.glossary-item dt { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; margin: 0 0 4px; }
+.glossary { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin: 0 0 16px; }
+@media (min-width: 560px) { .glossary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .glossary { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.glossary-item {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  scroll-margin-top: 120px;
+}
+.glossary-item dt { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; margin: 0 0 6px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
 .glossary-term { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; color: var(--accent-dark); }
 .glossary .alias { color: var(--muted); font-weight: 500; font-size: 0.875rem; letter-spacing: 0; }
 .glossary .alias::before { content: "= "; }
-.glossary-desc { margin: 0; color: var(--text); line-height: 1.65; }
-.glossary-item.focused { background: var(--accent-bg); margin: 0 -12px; padding-left: 12px; padding-right: 12px; border-radius: 8px; border-top-color: transparent; }
-.glossary-item.focused:first-child { padding-top: 14px; }
-.glossary-item.focused + .glossary-item { border-top-color: transparent; }
+.glossary-desc { margin: 0; color: var(--text); font-size: 0.95rem; line-height: 1.65; }
+.glossary-item.focused { background: var(--accent-bg); border-color: var(--accent); }
 
 /* "정보가 틀려요" 제보 링크 */
 .report-link { font-weight: 700; }
