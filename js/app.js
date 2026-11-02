@@ -403,6 +403,8 @@ function renderNotFound() {
 }
 
 // ---- 용어집 ----
+// 풀이가 한두 문장이라 접지 않고 모두 펼쳐 둔다. 위 용어 목록을 누르면 그 용어로 내려간다.
+// 화면 속 용어·ⓘ에서 "용어집 전체 보기"로 오면(?term=) 그 용어를 강조하고 화면 가운데로 옮긴다.
 function renderGlossary(focus) {
   document.title = `용어집 · ${mode.siteName}`;
   app.innerHTML = `
@@ -410,15 +412,20 @@ function renderGlossary(focus) {
       <div class="page-head">
         ${backLink('#/')}
         <h1 class="page-title">용어집</h1>
-        <p class="page-sub">${esc(mode.glossaryIntro)} 용어를 누르면 풀이가 펼쳐져요. 화면에서 <span class="term-sample">밑줄 친 말</span>이나 ⓘ를 누르면 바로 볼 수 있어요.</p>
+        <p class="page-sub">${esc(mode.glossaryIntro)} 화면에서 <span class="term-sample">밑줄 친 말</span>이나 ⓘ를 누르면 그 자리에서 바로 볼 수 있어요.</p>
       </div>
-      <section class="card">
-        ${data.glossary.length ? `<div class="glossary">${data.glossary.map((item) => `
-          <details class="glossary-item${item.term === focus ? ' focused' : ''}" id="term-${esc(item.term)}"${item.term === focus ? ' open' : ''}>
-            <summary><span class="glossary-term">${esc(item.term)}</span>${item.aliases.length ? ` <span class="alias">(${esc(item.aliases.join(', '))})</span>` : ''}</summary>
-            <p class="glossary-desc">${esc(item.description)}</p>
-          </details>`).join('')}</div>` : '<p class="empty"><strong>아직 준비 중이에요</strong></p>'}
-      </section>
+      ${data.glossary.length ? `
+        <nav class="glossary-index" aria-label="용어 바로 가기">${data.glossary.map((item) => `
+          <button type="button" class="glossary-jump" data-scroll="term-${esc(item.term)}">${esc(item.term)}</button>`).join('')}
+        </nav>
+        <section class="card">
+          <dl class="glossary">${data.glossary.map((item) => `
+            <div class="glossary-item${item.term === focus ? ' focused' : ''}" id="term-${esc(item.term)}">
+              <dt><span class="glossary-term">${esc(item.term)}</span>${item.aliases.length ? ` <span class="alias">${esc(item.aliases.join(', '))}</span>` : ''}</dt>
+              <dd class="glossary-desc">${esc(item.description)}</dd>
+            </div>`).join('')}
+          </dl>
+        </section>` : '<section class="card"><p class="empty"><strong>아직 준비 중이에요</strong></p></section>'}
     </div>`;
   if (focus) document.getElementById(`term-${focus}`)?.scrollIntoView({ block: 'center' });
 }

@@ -624,29 +624,33 @@ body.has-sticky-cta { padding-bottom: 76px; }
 .term-sheet p { margin: 8px 0 12px; color: var(--sub); }
 .term-sheet a { font-weight: 700; font-size: 0.92rem; }
 
-/* 용어집: 용어마다 눌러서 펼치는 형식 */
-.glossary { margin: 0; }
-.glossary-item { border-top: 1px solid var(--line); scroll-margin-top: 120px; }
-.glossary-item:first-child { border-top: 0; }
-.glossary-item > summary {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0 6px;
-  min-height: 48px;
-  padding: 12px 28px 12px 0;
-  position: relative;
+/* 용어집: 풀이를 모두 펼친 목록. 위에 용어 바로 가기 */
+.glossary-index { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
+.glossary-jump {
+  min-height: 36px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 4px 12px;
+  background: var(--surface);
+  color: var(--sub);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
   cursor: pointer;
-  list-style: none;
 }
-.glossary-item > summary::-webkit-details-marker { display: none; }
-.glossary-item > summary::after { content: "▾"; position: absolute; right: 4px; top: 12px; color: var(--muted); }
-.glossary-item[open] > summary::after { content: "▴"; color: var(--accent); }
-.glossary-item > summary:hover .glossary-term { color: var(--accent); }
-.glossary-term { white-space: nowrap; font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; }
+.glossary-jump:hover { border-color: var(--accent); color: var(--accent); }
+.glossary { margin: 0; }
+.glossary-item { padding: 14px 0; border-top: 1px solid var(--line); scroll-margin-top: 120px; }
+.glossary-item:first-child { border-top: 0; padding-top: 0; }
+.glossary-item:last-child { padding-bottom: 0; }
+.glossary-item dt { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; margin: 0 0 4px; }
+.glossary-term { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; color: var(--accent-dark); }
 .glossary .alias { color: var(--muted); font-weight: 500; font-size: 0.875rem; letter-spacing: 0; }
-.glossary-desc { margin: 0 0 14px; color: var(--sub); }
-.glossary-item.focused { background: var(--accent-bg); margin: 0 -12px; padding: 0 12px; border-radius: 8px; }
+.glossary .alias::before { content: "= "; }
+.glossary-desc { margin: 0; color: var(--text); line-height: 1.65; }
+.glossary-item.focused { background: var(--accent-bg); margin: 0 -12px; padding-left: 12px; padding-right: 12px; border-radius: 8px; border-top-color: transparent; }
+.glossary-item.focused:first-child { padding-top: 14px; }
+.glossary-item.focused + .glossary-item { border-top-color: transparent; }
 
 /* "정보가 틀려요" 제보 링크 */
 .report-link { font-weight: 700; }
