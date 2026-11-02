@@ -104,13 +104,23 @@ function score(tool, purposeId, conditions, today, profile) {
 }
 
 /**
+ * 지원 기능 요약. 카드 위 "기능 4개 중 2개 지원" 표시에 쓴다.
+ * @returns {{ count: number, total: number, names: string[] }} total은 체크리스트가 없으면 0
+ */
+export function featureSummary(ids, purposeFeatures) {
+  if (!purposeFeatures?.length) return { count: ids.length, total: 0, names: [] };
+  const names = purposeFeatures.filter((f) => ids.includes(f.id)).map((f) => f.short);
+  return { count: names.length, total: purposeFeatures.length, names };
+}
+
+/**
  * 기능 문장. 예: "받아쓰기, 요약 지원 (4개 중 2개)".
  * purposeFeatures(목적의 체크리스트 [{ id, short }])가 없으면 개수만 말한다.
  */
 export function featureReason(ids, purposeFeatures) {
-  if (!purposeFeatures?.length) return `이 일에 필요한 기능 ${ids.length}개를 지원해요`;
-  const shorts = purposeFeatures.filter((f) => ids.includes(f.id)).map((f) => f.short);
-  return `${shorts.join(', ')} 지원 (${purposeFeatures.length}개 중 ${shorts.length}개)`;
+  const { count, total, names } = featureSummary(ids, purposeFeatures);
+  if (!total) return `이 일에 필요한 기능 ${count}개를 지원해요`;
+  return `${names.join(', ')} 지원 (${total}개 중 ${count}개)`;
 }
 
 // 첫 문장이 카드에 크게 보이는 대표 이유다. 켠 조건과 관련된 이유가 있으면 그게 대표 이유가 되고,

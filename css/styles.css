@@ -231,6 +231,8 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .stat { display: flex; flex-direction: column; }
 .stat-num { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; color: var(--accent); line-height: 1.3; }
 .stat-label { font-size: 0.875rem; color: var(--muted); }
+.home-stats { display: none; margin: 12px 0 0; color: var(--muted); font-size: 0.875rem; }
+.home-stats strong { color: var(--accent); }
 @media (min-width: 900px) {
   .card.intro { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 28px; }
   .intro-part { padding: 22px; }
@@ -263,6 +265,7 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .purposes { margin-bottom: 28px; }
 .tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .tile {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -273,7 +276,7 @@ h1, h2, h3 { letter-spacing: -0.02em; }
   border-radius: var(--radius);
   color: inherit;
 }
-.tile-flag { align-self: flex-start; margin-bottom: 2px; background: var(--accent-bg); color: var(--accent-dark); border-radius: 6px; padding: 1px 8px; font-size: 0.875rem; font-weight: 700; }
+.tile-flag { position: absolute; top: 10px; right: 10px; background: var(--accent-bg); color: var(--accent-dark); border-radius: 6px; padding: 1px 8px; font-size: 0.875rem; font-weight: 700; }
 .tile:hover { border-color: var(--accent); }
 .tile:hover .tile-ttl { color: var(--accent); }
 .tile-ico { font-size: 1.6rem; line-height: 1.2; margin-bottom: 4px; }
@@ -366,6 +369,7 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .badge { border-radius: 999px; padding: 3px 10px; font-size: 0.875rem; font-weight: 700; white-space: nowrap; border: 1px solid transparent; }
 .badge-good { background: var(--good-bg); color: var(--good); }
 .badge-warn { background: var(--warn-bg); color: var(--warn); }
+.badge-warn::before { content: "⚠ "; }
 .badge-plain { border-color: var(--line-strong); color: var(--sub); }
 
 /* ---- 추천 카드: 휴대폰은 세로로 쌓고, 넓은 화면(900px 이상)은 3개를 나란히 ---- */
@@ -381,7 +385,7 @@ h1, h2, h3 { letter-spacing: -0.02em; }
   .cards {
     grid-auto-flow: column;
     grid-auto-columns: minmax(0, 340px);
-    /* 카드 안 칸(머리, 대표 이유, 배지, 버튼, 자세히 보기)을 카드끼리 같은 높이로 맞춘다 (app.js toolCardHtml) */
+    /* 카드 안 칸(머리, 지원 기능, 배지, 버튼, 자세히 보기)을 카드끼리 같은 높이로 맞춘다 (app.js toolCardHtml) */
     grid-template-rows: repeat(5, auto);
     justify-content: center;
     column-gap: 16px;
@@ -401,15 +405,33 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .tag-warn { background: var(--warn-bg); color: var(--warn); }
 .tag-plain { border: 1px solid var(--line-strong); color: var(--sub); }
 
-.top-reason {
+.rank {
+  flex: none;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  color: var(--accent-dark);
+  font-size: 0.875rem;
+  font-weight: 800;
+}
+/* 지원 기능: 개수를 크게, 기능 이름은 작게 */
+.fit {
   margin: 0 0 12px;
   padding: 10px 12px;
   border-left: 3px solid var(--accent);
   background: var(--bg);
   border-radius: 0 8px 8px 0;
-  font-weight: 700;
-  font-size: 0.95rem;
 }
+.fit p { margin: 0; }
+.fit-count { font-size: 0.95rem; color: var(--sub); }
+.fit-count strong { color: var(--text); font-size: 1.05rem; font-weight: 800; }
+.fit-names { margin-top: 2px !important; color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
+.fit-reason { margin-top: 6px !important; font-weight: 700; font-size: 0.92rem; }
+.fit-reason::before { content: "✓ "; color: var(--good); }
 .tool-card .badges { padding-bottom: 14px; }
 .tool-actions { align-self: end; }
 
@@ -472,7 +494,9 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .more-candidates > summary::after { content: " ▾"; }
 .more-candidates[open] > summary::after { content: " ▴"; }
 .more-candidates .list { border-top: 1px solid var(--line); }
-.order-note { color: var(--muted); font-size: 0.875rem; margin: -8px 0 16px; }
+.order-note { color: var(--muted); font-size: 0.875rem; margin: -8px 0 6px; }
+.badge-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; color: var(--muted); font-size: 0.875rem; margin: 0 0 16px; }
+.badge-legend .badge { padding: 0 8px; font-size: 0.8125rem; }
 
 .verified-line { margin: 14px 0 0; color: var(--muted); font-size: 0.875rem; }
 
@@ -491,7 +515,10 @@ h1, h2, h3 { letter-spacing: -0.02em; }
 .card > .steps, .card > .cautions { margin-top: 12px; }
 .card .section-label { margin-top: 16px; }
 .sources { margin: 0; padding-left: 18px; font-size: 0.9rem; }
-.sources a { word-break: break-all; }
+.sources li { padding: 2px 0; }
+.sources a { display: flex; max-width: 100%; min-width: 0; }
+.src-host { flex: none; font-weight: 700; }
+.src-path { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); }
 
 /* 휴대폰: "공식 사이트 열기"를 화면 아래에 고정 */
 .sticky-cta {
@@ -520,7 +547,8 @@ body.has-sticky-cta { padding-bottom: 76px; }
 .empty strong { display: block; color: var(--text); font-weight: 800; font-size: 1.15rem; margin-bottom: 4px; }
 
 .site-footer { color: var(--muted); font-size: 0.875rem; padding: 16px 16px 40px; border-top: 1px solid var(--line); margin-top: 8px; }
-.site-terms { margin: 8px 0 0; }
+.site-terms { margin: 10px 0 0; font-size: 0.8125rem; line-height: 1.6; }
+.site-terms strong { color: var(--sub); margin-right: 4px; }
 .site-footer nav { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px; }
 .loading, .error { padding: 60px 0; color: var(--muted); }
 .error { color: var(--red); }
@@ -643,8 +671,15 @@ body.has-sticky-cta { padding-bottom: 76px; }
   .intro-steps li::before { flex: none; margin: 0; width: 22px; height: 22px; }
   .intro-list { gap: 2px; }
   .intro-list li { line-height: 1.45; }
-  .intro-stats .intro-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  .stat-num { font-size: 1.2rem; }
+  /* 휴대폰: 숫자는 타일 아래 한 줄로 옮기고, 비교·믿음 칸은 한 줄씩 짧게 → 첫 화면에서 타일이 보이게 */
+  .intro-stats { display: none; }
+  .home-stats { display: block; }
+  .intro .intro-row { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 10px; padding: 10px 14px; }
+  .intro-row .intro-title { flex: none; margin: 0; }
+  .intro-row .intro-list { display: flex; flex-wrap: wrap; gap: 0 10px; }
+  .intro-row .intro-list li { padding-left: 14px; }
+  .intro-row .intro-list li::before { left: 2px; }
+  .intro-row .intro-trust li::before { left: 0; }
   .intro-steps { grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 4px; }
   .intro-steps li { font-size: 0.875rem; white-space: nowrap; }
   /* 조건 칩: 좁은 화면은 2칸씩 가지런히 */

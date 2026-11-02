@@ -7,8 +7,8 @@
 // 조건은 모드마다 다르다 (js/modes.js). 예: 비개발자용 free=1, secure=1 / 개발자용 free=1, oss=1
 // 주소에 ?demo가 있으면 (예: index.html?demo#/) 실제 데이터 대신 예시 데이터를 쓴다.
 // 점수 계산은 하지 않는다. 추천은 recommend.js에만 맡긴다.
-import { featureReason, recommendSections, isStale, supportedFeatures } from './recommend.js';
-import { UNKNOWN, changeText, formatDate, localToday, reportUrl } from './format.js';
+import { featureReason, featureSummary, recommendSections, isStale, supportedFeatures } from './recommend.js';
+import { UNKNOWN, changeText, formatDate, localToday, reportUrl, sourceLabel } from './format.js';
 import { glossarize, termIn, termMatcher } from './glossary.js';
 import { MODES } from './modes.js';
 
@@ -92,8 +92,11 @@ const staleTag = (stale) => (stale ? '<span class="tag tag-warn">확인 필요</
 const reportLink = (t) =>
   `<a class="report-link" href="${esc(reportUrl(t.name, mode.reportSite))}" target="_blank" rel="noopener">정보가 틀려요 ↗</a>`;
 
-const sourcesHtml = (t) =>
-  `<ul class="sources">${t.sources.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join('')}</ul>`;
+/** 출처: 도메인을 굵게, 경로는 흐리게 한 줄로 (긴 경로는 줄임표). 전체 주소는 title에 */
+const sourcesHtml = (t) => `<ul class="sources">${t.sources.map((u) => {
+  const { host, path } = sourceLabel(u);
+  return `<li><a href="${esc(u)}" title="${esc(u)}" target="_blank" rel="noopener"><span class="src-host">${esc(host)}</span>${path ? `<span class="src-path">${esc(path)}</span>` : ''}</a></li>`;
+}).join('')}</ul>`;
 
 const officialButton = (t, cls = 'btn-primary') =>
   `<a class="btn ${cls} btn-block" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트 열기 ↗</a>`;
@@ -106,9 +109,18 @@ const emptyNotice = () => (data.demo || data.tools.length > 0 ? '' : `
 
 // ---- 홈 ----
 // 맨 위는 서비스 소개 카드 하나(안을 칸으로 나눔, 한 화면에 들어가게), 그 아래 목적 타일.
-function introHtml() {
+/** 숫자 3개 (할 수 있는 일, 확인한 툴, 최근 확인) */
+function statsList() {
   const dates = data.tools.map((t) => t.last_verified).sort();
-  const stat = (num, label) => `<div class="stat"><span class="stat-num">${num}</span><span class="stat-label">${esc(label)}</span></div>`;
+  return [
+    [data.purposes.length, '할 수 있는 일'],
+    [data.tools.length, `확인한 ${W}`],
+    [dates.length ? esc(formatDate(dates.at(-1)).replace(/^\d{4}년 /, '')) : '준비 중', '최근 확인'],
+  ];
+}
+
+function introHtml() {
+  const stat = ([num, label]) => `<div class="stat"><span class="stat-num">${num}</span><span class="stat-label">${esc(label)}</span></div>`;
   return `
     <section class="card intro" aria-label="${esc(mode.siteName)} 소개">
       <div class="intro-part intro-what">
@@ -121,20 +133,18 @@ function introHtml() {
         <h2 class="intro-title">이렇게 써요</h2>
         <ol class="intro-steps">${mode.introSteps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>
       </div>
-      <div class="intro-part">
+      <div class="intro-part intro-row">
         <h2 class="intro-title">이걸 비교해요</h2>
         <ul class="intro-list">${mode.introChecks.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
       </div>
-      <div class="intro-part">
+      <div class="intro-part intro-row">
         <h2 class="intro-title">믿을 수 있게</h2>
         <ul class="intro-list intro-trust">${mode.trust.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
       </div>
       <div class="intro-part intro-stats">
         <h2 class="intro-title">한눈에</h2>
         <div class="stats">
-          ${stat(data.purposes.length, '할 수 있는 일')}
-          ${stat(data.tools.length, `확인한 ${W}`)}
-          ${stat(dates.length ? esc(formatDate(dates.at(-1)).replace(/^\d{4}년 /, '')) : '준비 중', '최근 확인')}
+          ${statsList().map(stat).join('')}
         </div>
       </div>
     </section>`;
@@ -157,6 +167,7 @@ function renderHome() {
           <span class="tile-ttl">${esc(p.label)}</span>
           <span class="tile-dsc">${esc(p.examples)}</span>
         </a></li>`).join('')}</ul>
+      <p class="home-stats">${statsList().map(([num, label]) => `${esc(label)} <strong>${num}</strong>`).join(' · ')}</p>
     </section>
 
     <section class="more" aria-labelledby="more-title">
@@ -169,7 +180,7 @@ function renderHome() {
 }
 
 // ---- 추천 결과 ----
-// 카드는 요약(머리, 대표 이유, 배지, 버튼)만 보이고 나머지는 "자세히 보기"에 접는다.
+// 카드는 요약(순서·머리, 지원 기능, 배지, 버튼)만 보이고 나머지는 "자세히 보기"에 접는다.
 // 휴대폰은 세로로 쌓고, 넓은 화면은 3개를 나란히 놓아 칸을 CSS subgrid로 맞춘다 (칸 수 5 = styles.css .cards).
 /** 그 목적의 기능 체크리스트. 지원하는 기능은 ✓, 공식 페이지에서 확인 안 된 기능은 흐리게 */
 const checklistHtml = (purpose, ids) => `
@@ -180,17 +191,28 @@ const checklistHtml = (purpose, ids) => `
 function toolCardHtml(r, index, all, purpose) {
   const t = r.tool;
   const cautions = cautionsOf(t);
-  const [topReason, ...moreReasons] = r.reasons;
+  // 기능 문장은 위 "기능 n개 중 m개"와 체크리스트로 보여주니, 이유 목록에서는 뺀다.
+  // 켠 조건과 관련된 이유가 있으면 그게 대표 이유로 한 줄 붙는다 (recommend.js reasons 순서).
+  const fit = featureSummary(r.features, purpose.features);
+  const featureText = featureReason(r.features, purpose.features);
+  const [first, ...rest] = r.reasons;
+  const conditionReason = first === featureText ? null : first;
+  const moreReasons = rest.filter((s) => s !== featureText);
   return `
     <article class="tool-card" aria-label="추천 후보 ${index + 1} / 전체 ${all.length}개">
       <div class="tool-head">
         <div class="tool-title">
+          <span class="rank" aria-hidden="true">${index + 1}</span>
           <h2 class="tool-name"><a href="#/t/${esc(t.id)}">${esc(t.name)}</a></h2>
           ${staleTag(r.stale)}${notAiTag(t)}
         </div>
         <p class="tool-one-liner">${g(t.one_liner)}</p>
       </div>
-      <p class="top-reason">${g(topReason)}</p>
+      <div class="fit">
+        <p class="fit-count">${fit.total ? `기능 <strong>${fit.total}개 중 ${fit.count}개</strong> 지원` : `기능 <strong>${fit.count}개</strong> 지원`}</p>
+        ${fit.names.length ? `<p class="fit-names">${fit.names.map(esc).join(' · ')}</p>` : ''}
+        ${conditionReason ? `<p class="fit-reason">${g(conditionReason)}</p>` : ''}
+      </div>
       ${badgesHtml(t)}
       <div class="tool-actions">${officialButton(t, 'btn-outline')}</div>
       <details class="card-more">
@@ -286,7 +308,8 @@ function renderResult(purpose, conditions) {
         ${chips}
         ${activeDescs.length ? `<p class="chips-desc">${activeDescs.map(esc).join(' · ')}</p>` : ''}
       </div>
-      <p class="order-note">순서는 이 일에 필요한 기능을 몇 개 지원하는지(공식 페이지 기준)로 정해요. 좋고 나쁨의 순위가 아니에요.</p>` : ''}
+      <p class="order-note">순서는 이 일에 필요한 기능을 몇 개 지원하는지(공식 페이지 기준)로 정해요. 좋고 나쁨의 순위가 아니에요.</p>
+      <p class="badge-legend"><span class="badge badge-good">초록</span> 좋은 점 <span class="badge badge-warn">노랑</span> 주의할 점 <span class="badge badge-plain">테두리</span> 참고</p>` : ''}
     ${body}`;
   installDetailsSync();
 }

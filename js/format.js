@@ -181,6 +181,19 @@ export function changeText(change, purposes = []) {
   return `${change.name}: ${label} ${changeValue(field, change.before)} → ${changeValue(field, change.after)}`;
 }
 
+/** 출처 링크 글자. 긴 주소 대신 도메인과 경로를 나눠서 보여준다 (경로는 화면에서 줄임표로 자른다). */
+export function sourceLabel(url) {
+  const u = new URL(url);
+  const host = u.hostname.replace(/^www\./, '');
+  let path = u.pathname.replace(/\/$/, '');
+  try {
+    path = decodeURI(path);
+  } catch {
+    // 잘못 인코딩된 주소는 그대로 보여준다
+  }
+  return { host, path };
+}
+
 // ---- "정보가 틀려요" 제보 (.github/ISSUE_TEMPLATE/wrong-info.yml) ----
 const ISSUE_NEW = 'https://github.com/dlwldP/which-ai/issues/new';
 
