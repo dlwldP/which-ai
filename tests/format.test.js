@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   changeText, formatDate, freeLimitText, freeText, koreanText, localToday, loginText, paidText, platformsText, privacyText,
-  reportUrl, freeBadge, privacyBadge, koreanBadge, openSourceBadge,
+  reportUrl, sourceLabel, freeBadge, privacyBadge, koreanBadge, openSourceBadge,
 } from '../js/format.js';
 import { isSecure } from '../js/recommend.js';
 
@@ -105,4 +105,11 @@ test('요약 배지: 학습 정책은 추천 엔진의 보안 기준과 같게 g
   }
   assert.equal(privacyBadge({ trains_on_input_default: 'unknown', opt_out: 'unknown' }).text, '학습 정책 확인 필요');
   assert.equal(privacyBadge({ trains_on_input_default: 'no', opt_out: 'unknown' }, '코드 ').text, '코드 학습에 안 씀');
+});
+
+test('출처 링크 글자: 도메인과 경로를 나눔', () => {
+  assert.deepEqual(sourceLabel('https://www.claude.com/pricing/'), { host: 'claude.com', path: '/pricing' });
+  assert.deepEqual(sourceLabel('https://example.com/'), { host: 'example.com', path: '' });
+  assert.deepEqual(sourceLabel('https://example.com/%EC%9A%94%EA%B8%88'), { host: 'example.com', path: '/요금' });
+  assert.deepEqual(sourceLabel('https://example.com/a%E0b'), { host: 'example.com', path: '/a%E0b' });
 });

@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { recommend, isStale } from '../js/recommend.js';
+import { recommend, isStale, featureReason, featureSummary } from '../js/recommend.js';
 import { loadData } from '../scripts/validate-data.js';
 
 const TODAY = '2026-10-19';
@@ -288,4 +288,12 @@ test('후보가 3개 이하면 others는 빈 배열', () => {
   const out = recommend({ tools: fixture, purposeId: 'P01', today: TODAY });
   assert.ok(out.results.length <= 3);
   assert.deepEqual(out.others, []);
+});
+
+test('지원 기능 요약: 카드 위 "기능 n개 중 m개"와 기능 문장이 같은 값을 쓴다', () => {
+  const features = [{ id: 'a', short: '받아쓰기' }, { id: 'b', short: '요약' }, { id: 'c', short: '번역' }];
+  assert.deepEqual(featureSummary(['c', 'a'], features), { count: 2, total: 3, names: ['받아쓰기', '번역'] });
+  assert.equal(featureReason(['c', 'a'], features), '받아쓰기, 번역 지원 (3개 중 2개)');
+  assert.deepEqual(featureSummary(['a'], []), { count: 1, total: 0, names: [] });
+  assert.equal(featureReason(['a'], undefined), '이 일에 필요한 기능 1개를 지원해요');
 });
