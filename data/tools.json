@@ -2508,5 +2508,374 @@
       "https://www.hostinger.com/ai-website-builder"
     ],
     "last_verified": "2026-11-06"
+  },
+  {
+    "id": "bubble",
+    "name": "Bubble",
+    "url": "https://bubble.io/",
+    "one_liner": "코딩 없이 웹·휴대폰 앱을 만들고, AI로 앱 초안을 바로 만들어요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "bubble.io"
+    ],
+    "sources": [
+      "https://bubble.io/",
+      "https://bubble.io/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "clickup",
+    "name": "ClickUp",
+    "url": "https://clickup.com/",
+    "one_liner": "할 일·문서·회의를 한곳에서 관리하고 AI가 정리와 작성을 도와줘요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "clickup.com"
+    ],
+    "sources": [
+      "https://clickup.com/",
+      "https://clickup.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "monday",
+    "name": "monday.com",
+    "url": "https://monday.com/",
+    "one_liner": "팀 업무를 표·보드로 관리하고 AI가 요약·분류·작성을 대신해줘요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "monday.com"
+    ],
+    "sources": [
+      "https://monday.com/",
+      "https://monday.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "reclaim",
+    "name": "Reclaim",
+    "url": "https://reclaim.ai/",
+    "one_liner": "할 일과 집중 시간을 AI가 구글 캘린더에 알아서 넣어줘요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "reclaim.ai"
+    ],
+    "sources": [
+      "https://reclaim.ai/",
+      "https://reclaim.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "motion",
+    "name": "Motion",
+    "url": "https://www.usemotion.com/",
+    "one_liner": "할 일과 회의를 AI가 하루 일정표로 자동으로 짜줘요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "usemotion.com"
+    ],
+    "sources": [
+      "https://www.usemotion.com/",
+      "https://www.usemotion.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "sintra",
+    "name": "Sintra",
+    "url": "https://sintra.ai/",
+    "one_liner": "마케팅·고객 응대·SNS를 맡는 AI 직원들을 쓰는 서비스예요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "sintra.ai"
+    ],
+    "sources": [
+      "https://sintra.ai/",
+      "https://sintra.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "superhuman",
+    "name": "Superhuman",
+    "url": "https://superhuman.com/",
+    "one_liner": "AI가 메일을 분류하고 답장 초안을 써주는 빠른 메일 앱이에요",
+    "purposes": [
+      "P05",
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "superhuman.com"
+    ],
+    "sources": [
+      "https://superhuman.com/",
+      "https://superhuman.com/plans"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "shortwave",
+    "name": "Shortwave",
+    "url": "https://www.shortwave.com/",
+    "one_liner": "지메일에 AI 비서를 붙여 메일을 찾고 요약하고 답장해줘요",
+    "purposes": [
+      "P05",
+      "P01"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "shortwave.com"
+    ],
+    "sources": [
+      "https://www.shortwave.com/",
+      "https://www.shortwave.com/pricing/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "webflow",
+    "name": "Webflow",
+    "url": "https://webflow.com/",
+    "one_liner": "디자인하듯 웹사이트를 만들고 AI로 페이지와 문구를 만들어요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "webflow.com"
+    ],
+    "sources": [
+      "https://webflow.com/",
+      "https://webflow.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "squarespace",
+    "name": "Squarespace",
+    "url": "https://www.squarespace.com/",
+    "one_liner": "AI가 질문 몇 개로 홈페이지·온라인 가게 초안을 만들어줘요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "squarespace.com"
+    ],
+    "sources": [
+      "https://www.squarespace.com/",
+      "https://www.squarespace.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "softr",
+    "name": "Softr",
+    "url": "https://www.softr.io/",
+    "one_liner": "스프레드시트 데이터로 코딩 없이 사내 앱·고객 포털을 만들어요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "softr.io"
+    ],
+    "sources": [
+      "https://www.softr.io/",
+      "https://www.softr.io/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "glide",
+    "name": "Glide",
+    "url": "https://www.glideapps.com/",
+    "one_liner": "구글 시트·엑셀로 코딩 없이 업무용 앱을 만들고 AI 기능을 넣어요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "glideapps.com"
+    ],
+    "sources": [
+      "https://www.glideapps.com/",
+      "https://www.glideapps.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "mindstudio",
+    "name": "MindStudio",
+    "url": "https://www.mindstudio.ai/",
+    "one_liner": "코딩 없이 나만의 AI 에이전트를 만들어 일을 맡겨요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "mindstudio.ai"
+    ],
+    "sources": [
+      "https://www.mindstudio.ai/",
+      "https://www.mindstudio.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "jotform",
+    "name": "Jotform",
+    "url": "https://www.jotform.com/",
+    "one_liner": "신청서·설문을 만들고 AI 에이전트가 응답과 상담을 도와줘요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "jotform.com"
+    ],
+    "sources": [
+      "https://www.jotform.com/",
+      "https://www.jotform.com/pricing/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "typeform",
+    "name": "Typeform",
+    "url": "https://www.typeform.com/",
+    "one_liner": "AI로 설문·퀴즈를 만들고 응답을 분석해줘요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "typeform.com"
+    ],
+    "sources": [
+      "https://www.typeform.com/",
+      "https://www.typeform.com/pricing/"
+    ],
+    "last_verified": "2026-11-06"
   }
 ]
