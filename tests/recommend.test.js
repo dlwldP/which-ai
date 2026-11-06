@@ -9,12 +9,30 @@ const demo = read('data/demo-tools.json');
 const devDemo = read('data/dev/demo-tools.json');
 const purposes = read('data/purposes.json');
 
-test('용도로 거르고 이름순', () => {
+test('용도로 거르고 이름순 (가격을 모르는 툴은 맨 뒤)', () => {
   const list = listTools({ tools: demo, purposeId: 'P01' });
   assert.ok(list.length > 0);
   assert.ok(list.every((t) => t.purposes.includes('P01')));
-  const names = list.map((t) => t.name);
-  assert.deepEqual(names, [...names].sort((a, b) => a.localeCompare(b, 'ko')));
+  const known = list.filter((t) => t.price.free !== null || t.price.paid !== null).map((t) => t.name);
+  assert.deepEqual(known, [...known].sort((a, b) => a.localeCompare(b, 'ko')));
+});
+
+test('정렬: 무료 먼저, 가격 모름은 항상 맨 뒤', async () => {
+  const { SORTS } = await import('../js/recommend.js');
+  const mk = (id, free, paid) => ({ id, name: id, one_liner: '', purposes: ['P01'], use: ['web'], price: { free, paid } });
+  const tools = [mk('a-paid', false, true), mk('b-unknown', null, null), mk('c-free', true, true), mk('d-free', true, null)];
+  assert.deepEqual(listTools({ tools }).map((t) => t.id), ['a-paid', 'c-free', 'd-free', 'b-unknown']);
+  assert.deepEqual(listTools({ tools, sort: 'free' }).map((t) => t.id), ['c-free', 'd-free', 'a-paid', 'b-unknown']);
+  assert.throws(() => listTools({ tools, sort: 'score' }), TypeError);
+  assert.deepEqual(Object.keys(SORTS), ['name', 'free']);
+});
+
+test('묶음 미리보기와 글자 아이콘', async () => {
+  const { splitPreview, initialLetter } = await import('../js/recommend.js');
+  const { shown, hidden } = splitPreview([1, 2, 3, 4, 5], 3);
+  assert.deepEqual([shown, hidden], [[1, 2, 3], [4, 5]]);
+  assert.equal(initialLetter('ollama'), 'O');
+  assert.equal(initialLetter('뤼튼'), '뤼');
 });
 
 test('용도가 없으면 전체', () => {

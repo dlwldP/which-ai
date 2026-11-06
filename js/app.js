@@ -7,7 +7,7 @@
 //   #/changes                변경 이력
 // 2026-11-06 개편: 점수 추천과 "자세히 보기"를 없애고, 용도별 카드 목록으로 최대한 많은 AI를 짧게 보여준다.
 // 목록·조건 계산은 recommend.js(순수 함수)에만 맡긴다.
-import { FILTERS, groupByKind, isStale, listTools } from './recommend.js';
+import { FILTERS, SORTS, groupByKind, initialLetter, isStale, listTools, splitPreview } from './recommend.js';
 import { formatDate, localToday, priceBadge, useText } from './format.js';
 import { FEEDBACK_FORM, REASON_MAX, cleanReason, feedbackBody, githubIssueUrl, isFeedbackReady } from './feedback.js';
 import { PAGE_KEYS, pageSections } from './pages.js';
@@ -68,6 +68,7 @@ function cardHtml(t, currentPurpose = null) {
   return `
     <article class="tool-card" id="tool-${esc(t.id)}">
       <div class="tool-head">
+        <span class="tool-avatar" aria-hidden="true">${esc(initialLetter(t.name))}</span>
         <h2 class="tool-name"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.name)} <span class="ext" aria-hidden="true">↗</span></a></h2>
         ${stale ? '<span class="tag tag-warn">다시 확인 필요</span>' : ''}
         ${t.ai_native === 'no' ? '<span class="tag tag-plain">AI와 같이 쓰는 도구</span>' : ''}
@@ -94,11 +95,15 @@ function groupedHtml(tools, currentPurpose) {
   if (!mode.kinds) return cardsHtml(tools, currentPurpose);
   return groupByKind(tools, mode.kinds).map(({ kind, tools: list }) => {
     const info = mode.kindInfo[kind];
+    const { shown, hidden } = splitPreview(list);
     return `
       <section class="result-section" aria-labelledby="kind-${kind}">
         <h2 class="result-section-title" id="kind-${kind}"><span aria-hidden="true">${info.icon}</span> ${esc(info.title)} <span class="count">${list.length}</span></h2>
         <p class="result-section-desc">${esc(info.desc)}</p>
-        ${cardsHtml(list, currentPurpose)}
+        ${cardsHtml(shown, currentPurpose)}
+        ${hidden.length ? `
+          <div class="more-cards" hidden>${cardsHtml(hidden, currentPurpose)}</div>
+          <button type="button" class="btn btn-outline more-btn" data-more aria-expanded="false">${esc(info.title)} ${hidden.length}개 더 보기</button>` : ''}
       </section>`;
   }).join('');
 }
@@ -131,9 +136,9 @@ function renderHome() {
         <div class="hero-side">
           ${searchForm()}
           <div class="hero-facts">
-            <div class="hero-fact"><strong>${data.tools.length}</strong><span>모아 둔 ${W}</span></div>
-            <div class="hero-fact"><strong>${free}</strong><span>무료로 쓸 수 있음</span></div>
-            <div class="hero-fact"><strong>${web}</strong><span>${esc(mode.webFact)}</span></div>
+            <a class="hero-fact" href="#/all"><strong>${data.tools.length}</strong><span>모아 둔 ${W}</span></a>
+            <a class="hero-fact" href="#/all?free=1"><strong>${free}</strong><span>무료로 쓸 수 있음</span></a>
+            <a class="hero-fact" href="#/all?web=1"><strong>${web}</strong><span>${esc(mode.webFact)}</span></a>
           </div>
           <p class="hero-links"><a href="#/all">전체 ${W} 보기 ›</a> <a href="${mode.otherSite.href}">${esc(mode.otherSite.label)} ›</a></p>
         </div>
@@ -173,23 +178,52 @@ function filterChips(base, active, extra = '') {
     </div>`;
 }
 
+/** 목록 위 분야 탭: 처음 화면으로 돌아가지 않고 옆 분야로 넘어간다 (켠 조건·정렬은 그대로) */
+function purposeTabs(current, keep) {
+  return `
+    <nav class="purpose-tabs" aria-label="하고 싶은 일">
+      <a class="purpose-tab" href="#/all${keep}"${current ? '' : ' aria-current="page"'}>전체</a>
+      ${data.purposes.map((p) => `<a class="purpose-tab" href="#/p/${p.id}${keep}"${current === p.id ? ' aria-current="page"' : ''}><span aria-hidden="true">${esc(p.icon)}</span> ${esc(p.label)}</a>`).join('')}
+    </nav>`;
+}
+
+const SORT_LABELS = { name: '이름순', free: '무료 먼저' };
+function sortChips(base, params) {
+  const current = SORTS[params.get('sort')] ? params.get('sort') : 'name';
+  return `
+    <div class="sort" role="group" aria-label="정렬">
+      <span class="sort-label">정렬</span>
+      ${Object.keys(SORTS).map((k) => {
+        const next = new URLSearchParams(params);
+        if (k === 'name') next.delete('sort'); else next.set('sort', k);
+        const q = next.toString();
+        return `<a class="sort-chip" href="${base}${q ? `?${q}` : ''}" aria-pressed="${current === k}">${SORT_LABELS[k]}</a>`;
+      }).join('')}
+    </div>`;
+}
+
 function renderList({ purpose = null, params }) {
   const active = mode.filters.map((f) => f.key).filter((k) => params.get(k) === '1' && FILTERS[k]);
   const query = purpose ? '' : (params.get('q') ?? '');
-  const tools = listTools({ tools: data.tools, purposeId: purpose?.id ?? null, filters: active, query });
+  const sort = SORTS[params.get('sort')] ? params.get('sort') : 'name';
+  const tools = listTools({ tools: data.tools, purposeId: purpose?.id ?? null, filters: active, query, sort });
+  const keepParams = new URLSearchParams();
+  for (const k of active) keepParams.set(k, '1');
+  if (sort !== 'name') keepParams.set('sort', sort);
+  const keep = keepParams.toString() ? `?${keepParams}` : '';
   const title = purpose ? `${purpose.icon} ${purpose.label}` : query ? `"${query}" 찾기` : `전체 ${W}`;
   document.title = `${purpose ? purpose.label : `전체 ${W}`} · ${mode.siteName}`;
   const base = purpose ? `#/p/${purpose.id}` : '#/all';
   app.innerHTML = `
+    ${purposeTabs(purpose?.id ?? null, keep)}
     <div class="page-head">
-      ${backLink('#/', '처음으로')}
       <h1 class="page-title">${esc(title)} <span class="count">${tools.length}개</span></h1>
       ${purpose ? `<p class="page-sub">${esc(purpose.examples)}</p>` : searchForm(query)}
     </div>
-    ${data.tools.length ? filterChips(base, active, query ? `q=${encodeURIComponent(query)}` : '') : ''}
+    ${data.tools.length ? `<div class="list-controls">${filterChips(base, active, [query ? `q=${encodeURIComponent(query)}` : '', sort !== 'name' ? `sort=${sort}` : ''].filter(Boolean).join('&'))}${sortChips(base, params)}</div>` : ''}
     ${tools.length ? groupedHtml(tools, purpose?.id ?? null)
       : emptyNotice(active.length || query ? '조건을 바꿔서 다시 찾아보세요.' : mode.emptyText)}
-    <p class="order-note">순서는 이름순이에요. 가격·쓰는 방법은 확인 날짜 기준이니, 쓰기 전에 공식 사이트에서 한 번 더 확인하세요.</p>`;
+    <p class="order-note">순서는 이름순(또는 무료 먼저)이고, 가격을 확인하지 못한 툴은 맨 뒤에 있어요. 좋고 나쁨의 순위가 아니에요. 가격·쓰는 방법은 확인 날짜 기준이니, 쓰기 전에 공식 사이트에서 한 번 더 확인하세요.</p>`;
 }
 
 function renderTool(t) {
@@ -468,6 +502,10 @@ function route() {
   app.querySelectorAll('[data-scroll]').forEach((b) => b.addEventListener('click', () => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.getElementById(b.dataset.scroll)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }));
+  app.querySelectorAll('[data-more]').forEach((btn) => btn.addEventListener('click', () => {
+    btn.previousElementSibling.hidden = false; // 남은 카드 펼치기
+    btn.remove();
   }));
   app.querySelectorAll('[data-search]').forEach((form) => form.addEventListener('submit', (ev) => {
     ev.preventDefault();
