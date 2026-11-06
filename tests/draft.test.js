@@ -159,6 +159,18 @@ for (const [name, mutate, expected] of devFailCases) {
   });
 }
 
+test('개발자용: 오픈소스 아님(false)은 근거 없이 통과, 오픈소스(true)는 근거가 필요', () => {
+  const asProduct = (d) => {
+    d.open_source = false;
+    d.section = 'official';
+    delete d.repo_url;
+    d.evidence = d.evidence.filter((e) => e.field !== 'open_source');
+  };
+  assert.deepEqual(devErrorsFor(asProduct), []);
+  const errors = devErrorsFor((d) => { d.evidence = d.evidence.filter((e) => e.field !== 'open_source'); });
+  assert.ok(errors.some((e) => e.includes('"open_source" 값의 근거')), JSON.stringify(errors));
+});
+
 test('개발자용 todo: 오픈소스·저장소를 J가 채울 칸으로 두면 통과', () => {
   const errors = devErrorsFor((d) => {
     d.todo = ['open_source', 'repo_url'];
