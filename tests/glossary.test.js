@@ -29,7 +29,24 @@ test('용어가 없으면 그대로', () => {
 
 test('비교 항목 이름에서 용어 찾기 (ⓘ 표시용)', () => {
   assert.equal(termIn('무료 한도', matcher), '무료 한도');
-  assert.equal(termIn('유료 가격', matcher), '유료 가격');
+  assert.equal(termIn('직접 설치 (개발 지식 필요)', matcher), '직접 설치');
   assert.equal(termIn('사용 기기', matcher), null);
   assert.equal(termIn('무료 한도', null), null);
+});
+
+test('용어집 첫 글자 묶음: 한글 초성(쌍자음 합침) → 영문 → 나머지', async () => {
+  const { initialOf, glossaryGroups, glossaryMatches } = await import('../js/glossary.js');
+  assert.equal(initialOf('토큰'), 'ㅌ');
+  assert.equal(initialOf('꿀팁'), 'ㄱ');
+  assert.equal(initialOf('api'), 'A');
+  assert.equal(initialOf('3D'), '#');
+  const g = glossaryGroups([
+    { term: 'RAG', aliases: [], description: 'x' },
+    { term: '프롬프트', aliases: [], description: 'x' },
+    { term: '가격', aliases: [], description: 'x' },
+    { term: '1분', aliases: [], description: 'x' },
+  ]);
+  assert.deepEqual(g.map((x) => x.key), ['ㄱ', 'ㅍ', 'R', '#']);
+  assert.equal(glossaryMatches({ term: '토큰', aliases: ['token'], description: '글 조각' }, 'TOKEN'), true);
+  assert.equal(glossaryMatches({ term: '토큰', aliases: [], description: '글 조각' }, '없는말'), false);
 });

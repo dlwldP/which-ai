@@ -9,8 +9,11 @@ export const MODES = {
     homeTitle: 'AI 뭐 써? · 하고 싶은 일별 AI 모음',
     eyebrow: '하고 싶은 일별 AI 모음',
     heroHtml: '이런 일엔<br>이런 AI가 있어요',
-    heroSub: '이미지, 영상, 번역, 목소리… 하고 싶은 일을 누르면 쓸 수 있는 AI를 한눈에 보여드려요. 무료인지, 어떻게 쓰는지만 짧게요.',
+    heroSub: 'ChatGPT·Claude 말고도 쓸 만한 AI가 많아요. 하고 싶은 일을 고르면 그 일에 쓰는 AI를 모아서, 무료인지와 어떻게 쓰는지만 짧게 보여드려요. 회원가입 없이, 광고 없이요.',
     toolWord: '툴',
+    heroSteps: ['하고 싶은 일 고르기', '무료인지·어떻게 쓰는지 보기', '공식 사이트에서 바로 써 보기'],
+    webFact: '설치 없이 웹사이트에서',
+    otherSite: { href: 'dev/', label: '개발자라면 개발자용 보기' },
     reportSite: 'AI 뭐 써? (일반용)', // 제보 양식의 사이트 선택값과 같아야 한다
     reportGithub: false, // 제보 입력창 아래에 GitHub 이슈를 두 번째 방법으로 보여줄지
     emptyText: '공식 사이트를 확인한 툴부터 하나씩 채우고 있어요.',
@@ -32,6 +35,9 @@ export const MODES = {
     heroHtml: '개발할 때 쓰는<br>AI를 모았어요',
     heroSub: '회사 서비스부터 GitHub 오픈소스, Hugging Face 공개 모델까지. 단계를 누르면 무료인지, 웹에서 쓰는지 코드로 설치하는지 한눈에 보여드려요.',
     toolWord: '도구',
+    heroSteps: ['개발 단계 고르기', '서비스·오픈소스·모델 비교', '웹에서 쓰거나 코드로 설치'],
+    webFact: '웹에서 바로',
+    otherSite: { href: '../', label: '비개발자용 보기' },
     reportSite: '개발할 때 AI 뭐 써? (개발자용)',
     reportGithub: true,
     emptyText: '공식 사이트·저장소를 확인한 도구부터 하나씩 채우고 있어요.',

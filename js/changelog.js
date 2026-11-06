@@ -51,3 +51,8 @@ export function buildChangelog(versions) {
     .filter((entry) => entry.changes.length > 0)
     .reverse();
 }
+
+/** 화면에 보여줄 업데이트 날짜: 같은 날짜는 한 번만, 최신 날짜부터 */
+export function updateDates(changelog) {
+  return [...new Set(changelog.map((e) => e.date))].sort().reverse();
+}
