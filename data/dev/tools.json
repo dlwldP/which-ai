@@ -513,5 +513,3167 @@
       "https://snyk.io/platform/deepcode-ai/"
     ],
     "last_verified": "2026-11-06"
+  },
+  {
+    "id": "claude-code",
+    "name": "Claude Code",
+    "url": "https://code.claude.com/docs/en/overview",
+    "one_liner": "내 프로젝트 코드를 읽고 고치고 명령까지 실행해주는 코딩 에이전트예요. 터미널, 에디터, 데스크톱 앱, 웹에서 써요",
+    "purposes": [
+      "coding_agents",
+      "code_review",
+      "automation"
+    ],
+    "price": {
+      "free": false,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "claude.com"
+    ],
+    "sources": [
+      "https://code.claude.com/docs/en/overview",
+      "https://claude.com/pricing",
+      "https://code.claude.com/docs/en/data-usage",
+      "https://code.claude.com/docs/en/legal-and-compliance"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "cloudflare",
+    "name": "Cloudflare Workers",
+    "url": "https://developers.cloudflare.com/workers/",
+    "one_liner": "Cloudflare 전 세계 네트워크 위에서 서버 없이 앱을 돌리는 개발자 플랫폼이에요. DB·파일 저장소와 AI 모델 실행, 벡터 DB까지 한곳에서 붙여요",
+    "purposes": [
+      "devops",
+      "backend_database",
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "cloudflare.com"
+    ],
+    "sources": [
+      "https://developers.cloudflare.com/workers/platform/pricing/",
+      "https://developers.cloudflare.com/workers/",
+      "https://developers.cloudflare.com/workers/wrangler/",
+      "https://developers.cloudflare.com/workers/ci-cd/builds/",
+      "https://developers.cloudflare.com/workers/observability/logs/",
+      "https://developers.cloudflare.com/d1/",
+      "https://developers.cloudflare.com/r2/",
+      "https://developers.cloudflare.com/workers-ai/",
+      "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+      "https://developers.cloudflare.com/workers-ai/platform/data-usage/",
+      "https://developers.cloudflare.com/vectorize/",
+      "https://developers.cloudflare.com/ai-search/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "google-ai-studio",
+    "name": "Google AI Studio",
+    "url": "https://aistudio.google.com/",
+    "one_liner": "Gemini 모델을 브라우저에서 바로 시험해 보고, 문장으로 설명해서 풀스택 웹앱·안드로이드 앱까지 만들어 볼 수 있는 구글의 개발자용 작업 공간이에요",
+    "purposes": [
+      "app_builders",
+      "data_ml"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "aistudio.google.com",
+      "ai.google.dev"
+    ],
+    "sources": [
+      "https://ai.google.dev/gemini-api/docs/pricing",
+      "https://ai.google.dev/gemini-api/docs/billing",
+      "https://ai.google.dev/gemini-api/docs/google-ai-plans",
+      "https://ai.google.dev/gemini-api/terms",
+      "https://ai.google.dev/gemini-api/docs/ai-studio-quickstart",
+      "https://ai.google.dev/gemini-api/docs/aistudio-build-mode",
+      "https://ai.google.dev/gemini-api/docs/aistudio-fullstack",
+      "https://ai.google.dev/gemini-api/docs/aistudio-deploying"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "antigravity",
+    "name": "Google Antigravity",
+    "url": "https://antigravity.google/",
+    "one_liner": "구글이 만든 에이전트 중심 개발 도구예요. 데스크톱 앱·전용 IDE·터미널·에디터 확장에서 여러 AI 에이전트에게 코드 작업을 맡기고 결과를 검토해요",
+    "purposes": [
+      "coding_agents",
+      "code_review",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "app",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "antigravity.google"
+    ],
+    "sources": [
+      "https://antigravity.google/",
+      "https://antigravity.google/pricing",
+      "https://antigravity.google/docs/plans",
+      "https://antigravity.google/terms",
+      "https://antigravity.google/docs/overview",
+      "https://antigravity.google/download",
+      "https://antigravity.google/product",
+      "https://antigravity.google/use-cases/daily-operations",
+      "https://antigravity.google/use-cases/automated-testing",
+      "https://antigravity.google/docs/commands/schedule",
+      "https://antigravity.google/docs/mcp"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "linear",
+    "name": "Linear",
+    "url": "https://linear.app/ai",
+    "one_liner": "이슈·프로젝트를 관리하는 협업 도구예요. 안에 든 AI 에이전트가 진행 상황을 정리하고, 이슈를 맡기면 코드를 고쳐 PR 초안까지 만들어 줘요",
+    "purposes": [
+      "planning",
+      "coding_agents",
+      "code_review",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "linear.app"
+    ],
+    "sources": [
+      "https://linear.app/pricing",
+      "https://linear.app/ai",
+      "https://linear.app/download",
+      "https://linear.app/docs/linear-agent",
+      "https://linear.app/docs/coding-sessions",
+      "https://linear.app/docs/ai-credits",
+      "https://linear.app/privacy"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "bolt",
+    "name": "Bolt",
+    "url": "https://bolt.new",
+    "one_liner": "만들 앱을 채팅으로 설명하면 브라우저 안에서 코드를 짜고 DB·로그인·호스팅까지 붙여 바로 올려주는 앱 빌더예요",
+    "purposes": [
+      "app_builders",
+      "design_ui",
+      "code_review"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "bolt.new"
+    ],
+    "sources": [
+      "https://bolt.new",
+      "https://bolt.new/pricing",
+      "https://bolt.new/use-cases/ai-app-builder",
+      "https://bolt.new/use-cases/ai-prototyping-tools",
+      "https://bolt.new/platform/security",
+      "https://bolt.new/enterprise"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "supabase",
+    "name": "Supabase",
+    "url": "https://supabase.com",
+    "one_liner": "Postgres 데이터베이스에 인증·파일 저장·실시간·벡터 검색을 한 번에 붙여주는 백엔드 플랫폼이에요. 대시보드의 AI 어시스턴트가 SQL과 스키마를 같이 짜줘요",
+    "purposes": [
+      "backend_database",
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/supabase/supabase",
+    "official_domains": [
+      "supabase.com"
+    ],
+    "sources": [
+      "https://supabase.com/",
+      "https://supabase.com/pricing",
+      "https://supabase.com/privacy",
+      "https://supabase.com/features/ai-assistant",
+      "https://supabase.com/open-source",
+      "https://supabase.com/docs/guides/self-hosting",
+      "https://supabase.com/docs/guides/local-development/cli/getting-started",
+      "https://supabase.com/docs/guides/ai"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "neon",
+    "name": "Neon",
+    "url": "https://neon.com",
+    "one_liner": "쓸 때만 켜지고 Git처럼 브랜치를 나눌 수 있는 서버리스 Postgres에 인증·파일 저장·AI 게이트웨이를 묶은 백엔드예요. SQL 에디터에서 문장으로 쿼리를 만들 수 있어요",
+    "purposes": [
+      "backend_database",
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "neon.com"
+    ],
+    "sources": [
+      "https://neon.com/",
+      "https://neon.com/pricing",
+      "https://neon.com/docs/introduction",
+      "https://neon.com/docs/auth/overview",
+      "https://neon.com/docs/storage/overview",
+      "https://neon.com/docs/get-started/query-with-neon-sql-editor",
+      "https://neon.com/docs/security/ai-use-in-neon",
+      "https://neon.com/docs/extensions/pgvector",
+      "https://neon.com/docs/cli"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "pinecone",
+    "name": "Pinecone",
+    "url": "https://www.pinecone.io",
+    "one_liner": "임베딩을 저장하고 의미로 찾아주는 관리형 벡터 데이터베이스예요. 파일만 올리면 근거 있는 답을 주는 Assistant와 임베딩·재정렬 모델도 같이 써요",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "pinecone.io"
+    ],
+    "sources": [
+      "https://www.pinecone.io/",
+      "https://www.pinecone.io/pricing/",
+      "https://www.pinecone.io/product/database/",
+      "https://www.pinecone.io/product/assistant/",
+      "https://www.pinecone.io/legal/master-subscription-agreement/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "hugging-face",
+    "name": "Hugging Face",
+    "url": "https://huggingface.co",
+    "one_liner": "공개 AI 모델·데이터셋·데모 앱(Spaces)을 찾고 올리는 모델 허브예요. 여러 회사 모델을 API 하나로 호출하고 Transformers 같은 라이브러리로 직접 돌릴 수도 있어요",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/",
+      "https://huggingface.co/pricing",
+      "https://huggingface.co/docs/hub/storage-limits",
+      "https://huggingface.co/docs/hub/index",
+      "https://huggingface.co/docs/inference-providers/index",
+      "https://huggingface.co/docs/inference-providers/pricing",
+      "https://huggingface.co/docs/inference-providers/security",
+      "https://huggingface.co/docs/transformers/index",
+      "https://huggingface.co/docs/huggingface_hub/guides/cli",
+      "https://huggingface.co/terms-of-service"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "langsmith",
+    "name": "LangSmith",
+    "url": "https://www.langchain.com/langsmith",
+    "one_liner": "LLM 앱과 에이전트가 단계마다 무엇을 했는지 추적(트레이싱)하고, 데이터셋으로 답변 품질을 평가·비교하는 관측 플랫폼이에요. LangChain 말고 다른 프레임워크에도 붙여요",
+    "purposes": [
+      "data_ml",
+      "devops"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "langchain.com"
+    ],
+    "sources": [
+      "https://www.langchain.com/langsmith",
+      "https://www.langchain.com/pricing",
+      "https://www.langchain.com/terms-of-service",
+      "https://docs.langchain.com/langsmith/home",
+      "https://docs.langchain.com/langsmith/evaluation"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "ollama",
+    "name": "Ollama",
+    "url": "https://ollama.com",
+    "one_liner": "공개된 오픈 모델을 내 컴퓨터에서 바로 돌리거나, 무거운 모델은 Ollama 클라우드에서 돌려 쓰는 도구예요",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "ollama.com"
+    ],
+    "sources": [
+      "https://ollama.com/",
+      "https://ollama.com/pricing",
+      "https://ollama.com/privacy",
+      "https://ollama.com/download"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "notion",
+    "name": "Notion AI",
+    "url": "https://www.notion.com/product/ai",
+    "one_liner": "문서·할 일 데이터베이스를 쓰는 협업 공간에 AI가 들어 있어요. 문서 초안을 쓰고, 정해 둔 일정에 맞춰 반복 업무를 돌리는 에이전트를 만들 수 있어요",
+    "purposes": [
+      "planning",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "notion.com"
+    ],
+    "sources": [
+      "https://www.notion.com/product/ai",
+      "https://www.notion.com/pricing",
+      "https://www.notion.com/help/notion-ai-faqs",
+      "https://www.notion.com/help/notion-ai-security-practices",
+      "https://www.notion.com/download",
+      "https://www.notion.com/help/custom-agent",
+      "https://www.notion.com/product/agents"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "miro",
+    "name": "Miro AI",
+    "url": "https://miro.com/ai/",
+    "one_liner": "팀이 같이 쓰는 화이트보드에 AI가 붙어 있어요. 보드 내용으로 다이어그램·기획 문서·클릭되는 프로토타입을 만들고, 여러 단계 AI 워크플로를 짤 수 있어요",
+    "purposes": [
+      "planning",
+      "design_ui",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "miro.com"
+    ],
+    "sources": [
+      "https://miro.com/ai/",
+      "https://miro.com/pricing/",
+      "https://miro.com/ai/flows/",
+      "https://miro.com/ai/prototype-ai/",
+      "https://miro.com/apps/",
+      "https://miro.com/online-whiteboard/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "figma",
+    "name": "Figma (Figma AI·FigJam·Figma Make)",
+    "url": "https://www.figma.com/ai/",
+    "one_liner": "UI 디자인 도구에 AI가 들어 있어요. 에이전트로 시안을 만들고, Figma Make에서는 문장으로 프로토타입·웹앱을 만들어 바로 게시할 수 있어요. FigJam 화이트보드도 함께 써요",
+    "purposes": [
+      "design_ui",
+      "app_builders",
+      "planning",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "figma.com"
+    ],
+    "sources": [
+      "https://www.figma.com/ai/",
+      "https://www.figma.com/pricing/",
+      "https://www.figma.com/make/",
+      "https://www.figma.com/ai/our-approach/",
+      "https://www.figma.com/figjam/",
+      "https://www.figma.com/downloads/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "atlassian-rovo",
+    "name": "Atlassian Rovo",
+    "url": "https://www.atlassian.com/software/rovo",
+    "one_liner": "Jira·Confluence에 들어 있는 AI예요. 회사 문서와 연결된 앱을 검색해 답하고, 채팅으로 Jira 티켓을 만들고, 트리거로 도는 에이전트·자동화를 만들 수 있어요",
+    "purposes": [
+      "planning",
+      "automation"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "atlassian.com"
+    ],
+    "sources": [
+      "https://www.atlassian.com/software/rovo",
+      "https://www.atlassian.com/software/rovo/pricing",
+      "https://www.atlassian.com/software/rovo/features",
+      "https://www.atlassian.com/trust/ai",
+      "https://www.atlassian.com/software/rovo/downloads"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "uizard",
+    "name": "Uizard",
+    "url": "https://uizard.io/",
+    "one_liner": "만들 앱을 문장으로 설명하거나 스크린샷·손그림을 올리면 여러 화면짜리 UI 시안과 클릭되는 프로토타입을 만들어 주는 AI 디자인 도구예요",
+    "purposes": [
+      "design_ui",
+      "planning"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "uizard.io"
+    ],
+    "sources": [
+      "https://uizard.io/",
+      "https://uizard.io/pricing/",
+      "https://uizard.io/autodesigner/",
+      "https://uizard.io/terms-of-service/",
+      "https://uizard.io/privacy/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "github-copilot",
+    "name": "GitHub Copilot",
+    "url": "https://github.com/features/copilot",
+    "one_liner": "GitHub에 붙어 있는 AI 코딩 도우미예요. 에디터 자동완성·채팅부터 이슈를 맡기면 PR로 돌려주는 에이전트, PR 리뷰까지 해요",
+    "purposes": [
+      "coding_agents",
+      "code_review",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://docs.github.com/en/copilot/get-started/plans",
+      "https://docs.github.com/en/copilot/get-started/what-is-github-copilot",
+      "https://docs.github.com/en/copilot/how-tos/manage-your-account/manage-policies",
+      "https://docs.github.com/en/copilot/concepts/agent-capabilities/about-agents/about-github-copilot-agents",
+      "https://docs.github.com/en/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review",
+      "https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-cli"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "kiro",
+    "name": "Kiro",
+    "url": "https://kiro.dev",
+    "one_liner": "AWS가 만든 AI 코딩 에이전트예요. 요구사항·설계·작업 목록(스펙)을 먼저 만들고 그대로 구현해요. IDE·CLI·웹에서 써요",
+    "purposes": [
+      "coding_agents",
+      "code_review",
+      "automation",
+      "planning"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "kiro.dev"
+    ],
+    "sources": [
+      "https://kiro.dev",
+      "https://kiro.dev/pricing",
+      "https://kiro.dev/faq",
+      "https://kiro.dev/docs/privacy-and-security/data-protection/",
+      "https://kiro.dev/docs/getting-started/installation/",
+      "https://kiro.dev/docs/how-kiro-works/",
+      "https://kiro.dev/docs/cli/",
+      "https://kiro.dev/docs/ide/",
+      "https://kiro.dev/docs/web/",
+      "https://kiro.dev/docs/web/automations/",
+      "https://kiro.dev/docs/hooks/",
+      "https://kiro.dev/docs/mcp/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "make",
+    "name": "Make",
+    "url": "https://www.make.com/",
+    "one_liner": "앱과 데이터를 캔버스 위에서 끌어다 이어 시나리오(자동화 흐름)를 만드는 비주얼 자동화 플랫폼이에요. LLM 단계와 AI 에이전트를 같은 화면에서 붙일 수 있어요",
+    "purposes": [
+      "automation"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "make.com"
+    ],
+    "sources": [
+      "https://www.make.com/",
+      "https://www.make.com/pricing",
+      "https://www.make.com/ai-automation",
+      "https://www.make.com/security"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "n8n",
+    "name": "n8n",
+    "url": "https://n8n.io/",
+    "one_liner": "노드를 이어 워크플로와 AI 에이전트를 만드는 자동화 도구예요. n8n 클라우드로 쓰거나 Docker로 내 서버에 직접 올릴 수 있고, 필요하면 코드 단계도 넣어요",
+    "purposes": [
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "n8n.io"
+    ],
+    "sources": [
+      "https://n8n.io/",
+      "https://n8n.io/pricing/",
+      "https://docs.n8n.io/",
+      "https://docs.n8n.io/choose-how-to-use-n8n",
+      "https://docs.n8n.io/n8n-community-license",
+      "https://docs.n8n.io/privacy-and-security"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "sonarqube",
+    "name": "SonarQube",
+    "url": "https://www.sonarsource.com/",
+    "one_liner": "코드의 버그·취약점·품질 문제를 정적 분석으로 잡아내는 코드 품질·보안 검사 도구예요. PR마다 검사하고, Sonar의 Gitar가 AI로 PR을 리뷰하고 수정까지 올려요",
+    "purposes": [
+      "code_review"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app",
+      "install"
+    ],
+    "kind": "service",
+    "ai_native": "yes",
+    "official_domains": [
+      "sonarsource.com"
+    ],
+    "sources": [
+      "https://www.sonarsource.com/plans-and-pricing/",
+      "https://www.sonarsource.com/solutions/code-review/ai/",
+      "https://www.sonarsource.com/solutions/automated-code-review/",
+      "https://www.sonarsource.com/open-source/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "aider",
+    "name": "Aider",
+    "url": "https://github.com/Aider-AI/aider",
+    "one_liner": "터미널에서 AI와 대화하며 내 저장소 코드를 고치고 커밋까지 해주는 페어 프로그래밍 도구",
+    "purposes": [
+      "coding_agents"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/Aider-AI/aider",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/Aider-AI/aider/blob/HEAD/LICENSE.txt"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "continue",
+    "name": "Continue",
+    "url": "https://github.com/continuedev/continue",
+    "one_liner": "VS Code·JetBrains에 붙여 원하는 모델로 코드 자동완성·채팅·에이전트를 쓰는 확장",
+    "purposes": [
+      "coding_agents",
+      "code_review"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "app",
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/continuedev/continue",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/continuedev/continue/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "cline",
+    "name": "Cline",
+    "url": "https://github.com/cline/cline",
+    "one_liner": "VS Code 안에서 파일을 만들고 명령을 실행하며 단계별로 승인받는 코딩 에이전트 확장",
+    "purposes": [
+      "coding_agents"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "app"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/cline/cline",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/cline/cline/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "openhands",
+    "name": "OpenHands",
+    "url": "https://github.com/All-Hands-AI/OpenHands",
+    "one_liner": "사람 개발자처럼 코드 수정·명령 실행·웹 검색을 하는 오픈소스 AI 개발 에이전트",
+    "purposes": [
+      "coding_agents",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install",
+      "web"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/All-Hands-AI/OpenHands",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/All-Hands-AI/OpenHands/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "opencode",
+    "name": "opencode",
+    "url": "https://github.com/sst/opencode",
+    "one_liner": "여러 모델을 골라 쓰는 터미널용 오픈소스 코딩 에이전트",
+    "purposes": [
+      "coding_agents"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/sst/opencode",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/sst/opencode/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "goose",
+    "name": "goose",
+    "url": "https://github.com/block/goose",
+    "one_liner": "내 컴퓨터에서 돌아가며 MCP 도구를 붙여 개발 작업을 자동으로 처리하는 에이전트",
+    "purposes": [
+      "coding_agents",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install",
+      "app"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/block/goose",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/block/goose/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "tabby",
+    "name": "Tabby",
+    "url": "https://github.com/TabbyML/tabby",
+    "one_liner": "회사 서버에 직접 설치하는 코드 자동완성·채팅 서버 (깃허브 코파일럿 대안)",
+    "purposes": [
+      "coding_agents"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/TabbyML/tabby",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/TabbyML/tabby/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "roo-code",
+    "name": "Roo Code",
+    "url": "https://github.com/RooCodeInc/Roo-Code",
+    "one_liner": "역할(모드)을 바꿔 가며 기획·코딩·디버깅을 맡기는 VS Code 에이전트 확장",
+    "purposes": [
+      "coding_agents"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "app"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/RooCodeInc/Roo-Code",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/RooCodeInc/Roo-Code/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "swe-agent",
+    "name": "SWE-agent",
+    "url": "https://github.com/SWE-agent/SWE-agent",
+    "one_liner": "GitHub 이슈를 주면 언어 모델이 저장소를 살펴보고 고치는 연구용 에이전트",
+    "purposes": [
+      "coding_agents",
+      "code_review"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/SWE-agent/SWE-agent",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/SWE-agent/SWE-agent/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "gpt-engineer",
+    "name": "gpt-engineer",
+    "url": "https://github.com/AntonOsika/gpt-engineer",
+    "one_liner": "만들고 싶은 것을 글로 적으면 코드베이스를 통째로 생성하는 명령줄 도구",
+    "purposes": [
+      "app_builders",
+      "coding_agents"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/AntonOsika/gpt-engineer",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/AntonOsika/gpt-engineer/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "codex-cli",
+    "name": "Codex CLI",
+    "url": "https://github.com/openai/codex",
+    "one_liner": "OpenAI가 공개한 터미널용 코딩 에이전트 (내 컴퓨터에서 실행)",
+    "purposes": [
+      "coding_agents"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/openai/codex",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/openai/codex/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "gemini-cli",
+    "name": "Gemini CLI",
+    "url": "https://github.com/google-gemini/gemini-cli",
+    "one_liner": "구글 제미나이를 터미널에서 쓰는 오픈소스 에이전트 (코드 작업·검색·MCP)",
+    "purposes": [
+      "coding_agents",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/google-gemini/gemini-cli",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/google-gemini/gemini-cli/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "plandex",
+    "name": "Plandex",
+    "url": "https://github.com/plandex-ai/plandex",
+    "one_liner": "큰 작업을 계획으로 나눠 여러 파일을 한꺼번에 고치는 터미널 코딩 에이전트",
+    "purposes": [
+      "coding_agents"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/plandex-ai/plandex",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/plandex-ai/plandex/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "kilo-code",
+    "name": "Kilo Code",
+    "url": "https://github.com/Kilo-Org/kilocode",
+    "one_liner": "VS Code·JetBrains에서 쓰는 오픈소스 코딩 에이전트 확장",
+    "purposes": [
+      "coding_agents"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "app"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/Kilo-Org/kilocode",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/Kilo-Org/kilocode/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "void",
+    "name": "Void",
+    "url": "https://github.com/voideditor/void",
+    "one_liner": "모델을 직접 골라 붙이는 오픈소스 AI 코드 에디터 (커서 대안)",
+    "purposes": [
+      "coding_agents"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "app"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/voideditor/void",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/voideditor/void/blob/HEAD/LICENSE.txt"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "bolt-new-oss",
+    "name": "bolt.new (오픈소스판)",
+    "url": "https://github.com/stackblitz/bolt.new",
+    "one_liner": "브라우저에서 말로 풀스택 앱을 만드는 bolt.new의 공개 소스",
+    "purposes": [
+      "app_builders"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/stackblitz/bolt.new",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/stackblitz/bolt.new/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "open-lovable",
+    "name": "Open Lovable",
+    "url": "https://github.com/firecrawl/open-lovable",
+    "one_liner": "웹사이트 주소나 설명을 주면 리액트 앱으로 다시 만들어주는 오픈소스 앱 빌더",
+    "purposes": [
+      "app_builders",
+      "design_ui"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/firecrawl/open-lovable",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/firecrawl/open-lovable/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "llama-cpp",
+    "name": "llama.cpp",
+    "url": "https://github.com/ggml-org/llama.cpp",
+    "one_liner": "노트북 CPU·GPU에서도 언어 모델을 가볍게 돌리는 C/C++ 실행 엔진",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/ggml-org/llama.cpp",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/ggml-org/llama.cpp/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "vllm",
+    "name": "vLLM",
+    "url": "https://github.com/vllm-project/vllm",
+    "one_liner": "언어 모델을 빠르게 서빙하는 추론 서버 (OpenAI 호환 API 제공)",
+    "purposes": [
+      "data_ml",
+      "devops"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/vllm-project/vllm",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/vllm-project/vllm/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "transformers",
+    "name": "Transformers",
+    "url": "https://github.com/huggingface/transformers",
+    "one_liner": "허깅페이스의 수많은 모델을 파이썬 몇 줄로 불러와 쓰는 라이브러리",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/huggingface/transformers",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/huggingface/transformers/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "langchain",
+    "name": "LangChain",
+    "url": "https://github.com/langchain-ai/langchain",
+    "one_liner": "언어 모델·검색·도구를 엮어 챗봇과 에이전트를 만드는 프레임워크",
+    "purposes": [
+      "data_ml",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/langchain-ai/langchain",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/langchain-ai/langchain/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "llamaindex",
+    "name": "LlamaIndex",
+    "url": "https://github.com/run-llama/llama_index",
+    "one_liner": "내 문서를 언어 모델에 연결하는 RAG·에이전트 프레임워크",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/run-llama/llama_index",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/run-llama/llama_index/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "localai",
+    "name": "LocalAI",
+    "url": "https://github.com/mudler/LocalAI",
+    "one_liner": "내 서버에서 OpenAI API처럼 쓰는 로컬 모델 서버 (글·이미지·음성)",
+    "purposes": [
+      "data_ml",
+      "devops"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/mudler/LocalAI",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/mudler/LocalAI/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "gpt4all",
+    "name": "GPT4All",
+    "url": "https://github.com/nomic-ai/gpt4all",
+    "one_liner": "인터넷 없이 내 컴퓨터에서 언어 모델과 대화하는 데스크톱 앱",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "app",
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/nomic-ai/gpt4all",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/nomic-ai/gpt4all/blob/HEAD/LICENSE.txt"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "ragflow",
+    "name": "RAGFlow",
+    "url": "https://github.com/infiniflow/ragflow",
+    "one_liner": "문서를 깊게 읽어 근거와 함께 답하는 RAG 엔진 (도커로 설치)",
+    "purposes": [
+      "data_ml",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/infiniflow/ragflow",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/infiniflow/ragflow/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "chroma",
+    "name": "Chroma",
+    "url": "https://github.com/chroma-core/chroma",
+    "one_liner": "AI 앱용 오픈소스 벡터 데이터베이스",
+    "purposes": [
+      "data_ml",
+      "backend_database"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/chroma-core/chroma",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/chroma-core/chroma/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "qdrant",
+    "name": "Qdrant",
+    "url": "https://github.com/qdrant/qdrant",
+    "one_liner": "러스트로 만든 빠른 벡터 검색 엔진·데이터베이스",
+    "purposes": [
+      "data_ml",
+      "backend_database"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/qdrant/qdrant",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/qdrant/qdrant/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "milvus",
+    "name": "Milvus",
+    "url": "https://github.com/milvus-io/milvus",
+    "one_liner": "대규모 벡터 검색을 위한 클라우드 네이티브 데이터베이스",
+    "purposes": [
+      "data_ml",
+      "backend_database"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/milvus-io/milvus",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/milvus-io/milvus/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "weaviate",
+    "name": "Weaviate",
+    "url": "https://github.com/weaviate/weaviate",
+    "one_liner": "벡터와 키워드 검색을 함께 하는 오픈소스 벡터 데이터베이스",
+    "purposes": [
+      "data_ml",
+      "backend_database"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/weaviate/weaviate",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/weaviate/weaviate/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "unsloth",
+    "name": "Unsloth",
+    "url": "https://github.com/unslothai/unsloth",
+    "one_liner": "적은 GPU 메모리로 언어 모델을 빠르게 미세조정하는 라이브러리",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/unslothai/unsloth",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/unslothai/unsloth/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "llama-factory",
+    "name": "LLaMA-Factory",
+    "url": "https://github.com/hiyouga/LLaMA-Factory",
+    "one_liner": "100개가 넘는 모델을 웹 화면에서 골라 미세조정하는 도구",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install",
+      "web"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/hiyouga/LLaMA-Factory",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/hiyouga/LLaMA-Factory/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "comfyui",
+    "name": "ComfyUI",
+    "url": "https://github.com/comfyanonymous/ComfyUI",
+    "one_liner": "노드를 연결해 이미지·영상 생성 과정을 짜는 스테이블 디퓨전 도구",
+    "purposes": [
+      "data_ml",
+      "design_ui"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/comfyanonymous/ComfyUI",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/comfyanonymous/ComfyUI/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "sd-webui",
+    "name": "Stable Diffusion web UI",
+    "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+    "one_liner": "스테이블 디퓨전 이미지 생성을 브라우저 화면으로 쓰는 로컬 앱",
+    "purposes": [
+      "data_ml",
+      "design_ui"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/HEAD/LICENSE.txt"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "diffusers",
+    "name": "Diffusers",
+    "url": "https://github.com/huggingface/diffusers",
+    "one_liner": "이미지·영상·소리 확산 모델을 불러와 쓰는 허깅페이스 라이브러리",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/huggingface/diffusers",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/huggingface/diffusers/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "mlc-llm",
+    "name": "MLC LLM",
+    "url": "https://github.com/mlc-ai/mlc-llm",
+    "one_liner": "휴대폰·브라우저·GPU 어디서나 언어 모델을 돌리게 컴파일하는 엔진",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/mlc-ai/mlc-llm",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/mlc-ai/mlc-llm/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "exo",
+    "name": "exo",
+    "url": "https://github.com/exo-explore/exo",
+    "one_liner": "집에 있는 여러 기기를 묶어 큰 언어 모델을 나눠 돌리는 도구",
+    "purposes": [
+      "data_ml",
+      "devops"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/exo-explore/exo",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/exo-explore/exo/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "haystack",
+    "name": "Haystack",
+    "url": "https://github.com/deepset-ai/haystack",
+    "one_liner": "검색·RAG·에이전트 파이프라인을 조립하는 파이썬 프레임워크",
+    "purposes": [
+      "data_ml",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/deepset-ai/haystack",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/deepset-ai/haystack/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "dspy",
+    "name": "DSPy",
+    "url": "https://github.com/stanfordnlp/dspy",
+    "one_liner": "프롬프트를 손으로 쓰는 대신 코드로 짜고 자동으로 최적화하는 프레임워크",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/stanfordnlp/dspy",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/stanfordnlp/dspy/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "mem0",
+    "name": "Mem0",
+    "url": "https://github.com/mem0ai/mem0",
+    "one_liner": "AI 에이전트에 장기 기억을 붙여주는 메모리 레이어",
+    "purposes": [
+      "data_ml",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/mem0ai/mem0",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/mem0ai/mem0/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "anythingllm",
+    "name": "AnythingLLM",
+    "url": "https://github.com/Mintplex-Labs/anything-llm",
+    "one_liner": "내 문서로 대화하는 올인원 데스크톱·셀프 호스팅 AI 앱",
+    "purposes": [
+      "data_ml",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "app",
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/Mintplex-Labs/anything-llm",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/Mintplex-Labs/anything-llm/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "text-generation-webui",
+    "name": "Text Generation Web UI",
+    "url": "https://github.com/oobabooga/text-generation-webui",
+    "one_liner": "로컬 언어 모델을 브라우저 화면에서 불러와 대화하는 도구",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/oobabooga/text-generation-webui",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/oobabooga/text-generation-webui/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "whisper-cpp",
+    "name": "whisper.cpp",
+    "url": "https://github.com/ggml-org/whisper.cpp",
+    "one_liner": "Whisper 음성 인식을 CPU에서도 빠르게 돌리는 C/C++ 구현",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/ggml-org/whisper.cpp",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/ggml-org/whisper.cpp/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "whisper",
+    "name": "Whisper",
+    "url": "https://github.com/openai/whisper",
+    "one_liner": "OpenAI가 공개한 다국어 음성 인식(받아쓰기) 모델과 코드",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/openai/whisper",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/openai/whisper/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "markitdown",
+    "name": "MarkItDown",
+    "url": "https://github.com/microsoft/markitdown",
+    "one_liner": "PDF·워드·엑셀·PPT를 언어 모델이 읽기 좋은 마크다운으로 바꾸는 도구",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/microsoft/markitdown",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/microsoft/markitdown/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "docling",
+    "name": "Docling",
+    "url": "https://github.com/docling-project/docling",
+    "one_liner": "문서의 표·그림·구조를 살려 AI용 데이터로 바꾸는 변환 라이브러리",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/docling-project/docling",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/docling-project/docling/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "firecrawl",
+    "name": "Firecrawl",
+    "url": "https://github.com/firecrawl/firecrawl",
+    "one_liner": "웹사이트를 긁어 언어 모델용 마크다운·데이터로 바꿔주는 크롤러",
+    "purposes": [
+      "data_ml",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install",
+      "api"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/firecrawl/firecrawl",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/firecrawl/firecrawl/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "crawl4ai",
+    "name": "Crawl4AI",
+    "url": "https://github.com/unclecode/crawl4ai",
+    "one_liner": "AI·RAG용으로 웹페이지를 빠르게 긁어오는 파이썬 크롤러",
+    "purposes": [
+      "data_ml",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/unclecode/crawl4ai",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/unclecode/crawl4ai/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "browser-use",
+    "name": "Browser Use",
+    "url": "https://github.com/browser-use/browser-use",
+    "one_liner": "AI 에이전트가 브라우저를 직접 눌러 웹 작업을 하게 해주는 라이브러리",
+    "purposes": [
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/browser-use/browser-use",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/browser-use/browser-use/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "langfuse",
+    "name": "Langfuse",
+    "url": "https://github.com/langfuse/langfuse",
+    "one_liner": "AI 앱의 호출 기록·비용·품질을 추적하는 오픈소스 관측 도구",
+    "purposes": [
+      "data_ml",
+      "devops"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install",
+      "web"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/langfuse/langfuse",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/langfuse/langfuse/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "flowise",
+    "name": "Flowise",
+    "url": "https://github.com/FlowiseAI/Flowise",
+    "one_liner": "블록을 끌어다 놓아 챗봇과 에이전트 흐름을 만드는 노코드 도구",
+    "purposes": [
+      "automation",
+      "app_builders"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/FlowiseAI/Flowise",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/FlowiseAI/Flowise/blob/HEAD/LICENSE.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "langflow",
+    "name": "Langflow",
+    "url": "https://github.com/langflow-ai/langflow",
+    "one_liner": "화면에서 AI 에이전트·RAG 흐름을 그려 API로 내보내는 도구",
+    "purposes": [
+      "automation",
+      "app_builders"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/langflow-ai/langflow",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/langflow-ai/langflow/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "crewai",
+    "name": "CrewAI",
+    "url": "https://github.com/crewAIInc/crewAI",
+    "one_liner": "역할을 나눈 여러 AI 에이전트가 팀처럼 일하게 하는 프레임워크",
+    "purposes": [
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/crewAIInc/crewAI",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/crewAIInc/crewAI/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "langgraph",
+    "name": "LangGraph",
+    "url": "https://github.com/langchain-ai/langgraph",
+    "one_liner": "상태를 기억하는 에이전트 흐름을 그래프로 짜는 프레임워크",
+    "purposes": [
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/langchain-ai/langgraph",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/langchain-ai/langgraph/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "activepieces",
+    "name": "Activepieces",
+    "url": "https://github.com/activepieces/activepieces",
+    "one_liner": "재피어처럼 앱들을 이어 업무를 자동화하는 오픈소스 도구 (AI 단계 포함)",
+    "purposes": [
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install",
+      "web"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/activepieces/activepieces",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/activepieces/activepieces/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "openai-agents-sdk",
+    "name": "OpenAI Agents SDK",
+    "url": "https://github.com/openai/openai-agents-python",
+    "one_liner": "도구를 쓰고 서로 일을 넘기는 에이전트를 만드는 파이썬 라이브러리",
+    "purposes": [
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/openai/openai-agents-python",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/openai/openai-agents-python/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "mcp-servers",
+    "name": "MCP 서버 모음",
+    "url": "https://github.com/modelcontextprotocol/servers",
+    "one_liner": "AI가 파일·깃·웹 같은 도구를 쓰게 해주는 MCP 서버 공식 예제 모음",
+    "purposes": [
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/modelcontextprotocol/servers",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/modelcontextprotocol/servers/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "agno",
+    "name": "Agno",
+    "url": "https://github.com/agno-agi/agno",
+    "one_liner": "기억·지식·도구를 가진 에이전트를 빠르게 만드는 파이썬 프레임워크",
+    "purposes": [
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/agno-agi/agno",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/agno-agi/agno/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "camel",
+    "name": "CAMEL",
+    "url": "https://github.com/camel-ai/camel",
+    "one_liner": "여러 에이전트가 역할극으로 협업하는 연구용 프레임워크",
+    "purposes": [
+      "automation",
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/camel-ai/camel",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/camel-ai/camel/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "smolagents",
+    "name": "smolagents",
+    "url": "https://github.com/huggingface/smolagents",
+    "one_liner": "코드로 생각하고 행동하는 가벼운 에이전트를 만드는 허깅페이스 라이브러리",
+    "purposes": [
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/huggingface/smolagents",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/huggingface/smolagents/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "pocketbase",
+    "name": "PocketBase",
+    "url": "https://github.com/pocketbase/pocketbase",
+    "one_liner": "파일 하나로 돌아가는 데이터베이스·로그인·파일 저장 백엔드",
+    "purposes": [
+      "backend_database"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "no",
+    "repo_url": "https://github.com/pocketbase/pocketbase",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/pocketbase/pocketbase/blob/HEAD/LICENSE.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "k8sgpt",
+    "name": "K8sGPT",
+    "url": "https://github.com/k8sgpt-ai/k8sgpt",
+    "one_liner": "쿠버네티스 클러스터 문제를 찾아 AI가 쉬운 말로 설명해주는 도구",
+    "purposes": [
+      "devops"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/k8sgpt-ai/k8sgpt",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/k8sgpt-ai/k8sgpt/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "pr-agent",
+    "name": "PR-Agent",
+    "url": "https://github.com/qodo-ai/pr-agent",
+    "one_liner": "풀 리퀘스트를 요약하고 리뷰·개선 제안을 달아주는 오픈소스 리뷰 도구",
+    "purposes": [
+      "code_review"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/qodo-ai/pr-agent",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/qodo-ai/pr-agent/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "semantic-kernel",
+    "name": "Semantic Kernel",
+    "url": "https://github.com/microsoft/semantic-kernel",
+    "one_liner": "C#·파이썬·자바 앱에 AI 에이전트를 붙이는 마이크로소프트 SDK",
+    "purposes": [
+      "automation",
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/microsoft/semantic-kernel",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/microsoft/semantic-kernel/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "pydantic-ai",
+    "name": "Pydantic AI",
+    "url": "https://github.com/pydantic/pydantic-ai",
+    "one_liner": "타입 검사로 믿을 수 있는 에이전트를 만드는 파이썬 프레임워크",
+    "purposes": [
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/pydantic/pydantic-ai",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/pydantic/pydantic-ai/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "vercel-ai-sdk",
+    "name": "AI SDK",
+    "url": "https://github.com/vercel/ai",
+    "one_liner": "타입스크립트로 채팅·스트리밍·도구 호출 AI 앱을 만드는 라이브러리",
+    "purposes": [
+      "app_builders",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/vercel/ai",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/vercel/ai/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "litgpt",
+    "name": "LitGPT",
+    "url": "https://github.com/Lightning-AI/litgpt",
+    "one_liner": "20개가 넘는 언어 모델을 학습·미세조정·배포하는 레시피 모음",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/Lightning-AI/litgpt",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/Lightning-AI/litgpt/blob/HEAD/LICENSE.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "nanogpt",
+    "name": "nanoGPT",
+    "url": "https://github.com/karpathy/nanoGPT",
+    "one_liner": "GPT를 처음부터 학습해 보는 가장 짧고 읽기 쉬운 코드",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/karpathy/nanoGPT",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/karpathy/nanoGPT/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "jina-reader",
+    "name": "Reader",
+    "url": "https://github.com/jina-ai/reader",
+    "one_liner": "주소 앞에 붙이기만 하면 웹페이지를 언어 모델용 글로 바꿔주는 도구",
+    "purposes": [
+      "data_ml",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install",
+      "api"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/jina-ai/reader",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/jina-ai/reader/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "graphrag",
+    "name": "GraphRAG",
+    "url": "https://github.com/microsoft/graphrag",
+    "one_liner": "문서에서 지식 그래프를 만들어 더 정확히 답하는 RAG 방법",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/microsoft/graphrag",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/microsoft/graphrag/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "graphiti",
+    "name": "Graphiti",
+    "url": "https://github.com/getzep/graphiti",
+    "one_liner": "시간에 따라 바뀌는 지식 그래프로 에이전트 기억을 만드는 도구",
+    "purposes": [
+      "data_ml",
+      "automation"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "open_source",
+    "ai_native": "yes",
+    "repo_url": "https://github.com/getzep/graphiti",
+    "official_domains": [
+      "github.com"
+    ],
+    "sources": [
+      "https://github.com/getzep/graphiti/blob/HEAD/LICENSE"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "qwen3-8-27b",
+    "name": "Qwen3.8 27B",
+    "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "one_liner": "알리바바 Qwen의 270억 파라미터 공개 모델 (글과 이미지 이해)",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/Qwen/Qwen3.8-27B/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "deepseek-r1",
+    "name": "DeepSeek-R1",
+    "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+    "one_liner": "단계적으로 생각해 답하는 DeepSeek의 공개 추론 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/deepseek-ai/DeepSeek-R1/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "kokoro-82m",
+    "name": "Kokoro 82M",
+    "url": "https://huggingface.co/hexgrad/Kokoro-82M",
+    "one_liner": "8천만 파라미터로 가볍게 돌아가는 공개 음성 합성(TTS) 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/hexgrad/Kokoro-82M",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/hexgrad/Kokoro-82M/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "whisper-large-v3",
+    "name": "Whisper large-v3",
+    "url": "https://huggingface.co/openai/whisper-large-v3",
+    "one_liner": "OpenAI의 다국어 음성 인식 공개 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/openai/whisper-large-v3",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/openai/whisper-large-v3/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "whisper-large-v3-turbo",
+    "name": "Whisper large-v3 turbo",
+    "url": "https://huggingface.co/openai/whisper-large-v3-turbo",
+    "one_liner": "Whisper large-v3를 더 빠르게 줄인 음성 인식 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/openai/whisper-large-v3-turbo",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/openai/whisper-large-v3-turbo/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "all-minilm-l6-v2",
+    "name": "all-MiniLM-L6-v2",
+    "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+    "one_liner": "문장을 숫자 벡터로 바꿔 비슷한 글을 찾게 해주는 작은 임베딩 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "deepseek-v4-pro",
+    "name": "DeepSeek-V4 Pro",
+    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+    "one_liner": "아주 긴 글(100만 토큰)을 다루는 DeepSeek의 공개 언어 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "z-image-turbo",
+    "name": "Z-Image Turbo",
+    "url": "https://huggingface.co/Tongyi-MAI/Z-Image-Turbo",
+    "one_liner": "글로 설명하면 빠르게 그림을 만드는 알리바바 통이의 공개 이미지 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/Tongyi-MAI/Z-Image-Turbo",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/Tongyi-MAI/Z-Image-Turbo/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "gpt-oss-120b",
+    "name": "gpt-oss-120b",
+    "url": "https://huggingface.co/openai/gpt-oss-120b",
+    "one_liner": "OpenAI가 공개한 큰 언어 모델 (내 서버에서 직접 실행)",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/openai/gpt-oss-120b",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/openai/gpt-oss-120b/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "gpt-oss-20b",
+    "name": "gpt-oss-20b",
+    "url": "https://huggingface.co/openai/gpt-oss-20b",
+    "one_liner": "OpenAI가 공개한 가벼운 언어 모델 (일반 PC에서도 실행)",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/openai/gpt-oss-20b",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/openai/gpt-oss-20b/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "glm-5-2",
+    "name": "GLM-5.2",
+    "url": "https://huggingface.co/zai-org/GLM-5.2",
+    "one_liner": "Z.ai(즈푸)의 공개 대형 언어 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/zai-org/GLM-5.2",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/zai-org/GLM-5.2/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "mixtral-8x7b-instruct",
+    "name": "Mixtral 8x7B Instruct",
+    "url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "one_liner": "여러 전문가 모델을 섞은 미스트랄의 공개 대화 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "gemma-4-31b-it",
+    "name": "Gemma 4 31B",
+    "url": "https://huggingface.co/google/gemma-4-31B-it",
+    "one_liner": "구글의 공개 모델 젬마 4 (글과 이미지 이해)",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/google/gemma-4-31B-it",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/google/gemma-4-31B-it/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "mistral-7b-instruct",
+    "name": "Mistral 7B Instruct",
+    "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+    "one_liner": "미스트랄의 작고 빠른 공개 대화 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "bge-m3",
+    "name": "BGE-M3",
+    "url": "https://huggingface.co/BAAI/bge-m3",
+    "one_liner": "100개가 넘는 언어를 지원하는 검색용 임베딩 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/BAAI/bge-m3",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/BAAI/bge-m3/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "janus-pro-7b",
+    "name": "Janus-Pro 7B",
+    "url": "https://huggingface.co/deepseek-ai/Janus-Pro-7B",
+    "one_liner": "이미지를 이해하고 만들기도 하는 DeepSeek의 공개 멀티모달 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/deepseek-ai/Janus-Pro-7B",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/deepseek-ai/Janus-Pro-7B/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "deepseek-ocr",
+    "name": "DeepSeek-OCR",
+    "url": "https://huggingface.co/deepseek-ai/DeepSeek-OCR",
+    "one_liner": "문서 사진에서 글자를 읽어내는 DeepSeek의 공개 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/deepseek-ai/DeepSeek-OCR",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/deepseek-ai/DeepSeek-OCR/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "phi-2",
+    "name": "Phi-2",
+    "url": "https://huggingface.co/microsoft/phi-2",
+    "one_liner": "27억 파라미터로 작지만 똑똑한 마이크로소프트 공개 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/microsoft/phi-2",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/microsoft/phi-2/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "qwq-32b",
+    "name": "QwQ-32B",
+    "url": "https://huggingface.co/Qwen/QwQ-32B",
+    "one_liner": "수학·코딩 문제를 깊게 생각해 푸는 Qwen의 공개 추론 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/Qwen/QwQ-32B",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/Qwen/QwQ-32B/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "dia-1-6b",
+    "name": "Dia 1.6B",
+    "url": "https://huggingface.co/nari-labs/Dia-1.6B",
+    "one_liner": "대본을 주면 두 사람이 대화하는 음성을 만드는 공개 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/nari-labs/Dia-1.6B",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/nari-labs/Dia-1.6B/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "embeddinggemma-2",
+    "name": "EmbeddingGemma 2",
+    "url": "https://huggingface.co/google/embeddinggemma-2",
+    "one_liner": "구글의 가벼운 공개 임베딩 모델 (검색·분류용)",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/google/embeddinggemma-2",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/google/embeddinggemma-2/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "qwen3-6-35b-a3b",
+    "name": "Qwen3.6 35B-A3B",
+    "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "one_liner": "일부만 켜서 빠르게 도는 Qwen의 전문가 혼합 공개 모델",
+    "purposes": [
+      "data_ml"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "install"
+    ],
+    "kind": "model",
+    "ai_native": "yes",
+    "repo_url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+    "official_domains": [
+      "huggingface.co"
+    ],
+    "sources": [
+      "https://huggingface.co/Qwen/Qwen3.6-35B-A3B/blob/main/README.md"
+    ],
+    "last_verified": "2026-11-06"
   }
 ]

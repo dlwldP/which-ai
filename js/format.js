@@ -12,6 +12,7 @@ export function priceBadge(price) {
   if (free === true && paid === false) return { text: '무료', tone: 'good' };
   if (free === true) return { text: '무료로 시작', tone: 'good' };
   if (free === false) return { text: '유료', tone: 'plain' };
+  if (paid === true) return { text: '유료 (무료 여부 확인 필요)', tone: 'plain' };
   return { text: `가격 ${UNKNOWN}`, tone: 'warn' };
 }
 
