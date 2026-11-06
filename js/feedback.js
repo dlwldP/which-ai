@@ -2,13 +2,13 @@
 // 구글 폼 만드는 법과 entry 번호 찾는 법은 CONTRIBUTING.md "제보 폼 연결" 참고.
 // action이나 entry가 비어 있으면 입력창을 숨긴다. 개발자용은 입력창 아래에 GitHub 이슈를 두 번째 방법으로 둔다.
 export const FEEDBACK_FORM = {
-  // 예: https://docs.google.com/forms/d/e/1FAIpQL.../formResponse
-  action: '',
+  // J의 구글 폼 "AI 뭐 써? 정보가 틀려요 제보" (2026-11-06 연결). 미리 채워진 링크의 entry 번호
+  action: 'https://docs.google.com/forms/d/e/1FAIpQLSd3fe5t40KfZtgVtJxsK9yXsPlSvxTOlifF_W3vBWAV9ocfqA/formResponse',
   entries: {
-    site: '', // 사이트 (예: entry.123456789)
-    tool: '', // 툴 이름
-    reason: '', // 사유 (필수)
-    page: '', // 제보한 페이지 주소
+    site: 'entry.1828461068', // 사이트
+    tool: 'entry.1677592842', // 툴 이름
+    reason: 'entry.613829319', // 사유 (필수)
+    page: 'entry.247551464', // 제보한 페이지 주소
   },
 };
 
