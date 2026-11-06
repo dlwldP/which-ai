@@ -3,8 +3,11 @@
 // 쉬운 한국어로 쓰고, 법률 자문이 아니므로 표현을 단정하지 않는다. 시행일을 바꾸면 EFFECTIVE도 바꾼다.
 export const EFFECTIVE = '2026년 11월 6일';
 
-/** @param {string} W "툴" 또는 "도구"  @param {string} site 사이트 이름 */
-export function pageSections(key, W, site) {
+/**
+ * @param {string} W "툴" 또는 "도구"  @param {string} site 사이트 이름
+ * @param {{ github?: boolean }} [opts] github: 제보 두 번째 방법으로 GitHub 이슈를 받는지 (개발자용)
+ */
+export function pageSections(key, W, site, { github = false } = {}) {
   const pages = {
     privacy: {
       title: '개인정보 처리방침',
@@ -14,6 +17,7 @@ export function pageSections(key, W, site) {
           '"정보가 틀려요" 제보를 보낼 때만: 사이트 구분, ' + W + ' 이름, 직접 적은 사유, 제보한 페이지 주소를 받아요.',
           '이름·이메일·전화번호는 받지 않아요. 사유 칸에도 개인정보를 적지 말아 주세요.',
           '회원가입, 로그인, 방문 통계 도구, 광고 추적, 쿠키는 쓰지 않아요.',
+          ...(github ? ['GitHub 이슈로 제보하면: 적은 내용과 GitHub 아이디가 누구나 볼 수 있게 공개되고, GitHub(GitHub, Inc.)의 개인정보 처리방침을 따라요.'] : []),
         ]],
         ['받은 정보를 쓰는 곳', [
           `제보 내용은 ${W} 정보가 틀린 곳을 확인하고 고치는 데만 써요.`,
@@ -35,6 +39,7 @@ export function pageSections(key, W, site) {
         ['삭제 요청과 문의', [
           '보낸 제보를 지우고 싶거나 개인정보에 대해 묻고 싶으면 "정보가 틀려요" 입력창에 "삭제 요청"과 보낸 날짜·내용을 적어 주세요.',
           '이름이나 연락처를 받지 않아서, 어떤 제보인지 알 수 있게 내용을 적어 주셔야 찾을 수 있어요.',
+          ...(github ? ['GitHub 이슈로 남긴 제보는 본인이 GitHub에서 직접 고치거나 지울 수 있어요.'] : []),
           '개인정보 보호책임자: 이 사이트 운영자 (문의는 위 제보 입력창으로 받아요)',
         ]],
         ['바뀌는 경우', [

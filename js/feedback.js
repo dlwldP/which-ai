@@ -1,6 +1,6 @@
 // "정보가 틀려요" 제보: 사이트 안 입력창 → J의 구글 폼으로 보낸다 (서버 코드 없이, 로그인·횟수 제한 없음).
 // 구글 폼 만드는 법과 entry 번호 찾는 법은 CONTRIBUTING.md "제보 폼 연결" 참고.
-// action이나 entry가 비어 있으면 제보 버튼을 숨긴다.
+// action이나 entry가 비어 있으면 입력창을 숨긴다. 개발자용은 입력창 아래에 GitHub 이슈를 두 번째 방법으로 둔다.
 export const FEEDBACK_FORM = {
   // 예: https://docs.google.com/forms/d/e/1FAIpQL.../formResponse
   action: '',
@@ -26,6 +26,20 @@ export function isFeedbackReady(form = FEEDBACK_FORM) {
 export function cleanReason(text) {
   const reason = String(text ?? '').trim();
   return reason ? reason.slice(0, REASON_MAX) : null;
+}
+
+// ---- 두 번째 방법 (개발자용): GitHub 이슈 (.github/ISSUE_TEMPLATE/wrong-info.yml) ----
+const ISSUE_NEW = 'https://github.com/dlwldP/which-ai/issues/new';
+
+/** GitHub 제보 양식 주소. 사이트와 툴 이름을 미리 채운다 ("무엇이 틀렸나요?"는 양식에서 필수) */
+export function githubIssueUrl(toolName, site) {
+  const params = new URLSearchParams({
+    template: 'wrong-info.yml',
+    title: `[정보 오류] ${toolName}`,
+    site,
+    tool: toolName,
+  });
+  return `${ISSUE_NEW}?${params}`;
 }
 
 /** 구글 폼으로 보낼 내용 (application/x-www-form-urlencoded) */

@@ -1303,6 +1303,10 @@ body.has-sticky-cta { padding-bottom: 84px; }
 .report-error { margin: 0; color: var(--red); font-weight: 700; font-size: 0.875rem; }
 .report-done { margin: 0; color: var(--good); font-weight: 700; }
 .report-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
+.report-by-form { display: grid; gap: 10px; }
+.report-alt { margin: 4px 0 0; padding-top: 12px; border-top: 1px solid var(--line); font-size: 0.875rem; color: var(--sub); }
+.report-github { font-weight: 700; }
+.report-alt-note { display: block; margin-top: 2px; color: var(--muted); font-size: 0.8125rem; }
 .report-actions .btn { min-height: 44px; }
 .report-send:disabled { opacity: 0.55; cursor: default; }
 

@@ -16,6 +16,7 @@ export const MODES = {
     heroSub: '고르면 맞는 툴 2~3개를 이유와 함께 비교해드려요. 회원가입 없이 무료예요.',
     toolWord: '툴',
     reportSite: 'AI 뭐 써? (일반용)', // 제보 양식의 사이트 선택값과 같아야 한다
+    reportGithub: false, // 제보 입력창 아래에 GitHub 이슈를 두 번째 방법으로 보여줄지
     emptyText: '실제 툴 정보는 공식 페이지에서 하나씩 확인하고 있어요. 확인이 끝난 툴부터 곧 보여드릴게요.',
     // 시나리오 4: "뭘 해야 할지 모르겠어요" → 홈 타일에 "처음이라면" 표시 (docs/decisions.md)
     starters: ['P01', 'P03', 'P07'],
@@ -54,6 +55,7 @@ export const MODES = {
     heroSub: '개발 단계를 고르면 맞는 도구 2~3개를 이유와 함께 비교해드려요. 회원가입 없이 무료예요.',
     toolWord: '도구',
     reportSite: '개발할 때 AI 뭐 써? (개발자용)',
+    reportGithub: true,
     emptyText: '실제 도구 정보는 공식 페이지에서 하나씩 확인하고 있어요. 확인이 끝난 도구부터 곧 보여드릴게요.',
     starters: [],
     glossaryHint: 'CLI, RAG, CI/CD, 셀프 호스팅… 용어 풀이',
