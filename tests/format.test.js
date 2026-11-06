@@ -8,6 +8,7 @@ test('가격 배지: 무료 + 유료 / 무료 / 무료로 시작 / 유료 / 확�
   assert.equal(priceBadge({ free: true, paid: false }).text, '무료');
   assert.equal(priceBadge({ free: true, paid: null }).text, '무료로 시작');
   assert.equal(priceBadge({ free: false, paid: true }).text, '유료');
+  assert.equal(priceBadge({ free: null, paid: true }).text, '유료 (무료 여부 확인 필요)');
   assert.equal(priceBadge({ free: null, paid: null }).text, '가격 확인 필요');
   assert.equal(priceBadge({ free: null, paid: null }).tone, 'warn');
 });
