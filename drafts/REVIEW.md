@@ -11,39 +11,39 @@
 | [클로바노트](#general-clovanote) | 비개발자용 | 15개 | 없음 |
 | [Grok](#general-grok) | 비개발자용 | 22개 | `price.paid_from_usd` `price.billing` |
 | [Claude Code](#dev-claude-code) | 개발자용 | 17개 | `open_source` |
-| [Lovable](#dev-lovable) | 개발자용 | 14개 | `open_source` |
-| [Vercel](#dev-vercel) | 개발자용 | 16개 | `open_source` |
-| [v0](#dev-v0) | 개발자용 | 17개 | `open_source` |
+| [Lovable](#dev-lovable) | 개발자용 | 14개 | 없음 |
+| [Vercel](#dev-vercel) | 개발자용 | 16개 | 없음 |
+| [v0](#dev-v0) | 개발자용 | 17개 | 없음 |
 | [Cloudflare Workers](#dev-cloudflare) | 개발자용 | 15개 | `open_source` |
 | [Google AI Studio](#dev-google-ai-studio) | 개발자용 | 13개 | `price.paid_from_usd` `open_source` |
-| [Google Antigravity](#dev-antigravity) | 개발자용 | 18개 | `price.paid_from_usd` `open_source` |
-| [Linear](#dev-linear) | 개발자용 | 14개 | `privacy.trains_on_input_default` `privacy.opt_out` `open_source` `price.paid_from_usd` `price.billing` |
+| [Google Antigravity](#dev-antigravity) | 개발자용 | 18개 | `price.paid_from_usd` |
+| [Linear](#dev-linear) | 개발자용 | 14개 | `privacy.trains_on_input_default` `privacy.opt_out` `price.paid_from_usd` `price.billing` |
 | [Bolt](#dev-bolt) | 개발자용 | 15개 | `open_source` `price.paid_from_usd` `price.billing` |
-| [Replit](#dev-replit) | 개발자용 | 24개 | `open_source` |
-| [Firebase](#dev-firebase) | 개발자용 | 16개 | `open_source` |
+| [Replit](#dev-replit) | 개발자용 | 24개 | 없음 |
+| [Firebase](#dev-firebase) | 개발자용 | 16개 | 없음 |
 | [Supabase](#dev-supabase) | 개발자용 | 22개 | `privacy.trains_on_input_default` `privacy.opt_out` |
 | [Neon](#dev-neon) | 개발자용 | 15개 | `privacy.trains_on_input_default` `privacy.opt_out` `open_source` |
-| [Pinecone](#dev-pinecone) | 개발자용 | 14개 | `privacy.trains_on_input_default` `privacy.opt_out` `open_source` |
+| [Pinecone](#dev-pinecone) | 개발자용 | 14개 | `privacy.trains_on_input_default` `privacy.opt_out` |
 | [Hugging Face](#dev-hugging-face) | 개발자용 | 13개 | `open_source` |
 | [LangSmith](#dev-langsmith) | 개발자용 | 13개 | `open_source` |
 | [Ollama](#dev-ollama) | 개발자용 | 8개 | `open_source` |
-| [Netlify](#dev-netlify) | 개발자용 | 19개 | `open_source` |
-| [Railway](#dev-railway) | 개발자용 | 16개 | `open_source` |
-| [Notion AI](#dev-notion) | 개발자용 | 13개 | `open_source` `price.paid_from_usd` `price.billing` |
-| [Miro AI](#dev-miro) | 개발자용 | 15개 | `open_source` `price.paid_from_usd` `price.billing` |
-| [Figma (Figma AI·FigJam·Figma Make)](#dev-figma) | 개발자용 | 20개 | `open_source` `price.paid_from_usd` `price.billing` |
-| [Atlassian Rovo](#dev-atlassian-rovo) | 개발자용 | 14개 | `price.paid_from_usd` `privacy.trains_on_input_default` `privacy.opt_out` `open_source` |
-| [Uizard](#dev-uizard) | 개발자용 | 15개 | `open_source` `price.paid_from_usd` `price.billing` |
-| [Cursor](#dev-cursor) | 개발자용 | 21개 | `open_source` |
+| [Netlify](#dev-netlify) | 개발자용 | 19개 | 없음 |
+| [Railway](#dev-railway) | 개발자용 | 16개 | 없음 |
+| [Notion AI](#dev-notion) | 개발자용 | 13개 | `price.paid_from_usd` `price.billing` |
+| [Miro AI](#dev-miro) | 개발자용 | 15개 | `price.paid_from_usd` `price.billing` |
+| [Figma (Figma AI·FigJam·Figma Make)](#dev-figma) | 개발자용 | 20개 | `price.paid_from_usd` `price.billing` |
+| [Atlassian Rovo](#dev-atlassian-rovo) | 개발자용 | 14개 | `price.paid_from_usd` `privacy.trains_on_input_default` `privacy.opt_out` |
+| [Uizard](#dev-uizard) | 개발자용 | 15개 | `price.paid_from_usd` `price.billing` |
+| [Cursor](#dev-cursor) | 개발자용 | 21개 | 없음 |
 | [GitHub Copilot](#dev-github-copilot) | 개발자용 | 21개 | `open_source` |
 | [Kiro](#dev-kiro) | 개발자용 | 20개 | `open_source` |
-| [CodeRabbit](#dev-coderabbit) | 개발자용 | 17개 | `open_source` |
-| [Greptile](#dev-greptile) | 개발자용 | 13개 | `open_source` |
-| [Zapier](#dev-zapier) | 개발자용 | 13개 | `open_source` |
-| [Make](#dev-make) | 개발자용 | 9개 | `price.paid_from_usd` `price.billing` `open_source` |
+| [CodeRabbit](#dev-coderabbit) | 개발자용 | 17개 | 없음 |
+| [Greptile](#dev-greptile) | 개발자용 | 13개 | 없음 |
+| [Zapier](#dev-zapier) | 개발자용 | 13개 | 없음 |
+| [Make](#dev-make) | 개발자용 | 9개 | `price.paid_from_usd` `price.billing` |
 | [n8n](#dev-n8n) | 개발자용 | 15개 | `price.paid_from_usd` `price.billing` |
-| [Gumloop](#dev-gumloop) | 개발자용 | 12개 | `open_source` |
-| [Snyk](#dev-snyk) | 개발자용 | 10개 | `open_source` |
+| [Gumloop](#dev-gumloop) | 개발자용 | 12개 | 없음 |
+| [Snyk](#dev-snyk) | 개발자용 | 10개 | 없음 |
 | [SonarQube](#dev-sonarqube) | 개발자용 | 11개 | `open_source` `privacy.trains_on_input_default` `privacy.opt_out` |
 
 ## 비개발자용 (3개)
@@ -380,10 +380,6 @@ node scripts/draft.js promote claude-code --verified YYYY-MM-DD --dev
 - [ ] ✓ 말로 설명해서 앱 통째로 만들기 — 코드 내보내기·GitHub 연동  
   “produces a codebase that can be synced to GitHub, GitLab, or Bitbucket with” · [페이지에서 보기](https://docs.lovable.dev/introduction/welcome#:~:text=produces%20a%20codebase%20that%20can,GitHub%2C%20GitLab%2C%20or%20Bitbucket%20with)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI가 핵심
@@ -399,9 +395,9 @@ node scripts/draft.js promote claude-code --verified YYYY-MM-DD --dev
 - 가격 페이지(lovable.dev/pricing)의 요금 카드는 스크립트로 그려져서 글자로 안 읽혔어요. 가격은 공식 문서(docs.lovable.dev)의 요금제 페이지 기준이에요.
 - 학습 정책: 2026년 9월 9일부터 Free·Pro 데이터가 학습에 쓰일 수 있고(trains=yes), 계정 설정에서 끌 수 있어요(opt_out=yes). 보안 조건은 통과해요.
 - 쓰는 형태: 웹(브라우저)과 데스크톱 앱 문장이 있어요. 모바일 앱도 언급되지만 개발자용 forms 값에는 모바일 항목이 없어서 넣지 않았어요.
-- 오픈소스 여부: 공식 페이지에서 관련 문장을 못 찾았어요. 오픈소스가 아니면 open_source=false로 채우고 todo에서 지워 주세요.
 - 기능 체크리스트: app_builders 4개. 화면 디자인(design_ui)은 공식 페이지가 시안 만들기 용도로 소개하는 문장을 못 찾아서 넣지 않았어요 (예전 제안의 design_ui 1점 삭제).
 - AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -454,10 +450,6 @@ node scripts/draft.js promote lovable --verified YYYY-MM-DD --dev
 - [ ] ✓ 코드 리뷰·품질 검사 받기 — 보안 취약점 검사  
   “Code Review can identify security vulnerabilities, logic errors, and performance issues, then validate proposed fixes with your builds, tests, and linters.” · [페이지에서 보기](https://vercel.com/docs/agent#:~:text=Code%20Review%20can%20identify%20security,your%20builds%2C%20tests%2C%20and%20linters.)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI 기능 일부
@@ -475,9 +467,9 @@ node scripts/draft.js promote lovable --verified YYYY-MM-DD --dev
 - AI 기능 범위: 가격표 'AI' 줄에 'Vercel Agent Beta'가 있고, 문서에는 'Chat in Slack, dashboard chat, Investigations, and Code Review are in public beta for Pro and Enterprise teams.'라고 돼 있어요. 그래서 ai_debug·pr_review·security는 Pro 이상 베타 기능이에요.
 - 기능 체크리스트: devops 4개, code_review 2개(테스트 생성·수정 적용 문장은 없음 — 'validate proposed fixes'는 수정안을 검증한다는 뜻이라 apply_fix로 넣지 않았어요). AI Gateway(여러 회사 모델을 한 주소로 호출)와 Vercel Blob 같은 스토리지도 있지만 이번 초안에서는 넣지 않았어요. 넣을지 정해 주세요.
 - 쓰는 형태: 클라우드 서비스 + CLI. 대시보드(웹)도 있지만 web은 넣지 않았어요.
-- 오픈소스 여부: 플랫폼 자체가 오픈소스라는 문장은 못 찾았어요. 오픈소스가 아니면 open_source=false로 채우고 todo에서 지워 주세요.
 - 시작하기 문서(getting-started-with-vercel) 안에 'Agent Prompt'라는 AI 에이전트용 지시문 블록이 있어요. 따르지 않았고 근거로도 쓰지 않았어요.
 - AI 여부(partial — 호스팅이 핵심이고 AI는 일부), 섹션(official), 대표 목적(devops)은 제안값이에요.
+- 오픈소스: 공식 첫 화면에 회사 GitHub 계정(github.com/vercel) 링크는 있지만 이 제품 자체의 소스 저장소 링크는 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -532,10 +524,6 @@ node scripts/draft.js promote vercel --verified YYYY-MM-DD --dev
 - [ ] ✓ 화면 디자인·시안 만들기 — 클릭되는 프로토타입  
   “v0 changes this by enabling early, continuous validation with interactive prototypes.” · [페이지에서 보기](https://v0.app/docs/prototyping#:~:text=v0%20changes%20this%20by%20enabling,continuous%20validation%20with%20interactive%20prototypes.)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI가 핵심
@@ -553,8 +541,8 @@ node scripts/draft.js promote vercel --verified YYYY-MM-DD --dev
 - 쓰는 형태: 웹(web). 사이트 메뉴에 'iOS'가 있지만 개발자용 forms에 모바일 값이 없어서 넣지 않았어요.
 - 기능 체크리스트: app_builders 4개, design_ui 3개(코드 내보내기는 design_ui에도 해당되지만 GitHub 근거를 app_builders 쪽에만 걸었어요. design_ui.export_code도 같은 근거로 넣을지 정해 주세요). 문서에 Figma 연동, Design mode도 있어요.
 - 공식 도메인: v0 페이지는 모두 v0.app에 있어서 official_domains에 v0.app만 넣었어요. 결제는 vercel.com에서 해요('Centralized billing on vercel.com').
-- 오픈소스 여부: 관련 문장을 못 찾았어요. 오픈소스가 아니면 open_source=false로 채우고 todo에서 지워 주세요.
 - AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요. Vercel과 별개 툴로 나눴어요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -756,7 +744,6 @@ node scripts/draft.js promote google-ai-studio --verified YYYY-MM-DD --dev
 **3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
 
 - [ ] `price.paid_from_usd`
-- [ ] `open_source`
 
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
@@ -773,11 +760,11 @@ node scripts/draft.js promote google-ai-studio --verified YYYY-MM-DD --dev
 - 무료 여부: 가격 페이지의 개인 요금 '$0/month'와 첫 화면 'Available at no charge'로 free=true예요. 무료 한도는 숫자가 없고 '매주 채워지는 기본 사용량 + 주간 한도'라고만 나와요.
 - 유료 가격: 다음 단계는 Google AI Pro·Ultra 구독인데 가격 페이지에 가격 숫자가 없어요('Get Pro' 버튼만 있음). 그래서 paid_from_usd=null, todo예요. 팀용 Gemini Enterprise Standard/Plus는 '좌석당 월 30달러부터'라고 적혀 있지만 개인 최저 유료 플랜이 아니라 넣지 않았어요. 그 밖에 API 종량제(쓴 만큼)와 AI 크레딧 추가 구매도 있어요.
 - 학습 정책: 개인 약관에 '사용 기록(Interactions)을 구글·알파벳 연구, 제품, 머신러닝 기술 개선에 쓴다'와 '원하지 않으면 설정에서 바꾸라'는 문장이 있어 trains_on_input_default=yes, opt_out=yes로 했어요. Interactions에 코드·프롬프트가 들어가는지는 'user data, interaction data'라고만 적혀 있어요. 꼭 원문을 확인해 주세요. Gemini Enterprise·Google Cloud로 쓰는 팀은 이 약관이 적용되지 않아요.
-- 오픈소스 여부: 약관은 내려받아 쓰는 서비스 약관(Google Antigravity Additional Terms)만 있고 오픈소스라는 문장은 없어요. 아마 false일 텐데 근거가 약해서 null + todo예요.
 - 쓰는 형태: 데스크톱 앱(macOS·Windows·Linux), 전용 IDE(데스크톱으로 묶음), CLI, IDE 확장(VS Code·Visual Studio·JetBrains·Zed·Xcode), Python SDK(library). 브라우저 원격 조종(Remote Control)은 내 컴퓨터 세션을 조종하는 기능이라 web으로 넣지 않았어요.
 - 기능 체크리스트: coding_agents 3개(PR 올리기는 공식 문장을 못 찾음, '커밋 푸시'까지만 나옴). code_review는 tests와 apply_fix(리뷰 의견 받아 수정 적용, 활용 사례 페이지 문장). 같은 페이지에 '팀 규칙으로 리뷰 전 검사(pre-review checks)'가 있지만 PR에 자동 리뷰 코멘트를 다는 기능이라는 문장은 아니라서 pr_review는 넣지 않았어요. automation은 일정 실행(/schedule)과 MCP 연결 2개.
 - 블로그 글(antigravity.google/blog)은 공식 도메인이지만 블로그라 근거로 쓰지 않았어요. 다운로드 페이지에 설치 스크립트 명령이 있지만 받거나 실행하지 않았어요.
 - AI 여부(yes), 섹션(official), 대표 목적(coding_agents)은 제안값이에요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -830,7 +817,6 @@ node scripts/draft.js promote antigravity --verified YYYY-MM-DD --dev
 
 - [ ] `privacy.trains_on_input_default`
 - [ ] `privacy.opt_out`
-- [ ] `open_source`
 - [ ] `price.paid_from_usd`
 - [ ] `price.billing`
 
@@ -848,11 +834,11 @@ node scripts/draft.js promote antigravity --verified YYYY-MM-DD --dev
 - 유료 가격: 가격 페이지에는 Basic '$10 per user/month, Billed yearly'만 보여요. 월 결제 가격 전환 버튼은 스크립트라 월 결제 숫자를 못 읽었어요. 그래서 paid_from_usd=10, billing=yearly로 두었어요. 월 결제 기준이 필요하면 J가 확인해서 바꿔 주세요. 이 값은 사용자 한 명당 가격이에요.
 - AI 크레딧: Coding sessions와 Loops는 요금제와 별도로 AI 크레딧(선불, 최소 충전 10달러)에서 빠져나가요. 다른 AI 기능은 요금제에 포함돼요. 가격표의 Free 칸에도 'Linear Agent', 'Agent platform'이 있어요.
 - 학습 정책: 개인정보 처리방침, 데이터 처리 부록(DPA), 보안 페이지, AI 문서에서 '고객 데이터로 AI를 학습한다/안 한다'는 문장을 못 찾았어요. 그래서 둘 다 unknown + todo예요. docs/ai-security 같은 주소는 Not found였어요. 코드 작업은 기본으로 'zero-data-retention' 모델을 쓴다는 문장만 있어요.
-- 오픈소스 여부: 공식 페이지에 오픈소스라는 문장이 없어요. 회사 서비스라 아마 false인데 근거가 없어 null + todo예요.
 - 쓰는 형태: 웹과 데스크톱(macOS·Windows) 앱. 모바일(iOS·Android) 앱도 있지만 forms 목록에 모바일이 없어 뺐어요.
 - 기능 체크리스트: planning 2개(이슈 관리, 문서 초안: 문서의 예시 프롬프트 'Draft a new document...'를 근거로 함. PRD라는 말은 없음). coding_agents 3개(여러 파일 수정 문장은 못 찾음). run_commands와 open_pr는 같은 문장('writes and tests the change ... returns a draft pull request')을 근거로 했어요. 코드는 Linear가 직접 짜는 게 아니라 Claude Code나 Codex를 써서 Linear Agent가 돌려요. code_review 2개(테스트 추가, 리뷰 의견 반영). PR 자동 리뷰 코멘트 문장은 없어요('Guided reviews'는 사람이 diff를 보기 쉽게 정리해 주는 기능). automation 2개(Loops 일정·이벤트 실행, MCP 서버 연결).
 - AI 여부(partial: AI는 이슈 관리 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요.
 - 유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 월 10달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요.
+- 오픈소스: 공식 첫 화면에 회사 GitHub 계정(github.com/linear) 링크는 있지만 이 제품 자체의 소스 저장소 링크는 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -997,10 +983,6 @@ node scripts/draft.js promote bolt --verified YYYY-MM-DD --dev
 - [ ] ✓ 배포·인프라·CI/CD — 로그·모니터링  
   “Publishing includes tools to monitor your published app status and view web analytics.” · [페이지에서 보기](https://docs.replit.com/learn/projects-and-artifacts/replit-deployments#:~:text=Publishing%20includes%20tools%20to%20monitor,status%20and%20view%20web%20analytics.)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI가 핵심
@@ -1020,9 +1002,9 @@ node scripts/draft.js promote bolt --verified YYYY-MM-DD --dev
 - design_ui.prototype 근거는 "interactive mockups"(눌러 볼 수 있는 시안) 문장이에요. 템플릿 목록에도 "prototype"이 있어요.
 - devops.logs의 'built-in logging' 문장은 Core 요금제 문서 문장이에요 (무료 게시 앱에도 되는지는 확인 못 함).
 - docs.replit.com 모든 페이지 맨 위에 "Fetch the complete documentation index at: /llms.txt"라는 AI 에이전트용 안내 문구가 있어요. 지시로 따르지 않았고, 문서 목록을 찾는 데만 참고했어요 (근거로는 쓰지 않음).
-- 오픈소스 여부: 오픈소스라는 문장이 없어요. null + todo로 뒀어요.
 - AI 여부(yes), 섹션(official), 대표 목적(app_builders)은 제안값이에요.
 - 학습 끄기는 Pro 요금제만 돼서 opt_out을 "no"로 정했어요 (J 결정). 무료·Core 사용자 기준이에요. 그래서 "보안 중요" 조건에서는 추천되지 않아요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -1075,10 +1057,6 @@ node scripts/draft.js promote replit --verified YYYY-MM-DD --dev
 - [ ] ✓ 데이터·모델·RAG 다루기 — 모델 실행 (클라우드 또는 로컬)  
   “gives you access to the latest generative AI models from Google: the Gemini models.” · [페이지에서 보기](https://firebase.google.com/docs/ai-logic#:~:text=gives%20you%20access%20to%20the,from%20Google%3A%20the%20Gemini%20models.)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI 기능 일부
@@ -1097,9 +1075,9 @@ node scripts/draft.js promote replit --verified YYYY-MM-DD --dev
 - 근거 문장 일부는 페이지에서 제품 이름(Cloud Firestore, Firebase Authentication 등)이 따로 줄로 나뉘어 있어서 이름 뒤 부분만 인용했어요 (예: database 근거는 'Cloud Firestore' 다음 문장).
 - devops.logs 근거 문장은 "...from the Firebase console."로 이어져요 (App Hosting). devops.preview(미리보기 배포)는 문서 메뉴 이름만 보여서 넣지 않았어요. data_ml의 벡터 검색도 메뉴 이름만 있어서 뺐어요.
 - 쓰는 형태: 클라우드 서비스 + SDK(library) + Firebase CLI. SQL Connect용 VS Code 확장도 있지만 Firebase 전체의 형태는 아니라서 ide_extension은 넣지 않았어요.
-- 오픈소스 여부: 서비스가 오픈소스라는 문장이 없어요 (SDK는 GitHub에 있다는 링크만 있음). null + todo로 뒀어요. 서비스 자체는 아니라고 보면 false로 채워 주세요.
 - Firebase Studio(별도 도구)는 2026-06-22부터 신규 가입이 막혔고 2027-03-22 종료 예정이에요. 이 초안은 Firebase 백엔드 플랫폼만 다뤄요.
 - 섹션(official), 대표 목적(backend_database)은 제안값이에요.
+- 오픈소스: 공식 첫 화면에 회사 GitHub 계정(github.com/firebase) 링크는 있지만 이 제품 자체의 소스 저장소 링크는 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -1314,7 +1292,6 @@ node scripts/draft.js promote neon --verified YYYY-MM-DD --dev
 
 - [ ] `privacy.trains_on_input_default`
 - [ ] `privacy.opt_out`
-- [ ] `open_source`
 
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
@@ -1330,11 +1307,11 @@ node scripts/draft.js promote neon --verified YYYY-MM-DD --dev
 - 읽지 못한 페이지: docs.pinecone.io(공식 문서)는 이 환경의 프록시가 연결을 막아서 하나도 못 읽었어요. 그래서 근거는 www.pinecone.io 페이지에서만 가져왔어요. learn 링크의 docs.pinecone.io는 J가 열리는지 확인해 주세요.
 - 유료 가격: 가장 싼 유료는 Builder 월 20달러 정액이에요. Standard는 월 최소 50달러(넘으면 쓴 만큼), Enterprise는 월 최소 500달러.
 - 학습 정책: 개인정보 처리방침에는 학습 관련 문장이 없고, MSA에는 '서비스 제공·유지·개선에 쓸 수 있다'는 문장만 있어요. 'Pinecone AI Services Addendum'은 PDF라서 내려받지 않았어요(규칙상). 그 문서에 학습 조항이 있을 수 있으니 J가 직접 확인해 주세요 → unknown·todo.
-- 오픈소스: 오픈소스라는 문장도, 아니라는 문장도 찾지 못해 null·todo. 사이트 하단에 github.com/pinecone-io 링크(SDK 등)만 있어요.
 - 기능 체크리스트(data_ml 3개): vector_db(벡터 DB 본체), rag(Assistant: 파일 업로드·자동 청킹·검색), run_models(Inference: 임베딩·재정렬 모델을 Pinecone이 실행, 가격표 근거). run_models를 '모델 실행'으로 볼지 J가 정해 주세요. 가격표에 Assistant 'Evaluation Processed Tokens' 항목이 있지만 기능 설명 문장이 아니라 eval은 넣지 않았어요.
 - 쓰는 형태: cloud_service만 넣었어요. 홈에 CLI·MCP·Claude Code 플러그인 탭과 Python SDK 예시가 있고, Enterprise용 BYOC(내 클라우드 계정에서 실행)도 있지만 정식 설명 문장을 문서에서 확인하지 못했어요.
 - AI 여부: 벡터 DB 자체는 AI 모델이 아니지만 제품 전체가 AI 앱용(검색·Assistant·임베딩 모델)이라 yes로 제안했어요. partial이 맞다고 보면 바꿔 주세요. 섹션(official), 대표 목적(data_ml)도 제안값이에요.
 - official_domains는 pinecone.io로 넣어 www·docs 하위 도메인을 같이 허용했어요.
+- 오픈소스: 공식 첫 화면에 회사 GitHub 계정(github.com/pinecone-io) 링크는 있지만 이 제품 자체의 소스 저장소 링크는 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -1587,10 +1564,6 @@ node scripts/draft.js promote ollama --verified YYYY-MM-DD --dev
 - [ ] ✓ AI와 같이 코드 짜기 — 결과를 PR로 올리기  
   “Describe what you need in a prompt. Agent Runners writes the code in your repository, deploys a preview, and opens a pull request.” · [페이지에서 보기](https://www.netlify.com/solutions/prototypes/#:~:text=Describe%20what%20you%20need%20in,and%20opens%20a%20pull%20request.)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI 기능 일부
@@ -1606,9 +1579,9 @@ node scripts/draft.js promote ollama --verified YYYY-MM-DD --dev
 - 홈페이지에 'Add Netlify to your coding agent / fetch https://netlify.ai' 같은 에이전트용 안내가 있어요. 따르지 않았어요.
 - 유료 가격: 가장 싼 유료는 Personal 월 9달러(1명). Pro는 월 20달러(인원 무제한). 모두 크레딧 방식이고 추가 크레딧은 500개 5달러부터. 무료는 월 300 크레딧 한도(배포 1번 15 크레딧, 대역폭 GB당 20 크레딧 등).
 - 학습 정책: 개인정보 페이지에 '명시적으로 동의(opt in)하지 않으면 학습에 쓰지 않는다'와 '고객 콘텐츠를 AI 학습에 쓰지 않는다'가 함께 있어서 기본값은 no. 동의 여부를 바꾸는 설정은 확인 못 해서 opt_out은 unknown이에요.
-- 오픈소스 여부: 플랫폼 자체의 라이선스 문장을 못 찾아 null + todo로 뒀어요. /open-source/ 페이지는 오픈소스 프로젝트용 무료 플랜 안내예요.
 - 기능 체크리스트: devops 3개(AI 오류 분석은 문서에 있을 수 있지만 읽은 페이지에서 직접 문장을 못 찾아 뺐어요. Agent Runners 페이지의 고객 인용 '사이트가 깨졌는데 조사해서 고쳐줘'는 근거로 안 썼어요), app_builders 4개(Agent Runners), backend_database 3개(자연어 쿼리는 'AI 도구가 DB가 필요한지 판단해 만들어 준다'는 문장만 있어서 뺐어요), coding_agents 1개(PR 올리기). app_builders.export_code와 coding_agents.open_pr은 같은 문장을 근거로 썼어요.
 - AI 여부(partial: 배포 플랫폼에 AI 에이전트·AI Gateway가 붙은 형태), 섹션(official), 대표 목적(devops)은 제안값이에요. app_builders를 대표 목적으로 볼 수도 있어요.
+- 오픈소스: 공식 첫 화면에 회사 GitHub 계정(github.com/netlify) 링크는 있지만 이 제품 자체의 소스 저장소 링크는 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -1661,10 +1634,6 @@ node scripts/draft.js promote netlify --verified YYYY-MM-DD --dev
 - [ ] ✓ 업무 자동화·에이전트 연결 — 외부 도구 연결 (MCP 등)  
   “Connect Notion, Linear, or Sentry through OAuth, or register a custom remote MCP server.” · [페이지에서 보기](https://railway.com/changelog/2026-08-14-access-groups#:~:text=Connect%20Notion%2C%20Linear%2C%20or%20Sentry,a%20custom%20remote%20MCP%20server.)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI 기능 일부
@@ -1682,9 +1651,9 @@ node scripts/draft.js promote netlify --verified YYYY-MM-DD --dev
 - 무료 여부: 가격표에 Free $0 요금제가 있어요. 다만 'then $1 per month' 문구가 '월 1달러 크레딧'인지 '월 1달러 요금'인지 페이지만으로는 확실하지 않아서 free_limit에는 체험 크레딧과 자원 한도만 적었어요. 문서로 확인해 주세요.
 - 유료 가격: Hobby는 '최소 사용량 월 5달러'(5달러 크레딧 포함, 넘으면 쓴 만큼). Pro는 최소 월 20달러. 실제 요금은 초 단위 사용량 기준이에요.
 - 학습 정책: 개인정보 페이지·약관에 AI 학습 관련 문장이 없어서 unknown이에요.
-- 오픈소스 여부: 약관에 '서비스의 소스 코드를 얻으려는 시도(디컴파일 등) 금지' 문장은 있지만 라이선스를 밝히는 문장은 아니라서 null + todo로 뒀어요. 약관에 페이지 자동 수집(crawl/scrape) 금지 조항도 있어요 — 이번에는 필요한 몇 페이지만 열었어요.
 - 기능 체크리스트: devops 3개(AI 오류 분석은 '배포·로그 확인' 문장만 있고 원인 분석을 직접 소개하는 문장이 없어 뺐어요. auto_deploy는 '저장소 연결·GitHub 브랜치 배포' 문장이라 '푸시하면 자동 배포'를 직접 말하지는 않아요 — J 확인), coding_agents 2개(시험 기능), backend_database 2개(인증 'Railway Authentication'은 배포 주소에 로그인을 거는 Enterprise 기능이라 앱 인증으로 세지 않음), automation 2개(크론 작업, 에이전트 MCP 연결).
 - AI 여부(partial), 섹션(official), 대표 목적(devops)은 제안값이에요.
+- 오픈소스: 공식 첫 화면에 회사 GitHub 계정(github.com/railwayapp) 링크는 있지만 이 제품 자체의 소스 저장소 링크는 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -1733,7 +1702,6 @@ node scripts/draft.js promote railway --verified YYYY-MM-DD --dev
 
 **3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
 
-- [ ] `open_source`
 - [ ] `price.paid_from_usd`
 - [ ] `price.billing`
 
@@ -1752,11 +1720,11 @@ node scripts/draft.js promote railway --verified YYYY-MM-DD --dev
 - 유료 가격 기준 요금제: Notion AI(Notion Agent·회의록·검색)는 Business부터 포함이라 Business $20을 넣었어요. Notion 자체의 가장 싼 유료 요금제는 Plus $10이지만 AI는 체험용만이에요. 어느 쪽으로 할지 J가 정해 주세요.
 - Custom Agents는 Notion 크레딧(1,000크레딧당 10달러)을 따로 써요. 무료 요금제(Free)에도 AI 체험 사용량이 있어서 free=true로 했어요.
 - 학습 정책: '기본으로 고객 데이터를 학습에 쓰지 않는다', '데이터 공유 요청에 동의(opt in)할 때만 쓴다'는 문장이 있어 trains=no로 했어요. 끄는 설정 얘기가 아니라서 opt_out은 unknown이에요.
-- 오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.
 - 쓰는 형태: 웹·데스크톱(macOS·Windows). 웹 근거는 도움말 메뉴 제목('Notion on desktop, web, & mobile')이에요. 모바일 앱도 있지만 forms 목록에 없어 뺐어요. 개발자 플랫폼 CLI(Workers 배포용)는 Notion AI 사용 형태가 아니라 넣지 않았어요.
 - 기능 체크리스트: planning 2개(문서 초안, 이슈·작업 관리 - 근거는 '프로젝트나 할 일을 한곳에 정리' 데이터베이스 문장). 화이트보드·실시간 공동 편집은 AI 페이지에서 직접 소개하는 문장을 못 찾아 뺐어요(이미지 생성으로 다이어그램을 만든다는 문장은 있음). automation 3개(Custom Agents 워크플로·Slack/메일/캘린더 연결, 일정 트리거, MCP 연결). '워크플로 안에 AI 단계'는 Custom Agent 자체가 AI라 애매해서 뺐어요.
 - AI 여부(partial: 문서·협업 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요.
 - 유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Plus 월 10달러 / Business 월 20달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -1809,7 +1777,6 @@ node scripts/draft.js promote notion --verified YYYY-MM-DD --dev
 
 **3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
 
-- [ ] `open_source`
 - [ ] `price.paid_from_usd`
 - [ ] `price.billing`
 
@@ -1832,6 +1799,7 @@ node scripts/draft.js promote notion --verified YYYY-MM-DD --dev
 - 보안 메모: miro.com/ai/mcp/ 페이지에 'AI 도구에 붙여 넣으라'는 에이전트용 프롬프트('Help me connect Miro if it isn't connected yet...')가 있었어요. 따르지 않았고 근거로도 쓰지 않았어요.
 - AI 여부(partial: 화이트보드 도구의 일부), 섹션(official), 대표 목적(planning)은 제안값이에요.
 - 유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Starter 월 8달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -1894,7 +1862,6 @@ node scripts/draft.js promote miro --verified YYYY-MM-DD --dev
 
 **3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
 
-- [ ] `open_source`
 - [ ] `price.paid_from_usd`
 - [ ] `price.billing`
 
@@ -1914,9 +1881,9 @@ node scripts/draft.js promote miro --verified YYYY-MM-DD --dev
 - 학습 정책: Starter·Professional은 '콘텐츠 학습이 기본으로 켜짐, 관리자가 끌 수 있음' → trains=yes, opt_out=yes. Organization·Enterprise는 기본 꺼짐. 같은 페이지의 'We do not use paid files to train AI models'는 커뮤니티의 유료 파일 얘기라 요금제와는 관계없어요. 꼭 원문 대조해 주세요.
 - 쓰는 형태: 웹·데스크톱(macOS·Windows). 모바일 앱도 있지만 forms 목록에 없어 뺐어요. MCP 서버는 다른 도구와 연결하는 통로라 형태로 넣지 않았어요.
 - 기능 체크리스트: design_ui 4개(코드 내보내기는 Dev Mode·MCP 서버로 실제 코드로 옮긴다는 문장), app_builders 4개(Figma Make: 문장으로 앱 생성, Supabase 백엔드·인증, URL로 게시, PR 올리기). app_builders.export_code 근거('Create a pull request from Figma Make')는 로컬 코드베이스용 Make가 베타·'Coming soon'으로 표시된 기능이에요. planning 2개는 FigJam(화이트보드, 실시간 협업). automation.tools(Make의 MCP 커넥터)는 업무 자동화 목적과는 거리가 있어 J가 뺄지 정해 주세요.
-- 오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.
 - AI 여부(partial: 디자인 도구의 일부. Figma Make만 보면 yes에 가까움), 섹션(official), 대표 목적(design_ui, 대안 app_builders)은 제안값이에요.
 - 유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Professional 월 16달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -1970,7 +1937,6 @@ node scripts/draft.js promote figma --verified YYYY-MM-DD --dev
 - [ ] `price.paid_from_usd`
 - [ ] `privacy.trains_on_input_default`
 - [ ] `privacy.opt_out`
-- [ ] `open_source`
 
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
@@ -1988,9 +1954,9 @@ node scripts/draft.js promote figma --verified YYYY-MM-DD --dev
 - 학습 정책(todo): '외부 LLM 회사는 학습에 쓰지 않는다'는 문장과 'Atlassian이 데이터 기여 설정(data contribution settings)에 따라 메타데이터로 자체 오픈 모델을 미세 조정할 수 있다'는 문장만 있어요. 그 설정의 기본값과 끄는 방법이 안 나와서 둘 다 unknown이에요.
 - 쓰는 형태: 웹(Atlassian 앱 안, chat.rovo.com, 브라우저 확장)·데스크톱(macOS·Windows). 모바일도 있지만 forms 목록에 없어 뺐어요. 홈 페이지의 'In the command line → Rovo Dev'와 가격 페이지의 'Rovo CLI'는 Rovo Dev(코딩 에이전트, 요금 따로) 쪽이라 cli는 넣지 않았어요. Rovo Dev는 coding_agents·code_review용으로 따로 초안을 만들지 J가 정해 주세요.
 - 기능 체크리스트: planning 2개(문서 초안 근거는 '제안하고 초안을 쓴다'는 일반 문장이라 약해요. PRD라는 말은 없음. 이슈 관리는 채팅으로 Jira 티켓 만들기). 화이트보드·공동 편집은 Confluence 기능이라 Rovo 기능으로 넣지 않았어요. automation 4개는 Rovo Studio의 'Automations: Workflows that trigger agents and actions automatically across your tools' 한 문장에 기대고 있어요(트리거가 일정인지 이벤트인지는 안 나옴). 외부 도구 연결 근거는 Rovo 커넥터(서드파티 SaaS 연결) 문장이에요. Atlassian MCP 서버는 '다른 AI 도구가 Atlassian을 쓰는' 방향이라 근거로 쓰지 않았어요.
-- 오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.
 - AI 여부(yes), 섹션(official), 대표 목적(automation, 대안 planning)은 제안값이에요.
 - 코딩 에이전트 Rovo Dev는 이번에는 따로 넣지 않기로 했어요 (J 결정).
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2043,7 +2009,6 @@ node scripts/draft.js promote atlassian-rovo --verified YYYY-MM-DD --dev
 
 **3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
 
-- [ ] `open_source`
 - [ ] `price.paid_from_usd`
 - [ ] `price.billing`
 
@@ -2064,9 +2029,9 @@ node scripts/draft.js promote atlassian-rovo --verified YYYY-MM-DD --dev
 - 읽지 못한 페이지: 도움말 사이트(support.uizard.io)는 이 환경의 프록시가 접속을 막아서 읽지 못했어요. 배울 거리는 uizard.io 블로그의 공식 사용 가이드 하나만 넣었어요.
 - 쓰는 형태: 웹 서비스라는 직접 문장은 없고, '온라인 서비스(uizard.io)'와 약관의 '호환 웹 브라우저' 문장으로 web만 넣었어요. 데스크톱 앱 페이지는 못 찾았어요.
 - 기능 체크리스트: design_ui 4개(컴포넌트 근거는 브랜드 키트로 디자인 시스템에 맞춰 생성 + 가격표의 'Team asset libraries' 행, 코드 내보내기는 유료 요금제의 React·CSS 개발자 전달). planning.realtime은 가격표의 'Multiplayer real-time collaboration'. 가격표의 기능별 요금제 표시(✓)는 글자로 안 읽혀서 어느 요금제에 있는지는 확인 못 했어요.
-- 오픈소스 여부: 공식 페이지에 관련 문장이 없어 null + todo예요.
 - AI 여부(yes: 'AI-first'로 시작한 디자인 도구), 섹션(official), 대표 목적(design_ui)은 제안값이에요.
 - 유료 가격은 월 결제 기준으로 넣기로 했어요 (J 결정, 2026-10-23). 가격 페이지에서 글자로 읽히는 건 연 결제 Pro 월 12달러뿐이에요. 월/연 전환 버튼을 월 결제로 바꿔 가장 싼 유료 요금제 가격을 확인하고 채워 주세요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2129,10 +2094,6 @@ node scripts/draft.js promote uizard --verified YYYY-MM-DD --dev
 - [ ] ✓ 업무 자동화·에이전트 연결 — 외부 도구 연결 (MCP 등)  
   “MCP connects Cursor to external systems and data. Instead of explaining your project structure repeatedly, integrate directly with your tools.” · [페이지에서 보기](https://cursor.com/docs/mcp#:~:text=MCP%20connects%20Cursor%20to%20external,integrate%20directly%20with%20your%20tools.)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI가 핵심
@@ -2148,11 +2109,11 @@ node scripts/draft.js promote uizard --verified YYYY-MM-DD --dev
 - 유료 가격: 가장 싼 유료는 Plus 월 8달러(구매 링크가 yearly=false)인데, '*Only Grok models are available on this plan', 'Plus is recommended for social creators with limited AI usage'라고 돼 있어요. 클라우드 에이전트·Bugbot 코드 리뷰는 Premium(월 30달러)부터예요(비교 표에서 Free·Plus는 —). 개발자 기준 대표 가격을 30달러로 할지 J가 정해 주세요. 다른 회사 모델은 API 가격으로 따로 청구돼요.
 - 무료: 비교 표에서 Cursor Agent 줄은 Free도 ✓, 사용량은 'Limited'예요.
 - 학습 정책: Privacy Mode를 켜면 학습 안 함, 끄면 학습에 쓸 수 있음 → opt_out=yes. 처음 기본값(켜짐/꺼짐)을 밝힌 문장은 못 찾아서 trains_on_input_default=unknown이에요.
-- 오픈소스 여부: 공식 페이지에 오픈소스라는 말이 없어요. 근거 문장이 없어 null + todo로 뒀어요.
 - forms: ide_extension은 JetBrains IDE에서 ACP로 Cursor 에이전트를 쓰는 연동 문서를 근거로 했어요(별도 플러그인 설치 후 사용). 넣을지 J가 판단해 주세요. web은 클라우드 에이전트를 웹·모바일에서 이어 본다는 문장이 근거예요.
 - 기능: code_review의 tests(테스트 생성)는 예시 명령('add comprehensive tests')뿐이라 넣지 않았어요. automation의 workflow·ai_step은 해당 문장이 분명하지 않아 뺐어요. 문서에 Design Mode도 있지만 design_ui는 넣지 않았어요.
 - docs.cursor.com은 cursor.com/docs로 바뀐 것으로 보여서 cursor.com/docs 문서를 읽었어요. 홈 페이지와 /features는 같은 내용이었어요. 문서에 설치용 curl|bash 명령이 있지만 실행하지 않았어요.
 - AI 여부(yes), 섹션(official), 대표 목적(coding_agents)은 제안값이에요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2373,10 +2334,6 @@ node scripts/draft.js promote kiro --verified YYYY-MM-DD --dev
 - [ ] ✓ 코드 리뷰·품질 검사 받기 — 수정 제안 바로 적용  
   “Use one-click fixes in CLI to easily incorporate review comments back into your codebase with just one click.” · [페이지에서 보기](https://www.coderabbit.ai/cli#:~:text=Use%20one%2Dclick%20fixes%20in%20CLI,codebase%20with%20just%20one%20click.)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI가 핵심
@@ -2394,8 +2351,8 @@ node scripts/draft.js promote kiro --verified YYYY-MM-DD --dev
 - 학습 정책: 개인정보 처리방침에 '리뷰 중 모은 개인정보(personal information)는 학습 안 함, 단 오픈소스 프로젝트는 학습에 사용' 문장만 있어요. 비공개 코드 자체에 대한 학습 여부·끄는 방법 문장은 못 찾아서 둘 다 unknown이에요. 공개 저장소로 무료로 쓰면 학습에 쓰이는 것으로 보여요 — J가 확인해 주세요.
 - 기능: code_review 4개 모두 가격 페이지 비교 표 항목이 근거라 요금제별로 달라요(테스트 생성=Team 이상, 보안 리뷰=Advanced 이상, Autofix=Essentials 이상). 'CodeRabbit AI Engineer'(PR에서 클라우드 코딩 에이전트 실행)와 MCP 연결도 있지만 리뷰 보조 기능이라 coding_agents·automation에는 넣지 않았어요.
 - forms: self_host는 Enterprise의 'Custom deployment options, including self-hosting' 문장이 근거예요(엔터프라이즈 한정). cloud_service는 GitHub/GitLab 앱으로 PR을 리뷰하는 형태예요.
-- 오픈소스 여부: 공식 페이지에 CodeRabbit 자체가 오픈소스라는 문장이 없어요. null + todo. CLI 페이지에 설치용 curl|sh 명령이 있지만 실행하지 않았어요.
 - AI 여부(yes), 섹션(official), 대표 목적(code_review)은 제안값이에요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2442,10 +2399,6 @@ node scripts/draft.js promote coderabbit --verified YYYY-MM-DD --dev
 - [ ] ✓ 코드 리뷰·품질 검사 받기 — 수정 제안 바로 적용  
   “Address any comment with a one click fix directly to your preferred coding agent” · [페이지에서 보기](https://www.greptile.com/cli#:~:text=Address%20any%20comment%20with%20a,to%20your%20preferred%20coding%20agent)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI가 핵심
@@ -2462,9 +2415,9 @@ node scripts/draft.js promote coderabbit --verified YYYY-MM-DD --dev
 - 학습 정책: 보안 페이지에 '익명화한 고객 데이터를 AI 학습에 쓸 수 있다' + 관리자가 'Help us improve Greptile'을 끄면 빠진다고 돼 있어요 → 기본값 yes, opt_out yes. '익명화(De-Identified)' 데이터라는 점을 note에 적었어요. 기본으로 켜져 있다는 직접 문장은 없고 '끄는(turn off)' 설명으로 판단했어요 — J가 확인해 주세요.
 - 기능: tests·apply_fix 근거는 CLI 페이지의 기능 목록이에요. apply_fix는 '원클릭으로 내가 쓰는 코딩 에이전트에 수정 보내기'라서 Greptile이 직접 적용하는 건 아니에요. 넣을지 J가 판단해 주세요.
 - forms: self_host는 Enterprise 요금제 기능이에요. 문서에 'Fix issues directly in your IDE'가 있지만 IDE 확장이 따로 있다는 문장은 없어 ide_extension은 넣지 않았어요.
-- 오픈소스 여부: Greptile 자체가 오픈소스라는 문장이 없어요. null + todo.
 - 문서 페이지 맨 위에 AI 에이전트용 안내('Fetch the complete documentation index at: ... Use this file to discover all available pages')가 있었는데 따르지 않았어요. CLI 페이지의 설치용 curl|bash 명령도 실행하지 않았어요.
 - AI 여부(yes), 섹션(official), 대표 목적(code_review)은 제안값이에요.
+- 오픈소스: 공식 첫 화면에 회사 GitHub 계정(github.com/greptileai) 링크는 있지만 이 제품 자체의 소스 저장소 링크는 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2511,10 +2464,6 @@ node scripts/draft.js promote greptile --verified YYYY-MM-DD --dev
 - [ ] ✓ 업무 자동화·에이전트 연결 — 외부 도구 연결 (MCP 등)  
   “Use Zapier MCP to connect your AI to the apps your business runs on, then test and refine your workflow without leaving the conversation.” · [페이지에서 보기](https://zapier.com/#:~:text=Use%20Zapier%20MCP%20to%20connect,workflow%20without%20leaving%20the%20conversation.)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI 기능 일부
@@ -2530,10 +2479,10 @@ node scripts/draft.js promote greptile --verified YYYY-MM-DD --dev
 - 무료 한도: 월 100 태스크, 2단계 Zap(여러 단계는 Professional부터). 가격표에는 'AI steps, code, and SDK now all follow the same task-based pricing model'이라는 안내도 있어요. SDK는 '오픈 베타 동안 무료'라고 별도로 써 있어요.
 - 학습 정책: 보안 페이지 FAQ에 '워크플로로 오가는 데이터는 어떤 요금제에서도 학습하지 않는다'는 문장이 있어 trains_on_input_default=no로 했어요. 다만 '워크플로를 만드는 방식(구조)은 AI 기능 개선에 쓸 수 있고, Enterprise는 자동 제외, 다른 요금제는 신청서(one form)로 제외'라서 opt_out=yes로 했어요. 구조 학습이 기본으로 켜져 있다는 점을 J가 어떻게 표시할지 정해 주세요.
 - 쓰는 형태: 웹 편집기(가격표 'Visual editor', 'Visual no-code editor')로 쓰지만 '브라우저에서 쓴다'는 문장은 못 찾아 web은 넣지 않았어요. 넣는다면 J가 정해 주세요. cloud_service는 'Run on Zapier', library·cli는 SDK 페이지의 'Zapier SDK runs in code files. Zapier CLI runs in your terminal.' 근거예요.
-- 오픈소스 여부: 공식 페이지에서 관련 문장을 못 찾았어요. 홈 메뉴에 github.com/zapier 링크는 있지만 제품 자체가 오픈소스라는 말은 없어요 → null + todo.
 - features.automation.tools 근거는 Zapier MCP(내 AI 도구를 Zapier에 연결된 앱과 잇는 기능)예요. 'Zapier가 외부 MCP 서버를 불러 쓰는 것'과는 방향이 반대라 J가 맞는지 확인해 주세요.
 - help.zapier.com은 접속이 안 돼서(응답 없음) 읽지 못했어요. 배울 거리의 docs.zapier.com/sdk 링크는 SDK 페이지의 'Read the docs' 링크에서 가져왔고 직접 열어 보지는 않았어요.
 - AI 여부는 partial(자동화 플랫폼 + AI 단계·에이전트), 대표 목적은 automation을 제안해요.
+- 오픈소스: 공식 첫 화면에 회사 GitHub 계정(github.com/zapier) 링크는 있지만 이 제품 자체의 소스 저장소 링크는 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2576,7 +2525,6 @@ node scripts/draft.js promote zapier --verified YYYY-MM-DD --dev
 
 - [ ] `price.paid_from_usd`
 - [ ] `price.billing`
-- [ ] `open_source`
 
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
@@ -2593,9 +2541,9 @@ node scripts/draft.js promote zapier --verified YYYY-MM-DD --dev
 - 유료 가격(todo): 가격표 글자에는 'Core Save 15 % $9 /mo', '$0.90 /1,000 credits'(10,000 크레딧 기준)만 있어요. 'Monthly billing / Annual billing' 전환 버튼이 있고 가격 옆에 'Save 15%'가 붙어 있어서 9달러는 연 결제 기준일 가능성이 커 보여요. 월 결제 가격은 화면 스크립트로 바뀌어 글자로 못 읽었어요. J가 브라우저에서 월 결제 가격을 확인해 paid_from_usd·billing을 채워 주세요. 크레딧 수를 고르면 가격이 달라져요.
 - 학습 정책: 개인정보 처리방침에는 'Google Workspace API 데이터는 일반 AI/ML 모델 학습에 쓰지 않는다'는 문장만 있어요. 일반 사용자 데이터에 대한 문장은 없어 unknown으로 뒀어요.
 - 쓰는 형태: 웹 캔버스에서 쓰는 서비스지만 '브라우저에서 쓴다'는 문장은 못 찾아 web은 넣지 않았어요. cloud_service 근거는 보안 페이지의 AWS 인프라 문장이에요. 가격표에 'MCP server', 'Access to the Make API'도 있어요.
-- 오픈소스 여부: 관련 문장을 못 찾았어요 → null + todo.
 - features.automation.triggers는 '분 단위 일정 실행'(Core부터)과 웹훅 수신 문장이 근거예요. 무료 요금제는 실행 간격이 최소 15분이에요.
 - AI 여부는 partial(자동화 플랫폼 + AI 단계·에이전트·Maia 어시스턴트), 대표 목적은 automation을 제안해요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2714,10 +2662,6 @@ node scripts/draft.js promote n8n --verified YYYY-MM-DD --dev
 - [ ] ✓ 업무 자동화·에이전트 연결 — 외부 도구 연결 (MCP 등)  
   “Gumball can now set up custom MCPs for apps Gumloop doesn't have yet.” · [페이지에서 보기](https://www.gumloop.com/#:~:text=Gumball%20can%20now%20set%20up,apps%20Gumloop%20doesn%27t%20have%20yet.)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI가 핵심
@@ -2734,8 +2678,8 @@ node scripts/draft.js promote n8n --verified YYYY-MM-DD --dev
 - 기능: workflow 근거가 '에이전트가 여러 도구에 걸쳐 일한다' + '400+ Connectors'예요. 워크플로 빌더 자체는 가격표에 'Workflows (Legacy)'로만 나와서 J가 workflow를 셀지 확인해 주세요. ai_step(워크플로 안 AI 단계)은 직접 소개 문장을 못 찾아 넣지 않았어요.
 - 쓰는 형태: 웹 앱으로 쓰지만 '브라우저에서 쓴다'는 문장이 없어 web은 넣지 않았어요. cloud_service 근거 문장이 약해서('The agent infrastructure ...') J가 확인해 주세요.
 - docs.gumloop.com은 화면 스크립트로 그려져 글자가 비어 읽지 못했어요 (배울 거리 링크는 가격표 하단 'Docs' 링크에서 가져옴).
-- 오픈소스 여부: 관련 문장 없음 → null + todo. 운영사는 AgentHub Inc.예요.
 - AI 여부는 yes(AI 에이전트 플랫폼), 대표 목적은 automation을 제안해요.
+- 오픈소스: 공식 첫 화면에 소스 저장소(GitHub·GitLab) 링크가 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
@@ -2776,10 +2720,6 @@ node scripts/draft.js promote gumloop --verified YYYY-MM-DD --dev
 - [ ] ✓ 코드 리뷰·품질 검사 받기 — 수정 제안 바로 적용  
   “Find code vulnerabilities, understand more with dev-friendly context-specific explanations, and instantly apply auto-fixes with one click.” · [페이지에서 보기](https://snyk.io/product/snyk-code/#:~:text=Find%20code%20vulnerabilities%2C%20understand%20more,apply%20auto%2Dfixes%20with%20one%20click.)
 
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `open_source`
-
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] AI 여부: AI 기능 일부
@@ -2796,8 +2736,8 @@ node scripts/draft.js promote gumloop --verified YYYY-MM-DD --dev
 - 학습 정책: DeepCode AI 페이지의 '학습 데이터는 허용 라이선스 오픈소스 프로젝트 — 고객 데이터는 절대 쓰지 않음' 문장으로 trains_on_input_default=no로 했어요. Snyk Code 페이지는 프런티어 모델에 few-shot 프롬프트로 지침을 넣는다고 해요(외부 모델 사용). 외부 모델의 학습 여부 문장은 없어요. opt_out은 해당 문장이 없어 unknown이에요.
 - PR 리뷰(pr_review): 'PR마다 자동 검사·상태 보고', 'PR 안 인라인 결과' 문장이 근거예요. 일반적인 코드 리뷰 코멘트가 아니라 보안 검사 결과라서 J가 셀지 확인해 주세요. 테스트 생성(tests)은 근거가 없어 넣지 않았어요.
 - 쓰는 형태: cloud_service 근거는 가격 페이지의 지역 호스팅 문장(app.snyk.io 등)이에요. 웹 대시보드가 있지만 '브라우저' 문장은 없어 web은 넣지 않았어요.
-- 오픈소스 여부: 관련 문장 없음 → null + todo. docs.snyk.io는 화면 스크립트로 그려져 글자가 비어 읽지 못했어요(배울 거리 링크만 넣음).
 - 가격·제품 페이지 하단에 'llms.txt' 링크가 있었어요(따르지 않음). AI 여부는 partial(보안 검사 도구 + AI 수정·분석), 대표 목적은 code_review를 제안해요.
+- 오픈소스: 공식 첫 화면에 회사 GitHub 계정(github.com/snyk) 링크는 있지만 이 제품 자체의 소스 저장소 링크는 없어요. 그래서 오픈소스 아님(false)으로 넣었어요 (2026-11-06 규칙: 공식 저장소가 없으면 근거 없이 false).
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
