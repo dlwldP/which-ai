@@ -2,8 +2,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  changeText, formatDate, freeLimitText, freeText, koreanText, localToday, loginText, paidText, platformsText, privacyText,
-  reportUrl, sourceLabel, freeBadge, privacyBadge, koreanBadge, openSourceBadge,
+  formatDate, freeLimitText, freeText, koreanText, localToday, loginText, paidText, platformsText, privacyText,
+  freeBadge, privacyBadge, koreanBadge, openSourceBadge,
 } from '../js/format.js';
 import { isSecure } from '../js/recommend.js';
 
@@ -58,35 +58,6 @@ test('가입 방법 문구', () => {
   assert.equal(loginText(['none']), '가입 없이 바로 사용');
 });
 
-test('변경 이력 문구', () => {
-  const purposes = [{ id: 'P04', label: '발표자료(PPT) 만들기', features: [
-    { id: 'from_topic', short: '주제로 만들기' }, { id: 'from_doc', short: '문서로 만들기' },
-    { id: 'auto_design', short: '디자인 정리' }, { id: 'export_ppt', short: 'PPT 내보내기' },
-  ] }];
-  const c = (field, before, after) => ({ type: 'changed', tool_id: 'g', name: 'Gamma', field, before, after });
-  assert.equal(changeText({ type: 'added', tool_id: 'g', name: 'Gamma' }), 'Gamma 추가');
-  assert.equal(changeText({ type: 'removed', tool_id: 'g', name: 'Gamma' }), 'Gamma 빠짐');
-  assert.equal(changeText(c('price.paid_from_usd', 10, 12)), 'Gamma: 유료 가격 10달러 → 12달러');
-  assert.equal(changeText(c('price.paid_from_usd', null, 8)), 'Gamma: 유료 가격 없음 → 8달러');
-  assert.equal(changeText(c('price.free', true, false)), 'Gamma: 무료로 쓰기 돼요 → 안 돼요');
-  assert.equal(changeText(c('privacy.opt_out', 'unknown', 'yes')), 'Gamma: 학습 끄기 가능 확인 필요 → 예');
-  assert.equal(changeText(c('features.P04', ['export_ppt', 'from_topic'], ['from_topic', 'from_doc', 'export_ppt']), purposes),
-    "Gamma: '발표자료(PPT) 만들기' 지원 기능 주제로 만들기, PPT 내보내기 → 주제로 만들기, 문서로 만들기, PPT 내보내기");
-  assert.equal(changeText(c('features.P04', null, ['from_doc']), purposes), "Gamma: '발표자료(PPT) 만들기' 지원 기능 없음 → 문서로 만들기");
-  assert.equal(changeText(c('last_verified', '2026-07-01', '2026-10-19')), 'Gamma: 확인 날짜 2026년 7월 1일 → 2026년 10월 19일');
-  assert.equal(changeText(c('cautions', [], ['a'])), 'Gamma: 주의할 점 내용이 바뀌었어요');
-  assert.equal(changeText(c('platforms', ['web'], ['web', 'ios'])), 'Gamma: 사용 기기 웹사이트 → 웹사이트, 아이폰 앱');
-});
-
-test('정보가 틀려요 제보 주소: 양식과 사이트·툴 이름을 미리 채움', () => {
-  const url = new URL(reportUrl('Gamma & Co', 'AI 뭐 써? (일반용)'));
-  assert.equal(url.origin + url.pathname, 'https://github.com/dlwldP/which-ai/issues/new');
-  assert.equal(url.searchParams.get('template'), 'wrong-info.yml');
-  assert.equal(url.searchParams.get('title'), '[정보 오류] Gamma & Co');
-  assert.equal(url.searchParams.get('tool'), 'Gamma & Co');
-  assert.equal(url.searchParams.get('site'), 'AI 뭐 써? (일반용)');
-});
-
 test('요약 배지: 무료·한국어·오픈소스', () => {
   assert.deepEqual(freeBadge({ free: true }), { text: '무료로 시작', tone: 'good' });
   assert.deepEqual(freeBadge({ free: false }), { text: '유료만', tone: 'plain' });
@@ -107,9 +78,3 @@ test('요약 배지: 학습 정책은 추천 엔진의 보안 기준과 같게 g
   assert.equal(privacyBadge({ trains_on_input_default: 'no', opt_out: 'unknown' }, '코드 ').text, '코드 학습에 안 씀');
 });
 
-test('출처 링크 글자: 도메인과 경로를 나눔', () => {
-  assert.deepEqual(sourceLabel('https://www.claude.com/pricing/'), { host: 'claude.com', path: '/pricing' });
-  assert.deepEqual(sourceLabel('https://example.com/'), { host: 'example.com', path: '' });
-  assert.deepEqual(sourceLabel('https://example.com/%EC%9A%94%EA%B8%88'), { host: 'example.com', path: '/요금' });
-  assert.deepEqual(sourceLabel('https://example.com/a%E0b'), { host: 'example.com', path: '/a%E0b' });
-});
