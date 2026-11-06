@@ -1,1 +1,182 @@
-[]
+[
+  {
+    "id": "claude",
+    "name": "Claude",
+    "url": "https://claude.com/",
+    "one_liner": "질문에 답하고, 글을 쓰고 다듬고, 긴 문서를 읽고 정리해주는 대화형 AI예요",
+    "features": {
+      "P01": [
+        "chat",
+        "draft",
+        "polish",
+        "attach"
+      ],
+      "P03": [
+        "upload",
+        "summary"
+      ],
+      "P04": [
+        "from_topic",
+        "from_doc",
+        "export_ppt"
+      ],
+      "P07": [
+        "translate"
+      ],
+      "P08": [
+        "upload",
+        "formula",
+        "chart"
+      ],
+      "P09": [
+        "sources",
+        "web_search",
+        "compare",
+        "report"
+      ]
+    },
+    "price": {
+      "free": true,
+      "free_limit": "5시간마다 다시 채워지는 사용량 한도 (정해진 메시지 수는 없음)",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "korean": 3,
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "yes",
+      "note": "무료·Pro·Max는 설정에서 내 대화를 학습에 쓸지 고를 수 있어요"
+    },
+    "platforms": [
+      "web",
+      "ios",
+      "android",
+      "windows",
+      "mac"
+    ],
+    "login": [
+      "google",
+      "email"
+    ],
+    "start_steps": [
+      "claude.ai에서 구글 계정이나 이메일로 가입하기",
+      "입력창에 하고 싶은 일을 문장으로 쓰기",
+      "문서 파일을 올려 요약이나 수정을 부탁하기"
+    ],
+    "cautions": [
+      "무료는 5시간마다 쓸 수 있는 양이 정해져 있어요"
+    ],
+    "sources": [
+      "https://claude.com/pricing",
+      "https://claude.com/download",
+      "https://support.claude.com/en/articles/13189465-log-in-to-your-claude-account",
+      "https://support.claude.com/en/articles/8114491-get-started-with-claude",
+      "https://support.claude.com/en/articles/10769299-how-to-use-claude-in-your-preferred-language",
+      "https://code.claude.com/docs/en/data-usage",
+      "https://claude.com/product/overview",
+      "https://support.claude.com/en/articles/7996845-what-are-some-things-i-can-use-claude-for",
+      "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content",
+      "https://support.claude.com/en/articles/8241126-upload-files-to-claude",
+      "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+      "https://support.claude.com/en/articles/10684626-enable-and-use-web-search",
+      "https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "manus",
+    "name": "Manus",
+    "url": "https://manus.im/",
+    "one_liner": "할 일을 맡기면 스스로 조사하고 슬라이드·보고서 같은 결과물까지 만들어주는 AI 비서예요",
+    "features": {
+      "P01": [
+        "chat",
+        "draft",
+        "attach"
+      ],
+      "P02": [
+        "transcribe",
+        "upload",
+        "summary",
+        "speakers"
+      ],
+      "P04": [
+        "from_topic",
+        "from_doc",
+        "auto_design",
+        "export_ppt"
+      ],
+      "P05": [
+        "text_to_image"
+      ],
+      "P08": [
+        "upload",
+        "chart"
+      ],
+      "P09": [
+        "web_search",
+        "compare",
+        "report"
+      ],
+      "P10": [
+        "tts",
+        "emotion_speed"
+      ]
+    },
+    "price": {
+      "free": true,
+      "free_limit": "매일 300크레딧 (한 달에 최대 1,500크레딧, 가벼운 모델에만 쓸 수 있음)",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "korean": 3,
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": ""
+    },
+    "platforms": [
+      "web",
+      "ios",
+      "android",
+      "windows",
+      "mac"
+    ],
+    "login": [
+      "google",
+      "apple",
+      "microsoft",
+      "email"
+    ],
+    "start_steps": [
+      "manus.im에서 구글이나 애플 계정으로 가입하기",
+      "입력창에 맡기고 싶은 일을 문장으로 자세히 쓰기",
+      "만들어진 결과물을 보고 고칠 점을 말해 다시 부탁하기"
+    ],
+    "cautions": [
+      "무료는 매일 받는 사용량이 정해져 있고, 남은 양은 다음 날로 넘어가지 않아요",
+      "이미지 만들기, 여러 자료를 한꺼번에 조사하는 기능 등 일부는 유료 요금제에서만 돼요",
+      "이메일로 가입하면 휴대폰 번호 인증을 해야 해요",
+      "회의 기록 기능은 직접 만나서 하는 회의용이고, 온라인 회의 녹음용이 아니에요"
+    ],
+    "sources": [
+      "https://help.manus.im/en/articles/11711111-what-is-the-current-membership-pricing-for-manus",
+      "https://help.manus.im/en/articles/11711097-what-are-the-rules-for-credits-consumption-and-how-can-i-obtain-them",
+      "https://help.manus.im/en/articles/11711121-will-my-daily-refresh-credits-accumulate-or-reset",
+      "https://help.manus.im/en/articles/11712162-why-do-i-need-to-verify-my-phone-number",
+      "https://help.manus.im/en/articles/11712156-how-can-i-register-without-a-phone-number",
+      "https://help.manus.im/en/articles/11960169-what-is-wide-research",
+      "https://manus.im/download",
+      "https://manus.im/ko",
+      "https://manus.im/features",
+      "https://manus.im/tools/ai-image-generator",
+      "https://manus.im/tools/nano-banana-pro-slides",
+      "https://manus.im/docs/features/slides.md",
+      "https://manus.im/docs/features/multi-modal.md",
+      "https://manus.im/docs/features/meeting-minutes.md",
+      "https://manus.im/docs/features/data-visualization.md",
+      "https://manus.im/docs/features/wide-research.md"
+    ],
+    "last_verified": "2026-11-06"
+  }
+]

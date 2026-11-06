@@ -9,14 +9,11 @@
 | --- | --- | --- | --- |
 | [tl;dv](#general-tldv) | 비개발자용 | 9개 | `price.free_limit` `price.paid_from_usd` `price.billing` `platforms` `login` |
 | [클로바노트](#general-clovanote) | 비개발자용 | 0개 | `price.free` `price.free_limit` `price.paid_from_usd` `price.billing` `privacy.trains_on_input_default` `privacy.opt_out` `platforms` `login` `features` |
-| [Claude](#general-claude) | 비개발자용 | 32개 | 없음 |
-| [Manus](#general-manus) | 비개발자용 | 39개 | 없음 |
 | [Grok](#general-grok) | 비개발자용 | 22개 | `price.paid_from_usd` `price.billing` |
 | [Claude Code](#dev-claude-code) | 개발자용 | 17개 | `open_source` |
 | [Lovable](#dev-lovable) | 개발자용 | 14개 | `open_source` |
 | [Vercel](#dev-vercel) | 개발자용 | 16개 | `open_source` |
 | [v0](#dev-v0) | 개발자용 | 17개 | `open_source` |
-| [Pulumi](#dev-pulumi) | 개발자용 | 16개 | 없음 |
 | [Cloudflare Workers](#dev-cloudflare) | 개발자용 | 15개 | `open_source` |
 | [Google AI Studio](#dev-google-ai-studio) | 개발자용 | 13개 | `price.paid_from_usd` `open_source` |
 | [Google Antigravity](#dev-antigravity) | 개발자용 | 18개 | `price.paid_from_usd` `open_source` |
@@ -30,7 +27,6 @@
 | [Hugging Face](#dev-hugging-face) | 개발자용 | 13개 | `open_source` |
 | [LangSmith](#dev-langsmith) | 개발자용 | 13개 | `open_source` |
 | [Ollama](#dev-ollama) | 개발자용 | 8개 | `open_source` |
-| [LM Studio](#dev-lm-studio) | 개발자용 | 16개 | 없음 |
 | [Netlify](#dev-netlify) | 개발자용 | 19개 | `open_source` |
 | [Railway](#dev-railway) | 개발자용 | 16개 | `open_source` |
 | [Notion AI](#dev-notion) | 개발자용 | 13개 | `open_source` `price.paid_from_usd` `price.billing` |
@@ -50,7 +46,7 @@
 | [Snyk](#dev-snyk) | 개발자용 | 10개 | `open_source` |
 | [SonarQube](#dev-sonarqube) | 개발자용 | 11개 | `open_source` `privacy.trains_on_input_default` `privacy.opt_out` |
 
-## 비개발자용 (5개)
+## 비개발자용 (3개)
 
 <a id="general-tldv"></a>
 ### tl;dv (`tldv`) · 비개발자용
@@ -160,223 +156,6 @@ node scripts/draft.js promote tldv --verified YYYY-MM-DD
 node scripts/draft.js promote clovanote --verified YYYY-MM-DD
 ```
 
-<a id="general-claude"></a>
-### Claude (`claude`) · 비개발자용
-
-공식 주소: https://claude.com/  
-공식 도메인: `claude.com`, `claude.ai`
-
-**1. 공식 도메인 확인**
-
-- [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
-
-**2. 근거 대조** (32개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
-
-- [ ] 무료 사용: 돼요  
-  “Free for everyone” · [페이지에서 보기](https://claude.com/pricing#:~:text=Free%20for%20everyone)
-- [ ] 무료 한도: 5시간마다 다시 채워지는 사용량 한도 (정해진 메시지 수는 없음)  
-  “Every plan has usage limits that reset on a rolling five-hour session window, and paid plans add weekly limits on top.” · [페이지에서 보기](https://claude.com/pricing#:~:text=Every%20plan%20has%20usage%20limits,add%20weekly%20limits%20on%20top.)
-- [ ] 무료 한도: 5시간마다 다시 채워지는 사용량 한도 (정해진 메시지 수는 없음)  
-  “How much you can do depends on the length and complexity of your conversations, the model you choose, and the features you use, so there's no fixed message count. Free covers everyday questions.” · [페이지에서 보기](https://claude.com/pricing#:~:text=How%20much%20you%20can%20do,count.%20Free%20covers%20everyday%20questions.)
-- [ ] 유료 가격: 월 20달러부터  
-  “$20 if billed monthly.” · [페이지에서 보기](https://claude.com/pricing#:~:text=%2420%20if%20billed%20monthly.)
-- [ ] 결제 주기: monthly  
-  “You can choose a monthly or annual subscription.” · [페이지에서 보기](https://claude.com/pricing#:~:text=You%20can%20choose%20a%20monthly%20or%20annual%20subscription.)
-- [ ] 학습 끄기 가능: 예  
-  “We give you the choice to allow your data to be used to improve future Claude models. We will train new models using data from Free, Pro, and Max accounts when this setting is on (including when you use Claude Code from these accounts).” · [페이지에서 보기](https://code.claude.com/docs/en/data-usage#:~:text=We%20give%20you%20the%20choice,Claude%20Code%20from%20these%20accounts%29.)
-- [ ] 학습 끄기 가능: 예  
-  “Model training” · [페이지에서 보기](https://claude.com/pricing#:~:text=Model%20training)
-- [ ] 사용 기기: 웹사이트, 아이폰 앱, 안드로이드 앱, 윈도우 프로그램, 맥 프로그램  
-  “Chat on web, iOS, Android and Desktop” · [페이지에서 보기](https://claude.com/pricing#:~:text=Chat%20on%20web%2C%20iOS%2C%20Android%20and%20Desktop)
-- [ ] 사용 기기: 웹사이트, 아이폰 앱, 안드로이드 앱, 윈도우 프로그램, 맥 프로그램  
-  “Download Claude Desktop for Mac or Windows.” · [페이지에서 보기](https://support.claude.com/en/articles/8114491-get-started-with-claude#:~:text=Download%20Claude%20Desktop%20for%20Mac%20or%20Windows.)
-- [ ] 가입 방법: 구글 계정, 이메일  
-  “When you open Claude on a web browser (claude.ai), the desktop app, or a mobile app, you will see two different options for logging in to your Claude account.” · [페이지에서 보기](https://support.claude.com/en/articles/13189465-log-in-to-your-claude-account#:~:text=When%20you%20open%20Claude%20on,in%20to%20your%20Claude%20account.)
-- [ ] 가입 방법: 구글 계정, 이메일  
-  “Continue with Google” · [페이지에서 보기](https://support.claude.com/en/articles/13189465-log-in-to-your-claude-account#:~:text=Continue%20with%20Google)
-- [ ] 가입 방법: 구글 계정, 이메일  
-  “Continue with email” · [페이지에서 보기](https://support.claude.com/en/articles/13189465-log-in-to-your-claude-account#:~:text=Continue%20with%20email)
-- [ ] 한국어: 메뉴까지 한국어, 품질 좋음  
-  “Claude is available in multiple languages on web and desktop applications.” · [페이지에서 보기](https://support.claude.com/en/articles/10769299-how-to-use-claude-in-your-preferred-language#:~:text=Claude%20is%20available%20in%20multiple,on%20web%20and%20desktop%20applications.)
-- [ ] 한국어: 메뉴까지 한국어, 품질 좋음  
-  “Korean” · [페이지에서 보기](https://support.claude.com/en/articles/10769299-how-to-use-claude-in-your-preferred-language#:~:text=Korean)
-- [ ] 한국어: 메뉴까지 한국어, 품질 좋음  
-  “Claude has extensive training in English and performs well in many other common languages.” · [페이지에서 보기](https://support.claude.com/en/articles/8114491-get-started-with-claude#:~:text=Claude%20has%20extensive%20training%20in,in%20many%20other%20common%20languages.)
-- [ ] ✓ 질문하고 글 쓰기 — 대화로 질문하고 답 받기  
-  “— Ask something quick, or hand off a long, complex task that keeps working after you close your laptop.” · [페이지에서 보기](https://claude.com/product/overview#:~:text=Ask%20something%20quick%2C%20or%20hand,after%20you%20close%20your%20laptop.)
-- [ ] ✓ 질문하고 글 쓰기 — 글 초안 써주기  
-  “Claude can help you draft everything from a text message or an email to a screenplay or a novel.” · [페이지에서 보기](https://support.claude.com/en/articles/7996845-what-are-some-things-i-can-use-claude-for#:~:text=Claude%20can%20help%20you%20draft,a%20screenplay%20or%20a%20novel.)
-- [ ] ✓ 질문하고 글 쓰기 — 쓴 글 다듬기 (말투·맞춤법)  
-  “People often use Claude to proofread, translate, summarize, or convert files.” · [페이지에서 보기](https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content#:~:text=People%20often%20use%20Claude%20to,translate%2C%20summarize%2C%20or%20convert%20files.)
-- [ ] ✓ 질문하고 글 쓰기 — 파일·사진 올려서 물어보기  
-  “This article explains how to upload documents and images to Claude, including supported file types, size limits, and how to get started.” · [페이지에서 보기](https://support.claude.com/en/articles/8241126-upload-files-to-claude#:~:text=This%20article%20explains%20how%20to,and%20how%20to%20get%20started.)
-- [ ] ✓ 긴 문서·PDF 요약 — PDF·워드 파일 올리기  
-  “Claude analyzes both text and visual elements (like images, charts, and graphics) in PDFs of 100 pages or fewer.” · [페이지에서 보기](https://support.claude.com/en/articles/8241126-upload-files-to-claude#:~:text=Claude%20analyzes%20both%20text%20and,of%20100%20pages%20or%20fewer.)
-- [ ] ✓ 긴 문서·PDF 요약 — 요약  
-  “Claude is great at generating concise summaries of long articles, news stories, documents, conversations, or even books!” · [페이지에서 보기](https://support.claude.com/en/articles/7996845-what-are-some-things-i-can-use-claude-for#:~:text=Claude%20is%20great%20at%20generating,documents%2C%20conversations%2C%20or%20even%20books%21)
-- [ ] ✓ 발표자료(PPT) 만들기 — 주제만 주면 슬라이드 만들기  
-  “Prompt Claude using natural language to generate Excel spreadsheets, PowerPoint presentations, Word documents, and PDF files that you can download and use immediately.” · [페이지에서 보기](https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude#:~:text=Prompt%20Claude%20using%20natural%20language,can%20download%20and%20use%20immediately.)
-- [ ] ✓ 발표자료(PPT) 만들기 — 가진 문서로 슬라이드 만들기  
-  “You can create financial models in Excel with working formulas, perform advanced analyses on uploaded data, produce reports with charts and visualizations, and generate presentations from your documents—all without specialized software skills.” · [페이지에서 보기](https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude#:~:text=You%20can%20create%20financial%20models,documents%E2%80%94all%20without%20specialized%20software%20skills.)
-- [ ] ✓ 발표자료(PPT) 만들기 — PPT 파일로 내보내기  
-  “Claude can create Excel spreadsheets (.xlsx), PowerPoint presentations (.pptx), Word documents (.docx), and PDF files.” · [페이지에서 보기](https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude#:~:text=Claude%20can%20create%20Excel%20spreadsheets,documents%20%28.docx%29%2C%20and%20PDF%20files.)
-- [ ] ✓ 엑셀·표 정리 — 표 파일 올리기  
-  “You can also upload CSV, TSV, and other files for data analysis and visualization.” · [페이지에서 보기](https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude#:~:text=You%20can%20also%20upload%20CSV%2C,for%20data%20analysis%20and%20visualization.)
-- [ ] ✓ 엑셀·표 정리 — 수식 만들어주기  
-  “You can create financial models in Excel with working formulas, perform advanced analyses on uploaded data, produce reports with charts and visualizations, and generate presentations from your documents—all without specialized software skills.” · [페이지에서 보기](https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude#:~:text=You%20can%20create%20financial%20models,documents%E2%80%94all%20without%20specialized%20software%20skills.)
-- [ ] ✓ 엑셀·표 정리 — 차트 만들기  
-  “Claude can create data visualizations in image files like PNG.” · [페이지에서 보기](https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude#:~:text=Claude%20can%20create%20data%20visualizations%20in%20image%20files%20like%20PNG.)
-- [ ] ✓ 자료 조사 — 답에 출처 링크 표시  
-  “Every response includes citations, so you can easily verify sources yourself.” · [페이지에서 보기](https://support.claude.com/en/articles/10684626-enable-and-use-web-search#:~:text=Every%20response%20includes%20citations%2C%20so,can%20easily%20verify%20sources%20yourself.)
-- [ ] ✓ 자료 조사 — 최신 웹 검색  
-  “You can have Claude search the internet to provide you with up-to-date information and insights when using the following models:” · [페이지에서 보기](https://support.claude.com/en/articles/10684626-enable-and-use-web-search#:~:text=You%20can%20have%20Claude%20search,when%20using%20the%20following%20models%3A)
-- [ ] ✓ 자료 조사 — 여러 자료 비교 정리  
-  “It can do things like compare business competitors, update outdated internal documents with info from the web, help you prioritize or action items from your calendar and email, and more.” · [페이지에서 보기](https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research#:~:text=It%20can%20do%20things%20like,calendar%20and%20email%2C%20and%20more.)
-- [ ] ✓ 자료 조사 — 긴 조사 보고서 만들기  
-  “Research is optimal for comprehensive information gathering requiring five or more tool calls over 1-3 minutes, creating in-depth reports by synthesizing information from multiple sources across the web and your integrations.” · [페이지에서 보기](https://support.claude.com/en/articles/11095361-when-should-i-use-web-search-extended-thinking-and-research#:~:text=Research%20is%20optimal%20for%20comprehensive,the%20web%20and%20your%20integrations.)
-- [ ] ✓ 번역 — 문장·글 번역  
-  “While Claude is best at English due to its training data, Claude knows more than a dozen languages and can translate between them to varying degrees of success.” · [페이지에서 보기](https://support.claude.com/en/articles/7996845-what-are-some-things-i-can-use-claude-for#:~:text=While%20Claude%20is%20best%20at,to%20varying%20degrees%20of%20success.)
-
-**4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
-
-- [ ] 한국어 점수: 메뉴까지 한국어, 품질 좋음 (3점)
-- [ ] 한 줄 설명: 질문에 답하고, 글을 쓰고 다듬고, 긴 문서를 읽고 정리해주는 대화형 AI예요
-- [ ] 시작 3단계: 1) claude.ai에서 구글 계정이나 이메일로 가입하기 2) 입력창에 하고 싶은 일을 문장으로 쓰기 3) 문서 파일을 올려 요약이나 수정을 부탁하기
-- [ ] 주의할 점: 무료는 5시간마다 쓸 수 있는 양이 정해져 있어요
-
-**5. Claude 메모**
-
-- 유료 가격: Pro는 월 결제 20달러, 연 결제는 월 17달러(200달러 한 번에)예요. 매달 내는 가격 20달러/monthly로 넣었어요. 연 결제 기준으로 바꿀지 정해 주세요.
-- 학습 정책: '설정을 켜면 학습에 쓴다, 고를 수 있다'는 문장은 있어서 opt_out=yes로 했어요. 처음 설정이 켜져 있는지(기본값)는 개인정보 페이지(privacy.anthropic.com → privacy.claude.com으로 이동)가 허용 도메인이 아니라 확인하지 못해 unknown이에요. privacy.claude.com을 허용하면 다시 확인할게요. 보안 조건은 opt_out=yes라서 통과해요.
-- 가격표의 'Model training' 줄은 Free·Pro·Max 모두 'Opt-out'으로 표시돼 있어요 (표 칸이라 문장 대신 줄 이름을 근거로 남겼어요).
-- 근거 중 학습 정책 문장은 Claude Code 문서(code.claude.com)에 있지만 Free·Pro·Max 계정 전체에 대한 설명이에요.
-- 한국어 3점(메뉴까지 한국어, 품질 좋음)은 제안값이에요. 메뉴 한국어 지원은 확인했고, 품질은 '많이 쓰는 언어에서 잘 한다'는 문장만 있어요.
-- 기능 체크리스트: P01 4개, P03 2개(문서에 질문하기·원문 위치 표시는 문장을 못 찾음), P04 3개(디자인 자동 정리는 못 찾음), P08 3개(데이터 정리 문장은 못 찾음), P09 4개. 번역(P07)은 기본 기능(문장·글 번역) 1개만 근거가 있어요. 공식 문서에 "영어를 가장 잘하고, 그 밖에 포르투갈어·프랑스어·독일어를 특히 잘한다"고 적혀 있고 한국어는 따로 언급이 없어요. 연구(Research) 기능은 유료 요금제 전용이에요.
-- 공식 도메인에 claude.ai(채팅 화면)도 넣었어요.
-
-**6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
-
-```sh
-node scripts/draft.js promote claude --verified YYYY-MM-DD
-```
-
-<a id="general-manus"></a>
-### Manus (`manus`) · 비개발자용
-
-공식 주소: https://manus.im/  
-공식 도메인: `manus.im`
-
-**1. 공식 도메인 확인**
-
-- [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
-
-**2. 근거 대조** (39개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
-
-- [ ] 무료 사용: 돼요  
-  “\[Free Plan Price: $0/month\]” · [페이지에서 보기](https://help.manus.im/en/articles/11711111-what-is-the-current-membership-pricing-for-manus#:~:text=%5BFree%20Plan%20Price%3A%20%240%2Fmonth%5D)
-- [ ] 무료 한도: 매일 300크레딧 (한 달에 최대 1,500크레딧, 가벼운 모델에만 쓸 수 있음)  
-  “Features: Daily Refresh Credits: 300 credits provided daily for quickly answering simple questions.” · [페이지에서 보기](https://help.manus.im/en/articles/11711111-what-is-the-current-membership-pricing-for-manus#:~:text=Features%3A%20Daily%20Refresh%20Credits%3A%20300,for%20quickly%20answering%20simple%20questions.)
-- [ ] 무료 한도: 매일 300크레딧 (한 달에 최대 1,500크레딧, 가벼운 모델에만 쓸 수 있음)  
-  “The monthly consumption limit for daily refresh credits for free users is set to 1,500 credits; paid users have no limit. Daily credits can only be used for Manus 2.0 lite.” · [페이지에서 보기](https://help.manus.im/en/articles/11711097-what-are-the-rules-for-credits-consumption-and-how-can-i-obtain-them#:~:text=The%20monthly%20consumption%20limit%20for,used%20for%20Manus%202.0%20lite.)
-- [ ] 무료 한도: 매일 300크레딧 (한 달에 최대 1,500크레딧, 가벼운 모델에만 쓸 수 있음)  
-  “Daily refresh credits will not be added to your main credit balance. If you have 100 daily credits left at the end of the day, they will disappear at the reset time.” · [페이지에서 보기](https://help.manus.im/en/articles/11711121-will-my-daily-refresh-credits-accumulate-or-reset#:~:text=Daily%20refresh%20credits%20will%20not,disappear%20at%20the%20reset%20time.)
-- [ ] 유료 가격: 월 20달러부터  
-  “\[Pro Plan Price 1: Starting from $20/month (Enjoy a 17% discount with annual billing)\]” · [페이지에서 보기](https://help.manus.im/en/articles/11711111-what-is-the-current-membership-pricing-for-manus#:~:text=%5BPro%20Plan%20Price%201%3A%20Starting,17%25%20discount%20with%20annual%20billing%29%5D)
-- [ ] 결제 주기: monthly  
-  “The refresh timing depends on whether you are on a monthly or annual plan.” · [페이지에서 보기](https://help.manus.im/en/articles/11711097-what-are-the-rules-for-credits-consumption-and-how-can-i-obtain-them#:~:text=The%20refresh%20timing%20depends%20on,a%20monthly%20or%20annual%20plan.)
-- [ ] 사용 기기: 웹사이트, 아이폰 앱, 안드로이드 앱, 윈도우 프로그램, 맥 프로그램  
-  “The AI agent that doesn't just think, it delivers. Available for macOS, Windows, iOS and Android.” · [페이지에서 보기](https://manus.im/download#:~:text=The%20AI%20agent%20that%20doesn%27t,macOS%2C%20Windows%2C%20iOS%20and%20Android.)
-- [ ] 사용 기기: 웹사이트, 아이폰 앱, 안드로이드 앱, 윈도우 프로그램, 맥 프로그램  
-  “Yes, our online AI image generator works entirely in your browser.” · [페이지에서 보기](https://manus.im/tools/ai-image-generator#:~:text=Yes%2C%20our%20online%20AI%20image,works%20entirely%20in%20your%20browser.)
-- [ ] 가입 방법: 구글 계정, 애플 계정, 마이크로소프트 계정, 이메일  
-  “If you log in with a Google/Apple/Microsoft account, you don't need to verify your phone number.” · [페이지에서 보기](https://help.manus.im/en/articles/11712162-why-do-i-need-to-verify-my-phone-number#:~:text=If%20you%20log%20in%20with,to%20verify%20your%20phone%20number.)
-- [ ] 가입 방법: 구글 계정, 애플 계정, 마이크로소프트 계정, 이메일  
-  “If you log in with your email, you must verify your phone number.” · [페이지에서 보기](https://help.manus.im/en/articles/11712162-why-do-i-need-to-verify-my-phone-number#:~:text=If%20you%20log%20in%20with,must%20verify%20your%20phone%20number.)
-- [ ] 가입 방법: 구글 계정, 애플 계정, 마이크로소프트 계정, 이메일  
-  “We also support login with a Google/Apple account in the” · [페이지에서 보기](https://help.manus.im/en/articles/11712156-how-can-i-register-without-a-phone-number#:~:text=We%20also%20support%20login%20with%20a%20Google%2FApple%20account%20in%20the)
-- [ ] 한국어: 메뉴까지 한국어, 품질 좋음  
-  “무엇을 도와드릴까요?” · [페이지에서 보기](https://manus.im/ko#:~:text=%EB%AC%B4%EC%97%87%EC%9D%84%20%EB%8F%84%EC%99%80%EB%93%9C%EB%A6%B4%EA%B9%8C%EC%9A%94%3F)
-- [ ] 한국어: 메뉴까지 한국어, 품질 좋음  
-  “It also supports a wide range of languages, including Japanese, Korean, Arabic, and more.” · [페이지에서 보기](https://manus.im/tools/nano-banana-pro-slides#:~:text=It%20also%20supports%20a%20wide,Japanese%2C%20Korean%2C%20Arabic%2C%20and%20more.)
-- [ ] 한국어: 메뉴까지 한국어, 품질 좋음  
-  “What languages are supported? All major languages.” · [페이지에서 보기](https://manus.im/docs/features/slides.md#:~:text=What%20languages%20are%20supported%3F%20All%20major%20languages.)
-- [ ] ✓ 질문하고 글 쓰기 — 대화로 질문하고 답 받기  
-  “Both Free and Pro users have access to Chat Mode.” · [페이지에서 보기](https://help.manus.im/en/articles/11711111-what-is-the-current-membership-pricing-for-manus#:~:text=Both%20Free%20and%20Pro%20users%20have%20access%20to%20Chat%20Mode.)
-- [ ] ✓ 질문하고 글 쓰기 — 글 초안 써주기  
-  “Use the generated summary immediately to prompt Manus to draft follow-up emails, create presentations, or build project outlines within the same task.” · [페이지에서 보기](https://manus.im/docs/features/meeting-minutes.md#:~:text=Use%20the%20generated%20summary%20immediately,outlines%20within%20the%20same%20task.)
-- [ ] ✓ 질문하고 글 쓰기 — 파일·사진 올려서 물어보기  
-  “Analyze and extract info from images” · [페이지에서 보기](https://manus.im/docs/features/multi-modal.md#:~:text=Analyze%20and%20extract%20info%20from%20images)
-- [ ] ✓ 질문하고 글 쓰기 — 파일·사진 올려서 물어보기  
-  “Analyze this screenshot and extract all the text” · [페이지에서 보기](https://manus.im/docs/features/multi-modal.md#:~:text=Analyze%20this%20screenshot%20and%20extract%20all%20the%20text)
-- [ ] ✓ 회의·강의 녹음 정리 — 받아쓰기  
-  “An auto-transcription will appear on the screen as you speak.” · [페이지에서 보기](https://manus.im/docs/features/meeting-minutes.md#:~:text=An%20auto%2Dtranscription%20will%20appear%20on%20the%20screen%20as%20you%20speak.)
-- [ ] ✓ 회의·강의 녹음 정리 — 녹음 파일 올리기  
-  “Transcribe this interview recording” · [페이지에서 보기](https://manus.im/docs/features/multi-modal.md#:~:text=Transcribe%20this%20interview%20recording)
-- [ ] ✓ 회의·강의 녹음 정리 — 녹음 파일 올리기  
-  “(Upload audio file)” · [페이지에서 보기](https://manus.im/docs/features/multi-modal.md#:~:text=%28Upload%20audio%20file%29)
-- [ ] ✓ 회의·강의 녹음 정리 — 요약  
-  “It delivers a structured summary highlighting the key points, attendees, and a clear breakdown of action items.” · [페이지에서 보기](https://manus.im/docs/features/meeting-minutes.md#:~:text=It%20delivers%20a%20structured%20summary,clear%20breakdown%20of%20action%20items.)
-- [ ] ✓ 회의·강의 녹음 정리 — 말한 사람 구분  
-  “Intelligent Speaker Recognition: Manus identifies different speakers during the recording and recognizes when names are mentioned.” · [페이지에서 보기](https://manus.im/docs/features/meeting-minutes.md#:~:text=Intelligent%20Speaker%20Recognition%3A%20Manus%20identifies,recognizes%20when%20names%20are%20mentioned.)
-- [ ] ✓ 발표자료(PPT) 만들기 — 주제만 주면 슬라이드 만들기  
-  “Tell Manus AI your topic, audience, and key messages. It's as simple as writing an email.” · [페이지에서 보기](https://manus.im/tools/nano-banana-pro-slides#:~:text=Tell%20Manus%20AI%20your%20topic%2C,simple%20as%20writing%20an%20email.)
-- [ ] ✓ 발표자료(PPT) 만들기 — 가진 문서로 슬라이드 만들기  
-  “Turn this research report into a 20-slide conference presentation” · [페이지에서 보기](https://manus.im/docs/features/slides.md#:~:text=Turn%20this%20research%20report%20into%20a%2020%2Dslide%20conference%20presentation)
-- [ ] ✓ 발표자료(PPT) 만들기 — 디자인 자동 정리  
-  “Manus handles structure, design, and content—ready to present in a boardroom, classroom, or online.” · [페이지에서 보기](https://manus.im/download#:~:text=Manus%20handles%20structure%2C%20design%2C%20and,a%20boardroom%2C%20classroom%2C%20or%20online.)
-- [ ] ✓ 발표자료(PPT) 만들기 — PPT 파일로 내보내기  
-  “PowerPoint (.pptx): Fully editable in PowerPoint or Google Slides” · [페이지에서 보기](https://manus.im/docs/features/slides.md#:~:text=PowerPoint%20%28.pptx%29%3A%20Fully%20editable%20in%20PowerPoint%20or%20Google%20Slides)
-- [ ] ✓ 이미지 만들기 — 글로 설명하면 이미지 만들기  
-  “Create custom images from descriptions” · [페이지에서 보기](https://manus.im/docs/features/multi-modal.md#:~:text=Create%20custom%20images%20from%20descriptions)
-- [ ] ✓ 엑셀·표 정리 — 표 파일 올리기  
-  “Provide your data file (CSV, Excel, or other formats).” · [페이지에서 보기](https://manus.im/docs/features/data-visualization.md#:~:text=Provide%20your%20data%20file%20%28CSV%2C%20Excel%2C%20or%20other%20formats%29.)
-- [ ] ✓ 엑셀·표 정리 — 차트 만들기  
-  “Manus transforms raw data files into polished visual insights without requiring spreadsheet expertise or manual chart creation.” · [페이지에서 보기](https://manus.im/docs/features/data-visualization.md#:~:text=Manus%20transforms%20raw%20data%20files,expertise%20or%20manual%20chart%20creation.)
-- [ ] ✓ 자료 조사 — 최신 웹 검색  
-  “All Manus AI features in one place: build apps, create media, research the web, automate recurring work and connect the tools you already use.” · [페이지에서 보기](https://manus.im/features#:~:text=All%20Manus%20AI%20features%20in,the%20tools%20you%20already%20use.)
-- [ ] ✓ 자료 조사 — 여러 자료 비교 정리  
-  “Compare 100 consumer sneaker models.” · [페이지에서 보기](https://manus.im/docs/features/wide-research.md#:~:text=Compare%20100%20consumer%20sneaker%20models.)
-- [ ] ✓ 자료 조사 — 긴 조사 보고서 만들기  
-  “The main agent collects all completed sub-tasks and assembles them into your requested format (table, report, dataset, etc.)” · [페이지에서 보기](https://manus.im/docs/features/wide-research.md#:~:text=The%20main%20agent%20collects%20all,format%20%28table%2C%20report%2C%20dataset%2C%20etc.%29)
-- [ ] ✓ 목소리·나레이션 만들기 — 글을 음성으로 바꾸기  
-  “Convert text to natural speech” · [페이지에서 보기](https://manus.im/docs/features/multi-modal.md#:~:text=Convert%20text%20to%20natural%20speech)
-- [ ] ✓ 목소리·나레이션 만들기 — 감정·속도 조절  
-  “Professional, friendly, casual, energetic, calm” · [페이지에서 보기](https://manus.im/docs/features/multi-modal.md#:~:text=Professional%2C%20friendly%2C%20casual%2C%20energetic%2C%20calm)
-- [ ] ✓ 목소리·나레이션 만들기 — 감정·속도 조절  
-  “Fast, moderate, slow” · [페이지에서 보기](https://manus.im/docs/features/multi-modal.md#:~:text=Fast%2C%20moderate%2C%20slow)
-- [ ] cautions  
-  “Manus AI's image generator is available to users on our Pro plan.” · [페이지에서 보기](https://manus.im/tools/ai-image-generator#:~:text=Manus%20AI%27s%20image%20generator%20is,users%20on%20our%20Pro%20plan.)
-- [ ] cautions  
-  “This feature is currently only available to paid users.” · [페이지에서 보기](https://help.manus.im/en/articles/11960169-what-is-wide-research#:~:text=This%20feature%20is%20currently%20only%20available%20to%20paid%20users.)
-- [ ] cautions  
-  “It is not intended for recording online meetings.” · [페이지에서 보기](https://manus.im/docs/features/meeting-minutes.md#:~:text=It%20is%20not%20intended%20for%20recording%20online%20meetings.)
-
-**4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
-
-- [ ] 한국어 점수: 메뉴까지 한국어, 품질 좋음 (3점)
-- [ ] 한 줄 설명: 할 일을 맡기면 스스로 조사하고 슬라이드·보고서 같은 결과물까지 만들어주는 AI 비서예요
-- [ ] 시작 3단계: 1) manus.im에서 구글이나 애플 계정으로 가입하기 2) 입력창에 맡기고 싶은 일을 문장으로 자세히 쓰기 3) 만들어진 결과물을 보고 고칠 점을 말해 다시 부탁하기
-- [ ] 주의할 점: 무료는 매일 받는 사용량이 정해져 있고, 남은 양은 다음 날로 넘어가지 않아요 / 이미지 만들기, 여러 자료를 한꺼번에 조사하는 기능 등 일부는 유료 요금제에서만 돼요 / 이메일로 가입하면 휴대폰 번호 인증을 해야 해요 / 회의 기록 기능은 직접 만나서 하는 회의용이고, 온라인 회의 녹음용이 아니에요
-
-**5. Claude 메모**
-
-- 가격 페이지(manus.im/pricing)와 개인정보 처리방침(manus.im/privacy)은 화면을 스크립트가 그려서 글자로 읽을 수 없었어요. 가격은 도움말 센터(help.manus.im) 글로 채웠는데, 그 글에도 '실제 가격 페이지에 표시된 것이 기준'이라는 문장(Everything is subject to what is displayed on the actual pricing page.)이 있어요. 가격 페이지에서 한 번 더 확인해 주세요.
-- 유료 가격: 가장 싼 Pro는 월 20달러부터(4,000크레딧)이고, 연 결제하면 17% 할인이라고만 적혀 있어요(연 결제 금액은 숫자로 못 봤어요). 7일 무료 체험은 월 40달러 Pro에만 있다고 적혀 있어요.
-- 학습 정책: 개인정보 처리방침을 못 읽어서 기본값·끄기 모두 unknown이에요. 다만 가격 안내에 팀 요금제 기능으로 'Data Training Opt-Out: Supports opting out of data training to protect privacy.'라는 줄이 있어서, 개인 요금제(무료·Pro)는 학습 끄기가 없을 수도 있어요. 처리방침에서 꼭 확인해 주세요.
-- 가입 방법: 구글·애플·마이크로소프트 계정, 이메일이 돼요. 이메일 가입은 휴대폰 번호 인증이 필수예요(login 값에 phone은 넣지 않았어요).
-- 한국어 3점은 제안값이에요. manus.im/ko에서 메뉴가 한국어로 나오는 건 확인했고, 품질은 '주요 언어 모두 지원' 문장만 있어요. 슬라이드의 한국어 지원 문장은 유료 전용 이미지 모델(Nano Banana Pro) 설명이에요.
-- 기능 근거 중 manus.im/docs/... 는 공식 문서의 글자판(.md 주소)을 그대로 받아서 읽었어요. 문서 화면 주소는 .md를 뺀 주소예요.
-- 유료 전용일 수 있는 기능: 이미지 만들기(P05)는 '이미지 생성기는 Pro 요금제'라고 적혀 있고, 조사(P09)의 비교·보고서 근거는 유료 전용인 'Wide Research' 문서에서 가져왔어요. 웹 조사 자체는 기능 소개 페이지 문장이 근거예요. 답에 출처 링크 표시(P09.sources)는 문장을 못 찾았어요.
-- 회의 녹음(P02): 'Meeting Minutes'는 모든 요금제에서 쓸 수 있고 녹음은 무료, 정리할 때 크레딧이 든다고 해요. 녹음 파일 올리기 근거는 문서의 예시 요청('Transcribe this interview recording' + '(Upload audio file)')이에요.
-- 음성(P10): 글을 음성으로 바꾸기, 말투(Tone)·빠르기(Pace) 고르기가 문서의 '목소리 옵션'에 있어요. 설정 버튼인지, 요청 문장에 적는 방식인지는 문서로 알 수 없어요. 음성 파일 내려받기·목소리 여러 개는 근거 문장을 못 찾았어요.
-- 번역(P07), 문서 요약(P03)은 문서에서 직접 문장을 못 찾아 넣지 않았어요. 회의 정리 기능 안의 영상(Video) 만들기는 자막 기능이 아니라서 P06에 넣지 않았어요.
-
-**6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
-
-```sh
-node scripts/draft.js promote manus --verified YYYY-MM-DD
-```
-
 <a id="general-grok"></a>
 ### Grok (`grok`) · 비개발자용
 
@@ -464,7 +243,7 @@ node scripts/draft.js promote manus --verified YYYY-MM-DD
 node scripts/draft.js promote grok --verified YYYY-MM-DD
 ```
 
-## 개발자용 (37개)
+## 개발자용 (35개)
 
 <a id="dev-claude-code"></a>
 ### Claude Code (`claude-code`) · 개발자용
@@ -762,77 +541,6 @@ node scripts/draft.js promote vercel --verified YYYY-MM-DD --dev
 
 ```sh
 node scripts/draft.js promote v0 --verified YYYY-MM-DD --dev
-```
-
-<a id="dev-pulumi"></a>
-### Pulumi (`pulumi`) · 개발자용
-
-공식 주소: https://www.pulumi.com  
-공식 도메인: `pulumi.com`
-
-**1. 공식 도메인 확인**
-
-- [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
-
-**2. 근거 대조** (16개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
-
-- [ ] 무료 사용: 돼요  
-  “Start for free. Stay free forever for open source and individuals, or scale with advanced editions for your team.” · [페이지에서 보기](https://www.pulumi.com/pricing/#:~:text=Start%20for%20free.%20Stay%20free,advanced%20editions%20for%20your%20team.)
-- [ ] 무료 한도: 개인 1명, 워크플로 500분까지  
-  “1 user” · [페이지에서 보기](https://www.pulumi.com/pricing/#:~:text=1%20user)
-- [ ] 무료 한도: 개인 1명, 워크플로 500분까지  
-  “Up to 500 workflow minutes” · [페이지에서 보기](https://www.pulumi.com/pricing/#:~:text=Up%20to%20500%20workflow%20minutes)
-- [ ] 유료 가격: 월 40달러부터  
-  “Essentials Managed infrastructure fundamentals for your whole team. $40 /month Includes 40 Credits” · [페이지에서 보기](https://www.pulumi.com/pricing/#:~:text=Essentials%20Managed%20infrastructure%20fundamentals%20for,%2440%20%2Fmonth%20Includes%2040%20Credits)
-- [ ] 오픈소스: 예  
-  “Pulumi's open source infrastructure as code SDK supports TypeScript, Python, Go, .NET, Java, YAML, and HCL.” · [페이지에서 보기](https://www.pulumi.com/docs/iac/#:~:text=Pulumi%27s%20open%20source%20infrastructure%20as,.NET%2C%20Java%2C%20YAML%2C%20and%20HCL.)
-- [ ] 오픈소스: 예  
-  “Open source and free for individuals.” · [페이지에서 보기](https://www.pulumi.com/#:~:text=Open%20source%20and%20free%20for%20individuals.)
-- [ ] repo_url  
-  “pulumi/pulumi” · [페이지에서 보기](https://www.pulumi.com/#:~:text=pulumi%2Fpulumi)
-- [ ] 쓰는 형태: CLI, 라이브러리, 클라우드 서비스  
-  “You don’t need a Pulumi Cloud account to install the CLI.” · [페이지에서 보기](https://www.pulumi.com/docs/install/#:~:text=You%20don%E2%80%99t%20need%20a%20Pulumi,account%20to%20install%20the%20CLI.)
-- [ ] 쓰는 형태: CLI, 라이브러리, 클라우드 서비스  
-  “Pulumi's open source infrastructure as code SDK supports TypeScript, Python, Go, .NET, Java, YAML, and HCL.” · [페이지에서 보기](https://www.pulumi.com/docs/iac/#:~:text=Pulumi%27s%20open%20source%20infrastructure%20as,.NET%2C%20Java%2C%20YAML%2C%20and%20HCL.)
-- [ ] 쓰는 형태: CLI, 라이브러리, 클라우드 서비스  
-  “Pulumi Deployments is a managed service that runs Pulumi operations” · [페이지에서 보기](https://www.pulumi.com/docs/deployments/deployments/#:~:text=Pulumi%20Deployments%20is%20a%20managed%20service%20that%20runs%20Pulumi%20operations)
-- [ ] ✓ 배포·인프라·CI/CD — Git 푸시하면 자동 배포  
-  “deployments can run automatically from your version control system” · [페이지에서 보기](https://www.pulumi.com/docs/deployments/deployments/#:~:text=deployments%20can%20run%20automatically%20from%20your%20version%20control%20system)
-- [ ] ✓ 배포·인프라·CI/CD — 미리보기 배포  
-  “Review stacks are ephemeral cloud environments powered by Pulumi Deployments. They are created automatically when a pull request is opened, updated on each new commit, and destroyed when the pull request is merged or closed.” · [페이지에서 보기](https://www.pulumi.com/docs/deployments/deployments/review-stacks/#:~:text=Review%20stacks%20are%20ephemeral%20cloud,request%20is%20merged%20or%20closed.)
-- [ ] ✓ 배포·인프라·CI/CD — AI로 오류 원인 분석  
-  “Ask why a deployment failed or what’s misconfigured. Neo investigates and explains what went wrong.” · [페이지에서 보기](https://www.pulumi.com/product/neo/#:~:text=Ask%20why%20a%20deployment%20failed,and%20explains%20what%20went%20wrong.)
-- [ ] ✓ 코드 리뷰·품질 검사 받기 — PR 자동 리뷰 코멘트  
-  “Neo code reviews analyze pull requests against what Pulumi Cloud knows about your running infrastructure and leave feedback in the pull request.” · [페이지에서 보기](https://www.pulumi.com/docs/ai/neo/code-reviews/#:~:text=Neo%20code%20reviews%20analyze%20pull,feedback%20in%20the%20pull%20request.)
-- [ ] ✓ 업무 자동화·에이전트 연결 — 일정·이벤트로 자동 실행  
-  “The form asks for a name, the prompt (which includes the same integration selector as an ad-hoc task), and the frequency (hourly, daily, weekdays, or weekly). Save the automation and it begins running at the next scheduled tick.” · [페이지에서 보기](https://www.pulumi.com/docs/ai/neo/automations/#:~:text=The%20form%20asks%20for%20a,at%20the%20next%20scheduled%20tick.)
-- [ ] ✓ 업무 자동화·에이전트 연결 — 외부 도구 연결 (MCP 등)  
-  “MCP integrations connect Neo to external services that expose a Model Context Protocol server” · [페이지에서 보기](https://www.pulumi.com/docs/ai/neo/integrations/mcp/#:~:text=MCP%20integrations%20connect%20Neo%20to,a%20Model%20Context%20Protocol%20server)
-
-**4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
-
-- [ ] AI 여부: AI 기능 일부
-- [ ] 섹션: 공식 AI 툴
-- [ ] 대표 목적: 배포·인프라·CI/CD
-- [ ] 한 줄 설명: 클라우드 인프라를 TypeScript·Python 같은 프로그래밍 언어 코드로 정의하고 배포하는 도구예요. 인프라 전용 AI 에이전트 Neo도 붙어 있어요
-- [ ] 시작 3단계: 1) 공식 설치 안내대로 Pulumi CLI 설치하기 (예: macOS는 Homebrew) 2) 새 폴더에서 프로젝트를 만들고 익숙한 언어로 만들 클라우드 자원을 코드로 적기 3) 변경 내용을 미리 본 뒤 배포 명령으로 실제 클라우드에 반영하기
-- [ ] 주의할 점: 실제 클라우드(AWS 등)에 자원을 만들기 때문에 그쪽 요금이 따로 나와요 / Neo는 토큰 사용량만큼 요금이 붙어요 / AI가 제안한 인프라 변경은 미리보기 결과를 확인하고 승인하세요
-
-**5. Claude 메모**
-
-- 유료 가격: Essentials '$40 /month', 'Includes 40 Credits', 'Up to 500 managed resources.'예요. 크레딧 기반이라 자원 수·사용량에 따라 더 나올 수 있어요. 연 결제 가격은 못 찾았어요. Neo는 모든 요금제에서 '$3/M tokens'로 따로 과금돼요(가격표 표 칸).
-- 무료 한도: Free 카드의 '1 user', 'Up to 500 workflow minutes'를 요약했어요. 설치 문서에 'Pulumi Cloud is free for individuals'라는 문장도 있어요.
-- 학습 정책: 개인정보 처리방침(pulumi.com/privacy)과 Neo 문서(설정, 모델 제공자)에서 AI 학습 관련 문장을 못 찾았어요. 그래서 unknown이에요. Neo 문서에는 'Pulumi Neo is Pulumi’s own infrastructure agent, powered by Anthropic’s Claude'라는 문장이 있어요.
-- 오픈소스: 공식 문서에 'Pulumi's open source infrastructure as code SDK', 홈에 'Open source and free for individuals.'가 있어요. 저장소 주소는 홈페이지의 'pulumi/pulumi' 링크(github.com/pulumi/pulumi)에서 가져왔어요. GitHub 페이지 자체는 열지 않았어요. 오픈소스는 엔진·SDK이고 Pulumi Cloud와 Neo는 회사 서비스예요. 그래서 section은 official로 뒀어요.
-- 쓰는 형태: CLI, 라이브러리(SDK), 클라우드 서비스(Pulumi Cloud·Deployments). 관리 문서에 'deploy self-hosted infrastructure'라는 말이 있지만 범위(기업용 자체 설치)가 불분명해서 self_host는 넣지 않았어요.
-- 기능 체크리스트: devops 3개(로그·모니터링은 이번에 근거 문장을 못 골라서 뺐어요). 미리보기 배포(preview)는 PR마다 임시 환경을 만드는 Review Stacks 근거예요. code_review는 PR 리뷰 1개. automation 2개는 Neo 예약 작업(Automations)과 외부 MCP 서버 연결이에요. Neo가 IaC 코드를 고쳐 PR을 연다는 문서(Pull Requests)도 있어 coding_agents로 볼 여지도 있어요.
-- 페이지 주소: /product/pulumi-ai/, /legal/privacy-policy/, /opensource/는 404라서 쓰지 않았어요.
-- AI 여부(partial — 인프라 코드 도구가 핵심이고 AI는 Neo), 섹션(official), 대표 목적(devops)은 제안값이에요.
-
-**6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
-
-```sh
-node scripts/draft.js promote pulumi --verified YYYY-MM-DD --dev
 ```
 
 <a id="dev-cloudflare"></a>
@@ -1807,78 +1515,6 @@ node scripts/draft.js promote langsmith --verified YYYY-MM-DD --dev
 
 ```sh
 node scripts/draft.js promote ollama --verified YYYY-MM-DD --dev
-```
-
-<a id="dev-lm-studio"></a>
-### LM Studio (`lm-studio`) · 개발자용
-
-공식 주소: https://lmstudio.ai  
-공식 도메인: `lmstudio.ai`
-
-**1. 공식 도메인 확인**
-
-- [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
-
-**2. 근거 대조** (16개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
-
-- [ ] 무료 사용: 돼요  
-  “Can I use Bionic for free? Yes. The Free plan includes Bionic Agent and local model support.” · [페이지에서 보기](https://lmstudio.ai/pricing#:~:text=Can%20I%20use%20Bionic%20for,Agent%20and%20local%20model%20support.)
-- [ ] 무료 한도: 로컬 모델 실행과 Bionic 에이전트는 무료, 웹 검색은 제한적  
-  “Free $ 0 Run local LLMs on your machine Includes: Bionic Agent Run local LLMs using llama.cpp and MLX State-of-the-art offline voice transcription LM Link for up to 5 devices Limited web search” · [페이지에서 보기](https://lmstudio.ai/pricing#:~:text=Free%20%24%200%20Run%20local,5%20devices%20Limited%20web%20search)
-- [ ] 유료 가격: 월 20달러부터  
-  “Bionic+ $ 20 USD / month Private, US-hosted OSS models.” · [페이지에서 보기](https://lmstudio.ai/pricing#:~:text=Bionic%2B%20%24%2020%20USD%20%2F%20month%20Private%2C%20US%2Dhosted%20OSS%20models.)
-- [ ] 기본으로 학습에 씀: 아니요  
-  “If you download and run models locally, none of your messages, chat histories, and documents are ever transmitted from your system - everything is saved locally on your device.” · [페이지에서 보기](https://lmstudio.ai/privacy#:~:text=If%20you%20download%20and%20run,saved%20locally%20on%20your%20device.)
-- [ ] 기본으로 학습에 씀: 아니요  
-  “Your request and the generated response is not retained after the request completes, and your data is not used for training or any other purpose.” · [페이지에서 보기](https://lmstudio.ai/privacy#:~:text=Your%20request%20and%20the%20generated,training%20or%20any%20other%20purpose.)
-- [ ] 오픈소스: 아니요  
-  “You acknowledge that the Software and its structure, organization, and source code constitute valuable trade secrets and Confidential information of Company and its suppliers.” · [페이지에서 보기](https://lmstudio.ai/terms#:~:text=You%20acknowledge%20that%20the%20Software,of%20Company%20and%20its%20suppliers.)
-- [ ] 쓰는 형태: 데스크톱 앱, CLI, 라이브러리, 셀프 호스팅  
-  “LM Studio is available for macOS, Windows, and Linux.” · [페이지에서 보기](https://lmstudio.ai/docs#:~:text=LM%20Studio%20is%20available%20for%20macOS%2C%20Windows%2C%20and%20Linux.)
-- [ ] 쓰는 형태: 데스크톱 앱, CLI, 라이브러리, 셀프 호스팅  
-  “Use lms for chat, model downloads, daemon management, server control, and publishing.” · [페이지에서 보기](https://lmstudio.ai/docs#:~:text=Use%20lms%20for%20chat%2C%20model,management%2C%20server%20control%2C%20and%20publishing.)
-- [ ] 쓰는 형태: 데스크톱 앱, CLI, 라이브러리, 셀프 호스팅  
-  “Use lmstudio-python to load models, generate text, embed content, and build agents.” · [페이지에서 보기](https://lmstudio.ai/docs#:~:text=Use%20lmstudio%2Dpython%20to%20load%20models%2C,embed%20content%2C%20and%20build%20agents.)
-- [ ] 쓰는 형태: 데스크톱 앱, CLI, 라이브러리, 셀프 호스팅  
-  “llmster is LM Studio's headless daemon for servers, cloud instances, and CI.” · [페이지에서 보기](https://lmstudio.ai/download#:~:text=llmster%20is%20LM%20Studio%27s%20headless,servers%2C%20cloud%20instances%2C%20and%20CI.)
-- [ ] ✓ 데이터·모델·RAG 다루기 — 모델 실행 (클라우드 또는 로컬)  
-  “Download and run local LLMs like gpt-oss or Llama, Qwen” · [페이지에서 보기](https://lmstudio.ai/docs#:~:text=Download%20and%20run%20local%20LLMs%20like%20gpt%2Doss%20or%20Llama%2C%20Qwen)
-- [ ] ✓ 데이터·모델·RAG 다루기 — 문서 연결 검색 (RAG)  
-  “You can attach documents to your chat messages and interact with them entirely offline, also known as "RAG".” · [페이지에서 보기](https://lmstudio.ai/docs#:~:text=You%20can%20attach%20documents%20to,offline%2C%20also%20known%20as%20%22RAG%22.)
-- [ ] ✓ AI와 같이 코드 짜기 — 저장소 전체 읽고 이해  
-  “Bionic can inspect local codebases, explain unfamiliar code, and help you make changes.” · [페이지에서 보기](https://lmstudio.ai/docs/bionic/agent/code-project#:~:text=Bionic%20can%20inspect%20local%20codebases%2C,and%20help%20you%20make%20changes.)
-- [ ] ✓ AI와 같이 코드 짜기 — 여러 파일 한 번에 수정  
-  “Refactoring code across several files.” · [페이지에서 보기](https://lmstudio.ai/docs/bionic/agent/code-project#:~:text=Refactoring%20code%20across%20several%20files.)
-- [ ] ✓ AI와 같이 코드 짜기 — 명령·테스트 실행  
-  “Find the code that validates uploaded images. Explain the current flow, add support for the new size limit, update the tests, and run only the relevant test suite.” · [페이지에서 보기](https://lmstudio.ai/docs/bionic/agent/code-project#:~:text=Find%20the%20code%20that%20validates,only%20the%20relevant%20test%20suite.)
-- [ ] ✓ 업무 자동화·에이전트 연결 — 외부 도구 연결 (MCP 등)  
-  “Connect MCP servers and use them with local models” · [페이지에서 보기](https://lmstudio.ai/docs#:~:text=Connect%20MCP%20servers%20and%20use%20them%20with%20local%20models)
-
-**4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
-
-- [ ] AI 여부: AI가 핵심
-- [ ] 섹션: 공식 AI 툴
-- [ ] 대표 목적: 데이터·모델·RAG 다루기
-- [ ] 한 줄 설명: 오픈 모델을 내려받아 내 컴퓨터에서 채팅·API 서버로 돌리는 데스크톱 앱이에요. 코딩·문서 작업용 에이전트 앱 Bionic도 함께 나와요
-- [ ] 시작 3단계: 1) 공식 다운로드 페이지에서 LM Studio(또는 에이전트 앱 Bionic) 설치하기 2) 앱 안에서 내 컴퓨터 사양에 맞는 모델 내려받기 3) 채팅으로 써 보거나, 로컬 서버를 켜고 OpenAI 호환 API로 내 코드에서 부르기
-- [ ] 주의할 점: 모델 성능과 속도는 내 컴퓨터의 메모리·GPU에 따라 크게 달라요 / 코딩 프로젝트에서는 에이전트가 파일을 고치고 명령을 실행하니 바뀐 내용을 확인하세요 / LM Studio와 Bionic은 따로 설치하는 별개 앱이에요
-
-**5. Claude 메모**
-
-- 범위: 지금 lmstudio.ai 홈과 가격표는 새 에이전트 앱 'LM Studio Bionic' 중심이에요. 문서에 'Bionic is a new, separate app from LM Studio.'라고 해서 별개 앱이지만, 같은 회사·같은 사이트라 한 항목으로 묶었어요. 따로 나눌지 J가 정해 주세요.
-- 가격: 가격표는 Bionic 기준이에요 (Free 0달러, Bionic+ 월 20달러, Pro 월 100달러). 기존 LM Studio 앱 자체의 가격은 따로 적혀 있지 않아요. 클라우드 사용량은 플랜에 포함된 양을 넘으면 크레딧으로 내요.
-- 오픈소스 여부: 이용 약관에 '소프트웨어의 구조·소스 코드는 회사의 영업 비밀'이라는 문장이 있어서 false로 했어요. 단, 명령줄 도구 lms는 문서에 'lms is MIT Licensed'라고 되어 있고(https://lmstudio.ai/docs/cli), SDK(lmstudio-js, lmstudio-python)도 GitHub 소스 링크가 있어요. 앱 본체 기준으로 false예요.
-- 학습 정책: 로컬 실행은 내용이 전송되지 않고, 클라우드 기능(모델·웹 검색)은 'not used for training'이라 no. 끌 설정이 필요 없어서 opt_out은 unknown으로 뒀어요.
-- 쓰는 형태: self_host는 서버·CI용 헤드리스 데몬 llmster 근거로 넣은 제안값이에요. Bionic의 클라우드 추론(LM Studio Secure Cloud)은 앱 안의 옵션이라 cloud_service로 넣지 않았어요.
-- 기능 체크리스트: data_ml 2개(모델 실행, 문서 첨부 RAG; 임베딩 API는 있지만 벡터 DB 연동 문장은 못 찾음), coding_agents 3개(Bionic 코딩 프로젝트 문서 기준, PR 올리기 문장 없음), automation 1개(MCP). run_commands 근거는 예시 요청 문장이고, 같은 페이지에 'Ask it to run focused tests or checks.'도 있어요.
-- 문서 페이지마다 'Ask Bionic to read this page / Copy this prompt' 안내가 있지만 사람용 복사 버튼이라 그대로 두었어요 (따르지 않음).
-- AI 여부(yes), 섹션(official), 대표 목적(data_ml)은 제안값이에요.
-- Bionic은 따로 나누지 않고 LM Studio 한 항목으로 두기로 했어요 (J 결정).
-
-**6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
-
-```sh
-node scripts/draft.js promote lm-studio --verified YYYY-MM-DD --dev
 ```
 
 <a id="dev-netlify"></a>

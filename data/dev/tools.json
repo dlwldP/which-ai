@@ -1,1 +1,161 @@
-[]
+[
+  {
+    "id": "pulumi",
+    "name": "Pulumi",
+    "url": "https://www.pulumi.com",
+    "official_domains": [
+      "pulumi.com"
+    ],
+    "one_liner": "클라우드 인프라를 TypeScript·Python 같은 프로그래밍 언어 코드로 정의하고 배포하는 도구예요. 인프라 전용 AI 에이전트 Neo도 붙어 있어요",
+    "features": {
+      "devops": [
+        "auto_deploy",
+        "preview",
+        "ai_debug"
+      ],
+      "code_review": [
+        "pr_review"
+      ],
+      "automation": [
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "devops",
+    "price": {
+      "free": true,
+      "free_limit": "개인 1명, 워크플로 500분까지",
+      "paid_from_usd": 40,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": true,
+    "repo_url": "https://github.com/pulumi/pulumi",
+    "section": "official",
+    "forms": [
+      "cli",
+      "library",
+      "cloud_service"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": ""
+    },
+    "start_steps": [
+      "공식 설치 안내대로 Pulumi CLI 설치하기 (예: macOS는 Homebrew)",
+      "새 폴더에서 프로젝트를 만들고 익숙한 언어로 만들 클라우드 자원을 코드로 적기",
+      "변경 내용을 미리 본 뒤 배포 명령으로 실제 클라우드에 반영하기"
+    ],
+    "cautions": [
+      "실제 클라우드(AWS 등)에 자원을 만들기 때문에 그쪽 요금이 따로 나와요",
+      "Neo는 토큰 사용량만큼 요금이 붙어요",
+      "AI가 제안한 인프라 변경은 미리보기 결과를 확인하고 승인하세요"
+    ],
+    "sources": [
+      "https://www.pulumi.com/",
+      "https://www.pulumi.com/pricing/",
+      "https://www.pulumi.com/docs/iac/",
+      "https://www.pulumi.com/docs/install/",
+      "https://www.pulumi.com/docs/deployments/deployments/",
+      "https://www.pulumi.com/docs/deployments/deployments/review-stacks/",
+      "https://www.pulumi.com/product/neo/",
+      "https://www.pulumi.com/docs/ai/neo/code-reviews/",
+      "https://www.pulumi.com/docs/ai/neo/automations/",
+      "https://www.pulumi.com/docs/ai/neo/integrations/mcp/",
+      "https://www.pulumi.com/privacy/"
+    ],
+    "learn": [
+      {
+        "title": "Pulumi 시작하기 (공식 문서)",
+        "url": "https://www.pulumi.com/docs/get-started/"
+      },
+      {
+        "title": "Neo 시작하기 (공식 문서)",
+        "url": "https://www.pulumi.com/docs/ai/neo/get-started/"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "lm-studio",
+    "name": "LM Studio",
+    "url": "https://lmstudio.ai",
+    "official_domains": [
+      "lmstudio.ai"
+    ],
+    "one_liner": "오픈 모델을 내려받아 내 컴퓨터에서 채팅·API 서버로 돌리는 데스크톱 앱이에요. 코딩·문서 작업용 에이전트 앱 Bionic도 함께 나와요",
+    "features": {
+      "data_ml": [
+        "run_models",
+        "rag"
+      ],
+      "coding_agents": [
+        "repo_context",
+        "multi_file",
+        "run_commands"
+      ],
+      "automation": [
+        "tools"
+      ]
+    },
+    "primary": "data_ml",
+    "price": {
+      "free": true,
+      "free_limit": "로컬 모델 실행과 Bionic 에이전트는 무료, 웹 검색은 제한적",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "desktop",
+      "cli",
+      "library",
+      "self_host"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": "로컬로 돌리면 대화·문서가 기기 밖으로 나가지 않고, 클라우드 기능에 보낸 요청도 저장하거나 학습에 쓰지 않는다고 해요"
+    },
+    "start_steps": [
+      "공식 다운로드 페이지에서 LM Studio(또는 에이전트 앱 Bionic) 설치하기",
+      "앱 안에서 내 컴퓨터 사양에 맞는 모델 내려받기",
+      "채팅으로 써 보거나, 로컬 서버를 켜고 OpenAI 호환 API로 내 코드에서 부르기"
+    ],
+    "cautions": [
+      "모델 성능과 속도는 내 컴퓨터의 메모리·GPU에 따라 크게 달라요",
+      "코딩 프로젝트에서는 에이전트가 파일을 고치고 명령을 실행하니 바뀐 내용을 확인하세요",
+      "LM Studio와 Bionic은 따로 설치하는 별개 앱이에요"
+    ],
+    "sources": [
+      "https://lmstudio.ai/",
+      "https://lmstudio.ai/pricing",
+      "https://lmstudio.ai/privacy",
+      "https://lmstudio.ai/terms",
+      "https://lmstudio.ai/docs",
+      "https://lmstudio.ai/docs/cli",
+      "https://lmstudio.ai/docs/developer",
+      "https://lmstudio.ai/docs/bionic",
+      "https://lmstudio.ai/docs/bionic/agent/code-project",
+      "https://lmstudio.ai/download"
+    ],
+    "learn": [
+      {
+        "title": "LM Studio 시작하기 (공식 문서)",
+        "url": "https://lmstudio.ai/docs/app"
+      },
+      {
+        "title": "LM Studio 개발자 문서 (API·SDK)",
+        "url": "https://lmstudio.ai/docs/developer"
+      },
+      {
+        "title": "Bionic 시작하기 (공식 문서)",
+        "url": "https://lmstudio.ai/docs/bionic"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  }
+]
