@@ -9,7 +9,7 @@
 // 점수 계산은 하지 않는다. 추천은 recommend.js에만 맡긴다.
 import { featureReason, featureSummary, recommendSections, isStale, supportedFeatures } from './recommend.js';
 import { UNKNOWN, formatDate, localToday } from './format.js';
-import { FEEDBACK_FORM, REASON_MAX, cleanReason, feedbackBody, isFeedbackReady } from './feedback.js';
+import { FEEDBACK_FORM, REASON_MAX, cleanReason, feedbackBody, githubIssueUrl, isFeedbackReady } from './feedback.js';
 import { PAGE_KEYS, pageSections } from './pages.js';
 import { glossarize, termIn, termMatcher } from './glossary.js';
 import { MODES } from './modes.js';
@@ -91,8 +91,11 @@ const cautionsOf = (t) => [...t.cautions, ...(t.privacy.note ? [t.privacy.note] 
 const notAiTag = (t) => (t.ai_native === 'no' ? '<span class="tag tag-plain">AI와 같이 쓰는 도구</span>' : '');
 const staleTag = (stale) => (stale ? '<span class="tag tag-warn">확인 필요</span>' : '');
 
-/** "정보가 틀려요" 버튼. 누르면 사유를 적는 창이 뜬다 (installReportDialog). 구글 폼이 연결되기 전에는 숨긴다 */
-const reportButton = (t) => (isFeedbackReady()
+/** 제보 방법이 하나라도 있으면 true: 구글 폼(연결됐을 때) 또는 GitHub 이슈(개발자용) */
+const reportReady = () => isFeedbackReady() || mode.reportGithub;
+
+/** "정보가 틀려요" 버튼. 누르면 사유를 적는 창이 뜬다 (installReportDialog). 제보 방법이 없으면 숨긴다 */
+const reportButton = (t) => (reportReady()
   ? `<button type="button" class="report-btn" data-report="${esc(t.name)}">정보가 틀려요</button>` : '');
 
 const officialButton = (t, cls = 'btn-primary') =>
@@ -375,7 +378,7 @@ function renderTool(t) {
         <section class="card">
           <h2 class="card-title">정보 확인</h2>
           <p class="card-sub">마지막 확인 ${esc(formatDate(t.last_verified))}${stale ? ' · 90일 넘게 지나서 다시 확인이 필요해요' : ''}</p>
-          ${isFeedbackReady() ? `<p class="report">공식 페이지와 다른 정보를 발견했나요? ${reportButton(t)}</p>` : ''}
+          ${reportReady() ? `<p class="report">공식 페이지와 다른 정보를 발견했나요? ${reportButton(t)}</p>` : ''}
         </section>
       </div>
     </div>
@@ -435,7 +438,7 @@ function renderChanges() {
 
 // ---- 개인정보 처리방침 · 이용약관 · 보안 안내 (js/pages.js) ----
 function renderPage(key) {
-  const page = pageSections(key, W, mode.siteName);
+  const page = pageSections(key, W, mode.siteName, { github: mode.reportGithub });
   document.title = `${page.title} · ${mode.siteName}`;
   app.innerHTML = `
     <div class="narrow">
@@ -453,23 +456,30 @@ function renderPage(key) {
 
 // ---- "정보가 틀려요" 입력창 ----
 // 사유는 꼭 적어야 보낼 수 있다. 로그인·횟수 제한 없음. 구글 폼으로 보낸다(응답을 읽을 수 없어 no-cors).
+// 개발자용은 아래에 두 번째 방법(GitHub 이슈, 계정 필요)을 둔다. 구글 폼이 아직 없으면 GitHub만 보여준다.
 function installReportDialog() {
-  if (!isFeedbackReady()) return;
+  if (!reportReady()) return;
+  const formReady = isFeedbackReady();
   const dialog = document.createElement('dialog');
   dialog.className = 'report-dialog';
   dialog.innerHTML = `
     <form class="report-form" novalidate>
       <h2 class="report-title">정보가 틀려요</h2>
       <p class="report-tool"></p>
+      <div class="report-by-form"${formReady ? '' : ' hidden'}>
       <label class="report-label" for="report-reason">무엇이 틀렸나요? <span class="req">(필수)</span></label>
       <textarea id="report-reason" name="reason" rows="5" maxlength="${REASON_MAX}" required
         placeholder="예: 유료 가격이 월 20달러가 아니라 25달러로 바뀌었어요 (공식 가격 페이지 기준)"></textarea>
       <p class="report-hint">이름·연락처 같은 개인정보는 적지 마세요. 보낸 내용은 정보를 고치는 데만 써요 (<a href="#/privacy">개인정보 처리방침</a>).</p>
       <p class="report-error" role="alert" hidden></p>
       <p class="report-done" role="status" hidden>보내 주셔서 고마워요. 확인해서 고칠게요.</p>
+      </div>
+      ${mode.reportGithub ? `
+        <p class="report-alt">${formReady ? '다른 방법: ' : ''}GitHub 계정이 있다면 <a class="report-github" href="#" target="_blank" rel="noopener">GitHub 이슈로 남기기 ↗</a>
+          <span class="report-alt-note">이슈는 누구나 볼 수 있게 공개되고 GitHub 아이디가 같이 보여요.</span></p>` : ''}
       <div class="report-actions">
         <button type="button" class="btn btn-outline report-cancel">닫기</button>
-        <button type="submit" class="btn btn-primary report-send">보내기</button>
+        ${formReady ? '<button type="submit" class="btn btn-primary report-send">보내기</button>' : ''}
       </div>
     </form>`;
   document.body.appendChild(dialog);
@@ -488,12 +498,14 @@ function installReportDialog() {
     toolName = btn.dataset.report;
     textarea.value = '';
     textarea.disabled = false;
-    send.disabled = false;
+    if (send) send.disabled = false;
     error.hidden = true;
     done.hidden = true;
     dialog.querySelector('.report-tool').textContent = toolName;
+    const github = dialog.querySelector('.report-github');
+    if (github) github.href = githubIssueUrl(toolName, mode.reportSite);
     dialog.showModal();
-    textarea.focus();
+    (formReady ? textarea : dialog.querySelector('.report-github')).focus();
   });
   dialog.querySelector('.report-cancel').addEventListener('click', () => dialog.close());
   // 개인정보 처리방침 링크를 누르면 창을 닫고 그 페이지로 간다
@@ -501,6 +513,7 @@ function installReportDialog() {
   dialog.addEventListener('close', () => opener?.focus());
   form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
+    if (!formReady) return;
     const reason = cleanReason(textarea.value);
     if (!reason) {
       error.textContent = '무엇이 틀렸는지 적어 주세요.';
