@@ -1482,3 +1482,45 @@ body.has-sticky-cta { padding-bottom: 84px; }
 .hero-inner { grid-template-columns: minmax(0, 1fr); }
 .hero-inner > * { min-width: 0; }
 @media (min-width: 900px) { .hero-inner { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); } }
+
+/* ---- 목록 보완 (2026-11-06): 분야 탭, 정렬, 글자 아이콘, 더 보기 ---- */
+.purpose-tabs {
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin;
+  margin: 20px 0 4px; padding: 2px 0 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.purpose-tab {
+  flex: none; white-space: nowrap;
+  padding: 8px 14px; border-radius: var(--radius-full);
+  border: 1px solid var(--line); background: var(--surface);
+  color: var(--sub); font-size: 0.9rem; font-weight: 600;
+}
+.purpose-tab:hover { border-color: var(--accent); color: var(--accent); }
+.purpose-tab[aria-current="page"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.list-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin: 0 0 12px; }
+.list-controls .chips { margin: 0; }
+.sort { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; }
+.sort-label { color: var(--muted); }
+.sort-chip {
+  padding: 5px 10px; border-radius: var(--radius-sm);
+  border: 1px solid var(--line); color: var(--sub); background: var(--surface);
+}
+.sort-chip[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); font-weight: 700; background: var(--accent-bg); }
+.tool-avatar {
+  flex: none; display: grid; place-items: center;
+  width: 32px; height: 32px; border-radius: 9px;
+  background: var(--accent-bg); color: var(--accent);
+  font-weight: 800; font-size: 0.95rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+}
+.more-btn { display: block; margin: 14px auto 0; }
+.more-cards:not([hidden]) { margin-top: 16px; }
+a.hero-fact { color: inherit; border: 1px solid transparent; transition: border-color var(--duration) var(--ease); }
+a.hero-fact:hover { border-color: var(--accent); }
+/* 휴대폰: 한 줄 설명은 두 줄까지만 보여서 한 화면에 카드가 더 들어가게 */
+@media (max-width: 639px) {
+  .tool-card .tool-one-liner {
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .tool-card { padding: 14px 14px 10px; }
+}

@@ -1,6 +1,6 @@
 // 목록 로직 (2026-11-06 개편: 점수 추천 대신 용도별 카드 목록).
 // DOM·시계·네트워크에 접근하지 않는 순수 함수만 둔다. 브라우저와 Node 양쪽에서 import 한다.
-// 순서는 이름순이에요. 좋고 나쁨의 순위를 매기지 않는다.
+// 순서는 이름순(또는 무료 먼저)이에요. 좋고 나쁨의 순위를 매기지 않는다. 가격을 모르는 툴은 맨 뒤.
 
 export const STALE_DAYS = 90;
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -33,6 +33,14 @@ export const FILTERS = {
 };
 
 const byName = (a, b) => a.name.localeCompare(b.name, 'ko') || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+const priceKnown = (t) => t.price.free !== null || t.price.paid !== null;
+
+/** 정렬 방법. 가격을 모르는 툴("가격 확인 필요")은 어느 정렬이든 맨 뒤로 */
+export const SORTS = {
+  name: (a, b) => byName(a, b), // 이름순
+  free: (a, b) => (b.price.free === true) - (a.price.free === true) || byName(a, b), // 무료로 쓸 수 있는 것 먼저
+};
+const withUnknownLast = (cmp) => (a, b) => priceKnown(b) - priceKnown(a) || cmp(a, b);
 
 /**
  * @param {object} input
@@ -40,9 +48,11 @@ const byName = (a, b) => a.name.localeCompare(b.name, 'ko') || (a.id < b.id ? -1
  * @param {string|null} [input.purposeId]  없으면 전체
  * @param {string[]} [input.filters]       FILTERS의 키
  * @param {string} [input.query]           이름·한 줄 설명에서 찾을 말
- * @returns {object[]} 이름순
+ * @param {string} [input.sort]            SORTS의 키 (기본 name). 가격을 모르는 툴은 맨 뒤
+ * @returns {object[]}
  */
-export function listTools({ tools, purposeId = null, filters = [], query = '' }) {
+export function listTools({ tools, purposeId = null, filters = [], query = '', sort = 'name' }) {
+  if (!SORTS[sort]) throw new TypeError(`알 수 없는 정렬: ${sort}`);
   if (!Array.isArray(tools)) throw new TypeError('tools는 배열이어야 합니다');
   for (const f of filters) if (!FILTERS[f]) throw new TypeError(`알 수 없는 조건: ${f}`);
   const q = query.trim().toLowerCase();
@@ -50,7 +60,7 @@ export function listTools({ tools, purposeId = null, filters = [], query = '' })
     .filter((t) => !purposeId || t.purposes.includes(purposeId))
     .filter((t) => filters.every((f) => FILTERS[f](t)))
     .filter((t) => !q || `${t.name} ${t.one_liner}`.toLowerCase().includes(q))
-    .sort(byName);
+    .sort(withUnknownLast(SORTS[sort]));
 }
 
 /** 용도마다 몇 개 있는지 { P01: 3, ... } */
@@ -66,4 +76,16 @@ export function groupByKind(tools, kinds) {
   return kinds
     .map((kind) => ({ kind, tools: tools.filter((t) => t.kind === kind) }))
     .filter((g) => g.tools.length > 0);
+}
+
+/** 묶음마다 처음 몇 개만 보여주고 나머지는 "더 보기"로 (개발자용 긴 목록) */
+export const PREVIEW_COUNT = 12;
+export function splitPreview(tools, count = PREVIEW_COUNT) {
+  return { shown: tools.slice(0, count), hidden: tools.slice(count) };
+}
+
+/** 툴 이름 첫 글자 (카드의 글자 아이콘) */
+export function initialLetter(name) {
+  const c = [...name.trim()][0] ?? '?';
+  return /[a-z]/i.test(c) ? c.toUpperCase() : c;
 }
