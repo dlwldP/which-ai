@@ -39,7 +39,7 @@ AI 툴이 너무 많아서 비개발자는 어떤 일에 뭘 써야 하는지, �
 
 ## 정보가 틀렸나요?
 
-카드의 "자세히 보기" 안이나 툴 상세 화면에서 **"정보가 틀려요 ↗"**를 눌러 알려주세요 ([제보 양식](https://github.com/dlwldP/which-ai/issues/new?template=wrong-info.yml), GitHub 계정 필요). 자세한 건 [CONTRIBUTING.md](CONTRIBUTING.md)를 봐주세요.
+카드의 "자세히 보기" 안이나 툴 상세 화면에서 **"정보가 틀려요"** 버튼을 눌러 무엇이 틀렸는지 적어 주세요. 로그인이 필요 없어요. 자세한 건 [CONTRIBUTING.md](CONTRIBUTING.md)를 봐주세요.
 
 ## 개발자용: 개발할 때 AI 뭐 써?
 

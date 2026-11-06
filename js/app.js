@@ -8,7 +8,9 @@
 // 주소에 ?demo가 있으면 (예: index.html?demo#/) 실제 데이터 대신 예시 데이터를 쓴다.
 // 점수 계산은 하지 않는다. 추천은 recommend.js에만 맡긴다.
 import { featureReason, featureSummary, recommendSections, isStale, supportedFeatures } from './recommend.js';
-import { UNKNOWN, changeText, formatDate, localToday, reportUrl, sourceLabel } from './format.js';
+import { UNKNOWN, formatDate, localToday } from './format.js';
+import { FEEDBACK_FORM, REASON_MAX, cleanReason, feedbackBody, isFeedbackReady } from './feedback.js';
+import { PAGE_KEYS, pageSections } from './pages.js';
 import { glossarize, termIn, termMatcher } from './glossary.js';
 import { MODES } from './modes.js';
 
@@ -89,14 +91,9 @@ const cautionsOf = (t) => [...t.cautions, ...(t.privacy.note ? [t.privacy.note] 
 const notAiTag = (t) => (t.ai_native === 'no' ? '<span class="tag tag-plain">AI와 같이 쓰는 도구</span>' : '');
 const staleTag = (stale) => (stale ? '<span class="tag tag-warn">확인 필요</span>' : '');
 
-const reportLink = (t) =>
-  `<a class="report-link" href="${esc(reportUrl(t.name, mode.reportSite))}" target="_blank" rel="noopener">정보가 틀려요 ↗</a>`;
-
-/** 출처: 도메인을 굵게, 경로는 흐리게 한 줄로 (긴 경로는 줄임표). 전체 주소는 title에 */
-const sourcesHtml = (t) => `<ul class="sources">${t.sources.map((u) => {
-  const { host, path } = sourceLabel(u);
-  return `<li><a href="${esc(u)}" title="${esc(u)}" target="_blank" rel="noopener"><span class="src-host">${esc(host)}</span>${path ? `<span class="src-path">${esc(path)}</span>` : ''}</a></li>`;
-}).join('')}</ul>`;
+/** "정보가 틀려요" 버튼. 누르면 사유를 적는 창이 뜬다 (installReportDialog). 구글 폼이 연결되기 전에는 숨긴다 */
+const reportButton = (t) => (isFeedbackReady()
+  ? `<button type="button" class="report-btn" data-report="${esc(t.name)}">정보가 틀려요</button>` : '');
 
 const officialButton = (t, cls = 'btn-primary') =>
   `<a class="btn ${cls} btn-block" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트 열기 ↗</a>`;
@@ -227,9 +224,7 @@ function toolCardHtml(r, index, all, purpose) {
           <h3 class="section-label">주의할 점</h3>
           <ul class="cautions">${cautions.map((s) => `<li>${g(s)}</li>`).join('')}</ul>` : ''}
         <p class="verified-line">마지막 확인 ${esc(formatDate(t.last_verified))}${r.stale ? ' · 90일 넘게 지나서 다시 확인이 필요해요' : ''}</p>
-        <h3 class="section-label">출처</h3>
-        ${sourcesHtml(t)}
-        <p class="card-more-links"><a href="#/t/${esc(t.id)}">${W} 상세 보기 ›</a> ${reportLink(t)}</p>
+        <p class="card-more-links"><a href="#/t/${esc(t.id)}">${W} 상세 보기 ›</a> ${reportButton(t)}</p>
       </details>
     </article>`;
 }
@@ -324,8 +319,6 @@ function renderTool(t) {
     .map((p) => ({ p, ids: supportedFeatures(t, p.id) }))
     .filter((x) => x.ids.length >= 1)
     .sort((a, b) => b.ids.length - a.ids.length || (a.p.id < b.p.id ? -1 : 1));
-  const history = data.changelog
-    .flatMap((entry) => entry.changes.filter((c) => c.tool_id === t.id).map((c) => ({ date: entry.date, c })));
 
   app.innerHTML = `
     <div class="page-head">${backLink('#/')}</div>
@@ -382,12 +375,7 @@ function renderTool(t) {
         <section class="card">
           <h2 class="card-title">정보 확인</h2>
           <p class="card-sub">마지막 확인 ${esc(formatDate(t.last_verified))}${stale ? ' · 90일 넘게 지나서 다시 확인이 필요해요' : ''}</p>
-          <h3 class="section-label">출처</h3>
-          ${sourcesHtml(t)}
-          <p class="report">공식 페이지와 다른 정보를 발견했나요? ${reportLink(t)} <span class="report-note">(GitHub 계정이 필요해요)</span></p>
-          ${history.length ? `
-            <h3 class="section-label">바뀐 내용</h3>
-            <ul class="change-list">${history.map(({ date, c }) => `<li><span class="change-date">${esc(formatDate(date))}</span>${esc(changeText(c, data.purposes))}</li>`).join('')}</ul>` : ''}
+          ${isFeedbackReady() ? `<p class="report">공식 페이지와 다른 정보를 발견했나요? ${reportButton(t)}</p>` : ''}
         </section>
       </div>
     </div>
@@ -428,26 +416,114 @@ function renderGlossary(focus) {
 }
 
 // ---- 변경 이력 ----
+// 무엇이 바뀌었는지는 적지 않고, 정보를 업데이트한 날짜만 보여준다 (2026-11-06 J 결정).
 function renderChanges() {
   document.title = `변경 이력 · ${mode.siteName}`;
-  const toolIds = new Set(data.tools.map((t) => t.id));
-  const line = (c) => {
-    const text = esc(changeText(c, data.purposes));
-    return toolIds.has(c.tool_id) ? `<a href="#/t/${esc(c.tool_id)}">${text}</a>` : text;
-  };
   app.innerHTML = `
     <div class="narrow">
       <div class="page-head">
         ${backLink('#/')}
         <h1 class="page-title">변경 이력</h1>
-        <p class="page-sub">${W} 정보가 바뀔 때마다 자동으로 기록돼요. 가격이나 정책이 언제 바뀌었는지 확인할 수 있어요.</p>
+        <p class="page-sub">${W} 정보를 업데이트한 날짜예요.</p>
       </div>
-      ${data.changelog.length ? data.changelog.map((entry) => `
+      ${data.changelog.length ? `
         <section class="card">
-          <h2 class="card-title">${esc(formatDate(entry.date))}</h2>
-          <ul class="change-list">${entry.changes.map((c) => `<li class="change-${c.type}">${line(c)}</li>`).join('')}</ul>
-        </section>`).join('') : `<section class="card"><p class="empty"><strong>아직 바뀐 내용이 없어요</strong>${W} 정보가 바뀌면 여기에 기록돼요.</p></section>`}
+          <ul class="change-list">${data.changelog.map((entry) => `<li><span class="change-date-only">${esc(formatDate(entry.date))}</span> ${W} 정보 업데이트</li>`).join('')}</ul>
+        </section>` : `<section class="card"><p class="empty"><strong>아직 업데이트 기록이 없어요</strong>${W} 정보를 업데이트하면 날짜가 여기에 남아요.</p></section>`}
     </div>`;
+}
+
+// ---- 개인정보 처리방침 · 이용약관 · 보안 안내 (js/pages.js) ----
+function renderPage(key) {
+  const page = pageSections(key, W, mode.siteName);
+  document.title = `${page.title} · ${mode.siteName}`;
+  app.innerHTML = `
+    <div class="narrow">
+      <div class="page-head">
+        ${backLink('#/')}
+        <h1 class="page-title">${esc(page.title)}</h1>
+        <p class="page-sub">${esc(page.intro)}</p>
+      </div>
+      <section class="card legal">${page.sections.map(([title, items]) => `
+        <h2 class="legal-title">${esc(title)}</h2>
+        <ul class="legal-list">${items.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`).join('')}
+      </section>
+    </div>`;
+}
+
+// ---- "정보가 틀려요" 입력창 ----
+// 사유는 꼭 적어야 보낼 수 있다. 로그인·횟수 제한 없음. 구글 폼으로 보낸다(응답을 읽을 수 없어 no-cors).
+function installReportDialog() {
+  if (!isFeedbackReady()) return;
+  const dialog = document.createElement('dialog');
+  dialog.className = 'report-dialog';
+  dialog.innerHTML = `
+    <form class="report-form" novalidate>
+      <h2 class="report-title">정보가 틀려요</h2>
+      <p class="report-tool"></p>
+      <label class="report-label" for="report-reason">무엇이 틀렸나요? <span class="req">(필수)</span></label>
+      <textarea id="report-reason" name="reason" rows="5" maxlength="${REASON_MAX}" required
+        placeholder="예: 유료 가격이 월 20달러가 아니라 25달러로 바뀌었어요 (공식 가격 페이지 기준)"></textarea>
+      <p class="report-hint">이름·연락처 같은 개인정보는 적지 마세요. 보낸 내용은 정보를 고치는 데만 써요 (<a href="#/privacy">개인정보 처리방침</a>).</p>
+      <p class="report-error" role="alert" hidden></p>
+      <p class="report-done" role="status" hidden>보내 주셔서 고마워요. 확인해서 고칠게요.</p>
+      <div class="report-actions">
+        <button type="button" class="btn btn-outline report-cancel">닫기</button>
+        <button type="submit" class="btn btn-primary report-send">보내기</button>
+      </div>
+    </form>`;
+  document.body.appendChild(dialog);
+  const form = dialog.querySelector('form');
+  const textarea = dialog.querySelector('textarea');
+  const error = dialog.querySelector('.report-error');
+  const done = dialog.querySelector('.report-done');
+  const send = dialog.querySelector('.report-send');
+  let toolName = '';
+  let opener = null;
+
+  document.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('[data-report]');
+    if (!btn) return;
+    opener = btn;
+    toolName = btn.dataset.report;
+    textarea.value = '';
+    textarea.disabled = false;
+    send.disabled = false;
+    error.hidden = true;
+    done.hidden = true;
+    dialog.querySelector('.report-tool').textContent = toolName;
+    dialog.showModal();
+    textarea.focus();
+  });
+  dialog.querySelector('.report-cancel').addEventListener('click', () => dialog.close());
+  // 개인정보 처리방침 링크를 누르면 창을 닫고 그 페이지로 간다
+  dialog.querySelector('.report-hint a').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => opener?.focus());
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const reason = cleanReason(textarea.value);
+    if (!reason) {
+      error.textContent = '무엇이 틀렸는지 적어 주세요.';
+      error.hidden = false;
+      textarea.focus();
+      return;
+    }
+    error.hidden = true;
+    send.disabled = true;
+    try {
+      await fetch(FEEDBACK_FORM.action, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: feedbackBody(FEEDBACK_FORM, { site: mode.reportSite, tool: toolName, reason, page: location.href }),
+      });
+      textarea.disabled = true;
+      done.hidden = false;
+    } catch {
+      send.disabled = false;
+      error.textContent = '보내지 못했어요. 인터넷 연결을 확인하고 다시 눌러 주세요.';
+      error.hidden = false;
+    }
+  });
 }
 
 // ---- 용어 풀이 (화면 아래에 뜨는 창) ----
@@ -526,7 +602,7 @@ function route() {
   const purpose = section === 'p' && data.purposes.find((p) => p.id === id);
   const tool = section === 't' && data.tools.find((t) => t.id === id);
   // 홈 타일, 결과 카드, 상세 2단, 용어집 카드는 넓은 화면을 쓴다. 변경 이력은 읽기 좋은 폭(.narrow)으로.
-  document.body.classList.toggle('wide', section !== 'changes');
+  document.body.classList.toggle('wide', !['changes', ...PAGE_KEYS].includes(section));
   document.body.classList.toggle('has-sticky-cta', Boolean(tool));
   document.querySelectorAll('[data-nav]').forEach((a) => {
     if (a.dataset.nav === section) a.setAttribute('aria-current', 'page');
@@ -538,6 +614,7 @@ function route() {
   else if (section === 't') renderNotFound();
   else if (section === 'glossary') renderGlossary(params.get('term'));
   else if (section === 'changes') renderChanges();
+  else if (PAGE_KEYS.includes(section)) renderPage(section);
   else renderHome();
 
   app.querySelectorAll('[data-back]').forEach((a) => a.addEventListener('click', (ev) => {
@@ -569,6 +646,7 @@ async function main() {
     document.getElementById('demo-banner').hidden = !demo;
     document.body.classList.toggle('is-demo', demo); // 예시 데이터 화면은 띠·테두리 색으로 구분 (styles.css)
     installTermSheet();
+    installReportDialog();
     window.addEventListener('hashchange', () => {
       routedOnce = true;
       route();
