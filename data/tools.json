@@ -225,5 +225,161 @@
       "https://clovanote.naver.com/plan-guide"
     ],
     "last_verified": "2026-11-06"
+  },
+  {
+    "id": "elevenlabs",
+    "name": "ElevenLabs",
+    "url": "https://elevenlabs.io/",
+    "one_liner": "글을 넣으면 사람처럼 자연스러운 목소리로 읽어주고, 목소리도 수천 개 중에 고를 수 있어요",
+    "features": {
+      "P10": [
+        "tts",
+        "voices",
+        "emotion_speed"
+      ]
+    },
+    "price": {
+      "free": true,
+      "free_limit": "매달 1만 크레딧, 작업 공간(프로젝트) 3개",
+      "paid_from_usd": 6,
+      "billing": "monthly"
+    },
+    "korean": 2,
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "계정의 'Terms and Privacy' → 'Data use' 메뉴에서 학습 사용을 끌 수 있어요"
+    },
+    "platforms": [
+      "web"
+    ],
+    "login": [
+      "google",
+      "email"
+    ],
+    "start_steps": [
+      "공식 사이트에서 구글 계정이나 이메일로 가입하기",
+      "읽힐 글을 붙여 넣고 목소리 고르기",
+      "만든 음성을 들어보고 감정·속도를 다듬기"
+    ],
+    "cautions": [
+      "화면 메뉴가 영어예요",
+      "무료 요금제는 매달 받는 크레딧 안에서만 쓸 수 있어요",
+      "처음 설정에서는 넣은 내용이 AI 학습에 쓰여요. 계정 설정에서 끌 수 있어요"
+    ],
+    "sources": [
+      "https://elevenlabs.io/",
+      "https://elevenlabs.io/pricing",
+      "https://elevenlabs.io/text-to-speech",
+      "https://elevenlabs.io/privacy-policy",
+      "https://elevenlabs.io/app/sign-up"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "typecast",
+    "name": "타입캐스트",
+    "url": "https://typecast.ai/kr/",
+    "one_liner": "대본을 넣으면 기쁨·슬픔 같은 감정을 살린 AI 목소리로 읽어주는 서비스예요",
+    "features": {
+      "P10": [
+        "tts",
+        "voices",
+        "emotion_speed",
+        "download"
+      ]
+    },
+    "price": {
+      "free": true,
+      "free_limit": "내려받기 평생 3,000크레딧(약 5분), 무료로 받은 결과물은 출처 표시 필요",
+      "paid_from_usd": 5,
+      "billing": "monthly"
+    },
+    "korean": 3,
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": ""
+    },
+    "platforms": [
+      "web",
+      "ios",
+      "android"
+    ],
+    "login": [
+      "email",
+      "naver",
+      "google",
+      "kakao"
+    ],
+    "start_steps": [
+      "타입캐스트 사이트나 앱에서 가입하기",
+      "대본을 넣고 목소리와 감정 고르기",
+      "들어보고 음성 파일 내려받기"
+    ],
+    "cautions": [
+      "무료 요금제는 내려받기가 평생 약 5분까지예요",
+      "무료로 내려받은 결과물에는 출처를 밝혀야 해요",
+      "속도 조절은 Plus, 감정 세부 조절은 Pro 요금제부터예요"
+    ],
+    "sources": [
+      "https://typecast.ai/kr/",
+      "https://typecast.ai/",
+      "https://typecast.ai/pricing/",
+      "https://help.typecast.ai/ko/articles/15347914-%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8-%EC%B0%BE%EA%B8%B0-%EB%B3%80%EA%B2%BD"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "heygen",
+    "name": "HeyGen",
+    "url": "https://www.heygen.com/",
+    "one_liner": "대본만 쓰면 AI 사람(아바타)이 말하는 영상을 만들고, 자막도 자동으로 붙여줘요",
+    "features": {
+      "P06": [
+        "auto_subtitle"
+      ]
+    },
+    "price": {
+      "free": true,
+      "free_limit": "한 달 영상 3개, 영상 1개당 1분까지, 워터마크 붙음",
+      "paid_from_usd": 29,
+      "billing": "monthly"
+    },
+    "korean": 3,
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "학습에서 빼 달라는 요청은 이메일(privacy@heygen.com)로 해야 해요"
+    },
+    "platforms": [
+      "web",
+      "ios",
+      "android"
+    ],
+    "login": [
+      "google",
+      "apple",
+      "email"
+    ],
+    "start_steps": [
+      "공식 사이트에서 가입하기 (무료 요금제로 시작돼요)",
+      "아바타를 고르고 대본 붙여 넣기",
+      "영상을 만든 뒤 자막을 넣고 내보내기"
+    ],
+    "cautions": [
+      "무료로 만든 영상에는 워터마크가 붙고 1분까지만 만들 수 있어요",
+      "넣은 내용이 AI 학습에 쓰일 수 있어요. 빼 달라고 하려면 이메일로 요청해야 해요",
+      "휴대폰 앱은 컴퓨터보다 기능이 적어요"
+    ],
+    "sources": [
+      "https://www.heygen.com/",
+      "https://www.heygen.com/pricing",
+      "https://www.heygen.com/privacy",
+      "https://help.heygen.com/en/articles/17741665-how-to-keep-your-heygen-account-secure",
+      "https://help.heygen.com/en/articles/15046858-heygen-s-preferences-personalization-settings",
+      "https://help.heygen.com/en/articles/8304328-how-to-cancel-or-pause-your-heygen-subscription"
+    ],
+    "last_verified": "2026-11-06"
   }
 ]
