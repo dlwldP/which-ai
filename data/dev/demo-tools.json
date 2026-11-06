@@ -6,7 +6,6 @@
     "one_liner": "테스트도구 알파 설명 (테스트용 가짜 데이터)",
     "purposes": [
       "coding_agents",
-      "code_review",
       "app_builders"
     ],
     "price": {
@@ -34,8 +33,7 @@
     "url": "https://bravo.example.com/",
     "one_liner": "테스트도구 브라보 설명 (테스트용 가짜 데이터)",
     "purposes": [
-      "coding_agents",
-      "code_review"
+      "coding_agents"
     ],
     "price": {
       "free": false,
@@ -60,8 +58,7 @@
     "url": "https://charlie.example.com/",
     "one_liner": "테스트도구 찰리 설명 (테스트용 가짜 데이터)",
     "purposes": [
-      "app_builders",
-      "design_ui"
+      "app_builders"
     ],
     "price": {
       "free": true,
@@ -86,7 +83,6 @@
     "url": "https://delta.example.com/",
     "one_liner": "테스트도구 델타 설명 (테스트용 가짜 데이터)",
     "purposes": [
-      "backend_database",
       "devops"
     ],
     "price": {
@@ -114,7 +110,7 @@
     "url": "https://echo.example.com/",
     "one_liner": "테스트도구 에코 설명 (테스트용 가짜 데이터)",
     "purposes": [
-      "backend_database",
+      "devops",
       "data_ml",
       "automation"
     ],
@@ -169,7 +165,7 @@
     "one_liner": "테스트도구 골프 설명 (테스트용 가짜 데이터)",
     "purposes": [
       "devops",
-      "planning"
+      "app_builders"
     ],
     "price": {
       "free": true,
@@ -194,8 +190,7 @@
     "url": "https://hotel.example.com/",
     "one_liner": "테스트도구 호텔 설명 (테스트용 가짜 데이터)",
     "purposes": [
-      "planning",
-      "design_ui"
+      "app_builders"
     ],
     "price": {
       "free": true,
