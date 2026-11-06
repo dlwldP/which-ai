@@ -157,5 +157,936 @@
       }
     ],
     "last_verified": "2026-11-06"
+  },
+  {
+    "id": "lovable",
+    "name": "Lovable",
+    "url": "https://lovable.dev/",
+    "official_domains": [
+      "lovable.dev"
+    ],
+    "one_liner": "만들고 싶은 웹 앱을 말로 설명하면 화면·서버·데이터베이스까지 갖춘 앱을 만들어줘요",
+    "features": {
+      "app_builders": [
+        "generate_app",
+        "backend",
+        "deploy",
+        "export_code"
+      ]
+    },
+    "primary": "app_builders",
+    "price": {
+      "free": true,
+      "free_limit": "하루 5 크레딧 (한 달 최대 30)",
+      "paid_from_usd": 25,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "web",
+      "desktop"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "Business·Enterprise 요금제는 기본으로 학습에서 빠져요"
+    },
+    "start_steps": [
+      "lovable.dev에서 이메일·구글·GitHub·애플 계정으로 무료 가입하기",
+      "만들고 싶은 앱을 문장으로 설명하기",
+      "미리보기를 보면서 고칠 점을 대화로 부탁하기"
+    ],
+    "cautions": [
+      "무료·Pro는 내 프로젝트 내용이 기본으로 학습에 쓰여요. 계정 설정에서 끌 수 있어요",
+      "무료는 하루 5 크레딧이라 큰 작업은 금방 다 써요"
+    ],
+    "sources": [
+      "https://lovable.dev/pricing",
+      "https://docs.lovable.dev/introduction/subscription-plans",
+      "https://docs.lovable.dev/features/business/data-opt-out",
+      "https://docs.lovable.dev/introduction/welcome",
+      "https://docs.lovable.dev/introduction/create-an-account"
+    ],
+    "learn": [
+      {
+        "title": "Lovable 소개 (공식 문서)",
+        "url": "https://docs.lovable.dev/introduction/welcome"
+      },
+      {
+        "title": "계정 만들기 (공식 문서)",
+        "url": "https://docs.lovable.dev/introduction/create-an-account"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "vercel",
+    "name": "Vercel",
+    "url": "https://vercel.com",
+    "official_domains": [
+      "vercel.com"
+    ],
+    "one_liner": "Git 저장소를 연결하면 푸시할 때마다 웹앱을 빌드하고 배포해주는 호스팅 플랫폼이에요. 배포 실패 원인을 찾아주는 AI 에이전트도 있어요",
+    "features": {
+      "devops": [
+        "auto_deploy",
+        "preview",
+        "logs",
+        "ai_debug"
+      ],
+      "code_review": [
+        "pr_review",
+        "security"
+      ]
+    },
+    "primary": "devops",
+    "price": {
+      "free": true,
+      "free_limit": "Hobby 요금제 (개인·비상업용, 사용량 한도 있음)",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "cli"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "Hobby·Pro 체험판은 기본으로 학습에 쓰일 수 있고 팀 설정에서 끌 수 있어요. 유료 Pro는 기본 꺼짐, Enterprise는 쓰지 않아요"
+    },
+    "start_steps": [
+      "Vercel 계정을 만들고 GitHub 같은 Git 저장소를 연결하기",
+      "프로젝트를 가져오면(Import) 첫 배포가 자동으로 끝나요 (또는 터미널에서 Vercel CLI로 배포)",
+      "브랜치에 푸시해서 미리보기 주소로 확인하고, 기본 브랜치에 합치면 실서비스에 반영돼요"
+    ],
+    "cautions": [
+      "무료 Hobby 요금제는 개인·비상업용으로만 쓸 수 있어요",
+      "사용량에 따라 요금이 늘어나니 지출 한도를 걸어 두세요",
+      "Vercel Agent의 코드 리뷰·원인 분석은 베타이고 Pro 이상에서만 써요"
+    ],
+    "sources": [
+      "https://vercel.com/pricing",
+      "https://vercel.com/legal/terms",
+      "https://vercel.com/legal/privacy-policy",
+      "https://vercel.com/docs/git",
+      "https://vercel.com/docs/deployments/environments",
+      "https://vercel.com/docs/observability",
+      "https://vercel.com/docs/agent",
+      "https://vercel.com/docs/cli"
+    ],
+    "learn": [
+      {
+        "title": "Vercel 시작하기 (공식 문서)",
+        "url": "https://vercel.com/docs/getting-started-with-vercel"
+      },
+      {
+        "title": "Git으로 배포하기 (공식 문서)",
+        "url": "https://vercel.com/docs/git"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "v0",
+    "name": "v0",
+    "url": "https://v0.app",
+    "official_domains": [
+      "v0.app"
+    ],
+    "one_liner": "만들고 싶은 화면이나 앱을 문장으로 설명하면 Next.js 코드로 만들어주고 Vercel에 바로 올려주는 Vercel의 AI 도구예요",
+    "features": {
+      "app_builders": [
+        "generate_app",
+        "backend",
+        "deploy",
+        "export_code"
+      ],
+      "design_ui": [
+        "generate_ui",
+        "components",
+        "prototype"
+      ]
+    },
+    "primary": "app_builders",
+    "price": {
+      "free": true,
+      "free_limit": "하루 메시지 7개",
+      "paid_from_usd": 30,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "web"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "Vercel 팀 설정에서 학습을 끌 수 있어요. Business 요금제는 기본으로 꺼져 있고 Enterprise는 학습에 쓰지 않아요"
+    },
+    "start_steps": [
+      "v0.app에 Vercel 계정으로 로그인하기",
+      "만들고 싶은 화면이나 기능을 문장으로 적고, 결과를 보며 계속 고쳐 달라고 하기",
+      "Publish로 Vercel에 배포하거나 GitHub에 연결해 코드를 저장소로 가져가기"
+    ],
+    "cautions": [
+      "무료는 하루 메시지 7개라 금방 막혀요",
+      "유료는 크레딧(토큰) 기준이라 큰 작업일수록 빨리 줄어요",
+      "기본 설정에서는 입력과 결과가 학습에 쓰일 수 있으니 팀 설정을 확인하세요"
+    ],
+    "sources": [
+      "https://v0.app/pricing",
+      "https://v0.app/docs/pricing",
+      "https://v0.app/docs",
+      "https://v0.app/docs/faqs",
+      "https://v0.app/policy",
+      "https://v0.app/docs/deployments",
+      "https://v0.app/docs/github",
+      "https://v0.app/docs/databases",
+      "https://v0.app/docs/full-stack-apps",
+      "https://v0.app/docs/design-systems-2",
+      "https://v0.app/docs/prototyping"
+    ],
+    "learn": [
+      {
+        "title": "v0 빠른 시작 (공식 문서)",
+        "url": "https://v0.app/docs/quickstart"
+      },
+      {
+        "title": "프롬프트 잘 쓰는 법 (공식 문서)",
+        "url": "https://v0.app/docs/text-prompting"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "replit",
+    "name": "Replit",
+    "url": "https://replit.com",
+    "official_domains": [
+      "replit.com"
+    ],
+    "one_liner": "채팅으로 원하는 앱을 말하면 에이전트가 코드를 짜고 DB·로그인·게시까지 클라우드 안에서 처리해주는 개발 플랫폼이에요",
+    "features": {
+      "app_builders": [
+        "generate_app",
+        "backend",
+        "deploy",
+        "export_code"
+      ],
+      "backend_database": [
+        "database",
+        "auth",
+        "storage"
+      ],
+      "design_ui": [
+        "generate_ui",
+        "components",
+        "prototype"
+      ],
+      "coding_agents": [
+        "repo_context",
+        "open_pr"
+      ],
+      "devops": [
+        "logs"
+      ]
+    },
+    "primary": "app_builders",
+    "price": {
+      "free": true,
+      "free_limit": "에이전트 하루 무료 크레딧(월 상한 있음), 게시 앱 1개 (30일 뒤 내려감)",
+      "paid_from_usd": 20,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "web",
+      "desktop"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "no",
+      "note": "프롬프트와 생성 결과를 모델 개선에 써요. 끄는 설정은 Pro 요금제에만 있어서 무료·Core는 끌 수 없어요. Enterprise는 학습에 쓰지 않아요"
+    },
+    "start_steps": [
+      "replit.com에서 무료 계정 만들기 (웹, 데스크톱 앱 중 편한 곳)",
+      "입력창에 만들 앱을 문장으로 설명하고 에이전트가 만든 결과를 미리보기로 확인하기",
+      "Publishing으로 공개 주소를 만들거나 GitHub 저장소를 연결해 PR로 올리기"
+    ],
+    "cautions": [
+      "무료 요금제는 입력이 모델 개선에 쓰이고 끌 수 없어요 (끄기는 Pro만)",
+      "무료로 게시한 앱은 1개뿐이고 30일 뒤 내려가요",
+      "외부 서비스 연결·Plan Mode·전체 빌드는 Core 이상에서만 돼요"
+    ],
+    "sources": [
+      "https://replit.com",
+      "https://replit.com/pricing",
+      "https://docs.replit.com",
+      "https://docs.replit.com/billing/plans/starter-plan",
+      "https://docs.replit.com/billing/plans/replit-core",
+      "https://docs.replit.com/legal-and-security-info/model-improvement",
+      "https://docs.replit.com/learn/projects-and-artifacts/storage-and-databases",
+      "https://docs.replit.com/learn/projects-and-artifacts/auth",
+      "https://docs.replit.com/learn/projects-and-artifacts/replit-deployments",
+      "https://docs.replit.com/use-cases/ship-github-change",
+      "https://docs.replit.com/design/what-is-replit-design"
+    ],
+    "learn": [
+      {
+        "title": "첫 앱 만들기 (공식 문서)",
+        "url": "https://docs.replit.com/build/your-first-app"
+      },
+      {
+        "title": "아이디어에서 게시까지 따라 하기 (공식 문서)",
+        "url": "https://docs.replit.com/home/get-started"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "firebase",
+    "name": "Firebase",
+    "url": "https://firebase.google.com",
+    "official_domains": [
+      "firebase.google.com"
+    ],
+    "one_liner": "DB·인증·파일 저장·호스팅을 한곳에서 붙이는 Google의 앱 백엔드 플랫폼이에요. Gemini로 쿼리 생성이나 크래시 원인 분석도 도와줘요",
+    "features": {
+      "backend_database": [
+        "database",
+        "auth",
+        "storage",
+        "nl_query"
+      ],
+      "devops": [
+        "auto_deploy",
+        "logs",
+        "ai_debug"
+      ],
+      "data_ml": [
+        "run_models"
+      ]
+    },
+    "primary": "backend_database",
+    "price": {
+      "free": true,
+      "free_limit": "Spark 요금제 서비스별 무료 한도 (예: Firestore 저장 1GiB, 하루 읽기 5만 건)",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "ai_native": "partial",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "library",
+      "cli"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": "Gemini in Firebase를 켜면 프로젝트 환경에 접근해요. 데이터 사용 방식은 Google Cloud 문서로 안내돼 있어 확인하지 못했어요"
+    },
+    "start_steps": [
+      "Firebase 콘솔에서 Google 계정으로 새 프로젝트 만들기",
+      "쓸 서비스(Firestore, Authentication, Storage 등)를 켜고 내 앱에 SDK 추가하기",
+      "필요하면 Gemini in Firebase를 켜서 쿼리 생성·오류 분석 도움 받기"
+    ],
+    "cautions": [
+      "무료(Spark) 한도를 넘기려면 결제 계정을 연결한 Blaze(쓴 만큼 결제)로 바꿔야 하고, 그 뒤엔 사용량만큼 요금이 나와요",
+      "AI 기능은 플랫폼의 일부예요. 앱을 통째로 만들어주는 도구는 아니에요",
+      "Gemini in Firebase는 보안 규칙(Security Rules)을 직접 만들어주지 못해요"
+    ],
+    "sources": [
+      "https://firebase.google.com",
+      "https://firebase.google.com/pricing",
+      "https://firebase.google.com/docs/firestore",
+      "https://firebase.google.com/docs/auth",
+      "https://firebase.google.com/docs/storage",
+      "https://firebase.google.com/docs/app-hosting",
+      "https://firebase.google.com/docs/ai-logic",
+      "https://firebase.google.com/docs/ai-assistance/gemini-in-firebase",
+      "https://firebase.google.com/docs/data-connect/ai-assistance"
+    ],
+    "learn": [
+      {
+        "title": "Gemini in Firebase 소개 (공식 문서)",
+        "url": "https://firebase.google.com/docs/ai-assistance/gemini-in-firebase"
+      },
+      {
+        "title": "Cloud Firestore 시작하기 (공식 문서)",
+        "url": "https://firebase.google.com/docs/firestore"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "netlify",
+    "name": "Netlify",
+    "url": "https://www.netlify.com",
+    "official_domains": [
+      "netlify.com"
+    ],
+    "one_liner": "Git 푸시나 프롬프트 한 줄로 웹사이트·웹앱을 배포하는 호스팅 플랫폼이에요. 대시보드 안에서 AI 에이전트(Agent Runners)로 코드를 고칠 수도 있어요",
+    "features": {
+      "devops": [
+        "auto_deploy",
+        "preview",
+        "logs"
+      ],
+      "app_builders": [
+        "generate_app",
+        "backend",
+        "deploy",
+        "export_code"
+      ],
+      "backend_database": [
+        "database",
+        "auth",
+        "storage"
+      ],
+      "coding_agents": [
+        "open_pr"
+      ]
+    },
+    "primary": "devops",
+    "price": {
+      "free": true,
+      "free_limit": "매달 300 크레딧까지",
+      "paid_from_usd": 9,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "web",
+      "cli",
+      "cloud_service"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": "올린 코드와 콘텐츠를 AI 모델 학습에 쓰지 않는다고 해요 (직접 동의한 경우는 예외라는 문장도 있어요)"
+    },
+    "start_steps": [
+      "Netlify에 가입하고 GitHub 같은 Git 저장소 연결하기",
+      "저장소를 고르면 빌드 설정을 확인하고 첫 배포 하기 (또는 netlify-cli로 터미널에서 배포)",
+      "PR마다 생기는 미리보기 주소로 확인한 뒤 공개하기"
+    ],
+    "cautions": [
+      "무료·유료 모두 크레딧 방식이라 배포·트래픽·AI 사용량만큼 크레딧이 줄어요",
+      "AI 에이전트가 만든 변경은 미리보기에서 확인하고 반영하세요"
+    ],
+    "sources": [
+      "https://www.netlify.com/",
+      "https://www.netlify.com/pricing/",
+      "https://www.netlify.com/privacy/",
+      "https://www.netlify.com/platform/",
+      "https://www.netlify.com/platform/agent-runners/",
+      "https://www.netlify.com/platform/core/deploy-previews/",
+      "https://www.netlify.com/platform/observability/",
+      "https://www.netlify.com/platform/database/",
+      "https://www.netlify.com/solutions/prototypes/"
+    ],
+    "learn": [
+      {
+        "title": "Netlify CLI 시작하기 (공식 문서)",
+        "url": "https://docs.netlify.com/api-and-cli-guides/cli-guides/get-started-with-cli/"
+      },
+      {
+        "title": "AI로 만들기 안내 (공식 문서)",
+        "url": "https://docs.netlify.com/welcome/build-with-ai/overview/"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "railway",
+    "name": "Railway",
+    "url": "https://railway.com",
+    "official_domains": [
+      "railway.com"
+    ],
+    "one_liner": "저장소를 연결하면 앱·데이터베이스·크론 작업을 알아서 설정해 띄워 주는 클라우드 플랫폼이에요. 대시보드의 Railway Agent에게 말로 작업을 맡길 수도 있어요",
+    "features": {
+      "devops": [
+        "auto_deploy",
+        "preview",
+        "logs"
+      ],
+      "coding_agents": [
+        "run_commands",
+        "open_pr"
+      ],
+      "backend_database": [
+        "database",
+        "storage"
+      ],
+      "automation": [
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "devops",
+    "price": {
+      "free": true,
+      "free_limit": "30일 체험 크레딧 5달러, 이후 Free 요금제는 서비스당 1 vCPU·0.5GB RAM",
+      "paid_from_usd": 5,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "web",
+      "cli",
+      "cloud_service"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": ""
+    },
+    "start_steps": [
+      "Railway에 가입하고 새 프로젝트에서 GitHub 저장소 연결하기",
+      "필요하면 같은 프로젝트에 Postgres 같은 데이터베이스 추가하기",
+      "배포가 끝나면 로그·지표를 확인하고, PR마다 생기는 미리보기 환경으로 변경 검토하기"
+    ],
+    "cautions": [
+      "쓴 만큼(초 단위 CPU·메모리 등) 요금이 나와요. 사용 한도를 정해 두세요",
+      "Railway Agent의 코드 작업(샌드박스)은 아직 시험 기능이에요"
+    ],
+    "sources": [
+      "https://railway.com/",
+      "https://railway.com/pricing",
+      "https://railway.com/features",
+      "https://railway.com/agents",
+      "https://railway.com/changelog/2026-05-22-chat-agent-sandbox",
+      "https://railway.com/changelog/2026-08-14-access-groups",
+      "https://railway.com/legal/privacy"
+    ],
+    "learn": [
+      {
+        "title": "Railway 공식 문서",
+        "url": "https://docs.railway.com"
+      },
+      {
+        "title": "코딩 에이전트로 Railway에 배포하기 (공식)",
+        "url": "https://railway.com/agents"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "url": "https://cursor.com",
+    "official_domains": [
+      "cursor.com"
+    ],
+    "one_liner": "에디터 안에서 AI 에이전트에게 코드 작업을 맡기는 AI IDE예요. 터미널 CLI, 클라우드 에이전트, PR 자동 리뷰(Bugbot)도 있어요",
+    "features": {
+      "coding_agents": [
+        "repo_context",
+        "multi_file",
+        "run_commands",
+        "open_pr"
+      ],
+      "code_review": [
+        "pr_review",
+        "security",
+        "apply_fix"
+      ],
+      "automation": [
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "coding_agents",
+    "price": {
+      "free": true,
+      "free_limit": "에이전트·채팅 요청 수가 제한된 무료 요금제",
+      "paid_from_usd": 8,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "desktop",
+      "cli",
+      "web",
+      "ide_extension"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "yes",
+      "note": "설정에서 Privacy Mode를 켜면 코드 데이터를 학습에 쓰지 않아요. 끄면 코드·프롬프트를 학습에 쓸 수 있어요"
+    },
+    "start_steps": [
+      "공식 사이트에서 Cursor 앱을 내려받아 설치하고 로그인하기",
+      "작업할 프로젝트 폴더를 열고 설정에서 Privacy Mode 확인하기",
+      "에이전트 창에 할 일을 문장으로 적고, 바뀐 diff를 검토하기"
+    ],
+    "cautions": [
+      "Plus(월 8달러) 요금제는 Grok 모델만 쓸 수 있고, 다른 회사 모델은 쓴 만큼 따로 내야 해요",
+      "Privacy Mode를 끄면 코드와 프롬프트가 학습에 쓰일 수 있어요",
+      "에이전트가 파일을 고치고 명령을 실행하니 바뀐 내용을 꼭 확인하세요"
+    ],
+    "sources": [
+      "https://cursor.com",
+      "https://cursor.com/pricing",
+      "https://cursor.com/security",
+      "https://cursor.com/en-US/data-use",
+      "https://cursor.com/docs/get-started/quickstart",
+      "https://cursor.com/docs/agent/overview",
+      "https://cursor.com/docs/cli/overview",
+      "https://cursor.com/docs/cloud-agent",
+      "https://cursor.com/docs/bugbot",
+      "https://cursor.com/docs/cloud-agent/automations",
+      "https://cursor.com/docs/mcp",
+      "https://cursor.com/docs/integrations/jetbrains"
+    ],
+    "learn": [
+      {
+        "title": "Cursor 빠른 시작 (공식 문서)",
+        "url": "https://cursor.com/docs/get-started/quickstart"
+      },
+      {
+        "title": "Cursor CLI 개요 (공식 문서)",
+        "url": "https://cursor.com/docs/cli/overview"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "coderabbit",
+    "name": "CodeRabbit",
+    "url": "https://www.coderabbit.ai",
+    "official_domains": [
+      "coderabbit.ai"
+    ],
+    "one_liner": "PR이 올라오면 AI가 줄 단위로 리뷰 코멘트를 달아주는 코드 리뷰 도구예요. VS Code 확장과 CLI로 커밋 전에도 리뷰받을 수 있어요",
+    "features": {
+      "code_review": [
+        "pr_review",
+        "security",
+        "tests",
+        "apply_fix"
+      ]
+    },
+    "primary": "code_review",
+    "price": {
+      "free": true,
+      "free_limit": "공개 저장소 PR 리뷰는 계속 무료, VS Code 확장의 가벼운 리뷰는 구독 없이 가능 (사용량 제한 있음)",
+      "paid_from_usd": 30,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "ide_extension",
+      "cli",
+      "self_host"
+    ],
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": "개인정보 처리방침: 코드 리뷰 중 모은 개인정보는 학습에 쓰지 않지만, 오픈소스 프로젝트는 학습에 쓴다고 해요"
+    },
+    "start_steps": [
+      "GitHub 또는 GitLab 계정으로 CodeRabbit에 가입하기",
+      "리뷰받을 저장소에 CodeRabbit 앱을 설치하기 (공개 저장소는 무료)",
+      "PR을 올리고 CodeRabbit이 단 코멘트를 읽고, 필요하면 한 번에 고치기 적용하기"
+    ],
+    "cautions": [
+      "오픈소스(공개) 저장소의 코드는 학습에 쓰인다고 밝히고 있어요",
+      "비공개 저장소 PR 리뷰는 유료(14일 체험)이고, 테스트 생성은 Team, 보안 리뷰는 Advanced 요금제부터예요",
+      "AI 리뷰는 사람 리뷰를 대신하지 않으니 중요한 변경은 직접 확인하세요"
+    ],
+    "sources": [
+      "https://www.coderabbit.ai",
+      "https://www.coderabbit.ai/pricing",
+      "https://www.coderabbit.ai/privacy-policy",
+      "https://www.coderabbit.ai/security",
+      "https://www.coderabbit.ai/cli",
+      "https://www.coderabbit.ai/ide"
+    ],
+    "learn": [
+      {
+        "title": "CodeRabbit 문서 (공식)",
+        "url": "https://docs.coderabbit.ai/"
+      },
+      {
+        "title": "CodeRabbit CLI 소개 (공식)",
+        "url": "https://www.coderabbit.ai/cli"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "greptile",
+    "name": "Greptile",
+    "url": "https://www.greptile.com",
+    "official_domains": [
+      "greptile.com"
+    ],
+    "one_liner": "저장소 전체를 그래프로 이해한 뒤 PR마다 버그·보안 문제를 찾아 코멘트로 알려주는 AI 코드 리뷰 도구예요",
+    "features": {
+      "code_review": [
+        "pr_review",
+        "security",
+        "tests",
+        "apply_fix"
+      ]
+    },
+    "primary": "code_review",
+    "price": {
+      "free": true,
+      "free_limit": "Starter: 개발자 1명, 월 50크레딧 (기본 리뷰 1회 = 1크레딧)",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "ai_native": "yes",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "cli",
+      "self_host"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "고객 데이터를 익명화해 AI 학습에 쓸 수 있고, 조직 관리자가 설정의 'Help us improve Greptile'을 끄면 빠질 수 있어요"
+    },
+    "start_steps": [
+      "GitHub 또는 GitLab 계정을 연결해 Greptile에 가입하기",
+      "리뷰받을 저장소를 켜고, 조직 설정의 Data & Privacy에서 학습 사용 여부 정하기",
+      "PR을 올리면 몇 분 안에 달리는 리뷰 코멘트를 확인하기"
+    ],
+    "cautions": [
+      "기본 설정에서는 익명화한 고객 데이터가 AI 학습에 쓰일 수 있으니 필요하면 꺼 두세요",
+      "유료(Pro)는 좌석 요금 없이 크레딧당 1달러라서 리뷰 종류(Base·Plus·Apex)에 따라 비용이 달라져요",
+      "AI 리뷰는 사람 리뷰를 대신하지 않으니 중요한 변경은 직접 확인하세요"
+    ],
+    "sources": [
+      "https://www.greptile.com",
+      "https://www.greptile.com/pricing",
+      "https://www.greptile.com/docs/introduction",
+      "https://www.greptile.com/security",
+      "https://www.greptile.com/security-check",
+      "https://www.greptile.com/cli"
+    ],
+    "learn": [
+      {
+        "title": "Greptile 개요 (공식 문서)",
+        "url": "https://www.greptile.com/docs/introduction"
+      },
+      {
+        "title": "Greptile CLI 시작하기 (공식 문서)",
+        "url": "https://www.greptile.com/docs/code-review/cli-onboarding"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "zapier",
+    "name": "Zapier",
+    "url": "https://zapier.com",
+    "official_domains": [
+      "zapier.com"
+    ],
+    "one_liner": "수천 개 앱을 트리거와 액션으로 엮어 반복 업무를 자동으로 돌리는 노코드 자동화 플랫폼이에요. 워크플로 안에 AI 단계와 에이전트를 넣을 수 있고, MCP·SDK로 AI 도구에서도 불러 써요",
+    "features": {
+      "automation": [
+        "workflow",
+        "ai_step",
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "automation",
+    "price": {
+      "free": true,
+      "free_limit": "월 100 태스크, 2단계 Zap까지",
+      "paid_from_usd": 19.99,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "library",
+      "cli"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "yes",
+      "note": "워크플로로 오가는 데이터는 어떤 요금제에서도 학습에 쓰지 않는다고 밝혀요. 워크플로 구조는 AI 기능 개선에 쓸 수 있고, Enterprise는 자동 제외, 나머지 요금제는 신청서로 빠질 수 있어요"
+    },
+    "start_steps": [
+      "zapier.com에서 이메일이나 Google 계정으로 무료 가입하기",
+      "트리거가 될 앱과 이어서 실행할 액션 앱을 골라 첫 Zap 만들기",
+      "테스트 실행으로 결과를 확인한 뒤 Zap 켜기"
+    ],
+    "cautions": [
+      "무료 요금제는 월 100 태스크, 2단계 Zap까지라 여러 단계 워크플로는 유료 요금제가 필요해요",
+      "AI 단계·코드 실행·SDK 사용도 태스크로 계산돼요. 쓰는 양에 따라 요금 구간이 올라가요"
+    ],
+    "sources": [
+      "https://zapier.com/",
+      "https://zapier.com/pricing",
+      "https://zapier.com/security-compliance",
+      "https://zapier.com/sdk"
+    ],
+    "learn": [
+      {
+        "title": "Zapier 빠른 시작 안내 (공식)",
+        "url": "https://zapier.com/blog/get-started-with-zapier/"
+      },
+      {
+        "title": "Zapier SDK 문서 (공식)",
+        "url": "https://docs.zapier.com/sdk"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "gumloop",
+    "name": "Gumloop",
+    "url": "https://www.gumloop.com/",
+    "official_domains": [
+      "gumloop.com"
+    ],
+    "one_liner": "업무 앱과 연결된 AI 에이전트를 만들어 팀이 함께 쓰게 하는 플랫폼이에요. 앱 이벤트나 일정으로 자동 실행하고, CLI로 터미널에서도 에이전트와 MCP 도구를 불러요",
+    "features": {
+      "automation": [
+        "workflow",
+        "triggers",
+        "tools"
+      ]
+    },
+    "primary": "automation",
+    "price": {
+      "free": false,
+      "free_limit": "무료 요금제 없음 (Pro 14일 무료 체험)",
+      "paid_from_usd": 37,
+      "billing": "monthly"
+    },
+    "ai_native": "yes",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "cloud_service",
+      "cli"
+    ],
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "unknown",
+      "note": "셀프서브(Pro) 요금제의 콘텐츠는 Gumloop 자체 AI 모델 학습에 쓸 수 있다고 밝혀요. Enterprise는 서면 요청이 없으면 학습에 쓰지 않아요"
+    },
+    "start_steps": [
+      "gumloop.com에서 가입하고 Pro 14일 무료 체험 시작하기",
+      "에이전트를 만들고 Slack·Gmail 같은 커넥터와 지시문 넣기",
+      "앱 트리거나 반복 일정을 붙여 자동으로 돌려 보기"
+    ],
+    "cautions": [
+      "무료 요금제가 없고, 체험이 끝나면 유료(월 37달러부터) 요금제가 필요해요",
+      "Pro 같은 셀프서브 요금제에 넣은 콘텐츠는 Gumloop AI 모델 학습에 쓰일 수 있어요. 민감한 데이터는 조심하세요"
+    ],
+    "sources": [
+      "https://www.gumloop.com/",
+      "https://www.gumloop.com/pricing",
+      "https://www.gumloop.com/privacy-policy",
+      "https://www.gumloop.com/products/cli"
+    ],
+    "learn": [
+      {
+        "title": "Gumloop 시작하기 (공식 문서)",
+        "url": "https://docs.gumloop.com/getting-started/introduction"
+      },
+      {
+        "title": "Gumloop University (공식 강의)",
+        "url": "https://university.gumloop.com"
+      }
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "snyk",
+    "name": "Snyk",
+    "url": "https://snyk.io/",
+    "official_domains": [
+      "snyk.io"
+    ],
+    "one_liner": "코드·오픈소스 의존성·컨테이너·IaC의 보안 취약점을 찾아 알려 주는 보안 검사 플랫폼이에요. IDE와 PR에서 바로 검사하고 AI 자동 수정(Agent Fix)도 제안해요",
+    "features": {
+      "code_review": [
+        "pr_review",
+        "security",
+        "apply_fix"
+      ]
+    },
+    "primary": "code_review",
+    "price": {
+      "free": true,
+      "free_limit": "Snyk Code(SAST) 월 100회 테스트, 프로젝트 5개",
+      "paid_from_usd": 25,
+      "billing": "monthly"
+    },
+    "ai_native": "partial",
+    "open_source": false,
+    "section": "official",
+    "forms": [
+      "ide_extension",
+      "cli",
+      "cloud_service"
+    ],
+    "privacy": {
+      "trains_on_input_default": "no",
+      "opt_out": "unknown",
+      "note": "DeepCode AI 전용 모델은 허용 라이선스 오픈소스 프로젝트로 학습하고 고객 데이터는 쓰지 않는다고 밝혀요"
+    },
+    "start_steps": [
+      "snyk.io에서 GitHub이나 Google 계정으로 무료 가입하기",
+      "저장소를 연결하거나 IDE 플러그인·CLI를 설치해 첫 검사 돌리기",
+      "찾은 취약점의 설명과 수정 제안을 보고 PR 검사를 켜기"
+    ],
+    "cautions": [
+      "무료 요금제는 제품마다 월 테스트 횟수 한도가 있어요 (Snyk Code는 월 100회)",
+      "Evo(AI 펜테스트·코딩 에이전트 보안 등) 기능은 무료·Team 요금제에 없고 Enterprise 계약이 필요해요"
+    ],
+    "sources": [
+      "https://snyk.io/",
+      "https://snyk.io/plans/",
+      "https://snyk.io/product/snyk-code/",
+      "https://snyk.io/platform/deepcode-ai/"
+    ],
+    "learn": [
+      {
+        "title": "Snyk 사용자 문서 (공식)",
+        "url": "https://docs.snyk.io/"
+      },
+      {
+        "title": "Snyk Learn 보안 교육 (공식)",
+        "url": "https://learn.snyk.io"
+      }
+    ],
+    "last_verified": "2026-11-06"
   }
 ]
