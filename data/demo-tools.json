@@ -6,9 +6,7 @@
     "one_liner": "테스트툴 알파 설명 (테스트용 가짜 데이터)",
     "purposes": [
       "P01",
-      "P03",
-      "P07",
-      "P09"
+      "P02"
     ],
     "price": {
       "free": true,
@@ -33,9 +31,7 @@
     "one_liner": "테스트툴 브라보 설명 (테스트용 가짜 데이터)",
     "purposes": [
       "P01",
-      "P02",
-      "P03",
-      "P09"
+      "P02"
     ],
     "price": {
       "free": false,
@@ -60,9 +56,8 @@
     "one_liner": "테스트툴 찰리 설명 (테스트용 가짜 데이터)",
     "purposes": [
       "P02",
-      "P04",
-      "P05",
-      "P09"
+      "P03",
+      "P01"
     ],
     "price": {
       "free": true,
@@ -85,9 +80,8 @@
     "url": "https://example.com/delta",
     "one_liner": "테스트툴 델타 설명 (테스트용 가짜 데이터)",
     "purposes": [
-      "P04",
-      "P05",
-      "P06"
+      "P03",
+      "P04"
     ],
     "price": {
       "free": true,
@@ -111,9 +105,8 @@
     "url": "https://example.com/echo",
     "one_liner": "테스트툴 에코 설명 (테스트용 가짜 데이터)",
     "purposes": [
-      "P06",
-      "P07",
-      "P10"
+      "P04",
+      "P02"
     ],
     "price": {
       "free": false,
@@ -136,9 +129,8 @@
     "url": "https://example.com/foxtrot",
     "one_liner": "테스트툴 폭스트롯 설명 (테스트용 가짜 데이터)",
     "purposes": [
-      "P08",
-      "P09",
-      "P10"
+      "P01",
+      "P04"
     ],
     "price": {
       "free": true,
@@ -162,10 +154,8 @@
     "url": "https://example.com/golf",
     "one_liner": "테스트툴 골프 설명 (테스트용 가짜 데이터)",
     "purposes": [
-      "P06",
-      "P08",
-      "P09",
-      "P10"
+      "P04",
+      "P01"
     ],
     "price": {
       "free": false,
@@ -189,7 +179,7 @@
     "one_liner": "테스트툴 호텔 설명 (테스트용 가짜 데이터)",
     "purposes": [
       "P01",
-      "P07"
+      "P02"
     ],
     "price": {
       "free": true,

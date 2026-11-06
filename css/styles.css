@@ -1408,3 +1408,4 @@ body.has-sticky-cta { padding-bottom: 84px; }
   text-decoration: underline;
 }
 .tool-foot .report-btn:hover { color: var(--accent); }
+.intro-simple .home-stats { display: block; }

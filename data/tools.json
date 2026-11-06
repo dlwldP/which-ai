@@ -7,10 +7,7 @@
     "purposes": [
       "P01",
       "P03",
-      "P04",
-      "P07",
-      "P08",
-      "P09"
+      "P02"
     ],
     "price": {
       "free": true,
@@ -48,12 +45,9 @@
     "purposes": [
       "P01",
       "P02",
+      "P03",
       "P04",
-      "P05",
-      "P08",
-      "P09",
-      "P10",
-      "P12"
+      "P05"
     ],
     "price": {
       "free": true,
@@ -117,7 +111,7 @@
     "url": "https://elevenlabs.io/",
     "one_liner": "글을 넣으면 사람처럼 자연스러운 목소리로 읽어주고, 목소리도 수천 개 중에 고를 수 있어요",
     "purposes": [
-      "P10"
+      "P04"
     ],
     "price": {
       "free": true,
@@ -144,7 +138,7 @@
     "url": "https://typecast.ai/kr/",
     "one_liner": "대본을 넣으면 기쁨·슬픔 같은 감정을 살린 AI 목소리로 읽어주는 서비스예요",
     "purposes": [
-      "P10"
+      "P04"
     ],
     "price": {
       "free": true,
@@ -171,7 +165,7 @@
     "url": "https://www.heygen.com/",
     "one_liner": "대본만 쓰면 AI 사람(아바타)이 말하는 영상을 만들고, 자막도 자동으로 붙여줘요",
     "purposes": [
-      "P06"
+      "P04"
     ],
     "price": {
       "free": true,
@@ -201,8 +195,7 @@
     "one_liner": "무엇이든 물어보면 대화로 답하고, 글쓰기·이미지 만들기·자료 조사까지 도와주는 AI예요",
     "purposes": [
       "P01",
-      "P05",
-      "P09"
+      "P03"
     ],
     "price": {
       "free": true,
@@ -230,7 +223,7 @@
     "url": "https://www.midjourney.com/",
     "one_liner": "원하는 장면을 글로 설명하면 그림 같은 고품질 이미지와 짧은 영상을 만들어줘요",
     "purposes": [
-      "P05"
+      "P03"
     ],
     "price": {
       "free": false,
@@ -286,9 +279,7 @@
     "purposes": [
       "P01",
       "P02",
-      "P03",
-      "P05",
-      "P08"
+      "P03"
     ],
     "price": {
       "free": true,
@@ -341,7 +332,7 @@
     "url": "https://www.deepl.com/",
     "one_liner": "문장이나 문서 파일을 자연스럽게 번역하고, 파일은 모양을 그대로 살려줘요",
     "purposes": [
-      "P07"
+      "P02"
     ],
     "price": {
       "free": true,
@@ -368,7 +359,7 @@
     "url": "https://vrew.ai/ko/",
     "one_liner": "영상 속 말을 받아 적어 자막을 자동으로 만들고, 글을 고치듯 영상을 잘라 편집해요",
     "purposes": [
-      "P06"
+      "P04"
     ],
     "price": {
       "free": null,
@@ -392,7 +383,7 @@
     "url": "https://suno.com/",
     "one_liner": "원하는 분위기와 가사를 적으면 노래를 통째로 만들어줘요",
     "purposes": [
-      "P11"
+      "P04"
     ],
     "price": {
       "free": true,
@@ -417,7 +408,7 @@
     "url": "https://www.udio.com/",
     "one_liner": "글로 설명하면 보컬이 들어간 곡을 만들고 이어 붙일 수 있어요",
     "purposes": [
-      "P11"
+      "P04"
     ],
     "price": {
       "free": true,
@@ -441,7 +432,7 @@
     "url": "https://www.aiva.ai/",
     "one_liner": "장르와 길이를 고르면 영상·게임용 배경음악을 작곡해줘요",
     "purposes": [
-      "P11"
+      "P04"
     ],
     "price": {
       "free": true,
@@ -466,7 +457,7 @@
     "url": "https://soundraw.io/",
     "one_liner": "분위기·장르·길이를 골라 저작권 걱정 없는 배경음악을 만들어요",
     "purposes": [
-      "P11"
+      "P04"
     ],
     "price": {
       "free": null,
@@ -490,8 +481,8 @@
     "url": "https://www.krea.ai/",
     "one_liner": "그리는 대로 바로 바뀌는 실시간 이미지 생성과 영상 만들기를 한곳에서 해요",
     "purposes": [
-      "P05",
-      "P06"
+      "P03",
+      "P04"
     ],
     "price": {
       "free": true,
@@ -515,7 +506,7 @@
     "url": "https://openart.ai/",
     "one_liner": "여러 이미지 모델을 골라 그림을 만들고, 일부만 고치거나 캐릭터를 유지할 수 있어요",
     "purposes": [
-      "P05"
+      "P03"
     ],
     "price": {
       "free": true,
@@ -539,7 +530,7 @@
     "url": "https://pika.art/",
     "one_liner": "글이나 사진 한 장으로 짧은 영상을 만들고 재미있는 효과를 넣어요",
     "purposes": [
-      "P06"
+      "P04"
     ],
     "price": {
       "free": true,
@@ -564,8 +555,8 @@
     "url": "https://www.veed.io/",
     "one_liner": "브라우저에서 영상을 자르고 자막을 자동으로 넣고 번역까지 하는 편집기예요",
     "purposes": [
-      "P06",
-      "P07"
+      "P04",
+      "P02"
     ],
     "price": {
       "free": true,
@@ -589,8 +580,7 @@
     "url": "https://www.synthesia.io/",
     "one_liner": "대본을 넣으면 AI 아바타가 여러 언어로 말하는 설명 영상을 만들어줘요",
     "purposes": [
-      "P06",
-      "P10"
+      "P04"
     ],
     "price": {
       "free": true,
@@ -614,7 +604,7 @@
     "url": "https://www.opus.pro/",
     "one_liner": "긴 영상을 넣으면 쇼츠·릴스용 짧은 영상 여러 개로 잘라주고 자막도 달아줘요",
     "purposes": [
-      "P06"
+      "P04"
     ],
     "price": {
       "free": true,
@@ -638,7 +628,7 @@
     "url": "https://invideo.io/",
     "one_liner": "주제만 적으면 대본·영상 소스·나레이션을 붙여 영상 초안을 만들어줘요",
     "purposes": [
-      "P06"
+      "P04"
     ],
     "price": {
       "free": null,
@@ -662,7 +652,7 @@
     "url": "https://www.capcut.com/",
     "one_liner": "자동 자막, 배경 지우기 같은 AI 기능이 들어간 무료 영상 편집기예요",
     "purposes": [
-      "P06"
+      "P04"
     ],
     "price": {
       "free": true,
@@ -687,7 +677,7 @@
     "url": "https://www.descript.com/",
     "one_liner": "받아쓴 글을 지우면 영상도 같이 잘리는, 문서처럼 편집하는 영상·팟캐스트 편집기예요",
     "purposes": [
-      "P06",
+      "P04",
       "P02"
     ],
     "price": {
@@ -738,8 +728,7 @@
     "url": "https://www.notta.ai/",
     "one_liner": "녹음이나 회의를 여러 언어로 받아쓰고 요약·번역해줘요",
     "purposes": [
-      "P02",
-      "P07"
+      "P02"
     ],
     "price": {
       "free": true,
@@ -764,7 +753,7 @@
     "url": "https://julius.ai/",
     "one_liner": "엑셀·CSV 파일을 올리고 말로 물으면 분석하고 차트를 그려줘요",
     "purposes": [
-      "P08"
+      "P01"
     ],
     "price": {
       "free": true,
@@ -788,7 +777,7 @@
     "url": "https://www.chatpdf.com/",
     "one_liner": "PDF를 올리고 물어보면 출처 쪽수와 함께 답해주고 요약도 해줘요",
     "purposes": [
-      "P03"
+      "P01"
     ],
     "price": {
       "free": true,
@@ -811,7 +800,7 @@
     "url": "https://www.beautiful.ai/",
     "one_liner": "내용만 넣으면 디자인을 자동으로 맞춰주는 발표자료 만들기 도구예요",
     "purposes": [
-      "P04"
+      "P03"
     ],
     "price": {
       "free": null,
@@ -835,7 +824,7 @@
     "url": "https://www.lindy.ai/",
     "one_liner": "메일 정리·일정 잡기·고객 응대 같은 일을 맡기는 AI 비서를 만들어요",
     "purposes": [
-      "P12"
+      "P05"
     ],
     "price": {
       "free": null,
@@ -858,7 +847,7 @@
     "url": "https://lovable.dev/",
     "one_liner": "만들고 싶은 웹사이트나 앱을 말로 설명하면 바로 만들어 인터넷에 올려줘요",
     "purposes": [
-      "P13"
+      "P05"
     ],
     "price": {
       "free": true,
@@ -882,7 +871,7 @@
     "url": "https://bolt.new/",
     "one_liner": "대화로 설명하면 브라우저 안에서 웹사이트·앱을 만들어 주는 도구예요",
     "purposes": [
-      "P13"
+      "P05"
     ],
     "price": {
       "free": true,
@@ -897,6 +886,1626 @@
     "sources": [
       "https://bolt.new/",
       "https://bolt.new/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "le-chat",
+    "name": "Le Chat (Mistral)",
+    "url": "https://mistral.ai/",
+    "one_liner": "프랑스 미스트랄의 대화형 AI예요. 질문·글쓰기·문서 분석을 해줘요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "mistral.ai"
+    ],
+    "sources": [
+      "https://mistral.ai/",
+      "https://mistral.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "grammarly",
+    "name": "Grammarly",
+    "url": "https://www.grammarly.com/",
+    "one_liner": "영어 글의 맞춤법·문법·말투를 고쳐주고 다시 써줘요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "grammarly.com"
+    ],
+    "sources": [
+      "https://www.grammarly.com/",
+      "https://www.grammarly.com/plans"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "elicit",
+    "name": "Elicit",
+    "url": "https://elicit.com/",
+    "one_liner": "질문을 적으면 관련 논문을 찾아 핵심을 표로 정리해줘요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "elicit.com"
+    ],
+    "sources": [
+      "https://elicit.com/",
+      "https://elicit.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "scispace",
+    "name": "SciSpace",
+    "url": "https://scispace.com/",
+    "one_liner": "논문을 찾고 읽기 어려운 부분을 쉽게 풀어 설명해줘요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "scispace.com"
+    ],
+    "sources": [
+      "https://scispace.com/",
+      "https://scispace.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "humata",
+    "name": "Humata",
+    "url": "https://www.humata.ai/",
+    "one_liner": "PDF·문서를 올리고 질문하면 원문 위치와 함께 답해줘요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "humata.ai"
+    ],
+    "sources": [
+      "https://www.humata.ai/",
+      "https://www.humata.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "liner",
+    "name": "Liner",
+    "url": "https://liner.com/",
+    "one_liner": "출처를 달아 답하는 AI 검색이에요. 논문·웹 자료 조사에 좋아요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "liner.com"
+    ],
+    "sources": [
+      "https://liner.com/",
+      "https://liner.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "notion-ai",
+    "name": "Notion AI",
+    "url": "https://www.notion.com/",
+    "one_liner": "노션 문서 안에서 글을 쓰고 요약하고, 내 페이지 내용으로 질문에 답해줘요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "notion.com"
+    ],
+    "sources": [
+      "https://www.notion.com/",
+      "https://www.notion.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "wrtn",
+    "name": "뤼튼",
+    "url": "https://wrtn.ai/",
+    "one_liner": "여러 AI 모델을 한국어로 쉽게 쓰는 국내 AI 서비스예요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "wrtn.ai"
+    ],
+    "sources": [
+      "https://wrtn.ai/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "jasper",
+    "name": "Jasper",
+    "url": "https://www.jasper.ai/",
+    "one_liner": "브랜드 말투에 맞춘 마케팅 글을 써주는 AI예요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "jasper.ai"
+    ],
+    "sources": [
+      "https://www.jasper.ai/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "consensus",
+    "name": "Consensus",
+    "url": "https://consensus.app/",
+    "one_liner": "논문 근거로 질문에 답해주는 AI 학술 검색이에요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "consensus.app"
+    ],
+    "sources": [
+      "https://consensus.app/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "daglo",
+    "name": "다글로",
+    "url": "https://daglo.ai/",
+    "one_liner": "녹음·영상을 한국어로 받아쓰고 요약해주는 국내 서비스예요",
+    "purposes": [
+      "P02"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "daglo.ai"
+    ],
+    "sources": [
+      "https://daglo.ai/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "immersive-translate",
+    "name": "몰입형 번역",
+    "url": "https://immersivetranslate.com/",
+    "one_liner": "웹페이지·PDF·영상 자막을 원문과 번역문을 나란히 보여줘요",
+    "purposes": [
+      "P02"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "app",
+      "web"
+    ],
+    "official_domains": [
+      "immersivetranslate.com"
+    ],
+    "sources": [
+      "https://immersivetranslate.com/",
+      "https://immersivetranslate.com/pricing/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "krisp",
+    "name": "Krisp",
+    "url": "https://krisp.ai/",
+    "one_liner": "통화 잡음을 지우고 회의를 받아쓰고 요약해줘요",
+    "purposes": [
+      "P02"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "app"
+    ],
+    "official_domains": [
+      "krisp.ai"
+    ],
+    "sources": [
+      "https://krisp.ai/",
+      "https://krisp.ai/pricing/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "rev",
+    "name": "Rev",
+    "url": "https://www.rev.com/",
+    "one_liner": "녹음·영상을 받아쓰고 자막을 만들어줘요 (AI와 사람 받아쓰기)",
+    "purposes": [
+      "P02"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "rev.com"
+    ],
+    "sources": [
+      "https://www.rev.com/",
+      "https://www.rev.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "happy-scribe",
+    "name": "Happy Scribe",
+    "url": "https://www.happyscribe.com/",
+    "one_liner": "녹음·영상을 받아쓰고 자막을 만들어 번역까지 해줘요",
+    "purposes": [
+      "P02",
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "happyscribe.com"
+    ],
+    "sources": [
+      "https://www.happyscribe.com/",
+      "https://www.happyscribe.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "read-ai",
+    "name": "Read AI",
+    "url": "https://www.read.ai/",
+    "one_liner": "화상회의를 받아쓰고 요약·할 일을 정리해줘요",
+    "purposes": [
+      "P02"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "read.ai"
+    ],
+    "sources": [
+      "https://www.read.ai/",
+      "https://www.read.ai/plans-pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "transkriptor",
+    "name": "Transkriptor",
+    "url": "https://transkriptor.com/",
+    "one_liner": "녹음 파일을 여러 언어로 받아써 주는 서비스예요",
+    "purposes": [
+      "P02"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "transkriptor.com"
+    ],
+    "sources": [
+      "https://transkriptor.com/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "clipdrop",
+    "name": "Clipdrop",
+    "url": "https://clipdrop.co/",
+    "one_liner": "배경 지우기, 사진 늘리기, 글로 이미지 만들기 같은 이미지 도구 모음이에요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "clipdrop.co"
+    ],
+    "sources": [
+      "https://clipdrop.co/",
+      "https://clipdrop.co/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "pitch",
+    "name": "Pitch",
+    "url": "https://pitch.com/",
+    "one_liner": "AI로 발표자료 초안을 만들고 팀과 함께 다듬어요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "pitch.com"
+    ],
+    "sources": [
+      "https://pitch.com/",
+      "https://pitch.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "presentations-ai",
+    "name": "Presentations.AI",
+    "url": "https://www.presentations.ai/",
+    "one_liner": "주제만 적으면 디자인된 발표자료를 만들어줘요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "presentations.ai"
+    ],
+    "sources": [
+      "https://www.presentations.ai/",
+      "https://www.presentations.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "recraft",
+    "name": "Recraft",
+    "url": "https://www.recraft.ai/",
+    "one_liner": "로고·아이콘·일러스트를 원하는 스타일로 만들어요 (벡터 이미지도)",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "recraft.ai"
+    ],
+    "sources": [
+      "https://www.recraft.ai/",
+      "https://www.recraft.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "photoroom",
+    "name": "Photoroom",
+    "url": "https://www.photoroom.com/",
+    "one_liner": "상품 사진 배경을 지우고 깔끔한 쇼핑몰 사진으로 바꿔줘요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "photoroom.com"
+    ],
+    "sources": [
+      "https://www.photoroom.com/",
+      "https://www.photoroom.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "adobe-firefly",
+    "name": "Adobe Firefly",
+    "url": "https://firefly.adobe.com/",
+    "one_liner": "어도비의 AI로 이미지·영상·소리를 만들고 고쳐요",
+    "purposes": [
+      "P03",
+      "P04"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "adobe.com"
+    ],
+    "sources": [
+      "https://firefly.adobe.com/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "remove-bg",
+    "name": "remove.bg",
+    "url": "https://www.remove.bg/",
+    "one_liner": "사진을 올리면 배경을 자동으로 지워줘요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "remove.bg"
+    ],
+    "sources": [
+      "https://www.remove.bg/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "runway",
+    "name": "Runway",
+    "url": "https://runway.com/",
+    "one_liner": "글이나 사진으로 영상을 만들고, 영상 속 물체를 지우는 등 AI 영상 편집을 해요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "runway.com"
+    ],
+    "sources": [
+      "https://runway.com/",
+      "https://runway.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "luma-dream-machine",
+    "name": "Luma Dream Machine",
+    "url": "https://lumalabs.ai/",
+    "one_liner": "글이나 사진으로 실감 나는 짧은 영상을 만들어줘요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "lumalabs.ai"
+    ],
+    "sources": [
+      "https://lumalabs.ai/",
+      "https://lumalabs.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "hailuo",
+    "name": "Hailuo AI",
+    "url": "https://hailuoai.video/",
+    "one_liner": "글이나 사진으로 영상을 만드는 미니맥스의 영상 생성 AI예요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "hailuoai.video"
+    ],
+    "sources": [
+      "https://hailuoai.video/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "mubert",
+    "name": "Mubert",
+    "url": "https://mubert.com/",
+    "one_liner": "분위기와 길이를 고르면 저작권 걱정 없는 배경음악을 만들어줘요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "mubert.com"
+    ],
+    "sources": [
+      "https://mubert.com/",
+      "https://mubert.com/render/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "kapwing",
+    "name": "Kapwing",
+    "url": "https://www.kapwing.com/",
+    "one_liner": "브라우저에서 영상을 편집하고 자동 자막·번역을 넣어요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "kapwing.com"
+    ],
+    "sources": [
+      "https://www.kapwing.com/",
+      "https://www.kapwing.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "d-id",
+    "name": "D-ID",
+    "url": "https://www.d-id.com/",
+    "one_liner": "사진 한 장과 대본으로 말하는 사람 영상을 만들어줘요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "d-id.com"
+    ],
+    "sources": [
+      "https://www.d-id.com/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "beatoven",
+    "name": "Beatoven.ai",
+    "url": "https://www.beatoven.ai/",
+    "one_liner": "영상 분위기에 맞는 배경음악을 작곡해줘요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "beatoven.ai"
+    ],
+    "sources": [
+      "https://www.beatoven.ai/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "wix-ai",
+    "name": "Wix AI 웹사이트 빌더",
+    "url": "https://www.wix.com/ai-website-builder",
+    "one_liner": "원하는 사이트를 말로 설명하면 AI가 홈페이지를 만들어줘요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "wix.com"
+    ],
+    "sources": [
+      "https://www.wix.com/ai-website-builder"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "taskade",
+    "name": "Taskade",
+    "url": "https://www.taskade.com/",
+    "one_liner": "할 일·문서·AI 에이전트를 한곳에서 만들어 일을 맡겨요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "taskade.com"
+    ],
+    "sources": [
+      "https://www.taskade.com/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "askyourpdf",
+    "name": "AskYourPDF",
+    "url": "https://askyourpdf.com/",
+    "one_liner": "PDF를 올리고 대화하듯 물어보면 내용을 찾아 답해줘요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "askyourpdf.com"
+    ],
+    "sources": [
+      "https://askyourpdf.com/",
+      "https://askyourpdf.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "pdf-ai",
+    "name": "PDF.ai",
+    "url": "https://pdf.ai/",
+    "one_liner": "계약서·논문 PDF에 질문하면 해당 부분을 짚어 답해줘요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "pdf.ai"
+    ],
+    "sources": [
+      "https://pdf.ai/",
+      "https://pdf.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "rytr",
+    "name": "Rytr",
+    "url": "https://rytr.me/",
+    "one_liner": "블로그·광고·이메일 같은 짧은 글을 빠르게 써주는 글쓰기 도우미예요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "rytr.me"
+    ],
+    "sources": [
+      "https://rytr.me/",
+      "https://rytr.me/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "scite",
+    "name": "scite",
+    "url": "https://scite.ai/",
+    "one_liner": "논문이 다른 연구에서 어떻게 인용됐는지(지지·반박) 보여주는 연구 도우미예요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "scite.ai"
+    ],
+    "sources": [
+      "https://scite.ai/",
+      "https://scite.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "writesonic",
+    "name": "Writesonic",
+    "url": "https://writesonic.com/",
+    "one_liner": "검색에 잘 걸리는 마케팅 글을 쓰고 다듬어주는 AI예요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "writesonic.com"
+    ],
+    "sources": [
+      "https://writesonic.com/",
+      "https://writesonic.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "copy-ai",
+    "name": "Copy.ai",
+    "url": "https://www.copy.ai/",
+    "one_liner": "영업·마케팅 글을 쓰고 반복 업무를 자동으로 처리해줘요",
+    "purposes": [
+      "P01",
+      "P05"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "copy.ai"
+    ],
+    "sources": [
+      "https://www.copy.ai/",
+      "https://www.copy.ai/prices"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "wordtune",
+    "name": "Wordtune",
+    "url": "https://www.wordtune.com/",
+    "one_liner": "쓴 문장을 더 자연스럽게, 짧게, 공손하게 바꿔 써줘요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "wordtune.com"
+    ],
+    "sources": [
+      "https://www.wordtune.com/",
+      "https://www.wordtune.com/plans"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "you-com",
+    "name": "You.com",
+    "url": "https://you.com/",
+    "one_liner": "출처와 함께 답하는 AI 검색·대화 서비스예요",
+    "purposes": [
+      "P01"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "you.com"
+    ],
+    "sources": [
+      "https://you.com/",
+      "https://you.com/plans"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "pixlr",
+    "name": "Pixlr",
+    "url": "https://pixlr.com/",
+    "one_liner": "브라우저에서 사진을 편집하고 AI로 이미지를 만들거나 지워요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "pixlr.com"
+    ],
+    "sources": [
+      "https://pixlr.com/",
+      "https://pixlr.com/pricing/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "picsart",
+    "name": "Picsart",
+    "url": "https://picsart.com/",
+    "one_liner": "사진 편집, 배경 지우기, AI 이미지 만들기를 휴대폰과 웹에서 해요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "picsart.com"
+    ],
+    "sources": [
+      "https://picsart.com/",
+      "https://picsart.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "fotor",
+    "name": "Fotor",
+    "url": "https://www.fotor.com/",
+    "one_liner": "사진 보정과 AI 이미지 만들기, 사진을 만화로 바꾸기 같은 도구가 있어요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "fotor.com"
+    ],
+    "sources": [
+      "https://www.fotor.com/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "stockimg",
+    "name": "Stockimg AI",
+    "url": "https://stockimg.ai/",
+    "one_liner": "로고·포스터·책 표지 같은 디자인 이미지를 글로 만들어줘요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "stockimg.ai"
+    ],
+    "sources": [
+      "https://stockimg.ai/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "slidesai",
+    "name": "SlidesAI",
+    "url": "https://www.slidesai.io/",
+    "one_liner": "글을 넣으면 구글 슬라이드 발표자료로 바꿔줘요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "slidesai.io"
+    ],
+    "sources": [
+      "https://www.slidesai.io/",
+      "https://www.slidesai.io/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "decktopus",
+    "name": "Decktopus",
+    "url": "https://www.decktopus.com/",
+    "one_liner": "주제만 적으면 발표자료를 만들고 발표 메모까지 써줘요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "decktopus.com"
+    ],
+    "sources": [
+      "https://www.decktopus.com/",
+      "https://www.decktopus.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "prezi",
+    "name": "Prezi",
+    "url": "https://prezi.com/",
+    "one_liner": "AI로 움직이는 발표자료를 만들어요",
+    "purposes": [
+      "P03"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "prezi.com"
+    ],
+    "sources": [
+      "https://prezi.com/",
+      "https://prezi.com/pricing/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "fliki",
+    "name": "Fliki",
+    "url": "https://fliki.ai/",
+    "one_liner": "글이나 블로그 주소를 넣으면 목소리와 장면을 붙여 영상으로 만들어줘요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "fliki.ai"
+    ],
+    "sources": [
+      "https://fliki.ai/",
+      "https://fliki.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "pictory",
+    "name": "Pictory",
+    "url": "https://pictory.ai/",
+    "one_liner": "글·블로그·긴 영상을 짧은 영상으로 바꾸고 자막을 붙여줘요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "pictory.ai"
+    ],
+    "sources": [
+      "https://pictory.ai/",
+      "https://pictory.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "colossyan",
+    "name": "Colossyan",
+    "url": "https://www.colossyan.com/",
+    "one_liner": "AI 강사가 말하는 교육·안내 영상을 대본으로 만들어요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "colossyan.com"
+    ],
+    "sources": [
+      "https://www.colossyan.com/",
+      "https://www.colossyan.com/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "elai",
+    "name": "Elai",
+    "url": "https://elai.io/",
+    "one_liner": "대본이나 글로 AI 아바타가 설명하는 영상을 만들어요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "elai.io"
+    ],
+    "sources": [
+      "https://elai.io/",
+      "https://elai.io/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "lovo",
+    "name": "LOVO",
+    "url": "https://lovo.ai/",
+    "one_liner": "여러 목소리로 나레이션을 만들고 영상도 편집하는 서비스예요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "lovo.ai"
+    ],
+    "sources": [
+      "https://lovo.ai/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "flexclip",
+    "name": "FlexClip",
+    "url": "https://www.flexclip.com/",
+    "one_liner": "템플릿과 AI 도구로 브라우저에서 짧은 영상을 만들어요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "flexclip.com"
+    ],
+    "sources": [
+      "https://www.flexclip.com/",
+      "https://www.flexclip.com/pricing.html"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "lalal-ai",
+    "name": "LALAL.AI",
+    "url": "https://www.lalal.ai/",
+    "one_liner": "노래에서 목소리와 반주, 악기 소리를 따로 분리해줘요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "lalal.ai"
+    ],
+    "sources": [
+      "https://www.lalal.ai/",
+      "https://www.lalal.ai/pricing/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "moises",
+    "name": "Moises",
+    "url": "https://moises.ai/",
+    "one_liner": "음악에서 보컬·드럼 등을 분리하고 박자·코드를 알려주는 연습 도우미예요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "moises.ai"
+    ],
+    "sources": [
+      "https://moises.ai/",
+      "https://moises.ai/pricing/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "soundful",
+    "name": "Soundful",
+    "url": "https://soundful.com/",
+    "one_liner": "장르를 고르면 로열티 걱정 없는 배경음악을 만들어줘요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "soundful.com"
+    ],
+    "sources": [
+      "https://soundful.com/",
+      "https://soundful.com/pricing/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "boomy",
+    "name": "Boomy",
+    "url": "https://boomy.com/",
+    "one_liner": "몇 번의 클릭으로 노래를 만들고 음원으로 올릴 수 있어요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "boomy.com"
+    ],
+    "sources": [
+      "https://boomy.com/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "vidu",
+    "name": "Vidu",
+    "url": "https://www.vidu.com/",
+    "one_liner": "글이나 사진으로 짧은 영상을 만드는 영상 생성 AI예요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "vidu.com"
+    ],
+    "sources": [
+      "https://www.vidu.com/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "hedra",
+    "name": "Hedra",
+    "url": "https://www.hedra.com/",
+    "one_liner": "사진과 목소리로 말하는 캐릭터 영상을 만들어요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "hedra.com"
+    ],
+    "sources": [
+      "https://www.hedra.com/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "viggle",
+    "name": "Viggle AI",
+    "url": "https://viggle.ai/",
+    "one_liner": "사진 속 인물을 원하는 춤·동작대로 움직이는 영상을 만들어요",
+    "purposes": [
+      "P04"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "viggle.ai"
+    ],
+    "sources": [
+      "https://viggle.ai/",
+      "https://viggle.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "tactiq",
+    "name": "Tactiq",
+    "url": "https://tactiq.io/",
+    "one_liner": "구글 미트·줌·팀즈 회의를 크롬 확장으로 받아쓰고 요약해줘요",
+    "purposes": [
+      "P02"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "app"
+    ],
+    "official_domains": [
+      "tactiq.io"
+    ],
+    "sources": [
+      "https://tactiq.io/",
+      "https://tactiq.io/buy"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "sembly",
+    "name": "Sembly",
+    "url": "https://www.sembly.ai/",
+    "one_liner": "회의를 받아쓰고 요약·할 일을 정리하는 회의 비서예요",
+    "purposes": [
+      "P02"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web",
+      "app"
+    ],
+    "official_domains": [
+      "sembly.ai"
+    ],
+    "sources": [
+      "https://www.sembly.ai/",
+      "https://www.sembly.ai/pricing/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "jamie",
+    "name": "jamie",
+    "url": "https://www.meetjamie.ai/",
+    "one_liner": "회의에 봇을 넣지 않고 내 컴퓨터에서 받아쓰고 회의록을 만들어줘요",
+    "purposes": [
+      "P02"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "app"
+    ],
+    "official_domains": [
+      "meetjamie.ai"
+    ],
+    "sources": [
+      "https://www.meetjamie.ai/",
+      "https://www.meetjamie.ai/pricing"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "smartcat",
+    "name": "Smartcat",
+    "url": "https://www.smartcat.com/",
+    "one_liner": "문서·웹사이트를 AI로 번역하고 사람이 검토하는 번역 플랫폼이에요",
+    "purposes": [
+      "P02"
+    ],
+    "price": {
+      "free": true,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "smartcat.com"
+    ],
+    "sources": [
+      "https://www.smartcat.com/",
+      "https://www.smartcat.com/pricing/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "relevance-ai",
+    "name": "Relevance AI",
+    "url": "https://relevanceai.com/",
+    "one_liner": "영업·고객 응대 같은 일을 맡는 AI 직원(에이전트)을 만들어요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": null,
+      "paid": null
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "relevanceai.com"
+    ],
+    "sources": [
+      "https://relevanceai.com/"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "hostinger-ai",
+    "name": "Hostinger AI 웹사이트 빌더",
+    "url": "https://www.hostinger.com/ai-website-builder",
+    "one_liner": "몇 가지 질문에 답하면 AI가 웹사이트를 만들어 바로 올려줘요",
+    "purposes": [
+      "P05"
+    ],
+    "price": {
+      "free": null,
+      "paid": true
+    },
+    "use": [
+      "web"
+    ],
+    "official_domains": [
+      "hostinger.com"
+    ],
+    "sources": [
+      "https://www.hostinger.com/ai-website-builder"
     ],
     "last_verified": "2026-11-06"
   }
