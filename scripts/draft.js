@@ -54,7 +54,9 @@ export const KINDS = {
     // 개발자용은 official_domains를 실제 데이터에도 남긴다
     draftOnly: ['evidence', 'review_notes', 'todo'],
     todoFields: [...PRICE_PRIVACY, 'open_source', 'repo_url', 'forms', 'features'],
-    facts: { ...COMMON_FACTS, open_source: (t) => true, forms: (t) => true },
+    // 오픈소스 아님(false)은 근거 없이 둔다: 회사 제품 페이지는 "오픈소스가 아니다"라고 쓰지 않아서 (2026-11-06 J 결정).
+    // 오픈소스라고(true) 적을 때만 공식 저장소 근거가 필요하다.
+    facts: { ...COMMON_FACTS, open_source: (t) => t.open_source === true, forms: (t) => true },
     validateOne: validateDevTool, // url·sources·learn·repo_url의 공식 도메인 검사를 포함
     checkUrls: false,
     load: loadDevData,

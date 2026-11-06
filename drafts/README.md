@@ -54,5 +54,6 @@ J가 출처와 맞춰 확인한 툴만 실제 데이터로 옮겨요.
 - 모양은 `data/dev/tools.json`과 같아요 (`docs/개발자용_기획서.md` 5장). `official_domains`는 확정 후에도 남아요.
 - 근거 문장이 필요한 값: 무료 여부, 무료 한도, 유료 가격, 학습 정책, **오픈소스 여부**, **쓰는 형태**
 - `todo`로 둘 수 있는 칸: 가격·학습 정책 칸, `open_source`, `repo_url`, `forms`
+- `open_source`: 공식 저장소가 없는 회사 제품은 `false`로 두고 근거 문장이 필요 없어요. 오픈소스(`true`)라고 적을 때만 공식 저장소 주소(`repo_url`)와 근거가 필요해요
 - `learn`(배울 거리), `sources`, `url`은 모두 공식 도메인이어야 해요. 저장소 주소(`repo_url`)만 `github.com`, `gitlab.com`도 돼요.
 - **AI 여부(`ai_native`), 섹션(`section`: `official` 공식 AI 툴 / `open_source` 오픈소스 프로젝트), 대표 목적(`primary`)**은 Claude의 제안이에요. J가 정해요. 지원 기능(`features`)은 근거 대조 대상이에요.
