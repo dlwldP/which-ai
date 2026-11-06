@@ -9,6 +9,9 @@
 | --- | --- | --- | --- |
 | [tl;dv](#general-tldv) | 비개발자용 | 9개 | `price.free_limit` `price.paid_from_usd` `price.billing` `platforms` `login` |
 | [Grok](#general-grok) | 비개발자용 | 22개 | `price.paid_from_usd` `price.billing` |
+| [Otter](#general-otter) | 비개발자용 | 11개 | `login` |
+| [DeepL](#general-deepl) | 비개발자용 | 10개 | `price.paid_from_usd` `price.billing` `login` |
+| [Vrew](#general-vrew) | 비개발자용 | 7개 | `price.free` `login` |
 | [Claude Code](#dev-claude-code) | 개발자용 | 17개 | `open_source` |
 | [Cloudflare Workers](#dev-cloudflare) | 개발자용 | 15개 | `open_source` |
 | [Google AI Studio](#dev-google-ai-studio) | 개발자용 | 13개 | `price.paid_from_usd` `open_source` |
@@ -32,7 +35,7 @@
 | [n8n](#dev-n8n) | 개발자용 | 15개 | `price.paid_from_usd` `price.billing` |
 | [SonarQube](#dev-sonarqube) | 개발자용 | 11개 | `open_source` `privacy.trains_on_input_default` `privacy.opt_out` |
 
-## 비개발자용 (2개)
+## 비개발자용 (5개)
 
 <a id="general-tldv"></a>
 ### tl;dv (`tldv`) · 비개발자용
@@ -181,6 +184,176 @@ node scripts/draft.js promote tldv --verified YYYY-MM-DD
 
 ```sh
 node scripts/draft.js promote grok --verified YYYY-MM-DD
+```
+
+<a id="general-otter"></a>
+### Otter (`otter`) · 비개발자용
+
+공식 주소: https://otter.ai/  
+공식 도메인: `otter.ai`
+
+**1. 공식 도메인 확인**
+
+- [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
+
+**2. 근거 대조** (11개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
+
+- [ ] 무료 사용: 돼요  
+  “Basic For those who want to give it a try Free” · [페이지에서 보기](https://otter.ai/pricing#:~:text=Basic%20For%20those%20who%20want,give%20it%20a%20try%20Free)
+- [ ] 무료 한도: 매달 받아쓰기 300분, 녹음 파일 올리기는 평생 3개  
+  “300 monthly transcription minutes” · [페이지에서 보기](https://otter.ai/pricing#:~:text=300%20monthly%20transcription%20minutes)
+- [ ] 무료 한도: 매달 받아쓰기 300분, 녹음 파일 올리기는 평생 3개  
+  “3 lifetime audio/video file imports” · [페이지에서 보기](https://otter.ai/pricing#:~:text=3%20lifetime%20audio%2Fvideo%20file%20imports)
+- [ ] 유료 가격: 월 16.99달러부터  
+  “ProFor individuals and small teams$16.99/user/month” · [페이지에서 보기](https://otter.ai/pricing#:~:text=ProFor%20individuals%20and%20small%20teams%2416.99%2Fuser%2Fmonth)
+- [ ] 기본으로 학습에 씀: 예  
+  “Improve and monitor the Services, including training our proprietary AI technology on de-identified audio recordings and on transcriptions (which may contain Personal Information)” · [페이지에서 보기](https://otter.ai/privacy-policy#:~:text=Improve%20and%20monitor%20the%20Services%2C,%28which%20may%20contain%20Personal%20Information%29)
+- [ ] 사용 기기: 윈도우 프로그램, 맥 프로그램, 아이폰 앱, 안드로이드 앱  
+  “Download for Mac Download for Windows” · [페이지에서 보기](https://otter.ai/pricing#:~:text=Download%20for%20Mac%20Download%20for%20Windows)
+- [ ] 사용 기기: 윈도우 프로그램, 맥 프로그램, 아이폰 앱, 안드로이드 앱  
+  “iOS and Android apps” · [페이지에서 보기](https://otter.ai/pricing#:~:text=iOS%20and%20Android%20apps)
+- [ ] ✓ 회의·강의 녹음 정리 — 받아쓰기  
+  “Otter transcribes every meeting, turning it into searchable knowledge that powers your workflow.” · [페이지에서 보기](https://otter.ai/#:~:text=Otter%20transcribes%20every%20meeting%2C%20turning,knowledge%20that%20powers%20your%20workflow.)
+- [ ] ✓ 회의·강의 녹음 정리 — 녹음 파일 올리기  
+  “3 lifetime audio/video file imports” · [페이지에서 보기](https://otter.ai/pricing#:~:text=3%20lifetime%20audio%2Fvideo%20file%20imports)
+- [ ] ✓ 회의·강의 녹음 정리 — 요약  
+  “Otter turns every meeting into a clear summary with decisions, action items, and insights.” · [페이지에서 보기](https://otter.ai/#:~:text=Otter%20turns%20every%20meeting%20into,decisions%2C%20action%20items%2C%20and%20insights.)
+- [ ] ✓ 회의·강의 녹음 정리 — 말한 사람 구분  
+  “Live transcription in multiple languages, and speaker recognition.” · [페이지에서 보기](https://otter.ai/#:~:text=Live%20transcription%20in%20multiple%20languages%2C%20and%20speaker%20recognition.)
+
+**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
+
+- [ ] `login`
+
+**4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
+
+- [ ] 한국어 점수: 메뉴·결과 모두 영어 위주 (1점)
+- [ ] 한 줄 설명: 영어 회의를 실시간으로 받아 적고, 회의가 끝나면 요약과 할 일을 정리해줘요
+- [ ] 시작 3단계: 1) 공식 사이트에서 무료로 가입하기 2) 줌·구글 미트·팀즈 회의에 Otter를 보내거나 바로 녹음하기 3) 회의가 끝나면 받아쓴 글과 요약 확인하기
+- [ ] 주의할 점: 한국어 받아쓰기는 공식 사이트에서 확인되지 않았어요 / 무료 요금제는 녹음 파일 올리기가 평생 3개까지예요
+
+**5. Claude 메모**
+
+- 가입 방법: 가입 화면이 글자로 그려지지 않았고 도움말 사이트는 봇 차단 화면이 나와서 확인하지 못했어요.
+- 유료 가격: 요금표 기본 탭은 Annual(연)이라, Monthly 탭 내용에서 Pro $16.99/user/month를 가져왔어요. 같은 탭에 할인가 $8.49*도 보이는데 행사 가격이라 넣지 않았어요.
+- 한국어 점수 1: 지원 언어 목록에서 한국어를 찾지 못했어요(제안값). 한국어 지원이 확인되면 올려 주세요.
+- 사용 기기: 웹(브라우저) 사용은 근거 문장을 못 찾아서 넣지 않았어요.
+
+**6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
+
+```sh
+node scripts/draft.js promote otter --verified YYYY-MM-DD
+```
+
+<a id="general-deepl"></a>
+### DeepL (`deepl`) · 비개발자용
+
+공식 주소: https://www.deepl.com/  
+공식 도메인: `deepl.com`
+
+**1. 공식 도메인 확인**
+
+- [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
+
+**2. 근거 대조** (10개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
+
+- [ ] 무료 사용: 돼요  
+  “Free translator” · [페이지에서 보기](https://www.deepl.com/en/pro#:~:text=Free%20translator)
+- [ ] 기본으로 학습에 씀: 예  
+  “We process the content you upload and their translations or improvements for a limited period of time to train and improve our neural networks and algorithms.” · [페이지에서 보기](https://www.deepl.com/en/privacy#:~:text=We%20process%20the%20content%20you,our%20neural%20networks%20and%20algorithms.)
+- [ ] 기본으로 학습에 씀: 예  
+  “No data training” · [페이지에서 보기](https://www.deepl.com/en/pro#:~:text=No%20data%20training)
+- [ ] 사용 기기: 웹사이트, 윈도우 프로그램, 맥 프로그램, 아이폰 앱, 안드로이드 앱  
+  “Type to translate.” · [페이지에서 보기](https://www.deepl.com/en/translator#:~:text=Type%20to%20translate.)
+- [ ] 사용 기기: 웹사이트, 윈도우 프로그램, 맥 프로그램, 아이폰 앱, 안드로이드 앱  
+  “DeepL for Android” · [페이지에서 보기](https://www.deepl.com/en/pro#:~:text=DeepL%20for%20Android)
+- [ ] 사용 기기: 웹사이트, 윈도우 프로그램, 맥 프로그램, 아이폰 앱, 안드로이드 앱  
+  “DeepL for Windows” · [페이지에서 보기](https://www.deepl.com/en/pro#:~:text=DeepL%20for%20Windows)
+- [ ] 사용 기기: 웹사이트, 윈도우 프로그램, 맥 프로그램, 아이폰 앱, 안드로이드 앱  
+  “DeepL for Mac” · [페이지에서 보기](https://www.deepl.com/en/pro#:~:text=DeepL%20for%20Mac)
+- [ ] 사용 기기: 웹사이트, 윈도우 프로그램, 맥 프로그램, 아이폰 앱, 안드로이드 앱  
+  “iOS” · [페이지에서 보기](https://support.deepl.com/hc/en-us/articles/360021457439-Log-in-to-your-account-in-the-mobile-apps#:~:text=iOS)
+- [ ] ✓ 번역 — 문장·글 번역  
+  “Millions translate with DeepL every day.” · [페이지에서 보기](https://www.deepl.com/en/translator#:~:text=Millions%20translate%20with%20DeepL%20every%20day.)
+- [ ] ✓ 번역 — 문서 파일을 서식 그대로 번역  
+  “Drag and drop different documents for easy translation, while preserving original formatting and layout.” · [페이지에서 보기](https://www.deepl.com/en/translator#:~:text=Drag%20and%20drop%20different%20documents,preserving%20original%20formatting%20and%20layout.)
+
+**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
+
+- [ ] `price.paid_from_usd`
+- [ ] `price.billing`
+- [ ] `login`
+
+**4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
+
+- [ ] 한국어 점수: 결과는 한국어 가능 (2점)
+- [ ] 한 줄 설명: 문장이나 문서 파일을 자연스럽게 번역하고, 파일은 모양을 그대로 살려줘요
+- [ ] 시작 3단계: 1) 공식 사이트 번역기 열기 2) 번역할 글을 붙여 넣거나 문서 파일 끌어다 놓기 3) 번역 결과를 확인하고 복사하거나 내려받기
+- [ ] 주의할 점: 무료 번역기에 넣은 글은 AI 학습에 쓰여요. 민감한 문서는 넣지 마세요
+
+**5. Claude 메모**
+
+- 유료 가격: Pro 요금표에 연 결제(유로) 가격만 보여서 비워 뒀어요. 월 결제 달러 가격을 확인해 주세요.
+- 가입 방법: 가입 화면에 이메일 칸만 그려졌고 구글·애플 등 다른 방법은 확인하지 못했어요. 무료 번역기는 가입 없이도 쓸 수 있어 보이지만 근거 문장을 못 찾았어요.
+- 무료 한도: 무료 번역기의 글자 수·파일 수 한도 문장을 못 찾았어요.
+- 말투 고르기(Formality)와 단어 고정(Glossaries)은 Pro 기능으로 표시되어 있어 기능에서 뺐어요.
+
+**6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
+
+```sh
+node scripts/draft.js promote deepl --verified YYYY-MM-DD
+```
+
+<a id="general-vrew"></a>
+### Vrew (`vrew`) · 비개발자용
+
+공식 주소: https://vrew.ai/ko/  
+공식 도메인: `vrew.ai`
+
+**1. 공식 도메인 확인**
+
+- [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
+
+**2. 근거 대조** (7개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
+
+- [ ] 기본으로 학습에 씀: 아니요  
+  “Vrew는 사용자의 창작물을 AI 학습에 사용하지 않습니다.” · [페이지에서 보기](https://vrew.ai/ko/data-protection/#:~:text=Vrew%EB%8A%94%20%EC%82%AC%EC%9A%A9%EC%9E%90%EC%9D%98%20%EC%B0%BD%EC%9E%91%EB%AC%BC%EC%9D%84%20AI%20%ED%95%99%EC%8A%B5%EC%97%90%20%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80%20%EC%95%8A%EC%8A%B5%EB%8B%88%EB%8B%A4.)
+- [ ] 사용 기기: 윈도우 프로그램, 맥 프로그램  
+  “Vrew는 맥, 윈도우, 우분투를 모두 지원합니다.” · [페이지에서 보기](https://vrew.ai/ko/#:~:text=Vrew%EB%8A%94%20%EB%A7%A5%2C%20%EC%9C%88%EB%8F%84%EC%9A%B0%2C%20%EC%9A%B0%EB%B6%84%ED%88%AC%EB%A5%BC%20%EB%AA%A8%EB%91%90%20%EC%A7%80%EC%9B%90%ED%95%A9%EB%8B%88%EB%8B%A4.)
+- [ ] 한국어: 메뉴까지 한국어, 품질 좋음  
+  “누구나 영상 편집을 쉽고 즐겁게” · [페이지에서 보기](https://vrew.ai/ko/#:~:text=%EB%88%84%EA%B5%AC%EB%82%98%20%EC%98%81%EC%83%81%20%ED%8E%B8%EC%A7%91%EC%9D%84%20%EC%89%BD%EA%B3%A0%20%EC%A6%90%EA%B2%81%EA%B2%8C)
+- [ ] ✓ 영상 편집·자막 — 자막 자동 만들기  
+  “음성 인식 기능을 통한 자막 자동 생성” · [페이지에서 보기](https://vrew.ai/ko/#:~:text=%EC%9D%8C%EC%84%B1%20%EC%9D%B8%EC%8B%9D%20%EA%B8%B0%EB%8A%A5%EC%9D%84%20%ED%86%B5%ED%95%9C%20%EC%9E%90%EB%A7%89%20%EC%9E%90%EB%8F%99%20%EC%83%9D%EC%84%B1)
+- [ ] ✓ 영상 편집·자막 — 받아쓴 글을 고치면 영상도 편집  
+  “문서 편집을 할 줄 아는 사람이라면 Vrew 영상 편집도 금방 할 수 있어요.” · [페이지에서 보기](https://vrew.ai/ko/#:~:text=%EB%AC%B8%EC%84%9C%20%ED%8E%B8%EC%A7%91%EC%9D%84%20%ED%95%A0%20%EC%A4%84%20%EC%95%84%EB%8A%94,%ED%8E%B8%EC%A7%91%EB%8F%84%20%EA%B8%88%EB%B0%A9%20%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%96%B4%EC%9A%94.)
+- [ ] ✓ 영상 편집·자막 — 받아쓴 글을 고치면 영상도 편집  
+  “일일이 듣고 찾을 필요 없어요. 눈으로 보면서 편집하세요.” · [페이지에서 보기](https://vrew.ai/ko/#:~:text=%EC%9D%BC%EC%9D%BC%EC%9D%B4%20%EB%93%A3%EA%B3%A0%20%EC%B0%BE%EC%9D%84%20%ED%95%84%EC%9A%94%20%EC%97%86%EC%96%B4%EC%9A%94.%20%EB%88%88%EC%9C%BC%EB%A1%9C%20%EB%B3%B4%EB%A9%B4%EC%84%9C%20%ED%8E%B8%EC%A7%91%ED%95%98%EC%84%B8%EC%9A%94.)
+- [ ] ✓ 영상 편집·자막 — 자막 번역  
+  “100개 이상의 언어로 번역해 보세요! 기본 자막과 번역 자막을 동시에 표시할 수도 있어요.” · [페이지에서 보기](https://vrew.ai/ko/#:~:text=100%EA%B0%9C%20%EC%9D%B4%EC%83%81%EC%9D%98%20%EC%96%B8%EC%96%B4%EB%A1%9C%20%EB%B2%88%EC%97%AD%ED%95%B4%20%EB%B3%B4%EC%84%B8%EC%9A%94%21,%EC%9E%90%EB%A7%89%EC%9D%84%20%EB%8F%99%EC%8B%9C%EC%97%90%20%ED%91%9C%EC%8B%9C%ED%95%A0%20%EC%88%98%EB%8F%84%20%EC%9E%88%EC%96%B4%EC%9A%94.)
+
+**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
+
+- [ ] `price.free`
+- [ ] `login`
+
+**4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
+
+- [ ] 한국어 점수: 메뉴까지 한국어, 품질 좋음 (3점)
+- [ ] 한 줄 설명: 영상 속 말을 받아 적어 자막을 자동으로 만들고, 글을 고치듯 영상을 잘라 편집해요
+- [ ] 시작 3단계: 1) 공식 사이트에서 프로그램 내려받기 (윈도우·맥) 2) 영상을 불러와 자동 자막 만들기 3) 자막 글을 고치거나 지우며 영상 편집하기
+- [ ] 주의할 점: 없음
+
+**5. Claude 메모**
+
+- 가격: 요금표 카드가 글자로 그려지지 않아 무료 요금제 여부·한도·가격을 확인하지 못했어요 (페이지 문구 "무료 다운로드"는 프로그램 내려받기라서 무료 요금제 근거로 쓰지 않았어요).
+- 가입 방법: 로그인 창이 이 환경 브라우저에서 열리지 않았어요.
+- 사용 기기: 우분투는 사이트 선택지에 없어서 빼고 윈도우·맥만 넣었어요. 브라우저에서 쓰는 체험판도 있어 보이지만 근거 문장이 부족해요.
+- 학습 끄기(opt_out): 기본으로 학습에 쓰지 않아서 끄는 방법 문장은 찾지 않았어요.
+
+**6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
+
+```sh
+node scripts/draft.js promote vrew --verified YYYY-MM-DD
 ```
 
 ## 개발자용 (22개)
