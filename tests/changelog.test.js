@@ -39,3 +39,8 @@ test('이력: 최신 커밋부터, 바뀐 게 없는 커밋은 빠짐', () => {
   assert.deepEqual(log.map((e) => e.commit), ['ccc', 'aaa']);
   assert.equal(log[0].changes[0].field, 'one_liner');
 });
+
+test('변경 이력 화면: 같은 날짜는 한 번만, 최신부터', async () => {
+  const { updateDates } = await import('../js/changelog.js');
+  assert.deepEqual(updateDates([{ date: '2026-11-06' }, { date: '2026-11-06' }, { date: '2026-10-22' }, { date: '2026-11-06' }]), ['2026-11-06', '2026-10-22']);
+});

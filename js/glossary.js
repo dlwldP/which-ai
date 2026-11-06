@@ -30,3 +30,35 @@ export function termIn(text, matcher) {
   const found = text.match(matcher.regex);
   return found ? matcher.termOf.get(found[0]) : null;
 }
+
+const INITIALS = ['ㄱ', 'ㄱ', 'ㄴ', 'ㄷ', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅂ', 'ㅅ', 'ㅅ', 'ㅇ', 'ㅈ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+
+/** 용어의 첫 글자 묶음: 한글은 초성(ㄲ→ㄱ처럼 합침), 영문은 대문자, 나머지는 "#" */
+export function initialOf(word) {
+  const c = word.trim().charAt(0);
+  const code = c.charCodeAt(0);
+  if (code >= 0xac00 && code <= 0xd7a3) return INITIALS[Math.floor((code - 0xac00) / 588)];
+  if (/[a-z]/i.test(c)) return c.toUpperCase();
+  return '#';
+}
+
+/** 용어집을 첫 글자 묶음으로. 한글 묶음(가나다순) → 영문(ABC순) → 나머지, 묶음 안은 이름순 */
+export function glossaryGroups(glossary) {
+  const rank = (k) => (/[ㄱ-ㅎ]/.test(k) ? 0 : /[A-Z]/.test(k) ? 1 : 2);
+  const map = new Map();
+  for (const item of glossary) {
+    const k = initialOf(item.term);
+    if (!map.has(k)) map.set(k, []);
+    map.get(k).push(item);
+  }
+  return [...map.entries()]
+    .sort(([a], [b]) => rank(a) - rank(b) || a.localeCompare(b, 'ko'))
+    .map(([key, items]) => ({ key, items: items.sort((a, b) => a.term.localeCompare(b.term, 'ko')) }));
+}
+
+/** 찾는 말이 용어·다른 이름·풀이에 들어 있는지 (대소문자 무시) */
+export function glossaryMatches(item, query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return true;
+  return [item.term, ...item.aliases, item.description].some((s) => s.toLowerCase().includes(q));
+}

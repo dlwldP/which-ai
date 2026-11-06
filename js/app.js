@@ -7,11 +7,12 @@
 //   #/changes                변경 이력
 // 2026-11-06 개편: 점수 추천과 "자세히 보기"를 없애고, 용도별 카드 목록으로 최대한 많은 AI를 짧게 보여준다.
 // 목록·조건 계산은 recommend.js(순수 함수)에만 맡긴다.
-import { FILTERS, countByPurpose, groupByKind, isStale, listTools } from './recommend.js';
+import { FILTERS, groupByKind, isStale, listTools } from './recommend.js';
 import { formatDate, localToday, priceBadge, useText } from './format.js';
 import { FEEDBACK_FORM, REASON_MAX, cleanReason, feedbackBody, githubIssueUrl, isFeedbackReady } from './feedback.js';
 import { PAGE_KEYS, pageSections } from './pages.js';
-import { glossarize, termMatcher } from './glossary.js';
+import { glossarize, glossaryGroups, glossaryMatches, termMatcher } from './glossary.js';
+import { updateDates } from './changelog.js';
 import { MODES } from './modes.js';
 
 // <body data-mode="dev"> 이면 개발자용
@@ -108,31 +109,44 @@ const emptyNotice = (text = mode.emptyText) => `
 const searchForm = (q = '') => `
   <form class="search" role="search" data-search>
     <label class="sr-only" for="q">이름이나 설명으로 찾기</label>
-    <input id="q" name="q" type="search" value="${esc(q)}" placeholder="이름이나 하고 싶은 일로 찾기 (예: 자막, 번역)" autocomplete="off">
+    <input id="q" name="q" type="search" value="${esc(q)}" placeholder="예: 자막, 번역, 음악" autocomplete="off">
     <button type="submit" class="btn btn-primary">찾기</button>
   </form>`;
 
 // ---- 홈 ----
+// 맨 위는 화면 너비 전체를 쓰는 가로 띠(서비스 소개 + 찾기), 그 아래 하고 싶은 일 5개.
 function renderHome() {
   document.title = mode.homeTitle;
-  const counts = countByPurpose(data.tools, data.purposes);
+  const free = data.tools.filter((t) => t.price.free === true).length;
+  const web = data.tools.filter((t) => t.use.includes('web')).length;
   app.innerHTML = `
-    <section class="card intro intro-simple" aria-label="${esc(mode.siteName)} 소개">
-      <p class="eyebrow">${esc(mode.eyebrow)}</p>
-      <h1>${mode.heroHtml}</h1>
-      <p class="sub">${esc(mode.heroSub)}</p>
-      ${searchForm()}
-      <p class="home-stats">지금 ${W} <strong>${data.tools.length}개</strong> · <a href="#/all">전체 보기 ›</a></p>
+    <section class="hero" aria-label="${esc(mode.siteName)} 소개">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">${esc(mode.eyebrow)}</p>
+          <h1>${mode.heroHtml}</h1>
+          <p class="sub">${esc(mode.heroSub)}</p>
+          <ol class="hero-steps">${mode.heroSteps.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
+        </div>
+        <div class="hero-side">
+          ${searchForm()}
+          <div class="hero-facts">
+            <div class="hero-fact"><strong>${data.tools.length}</strong><span>모아 둔 ${W}</span></div>
+            <div class="hero-fact"><strong>${free}</strong><span>무료로 쓸 수 있음</span></div>
+            <div class="hero-fact"><strong>${web}</strong><span>${esc(mode.webFact)}</span></div>
+          </div>
+          <p class="hero-links"><a href="#/all">전체 ${W} 보기 ›</a> <a href="${mode.otherSite.href}">${esc(mode.otherSite.label)} ›</a></p>
+        </div>
+      </div>
     </section>
 
     <section class="purposes" aria-labelledby="purposes-title">
       <h2 class="section-title" id="purposes-title">하고 싶은 일</h2>
-      <ul class="tiles">${data.purposes.map((p) => `
+      <ul class="tiles tiles-5">${data.purposes.map((p) => `
         <li><a class="tile" href="#/p/${p.id}">
           <span class="tile-ico" aria-hidden="true">${esc(p.icon)}</span>
           <span class="tile-ttl">${esc(p.label)}</span>
           <span class="tile-dsc">${esc(p.examples)}</span>
-          <span class="tile-count">${counts[p.id] ? `${counts[p.id]}개` : '준비 중'}</span>
         </a></li>`).join('')}</ul>
     </section>
 
@@ -198,22 +212,39 @@ function renderNotFound() {
 // 화면 속 용어·ⓘ에서 "용어집 전체 보기"로 오면(?term=) 그 용어를 강조하고 화면 가운데로 옮긴다.
 function renderGlossary(focus) {
   document.title = `용어집 · ${mode.siteName}`;
+  const sorted = glossaryGroups(data.glossary).flatMap((gr) => gr.items); // 가나다순 → ABC순
   app.innerHTML = `
     <div class="page-head">
         ${backLink('#/')}
-        <h1 class="page-title">용어집</h1>
-        <p class="page-sub">${esc(mode.glossaryIntro)} 화면에서 <span class="term-sample">밑줄 친 말</span>이나 ⓘ를 누르면 그 자리에서 바로 볼 수 있어요.</p>
+        <h1 class="page-title">용어집 <span class="count">${data.glossary.length}개</span></h1>
+        <p class="page-sub">${esc(mode.glossaryIntro)} 화면에서 <span class="term-sample">밑줄 친 말</span>을 누르면 그 자리에서 바로 볼 수 있어요.</p>
     </div>
       ${data.glossary.length ? `
-        <nav class="glossary-index" aria-label="용어 바로 가기">${data.glossary.map((item) => `
-          <button type="button" class="glossary-jump" data-scroll="term-${esc(item.term)}">${esc(item.term)}</button>`).join('')}
-        </nav>
-        <dl class="glossary">${data.glossary.map((item) => `
-            <div class="glossary-item${item.term === focus ? ' focused' : ''}" id="term-${esc(item.term)}">
-              <dt><span class="glossary-term">${esc(item.term)}</span>${item.aliases.length ? ` <span class="alias">${esc(item.aliases.join(', '))}</span>` : ''}</dt>
-              <dd class="glossary-desc">${esc(item.description)}</dd>
-            </div>`).join('')}
-        </dl>` : '<section class="card"><p class="empty"><strong>아직 준비 중이에요</strong></p></section>'}`;
+        <div class="glossary-tools">
+          <label class="sr-only" for="glossary-q">용어 찾기</label>
+          <input id="glossary-q" type="search" placeholder="모르는 말을 적어 보세요 (예: 토큰, 무료)" autocomplete="off">
+          <nav class="glossary-index" aria-label="용어 바로 가기">${sorted.map((item) => `
+            <button type="button" class="glossary-jump" data-scroll="term-${esc(item.term)}">${esc(item.term)}</button>`).join('')}
+          </nav>
+        </div>
+        <dl class="glossary">${sorted.map((item) => `
+          <div class="glossary-item${item.term === focus ? ' focused' : ''}" id="term-${esc(item.term)}" data-term-item="${esc(item.term)}">
+            <dt><span class="glossary-term">${esc(item.term)}</span>${item.aliases.length ? ` <span class="alias">${esc(item.aliases.join(', '))}</span>` : ''}</dt>
+            <dd class="glossary-desc">${esc(item.description)}</dd>
+          </div>`).join('')}
+        </dl>
+        <p class="glossary-empty" hidden>찾는 말이 없어요. 다른 말로 찾아보세요.</p>` : '<section class="card"><p class="empty"><strong>아직 준비 중이에요</strong></p></section>'}`;
+  const input = app.querySelector('#glossary-q');
+  input?.addEventListener('input', () => {
+    let shown = 0;
+    for (const el of app.querySelectorAll('[data-term-item]')) {
+      const item = data.glossary.find((x) => x.term === el.dataset.termItem);
+      const ok = glossaryMatches(item, input.value);
+      el.hidden = !ok;
+      if (ok) shown += 1;
+    }
+    app.querySelector('.glossary-empty').hidden = shown > 0;
+  });
   if (focus) document.getElementById(`term-${focus}`)?.scrollIntoView({ block: 'center' });
 }
 
@@ -230,7 +261,7 @@ function renderChanges() {
       </div>
       ${data.changelog.length ? `
         <section class="card">
-          <ul class="change-list">${data.changelog.map((entry) => `<li><span class="change-date-only">${esc(formatDate(entry.date))}</span> ${W} 정보 업데이트</li>`).join('')}</ul>
+          <ul class="change-list">${updateDates(data.changelog).map((date) => `<li><span class="change-date-only">${esc(formatDate(date))}</span> ${W} 정보 업데이트</li>`).join('')}</ul>
         </section>` : `<section class="card"><p class="empty"><strong>아직 업데이트 기록이 없어요</strong>${W} 정보를 업데이트하면 날짜가 여기에 남아요.</p></section>`}
     </div>`;
 }
