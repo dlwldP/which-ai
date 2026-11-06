@@ -131,8 +131,8 @@
     "korean": 3,
     "privacy": {
       "trains_on_input_default": "unknown",
-      "opt_out": "yes",
-      "note": "녹음과 받아쓴 기록을 네이버 음성인식 품질 개선에 쓸지 고를 수 있어요. 쓰지 않기로 하면 혜택이 줄 수 있어요."
+      "opt_out": "unknown",
+      "note": ""
     },
     "platforms": [
       "web",
@@ -153,8 +153,7 @@
     ],
     "sources": [
       "https://clovanote.naver.com/",
-      "https://clovanote.naver.com/plan-guide",
-      "https://clovanote.naver.com/terms/conditions"
+      "https://clovanote.naver.com/plan-guide"
     ],
     "official_domains": [
       "naver.com"
@@ -180,21 +179,6 @@
         "field": "price.free_limit",
         "source": "https://clovanote.naver.com/",
         "quote": "기본 제공 시간은 변경될 수 있으며, 남은 사용 시간은 이월되지 않고 갱신일에 자동 소멸됩니다."
-      },
-      {
-        "field": "privacy.opt_out",
-        "source": "https://clovanote.naver.com/terms/conditions",
-        "quote": "“이용자”는 입력한 데이터가 “서비스 개선 목적으로 이용” 되도록 할 것인지 여부를 선택할 수 있습니다."
-      },
-      {
-        "field": "privacy.note",
-        "source": "https://clovanote.naver.com/terms/conditions",
-        "quote": "“회사”의 음성인식 관련 서비스의 품질 개선 및 성능 향상 등의 목적으로 활용할 수 있습니다"
-      },
-      {
-        "field": "privacy.note",
-        "source": "https://clovanote.naver.com/terms/conditions",
-        "quote": "“이용자”가 입력한 데이터의 서비스 개선 목적 이용에 동의하지 않는 경우, “서비스” 이용을 위한 혜택 등이 제공되지 않을 수 있으며"
       },
       {
         "field": "platforms",
@@ -239,11 +223,11 @@
     ],
     "review_notes": [
       "2026-11-06 다시 읽음: 공식 사이트(첫 화면 자주 묻는 질문, 이용요금 plan-guide, 클로바노트 이용약관)를 브라우저로 열어 화면 글자를 읽었어요. 네이버 고객센터(help.naver.com)는 이 환경에서 접속이 막혀 읽지 못했어요.",
-      "유료 가격(paid_from_usd)은 null이에요. 개인용 이용요금에는 '무료 0원'만 있고, 유료 요금제(Lite 18,000원부터, 기업당 월 비용, 세금 별도)는 기업용 네이버웍스 클로바노트예요. 원화라서 달러로 바꾸지 않았어요. 기업용 가격을 적을지 J가 정해 주세요.",
-      "학습 정책: 이용약관 제8조에 녹음·메모·받아쓴 기록 등을 '음성인식 관련 서비스의 품질 개선 및 성능 향상' 목적으로 활용할 수 있고, 이용자가 그 활용 여부를 선택할 수 있다고 되어 있어요. 그래서 학습 끄기(opt_out)는 yes로 적었어요. 처음 값(켜짐/꺼짐)은 문장이 없어서 unknown이에요. '서비스 개선 목적 이용'을 학습으로 봐도 되는지 J가 확인해 주세요.",
+      "유료 가격(paid_from_usd)은 null이에요. 개인용 이용요금에는 '무료 0원'만 있고, 유료 요금제(Lite 18,000원부터, 기업당 월 비용, 세금 별도)는 기업용 네이버웍스 클로바노트예요. 원화라서 달러로 바꾸지 않았어요. J 결정(2026-11-06): 비워 둬요.",
       "기능: 받아쓰기·파일 올리기·요약은 첫 화면 자주 묻는 질문 문장으로 확인했어요. 말한 사람 자동 구분(화자 자동 식별)은 이용요금 표에서 무료·Lite·Team은 미제공, Business 이상만 제공이라 넣지 않았어요.",
       "블로그에 있던 '데이터 활용 동의 시 600분'은 공식 이용요금 화면에 없어서 적지 않았어요. 약관에는 동의하지 않으면 '혜택 등이 제공되지 않을 수 있다'는 문장만 있어요.",
-      "사용 기기: 웹(PC 웹 녹음)과 앱스토어·구글플레이 앱. 윈도우·맥 전용 프로그램 문장은 못 찾았어요."
+      "사용 기기: 웹(PC 웹 녹음)과 앱스토어·구글플레이 앱. 윈도우·맥 전용 프로그램 문장은 못 찾았어요.",
+      "학습 정책: J 결정(2026-11-06)으로 이용약관 제8조의 '서비스 개선 목적 이용'은 학습으로 보지 않아요. 학습 문장이 따로 없어서 처음 값·끄기 모두 unknown이에요. 그래서 '보안 중요' 조건에서는 추천되지 않아요."
     ]
   },
   {
