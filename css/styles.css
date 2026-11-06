@@ -825,24 +825,11 @@ h1, h2, h3 {
   box-shadow: var(--shadow-md);
 }
 
-@media (min-width: 900px) {
-  .cards {
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(0, 360px);
-    grid-template-rows: repeat(5, auto);
-    justify-content: center;
-    column-gap: 20px;
-    row-gap: 0;
-    align-items: start;
-  }
-  .cards:has(> .tool-card:only-child) { grid-auto-columns: minmax(0, 460px); }
-  .tool-card {
-    grid-row: span 5;
-    grid-template-rows: subgrid;
-  }
-}
+/* 카드 목록: 휴대폰 1칸, 640px 이상 2칸, 1000px 이상 3칸 (2026-11-06 개편) */
+@media (min-width: 640px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
-.tool-head { padding-bottom: 14px; }
+.tool-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .tool-title {
   display: flex;
   align-items: center;
@@ -1365,3 +1352,59 @@ body.has-sticky-cta { padding-bottom: 84px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
+
+/* ---- 2026-11-06 개편: 간단한 카드 목록 ---- */
+.card.intro.intro-simple {
+  display: block;
+  padding: 28px 24px;
+  background: var(--surface);
+}
+.intro-simple h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); line-height: 1.25; margin: 6px 0 10px; letter-spacing: -0.02em; }
+.intro-simple .sub { color: var(--sub); margin: 0 0 18px; max-width: 46em; }
+.search { display: flex; gap: 8px; max-width: 560px; }
+.search input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  padding: 10px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+}
+.page-head .search { margin-top: 12px; }
+.tile-count { margin-top: 6px; font-size: 0.8rem; font-weight: 700; color: var(--accent); }
+.count { font-size: 0.6em; font-weight: 700; color: var(--muted); vertical-align: middle; }
+.tool-card { padding: 18px 18px 14px; align-content: start; gap: 8px; }
+.tool-name { font-size: 1.15rem; }
+.tool-name .ext { font-size: 0.8em; color: var(--muted); }
+.tool-one-liner { margin: 0; }
+.tool-card .badges { margin: 2px 0 0; }
+.tool-purposes { display: flex; flex-wrap: wrap; gap: 4px 10px; margin: 0; font-size: 0.8rem; }
+.tool-purposes a { color: var(--muted); }
+.tool-purposes a:hover { color: var(--accent); }
+.tool-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  margin: 4px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+}
+.tool-link { font-weight: 700; }
+.tool-date { color: var(--muted); margin-left: auto; }
+.result-section { margin-top: 24px; }
+.order-note { margin: 20px 0 8px; }
+.tool-foot .report-btn {
+  min-height: 0;
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: underline;
+}
+.tool-foot .report-btn:hover { color: var(--accent); }

@@ -1,13 +1,16 @@
-// data/*.json 검사 (기획서 8장, 12장 스키마 / docs/decisions.md).
+// data/*.json 검사 (2026-11-06 개편: 간단한 카드 모양).
+// 툴 하나 = 이름, 한 줄 설명, 용도, 가격(무료/유료 요금제 여부), 쓰는 방법, 공식 주소.
+// 보안 규칙: 공식 주소·출처는 그 툴의 공식 도메인(official_domains)이어야 한다.
+// 저장소·모델 주소(repo_url)와 출처는 github.com / gitlab.com / huggingface.co 도 허용한다.
 // 사용법: node scripts/validate-data.js [YYYY-MM-DD]   (날짜를 생략하면 오늘)
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { isValidDate, daysSince } from '../js/recommend.js';
+import { USES } from '../js/format.js';
 
-export const PLATFORMS = ['web', 'ios', 'android', 'windows', 'mac'];
-export const BILLING = ['monthly', 'yearly', 'unknown'];
-export const POLICY = ['yes', 'no', 'unknown'];
-export const LOGINS = ['google', 'apple', 'microsoft', 'kakao', 'naver', 'email', 'phone', 'none'];
+export const REPO_HOSTS = ['github.com', 'gitlab.com', 'huggingface.co'];
+export const KINDS = ['service', 'open_source', 'model'];
+export const AI_NATIVE = ['yes', 'no'];
 
 /** 확인 날짜가 오늘보다 하루까지 앞서는 건 허용 (한국 시간 ↔ UTC) */
 export const FUTURE_GRACE_DAYS = 1;
@@ -36,6 +39,9 @@ export function isOfficialHost(host, domains) {
   return Boolean(host) && domains.some((d) => host === d || host.endsWith(`.${d}`));
 }
 
+const DOMAIN = /^[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/;
+const triState = (v) => v === true || v === false || v === null;
+
 /** idPattern: 비개발자용은 "P01", 개발자용은 "app_builders" 같은 카테고리 ID */
 export function validatePurposes(purposes, idPattern = /^P\d{2}$/) {
   const errors = [];
@@ -47,102 +53,63 @@ export function validatePurposes(purposes, idPattern = /^P\d{2}$/) {
     if (typeof p.id !== 'string' || !idPattern.test(p.id)) errors.push(`${at}.id: 형식이 틀렸습니다 (${idPattern})`);
     else if (seen.has(p.id)) errors.push(`${at}.id: 중복된 id "${p.id}"`);
     seen.add(p.id);
-    if (!isText(p.icon)) errors.push(`${at}.icon: 비어 있습니다`);
-    if (!isText(p.label)) errors.push(`${at}.label: 비어 있습니다`);
-    if (!isText(p.examples)) errors.push(`${at}.examples: 비어 있습니다`);
-    // 기능 체크리스트: 목적마다 4개. 툴은 이 중 지원하는 기능을 근거와 함께 적는다 (docs/decisions.md)
-    if (!Array.isArray(p.features) || p.features.length !== FEATURES_PER_PURPOSE) {
-      errors.push(`${at}.features: 기능 체크리스트가 정확히 ${FEATURES_PER_PURPOSE}개여야 합니다`);
-    } else {
-      const ids = new Set();
-      p.features.forEach((f, j) => {
-        if (!isObject(f) || typeof f.id !== 'string' || !/^[a-z][a-z0-9_]*$/.test(f.id)) errors.push(`${at}.features[${j}].id: 영문 소문자·숫자·밑줄만 씁니다`);
-        else if (ids.has(f.id)) errors.push(`${at}.features[${j}].id: 중복된 id "${f.id}"`);
-        else ids.add(f.id);
-        if (!isText(f?.label) || !isText(f?.short)) errors.push(`${at}.features[${j}]: label과 short가 있어야 합니다`);
-      });
-    }
+    for (const f of ['icon', 'label', 'examples']) if (!isText(p[f])) errors.push(`${at}.${f}: 비어 있습니다`);
   });
   return errors;
 }
 
-export const FEATURES_PER_PURPOSE = 4;
-
-/** 목적 ID → 그 목적의 기능 ID 집합. validateTool·validateDevTool에 넘긴다 (Map이라 .has(목적 ID)도 된다). */
-export function featureMap(purposes) {
-  return new Map((Array.isArray(purposes) ? purposes : [])
-    .filter(isObject)
-    .map((p) => [p.id, new Set(Array.isArray(p.features) ? p.features.map((f) => f?.id) : [])]));
-}
-
-/** 툴이 그 목적의 기능을 하나 이상 지원하는지 (= 그 목적의 추천 후보인지) */
-export const supportsPurpose = (tool, pid) => Array.isArray(tool?.features?.[pid]) && tool.features[pid].length > 0;
-
-/** tool.features 검사: { "P02": ["upload", "transcribe"] }. 지원하는 기능이 없는 목적은 적지 않는다. */
-export function validateFeatures(tool, err, features, file) {
-  if (!isObject(tool.features)) return err('features', '객체여야 합니다 (예: { "P02": ["transcribe"] })');
-  const entries = Object.entries(tool.features);
-  if (entries.length === 0) err('features', '지원하는 기능이 있는 목적이 하나는 있어야 합니다');
-  for (const [pid, ids] of entries) {
-    if (!features.has(pid)) { err(`features.${pid}`, `${file}에 없는 목적입니다`); continue; }
-    if (!Array.isArray(ids) || ids.length === 0) { err(`features.${pid}`, '기능 ID 배열이어야 합니다 (지원 기능이 없으면 목적을 빼요)'); continue; }
-    if (new Set(ids).size !== ids.length) err(`features.${pid}`, '중복된 기능이 있습니다');
-    for (const id of ids) if (!features.get(pid).has(id)) err(`features.${pid}`, `"${id}"는 이 목적의 체크리스트에 없는 기능입니다`);
-  }
-}
-
-export function validateTool(tool, at, features, today) {
+/**
+ * 툴 하나 검사. 개발자용(dev)은 kind(묶음)와 ai_native(AI 툴인지)가 더 있다.
+ * @param {Set<string>} purposeIds
+ */
+export function validateTool(tool, at, purposeIds, today, { dev = false } = {}) {
   const errors = [];
   const err = (field, msg) => errors.push(`${at}.${field}: ${msg}`);
   if (!isObject(tool)) return [`${at}: 객체여야 합니다`];
 
   if (typeof tool.id !== 'string' || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(tool.id)) err('id', '영문 소문자·숫자·하이픈만 씁니다');
   for (const field of ['name', 'one_liner']) if (!isText(tool[field])) err(field, '비어 있습니다');
-  if (!isHttpsUrl(tool.url)) err('url', 'https 주소여야 합니다');
 
-  validateFeatures(tool, err, features, 'purposes.json');
+  const domains = tool.official_domains;
+  const domainsOk = Array.isArray(domains) && domains.length > 0 && domains.every((d) => typeof d === 'string' && DOMAIN.test(d));
+  if (!domainsOk) err('official_domains', '공식 도메인 목록이 있어야 합니다 (예: ["naver.com"])');
+  const official = (url) => domainsOk && isHttpsUrl(url) && isOfficialHost(hostOf(url), domains);
+  const repoOk = (url) => isHttpsUrl(url) && (official(url) || REPO_HOSTS.includes(hostOf(url)));
 
-  if (!isObject(tool.price)) err('price', '객체여야 합니다');
+  if (!official(tool.url) && !(tool.kind !== 'service' && tool.kind !== undefined && repoOk(tool.url))) {
+    err('url', 'https 공식 도메인 주소여야 합니다 (오픈소스·모델은 저장소 주소도 돼요)');
+  }
+
+  if (!Array.isArray(tool.purposes) || tool.purposes.length === 0) err('purposes', '용도가 하나 이상 있어야 합니다');
   else {
-    if (typeof tool.price.free !== 'boolean') err('price.free', 'true 또는 false여야 합니다');
-    if (!isText(tool.price.free_limit)) err('price.free_limit', '비어 있습니다 (모르면 "확인 필요")');
-    const paid = tool.price.paid_from_usd;
-    if (paid !== null && !(typeof paid === 'number' && Number.isFinite(paid) && paid > 0)) {
-      err('price.paid_from_usd', '양수 또는 null이어야 합니다');
-    }
-    if (!BILLING.includes(tool.price.billing)) err('price.billing', `${BILLING.join(' / ')} 중 하나여야 합니다`);
+    const bad = tool.purposes.filter((p) => !purposeIds.has(p));
+    if (bad.length) err('purposes', `purposes.json에 없는 용도: ${bad.join(', ')}`);
+    if (new Set(tool.purposes).size !== tool.purposes.length) err('purposes', '중복 값이 있습니다');
   }
 
-  if (![1, 2, 3].includes(tool.korean)) err('korean', '1, 2, 3 중 하나여야 합니다');
-
-  if (!isObject(tool.privacy)) err('privacy', '객체여야 합니다');
+  if (!isObject(tool.price)) err('price', '{ free, paid } 객체여야 합니다');
   else {
-    for (const field of ['trains_on_input_default', 'opt_out']) {
-      if (!POLICY.includes(tool.privacy[field])) err(`privacy.${field}`, `${POLICY.join(' / ')} 중 하나여야 합니다`);
-    }
-    if (typeof tool.privacy.note !== 'string') err('privacy.note', '문자열이어야 합니다');
+    if (!triState(tool.price.free)) err('price.free', 'true / false / null(확인 필요) 중 하나여야 합니다');
+    if (!triState(tool.price.paid)) err('price.paid', 'true / false / null(확인 필요) 중 하나여야 합니다');
+    if (tool.price.free === false && tool.price.paid === false) err('price', '무료도 유료도 아닐 수는 없습니다');
   }
 
-  if (!Array.isArray(tool.platforms) || tool.platforms.length === 0) err('platforms', '하나 이상 있어야 합니다');
+  if (!Array.isArray(tool.use) || tool.use.length === 0) err('use', '쓰는 방법이 하나 이상 있어야 합니다');
   else {
-    if (tool.platforms.some((p) => !PLATFORMS.includes(p))) err('platforms', `${PLATFORMS.join(' / ')} 중에서만 씁니다`);
-    if (new Set(tool.platforms).size !== tool.platforms.length) err('platforms', '중복 값이 있습니다');
+    if (tool.use.some((u) => !USES.includes(u))) err('use', `${USES.join(' / ')} 중에서만 씁니다`);
+    if (new Set(tool.use).size !== tool.use.length) err('use', '중복 값이 있습니다');
   }
 
-  if (!Array.isArray(tool.login) || tool.login.length === 0) err('login', '하나 이상 있어야 합니다');
-  else {
-    if (tool.login.some((v) => !LOGINS.includes(v))) err('login', `${LOGINS.join(' / ')} 중에서만 씁니다`);
-    if (new Set(tool.login).size !== tool.login.length) err('login', '중복 값이 있습니다');
-    if (tool.login.includes('none') && tool.login.length > 1) err('login', '"none"(가입 없이 사용)은 다른 값과 같이 쓰지 않습니다');
-  }
+  if (tool.repo_url !== undefined && !repoOk(tool.repo_url)) err('repo_url', `공식 도메인 또는 ${REPO_HOSTS.join(', ')} 주소여야 합니다`);
 
-  if (!Array.isArray(tool.start_steps) || tool.start_steps.length !== 3 || !tool.start_steps.every(isText)) {
-    err('start_steps', '비어 있지 않은 문장 정확히 3개여야 합니다');
-  }
-  if (!Array.isArray(tool.cautions) || !tool.cautions.every(isText)) err('cautions', '문장 배열이어야 합니다');
+  if (dev) {
+    if (!KINDS.includes(tool.kind)) err('kind', `${KINDS.join(' / ')} 중 하나여야 합니다`);
+    else if (tool.kind !== 'service' && !tool.repo_url) err('repo_url', '오픈소스·공개 모델은 저장소(또는 모델) 주소가 필요합니다');
+    if (!AI_NATIVE.includes(tool.ai_native)) err('ai_native', `${AI_NATIVE.join(' / ')} 중 하나여야 합니다 (AI 툴이 아니면 no)`);
+  } else if (tool.kind !== undefined && !KINDS.includes(tool.kind)) err('kind', `${KINDS.join(' / ')} 중 하나여야 합니다`);
 
   if (!Array.isArray(tool.sources) || tool.sources.length === 0) err('sources', '출처가 하나 이상 있어야 합니다');
-  else if (!tool.sources.every(isHttpsUrl)) err('sources', '모두 https 주소여야 합니다');
+  else if (!tool.sources.every(repoOk)) err('sources', `모두 https 공식 도메인(또는 ${REPO_HOSTS.join(', ')}) 주소여야 합니다`);
 
   if (!isValidDate(tool.last_verified)) err('last_verified', 'YYYY-MM-DD 형식의 실제 날짜여야 합니다');
   // 한국 시간과 UTC(GitHub·서버) 차이로 하루 앞선 날짜는 허용한다
@@ -151,20 +118,18 @@ export function validateTool(tool, at, features, today) {
   return errors;
 }
 
-export function validateTools(tools, purposes, today) {
-  if (!Array.isArray(tools)) return ['tools.json: 배열이어야 합니다'];
-  const features = featureMap(purposes);
+export function validateTools(tools, purposes, today, options = {}) {
+  const file = options.dev ? 'dev/tools.json' : 'tools.json';
+  if (!Array.isArray(tools)) return [`${file}: 배열이어야 합니다`];
+  const purposeIds = new Set(Array.isArray(purposes) ? purposes.map((p) => p?.id) : []);
   const errors = [];
-
   const seen = new Set();
   tools.forEach((tool, i) => {
-    const at = `tools[${i}]${tool && typeof tool.id === 'string' ? `(${tool.id})` : ''}`;
-    errors.push(...validateTool(tool, at, features, today));
+    const at = `${options.dev ? 'dev/' : ''}tools[${i}]${tool && typeof tool.id === 'string' ? `(${tool.id})` : ''}`;
+    errors.push(...validateTool(tool, at, purposeIds, today, options));
     if (tool && seen.has(tool.id)) errors.push(`${at}.id: 중복된 id "${tool.id}"`);
     if (tool) seen.add(tool.id);
   });
-
-  // 툴 수 상한은 두지 않는다 (2026-10-22, 화면은 상위 3개 + "다른 후보 더 보기")
   return errors;
 }
 
@@ -203,7 +168,7 @@ export function validateChangelog(changelog) {
   return errors;
 }
 
-export function validateData({ tools, purposes, glossary, changelog, today }) {
+export function validateData({ tools, purposes, glossary, changelog = [], today }) {
   return [
     ...validatePurposes(purposes),
     ...validateTools(tools, purposes, today),
@@ -237,5 +202,5 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     for (const e of errors) console.error(`- ${e}`);
     process.exit(1);
   }
-  console.log(`데이터 검사 통과: 툴 ${data.tools.length}개, 목적 ${data.purposes.length}개 (기준일 ${today})`);
+  console.log(`데이터 검사 통과: 툴 ${data.tools.length}개, 용도 ${data.purposes.length}개 (기준일 ${today})`);
 }

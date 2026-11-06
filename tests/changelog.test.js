@@ -14,15 +14,13 @@ test('추가·삭제', () => {
 
 test('바뀐 필드만 경로로 나옴', () => {
   const next = structuredClone(alpha);
-  next.price.paid_from_usd = 12;
-  next.features.P04 = ['from_topic'];
-  next.platforms = ['web'];
+  next.price.paid = true;
+  next.use = ['web'];
   next.last_verified = '2026-10-19';
   assert.deepEqual(diffTools([alpha], [next]), [
-    { type: 'changed', tool_id: 'alpha', name: alpha.name, field: 'features.P04', before: null, after: ['from_topic'] },
     { type: 'changed', tool_id: 'alpha', name: alpha.name, field: 'last_verified', before: '2026-10-01', after: '2026-10-19' },
-    { type: 'changed', tool_id: 'alpha', name: alpha.name, field: 'platforms', before: ['web', 'ios', 'android'], after: ['web'] },
-    { type: 'changed', tool_id: 'alpha', name: alpha.name, field: 'price.paid_from_usd', before: null, after: 12 },
+    { type: 'changed', tool_id: 'alpha', name: alpha.name, field: 'price.paid', before: null, after: true },
+    { type: 'changed', tool_id: 'alpha', name: alpha.name, field: 'use', before: ['web', 'app'], after: ['web'] },
   ]);
 });
 
@@ -32,12 +30,12 @@ test('같으면 변경 없음', () => {
 
 test('이력: 최신 커밋부터, 바뀐 게 없는 커밋은 빠짐', () => {
   const v2 = structuredClone(alpha);
-  v2.korean = 2;
+  v2.one_liner = '바뀐 설명';
   const log = buildChangelog([
     { commit: 'aaa', date: '2026-10-01', before: [], after: [alpha] },
     { commit: 'bbb', date: '2026-10-05', before: [alpha], after: [structuredClone(alpha)] },
     { commit: 'ccc', date: '2026-10-09', before: [alpha], after: [v2] },
   ]);
   assert.deepEqual(log.map((e) => e.commit), ['ccc', 'aaa']);
-  assert.equal(log[0].changes[0].field, 'korean');
+  assert.equal(log[0].changes[0].field, 'one_liner');
 });

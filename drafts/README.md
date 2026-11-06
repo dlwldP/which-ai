@@ -1,71 +1,47 @@
 # 툴 정보 초안
 
-Claude가 공식 페이지를 읽고 만든 **확인 전** 툴 정보예요. 이 폴더는 사이트에 배포되지 않아요.
-근거 대조를 통과한 툴만 실제 데이터로 옮겨요. 2026-11-06부터는 Claude가 아래 "Claude가 확정하는 조건"을 모두 지킬 때 직접 확정(promote)하고, PR 병합·배포까지 해요. J가 따로 git pull할 필요가 없어요.
+Claude가 공식 페이지를 읽고 만든 **확정 전** 툴 정보예요. 이 폴더는 사이트에 배포되지 않아요.
 
-| 초안 파일 | 옮겨 가는 곳 | 확정 명령 |
-| --- | --- | --- |
-| `tools.draft.json` (비개발자용) | `data/tools.json` | `node scripts/draft.js promote <id> --verified 날짜` |
-| `dev-tools.draft.json` (개발자용) | `data/dev/tools.json` | `node scripts/draft.js promote <id> --verified 날짜 --dev` |
+| 초안 파일 | 옮겨 가는 곳 |
+| --- | --- |
+| `tools.draft.json` (비개발자용) | `data/tools.json` |
+| `dev-tools.draft.json` (개발자용) | `data/dev/tools.json` |
 
-## 초안 한 개의 모양
+## 초안 한 개의 모양 (2026-11-06 개편)
 
-`data/tools.json`과 같고, 아래 네 가지가 더 있어요. 확인 날짜(`last_verified`)는 없어요.
+`data/tools.json`과 같은 모양(기획서 8장)에 세 가지가 더 있어요. 확인 날짜(`last_verified`)는 없어요.
 
 | 필드 | 뜻 |
 | --- | --- |
-| `official_domains` | 공식 도메인 목록 (예: `["naver.com"]`). `url`과 `sources`는 모두 이 도메인이어야 해요 |
-| `evidence` | 값마다 근거: `{ "field": "price.free", "source": "공식 페이지 주소", "quote": "페이지에 있는 문장 그대로" }` |
-| `review_notes` | Claude가 남기는 메모 (헷갈린 점, 제안값이라 J가 정해야 하는 것) |
-| `todo` | 공식 페이지에서 근거를 못 찾아 **J가 채워야 하는 칸** (예: 가격 페이지가 글자로 안 읽힐 때). 값과 근거를 채우고 목록에서 지워야 promote할 수 있어요 |
+| `evidence` | 가격 근거 하나: `{ "field": "price", "source": "공식 페이지 주소", "quote": "페이지에 있는 문장 그대로" }`. 가격이 `null`(확인 필요)이면 없어도 돼요 |
+| `review_notes` | Claude 메모 (선택) |
+| `todo` | 나중에 채울 칸. 지금은 `["price"]`만 써요. 비어 있어야 확정돼요 |
 
-## J가 확인하는 순서
+## 한 번에 확정하기 (2026-11-06 J 결정)
 
-**검토 체크리스트: [REVIEW.md](REVIEW.md)** — 툴마다 근거 문장과 "페이지에서 보기" 링크(크롬·엣지에서 그 문장이 강조돼요), 비어 있는 칸, 제안값, 확정 명령을 모아 둔 파일이에요. 초안이 바뀌면 `node scripts/review-checklist.js`로 다시 만들어요.
+공식 페이지를 읽고 → 초안을 쓰고 → 근거 문장을 저장한 공식 페이지 글자와 스크립트로 대조하고 → 검사가 통과하면 같은 PR에서 바로 확정해요. J가 따로 git pull할 필요가 없어요.
 
-1. **공식 도메인이 맞는지:** `official_domains`, `url`, `sources`가 진짜 회사 도메인인지 봐요. 철자가 살짝 다른 가짜 주소를 조심하세요.
-2. **근거 문장 대조:** `evidence`의 `source`를 열어 `quote` 문장이 실제로 있는지, 값과 맞는지 확인해요. 특히 학습 정책(`privacy.*`)은 꼭 봐요.
-3. **사람이 정하는 값:** 한국어 점수(`korean`), 한 줄 설명, 시작 3단계, 주의할 점은 Claude의 제안이에요. 직접 고쳐도 돼요.
-   **지원 기능(`features`)**은 판단이 아니라 사실이라 근거 문장을 대조해요 (`evidence`의 `features.P02.transcribe` 같은 항목). 근거가 없는 기능은 넣지 않아요.
-4. **확정:**
+```sh
+node scripts/draft.js check                                     # 초안 검사
+node scripts/draft.js promote-all --verified 2026-11-06         # todo가 빈 비개발자용 초안 모두 확정
+node scripts/draft.js promote-all --verified 2026-11-06 --dev   # 개발자용
+node scripts/review-checklist.js                                # 남은 초안 목록(REVIEW.md) 다시 만들기
+node --test && node scripts/validate-data.js && node scripts/validate-dev-data.js
+```
 
-   ```sh
-   node scripts/draft.js check                                  # 초안 검사
-   node scripts/draft.js promote <툴 id> --verified 2026-10-20   # 확인한 날짜로 tools.json에 옮기기
-   node --test && node scripts/validate-data.js
-   ```
+확정 조건:
 
-   `promote`는 초안 전용 필드를 지우고, 확인 날짜를 붙이고, 초안에서 그 툴을 빼요. 그 뒤 커밋하면 배포돼요.
-
-## Claude가 확정하는 조건 (2026-11-06 J 결정)
-
-1. `todo`가 비어 있어요. 하나라도 남으면 초안에 그대로 두고 REVIEW.md에 남겨요.
-2. 모든 `evidence` 문장을, Claude가 그날 공식 페이지에서 저장한 글자와 스크립트로 대조해 그대로 있는 것을 확인했어요 (공백·줄바꿈 차이만 허용).
-3. `node scripts/draft.js check`, `node --test`, `node scripts/validate-data.js`, `node scripts/validate-dev-data.js`가 모두 통과해요.
+1. `todo`가 비어 있어요.
+2. 가격 근거 문장을, 그날 공식 페이지에서 저장한 글자와 대조해 그대로 있는 것을 확인했어요 (공백·줄바꿈 차이만 허용).
+3. 초안 검사, 테스트, 데이터 검사가 모두 통과해요.
 4. 확인 날짜(`--verified`)는 페이지를 읽은 날짜예요.
-5. PR로 올려서 병합하고 배포가 끝났는지 확인한 뒤, 무엇을 확정했고 무엇이 `todo`로 남았는지 J에게 알려요.
 
-초안 작성과 확정은 한 번에 해요 (2026-11-06 J 결정): 공식 페이지를 읽고 → 초안을 쓰고 → 대조·검사가 통과하면 같은 PR에서 바로 promote해요. 조건을 못 채운 툴만 초안에 남아요.
-
-한국어 점수·한 줄 설명·시작 3단계·주의할 점은 여전히 Claude의 제안값이라, J가 사이트에서 보고 고쳐 달라고 하면 고쳐요.
-
-## 값 기준
-
-- 유료 가격(`price.paid_from_usd`)은 가장 싼 유료 요금제의 **월 결제** 가격이에요 (`billing: "monthly"`). 연 결제 가격만 보이면 칸을 비워 두고 J가 채워요.
+한 줄 설명·용도·쓰는 방법은 Claude가 공식 페이지를 보고 정해요. J가 사이트에서 보고 고쳐 달라고 하면 고쳐요.
 
 ## 초안 검사가 막는 것
 
-- 출처가 공식 도메인이 아닌 경우 (블로그, 리뷰 사이트, 비슷한 가짜 도메인)
-- 가격·무료 여부·학습 정책·사용 기기·가입 방법에 근거 문장이 없는 경우 (모르면 `unknown` / `확인 필요` / `null`)
+- 출처나 근거가 공식 도메인이 아닌 경우 (블로그, 리뷰 사이트, 비슷한 가짜 도메인). 저장소·모델 주소만 `github.com`, `gitlab.com`, `huggingface.co`도 돼요
+- 가격 값(`true`/`false`)이 있는데 근거 문장이 없는 경우 (모르면 `null`)
 - 근거 출처가 `sources`에 없는 경우
 - 초안에 확인 날짜가 들어간 경우
 - 그 밖에 `data/tools.json` 규칙 위반
-
-## 개발자용 초안이 다른 점
-
-- 모양은 `data/dev/tools.json`과 같아요 (`docs/개발자용_기획서.md` 5장). `official_domains`는 확정 후에도 남아요.
-- 근거 문장이 필요한 값: 무료 여부, 무료 한도, 유료 가격, 학습 정책, **오픈소스 여부**, **쓰는 형태**
-- `todo`로 둘 수 있는 칸: 가격·학습 정책 칸, `open_source`, `repo_url`, `forms`
-- `open_source`: 공식 저장소가 없는 회사 제품은 `false`로 두고 근거 문장이 필요 없어요. 오픈소스(`true`)라고 적을 때만 공식 저장소 주소(`repo_url`)와 근거가 필요해요
-- `learn`(배울 거리), `sources`, `url`은 모두 공식 도메인이어야 해요. 저장소 주소(`repo_url`)만 `github.com`, `gitlab.com`도 돼요.
-- **AI 여부(`ai_native`), 섹션(`section`: `official` 공식 AI 툴 / `open_source` 오픈소스 프로젝트), 대표 목적(`primary`)**은 Claude의 제안이에요. J가 정해요. 지원 기능(`features`)은 근거 대조 대상이에요.
