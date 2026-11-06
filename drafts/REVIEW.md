@@ -8,7 +8,7 @@
 | 툴 | 사이트 | 근거 | J가 채울 칸 |
 | --- | --- | --- | --- |
 | [tl;dv](#general-tldv) | 비개발자용 | 9개 | `price.free_limit` `price.paid_from_usd` `price.billing` `platforms` `login` |
-| [클로바노트](#general-clovanote) | 비개발자용 | 0개 | `price.free` `price.free_limit` `price.paid_from_usd` `price.billing` `privacy.trains_on_input_default` `privacy.opt_out` `platforms` `login` `features` |
+| [클로바노트](#general-clovanote) | 비개발자용 | 15개 | 없음 |
 | [Grok](#general-grok) | 비개발자용 | 22개 | `price.paid_from_usd` `price.billing` |
 | [Claude Code](#dev-claude-code) | 개발자용 | 17개 | `open_source` |
 | [Lovable](#dev-lovable) | 개발자용 | 14개 | `open_source` |
@@ -120,35 +120,54 @@ node scripts/draft.js promote tldv --verified YYYY-MM-DD
 
 - [ ] 공식 주소와 공식 도메인이 진짜 회사 주소예요 (철자가 살짝 다른 가짜 주소가 아님)
 
-**2. 근거 대조** (0개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
+**2. 근거 대조** (15개) — 링크를 열면 그 문장이 강조돼요. 문장이 있고, 값과 뜻이 맞으면 체크
 
-- 근거 없음 (페이지를 읽지 못함)
-
-**3. J가 채울 칸** — 공식 페이지를 직접 보고 값과 근거를 채운 뒤 `todo`에서 지워요
-
-- [ ] `price.free`
-- [ ] `price.free_limit`
-- [ ] `price.paid_from_usd`
-- [ ] `price.billing`
-- [ ] `privacy.trains_on_input_default`
-- [ ] `privacy.opt_out`
-- [ ] `platforms`
-- [ ] `login`
-- [ ] `features`
+- [ ] 무료 사용: 돼요  
+  “클로바노트는 매월 기본 제공되는 시간만큼 무료로 사용할 수 있습니다.” · [페이지에서 보기](https://clovanote.naver.com/#:~:text=%ED%81%B4%EB%A1%9C%EB%B0%94%EB%85%B8%ED%8A%B8%EB%8A%94%20%EB%A7%A4%EC%9B%94%20%EA%B8%B0%EB%B3%B8%20%EC%A0%9C%EA%B3%B5%EB%90%98%EB%8A%94%20%EC%8B%9C%EA%B0%84%EB%A7%8C%ED%81%BC%20%EB%AC%B4%EB%A3%8C%EB%A1%9C%20%EC%82%AC%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.)
+- [ ] 무료 한도: 녹음·파일 변환 월 300분, AI 요약 월 15회 (한 번에 최대 180분, 남은 시간은 다음 달로 안 넘어감)  
+  “월 변환 시간 300분 월 AI 요약 횟수 15회” · [페이지에서 보기](https://clovanote.naver.com/plan-guide#:~:text=%EC%9B%94%20%EB%B3%80%ED%99%98%20%EC%8B%9C%EA%B0%84%20300%EB%B6%84%20%EC%9B%94%20AI%20%EC%9A%94%EC%95%BD%20%ED%9A%9F%EC%88%98%2015%ED%9A%8C)
+- [ ] 무료 한도: 녹음·파일 변환 월 300분, AI 요약 월 15회 (한 번에 최대 180분, 남은 시간은 다음 달로 안 넘어감)  
+  “1회 녹음 및 파일 업로드 시간 무료 180분” · [페이지에서 보기](https://clovanote.naver.com/plan-guide#:~:text=1%ED%9A%8C%20%EB%85%B9%EC%9D%8C%20%EB%B0%8F%20%ED%8C%8C%EC%9D%BC%20%EC%97%85%EB%A1%9C%EB%93%9C%20%EC%8B%9C%EA%B0%84%20%EB%AC%B4%EB%A3%8C%20180%EB%B6%84)
+- [ ] 무료 한도: 녹음·파일 변환 월 300분, AI 요약 월 15회 (한 번에 최대 180분, 남은 시간은 다음 달로 안 넘어감)  
+  “기본 제공 시간은 변경될 수 있으며, 남은 사용 시간은 이월되지 않고 갱신일에 자동 소멸됩니다.” · [페이지에서 보기](https://clovanote.naver.com/#:~:text=%EA%B8%B0%EB%B3%B8%20%EC%A0%9C%EA%B3%B5%20%EC%8B%9C%EA%B0%84%EC%9D%80%20%EB%B3%80%EA%B2%BD%EB%90%A0%20%EC%88%98,%EC%9D%B4%EC%9B%94%EB%90%98%EC%A7%80%20%EC%95%8A%EA%B3%A0%20%EA%B0%B1%EC%8B%A0%EC%9D%BC%EC%97%90%20%EC%9E%90%EB%8F%99%20%EC%86%8C%EB%A9%B8%EB%90%A9%EB%8B%88%EB%8B%A4.)
+- [ ] 학습 끄기 가능: 예  
+  ““이용자”는 입력한 데이터가 “서비스 개선 목적으로 이용” 되도록 할 것인지 여부를 선택할 수 있습니다.” · [페이지에서 보기](https://clovanote.naver.com/terms/conditions#:~:text=%E2%80%9C%EC%9D%B4%EC%9A%A9%EC%9E%90%E2%80%9D%EB%8A%94%20%EC%9E%85%EB%A0%A5%ED%95%9C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80%20%E2%80%9C%EC%84%9C%EB%B9%84%EC%8A%A4%20%EA%B0%9C%EC%84%A0,%EA%B2%83%EC%9D%B8%EC%A7%80%20%EC%97%AC%EB%B6%80%EB%A5%BC%20%EC%84%A0%ED%83%9D%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.)
+- [ ] 학습 메모: 녹음과 받아쓴 기록을 네이버 음성인식 품질 개선에 쓸지 고를 수 있어요. 쓰지 않기로 하면 혜택이 줄 수 있어요.  
+  ““회사”의 음성인식 관련 서비스의 품질 개선 및 성능 향상 등의 목적으로 활용할 수 있습니다” · [페이지에서 보기](https://clovanote.naver.com/terms/conditions#:~:text=%E2%80%9C%ED%9A%8C%EC%82%AC%E2%80%9D%EC%9D%98%20%EC%9D%8C%EC%84%B1%EC%9D%B8%EC%8B%9D%20%EA%B4%80%EB%A0%A8%20%EC%84%9C%EB%B9%84%EC%8A%A4%EC%9D%98%20%ED%92%88%EC%A7%88,%EB%93%B1%EC%9D%98%20%EB%AA%A9%EC%A0%81%EC%9C%BC%EB%A1%9C%20%ED%99%9C%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4)
+- [ ] 학습 메모: 녹음과 받아쓴 기록을 네이버 음성인식 품질 개선에 쓸지 고를 수 있어요. 쓰지 않기로 하면 혜택이 줄 수 있어요.  
+  ““이용자”가 입력한 데이터의 서비스 개선 목적 이용에 동의하지 않는 경우, “서비스” 이용을 위한 혜택 등이 제공되지 않을 수 있으며” · [페이지에서 보기](https://clovanote.naver.com/terms/conditions#:~:text=%E2%80%9C%EC%9D%B4%EC%9A%A9%EC%9E%90%E2%80%9D%EA%B0%80%20%EC%9E%85%EB%A0%A5%ED%95%9C%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%9D%98%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EA%B0%9C%EC%84%A0,%EB%93%B1%EC%9D%B4%20%EC%A0%9C%EA%B3%B5%EB%90%98%EC%A7%80%20%EC%95%8A%EC%9D%84%20%EC%88%98%20%EC%9E%88%EC%9C%BC%EB%A9%B0)
+- [ ] 사용 기기: 웹사이트, 아이폰 앱, 안드로이드 앱  
+  “모바일과 PC 어디서든 편하게 녹음해요” · [페이지에서 보기](https://clovanote.naver.com/#:~:text=%EB%AA%A8%EB%B0%94%EC%9D%BC%EA%B3%BC%20PC%20%EC%96%B4%EB%94%94%EC%84%9C%EB%93%A0%20%ED%8E%B8%ED%95%98%EA%B2%8C%20%EB%85%B9%EC%9D%8C%ED%95%B4%EC%9A%94)
+- [ ] 사용 기기: 웹사이트, 아이폰 앱, 안드로이드 앱  
+  “PC 웹 녹음” · [페이지에서 보기](https://clovanote.naver.com/plan-guide#:~:text=PC%20%EC%9B%B9%20%EB%85%B9%EC%9D%8C)
+- [ ] 사용 기기: 웹사이트, 아이폰 앱, 안드로이드 앱  
+  “App Store Google Play” · [페이지에서 보기](https://clovanote.naver.com/#:~:text=App%20Store%20Google%20Play)
+- [ ] 가입 방법: 네이버 계정  
+  “개인 명의의 네이버 계정으로는 네이버 클로바노트 서비스만 이용할 수 있으며” · [페이지에서 보기](https://clovanote.naver.com/#:~:text=%EA%B0%9C%EC%9D%B8%20%EB%AA%85%EC%9D%98%EC%9D%98%20%EB%84%A4%EC%9D%B4%EB%B2%84%20%EA%B3%84%EC%A0%95%EC%9C%BC%EB%A1%9C%EB%8A%94%20%EB%84%A4%EC%9D%B4%EB%B2%84%20%ED%81%B4%EB%A1%9C%EB%B0%94%EB%85%B8%ED%8A%B8%20%EC%84%9C%EB%B9%84%EC%8A%A4%EB%A7%8C%20%EC%9D%B4%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%9C%BC%EB%A9%B0)
+- [ ] 한국어: 메뉴까지 한국어, 품질 좋음  
+  “인식 언어 설정 무료 한국어, 영어, 일본어, 중국어, 한+영” · [페이지에서 보기](https://clovanote.naver.com/plan-guide#:~:text=%EC%9D%B8%EC%8B%9D%20%EC%96%B8%EC%96%B4%20%EC%84%A4%EC%A0%95%20%EB%AC%B4%EB%A3%8C%20%ED%95%9C%EA%B5%AD%EC%96%B4%2C%20%EC%98%81%EC%96%B4%2C%20%EC%9D%BC%EB%B3%B8%EC%96%B4%2C%20%EC%A4%91%EA%B5%AD%EC%96%B4%2C%20%ED%95%9C%2B%EC%98%81)
+- [ ] ✓ 회의·강의 녹음 정리 — 받아쓰기  
+  “녹음한 내용이 텍스트로 변환되고” · [페이지에서 보기](https://clovanote.naver.com/#:~:text=%EB%85%B9%EC%9D%8C%ED%95%9C%20%EB%82%B4%EC%9A%A9%EC%9D%B4%20%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%A1%9C%20%EB%B3%80%ED%99%98%EB%90%98%EA%B3%A0)
+- [ ] ✓ 회의·강의 녹음 정리 — 녹음 파일 올리기  
+  “저장된 음성 파일을 업로드해서 노트를 생성할 수 있습니다.” · [페이지에서 보기](https://clovanote.naver.com/#:~:text=%EC%A0%80%EC%9E%A5%EB%90%9C%20%EC%9D%8C%EC%84%B1%20%ED%8C%8C%EC%9D%BC%EC%9D%84%20%EC%97%85%EB%A1%9C%EB%93%9C%ED%95%B4%EC%84%9C%20%EB%85%B8%ED%8A%B8%EB%A5%BC%20%EC%83%9D%EC%84%B1%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.)
+- [ ] ✓ 회의·강의 녹음 정리 — 요약  
+  “AI 기술이 핵심 내용만 요약해 주기 때문에” · [페이지에서 보기](https://clovanote.naver.com/#:~:text=AI%20%EA%B8%B0%EC%88%A0%EC%9D%B4%20%ED%95%B5%EC%8B%AC%20%EB%82%B4%EC%9A%A9%EB%A7%8C%20%EC%9A%94%EC%95%BD%ED%95%B4%20%EC%A3%BC%EA%B8%B0%20%EB%95%8C%EB%AC%B8%EC%97%90)
 
 **4. J가 정하는 값** — Claude의 제안이에요. 그대로 두거나 초안에서 고쳐요
 
 - [ ] 한국어 점수: 메뉴까지 한국어, 품질 좋음 (3점)
 - [ ] 한 줄 설명: 회의·강의 녹음을 글로 받아 적고 요약해주는 네이버 서비스예요
 - [ ] 시작 3단계: 1) 클로바노트 사이트나 앱에서 로그인하기 2) 바로 녹음하거나 녹음 파일 올리기 3) 글로 바뀐 내용과 요약을 확인하고 공유하기
-- [ ] 주의할 점: 없음
+- [ ] 주의할 점: 개인용은 무료 요금제만 있어요. 유료 요금제는 기업용(네이버웍스 클로바노트)이에요 / 말한 사람 자동 구분은 무료 요금제에 없어요
 
 **5. Claude 메모**
 
-- 클로바노트 사이트는 화면을 스크립트가 그려서 글자로 읽을 수 없었어요. 가격·무료 사용량·사용 기기·가입 방법·학습 정책 모두 직접 확인이 필요해요.
-- 참고(확인 안 됨): 블로그 글들에는 '무료 월 300분, 데이터 활용 동의 시 600분'이라는 말이 있어요. 공식 페이지에서 확인되면 그때 적어 주세요. '데이터 활용 동의'가 녹음을 AI 학습에 쓰는 데 동의하는 것이라면, 학습 정책은 '기본으로는 안 씀(no), 동의하면 씀'일 수 있어요.
-- 참고: 네이버 전체 이용약관(https://policy.naver.com/policy/service.html)에는 '여러분이 제공한 소중한 콘텐츠는 네이버 서비스를 개선하고 새로운 네이버 서비스를 제공하기 위해 인공지능 분야 기술 등의 연구 개발 목적으로 네이버에서 사용되거나' 라는 문장이 있어요. 다만 게시물에 관한 조항이라 클로바노트 녹음에 그대로 적용되는지는 알 수 없어서 근거로 쓰지 않았어요. 클로바노트 자체 약관이나 도움말을 확인해 주세요.
-- 기능 체크리스트: 사이트가 스크립트로 그려져서 기능 문장을 읽지 못했어요. 회의·강의 녹음 정리(P02)의 녹음 파일 올리기·받아쓰기·요약·말한 사람 구분을 공식 페이지에서 확인하고, 확인된 기능만 features와 근거를 채운 뒤 todo에서 features를 지워 주세요.
+- 2026-11-06 다시 읽음: 공식 사이트(첫 화면 자주 묻는 질문, 이용요금 plan-guide, 클로바노트 이용약관)를 브라우저로 열어 화면 글자를 읽었어요. 네이버 고객센터(help.naver.com)는 이 환경에서 접속이 막혀 읽지 못했어요.
+- 유료 가격(paid_from_usd)은 null이에요. 개인용 이용요금에는 '무료 0원'만 있고, 유료 요금제(Lite 18,000원부터, 기업당 월 비용, 세금 별도)는 기업용 네이버웍스 클로바노트예요. 원화라서 달러로 바꾸지 않았어요. 기업용 가격을 적을지 J가 정해 주세요.
+- 학습 정책: 이용약관 제8조에 녹음·메모·받아쓴 기록 등을 '음성인식 관련 서비스의 품질 개선 및 성능 향상' 목적으로 활용할 수 있고, 이용자가 그 활용 여부를 선택할 수 있다고 되어 있어요. 그래서 학습 끄기(opt_out)는 yes로 적었어요. 처음 값(켜짐/꺼짐)은 문장이 없어서 unknown이에요. '서비스 개선 목적 이용'을 학습으로 봐도 되는지 J가 확인해 주세요.
+- 기능: 받아쓰기·파일 올리기·요약은 첫 화면 자주 묻는 질문 문장으로 확인했어요. 말한 사람 자동 구분(화자 자동 식별)은 이용요금 표에서 무료·Lite·Team은 미제공, Business 이상만 제공이라 넣지 않았어요.
+- 블로그에 있던 '데이터 활용 동의 시 600분'은 공식 이용요금 화면에 없어서 적지 않았어요. 약관에는 동의하지 않으면 '혜택 등이 제공되지 않을 수 있다'는 문장만 있어요.
+- 사용 기기: 웹(PC 웹 녹음)과 앱스토어·구글플레이 앱. 윈도우·맥 전용 프로그램 문장은 못 찾았어요.
 
 **6. 확정** (todo가 비어야 해요. 날짜는 대조한 날)
 
