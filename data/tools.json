@@ -178,5 +178,52 @@
       "https://manus.im/docs/features/wide-research.md"
     ],
     "last_verified": "2026-11-06"
+  },
+  {
+    "id": "clovanote",
+    "name": "클로바노트",
+    "url": "https://clovanote.naver.com/",
+    "one_liner": "회의·강의 녹음을 글로 받아 적고 요약해주는 네이버 서비스예요",
+    "features": {
+      "P02": [
+        "transcribe",
+        "upload",
+        "summary"
+      ]
+    },
+    "price": {
+      "free": true,
+      "free_limit": "녹음·파일 변환 월 300분, AI 요약 월 15회 (한 번에 최대 180분, 남은 시간은 다음 달로 안 넘어감)",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "korean": 3,
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": ""
+    },
+    "platforms": [
+      "web",
+      "ios",
+      "android"
+    ],
+    "login": [
+      "naver"
+    ],
+    "start_steps": [
+      "클로바노트 사이트나 앱에서 로그인하기",
+      "바로 녹음하거나 녹음 파일 올리기",
+      "글로 바뀐 내용과 요약을 확인하고 공유하기"
+    ],
+    "cautions": [
+      "개인용은 무료 요금제만 있어요. 유료 요금제는 기업용(네이버웍스 클로바노트)이에요",
+      "말한 사람 자동 구분은 무료 요금제에 없어요"
+    ],
+    "sources": [
+      "https://clovanote.naver.com/",
+      "https://clovanote.naver.com/plan-guide"
+    ],
+    "last_verified": "2026-11-06"
   }
 ]
