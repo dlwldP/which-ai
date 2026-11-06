@@ -381,5 +381,112 @@
       "https://help.heygen.com/en/articles/8304328-how-to-cancel-or-pause-your-heygen-subscription"
     ],
     "last_verified": "2026-11-06"
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "url": "https://chatgpt.com/",
+    "one_liner": "무엇이든 물어보면 대화로 답하고, 글쓰기·이미지 만들기·자료 조사까지 도와주는 AI예요",
+    "features": {
+      "P01": [
+        "chat",
+        "attach"
+      ],
+      "P05": [
+        "text_to_image"
+      ],
+      "P09": [
+        "report"
+      ]
+    },
+    "price": {
+      "free": true,
+      "free_limit": "글 대화는 무제한, 파일 올리기·이미지 만들기·음성 대화·심층 조사는 횟수 제한",
+      "paid_from_usd": null,
+      "billing": "unknown"
+    },
+    "korean": 3,
+    "privacy": {
+      "trains_on_input_default": "yes",
+      "opt_out": "yes",
+      "note": "설정 > 데이터 제어에서 'Improve the model for everyone'을 끄면 새 대화는 학습에 쓰이지 않아요"
+    },
+    "platforms": [
+      "web",
+      "windows",
+      "ios",
+      "android"
+    ],
+    "login": [
+      "google",
+      "apple",
+      "phone",
+      "email"
+    ],
+    "start_steps": [
+      "ChatGPT 사이트나 앱에서 구글·애플 계정, 전화번호, 이메일로 가입하기",
+      "궁금한 것을 대화창에 적어 묻기",
+      "필요하면 파일이나 사진을 올려 함께 묻기"
+    ],
+    "cautions": [
+      "무료 요금제는 파일 올리기·이미지 만들기·심층 조사 횟수에 제한이 있어요",
+      "처음 설정에서는 대화가 AI 학습에 쓰여요. 설정에서 끌 수 있어요",
+      "학습을 꺼도 답변에 좋아요·싫어요를 누르면 그 대화가 학습에 쓰일 수 있어요"
+    ],
+    "sources": [
+      "https://chatgpt.com/pricing",
+      "https://chatgpt.com/auth/login?next=%2F",
+      "https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance",
+      "https://help.openai.com/en/?q=mobile+app+ios+android"
+    ],
+    "last_verified": "2026-11-06"
+  },
+  {
+    "id": "midjourney",
+    "name": "Midjourney",
+    "url": "https://www.midjourney.com/",
+    "one_liner": "원하는 장면을 글로 설명하면 그림 같은 고품질 이미지와 짧은 영상을 만들어줘요",
+    "features": {
+      "P05": [
+        "text_to_image",
+        "edit_part",
+        "size"
+      ]
+    },
+    "price": {
+      "free": false,
+      "free_limit": "무료 요금제 없음",
+      "paid_from_usd": 10,
+      "billing": "monthly"
+    },
+    "korean": 1,
+    "privacy": {
+      "trains_on_input_default": "unknown",
+      "opt_out": "unknown",
+      "note": ""
+    },
+    "platforms": [
+      "web"
+    ],
+    "login": [
+      "google"
+    ],
+    "start_steps": [
+      "공식 사이트에서 구글(또는 디스코드) 계정으로 가입하고 요금제 고르기",
+      "만들기(Create) 화면에서 원하는 장면을 글로 적기",
+      "마음에 드는 이미지를 골라 다듬고 내려받기"
+    ],
+    "cautions": [
+      "무료로 써 볼 수 없고 유료 구독부터 시작해요",
+      "화면과 안내가 영어예요",
+      "가입은 구글이나 디스코드 계정으로만 할 수 있어요",
+      "만든 이미지를 비공개로 두는 기능은 Pro 이상 요금제에만 있어요"
+    ],
+    "sources": [
+      "https://docs.midjourney.com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans",
+      "https://docs.midjourney.com/hc/en-us/articles/33329261836941-Getting-Started-Guide",
+      "https://docs.midjourney.com/hc/en-us/articles/33390994570509-Logging-In-Connecting-Accounts"
+    ],
+    "last_verified": "2026-11-06"
   }
 ]
