@@ -4,6 +4,7 @@
     "name": "테스트도구 알파",
     "url": "https://alpha.example.com/",
     "one_liner": "테스트도구 알파 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "coding_agents",
       "app_builders"
@@ -32,6 +33,7 @@
     "name": "테스트도구 브라보",
     "url": "https://bravo.example.com/",
     "one_liner": "테스트도구 브라보 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "coding_agents"
     ],
@@ -57,6 +59,7 @@
     "name": "테스트도구 찰리",
     "url": "https://charlie.example.com/",
     "one_liner": "테스트도구 찰리 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "app_builders"
     ],
@@ -82,6 +85,7 @@
     "name": "테스트도구 델타",
     "url": "https://delta.example.com/",
     "one_liner": "테스트도구 델타 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "devops"
     ],
@@ -109,6 +113,7 @@
     "name": "테스트도구 에코",
     "url": "https://echo.example.com/",
     "one_liner": "테스트도구 에코 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "devops",
       "data_ml",
@@ -136,6 +141,7 @@
     "name": "테스트도구 폭스트롯",
     "url": "https://foxtrot.example.com/",
     "one_liner": "테스트도구 폭스트롯 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "data_ml",
       "automation"
@@ -163,6 +169,7 @@
     "name": "테스트도구 골프",
     "url": "https://golf.example.com/",
     "one_liner": "테스트도구 골프 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "devops",
       "app_builders"
@@ -189,6 +196,7 @@
     "name": "테스트도구 호텔",
     "url": "https://hotel.example.com/",
     "one_liner": "테스트도구 호텔 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "app_builders"
     ],

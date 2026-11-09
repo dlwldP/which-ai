@@ -1453,6 +1453,23 @@ body.has-sticky-cta { padding-bottom: 84px; }
   overflow: hidden;
   min-height: 3.1em;
 }
+.tool-good-for {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+.good-for-label {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  vertical-align: 1px;
+}
 .tool-card .badges {
   margin: 2px 0 0;
   display: flex;

@@ -41,6 +41,8 @@ test('확인 날짜가 하루 앞선 건 시간대 차이로 허용, 이틀은 �
 
 const failCases = [
   ['이름 없음', (t) => { delete t.name; }, 'name'],
+  ['이럴 때 좋아요 없음', (t) => { delete t.good_for; }, 'good_for'],
+  ['이럴 때 좋아요에 순위 표현', (t) => { t.good_for = '가장 좋은 영상 편집이 필요할 때'; }, 'good_for'],
   ['용도 없음', (t) => { t.purposes = []; }, 'purposes'],
   ['없는 용도', (t) => { t.purposes = ['P99']; }, 'purposes'],
   ['가격 모양이 틀림', (t) => { t.price = { free: 'yes', paid: null }; }, 'price.free'],

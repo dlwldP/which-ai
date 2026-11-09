@@ -36,7 +36,7 @@ node --test && node scripts/validate-data.js && node scripts/validate-dev-data.j
 3. 초안 검사, 테스트, 데이터 검사가 모두 통과해요.
 4. 확인 날짜(`--verified`)는 페이지를 읽은 날짜예요.
 
-한 줄 설명·용도·쓰는 방법은 Claude가 공식 페이지를 보고 정해요. J가 사이트에서 보고 고쳐 달라고 하면 고쳐요.
+한 줄 설명·이럴 때 좋아요(`good_for`, "~할 때" 꼴, 순위·최고 표현 금지)·용도·쓰는 방법은 Claude가 공식 페이지를 보고 정해요. J가 사이트에서 보고 고쳐 달라고 하면 고쳐요.
 
 ## 초안 검사가 막는 것
 
