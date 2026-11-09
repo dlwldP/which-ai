@@ -4,6 +4,7 @@
     "name": "Pulumi",
     "url": "https://www.pulumi.com",
     "one_liner": "클라우드 인프라를 TypeScript·Python 같은 프로그래밍 언어 코드로 정의하고 배포하는 도구예요. 인프라 전용 AI 에이전트 Neo도 붙어 있어요",
+    "good_for": "인프라를 YAML 대신 익숙한 언어 코드로 관리하고 싶을 때",
     "purposes": [
       "devops",
       "coding_agents",
@@ -43,6 +44,7 @@
     "name": "LM Studio",
     "url": "https://lmstudio.ai",
     "one_liner": "오픈 모델을 내려받아 내 컴퓨터에서 채팅·API 서버로 돌리는 데스크톱 앱이에요. 코딩·문서 작업용 에이전트 앱 Bionic도 함께 나와요",
+    "good_for": "로컬 모델을 화면에서 골라 내려받고 바로 시험할 때",
     "purposes": [
       "data_ml",
       "coding_agents",
@@ -80,6 +82,7 @@
     "name": "Lovable",
     "url": "https://lovable.dev/",
     "one_liner": "만들고 싶은 웹 앱을 말로 설명하면 화면·서버·데이터베이스까지 갖춘 앱을 만들어줘요",
+    "good_for": "아이디어를 화면·DB까지 있는 웹앱 시제품으로 빨리 만들 때",
     "purposes": [
       "app_builders"
     ],
@@ -110,6 +113,7 @@
     "name": "Vercel",
     "url": "https://vercel.com",
     "one_liner": "Git 저장소를 연결하면 푸시할 때마다 웹앱을 빌드하고 배포해주는 호스팅 플랫폼이에요. 배포 실패 원인을 찾아주는 AI 에이전트도 있어요",
+    "good_for": "Next.js 같은 프론트엔드를 푸시할 때마다 자동 배포할 때",
     "purposes": [
       "devops",
       "coding_agents"
@@ -144,6 +148,7 @@
     "name": "v0",
     "url": "https://v0.app",
     "one_liner": "만들고 싶은 화면이나 앱을 문장으로 설명하면 Next.js 코드로 만들어주고 Vercel에 바로 올려주는 Vercel의 AI 도구예요",
+    "good_for": "Next.js 화면을 문장으로 빠르게 만들어 볼 때",
     "purposes": [
       "app_builders"
     ],
@@ -179,6 +184,7 @@
     "name": "Replit",
     "url": "https://replit.com",
     "one_liner": "채팅으로 원하는 앱을 말하면 에이전트가 코드를 짜고 DB·로그인·게시까지 클라우드 안에서 처리해주는 개발 플랫폼이에요",
+    "good_for": "설치 없이 브라우저에서 앱을 만들고 바로 게시할 때",
     "purposes": [
       "app_builders",
       "devops",
@@ -217,6 +223,7 @@
     "name": "Firebase",
     "url": "https://firebase.google.com",
     "one_liner": "DB·인증·파일 저장·호스팅을 한곳에서 붙이는 Google의 앱 백엔드 플랫폼이에요. Gemini로 쿼리 생성이나 크래시 원인 분석도 도와줘요",
+    "good_for": "모바일·웹앱에 로그인과 DB를 빨리 붙일 때",
     "purposes": [
       "devops",
       "data_ml"
@@ -252,6 +259,7 @@
     "name": "Netlify",
     "url": "https://www.netlify.com",
     "one_liner": "Git 푸시나 프롬프트 한 줄로 웹사이트·웹앱을 배포하는 호스팅 플랫폼이에요. 대시보드 안에서 AI 에이전트(Agent Runners)로 코드를 고칠 수도 있어요",
+    "good_for": "정적 사이트·웹앱을 Git 푸시로 배포할 때",
     "purposes": [
       "devops",
       "app_builders",
@@ -288,6 +296,7 @@
     "name": "Railway",
     "url": "https://railway.com",
     "one_liner": "저장소를 연결하면 앱·데이터베이스·크론 작업을 알아서 설정해 띄워 주는 클라우드 플랫폼이에요. 대시보드의 Railway Agent에게 말로 작업을 맡길 수도 있어요",
+    "good_for": "앱과 DB를 설정 없이 함께 띄우고 싶을 때",
     "purposes": [
       "devops",
       "coding_agents",
@@ -322,6 +331,7 @@
     "name": "Cursor",
     "url": "https://cursor.com",
     "one_liner": "에디터 안에서 AI 에이전트에게 코드 작업을 맡기는 AI IDE예요. 터미널 CLI, 클라우드 에이전트, PR 자동 리뷰(Bugbot)도 있어요",
+    "good_for": "에디터 안에서 AI에게 여러 파일 작업을 맡길 때",
     "purposes": [
       "coding_agents",
       "automation"
@@ -361,6 +371,7 @@
     "name": "CodeRabbit",
     "url": "https://www.coderabbit.ai",
     "one_liner": "PR이 올라오면 AI가 줄 단위로 리뷰 코멘트를 달아주는 코드 리뷰 도구예요. VS Code 확장과 CLI로 커밋 전에도 리뷰받을 수 있어요",
+    "good_for": "PR마다 자동 코드 리뷰를 받고 싶을 때",
     "purposes": [
       "coding_agents"
     ],
@@ -393,6 +404,7 @@
     "name": "Greptile",
     "url": "https://www.greptile.com",
     "one_liner": "저장소 전체를 그래프로 이해한 뒤 PR마다 버그·보안 문제를 찾아 코멘트로 알려주는 AI 코드 리뷰 도구예요",
+    "good_for": "저장소 맥락을 아는 PR 리뷰가 필요할 때",
     "purposes": [
       "coding_agents"
     ],
@@ -424,6 +436,7 @@
     "name": "Zapier",
     "url": "https://zapier.com",
     "one_liner": "수천 개 앱을 트리거와 액션으로 엮어 반복 업무를 자동으로 돌리는 노코드 자동화 플랫폼이에요. 워크플로 안에 AI 단계와 에이전트를 넣을 수 있고, MCP·SDK로 AI 도구에서도 불러 써요",
+    "good_for": "여러 업무 앱을 코딩 없이 이어 자동화할 때",
     "purposes": [
       "automation"
     ],
@@ -453,6 +466,7 @@
     "name": "Gumloop",
     "url": "https://www.gumloop.com/",
     "one_liner": "업무 앱과 연결된 AI 에이전트를 만들어 팀이 함께 쓰게 하는 플랫폼이에요. 앱 이벤트나 일정으로 자동 실행하고, CLI로 터미널에서도 에이전트와 MCP 도구를 불러요",
+    "good_for": "팀이 함께 쓰는 업무용 AI 에이전트를 만들 때",
     "purposes": [
       "automation"
     ],
@@ -482,6 +496,7 @@
     "name": "Snyk",
     "url": "https://snyk.io/",
     "one_liner": "코드·오픈소스 의존성·컨테이너·IaC의 보안 취약점을 찾아 알려 주는 보안 검사 플랫폼이에요. IDE와 PR에서 바로 검사하고 AI 자동 수정(Agent Fix)도 제안해요",
+    "good_for": "코드·의존성 보안 취약점을 PR 단계에서 잡을 때",
     "purposes": [
       "coding_agents"
     ],
@@ -512,6 +527,7 @@
     "name": "Claude Code",
     "url": "https://code.claude.com/docs/en/overview",
     "one_liner": "내 프로젝트 코드를 읽고 고치고 명령까지 실행해주는 코딩 에이전트예요. 터미널, 에디터, 데스크톱 앱, 웹에서 써요",
+    "good_for": "터미널에서 프로젝트 전체를 이해하는 코딩 에이전트가 필요할 때",
     "purposes": [
       "coding_agents",
       "automation"
@@ -543,6 +559,7 @@
     "name": "Cloudflare Workers",
     "url": "https://developers.cloudflare.com/workers/",
     "one_liner": "Cloudflare 전 세계 네트워크 위에서 서버 없이 앱을 돌리는 개발자 플랫폼이에요. DB·파일 저장소와 AI 모델 실행, 벡터 DB까지 한곳에서 붙여요",
+    "good_for": "서버 없이 전 세계에 가까운 곳에서 API·AI를 돌릴 때",
     "purposes": [
       "devops",
       "data_ml"
@@ -581,6 +598,7 @@
     "name": "Google AI Studio",
     "url": "https://aistudio.google.com/",
     "one_liner": "Gemini 모델을 브라우저에서 바로 시험해 보고, 문장으로 설명해서 풀스택 웹앱·안드로이드 앱까지 만들어 볼 수 있는 구글의 개발자용 작업 공간이에요",
+    "good_for": "Gemini 모델을 브라우저에서 시험하고 API 키를 받을 때",
     "purposes": [
       "app_builders",
       "data_ml"
@@ -615,6 +633,7 @@
     "name": "Google Antigravity",
     "url": "https://antigravity.google/",
     "one_liner": "구글이 만든 에이전트 중심 개발 도구예요. 데스크톱 앱·전용 IDE·터미널·에디터 확장에서 여러 AI 에이전트에게 코드 작업을 맡기고 결과를 검토해요",
+    "good_for": "여러 AI 에이전트에게 작업을 나눠 맡기고 결과를 검토할 때",
     "purposes": [
       "coding_agents",
       "automation"
@@ -652,6 +671,7 @@
     "name": "Linear",
     "url": "https://linear.app/ai",
     "one_liner": "이슈·프로젝트를 관리하는 협업 도구예요. 안에 든 AI 에이전트가 진행 상황을 정리하고, 이슈를 맡기면 코드를 고쳐 PR 초안까지 만들어 줘요",
+    "good_for": "이슈 관리와 AI 코드 작업을 한곳에서 하고 싶을 때",
     "purposes": [
       "app_builders",
       "coding_agents",
@@ -686,6 +706,7 @@
     "name": "Bolt",
     "url": "https://bolt.new",
     "one_liner": "만들 앱을 채팅으로 설명하면 브라우저 안에서 코드를 짜고 DB·로그인·호스팅까지 붙여 바로 올려주는 앱 빌더예요",
+    "good_for": "브라우저에서 풀스택 앱 시제품을 바로 만들 때",
     "purposes": [
       "app_builders",
       "coding_agents"
@@ -717,6 +738,7 @@
     "name": "Supabase",
     "url": "https://supabase.com",
     "one_liner": "Postgres 데이터베이스에 인증·파일 저장·실시간·벡터 검색을 한 번에 붙여주는 백엔드 플랫폼이에요. 대시보드의 AI 어시스턴트가 SQL과 스키마를 같이 짜줘요",
+    "good_for": "Postgres 기반 백엔드를 인증·저장소까지 한 번에 붙일 때",
     "purposes": [
       "devops",
       "data_ml"
@@ -752,6 +774,7 @@
     "name": "Neon",
     "url": "https://neon.com",
     "one_liner": "쓸 때만 켜지고 Git처럼 브랜치를 나눌 수 있는 서버리스 Postgres에 인증·파일 저장·AI 게이트웨이를 묶은 백엔드예요. SQL 에디터에서 문장으로 쿼리를 만들 수 있어요",
+    "good_for": "개발·테스트용 DB를 브랜치처럼 나눠 쓸 때",
     "purposes": [
       "devops",
       "data_ml"
@@ -787,6 +810,7 @@
     "name": "Pinecone",
     "url": "https://www.pinecone.io",
     "one_liner": "임베딩을 저장하고 의미로 찾아주는 관리형 벡터 데이터베이스예요. 파일만 올리면 근거 있는 답을 주는 Assistant와 임베딩·재정렬 모델도 같이 써요",
+    "good_for": "운영 걱정 없는 관리형 벡터 DB가 필요할 때",
     "purposes": [
       "data_ml"
     ],
@@ -816,6 +840,7 @@
     "name": "Hugging Face",
     "url": "https://huggingface.co",
     "one_liner": "공개 AI 모델·데이터셋·데모 앱(Spaces)을 찾고 올리는 모델 허브예요. 여러 회사 모델을 API 하나로 호출하고 Transformers 같은 라이브러리로 직접 돌릴 수도 있어요",
+    "good_for": "공개 모델과 데이터셋을 찾고 바로 써 볼 때",
     "purposes": [
       "data_ml"
     ],
@@ -851,6 +876,7 @@
     "name": "LangSmith",
     "url": "https://www.langchain.com/langsmith",
     "one_liner": "LLM 앱과 에이전트가 단계마다 무엇을 했는지 추적(트레이싱)하고, 데이터셋으로 답변 품질을 평가·비교하는 관측 플랫폼이에요. LangChain 말고 다른 프레임워크에도 붙여요",
+    "good_for": "에이전트가 어디서 틀렸는지 단계별로 추적할 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -882,6 +908,7 @@
     "name": "Ollama",
     "url": "https://ollama.com",
     "one_liner": "공개된 오픈 모델을 내 컴퓨터에서 바로 돌리거나, 무거운 모델은 Ollama 클라우드에서 돌려 쓰는 도구예요",
+    "good_for": "명령 한 줄로 로컬 모델을 띄우고 API로 쓸 때",
     "purposes": [
       "data_ml"
     ],
@@ -911,6 +938,7 @@
     "name": "Notion AI",
     "url": "https://www.notion.com/product/ai",
     "one_liner": "문서·할 일 데이터베이스를 쓰는 협업 공간에 AI가 들어 있어요. 문서 초안을 쓰고, 정해 둔 일정에 맞춰 반복 업무를 돌리는 에이전트를 만들 수 있어요",
+    "good_for": "기획 문서와 할 일을 AI와 함께 정리할 때",
     "purposes": [
       "app_builders",
       "automation"
@@ -944,6 +972,7 @@
     "name": "Miro AI",
     "url": "https://miro.com/ai/",
     "one_liner": "팀이 같이 쓰는 화이트보드에 AI가 붙어 있어요. 보드 내용으로 다이어그램·기획 문서·클릭되는 프로토타입을 만들고, 여러 단계 AI 워크플로를 짤 수 있어요",
+    "good_for": "화이트보드 기획을 다이어그램·프로토타입으로 이어 갈 때",
     "purposes": [
       "app_builders",
       "automation"
@@ -976,6 +1005,7 @@
     "name": "Figma (Figma AI·FigJam·Figma Make)",
     "url": "https://www.figma.com/ai/",
     "one_liner": "UI 디자인 도구에 AI가 들어 있어요. 에이전트로 시안을 만들고, Figma Make에서는 문장으로 프로토타입·웹앱을 만들어 바로 게시할 수 있어요. FigJam 화이트보드도 함께 써요",
+    "good_for": "UI 시안과 프로토타입을 AI와 함께 만들 때",
     "purposes": [
       "app_builders",
       "automation"
@@ -1008,6 +1038,7 @@
     "name": "Atlassian Rovo",
     "url": "https://www.atlassian.com/software/rovo",
     "one_liner": "Jira·Confluence에 들어 있는 AI예요. 회사 문서와 연결된 앱을 검색해 답하고, 채팅으로 Jira 티켓을 만들고, 트리거로 도는 에이전트·자동화를 만들 수 있어요",
+    "good_for": "Jira·Confluence에 쌓인 회사 지식을 찾고 정리할 때",
     "purposes": [
       "app_builders",
       "automation"
@@ -1039,6 +1070,7 @@
     "name": "Uizard",
     "url": "https://uizard.io/",
     "one_liner": "만들 앱을 문장으로 설명하거나 스크린샷·손그림을 올리면 여러 화면짜리 UI 시안과 클릭되는 프로토타입을 만들어 주는 AI 디자인 도구예요",
+    "good_for": "손그림이나 스크린샷을 UI 시안으로 바꿀 때",
     "purposes": [
       "app_builders"
     ],
@@ -1068,6 +1100,7 @@
     "name": "GitHub Copilot",
     "url": "https://github.com/features/copilot",
     "one_liner": "GitHub에 붙어 있는 AI 코딩 도우미예요. 에디터 자동완성·채팅부터 이슈를 맡기면 PR로 돌려주는 에이전트, PR 리뷰까지 해요",
+    "good_for": "GitHub 흐름 안에서 자동완성부터 PR까지 AI를 쓸 때",
     "purposes": [
       "coding_agents",
       "automation"
@@ -1101,6 +1134,7 @@
     "name": "Kiro",
     "url": "https://kiro.dev",
     "one_liner": "AWS가 만든 AI 코딩 에이전트예요. 요구사항·설계·작업 목록(스펙)을 먼저 만들고 그대로 구현해요. IDE·CLI·웹에서 써요",
+    "good_for": "요구사항·설계를 먼저 정리하고 구현할 때 (스펙 중심 개발)",
     "purposes": [
       "coding_agents",
       "automation",
@@ -1141,6 +1175,7 @@
     "name": "Make",
     "url": "https://www.make.com/",
     "one_liner": "앱과 데이터를 캔버스 위에서 끌어다 이어 시나리오(자동화 흐름)를 만드는 비주얼 자동화 플랫폼이에요. LLM 단계와 AI 에이전트를 같은 화면에서 붙일 수 있어요",
+    "good_for": "복잡한 분기가 있는 자동화 흐름을 화면에서 그릴 때",
     "purposes": [
       "automation"
     ],
@@ -1169,6 +1204,7 @@
     "name": "n8n",
     "url": "https://n8n.io/",
     "one_liner": "노드를 이어 워크플로와 AI 에이전트를 만드는 자동화 도구예요. n8n 클라우드로 쓰거나 Docker로 내 서버에 직접 올릴 수 있고, 필요하면 코드 단계도 넣어요",
+    "good_for": "자동화·에이전트 흐름을 내 서버에 직접 올리고 싶을 때",
     "purposes": [
       "automation"
     ],
@@ -1200,6 +1236,7 @@
     "name": "SonarQube",
     "url": "https://www.sonarsource.com/",
     "one_liner": "코드의 버그·취약점·품질 문제를 정적 분석으로 잡아내는 코드 품질·보안 검사 도구예요. PR마다 검사하고, Sonar의 Gitar가 AI로 PR을 리뷰하고 수정까지 올려요",
+    "good_for": "코드 품질·보안 기준을 팀 전체에 걸 때",
     "purposes": [
       "coding_agents"
     ],
@@ -1230,6 +1267,7 @@
     "name": "Aider",
     "url": "https://github.com/Aider-AI/aider",
     "one_liner": "터미널에서 AI와 대화하며 내 저장소 코드를 고치고 커밋까지 해주는 페어 프로그래밍 도구",
+    "good_for": "터미널에서 git 커밋까지 하는 페어 프로그래밍을 원할 때",
     "purposes": [
       "coding_agents"
     ],
@@ -1256,6 +1294,7 @@
     "name": "Continue",
     "url": "https://github.com/continuedev/continue",
     "one_liner": "VS Code·JetBrains에 붙여 원하는 모델로 코드 자동완성·채팅·에이전트를 쓰는 확장",
+    "good_for": "원하는 모델을 골라 에디터 자동완성·채팅을 쓸 때",
     "purposes": [
       "coding_agents"
     ],
@@ -1283,6 +1322,7 @@
     "name": "Cline",
     "url": "https://github.com/cline/cline",
     "one_liner": "VS Code 안에서 파일을 만들고 명령을 실행하며 단계별로 승인받는 코딩 에이전트 확장",
+    "good_for": "VS Code에서 단계마다 승인하며 에이전트를 쓸 때",
     "purposes": [
       "coding_agents"
     ],
@@ -1309,6 +1349,7 @@
     "name": "OpenHands",
     "url": "https://github.com/All-Hands-AI/OpenHands",
     "one_liner": "사람 개발자처럼 코드 수정·명령 실행·웹 검색을 하는 오픈소스 AI 개발 에이전트",
+    "good_for": "사람 개발자처럼 일하는 에이전트를 직접 띄워 볼 때",
     "purposes": [
       "coding_agents",
       "automation"
@@ -1337,6 +1378,7 @@
     "name": "opencode",
     "url": "https://github.com/sst/opencode",
     "one_liner": "여러 모델을 골라 쓰는 터미널용 오픈소스 코딩 에이전트",
+    "good_for": "여러 모델을 바꿔 가며 터미널 코딩 에이전트를 쓸 때",
     "purposes": [
       "coding_agents"
     ],
@@ -1363,6 +1405,7 @@
     "name": "goose",
     "url": "https://github.com/block/goose",
     "one_liner": "내 컴퓨터에서 돌아가며 MCP 도구를 붙여 개발 작업을 자동으로 처리하는 에이전트",
+    "good_for": "MCP 도구를 붙인 로컬 에이전트로 개발 작업을 자동화할 때",
     "purposes": [
       "coding_agents",
       "automation"
@@ -1391,6 +1434,7 @@
     "name": "Tabby",
     "url": "https://github.com/TabbyML/tabby",
     "one_liner": "회사 서버에 직접 설치하는 코드 자동완성·채팅 서버 (깃허브 코파일럿 대안)",
+    "good_for": "코드가 회사 밖으로 나가면 안 될 때 (자체 호스팅 자동완성)",
     "purposes": [
       "coding_agents"
     ],
@@ -1417,6 +1461,7 @@
     "name": "Roo Code",
     "url": "https://github.com/RooCodeInc/Roo-Code",
     "one_liner": "역할(모드)을 바꿔 가며 기획·코딩·디버깅을 맡기는 VS Code 에이전트 확장",
+    "good_for": "기획·코딩·디버깅 역할을 나눠 에이전트에게 맡길 때",
     "purposes": [
       "coding_agents"
     ],
@@ -1443,6 +1488,7 @@
     "name": "SWE-agent",
     "url": "https://github.com/SWE-agent/SWE-agent",
     "one_liner": "GitHub 이슈를 주면 언어 모델이 저장소를 살펴보고 고치는 연구용 에이전트",
+    "good_for": "이슈를 자동으로 고치는 에이전트를 연구·실험할 때",
     "purposes": [
       "coding_agents"
     ],
@@ -1469,6 +1515,7 @@
     "name": "gpt-engineer",
     "url": "https://github.com/AntonOsika/gpt-engineer",
     "one_liner": "만들고 싶은 것을 글로 적으면 코드베이스를 통째로 생성하는 명령줄 도구",
+    "good_for": "설명만으로 프로젝트 뼈대 코드를 만들어 볼 때",
     "purposes": [
       "app_builders",
       "coding_agents"
@@ -1496,6 +1543,7 @@
     "name": "Codex CLI",
     "url": "https://github.com/openai/codex",
     "one_liner": "OpenAI가 공개한 터미널용 코딩 에이전트 (내 컴퓨터에서 실행)",
+    "good_for": "OpenAI 모델로 터미널 코딩 에이전트를 쓸 때",
     "purposes": [
       "coding_agents"
     ],
@@ -1522,6 +1570,7 @@
     "name": "Gemini CLI",
     "url": "https://github.com/google-gemini/gemini-cli",
     "one_liner": "구글 제미나이를 터미널에서 쓰는 오픈소스 에이전트 (코드 작업·검색·MCP)",
+    "good_for": "Gemini 모델로 터미널 코딩 에이전트를 쓸 때",
     "purposes": [
       "coding_agents",
       "automation"
@@ -1549,6 +1598,7 @@
     "name": "Plandex",
     "url": "https://github.com/plandex-ai/plandex",
     "one_liner": "큰 작업을 계획으로 나눠 여러 파일을 한꺼번에 고치는 터미널 코딩 에이전트",
+    "good_for": "여러 파일에 걸친 큰 작업을 계획부터 나눠 진행할 때",
     "purposes": [
       "coding_agents"
     ],
@@ -1575,6 +1625,7 @@
     "name": "Kilo Code",
     "url": "https://github.com/Kilo-Org/kilocode",
     "one_liner": "VS Code·JetBrains에서 쓰는 오픈소스 코딩 에이전트 확장",
+    "good_for": "VS Code·JetBrains에서 오픈소스 코딩 에이전트를 쓸 때",
     "purposes": [
       "coding_agents"
     ],
@@ -1601,6 +1652,7 @@
     "name": "Void",
     "url": "https://github.com/voideditor/void",
     "one_liner": "모델을 직접 골라 붙이는 오픈소스 AI 코드 에디터 (커서 대안)",
+    "good_for": "커서 같은 AI 에디터를 오픈소스로 쓰고 싶을 때",
     "purposes": [
       "coding_agents"
     ],
@@ -1627,6 +1679,7 @@
     "name": "bolt.new (오픈소스판)",
     "url": "https://github.com/stackblitz/bolt.new",
     "one_liner": "브라우저에서 말로 풀스택 앱을 만드는 bolt.new의 공개 소스",
+    "good_for": "bolt.new 방식의 앱 빌더를 직접 띄워 볼 때",
     "purposes": [
       "app_builders"
     ],
@@ -1653,6 +1706,7 @@
     "name": "Open Lovable",
     "url": "https://github.com/firecrawl/open-lovable",
     "one_liner": "웹사이트 주소나 설명을 주면 리액트 앱으로 다시 만들어주는 오픈소스 앱 빌더",
+    "good_for": "기존 웹사이트를 리액트 앱으로 다시 만들어 볼 때",
     "purposes": [
       "app_builders"
     ],
@@ -1679,6 +1733,7 @@
     "name": "llama.cpp",
     "url": "https://github.com/ggml-org/llama.cpp",
     "one_liner": "노트북 CPU·GPU에서도 언어 모델을 가볍게 돌리는 C/C++ 실행 엔진",
+    "good_for": "GPU가 약한 노트북에서 언어 모델을 돌릴 때",
     "purposes": [
       "data_ml"
     ],
@@ -1705,6 +1760,7 @@
     "name": "vLLM",
     "url": "https://github.com/vllm-project/vllm",
     "one_liner": "언어 모델을 빠르게 서빙하는 추론 서버 (OpenAI 호환 API 제공)",
+    "good_for": "언어 모델을 많은 요청에 빠르게 서빙할 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -1732,6 +1788,7 @@
     "name": "Transformers",
     "url": "https://github.com/huggingface/transformers",
     "one_liner": "허깅페이스의 수많은 모델을 파이썬 몇 줄로 불러와 쓰는 라이브러리",
+    "good_for": "파이썬에서 공개 모델을 불러와 바로 쓸 때",
     "purposes": [
       "data_ml"
     ],
@@ -1758,6 +1815,7 @@
     "name": "LangChain",
     "url": "https://github.com/langchain-ai/langchain",
     "one_liner": "언어 모델·검색·도구를 엮어 챗봇과 에이전트를 만드는 프레임워크",
+    "good_for": "모델·검색·도구를 엮은 LLM 앱을 만들 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -1785,6 +1843,7 @@
     "name": "LlamaIndex",
     "url": "https://github.com/run-llama/llama_index",
     "one_liner": "내 문서를 언어 모델에 연결하는 RAG·에이전트 프레임워크",
+    "good_for": "내 문서를 연결한 RAG 챗봇을 만들 때",
     "purposes": [
       "data_ml"
     ],
@@ -1811,6 +1870,7 @@
     "name": "LocalAI",
     "url": "https://github.com/mudler/LocalAI",
     "one_liner": "내 서버에서 OpenAI API처럼 쓰는 로컬 모델 서버 (글·이미지·음성)",
+    "good_for": "OpenAI API 대신 내 서버의 모델을 같은 방식으로 부를 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -1838,6 +1898,7 @@
     "name": "GPT4All",
     "url": "https://github.com/nomic-ai/gpt4all",
     "one_liner": "인터넷 없이 내 컴퓨터에서 언어 모델과 대화하는 데스크톱 앱",
+    "good_for": "인터넷 없이 로컬 모델과 대화하고 싶을 때",
     "purposes": [
       "data_ml"
     ],
@@ -1865,6 +1926,7 @@
     "name": "RAGFlow",
     "url": "https://github.com/infiniflow/ragflow",
     "one_liner": "문서를 깊게 읽어 근거와 함께 답하는 RAG 엔진 (도커로 설치)",
+    "good_for": "표·그림이 많은 문서로 근거 있는 답을 받을 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -1892,6 +1954,7 @@
     "name": "Chroma",
     "url": "https://github.com/chroma-core/chroma",
     "one_liner": "AI 앱용 오픈소스 벡터 데이터베이스",
+    "good_for": "RAG 시제품에 가볍게 벡터 DB를 붙일 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -1919,6 +1982,7 @@
     "name": "Qdrant",
     "url": "https://github.com/qdrant/qdrant",
     "one_liner": "러스트로 만든 빠른 벡터 검색 엔진·데이터베이스",
+    "good_for": "필터가 많은 벡터 검색을 빠르게 하고 싶을 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -1946,6 +2010,7 @@
     "name": "Milvus",
     "url": "https://github.com/milvus-io/milvus",
     "one_liner": "대규모 벡터 검색을 위한 클라우드 네이티브 데이터베이스",
+    "good_for": "벡터 데이터가 아주 많을 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -1973,6 +2038,7 @@
     "name": "Weaviate",
     "url": "https://github.com/weaviate/weaviate",
     "one_liner": "벡터와 키워드 검색을 함께 하는 오픈소스 벡터 데이터베이스",
+    "good_for": "벡터와 키워드 검색을 섞어 쓰고 싶을 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -2000,6 +2066,7 @@
     "name": "Unsloth",
     "url": "https://github.com/unslothai/unsloth",
     "one_liner": "적은 GPU 메모리로 언어 모델을 빠르게 미세조정하는 라이브러리",
+    "good_for": "GPU 하나로 언어 모델을 미세조정할 때",
     "purposes": [
       "data_ml"
     ],
@@ -2026,6 +2093,7 @@
     "name": "LLaMA-Factory",
     "url": "https://github.com/hiyouga/LLaMA-Factory",
     "one_liner": "100개가 넘는 모델을 웹 화면에서 골라 미세조정하는 도구",
+    "good_for": "코드 없이 화면에서 미세조정을 해 볼 때",
     "purposes": [
       "data_ml"
     ],
@@ -2053,6 +2121,7 @@
     "name": "ComfyUI",
     "url": "https://github.com/comfyanonymous/ComfyUI",
     "one_liner": "노드를 연결해 이미지·영상 생성 과정을 짜는 스테이블 디퓨전 도구",
+    "good_for": "이미지·영상 생성 과정을 노드로 세밀하게 짤 때",
     "purposes": [
       "data_ml",
       "app_builders"
@@ -2080,6 +2149,7 @@
     "name": "Stable Diffusion web UI",
     "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
     "one_liner": "스테이블 디퓨전 이미지 생성을 브라우저 화면으로 쓰는 로컬 앱",
+    "good_for": "스테이블 디퓨전을 로컬에서 화면으로 쓸 때",
     "purposes": [
       "data_ml",
       "app_builders"
@@ -2107,6 +2177,7 @@
     "name": "Diffusers",
     "url": "https://github.com/huggingface/diffusers",
     "one_liner": "이미지·영상·소리 확산 모델을 불러와 쓰는 허깅페이스 라이브러리",
+    "good_for": "파이썬 코드로 이미지 생성 모델을 다룰 때",
     "purposes": [
       "data_ml"
     ],
@@ -2133,6 +2204,7 @@
     "name": "MLC LLM",
     "url": "https://github.com/mlc-ai/mlc-llm",
     "one_liner": "휴대폰·브라우저·GPU 어디서나 언어 모델을 돌리게 컴파일하는 엔진",
+    "good_for": "휴대폰·브라우저에서 언어 모델을 돌릴 때",
     "purposes": [
       "data_ml"
     ],
@@ -2159,6 +2231,7 @@
     "name": "exo",
     "url": "https://github.com/exo-explore/exo",
     "one_liner": "집에 있는 여러 기기를 묶어 큰 언어 모델을 나눠 돌리는 도구",
+    "good_for": "집에 있는 여러 기기로 큰 모델을 나눠 돌릴 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -2186,6 +2259,7 @@
     "name": "Haystack",
     "url": "https://github.com/deepset-ai/haystack",
     "one_liner": "검색·RAG·에이전트 파이프라인을 조립하는 파이썬 프레임워크",
+    "good_for": "검색·RAG 파이프라인을 부품처럼 조립할 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -2213,6 +2287,7 @@
     "name": "DSPy",
     "url": "https://github.com/stanfordnlp/dspy",
     "one_liner": "프롬프트를 손으로 쓰는 대신 코드로 짜고 자동으로 최적화하는 프레임워크",
+    "good_for": "프롬프트를 손으로 고치는 대신 코드로 최적화할 때",
     "purposes": [
       "data_ml"
     ],
@@ -2239,6 +2314,7 @@
     "name": "Mem0",
     "url": "https://github.com/mem0ai/mem0",
     "one_liner": "AI 에이전트에 장기 기억을 붙여주는 메모리 레이어",
+    "good_for": "에이전트가 사용자를 기억하게 하고 싶을 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -2266,6 +2342,7 @@
     "name": "AnythingLLM",
     "url": "https://github.com/Mintplex-Labs/anything-llm",
     "one_liner": "내 문서로 대화하는 올인원 데스크톱·셀프 호스팅 AI 앱",
+    "good_for": "내 문서로 대화하는 AI를 설치 하나로 쓸 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -2294,6 +2371,7 @@
     "name": "Text Generation Web UI",
     "url": "https://github.com/oobabooga/text-generation-webui",
     "one_liner": "로컬 언어 모델을 브라우저 화면에서 불러와 대화하는 도구",
+    "good_for": "여러 로컬 모델을 화면에서 바꿔 가며 시험할 때",
     "purposes": [
       "data_ml"
     ],
@@ -2320,6 +2398,7 @@
     "name": "whisper.cpp",
     "url": "https://github.com/ggml-org/whisper.cpp",
     "one_liner": "Whisper 음성 인식을 CPU에서도 빠르게 돌리는 C/C++ 구현",
+    "good_for": "GPU 없이 음성 인식을 빠르게 돌릴 때",
     "purposes": [
       "data_ml"
     ],
@@ -2346,6 +2425,7 @@
     "name": "Whisper",
     "url": "https://github.com/openai/whisper",
     "one_liner": "OpenAI가 공개한 다국어 음성 인식(받아쓰기) 모델과 코드",
+    "good_for": "다국어 받아쓰기를 직접 돌릴 때",
     "purposes": [
       "data_ml"
     ],
@@ -2372,6 +2452,7 @@
     "name": "MarkItDown",
     "url": "https://github.com/microsoft/markitdown",
     "one_liner": "PDF·워드·엑셀·PPT를 언어 모델이 읽기 좋은 마크다운으로 바꾸는 도구",
+    "good_for": "오피스 문서·PDF를 LLM 입력용 마크다운으로 바꿀 때",
     "purposes": [
       "data_ml"
     ],
@@ -2398,6 +2479,7 @@
     "name": "Docling",
     "url": "https://github.com/docling-project/docling",
     "one_liner": "문서의 표·그림·구조를 살려 AI용 데이터로 바꾸는 변환 라이브러리",
+    "good_for": "표·구조가 복잡한 문서를 AI용 데이터로 바꿀 때",
     "purposes": [
       "data_ml"
     ],
@@ -2424,6 +2506,7 @@
     "name": "Firecrawl",
     "url": "https://github.com/firecrawl/firecrawl",
     "one_liner": "웹사이트를 긁어 언어 모델용 마크다운·데이터로 바꿔주는 크롤러",
+    "good_for": "웹사이트 전체를 LLM용 데이터로 긁어올 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -2452,6 +2535,7 @@
     "name": "Crawl4AI",
     "url": "https://github.com/unclecode/crawl4ai",
     "one_liner": "AI·RAG용으로 웹페이지를 빠르게 긁어오는 파이썬 크롤러",
+    "good_for": "파이썬으로 RAG용 웹 데이터를 모을 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -2479,6 +2563,7 @@
     "name": "Browser Use",
     "url": "https://github.com/browser-use/browser-use",
     "one_liner": "AI 에이전트가 브라우저를 직접 눌러 웹 작업을 하게 해주는 라이브러리",
+    "good_for": "에이전트가 웹사이트를 직접 조작하게 할 때",
     "purposes": [
       "automation"
     ],
@@ -2505,6 +2590,7 @@
     "name": "Langfuse",
     "url": "https://github.com/langfuse/langfuse",
     "one_liner": "AI 앱의 호출 기록·비용·품질을 추적하는 오픈소스 관측 도구",
+    "good_for": "LLM 호출 기록·비용을 내 서버에서 추적할 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -2533,6 +2619,7 @@
     "name": "Flowise",
     "url": "https://github.com/FlowiseAI/Flowise",
     "one_liner": "블록을 끌어다 놓아 챗봇과 에이전트 흐름을 만드는 노코드 도구",
+    "good_for": "코드 없이 챗봇·에이전트 흐름을 끌어다 만들 때",
     "purposes": [
       "automation",
       "app_builders"
@@ -2560,6 +2647,7 @@
     "name": "Langflow",
     "url": "https://github.com/langflow-ai/langflow",
     "one_liner": "화면에서 AI 에이전트·RAG 흐름을 그려 API로 내보내는 도구",
+    "good_for": "화면에서 만든 AI 흐름을 API로 내보낼 때",
     "purposes": [
       "automation",
       "app_builders"
@@ -2587,6 +2675,7 @@
     "name": "CrewAI",
     "url": "https://github.com/crewAIInc/crewAI",
     "one_liner": "역할을 나눈 여러 AI 에이전트가 팀처럼 일하게 하는 프레임워크",
+    "good_for": "역할을 나눈 여러 에이전트가 협업하게 할 때",
     "purposes": [
       "automation"
     ],
@@ -2613,6 +2702,7 @@
     "name": "LangGraph",
     "url": "https://github.com/langchain-ai/langgraph",
     "one_liner": "상태를 기억하는 에이전트 흐름을 그래프로 짜는 프레임워크",
+    "good_for": "분기·반복이 있는 에이전트 흐름을 짤 때",
     "purposes": [
       "automation"
     ],
@@ -2639,6 +2729,7 @@
     "name": "Activepieces",
     "url": "https://github.com/activepieces/activepieces",
     "one_liner": "재피어처럼 앱들을 이어 업무를 자동화하는 오픈소스 도구 (AI 단계 포함)",
+    "good_for": "재피어 같은 자동화를 오픈소스로 직접 운영할 때",
     "purposes": [
       "automation"
     ],
@@ -2666,6 +2757,7 @@
     "name": "OpenAI Agents SDK",
     "url": "https://github.com/openai/openai-agents-python",
     "one_liner": "도구를 쓰고 서로 일을 넘기는 에이전트를 만드는 파이썬 라이브러리",
+    "good_for": "OpenAI 모델로 도구를 쓰는 에이전트를 만들 때",
     "purposes": [
       "automation"
     ],
@@ -2692,6 +2784,7 @@
     "name": "MCP 서버 모음",
     "url": "https://github.com/modelcontextprotocol/servers",
     "one_liner": "AI가 파일·깃·웹 같은 도구를 쓰게 해주는 MCP 서버 공식 예제 모음",
+    "good_for": "AI 도구에 파일·깃·웹 접근을 붙이는 MCP 예제가 필요할 때",
     "purposes": [
       "automation"
     ],
@@ -2718,6 +2811,7 @@
     "name": "Agno",
     "url": "https://github.com/agno-agi/agno",
     "one_liner": "기억·지식·도구를 가진 에이전트를 빠르게 만드는 파이썬 프레임워크",
+    "good_for": "기억·지식이 있는 에이전트를 파이썬으로 빨리 만들 때",
     "purposes": [
       "automation"
     ],
@@ -2744,6 +2838,7 @@
     "name": "CAMEL",
     "url": "https://github.com/camel-ai/camel",
     "one_liner": "여러 에이전트가 역할극으로 협업하는 연구용 프레임워크",
+    "good_for": "여러 에이전트 협업 방식을 연구·실험할 때",
     "purposes": [
       "automation",
       "data_ml"
@@ -2771,6 +2866,7 @@
     "name": "smolagents",
     "url": "https://github.com/huggingface/smolagents",
     "one_liner": "코드로 생각하고 행동하는 가벼운 에이전트를 만드는 허깅페이스 라이브러리",
+    "good_for": "코드를 실행하며 일하는 가벼운 에이전트를 만들 때",
     "purposes": [
       "automation"
     ],
@@ -2797,6 +2893,7 @@
     "name": "PocketBase",
     "url": "https://github.com/pocketbase/pocketbase",
     "one_liner": "파일 하나로 돌아가는 데이터베이스·로그인·파일 저장 백엔드",
+    "good_for": "작은 앱에 DB·로그인을 파일 하나로 붙일 때",
     "purposes": [
       "devops"
     ],
@@ -2823,6 +2920,7 @@
     "name": "K8sGPT",
     "url": "https://github.com/k8sgpt-ai/k8sgpt",
     "one_liner": "쿠버네티스 클러스터 문제를 찾아 AI가 쉬운 말로 설명해주는 도구",
+    "good_for": "쿠버네티스 오류 원인을 쉬운 말로 알고 싶을 때",
     "purposes": [
       "devops"
     ],
@@ -2849,6 +2947,7 @@
     "name": "PR-Agent",
     "url": "https://github.com/qodo-ai/pr-agent",
     "one_liner": "풀 리퀘스트를 요약하고 리뷰·개선 제안을 달아주는 오픈소스 리뷰 도구",
+    "good_for": "PR 요약·리뷰 봇을 직접 운영하고 싶을 때",
     "purposes": [
       "coding_agents"
     ],
@@ -2875,6 +2974,7 @@
     "name": "Semantic Kernel",
     "url": "https://github.com/microsoft/semantic-kernel",
     "one_liner": "C#·파이썬·자바 앱에 AI 에이전트를 붙이는 마이크로소프트 SDK",
+    "good_for": "C#·자바 앱에 AI 기능을 붙일 때",
     "purposes": [
       "automation",
       "data_ml"
@@ -2902,6 +3002,7 @@
     "name": "Pydantic AI",
     "url": "https://github.com/pydantic/pydantic-ai",
     "one_liner": "타입 검사로 믿을 수 있는 에이전트를 만드는 파이썬 프레임워크",
+    "good_for": "타입이 보장된 에이전트를 파이썬으로 만들 때",
     "purposes": [
       "automation"
     ],
@@ -2928,6 +3029,7 @@
     "name": "AI SDK",
     "url": "https://github.com/vercel/ai",
     "one_liner": "타입스크립트로 채팅·스트리밍·도구 호출 AI 앱을 만드는 라이브러리",
+    "good_for": "타입스크립트 웹앱에 채팅·스트리밍을 붙일 때",
     "purposes": [
       "app_builders",
       "automation"
@@ -2955,6 +3057,7 @@
     "name": "LitGPT",
     "url": "https://github.com/Lightning-AI/litgpt",
     "one_liner": "20개가 넘는 언어 모델을 학습·미세조정·배포하는 레시피 모음",
+    "good_for": "언어 모델 학습·미세조정 과정을 직접 따라 할 때",
     "purposes": [
       "data_ml"
     ],
@@ -2981,6 +3084,7 @@
     "name": "nanoGPT",
     "url": "https://github.com/karpathy/nanoGPT",
     "one_liner": "GPT를 처음부터 학습해 보는 가장 짧고 읽기 쉬운 코드",
+    "good_for": "GPT가 어떻게 학습되는지 코드로 배우고 싶을 때",
     "purposes": [
       "data_ml"
     ],
@@ -3007,6 +3111,7 @@
     "name": "Reader",
     "url": "https://github.com/jina-ai/reader",
     "one_liner": "주소 앞에 붙이기만 하면 웹페이지를 언어 모델용 글로 바꿔주는 도구",
+    "good_for": "웹페이지를 LLM 입력용 글로 간단히 바꿀 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -3035,6 +3140,7 @@
     "name": "GraphRAG",
     "url": "https://github.com/microsoft/graphrag",
     "one_liner": "문서에서 지식 그래프를 만들어 더 정확히 답하는 RAG 방법",
+    "good_for": "문서 사이 관계까지 따져 답해야 할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3061,6 +3167,7 @@
     "name": "Graphiti",
     "url": "https://github.com/getzep/graphiti",
     "one_liner": "시간에 따라 바뀌는 지식 그래프로 에이전트 기억을 만드는 도구",
+    "good_for": "시간에 따라 바뀌는 정보를 에이전트가 기억하게 할 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -3088,6 +3195,7 @@
     "name": "Qwen3.8 27B",
     "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
     "one_liner": "알리바바 Qwen의 270억 파라미터 공개 모델 (글과 이미지 이해)",
+    "good_for": "글과 이미지를 함께 다루는 공개 모델을 직접 돌릴 때",
     "purposes": [
       "data_ml"
     ],
@@ -3114,6 +3222,7 @@
     "name": "DeepSeek-R1",
     "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
     "one_liner": "단계적으로 생각해 답하는 DeepSeek의 공개 추론 모델",
+    "good_for": "단계적 추론이 필요한 문제를 공개 모델로 풀 때",
     "purposes": [
       "data_ml"
     ],
@@ -3140,6 +3249,7 @@
     "name": "Kokoro 82M",
     "url": "https://huggingface.co/hexgrad/Kokoro-82M",
     "one_liner": "8천만 파라미터로 가볍게 돌아가는 공개 음성 합성(TTS) 모델",
+    "good_for": "가벼운 음성 합성 모델을 로컬에서 쓸 때",
     "purposes": [
       "data_ml"
     ],
@@ -3166,6 +3276,7 @@
     "name": "Whisper large-v3",
     "url": "https://huggingface.co/openai/whisper-large-v3",
     "one_liner": "OpenAI의 다국어 음성 인식 공개 모델",
+    "good_for": "다국어 음성 인식 모델을 직접 돌릴 때",
     "purposes": [
       "data_ml"
     ],
@@ -3192,6 +3303,7 @@
     "name": "Whisper large-v3 turbo",
     "url": "https://huggingface.co/openai/whisper-large-v3-turbo",
     "one_liner": "Whisper large-v3를 더 빠르게 줄인 음성 인식 모델",
+    "good_for": "음성 인식을 더 빠르게 돌리고 싶을 때",
     "purposes": [
       "data_ml"
     ],
@@ -3218,6 +3330,7 @@
     "name": "all-MiniLM-L6-v2",
     "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
     "one_liner": "문장을 숫자 벡터로 바꿔 비슷한 글을 찾게 해주는 작은 임베딩 모델",
+    "good_for": "가벼운 문장 임베딩으로 유사도 검색을 시작할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3244,6 +3357,7 @@
     "name": "DeepSeek-V4 Pro",
     "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
     "one_liner": "아주 긴 글(100만 토큰)을 다루는 DeepSeek의 공개 언어 모델",
+    "good_for": "아주 긴 문서를 한 번에 넣어야 할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3270,6 +3384,7 @@
     "name": "Z-Image Turbo",
     "url": "https://huggingface.co/Tongyi-MAI/Z-Image-Turbo",
     "one_liner": "글로 설명하면 빠르게 그림을 만드는 알리바바 통이의 공개 이미지 모델",
+    "good_for": "글로 이미지를 빠르게 만드는 공개 모델이 필요할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3296,6 +3411,7 @@
     "name": "gpt-oss-120b",
     "url": "https://huggingface.co/openai/gpt-oss-120b",
     "one_liner": "OpenAI가 공개한 큰 언어 모델 (내 서버에서 직접 실행)",
+    "good_for": "큰 공개 언어 모델을 내 서버에서 돌릴 때",
     "purposes": [
       "data_ml"
     ],
@@ -3322,6 +3438,7 @@
     "name": "gpt-oss-20b",
     "url": "https://huggingface.co/openai/gpt-oss-20b",
     "one_liner": "OpenAI가 공개한 가벼운 언어 모델 (일반 PC에서도 실행)",
+    "good_for": "일반 PC에서 돌아가는 공개 언어 모델이 필요할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3348,6 +3465,7 @@
     "name": "GLM-5.2",
     "url": "https://huggingface.co/zai-org/GLM-5.2",
     "one_liner": "Z.ai(즈푸)의 공개 대형 언어 모델",
+    "good_for": "다른 계열의 대형 공개 모델을 비교해 볼 때",
     "purposes": [
       "data_ml"
     ],
@@ -3374,6 +3492,7 @@
     "name": "Mixtral 8x7B Instruct",
     "url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
     "one_liner": "여러 전문가 모델을 섞은 미스트랄의 공개 대화 모델",
+    "good_for": "전문가 혼합 구조의 공개 대화 모델을 쓸 때",
     "purposes": [
       "data_ml"
     ],
@@ -3400,6 +3519,7 @@
     "name": "Gemma 4 31B",
     "url": "https://huggingface.co/google/gemma-4-31B-it",
     "one_liner": "구글의 공개 모델 젬마 4 (글과 이미지 이해)",
+    "good_for": "구글의 공개 모델로 글·이미지를 다룰 때",
     "purposes": [
       "data_ml"
     ],
@@ -3426,6 +3546,7 @@
     "name": "Mistral 7B Instruct",
     "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
     "one_liner": "미스트랄의 작고 빠른 공개 대화 모델",
+    "good_for": "작고 빠른 공개 대화 모델이 필요할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3452,6 +3573,7 @@
     "name": "BGE-M3",
     "url": "https://huggingface.co/BAAI/bge-m3",
     "one_liner": "100개가 넘는 언어를 지원하는 검색용 임베딩 모델",
+    "good_for": "한국어를 포함한 다국어 검색 임베딩이 필요할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3478,6 +3600,7 @@
     "name": "Janus-Pro 7B",
     "url": "https://huggingface.co/deepseek-ai/Janus-Pro-7B",
     "one_liner": "이미지를 이해하고 만들기도 하는 DeepSeek의 공개 멀티모달 모델",
+    "good_for": "이미지 이해와 생성을 한 모델로 해 볼 때",
     "purposes": [
       "data_ml"
     ],
@@ -3504,6 +3627,7 @@
     "name": "DeepSeek-OCR",
     "url": "https://huggingface.co/deepseek-ai/DeepSeek-OCR",
     "one_liner": "문서 사진에서 글자를 읽어내는 DeepSeek의 공개 모델",
+    "good_for": "문서 사진에서 글자를 뽑을 때",
     "purposes": [
       "data_ml"
     ],
@@ -3530,6 +3654,7 @@
     "name": "Phi-2",
     "url": "https://huggingface.co/microsoft/phi-2",
     "one_liner": "27억 파라미터로 작지만 똑똑한 마이크로소프트 공개 모델",
+    "good_for": "작은 모델로 실험하거나 가볍게 돌릴 때",
     "purposes": [
       "data_ml"
     ],
@@ -3556,6 +3681,7 @@
     "name": "QwQ-32B",
     "url": "https://huggingface.co/Qwen/QwQ-32B",
     "one_liner": "수학·코딩 문제를 깊게 생각해 푸는 Qwen의 공개 추론 모델",
+    "good_for": "수학·코딩 추론을 공개 모델로 할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3582,6 +3708,7 @@
     "name": "Dia 1.6B",
     "url": "https://huggingface.co/nari-labs/Dia-1.6B",
     "one_liner": "대본을 주면 두 사람이 대화하는 음성을 만드는 공개 모델",
+    "good_for": "대본으로 두 사람 대화 음성을 만들 때",
     "purposes": [
       "data_ml"
     ],
@@ -3608,6 +3735,7 @@
     "name": "EmbeddingGemma 2",
     "url": "https://huggingface.co/google/embeddinggemma-2",
     "one_liner": "구글의 가벼운 공개 임베딩 모델 (검색·분류용)",
+    "good_for": "가벼운 임베딩으로 검색·분류를 할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3634,6 +3762,7 @@
     "name": "Qwen3.6 35B-A3B",
     "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
     "one_liner": "일부만 켜서 빠르게 도는 Qwen의 전문가 혼합 공개 모델",
+    "good_for": "큰 모델을 적은 자원으로 빠르게 돌리고 싶을 때",
     "purposes": [
       "data_ml"
     ],
@@ -3660,6 +3789,7 @@
     "name": "ggml",
     "url": "https://github.com/ggml-org/ggml",
     "one_liner": "llama.cpp·whisper.cpp 밑에서 도는 가벼운 머신러닝 텐서 라이브러리",
+    "good_for": "C/C++로 가벼운 모델 실행 엔진을 만들 때",
     "purposes": [
       "data_ml"
     ],
@@ -3686,6 +3816,7 @@
     "name": "KTransformers",
     "url": "https://github.com/kvcache-ai/ktransformers",
     "one_liner": "CPU와 GPU를 섞어 큰 모델을 적은 GPU로 돌리게 해주는 추론 최적화 도구",
+    "good_for": "GPU 메모리가 부족한데 큰 모델을 돌려야 할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3712,6 +3843,7 @@
     "name": "SGLang",
     "url": "https://github.com/sgl-project/sglang",
     "one_liner": "언어 모델·멀티모달 모델을 빠르게 서빙하는 추론 엔진",
+    "good_for": "언어 모델·멀티모달 모델을 빠르게 서빙할 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -3739,6 +3871,7 @@
     "name": "Text Generation Inference",
     "url": "https://github.com/huggingface/text-generation-inference",
     "one_liner": "허깅페이스의 언어 모델 서빙 서버",
+    "good_for": "허깅페이스 모델을 서버로 띄울 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -3766,6 +3899,7 @@
     "name": "PEFT",
     "url": "https://github.com/huggingface/peft",
     "one_liner": "LoRA처럼 모델 일부만 학습해 가볍게 미세조정하는 라이브러리",
+    "good_for": "LoRA로 모델 일부만 가볍게 학습할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3792,6 +3926,7 @@
     "name": "TRL",
     "url": "https://github.com/huggingface/trl",
     "one_liner": "사람 피드백 강화학습(RLHF)·DPO로 언어 모델을 학습시키는 라이브러리",
+    "good_for": "RLHF·DPO로 모델을 정렬 학습할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3818,6 +3953,7 @@
     "name": "Axolotl",
     "url": "https://github.com/axolotl-ai-cloud/axolotl",
     "one_liner": "설정 파일 하나로 여러 모델을 미세조정하는 도구",
+    "good_for": "설정 파일만으로 미세조정 실험을 반복할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3844,6 +3980,7 @@
     "name": "LM Evaluation Harness",
     "url": "https://github.com/EleutherAI/lm-evaluation-harness",
     "one_liner": "언어 모델을 수백 가지 시험(벤치마크)으로 채점하는 평가 도구",
+    "good_for": "모델을 표준 벤치마크로 채점할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3870,6 +4007,7 @@
     "name": "Ragas",
     "url": "https://github.com/explodinggradients/ragas",
     "one_liner": "RAG 앱의 답 품질을 점수로 평가하는 도구",
+    "good_for": "RAG 답 품질을 점수로 비교할 때",
     "purposes": [
       "data_ml",
       "coding_agents"
@@ -3897,6 +4035,7 @@
     "name": "DeepEval",
     "url": "https://github.com/confident-ai/deepeval",
     "one_liner": "테스트 코드처럼 AI 앱 답변을 검사하는 평가 프레임워크",
+    "good_for": "AI 답변을 테스트 코드처럼 검사할 때",
     "purposes": [
       "data_ml",
       "coding_agents"
@@ -3924,6 +4063,7 @@
     "name": "Weave",
     "url": "https://github.com/wandb/weave",
     "one_liner": "AI 앱 호출을 기록하고 평가하는 W&B의 도구",
+    "good_for": "W&B로 AI 앱 호출과 평가를 기록할 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -3951,6 +4091,7 @@
     "name": "Guidance",
     "url": "https://github.com/guidance-ai/guidance",
     "one_liner": "언어 모델 출력을 정해진 형식으로 이끄는 프롬프트 프로그래밍 도구",
+    "good_for": "모델 출력 형식을 엄격하게 이끌어야 할 때",
     "purposes": [
       "data_ml"
     ],
@@ -3977,6 +4118,7 @@
     "name": "Outlines",
     "url": "https://github.com/outlines-dev/outlines",
     "one_liner": "언어 모델이 JSON 같은 정해진 구조로만 답하게 하는 라이브러리",
+    "good_for": "JSON 같은 정해진 구조로만 답을 받아야 할 때",
     "purposes": [
       "data_ml"
     ],
@@ -4003,6 +4145,7 @@
     "name": "Instructor",
     "url": "https://github.com/instructor-ai/instructor",
     "one_liner": "언어 모델 답을 타입이 정해진 데이터로 받아오는 파이썬 라이브러리",
+    "good_for": "LLM 답을 타입이 정해진 데이터로 받을 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -4030,6 +4173,7 @@
     "name": "Letta",
     "url": "https://github.com/letta-ai/letta",
     "one_liner": "오래 기억하는 상태 저장형 에이전트를 만드는 프레임워크 (예전 MemGPT)",
+    "good_for": "오래 기억하는 상태 저장형 에이전트가 필요할 때",
     "purposes": [
       "automation"
     ],
@@ -4056,6 +4200,7 @@
     "name": "Open Interpreter",
     "url": "https://github.com/OpenInterpreter/open-interpreter",
     "one_liner": "말로 시키면 내 컴퓨터에서 코드를 실행해 일을 처리해주는 도구",
+    "good_for": "말로 시켜 내 컴퓨터에서 코드를 실행하게 할 때",
     "purposes": [
       "automation",
       "coding_agents"
@@ -4083,6 +4228,7 @@
     "name": "SuperAGI",
     "url": "https://github.com/TransformerOptimus/SuperAGI",
     "one_liner": "자율 에이전트를 만들고 관리하는 오픈소스 프레임워크",
+    "good_for": "자율 에이전트를 만들고 관리 화면에서 볼 때",
     "purposes": [
       "automation"
     ],
@@ -4109,6 +4255,7 @@
     "name": "TaskWeaver",
     "url": "https://github.com/microsoft/TaskWeaver",
     "one_liner": "데이터 분석 작업을 코드로 계획·실행하는 마이크로소프트 에이전트 프레임워크",
+    "good_for": "데이터 분석 작업을 에이전트에게 맡길 때",
     "purposes": [
       "automation",
       "data_ml"
@@ -4136,6 +4283,7 @@
     "name": "MetaGPT",
     "url": "https://github.com/FoundationAgents/MetaGPT",
     "one_liner": "기획자·개발자 역할 에이전트가 함께 소프트웨어를 만드는 프레임워크",
+    "good_for": "역할별 에이전트로 소프트웨어 기획부터 코드까지 만들어 볼 때",
     "purposes": [
       "automation",
       "app_builders"
@@ -4163,6 +4311,7 @@
     "name": "ChatDev",
     "url": "https://github.com/OpenBMB/ChatDev",
     "one_liner": "가상 회사의 AI 직원들이 대화하며 프로그램을 만드는 프로젝트",
+    "good_for": "에이전트들이 대화하며 프로그램을 만드는 과정을 실험할 때",
     "purposes": [
       "automation",
       "app_builders"
@@ -4190,6 +4339,7 @@
     "name": "E2B",
     "url": "https://github.com/e2b-dev/E2B",
     "one_liner": "AI가 만든 코드를 안전한 클라우드 샌드박스에서 실행하게 해주는 도구",
+    "good_for": "AI가 만든 코드를 안전하게 실행해야 할 때",
     "purposes": [
       "automation",
       "devops"
@@ -4218,6 +4368,7 @@
     "name": "Composio",
     "url": "https://github.com/composiohq/composio",
     "one_liner": "에이전트에 깃허브·슬랙·지메일 같은 수백 개 앱 도구를 붙여주는 플랫폼",
+    "good_for": "에이전트에 업무 앱 도구 수백 개를 붙일 때",
     "purposes": [
       "automation"
     ],
@@ -4245,6 +4396,7 @@
     "name": "Skyvern",
     "url": "https://github.com/Skyvern-AI/skyvern",
     "one_liner": "화면을 보고 웹사이트 작업(폼 입력 등)을 자동으로 하는 브라우저 에이전트",
+    "good_for": "로그인·폼 입력 같은 웹 작업을 자동화할 때",
     "purposes": [
       "automation"
     ],
@@ -4271,6 +4423,7 @@
     "name": "Quivr",
     "url": "https://github.com/QuivrHQ/quivr",
     "one_liner": "내 파일로 질문에 답하는 RAG를 쉽게 붙이는 도구",
+    "good_for": "내 파일로 답하는 RAG를 빠르게 붙일 때",
     "purposes": [
       "data_ml"
     ],
@@ -4297,6 +4450,7 @@
     "name": "Khoj",
     "url": "https://github.com/khoj-ai/khoj",
     "one_liner": "내 문서와 웹을 검색해 답하는 셀프 호스팅 AI 비서",
+    "good_for": "내 문서와 웹을 함께 검색하는 개인 AI 비서를 직접 운영할 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -4325,6 +4479,7 @@
     "name": "LocalGPT",
     "url": "https://github.com/PromtEngineer/localGPT",
     "one_liner": "인터넷 없이 내 컴퓨터에서 문서와 대화하는 RAG 프로젝트",
+    "good_for": "인터넷 없이 문서 질의응답을 할 때",
     "purposes": [
       "data_ml"
     ],
@@ -4351,6 +4506,7 @@
     "name": "PrivateGPT",
     "url": "https://github.com/zylon-ai/private-gpt",
     "one_liner": "데이터가 밖으로 나가지 않게 문서 질의응답을 하는 도구",
+    "good_for": "데이터가 밖으로 나가면 안 되는 문서 질의응답이 필요할 때",
     "purposes": [
       "data_ml"
     ],
@@ -4377,6 +4533,7 @@
     "name": "h2oGPT",
     "url": "https://github.com/h2oai/h2ogpt",
     "one_liner": "로컬 문서·이미지로 대화하는 오픈소스 언어 모델 앱",
+    "good_for": "로컬 문서·이미지로 대화하는 앱을 직접 띄울 때",
     "purposes": [
       "data_ml"
     ],
@@ -4403,6 +4560,7 @@
     "name": "smol developer",
     "url": "https://github.com/smol-ai/developer",
     "one_liner": "설명 한 줄로 앱 코드 전체를 만들어주는 작은 개발 에이전트",
+    "good_for": "설명 한 줄로 작은 앱 코드를 만들어 볼 때",
     "purposes": [
       "coding_agents",
       "app_builders"
@@ -4430,6 +4588,7 @@
     "name": "Reflex",
     "url": "https://github.com/reflex-dev/reflex",
     "one_liner": "파이썬만으로 웹앱을 만드는 프레임워크 (AI 앱 빌더 포함)",
+    "good_for": "파이썬만으로 웹앱을 만들 때",
     "purposes": [
       "app_builders"
     ],
@@ -4456,6 +4615,7 @@
     "name": "Gradio",
     "url": "https://github.com/gradio-app/gradio",
     "one_liner": "모델을 몇 줄 코드로 웹 데모 화면으로 만드는 라이브러리",
+    "good_for": "모델 데모 화면을 몇 줄로 만들 때",
     "purposes": [
       "app_builders",
       "data_ml"
@@ -4483,6 +4643,7 @@
     "name": "Streamlit",
     "url": "https://github.com/streamlit/streamlit",
     "one_liner": "파이썬 스크립트를 데이터·AI 웹앱으로 바꾸는 프레임워크",
+    "good_for": "데이터·AI 결과를 웹 대시보드로 빨리 보여줄 때",
     "purposes": [
       "app_builders",
       "data_ml"
@@ -4510,6 +4671,7 @@
     "name": "Vanna",
     "url": "https://github.com/vanna-ai/vanna",
     "one_liner": "말로 물으면 SQL을 만들어 데이터베이스에서 답을 찾는 도구",
+    "good_for": "말로 물어 SQL을 만들고 DB에서 답을 찾을 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -4537,6 +4699,7 @@
     "name": "LanceDB",
     "url": "https://github.com/lancedb/lancedb",
     "one_liner": "서버 없이 파일로 쓰는 멀티모달 벡터 데이터베이스",
+    "good_for": "서버 없이 파일로 벡터 DB를 쓰고 싶을 때",
     "purposes": [
       "data_ml",
       "devops"
@@ -4564,6 +4727,7 @@
     "name": "Faiss",
     "url": "https://github.com/facebookresearch/faiss",
     "one_liner": "메타가 만든 빠른 벡터 유사도 검색 라이브러리",
+    "good_for": "대량 벡터 유사도 검색을 직접 구현할 때",
     "purposes": [
       "data_ml"
     ],
@@ -4590,6 +4754,7 @@
     "name": "Typesense",
     "url": "https://github.com/typesense/typesense",
     "one_liner": "오타에 강한 검색 엔진 (벡터 검색 지원)",
+    "good_for": "오타에 강한 검색을 직접 운영할 때",
     "purposes": [
       "devops",
       "data_ml"
@@ -4617,6 +4782,7 @@
     "name": "Coqui TTS",
     "url": "https://github.com/coqui-ai/TTS",
     "one_liner": "여러 언어 음성 합성 모델을 학습·실행하는 라이브러리",
+    "good_for": "여러 언어 음성 합성 모델을 학습·실행할 때",
     "purposes": [
       "data_ml"
     ],
@@ -4643,6 +4809,7 @@
     "name": "F5-TTS",
     "url": "https://github.com/SWivid/F5-TTS",
     "one_liner": "짧은 목소리 샘플로 비슷한 목소리를 만드는 음성 합성 모델",
+    "good_for": "짧은 목소리 샘플로 목소리를 복제할 때",
     "purposes": [
       "data_ml"
     ],
@@ -4669,6 +4836,7 @@
     "name": "GPT-SoVITS",
     "url": "https://github.com/RVC-Boss/GPT-SoVITS",
     "one_liner": "1분 정도 목소리로 음성 복제·합성을 하는 도구",
+    "good_for": "적은 녹음으로 음성 합성 모델을 만들 때",
     "purposes": [
       "data_ml"
     ],
@@ -4695,6 +4863,7 @@
     "name": "Shap-E",
     "url": "https://github.com/openai/shap-e",
     "one_liner": "글이나 이미지로 3D 모델을 만드는 OpenAI 연구 코드",
+    "good_for": "글이나 이미지로 3D 모델을 만들어 볼 때",
     "purposes": [
       "data_ml",
       "app_builders"
@@ -4722,6 +4891,7 @@
     "name": "InvokeAI",
     "url": "https://github.com/invoke-ai/InvokeAI",
     "one_liner": "스테이블 디퓨전 이미지 생성을 캔버스 화면에서 하는 창작 도구",
+    "good_for": "캔버스에서 이미지를 생성·보정하는 작업을 할 때",
     "purposes": [
       "data_ml",
       "app_builders"
@@ -4750,6 +4920,7 @@
     "name": "Fooocus",
     "url": "https://github.com/lllyasviel/Fooocus",
     "one_liner": "설정 없이 프롬프트만으로 이미지를 만드는 간단한 생성 도구",
+    "good_for": "설정 없이 프롬프트만으로 이미지를 만들 때",
     "purposes": [
       "data_ml",
       "app_builders"
@@ -4777,6 +4948,7 @@
     "name": "ComfyUI-Manager",
     "url": "https://github.com/Comfy-Org/ComfyUI-Manager",
     "one_liner": "ComfyUI 확장 노드를 찾아 설치·관리하는 도구",
+    "good_for": "ComfyUI 확장 노드를 쉽게 설치·관리할 때",
     "purposes": [
       "data_ml"
     ],
@@ -4803,6 +4975,7 @@
     "name": "Penpot",
     "url": "https://github.com/penpot/penpot",
     "one_liner": "오픈소스 디자인·프로토타입 도구 (피그마 대안)",
+    "good_for": "피그마 대신 오픈소스 디자인 도구를 쓰고 싶을 때",
     "purposes": [
       "app_builders"
     ],
@@ -4830,6 +5003,7 @@
     "name": "Onlook",
     "url": "https://github.com/onlook-dev/onlook",
     "one_liner": "리액트 앱을 화면에서 직접 고치며 AI로 디자인하는 편집기",
+    "good_for": "리액트 화면을 직접 보며 AI로 고칠 때",
     "purposes": [
       "app_builders"
     ],
@@ -4857,6 +5031,7 @@
     "name": "Perplexica",
     "url": "https://github.com/ItzCrazyKns/Perplexica",
     "one_liner": "내 서버에서 돌리는 오픈소스 AI 검색 엔진 (퍼플렉시티 대안)",
+    "good_for": "퍼플렉시티 같은 AI 검색을 내 서버에서 돌릴 때",
     "purposes": [
       "data_ml",
       "automation"
@@ -4884,6 +5059,7 @@
     "name": "GPT Researcher",
     "url": "https://github.com/assafelovic/gpt-researcher",
     "one_liner": "주제를 주면 웹을 조사해 출처 있는 보고서를 써주는 에이전트",
+    "good_for": "주제를 주고 출처 있는 조사 보고서를 받을 때",
     "purposes": [
       "automation",
       "data_ml"
@@ -4911,6 +5087,7 @@
     "name": "STORM",
     "url": "https://github.com/stanford-oval/storm",
     "one_liner": "위키백과 같은 긴 글을 조사해 써주는 스탠퍼드 연구 시스템",
+    "good_for": "긴 조사 글을 자동으로 써 보는 실험을 할 때",
     "purposes": [
       "automation",
       "data_ml"
@@ -4938,6 +5115,7 @@
     "name": "UI-TARS Desktop",
     "url": "https://github.com/bytedance/UI-TARS-desktop",
     "one_liner": "화면을 보고 마우스·키보드로 컴퓨터를 조작하는 에이전트 앱",
+    "good_for": "화면을 보고 컴퓨터를 조작하는 에이전트를 써 볼 때",
     "purposes": [
       "automation"
     ],

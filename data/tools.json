@@ -4,6 +4,7 @@
     "name": "Claude",
     "url": "https://claude.com/",
     "one_liner": "질문에 답하고, 글을 쓰고 다듬고, 긴 문서를 읽고 정리해주는 대화형 AI예요",
+    "good_for": "긴 보고서·계약서를 읽고 정리하거나 글을 다듬을 때",
     "purposes": [
       "P01",
       "P03",
@@ -42,6 +43,7 @@
     "name": "Manus",
     "url": "https://manus.im/",
     "one_liner": "할 일을 맡기면 스스로 조사하고 슬라이드·보고서 같은 결과물까지 만들어주는 AI 비서예요",
+    "good_for": "자료 조사부터 보고서·슬라이드까지 한 번에 맡기고 싶을 때",
     "purposes": [
       "P01",
       "P02",
@@ -85,6 +87,7 @@
     "name": "클로바노트",
     "url": "https://clovanote.naver.com/",
     "one_liner": "회의·강의 녹음을 글로 받아 적고 요약해주는 네이버 서비스예요",
+    "good_for": "한국어 회의·강의 녹음을 글로 남길 때",
     "purposes": [
       "P02"
     ],
@@ -110,6 +113,7 @@
     "name": "ElevenLabs",
     "url": "https://elevenlabs.io/",
     "one_liner": "글을 넣으면 사람처럼 자연스러운 목소리로 읽어주고, 목소리도 수천 개 중에 고를 수 있어요",
+    "good_for": "영상·오디오북에 쓸 자연스러운 영어·외국어 나레이션이 필요할 때",
     "purposes": [
       "P04"
     ],
@@ -137,6 +141,7 @@
     "name": "타입캐스트",
     "url": "https://typecast.ai/kr/",
     "one_liner": "대본을 넣으면 기쁨·슬픔 같은 감정을 살린 AI 목소리로 읽어주는 서비스예요",
+    "good_for": "감정이 담긴 한국어 나레이션·더빙이 필요할 때",
     "purposes": [
       "P04"
     ],
@@ -164,6 +169,7 @@
     "name": "HeyGen",
     "url": "https://www.heygen.com/",
     "one_liner": "대본만 쓰면 AI 사람(아바타)이 말하는 영상을 만들고, 자막도 자동으로 붙여줘요",
+    "good_for": "직접 찍지 않고 사람이 설명하는 영상을 만들 때",
     "purposes": [
       "P04"
     ],
@@ -193,6 +199,7 @@
     "name": "ChatGPT",
     "url": "https://chatgpt.com/",
     "one_liner": "무엇이든 물어보면 대화로 답하고, 글쓰기·이미지 만들기·자료 조사까지 도와주는 AI예요",
+    "good_for": "무엇이든 물어보고 글·이미지·조사를 한곳에서 하고 싶을 때",
     "purposes": [
       "P01",
       "P03"
@@ -222,6 +229,7 @@
     "name": "Midjourney",
     "url": "https://www.midjourney.com/",
     "one_liner": "원하는 장면을 글로 설명하면 그림 같은 고품질 이미지와 짧은 영상을 만들어줘요",
+    "good_for": "포스터·일러스트처럼 분위기 있는 그림이 필요할 때",
     "purposes": [
       "P03"
     ],
@@ -247,6 +255,7 @@
     "name": "tl;dv",
     "url": "https://tldv.io/",
     "one_liner": "줌·구글 미트·팀즈 회의를 녹화하고 받아쓰기와 요약을 만들어줘요",
+    "good_for": "화상회의를 녹화해 두고 나중에 요약만 보고 싶을 때",
     "purposes": [
       "P02"
     ],
@@ -276,6 +285,7 @@
     "name": "Grok",
     "url": "https://grok.com/",
     "one_liner": "대화로 묻고 답하고, 올린 파일을 읽어 정리하고, 그림과 영상도 만들어주는 AI예요",
+    "good_for": "최신 소식을 물어보거나 그림·영상도 함께 만들 때",
     "purposes": [
       "P01",
       "P02",
@@ -306,6 +316,7 @@
     "name": "Otter",
     "url": "https://otter.ai/",
     "one_liner": "영어 회의를 실시간으로 받아 적고, 회의가 끝나면 요약과 할 일을 정리해줘요",
+    "good_for": "영어 회의를 실시간으로 받아 적을 때",
     "purposes": [
       "P02"
     ],
@@ -331,6 +342,7 @@
     "name": "DeepL",
     "url": "https://www.deepl.com/",
     "one_liner": "문장이나 문서 파일을 자연스럽게 번역하고, 파일은 모양을 그대로 살려줘요",
+    "good_for": "문서 파일을 서식 그대로 자연스럽게 번역할 때",
     "purposes": [
       "P02"
     ],
@@ -358,6 +370,7 @@
     "name": "Vrew",
     "url": "https://vrew.ai/ko/",
     "one_liner": "영상 속 말을 받아 적어 자막을 자동으로 만들고, 글을 고치듯 영상을 잘라 편집해요",
+    "good_for": "유튜브 영상에 한국어 자막을 빠르게 넣을 때",
     "purposes": [
       "P04"
     ],
@@ -382,6 +395,7 @@
     "name": "Suno",
     "url": "https://suno.com/",
     "one_liner": "원하는 분위기와 가사를 적으면 노래를 통째로 만들어줘요",
+    "good_for": "가사와 분위기만으로 노래 한 곡을 만들어 볼 때",
     "purposes": [
       "P04"
     ],
@@ -407,6 +421,7 @@
     "name": "Udio",
     "url": "https://www.udio.com/",
     "one_liner": "글로 설명하면 보컬이 들어간 곡을 만들고 이어 붙일 수 있어요",
+    "good_for": "보컬이 들어간 곡을 만들고 길이를 늘려 갈 때",
     "purposes": [
       "P04"
     ],
@@ -431,6 +446,7 @@
     "name": "AIVA",
     "url": "https://www.aiva.ai/",
     "one_liner": "장르와 길이를 고르면 영상·게임용 배경음악을 작곡해줘요",
+    "good_for": "영상·게임에 쓸 배경음악을 작곡할 때",
     "purposes": [
       "P04"
     ],
@@ -456,6 +472,7 @@
     "name": "SOUNDRAW",
     "url": "https://soundraw.io/",
     "one_liner": "분위기·장르·길이를 골라 저작권 걱정 없는 배경음악을 만들어요",
+    "good_for": "영상에 쓸 저작권 걱정 없는 배경음악이 필요할 때",
     "purposes": [
       "P04"
     ],
@@ -480,6 +497,7 @@
     "name": "Krea",
     "url": "https://www.krea.ai/",
     "one_liner": "그리는 대로 바로 바뀌는 실시간 이미지 생성과 영상 만들기를 한곳에서 해요",
+    "good_for": "그리면서 바로 바뀌는 그림을 보며 아이디어를 잡을 때",
     "purposes": [
       "P03",
       "P04"
@@ -505,6 +523,7 @@
     "name": "OpenArt",
     "url": "https://openart.ai/",
     "one_liner": "여러 이미지 모델을 골라 그림을 만들고, 일부만 고치거나 캐릭터를 유지할 수 있어요",
+    "good_for": "같은 캐릭터로 여러 장의 그림을 만들 때",
     "purposes": [
       "P03"
     ],
@@ -529,6 +548,7 @@
     "name": "Pika",
     "url": "https://pika.art/",
     "one_liner": "글이나 사진 한 장으로 짧은 영상을 만들고 재미있는 효과를 넣어요",
+    "good_for": "사진 한 장을 재미있는 짧은 영상으로 바꿀 때",
     "purposes": [
       "P04"
     ],
@@ -554,6 +574,7 @@
     "name": "VEED",
     "url": "https://www.veed.io/",
     "one_liner": "브라우저에서 영상을 자르고 자막을 자동으로 넣고 번역까지 하는 편집기예요",
+    "good_for": "설치 없이 영상에 자막을 넣고 번역할 때",
     "purposes": [
       "P04",
       "P02"
@@ -579,6 +600,7 @@
     "name": "Synthesia",
     "url": "https://www.synthesia.io/",
     "one_liner": "대본을 넣으면 AI 아바타가 여러 언어로 말하는 설명 영상을 만들어줘요",
+    "good_for": "사내 교육·안내 영상을 여러 언어로 만들 때",
     "purposes": [
       "P04"
     ],
@@ -603,6 +625,7 @@
     "name": "Opus Clip",
     "url": "https://www.opus.pro/",
     "one_liner": "긴 영상을 넣으면 쇼츠·릴스용 짧은 영상 여러 개로 잘라주고 자막도 달아줘요",
+    "good_for": "긴 유튜브 영상을 쇼츠·릴스로 바꿀 때",
     "purposes": [
       "P04"
     ],
@@ -627,6 +650,7 @@
     "name": "invideo AI",
     "url": "https://invideo.io/",
     "one_liner": "주제만 적으면 대본·영상 소스·나레이션을 붙여 영상 초안을 만들어줘요",
+    "good_for": "주제만 정하고 영상 초안을 빨리 받아 보고 싶을 때",
     "purposes": [
       "P04"
     ],
@@ -651,6 +675,7 @@
     "name": "CapCut",
     "url": "https://www.capcut.com/",
     "one_liner": "자동 자막, 배경 지우기 같은 AI 기능이 들어간 무료 영상 편집기예요",
+    "good_for": "휴대폰으로 숏폼 영상을 편집하고 자막을 넣을 때",
     "purposes": [
       "P04"
     ],
@@ -676,6 +701,7 @@
     "name": "Descript",
     "url": "https://www.descript.com/",
     "one_liner": "받아쓴 글을 지우면 영상도 같이 잘리는, 문서처럼 편집하는 영상·팟캐스트 편집기예요",
+    "good_for": "팟캐스트·인터뷰 영상을 글 고치듯 편집할 때",
     "purposes": [
       "P04",
       "P02"
@@ -702,6 +728,7 @@
     "name": "Fireflies",
     "url": "https://fireflies.ai/",
     "one_liner": "화상회의에 들어가 받아쓰고 요약·할 일을 정리해주는 회의 비서예요",
+    "good_for": "화상회의 회의록과 할 일 정리를 자동으로 받고 싶을 때",
     "purposes": [
       "P02"
     ],
@@ -727,6 +754,7 @@
     "name": "Notta",
     "url": "https://www.notta.ai/",
     "one_liner": "녹음이나 회의를 여러 언어로 받아쓰고 요약·번역해줘요",
+    "good_for": "여러 언어가 섞인 회의를 받아쓰고 번역할 때",
     "purposes": [
       "P02"
     ],
@@ -752,6 +780,7 @@
     "name": "Julius",
     "url": "https://julius.ai/",
     "one_liner": "엑셀·CSV 파일을 올리고 말로 물으면 분석하고 차트를 그려줘요",
+    "good_for": "엑셀 데이터를 말로 물어보고 차트로 보고 싶을 때",
     "purposes": [
       "P01"
     ],
@@ -776,6 +805,7 @@
     "name": "ChatPDF",
     "url": "https://www.chatpdf.com/",
     "one_liner": "PDF를 올리고 물어보면 출처 쪽수와 함께 답해주고 요약도 해줘요",
+    "good_for": "가입 없이 PDF 내용을 바로 물어보고 싶을 때",
     "purposes": [
       "P01"
     ],
@@ -799,6 +829,7 @@
     "name": "Beautiful.ai",
     "url": "https://www.beautiful.ai/",
     "one_liner": "내용만 넣으면 디자인을 자동으로 맞춰주는 발표자료 만들기 도구예요",
+    "good_for": "디자인 고민 없이 깔끔한 발표자료가 필요할 때",
     "purposes": [
       "P03"
     ],
@@ -823,6 +854,7 @@
     "name": "Lindy",
     "url": "https://www.lindy.ai/",
     "one_liner": "메일 정리·일정 잡기·고객 응대 같은 일을 맡기는 AI 비서를 만들어요",
+    "good_for": "메일·일정 같은 반복 업무를 AI 비서에게 넘길 때",
     "purposes": [
       "P05"
     ],
@@ -846,6 +878,7 @@
     "name": "Lovable",
     "url": "https://lovable.dev/",
     "one_liner": "만들고 싶은 웹사이트나 앱을 말로 설명하면 바로 만들어 인터넷에 올려줘요",
+    "good_for": "코딩 없이 내 서비스나 홈페이지를 만들어 바로 올릴 때",
     "purposes": [
       "P05"
     ],
@@ -870,6 +903,7 @@
     "name": "Bolt",
     "url": "https://bolt.new/",
     "one_liner": "대화로 설명하면 브라우저 안에서 웹사이트·앱을 만들어 주는 도구예요",
+    "good_for": "말로 설명해서 간단한 웹사이트·앱을 만들어 볼 때",
     "purposes": [
       "P05"
     ],
@@ -894,6 +928,7 @@
     "name": "Le Chat (Mistral)",
     "url": "https://mistral.ai/",
     "one_liner": "프랑스 미스트랄의 대화형 AI예요. 질문·글쓰기·문서 분석을 해줘요",
+    "good_for": "ChatGPT·Claude 말고 다른 대화형 AI를 써 보고 싶을 때",
     "purposes": [
       "P01"
     ],
@@ -919,6 +954,7 @@
     "name": "Grammarly",
     "url": "https://www.grammarly.com/",
     "one_liner": "영어 글의 맞춤법·문법·말투를 고쳐주고 다시 써줘요",
+    "good_for": "영어 메일·보고서를 보내기 전에 문법을 확인할 때",
     "purposes": [
       "P01"
     ],
@@ -944,6 +980,7 @@
     "name": "Elicit",
     "url": "https://elicit.com/",
     "one_liner": "질문을 적으면 관련 논문을 찾아 핵심을 표로 정리해줘요",
+    "good_for": "논문 여러 편의 핵심을 표로 비교할 때",
     "purposes": [
       "P01"
     ],
@@ -968,6 +1005,7 @@
     "name": "SciSpace",
     "url": "https://scispace.com/",
     "one_liner": "논문을 찾고 읽기 어려운 부분을 쉽게 풀어 설명해줘요",
+    "good_for": "어려운 논문을 쉬운 말로 이해하고 싶을 때",
     "purposes": [
       "P01"
     ],
@@ -992,6 +1030,7 @@
     "name": "Humata",
     "url": "https://www.humata.ai/",
     "one_liner": "PDF·문서를 올리고 질문하면 원문 위치와 함께 답해줘요",
+    "good_for": "여러 문서에서 답과 원문 위치를 함께 찾을 때",
     "purposes": [
       "P01"
     ],
@@ -1016,6 +1055,7 @@
     "name": "Liner",
     "url": "https://liner.com/",
     "one_liner": "출처를 달아 답하는 AI 검색이에요. 논문·웹 자료 조사에 좋아요",
+    "good_for": "출처가 붙은 답으로 자료 조사를 할 때",
     "purposes": [
       "P01"
     ],
@@ -1041,6 +1081,7 @@
     "name": "Notion AI",
     "url": "https://www.notion.com/",
     "one_liner": "노션 문서 안에서 글을 쓰고 요약하고, 내 페이지 내용으로 질문에 답해줘요",
+    "good_for": "노션에 쌓아 둔 문서로 요약·질문을 하고 싶을 때",
     "purposes": [
       "P01"
     ],
@@ -1066,6 +1107,7 @@
     "name": "뤼튼",
     "url": "https://wrtn.ai/",
     "one_liner": "여러 AI 모델을 한국어로 쉽게 쓰는 국내 AI 서비스예요",
+    "good_for": "한국어로 여러 AI를 한곳에서 써 보고 싶을 때",
     "purposes": [
       "P01"
     ],
@@ -1090,6 +1132,7 @@
     "name": "Jasper",
     "url": "https://www.jasper.ai/",
     "one_liner": "브랜드 말투에 맞춘 마케팅 글을 써주는 AI예요",
+    "good_for": "회사 말투에 맞춘 마케팅 글을 많이 써야 할 때",
     "purposes": [
       "P01"
     ],
@@ -1113,6 +1156,7 @@
     "name": "Consensus",
     "url": "https://consensus.app/",
     "one_liner": "논문 근거로 질문에 답해주는 AI 학술 검색이에요",
+    "good_for": "논문 근거가 있는 답이 필요할 때",
     "purposes": [
       "P01"
     ],
@@ -1136,6 +1180,7 @@
     "name": "다글로",
     "url": "https://daglo.ai/",
     "one_liner": "녹음·영상을 한국어로 받아쓰고 요약해주는 국내 서비스예요",
+    "good_for": "한국어 녹음·영상을 받아쓰고 요약할 때",
     "purposes": [
       "P02"
     ],
@@ -1160,6 +1205,7 @@
     "name": "몰입형 번역",
     "url": "https://immersivetranslate.com/",
     "one_liner": "웹페이지·PDF·영상 자막을 원문과 번역문을 나란히 보여줘요",
+    "good_for": "외국어 웹페이지·PDF를 원문과 번역을 나란히 보며 읽을 때",
     "purposes": [
       "P02"
     ],
@@ -1185,6 +1231,7 @@
     "name": "Krisp",
     "url": "https://krisp.ai/",
     "one_liner": "통화 잡음을 지우고 회의를 받아쓰고 요약해줘요",
+    "good_for": "시끄러운 곳에서 화상회의를 하거나 통화 내용을 정리할 때",
     "purposes": [
       "P02"
     ],
@@ -1209,6 +1256,7 @@
     "name": "Rev",
     "url": "https://www.rev.com/",
     "one_liner": "녹음·영상을 받아쓰고 자막을 만들어줘요 (AI와 사람 받아쓰기)",
+    "good_for": "정확한 받아쓰기·자막이 필요할 때 (사람 받아쓰기도 있음)",
     "purposes": [
       "P02"
     ],
@@ -1234,6 +1282,7 @@
     "name": "Happy Scribe",
     "url": "https://www.happyscribe.com/",
     "one_liner": "녹음·영상을 받아쓰고 자막을 만들어 번역까지 해줘요",
+    "good_for": "영상 자막을 만들고 여러 언어로 번역할 때",
     "purposes": [
       "P02",
       "P04"
@@ -1259,6 +1308,7 @@
     "name": "Read AI",
     "url": "https://www.read.ai/",
     "one_liner": "화상회의를 받아쓰고 요약·할 일을 정리해줘요",
+    "good_for": "화상회의 요약과 할 일을 자동으로 받고 싶을 때",
     "purposes": [
       "P02"
     ],
@@ -1284,6 +1334,7 @@
     "name": "Transkriptor",
     "url": "https://transkriptor.com/",
     "one_liner": "녹음 파일을 여러 언어로 받아써 주는 서비스예요",
+    "good_for": "외국어 녹음 파일을 글로 바꿀 때",
     "purposes": [
       "P02"
     ],
@@ -1308,6 +1359,7 @@
     "name": "Clipdrop",
     "url": "https://clipdrop.co/",
     "one_liner": "배경 지우기, 사진 늘리기, 글로 이미지 만들기 같은 이미지 도구 모음이에요",
+    "good_for": "배경 지우기·사진 늘리기 같은 이미지 손질을 한곳에서 할 때",
     "purposes": [
       "P03"
     ],
@@ -1332,6 +1384,7 @@
     "name": "Pitch",
     "url": "https://pitch.com/",
     "one_liner": "AI로 발표자료 초안을 만들고 팀과 함께 다듬어요",
+    "good_for": "팀과 함께 발표자료를 만들고 고칠 때",
     "purposes": [
       "P03"
     ],
@@ -1357,6 +1410,7 @@
     "name": "Presentations.AI",
     "url": "https://www.presentations.ai/",
     "one_liner": "주제만 적으면 디자인된 발표자료를 만들어줘요",
+    "good_for": "주제만으로 발표자료 초안을 빨리 만들 때",
     "purposes": [
       "P03"
     ],
@@ -1381,6 +1435,7 @@
     "name": "Recraft",
     "url": "https://www.recraft.ai/",
     "one_liner": "로고·아이콘·일러스트를 원하는 스타일로 만들어요 (벡터 이미지도)",
+    "good_for": "로고·아이콘처럼 크기를 키워도 깨지지 않는 그림이 필요할 때",
     "purposes": [
       "P03"
     ],
@@ -1405,6 +1460,7 @@
     "name": "Photoroom",
     "url": "https://www.photoroom.com/",
     "one_liner": "상품 사진 배경을 지우고 깔끔한 쇼핑몰 사진으로 바꿔줘요",
+    "good_for": "쇼핑몰 상품 사진을 깔끔하게 만들 때",
     "purposes": [
       "P03"
     ],
@@ -1430,6 +1486,7 @@
     "name": "Adobe Firefly",
     "url": "https://firefly.adobe.com/",
     "one_liner": "어도비의 AI로 이미지·영상·소리를 만들고 고쳐요",
+    "good_for": "포토샵·일러스트 같은 어도비 프로그램과 함께 쓸 때",
     "purposes": [
       "P03",
       "P04"
@@ -1455,6 +1512,7 @@
     "name": "remove.bg",
     "url": "https://www.remove.bg/",
     "one_liner": "사진을 올리면 배경을 자동으로 지워줘요",
+    "good_for": "사진 배경만 빠르게 지우고 싶을 때",
     "purposes": [
       "P03"
     ],
@@ -1479,6 +1537,7 @@
     "name": "Runway",
     "url": "https://runway.com/",
     "one_liner": "글이나 사진으로 영상을 만들고, 영상 속 물체를 지우는 등 AI 영상 편집을 해요",
+    "good_for": "영상을 만들거나 영상 속 물체를 지우는 등 손볼 때",
     "purposes": [
       "P04"
     ],
@@ -1504,6 +1563,7 @@
     "name": "Luma Dream Machine",
     "url": "https://lumalabs.ai/",
     "one_liner": "글이나 사진으로 실감 나는 짧은 영상을 만들어줘요",
+    "good_for": "글이나 사진으로 실감 나는 짧은 영상을 만들 때",
     "purposes": [
       "P04"
     ],
@@ -1529,6 +1589,7 @@
     "name": "Hailuo AI",
     "url": "https://hailuoai.video/",
     "one_liner": "글이나 사진으로 영상을 만드는 미니맥스의 영상 생성 AI예요",
+    "good_for": "글이나 사진으로 짧은 영상을 만들어 볼 때",
     "purposes": [
       "P04"
     ],
@@ -1552,6 +1613,7 @@
     "name": "Mubert",
     "url": "https://mubert.com/",
     "one_liner": "분위기와 길이를 고르면 저작권 걱정 없는 배경음악을 만들어줘요",
+    "good_for": "방송·영상에 깔 배경음악을 길이에 맞춰 만들 때",
     "purposes": [
       "P04"
     ],
@@ -1577,6 +1639,7 @@
     "name": "Kapwing",
     "url": "https://www.kapwing.com/",
     "one_liner": "브라우저에서 영상을 편집하고 자동 자막·번역을 넣어요",
+    "good_for": "팀과 함께 브라우저에서 영상을 편집할 때",
     "purposes": [
       "P04"
     ],
@@ -1601,6 +1664,7 @@
     "name": "D-ID",
     "url": "https://www.d-id.com/",
     "one_liner": "사진 한 장과 대본으로 말하는 사람 영상을 만들어줘요",
+    "good_for": "사진 한 장으로 말하는 사람 영상을 만들 때",
     "purposes": [
       "P04"
     ],
@@ -1624,6 +1688,7 @@
     "name": "Beatoven.ai",
     "url": "https://www.beatoven.ai/",
     "one_liner": "영상 분위기에 맞는 배경음악을 작곡해줘요",
+    "good_for": "영상 분위기에 맞는 배경음악이 필요할 때",
     "purposes": [
       "P04"
     ],
@@ -1647,6 +1712,7 @@
     "name": "Wix AI 웹사이트 빌더",
     "url": "https://www.wix.com/ai-website-builder",
     "one_liner": "원하는 사이트를 말로 설명하면 AI가 홈페이지를 만들어줘요",
+    "good_for": "가게·개인 홈페이지를 말로 설명해서 만들 때",
     "purposes": [
       "P05"
     ],
@@ -1670,6 +1736,7 @@
     "name": "Taskade",
     "url": "https://www.taskade.com/",
     "one_liner": "할 일·문서·AI 에이전트를 한곳에서 만들어 일을 맡겨요",
+    "good_for": "할 일 목록과 문서에 AI를 붙여 정리할 때",
     "purposes": [
       "P05"
     ],
@@ -1694,6 +1761,7 @@
     "name": "AskYourPDF",
     "url": "https://askyourpdf.com/",
     "one_liner": "PDF를 올리고 대화하듯 물어보면 내용을 찾아 답해줘요",
+    "good_for": "PDF 내용을 대화하듯 물어볼 때",
     "purposes": [
       "P01"
     ],
@@ -1719,6 +1787,7 @@
     "name": "PDF.ai",
     "url": "https://pdf.ai/",
     "one_liner": "계약서·논문 PDF에 질문하면 해당 부분을 짚어 답해줘요",
+    "good_for": "계약서·논문에서 필요한 부분을 빨리 찾을 때",
     "purposes": [
       "P01"
     ],
@@ -1743,6 +1812,7 @@
     "name": "Rytr",
     "url": "https://rytr.me/",
     "one_liner": "블로그·광고·이메일 같은 짧은 글을 빠르게 써주는 글쓰기 도우미예요",
+    "good_for": "블로그·광고 문구 같은 짧은 글을 빨리 쓸 때",
     "purposes": [
       "P01"
     ],
@@ -1767,6 +1837,7 @@
     "name": "scite",
     "url": "https://scite.ai/",
     "one_liner": "논문이 다른 연구에서 어떻게 인용됐는지(지지·반박) 보여주는 연구 도우미예요",
+    "good_for": "논문이 다른 연구에서 지지받는지 반박받는지 확인할 때",
     "purposes": [
       "P01"
     ],
@@ -1791,6 +1862,7 @@
     "name": "Writesonic",
     "url": "https://writesonic.com/",
     "one_liner": "검색에 잘 걸리는 마케팅 글을 쓰고 다듬어주는 AI예요",
+    "good_for": "검색에 잘 걸리는 블로그·마케팅 글을 쓸 때",
     "purposes": [
       "P01"
     ],
@@ -1815,6 +1887,7 @@
     "name": "Copy.ai",
     "url": "https://www.copy.ai/",
     "one_liner": "영업·마케팅 글을 쓰고 반복 업무를 자동으로 처리해줘요",
+    "good_for": "영업·마케팅 글과 반복 업무를 함께 처리할 때",
     "purposes": [
       "P01",
       "P05"
@@ -1840,6 +1913,7 @@
     "name": "Wordtune",
     "url": "https://www.wordtune.com/",
     "one_liner": "쓴 문장을 더 자연스럽게, 짧게, 공손하게 바꿔 써줘요",
+    "good_for": "내가 쓴 영어 문장을 더 자연스럽게 바꿀 때",
     "purposes": [
       "P01"
     ],
@@ -1865,6 +1939,7 @@
     "name": "You.com",
     "url": "https://you.com/",
     "one_liner": "출처와 함께 답하는 AI 검색·대화 서비스예요",
+    "good_for": "출처가 붙은 답으로 검색하고 싶을 때",
     "purposes": [
       "P01"
     ],
@@ -1890,6 +1965,7 @@
     "name": "Pixlr",
     "url": "https://pixlr.com/",
     "one_liner": "브라우저에서 사진을 편집하고 AI로 이미지를 만들거나 지워요",
+    "good_for": "설치 없이 브라우저에서 사진을 편집할 때",
     "purposes": [
       "P03"
     ],
@@ -1915,6 +1991,7 @@
     "name": "Picsart",
     "url": "https://picsart.com/",
     "one_liner": "사진 편집, 배경 지우기, AI 이미지 만들기를 휴대폰과 웹에서 해요",
+    "good_for": "휴대폰으로 사진을 꾸미고 배경을 지울 때",
     "purposes": [
       "P03"
     ],
@@ -1940,6 +2017,7 @@
     "name": "Fotor",
     "url": "https://www.fotor.com/",
     "one_liner": "사진 보정과 AI 이미지 만들기, 사진을 만화로 바꾸기 같은 도구가 있어요",
+    "good_for": "사진 보정이나 사진을 만화풍으로 바꿀 때",
     "purposes": [
       "P03"
     ],
@@ -1964,6 +2042,7 @@
     "name": "Stockimg AI",
     "url": "https://stockimg.ai/",
     "one_liner": "로고·포스터·책 표지 같은 디자인 이미지를 글로 만들어줘요",
+    "good_for": "로고·포스터·책 표지 같은 디자인 이미지가 필요할 때",
     "purposes": [
       "P03"
     ],
@@ -1987,6 +2066,7 @@
     "name": "SlidesAI",
     "url": "https://www.slidesai.io/",
     "one_liner": "글을 넣으면 구글 슬라이드 발표자료로 바꿔줘요",
+    "good_for": "가진 글을 구글 슬라이드로 바꿀 때",
     "purposes": [
       "P03"
     ],
@@ -2012,6 +2092,7 @@
     "name": "Decktopus",
     "url": "https://www.decktopus.com/",
     "one_liner": "주제만 적으면 발표자료를 만들고 발표 메모까지 써줘요",
+    "good_for": "발표자료와 발표 메모를 함께 준비할 때",
     "purposes": [
       "P03"
     ],
@@ -2036,6 +2117,7 @@
     "name": "Prezi",
     "url": "https://prezi.com/",
     "one_liner": "AI로 움직이는 발표자료를 만들어요",
+    "good_for": "움직임이 있는 발표자료를 만들 때",
     "purposes": [
       "P03"
     ],
@@ -2061,6 +2143,7 @@
     "name": "Fliki",
     "url": "https://fliki.ai/",
     "one_liner": "글이나 블로그 주소를 넣으면 목소리와 장면을 붙여 영상으로 만들어줘요",
+    "good_for": "블로그 글을 나레이션 영상으로 바꿀 때",
     "purposes": [
       "P04"
     ],
@@ -2085,6 +2168,7 @@
     "name": "Pictory",
     "url": "https://pictory.ai/",
     "one_liner": "글·블로그·긴 영상을 짧은 영상으로 바꾸고 자막을 붙여줘요",
+    "good_for": "긴 영상이나 글을 짧은 홍보 영상으로 바꿀 때",
     "purposes": [
       "P04"
     ],
@@ -2109,6 +2193,7 @@
     "name": "Colossyan",
     "url": "https://www.colossyan.com/",
     "one_liner": "AI 강사가 말하는 교육·안내 영상을 대본으로 만들어요",
+    "good_for": "AI 강사가 설명하는 교육 영상을 만들 때",
     "purposes": [
       "P04"
     ],
@@ -2133,6 +2218,7 @@
     "name": "Elai",
     "url": "https://elai.io/",
     "one_liner": "대본이나 글로 AI 아바타가 설명하는 영상을 만들어요",
+    "good_for": "글이나 대본으로 아바타 설명 영상을 만들 때",
     "purposes": [
       "P04"
     ],
@@ -2157,6 +2243,7 @@
     "name": "LOVO",
     "url": "https://lovo.ai/",
     "one_liner": "여러 목소리로 나레이션을 만들고 영상도 편집하는 서비스예요",
+    "good_for": "여러 목소리로 나레이션을 만들고 영상까지 편집할 때",
     "purposes": [
       "P04"
     ],
@@ -2180,6 +2267,7 @@
     "name": "FlexClip",
     "url": "https://www.flexclip.com/",
     "one_liner": "템플릿과 AI 도구로 브라우저에서 짧은 영상을 만들어요",
+    "good_for": "템플릿으로 짧은 홍보 영상을 빨리 만들 때",
     "purposes": [
       "P04"
     ],
@@ -2204,6 +2292,7 @@
     "name": "LALAL.AI",
     "url": "https://www.lalal.ai/",
     "one_liner": "노래에서 목소리와 반주, 악기 소리를 따로 분리해줘요",
+    "good_for": "노래에서 보컬이나 반주만 뽑을 때",
     "purposes": [
       "P04"
     ],
@@ -2229,6 +2318,7 @@
     "name": "Moises",
     "url": "https://moises.ai/",
     "one_liner": "음악에서 보컬·드럼 등을 분리하고 박자·코드를 알려주는 연습 도우미예요",
+    "good_for": "악기 연습용으로 파트를 분리하고 박자·코드를 볼 때",
     "purposes": [
       "P04"
     ],
@@ -2254,6 +2344,7 @@
     "name": "Soundful",
     "url": "https://soundful.com/",
     "one_liner": "장르를 고르면 로열티 걱정 없는 배경음악을 만들어줘요",
+    "good_for": "장르만 골라 배경음악을 빨리 만들 때",
     "purposes": [
       "P04"
     ],
@@ -2278,6 +2369,7 @@
     "name": "Boomy",
     "url": "https://boomy.com/",
     "one_liner": "몇 번의 클릭으로 노래를 만들고 음원으로 올릴 수 있어요",
+    "good_for": "노래를 만들어 음원으로 올려 보고 싶을 때",
     "purposes": [
       "P04"
     ],
@@ -2301,6 +2393,7 @@
     "name": "Vidu",
     "url": "https://www.vidu.com/",
     "one_liner": "글이나 사진으로 짧은 영상을 만드는 영상 생성 AI예요",
+    "good_for": "글이나 사진으로 짧은 영상을 만들어 볼 때",
     "purposes": [
       "P04"
     ],
@@ -2324,6 +2417,7 @@
     "name": "Hedra",
     "url": "https://www.hedra.com/",
     "one_liner": "사진과 목소리로 말하는 캐릭터 영상을 만들어요",
+    "good_for": "캐릭터 사진이 말하는 영상을 만들 때",
     "purposes": [
       "P04"
     ],
@@ -2347,6 +2441,7 @@
     "name": "Viggle AI",
     "url": "https://viggle.ai/",
     "one_liner": "사진 속 인물을 원하는 춤·동작대로 움직이는 영상을 만들어요",
+    "good_for": "사진 속 인물이 춤추는 재미있는 영상을 만들 때",
     "purposes": [
       "P04"
     ],
@@ -2371,6 +2466,7 @@
     "name": "Tactiq",
     "url": "https://tactiq.io/",
     "one_liner": "구글 미트·줌·팀즈 회의를 크롬 확장으로 받아쓰고 요약해줘요",
+    "good_for": "크롬에서 구글 미트·줌 회의를 바로 받아쓸 때",
     "purposes": [
       "P02"
     ],
@@ -2395,6 +2491,7 @@
     "name": "Sembly",
     "url": "https://www.sembly.ai/",
     "one_liner": "회의를 받아쓰고 요약·할 일을 정리하는 회의 비서예요",
+    "good_for": "회의록과 할 일을 팀과 함께 정리할 때",
     "purposes": [
       "P02"
     ],
@@ -2420,6 +2517,7 @@
     "name": "jamie",
     "url": "https://www.meetjamie.ai/",
     "one_liner": "회의에 봇을 넣지 않고 내 컴퓨터에서 받아쓰고 회의록을 만들어줘요",
+    "good_for": "회의에 봇을 들이지 않고 회의록을 만들고 싶을 때",
     "purposes": [
       "P02"
     ],
@@ -2444,6 +2542,7 @@
     "name": "Smartcat",
     "url": "https://www.smartcat.com/",
     "one_liner": "문서·웹사이트를 AI로 번역하고 사람이 검토하는 번역 플랫폼이에요",
+    "good_for": "회사 문서·웹사이트를 번역하고 사람이 검토할 때",
     "purposes": [
       "P02"
     ],
@@ -2468,6 +2567,7 @@
     "name": "Relevance AI",
     "url": "https://relevanceai.com/",
     "one_liner": "영업·고객 응대 같은 일을 맡는 AI 직원(에이전트)을 만들어요",
+    "good_for": "영업·고객 응대를 맡을 AI 직원을 만들 때",
     "purposes": [
       "P05"
     ],
@@ -2491,6 +2591,7 @@
     "name": "Hostinger AI 웹사이트 빌더",
     "url": "https://www.hostinger.com/ai-website-builder",
     "one_liner": "몇 가지 질문에 답하면 AI가 웹사이트를 만들어 바로 올려줘요",
+    "good_for": "질문 몇 개로 웹사이트를 만들어 바로 올리고 싶을 때",
     "purposes": [
       "P05"
     ],
@@ -2514,6 +2615,7 @@
     "name": "Bubble",
     "url": "https://bubble.io/",
     "one_liner": "코딩 없이 웹·휴대폰 앱을 만들고, AI로 앱 초안을 바로 만들어요",
+    "good_for": "코딩 없이 제대로 된 웹·휴대폰 앱을 만들 때",
     "purposes": [
       "P05"
     ],
@@ -2538,6 +2640,7 @@
     "name": "ClickUp",
     "url": "https://clickup.com/",
     "one_liner": "할 일·문서·회의를 한곳에서 관리하고 AI가 정리와 작성을 도와줘요",
+    "good_for": "팀의 할 일·문서·회의를 한곳에서 관리할 때",
     "purposes": [
       "P05"
     ],
@@ -2563,6 +2666,7 @@
     "name": "monday.com",
     "url": "https://monday.com/",
     "one_liner": "팀 업무를 표·보드로 관리하고 AI가 요약·분류·작성을 대신해줘요",
+    "good_for": "팀 업무 진행 상황을 표·보드로 관리할 때",
     "purposes": [
       "P05"
     ],
@@ -2588,6 +2692,7 @@
     "name": "Reclaim",
     "url": "https://reclaim.ai/",
     "one_liner": "할 일과 집중 시간을 AI가 구글 캘린더에 알아서 넣어줘요",
+    "good_for": "할 일과 집중 시간을 구글 캘린더에 자동으로 넣고 싶을 때",
     "purposes": [
       "P05"
     ],
@@ -2612,6 +2717,7 @@
     "name": "Motion",
     "url": "https://www.usemotion.com/",
     "one_liner": "할 일과 회의를 AI가 하루 일정표로 자동으로 짜줘요",
+    "good_for": "하루 일정표를 AI가 짜 주길 원할 때",
     "purposes": [
       "P05"
     ],
@@ -2637,6 +2743,7 @@
     "name": "Sintra",
     "url": "https://sintra.ai/",
     "one_liner": "마케팅·고객 응대·SNS를 맡는 AI 직원들을 쓰는 서비스예요",
+    "good_for": "작은 가게의 마케팅·SNS를 AI에게 맡기고 싶을 때",
     "purposes": [
       "P05"
     ],
@@ -2662,6 +2769,7 @@
     "name": "Superhuman",
     "url": "https://superhuman.com/",
     "one_liner": "AI가 메일을 분류하고 답장 초안을 써주는 빠른 메일 앱이에요",
+    "good_for": "메일이 많아 분류와 답장을 빨리 하고 싶을 때",
     "purposes": [
       "P05",
       "P01"
@@ -2688,6 +2796,7 @@
     "name": "Shortwave",
     "url": "https://www.shortwave.com/",
     "one_liner": "지메일에 AI 비서를 붙여 메일을 찾고 요약하고 답장해줘요",
+    "good_for": "지메일에서 메일을 찾고 요약하고 답장할 때",
     "purposes": [
       "P05",
       "P01"
@@ -2714,6 +2823,7 @@
     "name": "Webflow",
     "url": "https://webflow.com/",
     "one_liner": "디자인하듯 웹사이트를 만들고 AI로 페이지와 문구를 만들어요",
+    "good_for": "디자인을 직접 다듬으며 웹사이트를 만들 때",
     "purposes": [
       "P05"
     ],
@@ -2738,6 +2848,7 @@
     "name": "Squarespace",
     "url": "https://www.squarespace.com/",
     "one_liner": "AI가 질문 몇 개로 홈페이지·온라인 가게 초안을 만들어줘요",
+    "good_for": "홈페이지나 온라인 가게를 빠르게 열 때",
     "purposes": [
       "P05"
     ],
@@ -2762,6 +2873,7 @@
     "name": "Softr",
     "url": "https://www.softr.io/",
     "one_liner": "스프레드시트 데이터로 코딩 없이 사내 앱·고객 포털을 만들어요",
+    "good_for": "엑셀·시트 데이터로 사내 앱을 만들 때",
     "purposes": [
       "P05"
     ],
@@ -2786,6 +2898,7 @@
     "name": "Glide",
     "url": "https://www.glideapps.com/",
     "one_liner": "구글 시트·엑셀로 코딩 없이 업무용 앱을 만들고 AI 기능을 넣어요",
+    "good_for": "구글 시트로 간단한 업무용 앱을 만들 때",
     "purposes": [
       "P05"
     ],
@@ -2810,6 +2923,7 @@
     "name": "MindStudio",
     "url": "https://www.mindstudio.ai/",
     "one_liner": "코딩 없이 나만의 AI 에이전트를 만들어 일을 맡겨요",
+    "good_for": "코딩 없이 나만의 AI 에이전트를 만들 때",
     "purposes": [
       "P05"
     ],
@@ -2834,6 +2948,7 @@
     "name": "Jotform",
     "url": "https://www.jotform.com/",
     "one_liner": "신청서·설문을 만들고 AI 에이전트가 응답과 상담을 도와줘요",
+    "good_for": "신청서·설문을 만들고 응답을 받을 때",
     "purposes": [
       "P05"
     ],
@@ -2859,6 +2974,7 @@
     "name": "Typeform",
     "url": "https://www.typeform.com/",
     "one_liner": "AI로 설문·퀴즈를 만들고 응답을 분석해줘요",
+    "good_for": "보기 좋은 설문·퀴즈를 만들고 결과를 분석할 때",
     "purposes": [
       "P05"
     ],

@@ -68,7 +68,9 @@ export function validateTool(tool, at, purposeIds, today, { dev = false } = {}) 
   if (!isObject(tool)) return [`${at}: 객체여야 합니다`];
 
   if (typeof tool.id !== 'string' || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(tool.id)) err('id', '영문 소문자·숫자·하이픈만 씁니다');
-  for (const field of ['name', 'one_liner']) if (!isText(tool[field])) err(field, '비어 있습니다');
+  for (const field of ['name', 'one_liner', 'good_for']) if (!isText(tool[field])) err(field, '비어 있습니다');
+
+  if (isText(tool.good_for) && /가장|최고|제일|1위/.test(tool.good_for)) err('good_for', '순위·최고 표현 없이 상황만 씁니다');
 
   const domains = tool.official_domains;
   const domainsOk = Array.isArray(domains) && domains.length > 0 && domains.every((d) => typeof d === 'string' && DOMAIN.test(d));

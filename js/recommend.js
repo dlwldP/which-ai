@@ -47,7 +47,7 @@ const withUnknownLast = (cmp) => (a, b) => priceKnown(b) - priceKnown(a) || cmp(
  * @param {object[]} input.tools
  * @param {string|null} [input.purposeId]  없으면 전체
  * @param {string[]} [input.filters]       FILTERS의 키
- * @param {string} [input.query]           이름·한 줄 설명에서 찾을 말
+ * @param {string} [input.query]           이름·한 줄 설명·이럴 때 좋아요에서 찾을 말
  * @param {string} [input.sort]            SORTS의 키 (기본 name). 가격을 모르는 툴은 맨 뒤
  * @returns {object[]}
  */
@@ -59,7 +59,7 @@ export function listTools({ tools, purposeId = null, filters = [], query = '', s
   return tools
     .filter((t) => !purposeId || t.purposes.includes(purposeId))
     .filter((t) => filters.every((f) => FILTERS[f](t)))
-    .filter((t) => !q || `${t.name} ${t.one_liner}`.toLowerCase().includes(q))
+    .filter((t) => !q || `${t.name} ${t.one_liner} ${t.good_for ?? ''}`.toLowerCase().includes(q))
     .sort(withUnknownLast(SORTS[sort]));
 }
 

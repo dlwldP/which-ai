@@ -52,6 +52,11 @@ test('찾는 말: 이름·한 줄 설명에서 대소문자 없이', () => {
   assert.equal(listTools({ tools: demo, query: '없는말없는말' }).length, 0);
 });
 
+test('찾는 말: 이럴 때 좋아요 문장에서도 찾음', () => {
+  const tools = [{ ...demo[0], id: 'zz', name: '가', one_liner: '나', good_for: '긴 영상을 쇼츠로 바꿀 때' }];
+  assert.equal(listTools({ tools, query: '쇼츠' }).length, 1);
+});
+
 test('같은 입력이면 같은 결과', () => {
   assert.deepEqual(listTools({ tools: demo, purposeId: 'P09' }), listTools({ tools: structuredClone(demo).reverse(), purposeId: 'P09' }));
 });

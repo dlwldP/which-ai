@@ -4,6 +4,7 @@
     "name": "테스트툴 알파",
     "url": "https://example.com/alpha",
     "one_liner": "테스트툴 알파 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "P01",
       "P02"
@@ -29,6 +30,7 @@
     "name": "테스트툴 브라보",
     "url": "https://example.com/bravo",
     "one_liner": "테스트툴 브라보 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "P01",
       "P02"
@@ -54,6 +56,7 @@
     "name": "테스트툴 찰리",
     "url": "https://example.com/charlie",
     "one_liner": "테스트툴 찰리 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "P02",
       "P03",
@@ -79,6 +82,7 @@
     "name": "테스트툴 델타",
     "url": "https://example.com/delta",
     "one_liner": "테스트툴 델타 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "P03",
       "P04"
@@ -104,6 +108,7 @@
     "name": "테스트툴 에코",
     "url": "https://example.com/echo",
     "one_liner": "테스트툴 에코 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "P04",
       "P02"
@@ -128,6 +133,7 @@
     "name": "테스트툴 폭스트롯",
     "url": "https://example.com/foxtrot",
     "one_liner": "테스트툴 폭스트롯 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "P01",
       "P04"
@@ -153,6 +159,7 @@
     "name": "테스트툴 골프",
     "url": "https://example.com/golf",
     "one_liner": "테스트툴 골프 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "P04",
       "P01"
@@ -177,6 +184,7 @@
     "name": "테스트툴 호텔",
     "url": "https://example.com/hotel",
     "one_liner": "테스트툴 호텔 설명 (테스트용 가짜 데이터)",
+    "good_for": "테스트할 때 (테스트용 가짜 데이터)",
     "purposes": [
       "P01",
       "P02"

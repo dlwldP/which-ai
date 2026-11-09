@@ -74,6 +74,7 @@ function cardHtml(t, currentPurpose = null) {
         ${t.ai_native === 'no' ? '<span class="tag tag-plain">AI와 같이 쓰는 도구</span>' : ''}
       </div>
       <p class="tool-one-liner">${esc(t.one_liner)}</p>
+      ${t.good_for ? `<p class="tool-good-for"><span class="good-for-label">이럴 때 좋아요</span> ${esc(t.good_for)}</p>` : ''}
       <ul class="badges" aria-label="가격과 쓰는 방법">
         <li class="badge badge-${price.tone}">${esc(price.text)}</li>
         ${uses.map((u) => `<li class="badge badge-plain">${esc(u)}</li>`).join('')}
