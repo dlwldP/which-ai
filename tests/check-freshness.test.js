@@ -12,8 +12,8 @@ const demo = JSON.parse(readFileSync(new URL('../data/demo-tools.json', import.m
 test('상태 분류', () => {
   assert.equal(classifyStatus(200), 'ok');
   assert.equal(classifyStatus(301), 'ok');
-  for (const s of [401, 403, 429]) assert.equal(classifyStatus(s), 'blocked');
-  for (const s of [0, 400, 404, 410, 500, 503]) assert.equal(classifyStatus(s), 'broken');
+  for (const s of [401, 403, 429, 0, 500, 503]) assert.equal(classifyStatus(s), 'blocked');
+  for (const s of [400, 402, 404, 410]) assert.equal(classifyStatus(s), 'broken');
 });
 
 test('90일 넘은 툴만, 오래된 순', () => {
@@ -46,7 +46,24 @@ test('HEAD가 안 되면 GET으로 다시 확인', async () => {
 
 test('접속 실패는 0', async () => {
   const fakeFetch = async () => { throw new Error('network'); };
-  assert.equal(await checkUrl('https://x.test/', fakeFetch), 0);
+  assert.equal(await checkUrl('https://x.test/', fakeFetch, { retryDelayMs: 0 }), 0);
+});
+
+test('접속 실패·사이트 오류는 한 번 더 시도', async () => {
+  const calls = [];
+  const fakeFetch = async (url, opts) => {
+    calls.push(opts.method);
+    return { status: calls.length < 3 ? 503 : 200 };
+  };
+  assert.equal(await checkUrl('https://x.test/', fakeFetch, { retryDelayMs: 0 }), 200);
+  assert.deepEqual(calls, ['HEAD', 'GET', 'GET']);
+});
+
+test('페이지 없음(404)은 다시 시도하지 않음', async () => {
+  const calls = [];
+  const fakeFetch = async (url, opts) => { calls.push(opts.method); return { status: 404 }; };
+  assert.equal(await checkUrl('https://x.test/', fakeFetch, { retryDelayMs: 0 }), 404);
+  assert.deepEqual(calls, ['HEAD', 'GET']);
 });
 
 test('여러 주소를 확인하고 순서를 지킴', async () => {

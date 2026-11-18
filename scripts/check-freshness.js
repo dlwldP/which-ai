@@ -11,12 +11,21 @@ export const TIMEOUT_MS = 20000;
 const CONCURRENCY = 4;
 const USER_AGENT = 'Mozilla/5.0 (compatible; which-ai-link-check; +https://github.com/dlwldP/which-ai)';
 
-/** HTTP 상태 → ok(정상) / blocked(로봇 차단 등, 직접 확인 필요) / broken(깨짐). status 0은 접속 실패. */
+/**
+ * HTTP 상태 → ok(정상) / blocked(자동 확인 안 됨, 직접 확인 필요) / broken(깨짐). status 0은 접속 실패.
+ * 접속 실패(0)와 사이트 오류(5xx)는 한 번 더 시도해도 그러면 blocked로 둔다 (2026-11-18 J 결정):
+ * 일부 사이트가 GitHub 서버의 자동 접속에만 503을 주거나 연결을 끊어서, 사람이 열면 멀쩡한 링크가 매주 "깨짐"으로 올라왔다.
+ * broken은 페이지가 없다는 뜻이 분명한 4xx(404, 410 등)만.
+ */
 export function classifyStatus(status) {
   if (status >= 200 && status < 400) return 'ok';
-  if ([401, 403, 429].includes(status)) return 'blocked';
+  if ([401, 403, 429].includes(status) || status === 0 || status >= 500) return 'blocked';
   return 'broken';
 }
+
+/** 다시 시도할 만한 실패: 접속 실패, 사이트 오류 */
+const retryable = (status) => status === 0 || status >= 500;
+export const RETRY_DELAY_MS = 5000;
 
 const STATUS_TEXT = {
   0: '접속 실패',
@@ -52,8 +61,11 @@ export function linkTargets(tools) {
   return [...map.entries()].map(([url, usedBy]) => ({ url, usedBy }));
 }
 
-/** 주소 하나 확인. HEAD를 막는 사이트가 많아서 실패하면 GET으로 한 번 더 본다. */
-export async function checkUrl(url, fetchImpl = fetch) {
+/**
+ * 주소 하나 확인. HEAD를 막는 사이트가 많아서 실패하면 GET으로 한 번 더 본다.
+ * 접속 실패·사이트 오류면 잠깐 기다렸다가 GET으로 한 번 더 본다.
+ */
+export async function checkUrl(url, fetchImpl = fetch, { retryDelayMs = RETRY_DELAY_MS } = {}) {
   const attempt = async (method) => {
     try {
       const res = await fetchImpl(url, {
@@ -70,16 +82,20 @@ export async function checkUrl(url, fetchImpl = fetch) {
   };
   let status = await attempt('HEAD');
   if (classifyStatus(status) !== 'ok') status = await attempt('GET');
+  if (retryable(status)) {
+    await new Promise((r) => setTimeout(r, retryDelayMs));
+    status = await attempt('GET');
+  }
   return status;
 }
 
-export async function checkLinks(targets, fetchImpl = fetch) {
+export async function checkLinks(targets, fetchImpl = fetch, opts = {}) {
   const results = new Array(targets.length);
   let next = 0;
   const worker = async () => {
     while (next < targets.length) {
       const i = next++;
-      const status = await checkUrl(targets[i].url, fetchImpl);
+      const status = await checkUrl(targets[i].url, fetchImpl, opts);
       results[i] = { ...targets[i], status, result: classifyStatus(status) };
     }
   };
@@ -128,7 +144,7 @@ export function buildReport({ today, sets, stale, links, runUrl = '', demo = fal
     lines.push('');
 
     if (blocked.length > 0) {
-      lines.push(`${h} 자동 확인이 막힌 링크 (${blocked.length}개)`, '', '사이트가 자동 접속을 막아서 확인하지 못했어요. 직접 열어서 잘 열리는지 봐주세요.', '');
+      lines.push(`${h} 자동 확인이 막힌 링크 (${blocked.length}개)`, '', '사이트가 자동 접속을 막았거나, 두 번 시도하는 동안 응답하지 않았어요. 직접 열어서 잘 열리는지 봐주세요. 몇 주째 계속 여기 있으면 사이트가 멈춘 건지 확인이 필요해요.', '');
       for (const l of blocked) lines.push(`- ${usedByText(l.usedBy)}: ${l.url} — ${l.status} ${statusText(l.status)}`);
       lines.push('');
     }
