@@ -25,7 +25,7 @@ test('두 사이트 하단에 이용 안내가 있음', () => {
   for (const file of ['index.html', 'dev/index.html']) {
     const footer = read(file).match(/<footer[\s\S]*<\/footer>/)[0];
     assert.match(footer, /class="site-terms"/, file);
-    for (const s of ['확인 날짜 기준', '공식 사이트에서 한 번 더 확인', '관계가 없어요', '방문자 정보를 모으지 않아요']) {
+    for (const s of ['확인 날짜 기준', '공식 사이트에서 한 번 더 확인', '관계가 없어요', '쿠키 없는 익명 방문 통계']) {
       assert.ok(footer.includes(s), `${file}: ${s}`);
     }
   }
@@ -37,4 +37,12 @@ test('두 사이트 하단에 개인정보 처리방침·이용약관·보안 �
     for (const href of ['#/privacy', '#/terms', '#/safety']) assert.ok(footer.includes(`href="${href}"`), `${file}: ${href}`);
     assert.match(footer, /©/);
   }
+});
+
+test('개발자용 백엔드·배포 분야 안내 띠: 만든 사람 서비스라고 밝히고 utm을 붙임', async () => {
+  const { MODES } = await import('../js/modes.js');
+  const n = MODES.dev.purposeNotes.devops;
+  assert.equal(new URL(n.href).searchParams.get('utm_source'), 'which-ai');
+  assert.match(n.note, /만든 사람/);
+  assert.equal(MODES.general.purposeNotes, undefined); // 비개발자 화면에는 없음
 });

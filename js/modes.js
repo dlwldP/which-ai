@@ -40,6 +40,16 @@ export const MODES = {
     otherSite: { href: '../', label: '비개발자용 보기' },
     reportSite: '개발할 때 AI 뭐 써? (개발자용)',
     reportGithub: true,
+    // 분야 페이지 위 안내 띠 (툴 카드가 아님). 만든 사람의 다른 서비스라고 밝힌다 (2026-11-18 J 결정)
+    purposeNotes: {
+      devops: {
+        text: 'AWS로 배포하기 전에 한 달 비용이 궁금하다면',
+        linkText: 'AWSCAL에서 계산해 보기',
+        href: 'https://dlwldp.github.io/Awscal/?utm_source=which-ai',
+        out: 'awscal',
+        note: '이 사이트를 만든 사람의 다른 무료 서비스예요',
+      },
+    },
     emptyText: '공식 사이트·저장소를 확인한 도구부터 하나씩 채우고 있어요.',
     glossaryHint: 'CLI, RAG, CI/CD, 셀프 호스팅… 용어 풀이',
     glossaryIntro: '개발 도구를 고를 때 나오는 용어를 짧게 풀었어요.',

@@ -14,6 +14,7 @@ import { PAGE_KEYS, pageSections } from './pages.js';
 import { glossarize, glossaryGroups, glossaryMatches, termMatcher } from './glossary.js';
 import { updateDates } from './changelog.js';
 import { MODES } from './modes.js';
+import { installOutboundTracking, trackRoute } from './analytics.js';
 
 // <body data-mode="dev"> 이면 개발자용
 const mode = MODES[document.body.dataset.mode] ?? MODES.general;
@@ -69,7 +70,7 @@ function cardHtml(t, currentPurpose = null) {
     <article class="tool-card" id="tool-${esc(t.id)}">
       <div class="tool-head">
         <span class="tool-avatar" aria-hidden="true">${esc(initialLetter(t.name))}</span>
-        <h2 class="tool-name"><a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.name)} <span class="ext" aria-hidden="true">↗</span></a></h2>
+        <h2 class="tool-name"><a href="${esc(t.url)}" target="_blank" rel="noopener" data-out="${esc(t.id)}" data-out-name="${esc(t.name)}">${esc(t.name)} <span class="ext" aria-hidden="true">↗</span></a></h2>
         ${stale ? '<span class="tag tag-warn">다시 확인 필요</span>' : ''}
         ${t.ai_native === 'no' ? '<span class="tag tag-plain">AI와 같이 쓰는 도구</span>' : ''}
       </div>
@@ -81,8 +82,8 @@ function cardHtml(t, currentPurpose = null) {
       </ul>
       ${otherPurposes.length ? `<p class="tool-purposes">${otherPurposes.map((p) => `<a href="#/p/${p.id}">${esc(p.icon)} ${esc(p.label)}</a>`).join('')}</p>` : ''}
       <p class="tool-foot">
-        <a class="tool-link" href="${esc(t.url)}" target="_blank" rel="noopener">공식 사이트</a>
-        ${t.repo_url ? `<a class="tool-link" href="${esc(t.repo_url)}" target="_blank" rel="noopener">${t.kind === 'model' ? '모델 페이지' : '저장소'}</a>` : ''}
+        <a class="tool-link" href="${esc(t.url)}" target="_blank" rel="noopener" data-out="${esc(t.id)}" data-out-name="${esc(t.name)}">공식 사이트</a>
+        ${t.repo_url ? `<a class="tool-link" href="${esc(t.repo_url)}" target="_blank" rel="noopener" data-out="${esc(t.id)}/저장소" data-out-name="${esc(t.name)}">${t.kind === 'model' ? '모델 페이지' : '저장소'}</a>` : ''}
         <span class="tool-date">확인 ${esc(formatDate(t.last_verified).replace(/^\d{4}년 /, ''))}</span>
         ${reportButton(t)}
       </p>
@@ -203,6 +204,14 @@ function sortChips(base, params) {
     </div>`;
 }
 
+/** 분야 페이지 위 안내 띠 (modes.js purposeNotes). 툴 카드와 섞지 않는다 */
+function purposeNoteHtml(purpose) {
+  const n = purpose && mode.purposeNotes?.[purpose.id];
+  if (!n) return '';
+  return `<aside class="purpose-note"><span>${esc(n.text)}</span> <a href="${esc(n.href)}" target="_blank" rel="noopener" data-out="${esc(n.out)}">${esc(n.linkText)} <span aria-hidden="true">↗</span></a><small>${esc(n.note)}</small></aside>`;
+}
+
+/** @returns {number} 보여준 카드 수 (검색 통계에 씀) */
 function renderList({ purpose = null, params }) {
   const active = mode.filters.map((f) => f.key).filter((k) => params.get(k) === '1' && FILTERS[k]);
   const query = purpose ? '' : (params.get('q') ?? '');
@@ -221,10 +230,12 @@ function renderList({ purpose = null, params }) {
       <h1 class="page-title">${esc(title)} <span class="count">${tools.length}개</span></h1>
       ${purpose ? `<p class="page-sub">${esc(purpose.examples)}</p>` : searchForm(query)}
     </div>
+    ${purposeNoteHtml(purpose)}
     ${data.tools.length ? `<div class="list-controls">${filterChips(base, active, [query ? `q=${encodeURIComponent(query)}` : '', sort !== 'name' ? `sort=${sort}` : ''].filter(Boolean).join('&'))}${sortChips(base, params)}</div>` : ''}
     ${tools.length ? groupedHtml(tools, purpose?.id ?? null)
       : emptyNotice(active.length || query ? '조건을 바꿔서 다시 찾아보세요.' : mode.emptyText)}
     <p class="order-note">순서는 이름순(또는 무료 먼저)이고, 가격을 확인하지 못한 툴은 맨 뒤에 있어요. 좋고 나쁨의 순위가 아니에요. 가격·쓰는 방법은 확인 날짜 기준이니, 쓰기 전에 공식 사이트에서 한 번 더 확인하세요.</p>`;
+  return tools.length;
 }
 
 function renderTool(t) {
@@ -486,8 +497,9 @@ function route() {
     else a.removeAttribute('aria-current');
   });
 
+  let results = null;
   if (purpose) renderList({ purpose, params });
-  else if (section === 'all') renderList({ params });
+  else if (section === 'all') results = renderList({ params });
   else if (tool) renderTool(tool);
   else if (section === 't' || section === 'p') renderNotFound();
   else if (section === 'glossary') renderGlossary(params.get('term'));
@@ -514,6 +526,7 @@ function route() {
     location.hash = q ? `#/all?q=${encodeURIComponent(q)}` : '#/all';
   }));
   if (!(section === 'glossary' && params.get('term'))) window.scrollTo(0, 0);
+  trackRoute(results); // 쿠키 없는 익명 통계 (analytics.js). 코드가 비어 있으면 아무것도 안 함
 }
 
 async function main() {
@@ -534,6 +547,7 @@ async function main() {
     document.body.classList.toggle('is-demo', demo); // 예시 데이터 화면은 띠·테두리 색으로 구분 (styles.css)
     installTermSheet();
     installReportDialog();
+    installOutboundTracking();
     window.addEventListener('hashchange', () => {
       routedOnce = true;
       route();
