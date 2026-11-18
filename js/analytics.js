@@ -4,7 +4,7 @@
 // 무엇을 보내는지 바뀌면 js/pages.js 개인정보 처리방침부터 고친다.
 
 /** GoatCounter 사이트 코드 (https://<코드>.goatcounter.com). 비어 있으면 아무것도 보내지 않는다. */
-export const GOATCOUNTER_CODE = '';
+export const GOATCOUNTER_CODE = 'jylee';
 
 const MAX_QUERY = 30;
 
