@@ -46,3 +46,11 @@ test('개발자용 백엔드·배포 분야 안내 띠: 만든 사람 서비스�
   assert.match(n.note, /만든 사람/);
   assert.equal(MODES.general.purposeNotes, undefined); // 비개발자 화면에는 없음
 });
+
+test('두 사이트 하단에 만든 사람의 다른 서비스(AWSCAL, GitHub 프로필) 링크가 있음', () => {
+  for (const file of ['index.html', 'dev/index.html']) {
+    const footer = read(file).match(/<footer[\s\S]*<\/footer>/)[0];
+    assert.ok(footer.includes('https://dlwldp.github.io/Awscal/?utm_source=which-ai'), file);
+    assert.ok(footer.includes('href="https://github.com/dlwldP"'), file);
+  }
+});
