@@ -1,6 +1,6 @@
 // 주간 점검: 90일 넘게 확인 안 된 툴과 공식 주소 링크 상태를 모아 Issue 본문(마크다운)을 만든다.
 // 가격·정책 값은 긁어오지 않는다. "확인해야 할 목록"만 만든다 (기획서 11장).
-// 사용법: node scripts/check-freshness.js [--demo] [--today YYYY-MM-DD] [--out report.md] [--run-url URL]
+// 사용법: node scripts/check-freshness.js [--demo] [--today YYYY-MM-DD] [--out report.md] [--run-url URL] [--links-out links.json]
 //   기본: 비개발자용(data/tools.json)과 개발자용(data/dev/tools.json)을 함께 점검한다. --demo면 예시 데이터로.
 // 확인할 게 있으면 마지막 줄에 has_issues=true, 없으면 has_issues=false 를 출력한다 (GitHub Actions 출력용).
 import { readFileSync, writeFileSync, appendFileSync } from 'node:fs';
@@ -173,6 +173,12 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   }
   const report = buildReport({ today, sets, runUrl: arg('run-url', ''), demo });
   writeFileSync(arg('out', 'report.md'), report.body);
+  // 주간 요약(weekly-summary.js)이 링크를 다시 확인하지 않도록 깨진 링크만 따로 저장
+  const linksOut = arg('links-out', '');
+  if (linksOut) {
+    const broken = sets.map((x) => ({ label: x.label, file: x.file, broken: x.links.filter((l) => l.result === 'broken') }));
+    writeFileSync(linksOut, `${JSON.stringify(broken, null, 2)}\n`);
+  }
   console.log(`90일 지남 ${report.counts.stale} · 깨진 링크 ${report.counts.broken} · 자동 확인 막힘 ${report.counts.blocked}`);
   if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `has_issues=${report.hasIssues}\n`);
   console.log(`has_issues=${report.hasIssues}`);
