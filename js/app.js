@@ -7,7 +7,7 @@
 //   #/changes                변경 이력
 // 2026-11-06 개편: 점수 추천과 "자세히 보기"를 없애고, 용도별 카드 목록으로 최대한 많은 AI를 짧게 보여준다.
 // 목록·조건 계산은 recommend.js(순수 함수)에만 맡긴다.
-import { FILTERS, SORTS, groupByKind, initialLetter, isStale, listTools, splitPreview } from './recommend.js';
+import { FILTERS, SORTS, groupByKind, initialLetter, isStale, listTools, recentlyAdded, splitPreview } from './recommend.js';
 import { formatDate, localToday, priceBadge, useText } from './format.js';
 import { FEEDBACK_FORM, REASON_MAX, cleanReason, feedbackBody, githubIssueUrl, isFeedbackReady } from './feedback.js';
 import { PAGE_KEYS, pageSections } from './pages.js';
@@ -157,12 +157,39 @@ function renderHome() {
         </a></li>`).join('')}</ul>
     </section>
 
+    ${recentHtml()}
+
     <section class="more" aria-labelledby="more-title">
       <h2 class="section-title" id="more-title">더 알아보기</h2>
       <ul class="more-links">
         ${linkRow('📖', '용어집', mode.glossaryHint, '#/glossary')}
         ${linkRow('🗓️', '변경 이력', `${W} 정보를 업데이트한 날짜`, '#/changes')}
       </ul>
+    </section>`;
+}
+
+/** 첫 화면 "최근 추가된 툴" (변경 이력에서 계산). 이력이 없으면(로컬) 안 보여준다 */
+function recentHtml() {
+  const recent = recentlyAdded(data.changelog, data.tools);
+  if (!recent.length) return '';
+  return `
+    <section class="recent" aria-labelledby="recent-title">
+      <div class="section-head">
+        <h2 class="section-title" id="recent-title">최근 추가된 ${W}</h2>
+        <a class="section-more" href="#/changes">업데이트 날짜 보기 ›</a>
+      </div>
+      <ul class="recent-list">${recent.map(({ tool: t, date }) => {
+        const price = priceBadge(t.price);
+        return `
+        <li><a class="recent-item" href="#/t/${esc(t.id)}">
+          <span class="tool-avatar" aria-hidden="true">${esc(initialLetter(t.name))}</span>
+          <span class="recent-body">
+            <span class="recent-name">${esc(t.name)}</span>
+            <span class="recent-good">${esc(t.good_for)}</span>
+            <span class="recent-meta"><span class="badge badge-${price.tone}">${esc(price.text)}</span> <span class="recent-date">${esc(formatDate(date).replace(/^\d+년 /, ''))} 추가</span></span>
+          </span>
+        </a></li>`;
+      }).join('')}</ul>
     </section>`;
 }
 

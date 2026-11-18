@@ -89,3 +89,26 @@ export function initialLetter(name) {
   const c = [...name.trim()][0] ?? '?';
   return /[a-z]/i.test(c) ? c.toUpperCase() : c;
 }
+
+/** 첫 화면 "최근 추가된 툴"에 보여줄 개수 */
+export const RECENT_COUNT = 6;
+
+/**
+ * 변경 이력(최신 커밋부터)에서 최근에 추가된 툴. 지금 목록에 없는 툴(나중에 뺀 것)은 빼고, 같은 툴은 한 번만.
+ * @returns {{ tool: object, date: string }[]} 최근 것부터
+ */
+export function recentlyAdded(changelog, tools, count = RECENT_COUNT) {
+  if (!Array.isArray(changelog)) return [];
+  const byId = new Map(tools.map((t) => [t.id, t]));
+  const seen = new Set();
+  const out = [];
+  for (const entry of changelog) {
+    for (const c of entry.changes ?? []) {
+      if (c.type !== 'added' || seen.has(c.tool_id) || !byId.has(c.tool_id)) continue;
+      seen.add(c.tool_id);
+      out.push({ tool: byId.get(c.tool_id), date: entry.date });
+      if (out.length >= count) return out;
+    }
+  }
+  return out;
+}
