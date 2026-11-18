@@ -29,14 +29,16 @@ export function parseRoute(hash) {
 
 /**
  * 화면 하나를 볼 때 보낼 이벤트 목록 (페이지 조회 말고 따로 세는 것).
- * prev: 직전 화면의 params (처음이면 null). 새로 켠 필터만 센다.
+ * prev: 직전 화면 { path, params } (처음이면 null).
+ *   분야는 다른 화면에서 들어왔을 때만 센다 (같은 분야에서 필터·정렬만 바꾼 건 다시 세지 않음).
+ *   필터는 새로 켠 것만 센다.
  * results: 검색 결과 개수 (검색 화면일 때)
  */
 export function routeEvents({ path, params }, prev = null, results = null) {
   const events = [];
   const purpose = /^p\/([\w-]+)$/.exec(path);
-  if (purpose) events.push({ name: `분야/${purpose[1]}` });
-  for (const f of ['free', 'web', 'install']) if (params.has(f) && !prev?.has(f)) events.push({ name: `필터/${f}` });
+  if (purpose && prev?.path !== path) events.push({ name: `분야/${purpose[1]}` });
+  for (const f of ['free', 'web', 'install']) if (params.has(f) && !prev?.params.has(f)) events.push({ name: `필터/${f}` });
   if (path === 'all' && params.has('q')) {
     const q = cleanQuery(params.get('q'));
     if (q) events.push({ name: results === 0 ? `검색-결과없음/${q}` : `검색/${q}` });
@@ -74,14 +76,15 @@ function send(params) {
 }
 
 let first = true;
-let prevParams = null;
+let prevRoute = null;
 
 /** 화면이 바뀔 때마다 부른다. results: 검색 화면이면 결과 개수 */
 export function trackRoute(results = null) {
   if (!enabled()) return;
   const route = parseRoute(location.hash);
   const base = location.pathname.replace(/index\.html$/, '');
-  send({
+  // 같은 화면에서 필터·정렬·검색어만 바뀐 건 페이지 조회로 다시 세지 않는다 (이벤트만)
+  if (prevRoute?.path !== route.path) send({
     path: `${base}${route.path}`,
     title: document.title,
     // 첫 화면에서만 어디서 왔는지(검색·인스타그램 등)와 utm 표시를 보낸다
@@ -89,9 +92,9 @@ export function trackRoute(results = null) {
     query: first ? location.search : '',
     screen: first ? `${screen.width},${screen.height},${devicePixelRatio || 1}` : '',
   });
-  for (const ev of routeEvents(route, prevParams, results)) send({ path: `${base}${ev.name}`, title: ev.name, event: true });
+  for (const ev of routeEvents(route, prevRoute, results)) send({ path: `${base}${ev.name}`, title: ev.name, event: true });
   first = false;
-  prevParams = route.params;
+  prevRoute = route;
 }
 
 /** 공식 사이트·저장소·다른 서비스로 나가는 클릭 */
