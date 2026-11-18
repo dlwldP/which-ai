@@ -2239,30 +2239,6 @@
     "last_verified": "2026-11-06"
   },
   {
-    "id": "lovo",
-    "name": "LOVO",
-    "url": "https://lovo.ai/",
-    "one_liner": "여러 목소리로 나레이션을 만들고 영상도 편집하는 서비스예요",
-    "good_for": "여러 목소리로 나레이션을 만들고 영상까지 편집할 때",
-    "purposes": [
-      "P04"
-    ],
-    "price": {
-      "free": null,
-      "paid": null
-    },
-    "use": [
-      "web"
-    ],
-    "official_domains": [
-      "lovo.ai"
-    ],
-    "sources": [
-      "https://lovo.ai/"
-    ],
-    "last_verified": "2026-11-06"
-  },
-  {
     "id": "flexclip",
     "name": "FlexClip",
     "url": "https://www.flexclip.com/",

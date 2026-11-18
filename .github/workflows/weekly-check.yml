@@ -101,7 +101,7 @@ jobs:
 
       - name: 주간 요약 파일 올리기
         if: always() && env.DATA == 'tools'
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: weekly-summary-${{ steps.check.outputs.today }}
           path: weekly-summary.md
