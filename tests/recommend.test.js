@@ -85,3 +85,15 @@ test('조건 이름이 화면 모드와 같음', async () => {
   for (const m of Object.values(MODES)) for (const f of m.filters) assert.ok(FILTERS[f.key], f.key);
   for (const k of MODES.dev.kinds) assert.ok(MODES.dev.kindInfo[k], k);
 });
+
+test('최근 추가된 툴: 최신 이력부터, 같은 툴 한 번, 지금 없는 툴 제외, 개수 제한', async () => {
+  const { recentlyAdded } = await import('../js/recommend.js');
+  const tools = [{ id: 'a', name: 'A' }, { id: 'b', name: 'B' }, { id: 'c', name: 'C' }];
+  const changelog = [
+    { date: '2026-11-10', changes: [{ type: 'added', tool_id: 'c' }, { type: 'added', tool_id: 'gone' }, { type: 'changed', tool_id: 'a' }] },
+    { date: '2026-11-06', changes: [{ type: 'added', tool_id: 'a' }, { type: 'added', tool_id: 'c' }, { type: 'added', tool_id: 'b' }] },
+  ];
+  assert.deepEqual(recentlyAdded(changelog, tools).map((r) => `${r.tool.id}@${r.date}`), ['c@2026-11-10', 'a@2026-11-06', 'b@2026-11-06']);
+  assert.equal(recentlyAdded(changelog, tools, 1).length, 1);
+  assert.deepEqual(recentlyAdded(null, tools), []);
+});

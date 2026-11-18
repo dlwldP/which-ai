@@ -1912,3 +1912,22 @@ a.hero-fact:hover { border-color: var(--accent); }
 }
 .purpose-note a { font-weight: 700; color: var(--accent); }
 .purpose-note small { flex-basis: 100%; color: var(--muted); font-size: 0.8rem; }
+
+/* 첫 화면 "최근 추가된 툴" (휴대폰 1칸, 넓으면 2~3칸) */
+.recent { margin-top: 32px; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.section-more { font-size: 0.9rem; font-weight: 700; }
+.recent-list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 640px) { .recent-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1000px) { .recent-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.recent-item {
+  display: flex; gap: 12px; align-items: flex-start; height: 100%;
+  padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface); color: inherit; text-decoration: none;
+}
+.recent-item:hover { border-color: var(--accent); }
+.recent-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.recent-name { font-weight: 800; color: var(--text); }
+.recent-good { font-size: 0.88rem; color: var(--sub); }
+.recent-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
+.recent-date { font-size: 0.78rem; color: var(--muted); }
