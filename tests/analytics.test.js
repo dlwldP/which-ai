@@ -15,8 +15,10 @@ test('검색어: 다듬어서 보내고, 개인정보일 수 있는 말은 안 �
 test('화면 이벤트: 분야, 새로 켠 필터, 검색(결과 없음 구분)', () => {
   const r = parseRoute('#/p/P04?free=1&web=1');
   assert.deepEqual(routeEvents(r).map((e) => e.name), ['분야/P04', '필터/free', '필터/web']);
-  // 이미 켜져 있던 필터는 다시 세지 않음
-  assert.deepEqual(routeEvents(r, new URLSearchParams('free=1')).map((e) => e.name), ['분야/P04', '필터/web']);
+  // 같은 분야에서 필터만 바꾸면 분야는 다시 세지 않고, 이미 켜져 있던 필터도 다시 세지 않음
+  assert.deepEqual(routeEvents(r, parseRoute('#/p/P04?free=1')).map((e) => e.name), ['필터/web']);
+  // 다른 화면에서 들어오면 분야를 셈
+  assert.deepEqual(routeEvents(parseRoute('#/p/P05'), parseRoute('#/p/P04')).map((e) => e.name), ['분야/P05']);
   assert.deepEqual(routeEvents(parseRoute('#/all?q=쇼츠'), null, 3).map((e) => e.name), ['검색/쇼츠']);
   assert.deepEqual(routeEvents(parseRoute('#/all?q=없는툴'), null, 0).map((e) => e.name), ['검색-결과없음/없는툴']);
   assert.deepEqual(routeEvents(parseRoute('#/all?q=a@b.c'), null, 0), []);
