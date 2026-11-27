@@ -84,10 +84,14 @@ scripts/     validate-data.js — 데이터 검사
              review-checklist.js — 남은 초안 목록(drafts/REVIEW.md) 만들기
              build-changelog.js — git 기록으로 변경 이력 만들기 (배포할 때 자동 실행)
              check-freshness.js — 주간 점검: 90일 지난 툴, 링크 상태 → Issue 본문
+             weekly-summary.js — 주간 요약 (새 툴, 가격 표시 변화, 깨진 링크)
              validate-dev-data.js — 개발자용 데이터 검사 (docs/개발자용_기획서.md)
+             check-attribution.js — 커밋·PR 본문의 작성 도구 표시 검사 (PR 검사)
 tests/       Node 내장 테스트 러너
 docs/        기획서, 결정 사항, 사용성 테스트 가이드, 스크린샷
-.github/     배포·주간 점검 워크플로, "정보가 틀려요" 제보 양식
+.github/     배포·주간 점검·PR 검사 워크플로, "정보가 틀려요" 제보 양식
+AGENTS.md    AI 에이전트 작업 규칙의 원본 (CLAUDE.md는 이 파일을 불러오기만 함)
+.claude/     settings.json — 위험한 명령·파일 수정 전에 묻기, 작성 도구 표시 끄기
 ```
 
 ## 실행
@@ -107,7 +111,7 @@ node scripts/check-freshness.js      # 주간 점검을 직접 돌려보기 (결
 
 ## 배포
 
-`main`에 푸시하면 `.github/workflows/deploy.yml`이 테스트·데이터 검사를 돌리고, 통과하면 git 기록으로 변경 이력을 만들어 GitHub Pages에 올린다. 배포 주소는 맨 위 링크를 봐주세요.
+PR을 올리면 `.github/workflows/pr-check.yml`이 테스트·데이터 검사와 커밋·PR 본문의 작성 도구 표시를 검사한다. `main`에 들어가면 `.github/workflows/deploy.yml`이 테스트·데이터 검사를 돌리고, 통과하면 git 기록으로 변경 이력을 만들어 GitHub Pages에 올린다. 배포 주소는 맨 위 링크를 봐주세요.
 
 ## 검색 등록 (Google Search Console)
 

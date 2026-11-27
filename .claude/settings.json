@@ -1,0 +1,18 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "ask": [
+      "Bash(git push origin main*)",
+      "Bash(git push -f*)",
+      "Bash(git push --force*)",
+      "Edit(**/.github/**)",
+      "Write(**/.github/**)",
+      "Edit(**/js/analytics.js)",
+      "Edit(**/js/pages.js)",
+      "Edit(**/js/feedback.js)"
+    ]
+  }
+}

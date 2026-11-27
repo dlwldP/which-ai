@@ -56,5 +56,5 @@ Claude가 한 번에 해요 (2026-11-06 J 결정). J가 따로 git pull할 필�
 | 4. 검사 | `node --test`, `node scripts/validate-data.js`, `node scripts/validate-dev-data.js` | |
 | 5. 배포 | PR → 병합 → 자동 배포, 변경 이력 자동 생성 | [README.md](README.md) |
 
-규칙은 [CLAUDE.md](CLAUDE.md)와 [docs/decisions.md](docs/decisions.md)를 따라요.
+규칙은 [AGENTS.md](AGENTS.md)(CLAUDE.md는 이 파일을 불러오기만 해요)와 [docs/decisions.md](docs/decisions.md)를 따라요.
 특히 가격 값은 추측으로 채우지 않고, 모르면 "확인 필요"(null)로 둬요.
