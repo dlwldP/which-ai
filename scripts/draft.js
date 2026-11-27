@@ -3,7 +3,7 @@
 //   dev:     drafts/dev-tools.draft.json → data/dev/tools.json
 // 초안은 Claude가 공식 페이지를 읽고 만든다. 사이트에는 나오지 않는다 (배포 대상이 아님).
 // 2026-11-06 개편: 근거 문장은 가격(무료/유료 요금제 여부) 하나만. 가격을 못 찾으면 null(확인 필요)로 두고 그대로 확정해도 된다.
-// Claude가 근거 문장을 저장한 공식 페이지 글자와 대조한 뒤 바로 확정한다 (CLAUDE.md).
+// Claude가 근거 문장을 저장한 공식 페이지 글자와 대조한 뒤 바로 확정한다 (AGENTS.md).
 //
 // 사용법:
 //   node scripts/draft.js check                                           두 초안 파일 모두 검사
